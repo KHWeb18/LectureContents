@@ -27,7 +27,7 @@ public class ThirdController {
             @GetMapping("/test")
             public String testFromFormRadio(){
                 log.info("testFromFormRadio");
-                return "redirect:/";
+                return "redirect:/checkbox";
             }
 
     @GetMapping("/fieldsetLogin")
