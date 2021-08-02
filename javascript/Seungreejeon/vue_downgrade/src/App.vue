@@ -1,27 +1,30 @@
 <template>
   <v-app>
-    <v-content>
-      <router-view />
-    </v-content>
+    <nav-bar-component/>
+    <v-main>
+      <router-view/>
+    </v-main>
   </v-app>
 </template>
-<script>
-export default {
 
-  components: {
-    
-  }
+<script>
+import NavBarComponent from './views/NavBarComponent.vue'
+// import VuetifyAllInOneTestPage from './views/VuetifyAllInOneTestPage.vue'
+export default {
+  components: { NavBarComponent },
+  name: 'App'
 }
 </script>
 
 <style>
-/* #app {
+/*
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50; */
-/* } */
+  color: #2c3e50;
+}
 #nav {
   padding: 30px;
 }
@@ -32,4 +35,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+*/
 </style>
