@@ -38,6 +38,8 @@ import ScopedSlotTestPage from '@/views/ScopedSlotTestPage.vue'
 import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
 
 import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
+import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
+import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 //@는 src, ..는 상위
 
 Vue.use(VueRouter)
@@ -249,6 +251,20 @@ const routes = [
     name: 'MaterializeTestPage',
     components: {
       default: MaterializeTestPage
+    }
+  },
+  {
+    path: '/materializeGridTestPage',
+    name: 'MaterializeGridTestPage',
+    components: {
+      default: MaterializeGridTestPage
+    }
+  },
+  {
+    path: '/vuetifyAllInOneTestPage',
+    name: 'VuetifyAllInOneTestPage',
+    components: {
+      default: VuetifyAllInOneTestPage
     }
   }
 ]
