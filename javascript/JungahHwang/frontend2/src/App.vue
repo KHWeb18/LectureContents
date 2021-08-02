@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <nav-bar-page/>
     <v-main>
       <router-view/>
     </v-main>
@@ -8,9 +9,13 @@
 
 
 <script>
+import NavBarPage from '@/views/vuetify/NavBarPage'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    NavBarPage
+  }
 }
 </script>
 
