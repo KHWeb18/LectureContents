@@ -52,6 +52,9 @@ import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
 import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage'
 
+// JPA + Vuetify 회원가입
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -248,7 +251,14 @@ const routes = [
     components: {
       default: VuetifyAllInOneTestPage
     }  
-  }           
+  },
+  {
+    path: '/VuetifyMemberRegister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }  
+  }       
 ]
 
 const router = new VueRouter({

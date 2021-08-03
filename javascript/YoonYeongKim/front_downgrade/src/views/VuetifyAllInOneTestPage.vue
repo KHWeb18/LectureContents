@@ -93,12 +93,12 @@
                     <v-container grid-list-md>
                         <v-layout wrap>
                             <v-flex xs12>
-                                <v-text-field label="Email" v-model="userInfo.email" required>
+                                <v-text-field label="Email" v-model="userInfo.email" required flat solo>
                                 </v-text-field>
                             </v-flex>
                             <v-flex xs12>
                                 <v-text-field label="Password" v-model="userInfo.password"
-                                                type="password" required>
+                                                type="password" required solo>
                                 </v-text-field>
                             </v-flex>
                         </v-layout>
