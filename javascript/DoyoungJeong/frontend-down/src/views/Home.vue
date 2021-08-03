@@ -61,6 +61,56 @@
                     active-class="active">
                 TriangleAreaCalc   
             </router-link>
+            <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
+                    class="nav-link"
+                    active-class="active">
+                다음 뉴스 크롤러
+            </router-link>
+            <router-link :to="{ name: 'UnNamedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                UnNamedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'NamedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                NamedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'ScopedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ScopedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'RecentSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                RecentSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'MaterializeTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MaterializeTestPage
+            </router-link>
+            <router-link :to="{ name: 'MaterializeGridTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MaterializeGridTestPage
+            </router-link>
+            <router-link :to="{ name: 'VuetifyAllInOneTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyAllInOneTestPage
+            </router-link>
+            <router-link :to="{ name: 'VueJpaMemberRegister' }"
+                    class="nav-link"
+                    active-class="active">
+                VueJpaMemberRegister
+            </router-link>
+            <router-link :to="{ name: 'CoverFlowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CoverFlowTestPage
+            </router-link>
         </div>
         <div>
             <!-- <button v-on:click="addManyMonster">몬스터 100마리 리젠</button>-->

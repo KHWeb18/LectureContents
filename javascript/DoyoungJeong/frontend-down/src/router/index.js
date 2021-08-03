@@ -29,6 +29,21 @@ import DungeonPage from '@/views/DungeonPage.vue'
 import StudentScoresPage from '@/views/student/StudentScoresPage.vue'
 
 import TriangleAreaCalc from '@/views/prob89/TriangleAreaCalc.vue'
+
+import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
+
+import UnNamedSlotTestPage from '@/views/UnNamedSlotTestPage.vue'
+import NamedSlotTestPage from '@/views/NamedSlotTestPage.vue'
+import ScopedSlotTestPage from '@/views/ScopedSlotTestPage.vue'
+import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
+
+import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
+import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
+import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
+
+import VueJpaMemberRegister from '@/views/VueJpaMemberRegister.vue'
+
+import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
 //@는 src, ..는 상위
 
 Vue.use(VueRouter)
@@ -164,16 +179,6 @@ const routes = [
     }
   },
   {
-    path: '/monster/:monsterNo/edit',
-    name: 'MonsterModifyPage',
-    components: {
-      default: MonsterModifyPage
-    },
-    props: {
-      default: true
-    }
-  },
-  {
     path: '/eventbusTest',
     name: 'EventBusTestPage',
     components: {
@@ -208,6 +213,76 @@ const routes = [
     },
     props: {
       default: true
+    }
+  },
+  {
+    path: '/daumNewsCrawlerPage',
+    name: 'DaumNewsCrawlerPage',
+    components: {
+      default: DaumNewsCrawlerPage
+    }
+  },
+  {
+    path: '/unNamedSlotTestPage',
+    name: 'UnNamedSlotTestPage',
+    components: {
+      default: UnNamedSlotTestPage
+    }
+  },
+  {
+    path: '/namedSlotTestPage',
+    name: 'NamedSlotTestPage',
+    components: {
+      default: NamedSlotTestPage
+    }
+  },
+  {
+    path: '/scopedSlotTestPage',
+    name: 'ScopedSlotTestPage',
+    components: {
+      default: ScopedSlotTestPage
+    }
+  },
+  {
+    path: '/vSlot',
+    name: 'RecentSlotTestPage',
+    components: {
+      default: RecentSlotTestPage
+    }
+  },
+  {
+    path: '/materialize',
+    name: 'MaterializeTestPage',
+    components: {
+      default: MaterializeTestPage
+    }
+  },
+  {
+    path: '/materializeGridTestPage',
+    name: 'MaterializeGridTestPage',
+    components: {
+      default: MaterializeGridTestPage
+    }
+  },
+  {
+    path: '/vuetifyAllInOneTestPage',
+    name: 'VuetifyAllInOneTestPage',
+    components: {
+      default: VuetifyAllInOneTestPage
+    }
+  },
+  {
+    path: '/vueJpaMemberRegister',
+    name: 'VueJpaMemberRegister',
+    components: {
+      default: VueJpaMemberRegister
+    }
+  },
+  {
+    path: '/coverFlowTestPage',
+    name: 'CoverFlowTestPage',
+    components: {
+      default: CoverFlowTestPage
     }
   }
 ]

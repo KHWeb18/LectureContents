@@ -26,10 +26,13 @@ import {
 
     FETCH_DUNGEON_LIST,
 
-    FETCH_STUDENT_LIST
+    FETCH_STUDENT_LIST,
+
+    CRAWL_START
 } from './mutation-types'
 
 import axios from 'axios'
+import router from '../router'
 
 export default {
     addTodo (context, payload) { //payload는 todoItem, context는 별로 중요하진 않다.
@@ -144,9 +147,19 @@ export default {
         .then((res) => {
             commit(FETCH_STUDENT_LIST, res.data)
         })
+    },
+
+    async crawlFind ({ commit }, category) {
+        axios.get('http://localhost:7777/' + `${category}`)
+                .then(({ data }) => {
+                    commit(CRAWL_START, data)
+
+                    if (window.location.pathname !== '/daumNewsCrawler') {
+                        router.push('/daumNewsCrawler')
+                    }
+                })
     }
 }
-
 
 //action에 있는 것들은 비동기처리 - 대충 보여져도 된다면 action에
 //mutation에 있는 것들은 동기처리 - 무결성이 중요하다면 mutation에

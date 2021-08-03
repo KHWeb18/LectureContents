@@ -20,7 +20,9 @@ export default {
 
     dungeons: [],
 
-    students: []
+    students: [],
+
+    lists: []
 }
 
 //이곳 state는 크리티컬 섹션이다.

@@ -28,7 +28,9 @@ import {
     
     FETCH_DUNGEON_LIST,
 
-    FETCH_STUDENT_LIST
+    FETCH_STUDENT_LIST,
+
+    CRAWL_START
 } from './mutation-types'
 
 export default {
@@ -151,6 +153,10 @@ export default {
 
     [FETCH_STUDENT_LIST] (state, students) {
         state.students = students
+    },
+
+    [CRAWL_START] (state, payload) {
+        state.lists = payload
     }
 }
 
