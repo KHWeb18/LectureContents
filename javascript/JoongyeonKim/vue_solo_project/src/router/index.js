@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 //board
-import BoardListPage from '@/views/BoardListPage.vue'
+import BoardListPage from '@/views/board/BoardListPage.vue'
+import BoardRegisterPage from '@/views/board/BoardRegisterPage.vue'
+import BoardReadPage from '@/views/board/BoardReadPage.vue'
+import BoardModifyPage from '@/views/board/BoardModifyPage.vue'
 
 Vue.use(VueRouter)
 
@@ -13,6 +15,34 @@ const routes = [
     name: 'BoardListPage',
     components: {
       default: BoardListPage
+    }
+  },
+  {
+    path: '/board/create',
+    name: 'BoardRegisterPage',
+    components: {
+      default: BoardRegisterPage
+    }
+  },
+  {
+    path: '/board/:boardNo',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/board/:boardNo/edit',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    },
+    props: {
+      // 라우팅 파리미터를 props에 자동으로 설정하게 서포트함
+      default: true
     }
   }
 ]

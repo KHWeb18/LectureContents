@@ -1,20 +1,15 @@
 <template>
-  <div class="home">
-    <div id="header">
-      <router-link :to="{ name: 'BoardListPage' }"
-                    class="nav-link"
-                    active-class="active">
-                BoardListPage
-            </router-link>
-  </div>
+  <hello-world />
 </template>
 
 <script>
-// @ is an alias to /src
+  import HelloWorld from '../components/HelloWorld'
 
-export default {
-  name: 'Home',
-  components: {
+  export default {
+    name: 'Home',
+
+    components: {
+      HelloWorld,
+    },
   }
-}
 </script>
