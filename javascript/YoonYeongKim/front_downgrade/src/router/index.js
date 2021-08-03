@@ -55,6 +55,9 @@ import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage'
 // JPA + Vuetify 회원가입
 import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage'
 
+// coverflow
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -258,6 +261,13 @@ const routes = [
     components: {
       default: VuetifyMemberRegisterPage
     }  
+  },
+  {
+    path: '/coverflowTest',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }
   }       
 ]
 
