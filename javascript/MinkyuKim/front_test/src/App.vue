@@ -1,14 +1,18 @@
 <template>
   <v-app>
-    <v-main>
-      <router-view/>
-    </v-main>
+    <nav-bar-component/>
+      <v-main>
+        <router-view/>
+      </v-main>    
   </v-app>
 </template>
 
 <script>
+import NavBarComponent from './views/NavBarComponent.vue'
+// import VuetifyAllInOneTestPage from './views/VuetifyAllInOneTestPage.vue'
 
 export default {
+  components: { NavBarComponent },
   name: 'App'    
 }
 
