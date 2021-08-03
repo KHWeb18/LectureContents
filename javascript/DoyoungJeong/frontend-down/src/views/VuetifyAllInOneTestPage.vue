@@ -37,9 +37,7 @@
                         {{ service.name }}
                     </v-card-title>
                     <v-card-text>
-                        {{ service.description }}
-                        <v-text-field label="password" type="password" required></v-text-field>
-                        <input type="text" style="font-size: 12px; font-style: italic;" v-model="basicText" @click="resetText"/>
+                        {{ service.description }}                        
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
@@ -93,7 +91,7 @@
                         Log In
                     </v-card-title>
                     <v-card-text>              
-                        <v-container grid-list-md> <!-- grid-list-md -->
+                        <v-container grid-list-md> <!-- grid-list-md?? -->
                             <v-layout wrap>  
                                 <v-flex xs12>
                                     <v-text-field label="Email" type="text" required v-model="userInfo.email">                                       
@@ -152,7 +150,7 @@
             <v-navigation-drawer app v-model="nav_drawer" temporary>
             <!-- <v-navigation-drawer app permanent> -->
             <!-- app 는 App.vue에 있는 자식? 바꿀일은 없다. 커스터마이즈하지 않는 이상 app 을 건드릴필요 없다 -->
-                <v-list nav dense>
+                <v-list nav>
                     <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
                         <v-list-item v-for="link in links" :key="link.name" router :to="link.route"> <!-- :to="link.route" 링크 연결 -->
                             <v-list-item-action>
@@ -189,6 +187,7 @@ export default {
                 { text: 'Title', value: 'title', width: "150px" },
                 { text: 'Writer', value: 'writer', width: "100px" },
                 { text: 'Content', value: 'content', width: "100px" }
+                //text, value는 v-data-table에서 고정된 이름, 여기에 맞춰서 작성해야한다.
             ],
             contents: [
                 { no: 1, title: 'Hi', writer: 'jdy7744', content: 'fuck!' },
@@ -255,17 +254,17 @@ export default {
             alert('로그인 취소!')
             this.loginDialog = false
         },
-        watch: { //watch가 뭐녀
-            group() {
-                this.nav_drawer = false
-            }
-        },
         doMethods($event) {
             if($event.target.innerHTML == " Home ") {
                 alert('HOME!')
             }
         }
-    }    
+    },watch: { //watch가 뭐녀
+        group() {
+            this.nav_drawer = false
+        }
+    }
+
 }
 </script>
 

@@ -19,7 +19,7 @@
             <v-navigation-drawer app v-model="nav_drawer" temporary>          
             <!-- app permanent는 App.vue에 있는 자식? 바꿀일은 없다. 커스터마이즈하지 않는 이상 app parmanent를 건드릴필요 없다 -->
                 <v-list nav dense>
-                    <v-list-item-group v-model="group" active-class="deep-red--text text--accent-4"> <!-- 여기서 v-model="group"의 역할? -->
+                    <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4"> <!-- 여기서 v-model="group"의 역할? -->
                         <v-list-item v-for="link in links" :key="link.name" router :to="link.route"> <!-- :to="link.route" 링크 연결 -->
                             <v-list-item-action>
                                 <v-icon left>{{ link.icon }}</v-icon>
@@ -40,6 +40,7 @@ export default {
     data() {
         return {
             nav_drawer: false,
+            group: 2,
             dialog: false,
             loginDialog: false,
             service: {
@@ -96,11 +97,6 @@ export default {
             alert('로그인 취소!')
             this.loginDialog = false
         },
-        watch: { //watch가 뭐녀
-            group() {
-                this.nav_drawer = false
-            }
-        },
         doMethods($event) {
             if($event.target.innerHTML == " Home ") {
                 alert('Home!')
@@ -109,6 +105,11 @@ export default {
             } else if($event.target.innerHTML == " Beenhere ") {
                 alert('Beenhere!')
             } //이렇게 toolbar list에 메소드 넣는것도 가능
+        }
+    },
+    watch: { 
+        group() {
+            this.nav_drawer = false
         }
     }    
 }

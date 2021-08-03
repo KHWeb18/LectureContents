@@ -40,6 +40,10 @@ import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
 import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
 import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
+
+import VueJpaMemberRegister from '@/views/VueJpaMemberRegister.vue'
+
+import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
 //@는 src, ..는 상위
 
 Vue.use(VueRouter)
@@ -265,6 +269,20 @@ const routes = [
     name: 'VuetifyAllInOneTestPage',
     components: {
       default: VuetifyAllInOneTestPage
+    }
+  },
+  {
+    path: '/vueJpaMemberRegister',
+    name: 'VueJpaMemberRegister',
+    components: {
+      default: VueJpaMemberRegister
+    }
+  },
+  {
+    path: '/coverFlowTestPage',
+    name: 'CoverFlowTestPage',
+    components: {
+      default: CoverFlowTestPage
     }
   }
 ]
