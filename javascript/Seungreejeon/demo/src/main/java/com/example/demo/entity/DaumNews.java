@@ -10,11 +10,15 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+
+// JPA 사용시 필수적인 Annotation이  Enitity
 @Entity
 @ToString
 public class DaumNews {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //자동증가형식으로 아이디를 준다. auto_increment
+
     private Long newsSeq;
 
     @Column(length = 20, nullable = false)
@@ -28,7 +32,9 @@ public class DaumNews {
 
     @Column(length = 2000, nullable = false)
     private String address;
-    //builder 자동으로 객체를 만들어줌
+
+    //builder 자동으로 객체를 만들어주거나 새로 생성
+    //요청이있다면 만들어준다. setter와 유사
     @Builder
     public DaumNews(String newsNo, String category, String title, String address) {
         this.newsNo = newsNo;

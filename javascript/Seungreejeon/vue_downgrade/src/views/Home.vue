@@ -112,6 +112,16 @@
                     active-class="active">
                 vuetifyAllInoneTestPage
             </router-link>
+            <router-link :to="{ name: 'JPAmemberRegister' }"
+                    class="nav-link"
+                    active-class="active">
+                JPAmemberRegister
+            </router-link>
+             <router-link :to="{ name: 'CoverflowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Coverflow Test
+            </router-link>
            <div>
                <vuetify-all-inone-test-page />
            </div>
