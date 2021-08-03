@@ -31,8 +31,8 @@ import {
     SCORE_MANAGEMENT,
 
     // 크롤링
-    CRAWL_START
-    
+    CRAWL_START,
+
 } from './mutation-types'
 
 import axios from 'axios'

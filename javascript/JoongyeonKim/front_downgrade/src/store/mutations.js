@@ -138,5 +138,5 @@ export default {
     },
     [CRAWL_START] (state, payload) {
         state.lists = payload
-    },
+    }
 }
