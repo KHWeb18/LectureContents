@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <nav-bar-component/>
     <v-main>
       <router-view/>
     </v-main>
@@ -7,7 +8,10 @@
 </template>
 
 <script>
+import NavBarComponent from './views/NavBarComponent.vue'
+// import VuetifyAllInOneTestPage from './views/VuetifyAllInOneTestPage.vue'
 export default {
+  components: { NavBarComponent },
   name: 'App'
 }
 </script>
