@@ -5,11 +5,16 @@ import Test from '../views/Test.vue'
 import Todo from '../views/Todo.vue'
 import Monster from '@/views/monster/Monster.vue'
 
+// Reference
+import Reference from '@/views/Reference'
+import CoverFlowPage from '@/views/reference/CoverFlowPage'
+
 // Quiz
 import Quiz from '@/views/quiz/Quiz'
 import StudentScorePage from '@/views/quiz/StudentScorePage'
 import TriangleVuePage from '@/views/quiz/TriangleVuePage'
 import TriangleSpringPage from '@/views/quiz/TriangleSpringPage'
+import MemberJpaPage from '@/views/quiz/MemberJpaPage'
 
 // Monster
 import MonsterSignupPage from '@/views/monster/MonsterSignupPage'
@@ -54,6 +59,7 @@ import MaterialGridPage from '@/views/materialize/MaterialGridPage'
 // Vuetify
 import VuetifyPage from '@/views/vuetify/VuetifyPage'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -71,7 +77,19 @@ const routes = [
     component: Test
   },
 
-// Quiz
+// Reference
+  {
+    path: '/reference',
+    name: 'Reference',
+    component: Reference
+  },
+  {
+    path: '/reference/coverflow',
+    name: 'CoverFlowPage',
+    component: CoverFlowPage
+  },
+
+  // Quiz
   {
     path: '/quiz',
     name: 'Quiz',
@@ -91,6 +109,11 @@ const routes = [
     path: '/quiz/triangleSpring',
     name: 'TriangleSpringPage',
     component: TriangleSpringPage
+  },
+  {
+    path: '/quiz/member',
+    name: 'MemberJpaPage',
+    component: MemberJpaPage
   },
     
 // Todo
