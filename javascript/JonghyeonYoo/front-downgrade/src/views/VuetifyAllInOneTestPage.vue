@@ -196,7 +196,7 @@
             </v-menu>
         </div>
 
-        <v-container>
+        <v-container> <!-- 게시판 -->
             <v-data-table :headers="headerTitle"
                     :items="contents"
                     :items-per-page="10"
