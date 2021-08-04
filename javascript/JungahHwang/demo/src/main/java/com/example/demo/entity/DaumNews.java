@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+// JPA 사용에 필수적인 annotation이 Entity
 @Entity
 @ToString
 public class DaumNews {
@@ -28,6 +29,7 @@ public class DaumNews {
     @Column(length = 2000, nullable = false)
     private String address;
 
+    // 필요에 따라 사용하는 생성자
     @Builder
     public DaumNews(String newsNo, String category, String title, String address) {
         this.newsNo = newsNo;
