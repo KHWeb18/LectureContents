@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
 
 //board
+//@는 src폴더를 의미한다
 import BoardListPage from '@/views/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/board/BoardReadPage.vue'
@@ -10,6 +12,11 @@ import BoardModifyPage from '@/views/board/BoardModifyPage.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
   {
     path: '/board',
     name: 'BoardListPage',

@@ -30,13 +30,10 @@ public class VueJPAMemberController {
 
         return new ResponseEntity<>(member, HttpStatus.OK);
     }
-/*
     @GetMapping("/lists")
     public ResponseEntity<List<VueMember>> getLists () throws Exception {
         log.info("getLists(): " + service.lists());
 
         return new ResponseEntity<>(service.lists(), HttpStatus.OK);
     }
-
- */
 }

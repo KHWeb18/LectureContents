@@ -32,10 +32,10 @@ public class VueJPAMemberServiceImpl implements VueJPAMemberService {
     public void login(Member member) throws Exception {
         repository.login(member);
     }
-
+     */
     @Override
     public List<VueMember> lists() throws Exception {
-        return jpaSignUpRepository.save();
+        return jpaSignUpRepository.findAll();
     }
-     */
+
 }

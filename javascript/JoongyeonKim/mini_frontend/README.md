@@ -1,4 +1,4 @@
-# vue_solo_project
+# mini_frontend
 
 ## Project setup
 ```
