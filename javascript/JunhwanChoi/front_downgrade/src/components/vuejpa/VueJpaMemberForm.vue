@@ -39,9 +39,9 @@
                                 flat solo></v-text-field>
             
                                 <v-text-field
-                                id="password"
+                                id="pw"
                                 label="Password"
-                                name="password"
+                                name="pw"
                                 prepend-icon="mdi-lock"
                                 type="password"
                                 v-model="pw"
@@ -59,37 +59,22 @@
                 </v-main>
                 </v-app>
             </v-app>
-            </div> 
-          <!-- <table>
-                <tr>
-                    <td>아이디</td>
-                    <td><input type="text" v-model="id"></td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td><input type="password" v-model="pw"></td>
-                </tr>
-            </table>
-
-           <div>
-            <button type="submit">등록</button>
-            <router-link :to="{ name: 'Home' }">
-                취소
-            </router-link>
-        </div>-->
+            </div>   
     </form>
 </template>
 
 <script>
 export default {
-    name: 'GameMemberRegisterForm',
+    name: 'VueJpaMemberForm',
    
+   //v-model 지정해준 id, pw는 데이터 설정
     data () {
         return {
             id: '',
             pw: '',
         }
     },
+    //v-model을 사용한 id, pw는 emit으로 전달
     methods: {
         onSubmit () {
             const { id, pw } = this

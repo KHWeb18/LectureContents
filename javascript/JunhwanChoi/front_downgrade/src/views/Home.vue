@@ -110,6 +110,18 @@
                 VuetifyAllInOneTestPage
             </router-link><br><br>
 
+            <router-link :to="{ name: 'VueJpaMemberPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VueJpaMemberPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'CoverflowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CoverflowTestPage
+            </router-link><br><br>
+
+
 
 
 

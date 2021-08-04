@@ -53,6 +53,13 @@ import MeterializeGridTestPage from '@/views/MeterializeGridTestPage.vue'
 
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
+import VueJpaMemberPage from '@/views/VueJpaMemberPage.vue'
+
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+
 
 
 Vue.use(VueRouter)
@@ -253,7 +260,33 @@ const routes = [
     }
   },
 
+  {
+    path: '/vuemember/create',
+    name: 'VueJpaMemberPage',
+    components: {
+      default: VueJpaMemberPage
+    }
+  },
 
+  {
+    path: '/coverFlowTestPage',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTestPage',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  
+
+
+  
+  
 
   
 
