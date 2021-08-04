@@ -33,6 +33,10 @@ import {
     // 크롤링
     CRAWL_START,
 
+    //JPA
+    FETCH_MEMBER_LIST,
+    FETCH_MEMBER
+
 } from './mutation-types'
 
 import axios from 'axios'
@@ -158,5 +162,18 @@ export default {
                         router.push('/daumNewsCrawler')
                     }
                 })
-    }
+    },
+    // 게시판
+    fetchMemberList ({commit}) {
+        return axios.get('http://localhost:7777/vuejpamember/lists')
+            .then((res) =>{
+                commit(FETCH_MEMBER_LIST, res.data)
+            })
+    },
+    fetchMember({ commit }, memberNo) {
+        return axios.get(`http://localhost:7777/vuejpamember/${memberNo}`)
+        .then((res) => {
+            commit(FETCH_MEMBER, res.data)
+        })
+    },
 }

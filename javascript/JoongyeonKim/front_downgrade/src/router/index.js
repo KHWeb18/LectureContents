@@ -62,9 +62,19 @@ import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
 //JPA
 import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+import VuetifyMemberListPage from '@/views/VuetifyMemberListPage.vue'
 
 //coverflow
 import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
+
+//vue-awesome-swiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+//Image Gallery
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+
+// Calendar
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
 
 Vue.use(VueRouter)
 
@@ -312,10 +322,38 @@ const routes = [
     }
   },
   {
+    path: '/VuetifyMemberListPage',
+    name: 'VuetifyMemberListPage',
+    components: {
+      default: VuetifyMemberListPage
+    }
+  },
+  {
     path: '/coverflowtest',
     name: 'CoverFlowTestPage',
     components: {
       default: CoverFlowTestPage
+    }
+  },
+  {
+    path: '/Awesomeswipertest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  {
+    path: '/Imagegallery',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }
+  },
+  {
+    path: '/Calendartest',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
     }
   }
 ]

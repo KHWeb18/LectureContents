@@ -123,6 +123,26 @@
                     class="nav-link"
                     active-class="active">
                 커버플로우테스트
+            </router-link>,
+            <router-link :to="{ name: 'VuetifyMemberList' }"
+                    class="nav-link"
+                    active-class="active">
+                JPA 활용 회원확인 페이지
+            </router-link>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Awesome Swiper Test
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGalleryTestPage
+            </router-link>
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Calendar Test
             </router-link>
         </div>
     </div>

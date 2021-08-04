@@ -5,7 +5,6 @@
             </v-app-bar-nav-icon>
             <v-toolbar-title>
                 <span class="font-weight-light">최고의 여행</span>
-                <span>꿀팁</span>
             </v-toolbar-title>
             <v-toolbar-items>
                 <v-btn text v-for="link in links" :key="link.icon" :to="link.route">
@@ -89,11 +88,13 @@ export default {
             this.userInfo.email = ''
             this.userInfo.password = ''
         },
+        /*
         watch: {
             group () {
                 this.nav_drawer = false
             }
         }
+        */
     }
 }
 </script>
