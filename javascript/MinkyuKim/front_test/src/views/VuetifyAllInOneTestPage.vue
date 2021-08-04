@@ -107,12 +107,12 @@
                         <v-layout wrap>
                             <v-flex xs12>
                                 <!-- email이 반드시 적혀야 하며, vue의 양방향 정보가 전달된다 -->
-                                <v-text-field label="Email" v-model="userInfo.email" required>
+                                <v-text-field label="Email" v-model="userInfo.email" required flat solo>
                                 </v-text-field>
                             </v-flex>
                             <v-flex x12>
                                 <v-text-field label="Password" v-model="userInfo.password"
-                                                type="password" required>
+                                                type="password" required solo>
                                 </v-text-field>
                             </v-flex>
                         </v-layout>

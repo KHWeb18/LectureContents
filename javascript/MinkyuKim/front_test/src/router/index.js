@@ -56,6 +56,11 @@ import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 // Veutify
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
+// JPA Test Page
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -296,8 +301,23 @@ const routes = [
     components: {
       default: VuetifyAllInOneTestPage
     }    
+  },
+  {
+    path: '/vutifymemberregister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }    
+  },
+  {
+    path: '/coverflowTest',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }   
   }
 ]
+
 
 const router = new VueRouter({
   mode: 'history',
