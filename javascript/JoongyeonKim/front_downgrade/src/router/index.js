@@ -60,10 +60,6 @@ import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 //vuetify
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
-//JPA
-import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
-import VuetifyMemberListPage from '@/views/VuetifyMemberListPage.vue'
-
 //coverflow
 import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
 
@@ -75,6 +71,11 @@ import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
 
 // Calendar
 import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+//JPA
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+import VuetifyMemberListPage from '@/views/VuetifyMemberListPage.vue'
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 
 Vue.use(VueRouter)
 
@@ -354,6 +355,13 @@ const routes = [
     name: 'CalendarTestPage',
     components: {
       default: CalendarTestPage
+    }
+  },
+  {
+    path: '/memberJoinColumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
     }
   }
 ]
