@@ -138,6 +138,21 @@
                     active-class="active">
                 coverflow
             </router-link>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                awesomeSwiper
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGallery
+            </router-link>
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                calendar
+            </router-link>
         </div>
     </div>
 </template>

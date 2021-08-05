@@ -1,7 +1,8 @@
 <template>
   <div>
+      <v-parallax src="@/assets/img/sea.jpg" height="500"></v-parallax>
       <v-navigation-drawer
-        height="880"
+        height="1000"
         permanent
         expand-on-hover
         blue
@@ -15,7 +16,7 @@
           </v-list-item>
         </v-list>
 
-            <v-list
+            <!-- <v-list
             nav
             dense
             >
@@ -30,7 +31,7 @@
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-item-group>
-            </v-list>
+            </v-list> -->
       </v-navigation-drawer>
   </div>
 </template>
@@ -74,4 +75,5 @@ p {
     padding: 10px;
     margin: 5px 10px;
 }
+
 </style>
