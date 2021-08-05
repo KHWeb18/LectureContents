@@ -1,7 +1,7 @@
-package com.example.Quiz.controller.vue;
+package com.example.Quiz.controller.jpa;
 
-import com.example.Quiz.entity.MemberJpa;
-import com.example.Quiz.service.MemberJpaService;
+import com.example.Quiz.entity.jpa.Member;
+import com.example.Quiz.service.jpa.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class Quiz0803ControllerMemberJpa {
 
     @Autowired
-    MemberJpaService service;
+    MemberService service;
 
     @PostMapping("/memberjpa")
-    public ResponseEntity<MemberJpa> postMemberJpa(@Validated @RequestBody MemberJpa member) throws Exception {
+    public ResponseEntity<Member> postMemberJpa(@Validated @RequestBody Member member) throws Exception {
         log.info("postMemberJpa");
 
         service.signup(member);
