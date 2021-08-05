@@ -66,6 +66,14 @@ import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
 // coverflow
 import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
 
+// vue-awesome
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+//images gallery
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+
+// Calendar
+import CalendarTestPage from '@/views/CalendarTestPage.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -312,6 +320,27 @@ const routes = [
     name: 'CoverflowTestPage',
     components: {
       default: CoverflowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  {
+    path: '/imageGalleryTest',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }
+  },
+  {
+    path: '/calendarTest',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
     }
   }
 ]

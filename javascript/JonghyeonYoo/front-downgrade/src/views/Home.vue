@@ -177,6 +177,27 @@
                     active-class="active">
                 Coverflow Test
             </router-link>
+
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Awesome Swiper Test
+            </router-link>
+            <router-link :to="{ name: 'LikesFacebookPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Likes Facebook
+            </router-link>
+                        <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Image Gallery
+            </router-link>
+                        <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Calendar 달력
+            </router-link>
     </div>
   </div>
 </template>
