@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.service.jpa;
 
-import com.example.demo.entity.DaumNews;
-import com.example.demo.repository.DaumNewsRepository;
+import com.example.demo.entity.jpa.DaumNews;
+import com.example.demo.repository.jpa.DaumNewsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

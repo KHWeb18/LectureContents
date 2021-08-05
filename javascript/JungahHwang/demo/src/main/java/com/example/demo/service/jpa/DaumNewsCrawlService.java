@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.service.jpa;
 
-import com.example.demo.entity.DaumNews;
+import com.example.demo.entity.jpa.DaumNews;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 

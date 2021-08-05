@@ -1,7 +1,7 @@
-package com.example.demo.controller.crawl;
+package com.example.demo.controller.jpa;
 
-import com.example.demo.entity.DaumNews;
-import com.example.demo.service.DaumNewsCrawlService;
+import com.example.demo.entity.jpa.DaumNews;
+import com.example.demo.service.jpa.DaumNewsCrawlService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
