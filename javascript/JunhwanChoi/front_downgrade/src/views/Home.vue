@@ -120,6 +120,25 @@
                     active-class="active">
                 CoverflowTestPage
             </router-link><br><br>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                AwesomeSwiperTestPage
+            </router-link><br><br>
+            
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGalleryTestPage
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CalendarTestPage
+            </router-link><br><br>
+
+
 
 
 

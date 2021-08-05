@@ -60,6 +60,15 @@ import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
 import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
 
 
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+
+
+
+
+
 
 
 Vue.use(VueRouter)
@@ -282,6 +291,26 @@ const routes = [
       default: AwesomeSwiperTestPage
     }
   },
+  
+
+  
+  {
+    path: '/imageGalleryTestPage',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }
+  },
+  {
+    path: '/calendarTestPage',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+
+
+  
   
 
 
