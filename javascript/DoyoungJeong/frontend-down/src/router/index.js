@@ -44,6 +44,9 @@ import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 import VueJpaMemberRegister from '@/views/VueJpaMemberRegister.vue'
 
 import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
+import AwesomeSwiperTest from '@/views/AwesomeSwiperTest.vue'
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
 //@는 src, ..는 상위
 
 Vue.use(VueRouter)
@@ -283,6 +286,27 @@ const routes = [
     name: 'CoverFlowTestPage',
     components: {
       default: CoverFlowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTest',
+    name: 'AwesomeSwiperTest',
+    components: {
+      default: AwesomeSwiperTest
+    }
+  },
+  {
+    path: '/calendarTestPage',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/imageGalleryTestPage',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
     }
   }
 ]
