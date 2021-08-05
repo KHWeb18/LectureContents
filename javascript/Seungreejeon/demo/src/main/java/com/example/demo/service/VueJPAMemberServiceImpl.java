@@ -17,3 +17,4 @@ public class VueJPAMemberServiceImpl implements VueJPAMemberService{
         repository.save(vueMember);
     }
 }
+

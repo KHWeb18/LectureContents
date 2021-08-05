@@ -239,7 +239,6 @@ export default {
                 { boardNo: 15, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
             ],
             message: '환장',
-            nav_drawer: false,
             group: false,
             dialog: false,
             loginDialog: false,
@@ -250,6 +249,7 @@ export default {
                 email: '',
                 password: ''
             },
+            nav_drawer: false,
             links: [
                 {
                     icon: 'home', text: 'Home', name: 'home', route: '/'
