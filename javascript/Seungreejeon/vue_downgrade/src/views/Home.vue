@@ -184,19 +184,20 @@
       >
         Calendar Test
       </router-link>
-      <div>
-        <vuetify-all-inone-test-page />
-      </div>
+      <router-link
+        :to="{ name: 'MemberJoinColumTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        MemberJoinColumTestPage
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import VuetifyAllInoneTestPage from "./vuetifyAllInoneTestPage.vue";
 export default {
   name: "Home",
-  components: {
-    VuetifyAllInoneTestPage,
-  },
+
 };
 </script>

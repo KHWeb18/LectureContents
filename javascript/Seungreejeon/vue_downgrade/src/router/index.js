@@ -67,6 +67,9 @@ import AwesomeSwiper from '@/views/AwesomeSwiper'
 
 import CalendarTestPage from '@/views/CalendarTestPage'
 
+//JPA
+import MemberJoinColumTestPage from '@/views/MemberJoinColumTestPage';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -314,6 +317,13 @@ const routes = [
     name: 'CalendarTestPage',
     components: {
       default: CalendarTestPage
+    }
+  },
+  {
+    path: '/member-join-column-test-page',
+    name: 'MemberJoinColumTestPage',
+    components: {
+      default: MemberJoinColumTestPage
     }
   }
 

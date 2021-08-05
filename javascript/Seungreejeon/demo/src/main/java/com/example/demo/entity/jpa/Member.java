@@ -1,9 +1,7 @@
 package com.example.demo.entity.jpa;
 
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "memeber")
 public class Member {
@@ -36,6 +33,7 @@ public class Member {
     @UpdateTimestamp
     private Date updDate;
     //one to many  -> one 은 하나의 테이블인 member를 말한다.
+    // 회원은 관리자,사업자, 개인 셋중에하나가 될수있다. 1:M
 //    joincolumn
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
@@ -46,6 +44,11 @@ public class Member {
     }
     public void clearAuthList() {
         authList.clear();
+    }
+
+    public Member(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
     }
 
 }

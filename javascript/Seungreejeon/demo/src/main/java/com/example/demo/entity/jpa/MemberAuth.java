@@ -33,5 +33,9 @@ public class MemberAuth {
     @UpdateTimestamp
     private Date upDate;
 
+    public MemberAuth(String auth) {
+        this.auth = auth;
+    }
+
 
 }

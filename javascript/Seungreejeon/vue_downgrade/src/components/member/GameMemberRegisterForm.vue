@@ -1,10 +1,11 @@
 <template>
+<v-container>
     <form @submit.prevent="onSubmit">
         <h3>회원가입 양식</h3>
         <table>
             <tr>
-                <td>아이디</td>
-                <td><input type="text" v-model="id"></td>
+                <th>아이디</th>
+                <th><input type="text" v-model="id"></th>
             </tr>
             <tr>
                 <td>pw</td>
@@ -19,11 +20,12 @@
             </router-link>
         </div>
     </form>
+    </v-container>
 </template>
 
 <script>
 export default {
-    name: 'GameMemberRegiserForm',
+    name: 'VuetifyMemberRegisterForm',
     data () {
         return {
             id: '',
@@ -40,3 +42,12 @@ export default {
     }
 }
 </script>
+<style scoped>
+th {
+    width: 150px;
+    text-align: right;
+}
+td {
+    text-align: right;
+}
+</style>
