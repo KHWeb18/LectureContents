@@ -6,8 +6,11 @@ import Todo from '../views/Todo.vue'
 import Monster from '@/views/monster/Monster.vue'
 
 // Reference
-import Reference from '@/views/Reference'
+import Reference from '@/views/reference/Reference'
 import CoverFlowPage from '@/views/reference/CoverFlowPage'
+import AwesomeSwiperPage from '@/views/reference/AwesomeSwiperPage'
+import ImageGalleryPage from '@/views/reference/ImageGalleryPage'
+import CalendarPage from '@/views/reference/CalendarPage'
 
 // Quiz
 import Quiz from '@/views/quiz/Quiz'
@@ -88,8 +91,23 @@ const routes = [
     name: 'CoverFlowPage',
     component: CoverFlowPage
   },
+  {
+    path: '/reference/awesomeSwiper',
+    name: 'AwesomeSwiperPage',
+    component: AwesomeSwiperPage
+  },
+  {
+    path: '/reference/imageGallery',
+    name: 'ImageGalleryPage',
+    component: ImageGalleryPage
+  },
+  {
+    path: '/reference/calendar',
+    name: 'CalendarPage',
+    component: CalendarPage
+  },
 
-  // Quiz
+  // Quiz 
   {
     path: '/quiz',
     name: 'Quiz',
