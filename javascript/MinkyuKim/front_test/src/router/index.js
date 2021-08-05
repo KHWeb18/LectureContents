@@ -59,7 +59,17 @@ import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 // JPA Test Page
 import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
 
+// vue-awesome-swiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+// coverflow
 import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+// facebook 과 유사한 이미지 갤러리
+import ImageGalleryTestPage from '@/views//ImageGalleryTestPage.vue'
+
+// 캘린더
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
 
 Vue.use(VueRouter)
 
@@ -314,6 +324,27 @@ const routes = [
     name: 'CoverflowTestPage',
     components: {
       default: CoverflowTestPage
+    }   
+  },
+  {
+    path: '/awesomeswiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }   
+  },
+  {
+    path: '/imageGallery',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }   
+  },
+  {
+    path: '/calendar',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
     }   
   }
 ]
