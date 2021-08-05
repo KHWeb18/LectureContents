@@ -6,7 +6,10 @@ import vuetify from './plugins/vuetify'
 
 import 'materialize-css/dist/css/materialize.min.css'
 import 'material-design-icons/iconfont/material-icons.css'
+import '@morioh/v-lightbox/dist/lightbox.css'
+import Lightbox from '@morioh/v-lightbox'
 
+Vue.use(Lightbox)
 Vue.config.productionTip = false
 
 new Vue({
