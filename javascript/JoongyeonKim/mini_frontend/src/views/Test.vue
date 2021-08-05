@@ -1,10 +1,15 @@
 <template>
-  <div class="home">
+  <div class="test">
       <div id="header">
         <router-link :to="{ name: 'BoardListPage' }"
                     class="nav-link"
                     active-class="active">
                 BoardListPage
+            </router-link>
+            <router-link :to="{ name: 'MemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MemberRegisterPage
             </router-link>
       </div>
   </div>
@@ -12,7 +17,7 @@
 
 <script>
   export default {
-    name: 'Home',
+    name: 'Test',
     components: {
     },
   }

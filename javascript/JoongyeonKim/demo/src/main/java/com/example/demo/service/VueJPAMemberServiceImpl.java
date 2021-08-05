@@ -1,13 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Member;
 import com.example.demo.entity.VueMember;
 import com.example.demo.repository.VueJPAMemberRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -37,5 +32,4 @@ public class VueJPAMemberServiceImpl implements VueJPAMemberService {
     public List<VueMember> lists() throws Exception {
         return jpaSignUpRepository.findAll();
     }
-
 }

@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Member;
 import com.example.demo.entity.VueMember;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.example.demo.controller.vue;
 
-import com.example.demo.entity.Member;
-import com.example.demo.entity.Monster;
 import com.example.demo.entity.VueMember;
 import com.example.demo.service.VueJPAMemberService;
 import lombok.extern.slf4j.Slf4j;
