@@ -1,48 +1,37 @@
 <template>
-  <div>
-      <v-parallax src="@/assets/img/sea.jpg" height="500"></v-parallax>
-      <v-navigation-drawer
-        height="1000"
-        permanent
-        expand-on-hover
-        blue
-        mini-variant
-        mini-variant-width="90">
-        <v-list>
-          <v-list-item class="px-2">
-            <v-list-item-avatar>
-              <v-icon>reorder</v-icon>
-            </v-list-item-avatar>
-          </v-list-item>
-        </v-list>
+    <!-- <div class="slide-3d"> -->
+        <v-container class="slide-3d" fluid ma-0 pa-0 fill-height>
+            <swiper class="swiper" :options="swiperOption"
+            v-for="image in images" :key="image">
+                <swiper-slide>
+                    <v-img :src="image" max-height="100%">
+                    </v-img>
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination">
+                </div>
+            </swiper>
+        </v-container>
+    <!-- </div> -->
 
-            <!-- <v-list
-            nav
-            dense
-            >
-            <v-list-item-group active-class="deep-purple--text text--accent-4">
-                    <v-list-item v-for="link in links" :key="link.name" router :to="link.route">
-                        <br><br><br>
-                        <v-list-item-action>
-                            <v-icon left></v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            <v-list-item-title>{{ link.text }}</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </v-list-item-group>
-            </v-list> -->
-      </v-navigation-drawer>
-  </div>
 </template>
 
 
 <script>
 
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+
 export default {
     name: 'MainPage',
+    components: {
+        Swiper,
+        SwiperSlide
+    },
     data () {
         return {
+            images: [
+                require('@/assets/img/sea.jpg')
+            ],
             links: [
                 { 
                     icon: 'home', text: 'About', name: 'Home', route: '/'
@@ -59,21 +48,71 @@ export default {
                 { 
                     icon: 'favorite', text: 'Board', name: 'favorite', route: '/'
                 }
-            ]
+            ],
+            swiperOption: {
+                loop: true,
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    // rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    // 회전 많이하고 싶으면 높을수록 많이 돌아가고
+                    // 그 대신 폭이 작아짐
+                    // 아예 0으로 두면 회전이 없어져서 일직선이다
+                    modifier: 0,
+                    slideShadows: true
+                },
+                pagination: {
+                    el: '.swiper-pagination'
+                    // dynamicBullets: true
+                }
+                // autoplay: {
+                //     delay: 1000
+                //     // 1000(1초)
+                // }
+            }
         }
     }
 }
 
 </script>
 
-<style scoped>
+
+<style lang="scss" scoped>
 
 h1 {
     margin: 10px;
 }
+
 p {
     padding: 10px;
     margin: 5px 10px;
+}
+
+.slide-3d {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.swiper {
+    height: 95vh;
+    width: 100vw;
+    .swiper-slide {
+        //display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 3rem;
+        background-color:lightsteelblue;
+        background-position: center;
+        background-size: center;
+    }
 }
 
 </style>
