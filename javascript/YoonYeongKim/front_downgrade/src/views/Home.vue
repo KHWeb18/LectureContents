@@ -128,7 +128,7 @@
             <router-link :to="{ name: 'ImageGalleryTestPage' }"
                     class="nav-link"
                     active-class="active">
-                Image Gallery Test
+                Image Gallery Test 
             </router-link> 
             <router-link :to="{ name: 'CalendarTestPage' }"
                     class="nav-link"
