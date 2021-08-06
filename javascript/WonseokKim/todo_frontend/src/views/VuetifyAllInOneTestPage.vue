@@ -92,12 +92,12 @@
                     <v-container grid-list-md>
                         <v-layout wrap>
                             <v-flex xs12>
-                                <v-text-field label="Email" v-model="userInfo.email" required>
+                                <v-text-field label="Email" v-model="userInfo.email" required flat solo>
                                 </v-text-field>
                             </v-flex>
                             <v-flex xs12>
                                 <v-text-field label="Password" v-model="userInfo.password"
-                                                type="password" required>
+                                                type="password" required flat solo>
                                 </v-text-field>
                             </v-flex>
                         </v-layout>
@@ -196,13 +196,13 @@
             </v-menu>
         </div>
 
-    <v-container>
-        <v-data-table :headers="headerTitle"
-                :items="contents"
-                :items-per-page="10"
-                class="elevation-1">
-        </v-data-table>
-    </v-container>
+        <v-container>
+            <v-data-table :headers="headerTitle"
+                    :items="contents"
+                    :items-per-page="10"
+                    class="elevation-1">
+            </v-data-table>
+        </v-container>
     </div>
 </template>
 
@@ -212,30 +212,27 @@ export default {
     data () {
         return {
             headerTitle: [
-                { text: '게시물 번호', value: 'boardNo', width:"25px" },
-                { text: '제목', value: 'title', width: "100px" },
-                { text: '작성자', value: 'writer', width: "50" },
-                { text: '내용', value: 'content', width: "50" },
+                { text: '번호', value: 'boardNo', width: "70px" },
+                { text: '제목', value: 'title', width: "200px" },
+                { text: '작성자', value: 'writer', width: "100px" },
+                { text: '내용', value: 'content', width: "100px" }
             ],
             contents: [
-                { boardNo: 1, title: '야호', writer: '으마으마', content: '으아아앜' },
-                { boardNo: 2, title: '호야', writer: '어마마마', content: '으어어엌' },
-                { boardNo: 3, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 4, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 5, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 6, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 7, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 8, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 9, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 10, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 11, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 12, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 13, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 14, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 15, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 16, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 17, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
-                { boardNo: 18, title: '횡재', writer: '무시무시한', content: '뜻밖에 일이' },
+                { boardNo: 1, title: '야호', writer: '으마으마', content: '으아아아앜' },
+                { boardNo: 2, title: '호야', writer: '어마마마', content: '으어어어엌' },
+                { boardNo: 3, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
+                { boardNo: 4, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
+                { boardNo: 5, title: '야호', writer: '으마으마', content: '으아아아앜' },
+                { boardNo: 6, title: '호야', writer: '어마마마', content: '으어어어엌' },
+                { boardNo: 7, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
+                { boardNo: 8, title: '야호', writer: '으마으마', content: '으아아아앜' },
+                { boardNo: 9, title: '호야', writer: '어마마마', content: '으어어어엌' },
+                { boardNo: 10, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
+                { boardNo: 11, title: '호야', writer: '어마마마', content: '으어어어엌' },
+                { boardNo: 12, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
+                { boardNo: 13, title: '야호', writer: '으마으마', content: '으아아아앜' },
+                { boardNo: 14, title: '호야', writer: '어마마마', content: '으어어어엌' },
+                { boardNo: 15, title: '호호야야', writer: '아바마마', content: '으에에에엨' },
             ],
             message: '환장',
             nav_drawer: false,
