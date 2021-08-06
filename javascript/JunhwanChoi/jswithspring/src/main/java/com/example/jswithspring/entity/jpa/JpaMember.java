@@ -13,8 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="jpamember")
-public class Member {
+@Table(name="jpa_member")
+public class JpaMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "jpamember_no")
@@ -28,7 +28,7 @@ public class Member {
 
     @CreationTimestamp
     private Date regDate;
-    
+
     @UpdateTimestamp
     private Date updDate;
 
@@ -37,7 +37,7 @@ public class Member {
     @JoinColumn(name = "jpamember_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
 
-    public Member(String userId, String password) {
+    public JpaMember(String userId, String password) {
         this.userId = userId;
         this.password = password;
     }

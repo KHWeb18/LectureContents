@@ -64,6 +64,7 @@ import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
 
 import CalendarTestPage from '@/views/CalendarTestPage.vue'
 
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 
 
 
@@ -308,6 +309,15 @@ const routes = [
       default: CalendarTestPage
     }
   },
+
+  {
+    path: '/memberJoinColumnTestPage',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+
 
 
   

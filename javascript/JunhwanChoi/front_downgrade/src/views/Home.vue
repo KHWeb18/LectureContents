@@ -137,6 +137,13 @@
                     active-class="active">
                 CalendarTestPage
             </router-link><br><br>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MemberJoinColumnTestPage
+            </router-link><br><br>
+
+
 
 
 

@@ -1,33 +1,32 @@
 package com.example.jswithspring.controller.vue.jpa;
 
-import com.example.jswithspring.entity.jpa.Member;
-import com.example.jswithspring.service.jpa.MemberService;
+import com.example.jswithspring.controller.vue.jpa.request.MemberRequest;
+import com.example.jswithspring.service.jpa.JPAMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
 @RequestMapping("/jpamember")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
-public class MemberController {
+public class JPAMemberController {
 
     @Autowired
-    private MemberService service;
+    private JPAMemberService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Member> jpaRegister(@Validated @RequestBody Member member) throws Exception {
-        log.info("jpaRegister():" + member + ", kinds:" + kinds);;
+    public ResponseEntity<Void> jpaRegister(
+            @Validated @RequestBody MemberRequest memberRequest) throws Exception {
+        log.info("jpaRegister(): " + memberRequest.getUserId() + ", " + memberRequest.getPassword() + ", " +
+                (memberRequest.getAuth().equals("사업자") ? "ROLE_BUSINESS" : "ROLE_INDIVIDUAL"));
 
-        service.register(member);
+        service.register(memberRequest);
 
-        return new ResponseEntity<>(member, HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

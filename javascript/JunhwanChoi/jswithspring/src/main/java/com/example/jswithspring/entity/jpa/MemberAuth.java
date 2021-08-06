@@ -13,25 +13,25 @@ import java.util.Date;
 @Setter
 @ToString
 @Entity
-@Table(name = "member")
-public class Member {
-
+@Table(name = "member_auth")
+public class MemberAuth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="member_no")
+    private Long memberAuthNo;
+
+    @Column(name = "jpamember_no")
     private Long memberNo;
 
-    @Column(length = 64, nullable=false)
-    private String userId;
-
-    @Column(length = 64, nullable=false)
-    private String password;
+    @Column(length = 64, nullable = false)
+    private String auth;
 
     @CreationTimestamp
     private Date regDate;
 
     @UpdateTimestamp
-    private Date upDate;
+    private Date updDate;
 
-    /*Join Column 파트*/
+    public MemberAuth(String auth) {
+        this.auth = auth;
+    }
 }
