@@ -153,6 +153,11 @@
                     active-class="active">
                 calendar
             </router-link>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member Join Column
+            </router-link>
         </div>
     </div>
 </template>

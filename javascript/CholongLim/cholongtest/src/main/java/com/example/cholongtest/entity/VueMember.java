@@ -3,11 +3,10 @@ package com.example.cholongtest.entity;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class VueJPAMember {
+public class VueMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer membersNo;
@@ -28,18 +27,18 @@ public class VueJPAMember {
     private String id;
 
     @Column(length = 20, nullable = false)
-    private Integer password;
+    private String password;
 
     @Column(length = 20, nullable = false)
     private Integer phoneNum;
 
     @Column(length = 20, nullable = false)
-    private Integer birth;
+    private Integer  memberBirth;
 
     @CreationTimestamp
-    private LocalDateTime regDate;
+    private Date createdDate;
 
     @UpdateTimestamp
-    private LocalDateTime lastModifiedDate;
+    private Date lastModifiedDate;
 
 }

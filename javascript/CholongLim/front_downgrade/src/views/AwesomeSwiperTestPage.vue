@@ -1,6 +1,8 @@
 <template>
     <div class="slide-3d">
         <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
         <v-container>
             <swiper class="swiper" :options="swiperOption">
                 <swiper-slide>슬라이드 1</swiper-slide>

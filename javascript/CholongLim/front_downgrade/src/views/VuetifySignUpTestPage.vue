@@ -44,9 +44,9 @@
                                 label="월"
                                 required
                                 ></v-select> -->
-                            <v-text-field label="생년월일" v-model="userInfo.birth"
+                            <v-text-field label="생년월일" v-model="userInfo.memberBirth"
                                             :rules="[v => !!v || '필수정보입니다.']"
-                                            required flat solo type="birth">
+                                            required flat solo type="memberBirth">
                             </v-text-field>
                         </v-flex>
 
@@ -87,7 +87,7 @@ export default {
                 id: '',
                 password: '',
                 phoneNum: '',
-                birth: ''
+                memberBirth: ''
             },
             checkbox: ''
         }
@@ -95,8 +95,9 @@ export default {
     methods: {
         btnSignUpClick ($event) {
             if($event.target.innerHTML == ' 회원가입 ') {
-                const { name, id, password, phoneNum, birth } = this
-                axios.post('http://localhost:7777/vuejpamember/register', { name, id, password, phoneNum, birth })
+                const { name, id, password, phoneNum, memberBirth } = this
+                axios.post('http://localhost:7777/vuejpamember/register', 
+                { name, id, password, phoneNum, memberBirth })
                     .then(res => {
                         alert('회원가입이 완료되었습니다. - ' + res)
                         this.signUpDialog = false

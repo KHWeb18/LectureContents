@@ -1,11 +1,10 @@
 <template>
-    <v-container>
     <form @submit.prevent="onSubmit">
         <h3>회원 가입 양식</h3>
         <table>
             <tr>
                 <td>이름</td>
-                <td><input type="password" v-model="name"></td>
+                <td><input type="text" v-model="name"></td>
             </tr>
             <tr>
                 <td>아이디</td>
@@ -17,11 +16,11 @@
             </tr>
             <tr>
                 <td>전화번호</td>
-                <td><input type="phoneNum" v-model="phoneNum"></td>
+                <td><input type="text" v-model="phoneNum"></td>
             </tr>
             <tr>
                 <td>생년월일</td>
-                <td><input type="birth" v-model="birth"></td>
+                <td><input type="text" v-model="memberBirth"></td>
             </tr>
         </table>
 
@@ -32,7 +31,7 @@
             </router-link>
         </div>
     </form>
-    </v-container>
+
 </template>
 
 <script>
@@ -44,13 +43,13 @@ export default {
             id: '',
             password: '',
             phoneNum: '',
-            birth: ''
+            memberBirth: ''
         }
     },
     methods: {
         onSubmit () {
-            const { name, id, password, phoneNum, birth } = this
-            this.$emit('submit', { name, id, password, phoneNum, birth })
+            const { name, id, password, phoneNum, memberBirth } = this
+            this.$emit('submit', { name, id, password, phoneNum, memberBirth })
         }
     }
 }
