@@ -60,6 +60,10 @@
       class="nav-link" 
       active-class="active">Vuetify
     </router-link>
+    <router-link :to="{ name: 'MemberJoinColumnPage' }" 
+      class="nav-link" 
+      active-class="active">MemberJoinColumn
+    </router-link>
   </div>
 </template>
 

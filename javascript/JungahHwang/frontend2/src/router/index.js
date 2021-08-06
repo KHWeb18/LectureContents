@@ -62,6 +62,9 @@ import MaterialGridPage from '@/views/materialize/MaterialGridPage'
 // Vuetify
 import VuetifyPage from '@/views/vuetify/VuetifyPage'
 
+// Join Column
+import MemberJoinColumnPage from '@/views/jpa/MemberJoinColumnPage'
+
 
 Vue.use(VueRouter)
 
@@ -355,6 +358,15 @@ const routes = [
     name: 'VuetifyPage',
     components: {
       default: VuetifyPage
+    }
+  },
+
+// Join Column
+  {
+    path: '/joinColumn',
+    name: 'MemberJoinColumnPage',
+    components: {
+      default: MemberJoinColumnPage
     }
   },
   
