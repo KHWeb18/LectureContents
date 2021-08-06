@@ -157,11 +157,18 @@
                 Image Gallery Test
             </router-link>
 
-<router-link :to="{ name: 'CalendarTestPage' }"
+            <router-link :to="{ name: 'CalendarTestPage' }"
                     class="nav-link"
                     active-class="active">
                 Calendar Test
             </router-link>
+
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member Join Column Test
+            </router-link>
+            
             
         </div>
     </div>
