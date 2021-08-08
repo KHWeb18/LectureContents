@@ -1,6 +1,6 @@
 package com.example.demo.entity.jpa;
 
-
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,9 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "memeber")
+@Table(name="member")
 public class Member {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_no")
@@ -32,23 +31,22 @@ public class Member {
 
     @UpdateTimestamp
     private Date updDate;
-    //one to many  -> one 은 하나의 테이블인 member를 말한다.
-    // 회원은 관리자,사업자, 개인 셋중에하나가 될수있다. 1:M
-//    joincolumn
+
+    /* Join Column 파트 */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
-
-    public void addAuth(MemberAuth auth) {
-        authList.add(auth);
-    }
-    public void clearAuthList() {
-        authList.clear();
-    }
 
     public Member(String userId, String password) {
         this.userId = userId;
         this.password = password;
     }
 
+    public void addAuth(MemberAuth auth) {
+        authList.add(auth);
+    }
+
+    public void clearAuthList () {
+        authList.clear();
+    }
 }
