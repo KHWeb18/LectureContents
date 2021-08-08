@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Lazy
 @Slf4j
@@ -29,6 +31,11 @@ public class MemberServiceImpl implements MemberService {
         memberEntity.addAuth(authEntity);
 
         memberRepository.save(memberEntity);
+    }
+
+    @Override
+    public Optional<Member> findByAuth(Long memberNo) throws Exception {
+        return memberRepository.findByAuth(memberNo);
     }
 }
 

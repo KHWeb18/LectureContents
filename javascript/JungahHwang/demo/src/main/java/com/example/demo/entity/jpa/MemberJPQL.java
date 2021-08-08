@@ -11,25 +11,23 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "member_auth")
-public class MemberAuth {
+@Table(name = "member_jpql")
+public class MemberJPQL {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberAuthNo;
 
     @Column(name = "member_no")
     private Long memberNo;
 
     @Column(length = 64, nullable = false)
-    private String auth;
+    private String id;
+
+    @Column(length = 64, nullable = false)
+    private String pw;
 
     @CreationTimestamp
     private Date regDate;
 
     @UpdateTimestamp
     private Date updDate;
-
-    public MemberAuth(String auth) {
-        this.auth = auth;
-    }
 }

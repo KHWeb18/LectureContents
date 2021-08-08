@@ -27,6 +27,8 @@ dependencies {
 	// 위의 json 추가함
 	implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
 	// 위의 jsoup 추가함
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.2'
+	// 위의 security 추가함
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
