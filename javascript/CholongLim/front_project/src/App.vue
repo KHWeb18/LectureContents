@@ -1,24 +1,28 @@
 <template>
   <v-app>
-    <nav-bar-component/>
+    <menu-bar/>
     <v-main>
       <router-view/>
     </v-main>
+    <cinzel-footer/>
   </v-app>
 </template>
 
 <script>
-import NavBarComponent from './views/NavBarComponent.vue'
+import MenuBar from '@/views/MenuBar.vue'
+import CinzelFooter from './views/CinzelFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBarComponent
+    MenuBar,
+    CinzelFooter
   }
 }
 </script>
 
-<style>
+<styl
+    CinzelFootere>
 /*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

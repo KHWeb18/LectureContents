@@ -8,8 +8,10 @@ import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 // 메인홈
 import MainPage from '@/views/main/MainPage.vue'
 
-// 가입
-import MembershipRegisterPage from '@/views/membership/MembershipRegisterPage.vue'
+//카테고리
+import About from '@/views/category/About.vue'
+import RoomSuite from '@/views/category/RoomSuite.vue'
+import RoomRoyal from '@/views/category/RoomRoyal.vue'
 
 Vue.use(VueRouter)
 
@@ -27,17 +29,31 @@ const routes = [
     }
   },
   {
-    path: '/todaysHans/signUp',
-    name: 'MembershipRegisterPage',
-    components: {
-      default: MembershipRegisterPage
-    }
-  },
-  {
-    path: '/todaysHans',
+    path: '/cinzel',
     name: 'MainPage',
     components: {
       default: MainPage
+    }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    components: {
+      default: About
+    }
+  },
+  {
+    path: '/suite',
+    name: 'RoomSuite',
+    components: {
+      default: RoomSuite
+    }
+  },
+  {
+    path: '/royal',
+    name: 'RoomRoyal',
+    components: {
+      default: RoomRoyal
     }
   }
 ]

@@ -1,5 +1,5 @@
-<template>
-    <!-- <div class="slide-3d"> -->
+<!-- <template>
+    <div class="slide-3d">
         <v-container class="slide-3d" fluid ma-0 pa-0 fill-height>
             <swiper class="swiper" :options="swiperOption"
             v-for="image in images" :key="image">
@@ -11,9 +11,25 @@
                 </div>
             </swiper>
         </v-container>
-    <!-- </div> -->
+    </div>
 
+</template> -->
+
+<template>
+    <div class="slide">
+        <v-container class="slide">
+            <swiper class="swiper" :options="swiperOption">
+                <swiper-slide v-for="image in images" :key="image">
+                    <v-img :src="image" max-height="100%">
+                    </v-img>
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination">
+                </div>
+            </swiper>
+        </v-container>
+    </div>
 </template>
+
 
 
 <script>
@@ -30,7 +46,13 @@ export default {
     data () {
         return {
             images: [
-                require('@/assets/img/sea.jpg')
+
+                "https://images.pexels.com/photos/2507011/pexels-photo-2507011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "https://images.pexels.com/photos/3201917/pexels-photo-3201917.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "https://images.pexels.com/photos/2507014/pexels-photo-2507014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             ],
             links: [
                 { 
@@ -52,6 +74,7 @@ export default {
             swiperOption: {
                 loop: true,
                 effect: 'coverflow',
+                calculateHeight:true,
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: 'auto',
@@ -67,12 +90,12 @@ export default {
                 },
                 pagination: {
                     el: '.swiper-pagination'
-                    // dynamicBullets: true
+                    //dynamicBullets: true
+                },
+                autoplay: {
+                    delay: 3000
+                    // 1000(1초)
                 }
-                // autoplay: {
-                //     delay: 1000
-                //     // 1000(1초)
-                // }
             }
         }
     }
@@ -92,13 +115,19 @@ p {
     margin: 5px 10px;
 }
 
+.slide {
+    padding-left: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+}
+
 .slide-3d {
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
 .swiper {
-    height: 95vh;
+    height: 94vh;
     width: 100vw;
     .swiper-slide {
         //display: flex;

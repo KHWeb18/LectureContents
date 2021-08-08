@@ -16,10 +16,10 @@
                     active-class="active">
                 메인홈
             </router-link>
-            <router-link :to="{ name: 'MembershipRegisterPage' }"
+            <router-link :to="{ name: 'MenuBar' }"
                     class="nav-link"
                     active-class="active">
-                회원가입
+                메뉴바 테스트
             </router-link>
         </div>
     </div>
