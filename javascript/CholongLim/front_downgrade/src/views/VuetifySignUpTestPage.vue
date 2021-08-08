@@ -104,10 +104,7 @@ export default {
                     })
                     .catch(res => {
                         alert(res.response.data.message)
-                        this.signUpDialog = false
                     })
-            } else {
-                this.signUpDialog = false
             }
         }
     }

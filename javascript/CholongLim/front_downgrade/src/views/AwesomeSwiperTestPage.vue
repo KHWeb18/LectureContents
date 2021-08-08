@@ -26,6 +26,7 @@
     
 </template>
 
+
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
@@ -38,7 +39,7 @@ export default {
     data () {
         return {
             swiperOption: {
-                loop: true,
+                //loop: true,
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
