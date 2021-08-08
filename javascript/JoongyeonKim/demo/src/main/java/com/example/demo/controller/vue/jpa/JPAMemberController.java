@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -29,6 +29,21 @@ public class JPAMemberController {
                 (memberRequest.getAuth().equals("사업자") ? "ROLE_BUSINESS" : "ROLE_INDIVIDUAL"));
 
         service.register(memberRequest);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/test")
+    public ResponseEntity<Void> jpaJPQLTest(
+            @RequestBody MemberRequest memberRequest) throws Exception {
+
+        log.info("jpaJPQLTest()");
+
+        Optional<Member> maybeMember = service.findByAuth(new Long(3));
+        Member member = maybeMember.get();
+
+        log.info("Auth: " + (member.getAuthList().get(0).getAuth().equals("사업자") ?
+                "ROLE_BUSINESS" : "ROLE_CUSTOMER"));
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
