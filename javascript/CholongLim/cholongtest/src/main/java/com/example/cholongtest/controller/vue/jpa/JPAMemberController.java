@@ -37,6 +37,23 @@ public class JPAMemberController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> jpaLogin(
+             @RequestBody MemberRequest memberRequest) throws Exception {
+
+        log.info("jpaLogin() - userId: " + memberRequest.getUserId() + ",password: " + memberRequest.getPassword() );
+
+        Boolean isSuccess = service.login(memberRequest);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Fail");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
+    }
+
     @PostMapping("/test")
     public ResponseEntity<Void> jpaJPQLTest(
             @RequestBody MemberRequest memberRequest) throws Exception {

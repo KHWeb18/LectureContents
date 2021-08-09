@@ -5,12 +5,15 @@ import com.example.cholongtest.entity.jpa.Member;
 import com.example.cholongtest.entity.jpa.MemberAuth;
 import com.example.cholongtest.repository.jpa.JPAMemberAuthRepository;
 import com.example.cholongtest.repository.jpa.JPAMemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class JPAMemberServiceImpl implements JPAMemberService {
 
@@ -20,8 +23,15 @@ public class JPAMemberServiceImpl implements JPAMemberService {
     @Autowired
     private JPAMemberAuthRepository memberAuthRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void register(MemberRequest memberRequest) throws Exception {
+        // v 밑 두줄이 비밀번호 암호화에 사용된 코드
+        String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
+        memberRequest.setPassword(encodedPassword);
+
         MemberAuth authEntity = new MemberAuth(memberRequest.getAuth());
         Member memberEntity = new Member(memberRequest.getUserId(), memberRequest.getPassword());
         memberEntity.addAuth(authEntity);
@@ -29,11 +39,34 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         memberRepository.save(memberEntity);
     }
 
-    /*
+    // 암호화 로그인
     @Override
-    public void login(Member member) throws Exception {
-        repository.login(member);
+    public boolean login(MemberRequest memberRequest) throws Exception {
+        // 아이디 매칭
+        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
+
+        if(maybeMember == null)
+        {
+            log.info("login(): 회원 정보가 존재하지 않습니다.");
+            return false;
+        }
+
+        Member loginMember = maybeMember.get();
+
+        // 비밀번호 매칭
+        if(!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
+        {
+            log.info("login(): 잘못된 비밀번호입니다.");
+            return false;
+        }
+
+        // 모두 통과 시 로그인 성공
+        return true;
+
     }
+
+    /*
+    관리자가 회원 목록을 볼떄 쓴다
     @Override
     public List<Member> list() throws Exception {
         return repository.list();
