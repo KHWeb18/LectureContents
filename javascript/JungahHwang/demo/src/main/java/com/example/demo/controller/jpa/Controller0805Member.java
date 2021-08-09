@@ -3,6 +3,7 @@ package com.example.demo.controller.jpa;
 import com.example.demo.controller.jpa.request.MemberRequest;
 import com.example.demo.entity.jpa.Member;
 import com.example.demo.service.jpa.MemberService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,21 @@ public class Controller0805Member {
                 .equals("사업자") ? "ROLE_BUSINESS" : "ROLE_INDIVIDUAL"));
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> jpaLogin(@RequestBody MemberRequest memberRequest) throws Exception {
+        log.info("jpaLogin");
+
+        Boolean isSuccess = service.login(memberRequest);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Failure");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
     }
 }
 

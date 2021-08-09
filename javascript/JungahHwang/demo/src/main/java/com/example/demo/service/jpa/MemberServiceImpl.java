@@ -8,6 +8,7 @@ import com.example.demo.repository.jpa.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,8 +24,14 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberAuthRepository memberAuthRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void register(MemberRequest memberRequest) throws Exception {
+        String encodedPassword = passwordEncoder.encode(memberRequest.getPw());
+        memberRequest.setPw(encodedPassword);
+
         Member memberEntity = new Member(memberRequest.getId(), memberRequest.getPw());
         MemberAuth authEntity = new MemberAuth(memberRequest.getAuth());
 
@@ -36,6 +43,23 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Optional<Member> findByAuth(Long memberNo) throws Exception {
         return memberRepository.findByAuth(memberNo);
+    }
+
+    @Override
+    public boolean login(MemberRequest memberRequest) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getId());
+
+        if (maybeMember == null) {
+            log.info("아이디를 확인해 주세요");
+            return false;
+        }
+        Member loginMember = maybeMember.get();
+
+        if (!passwordEncoder.matches(memberRequest.getPw(), loginMember.getPw())) {
+            log.info("비밀번호를 확인해 주세요");
+            return false;
+        }
+        return true;
     }
 }
 

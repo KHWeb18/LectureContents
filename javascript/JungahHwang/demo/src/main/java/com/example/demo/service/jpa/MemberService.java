@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface MemberService {
     public void register(MemberRequest memberRequest) throws Exception;
     public Optional<Member> findByAuth(Long memberNo) throws Exception;
+    public boolean login(MemberRequest memberRequest) throws Exception;
 }

@@ -1,5 +1,9 @@
 <template>
   <div>
+    <router-link :to="{ name: 'MemberLoginPage' }" 
+      class="nav-link" 
+      active-class="active">Login
+    </router-link>
     <h2 align="center">회원가입</h2>
     <member-join-column @submit="onSubmit"></member-join-column>
     <v-spacer></v-spacer>
@@ -32,7 +36,7 @@ export default {
       })
     },
     onJPATest () {
-      axios.post('http://localhost:7777/jpamember/jpql', {id: null, pw: null, auth: null}).then(() => {
+      axios.post('http://localhost:7777/jpamember/jpql', { id: null, pw: null, auth: null }).then(() => {
         alert('테스트 성공!')
       }).catch(res => {
         alert(res.response.data.message)

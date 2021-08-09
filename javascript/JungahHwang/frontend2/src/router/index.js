@@ -46,7 +46,7 @@ import Concave from '@/views/lecture/Concave'
 import EventBusTestPage from '@/views/lecture/EventBusTestPage'
 
 // Crawling
-import DaumNewsCrawlerPage from '@/views/lecture/DaumNewsCrawlerPage'
+import DaumNewsCrawlerPage from '@/views/jpa/DaumNewsCrawlerPage'
 
 // Slot
 import Slot from '@/views/slot/Slot'
@@ -62,8 +62,9 @@ import MaterialGridPage from '@/views/materialize/MaterialGridPage'
 // Vuetify
 import VuetifyPage from '@/views/vuetify/VuetifyPage'
 
-// Join Column
+// Join Column / Secuity
 import MemberJoinColumnPage from '@/views/jpa/MemberJoinColumnPage'
+import MemberLoginPage from '@/views/jpa/MemberLoginPage'
 
 
 Vue.use(VueRouter)
@@ -361,7 +362,7 @@ const routes = [
     }
   },
 
-// Join Column
+// Join Column / Security
   {
     path: '/joinColumn',
     name: 'MemberJoinColumnPage',
@@ -369,6 +370,14 @@ const routes = [
       default: MemberJoinColumnPage
     }
   },
+  {
+    path: '/joinColumn/login',
+    name: 'MemberLoginPage',
+    components: {
+      default: MemberLoginPage
+    }
+  },
+  
   
 ]
 
