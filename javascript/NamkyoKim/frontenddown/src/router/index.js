@@ -47,6 +47,17 @@ import ScoreManagerPage from '@/views/score/ScoreManagerPage.vue'
 // 크롤링
 import DaumNewsCrawlerPage from '@/views/crawler/DaumNewsCrawlerPage.vue'
 
+// Slot
+import UnNamedSlotTestPage from '@/views/slot/UnNamedSlotTestPage.vue'
+import NamedSlotTestPage from '@/views/slot/NamedSlotTestPage.vue'
+import ScopedSlotTestPage from '@/views/slot/ScopedSlotTestPage.vue'
+import RecentSlotTestPage from '@/views/slot/RecentSlotTestPage.vue'
+
+// Materialize
+import MaterializeTestPage from '@/views/materialize/MaterializeTestPage.vue'
+import MaterializeGridTestPage from '@/views/materialize/MaterializeGridTestPage.vue'
+import VuetifyAllInOneTestPage from '@/views/materialize/VuetifyAllInOneTestPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -242,7 +253,56 @@ const routes = [
     components: {
       default: DaumNewsCrawlerPage
     }
-  }
+  },
+  {
+    path: '/unNamedSlot',
+    name: 'UnNamedSlotTestPage',
+    components: {
+      default: UnNamedSlotTestPage
+    }
+  },
+  {
+    path: '/namedSlot',
+    name: 'NamedSlotTestPage',
+    components: {
+      default: NamedSlotTestPage
+    }
+  },
+  {
+    path: '/scopedSlot',
+    name: 'ScopedSlotTestPage',
+    components: {
+      default: ScopedSlotTestPage
+    }
+  },
+  {
+    path: '/vSlot',
+    name: 'RecentSlotTestPage',
+    components: {
+      default: RecentSlotTestPage
+    }
+  },
+  {
+    path: '/materialize',
+    name: 'MaterializeTestPage',
+    components: {
+      default: MaterializeTestPage
+    }
+  },
+  {
+    path: '/materializegrid',
+    name: 'MaterializeGridTestPage',
+    components: {
+      default: MaterializeGridTestPage
+    }
+  },
+  {
+    path: '/vuetifyTest',
+    name: 'VuetifyAllInOneTestPage',
+    components: {
+      default: VuetifyAllInOneTestPage
+    }
+  },
 ]
 const router = new VueRouter({
   mode: 'history',

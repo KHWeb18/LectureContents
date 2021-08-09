@@ -1,6 +1,7 @@
 package com.example.personalProject.controller;
 
 import com.example.personalProject.eutity.Member;
+import com.example.personalProject.eutity.VueJPAMember;
 import com.example.personalProject.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class memberController {
             log.info("Member: " + member);
 
              /* 비밀번호 길이 체크 로직 시작 */
-            String pw = member.getUserPass();
+            String pw = member.getPw();
             if (pw.length() <= 8 || pw.length() > 20 ){
                 // model.addAttribute("alertMsg", "8~ 20 이내의 비밀번호를 기재해주세요");
                 return "redirect:/join";

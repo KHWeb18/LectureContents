@@ -8,8 +8,12 @@ primary key(dungeon_no)
 );
 
 
-insert into vuedungeon (name, description, monster_amount) values
-('불타는 대지', '끝없는 화염폭풍의 던전', 2);
+insert into test_member (id, pw, name,sex, phone_no, birth) values
+('test','test','test','test','test','test');
+insert into test_member (id, pw, name,sex, phone_no, birth) values
+('test2','test2','test2','test2','test2','test2');
+insert into test_member (id, pw, name,sex, phone_no, birth) values
+('test3','test3','test3','test3','test3','test3');
 
 insert into vuedungeon (name, description, monster_amount) values
 ('뇌전 도원', '시도때도 없이 벼락이 떨어지는 매우 위험한 던전', 5);
