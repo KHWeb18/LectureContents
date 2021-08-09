@@ -146,8 +146,13 @@
             </router-link>
             <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
                     class="nav-link"
-                    active-class="active">
+                    active-class="active">VuetifyMemberloginForm
                Member Join Column Test
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+               Member 로그인 Page
             </router-link>
         </div>
     </div>

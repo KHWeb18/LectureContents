@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.BadPaddingException;
 import java.util.Optional;
 
 @Slf4j
@@ -31,6 +32,23 @@ public class JPAMemberController {
         service.register(memberRequest);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> jpaLogin(
+             @RequestBody MemberRequest memberRequest) throws Exception {
+
+        log.info("jpaLogin() - id:" +memberRequest.getUserId() + "password:" + memberRequest.getPassword());
+
+        Boolean isSuccess = service.login(memberRequest);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Failure");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
     }
 
     @PostMapping("/test")

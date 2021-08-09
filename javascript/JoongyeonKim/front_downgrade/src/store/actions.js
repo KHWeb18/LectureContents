@@ -154,7 +154,7 @@ export default {
     },
      // 크롤링
      async crawlFind ({ commit }, category) {
-        axios.get('http://localhost:7777/' + `${category}`)
+        axios.get('http://localhost:7777/crawl/' + `${category}`)
                 .then(({ data }) => {
                     commit(CRAWL_START, data)
 
