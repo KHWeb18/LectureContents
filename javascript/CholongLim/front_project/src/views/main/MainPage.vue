@@ -16,17 +16,22 @@
 </template> -->
 
 <template>
-    <div class="slide">
-        <v-container class="slide">
-            <swiper class="swiper" :options="swiperOption">
-                <swiper-slide v-for="image in images" :key="image">
-                    <v-img :src="image" max-height="100%">
-                    </v-img>
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination">
-                </div>
-            </swiper>
-        </v-container>
+    <div>
+        <div class="container">
+            <h2 class="overlay">Hello <br>Cinzel</h2>
+        </div>
+        <div class="slide">
+            <v-container class="slide">
+                <swiper class="swiper" :options="swiperOption">
+                    <swiper-slide v-for="image in images" :key="image">
+                        <v-img :src="image" max-height="100%">
+                        </v-img>
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination">
+                    </div>
+                </swiper>
+            </v-container>
+        </div>
     </div>
 </template>
 
@@ -46,13 +51,13 @@ export default {
     data () {
         return {
             images: [
+                "https://images.pexels.com/photos/912108/pexels-photo-912108.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/6010421/pexels-photo-6010421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/2506988/pexels-photo-2506988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/2771921/pexels-photo-2771921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/7245472/pexels-photo-7245472.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
 
-                "https://images.pexels.com/photos/2507011/pexels-photo-2507011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                "https://images.pexels.com/photos/3201917/pexels-photo-3201917.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                "https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                "https://images.pexels.com/photos/2507014/pexels-photo-2507014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             ],
             links: [
                 { 
@@ -106,8 +111,27 @@ export default {
 
 <style lang="scss" scoped>
 
+.container{
+    position: relative;
+    padding: 0px;
+}
+
+.overlay{
+    position: absolute;
+    z-index: 9;
+    margin-top: 18%;
+    left: 30%;
+}
+
 h1 {
     margin: 10px;
+}
+
+h2 {
+    font-family: 'MonteCarlo';
+    font-size: 200px;
+    color:white;
+    text-shadow: 3px 2px 2px rgb(5, 68, 119);
 }
 
 p {

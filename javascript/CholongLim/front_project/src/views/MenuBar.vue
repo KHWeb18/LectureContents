@@ -112,16 +112,16 @@ export default {
                     text: 'ABOUT', name:'ABOUT',  route: '/about'
                 },
                 { 
-                    text: 'ROOMS', name:'ROOMS', route: '/suite'
+                    text: 'ROOMS', name:'ROOMS', route: '/room301'
                 },
                 { 
-                    text: 'TOUR', name:'TOUR', route: '/'
+                    text: 'TOUR', name:'TOUR', route: '/tour'
                 },
                 { 
-                    text: 'RESERVATION', name:'RESERVATION', route: '/'
+                    text: 'RESERVATION', name:'RESERVATION', route: '/reservation'
                 },
                 { 
-                    text: 'BOARD', name:'BOARD', route: '/'
+                    text: 'BOARD', name:'BOARD', route: '/board'
                 }
             ]
         }

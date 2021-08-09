@@ -16,7 +16,7 @@
 
         <v-container class="about-top">
             <p>WELCOME TO CINZEL</p>
-            <h1>Suite Room</h1>
+            <h1>#201 Room</h1>
             <p>자연속에서의 낭만같은 휴식이 있는 날들</p>
         </v-container>
         <v-divider></v-divider>
@@ -31,18 +31,20 @@
         <v-divider></v-divider>
 
         <div class="intro-room01">
-            <div>
-                <v-container class="suite-img-01">
-                <v-img style="overflow: visible"
-                src="https://images.pexels.com/photos/5231749/pexels-photo-5231749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            <div class="container">
+                <v-container class="room201-img-01">
+                    <h2>#Room 201</h2>
+                <v-img style="overflow: visible" contain
+                src="https://images.pexels.com/photos/4239011/pexels-photo-4239011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
                 </v-img>
                 </v-container></div>
-            
-            <div>
-                <div class="info-suite">
+
+            <div class="container">
+                <div class="overlay1">
                     <h5 class="info-top-title"><b>Basic facilities <br>기본시설</b></h5>
                     <ul>
                         <li>퀸 베드1</li>
+                        <li>거실</li>
                         <li>화장실</li>
                         <li>벽걸이TV</li>
                         <li>에어컨</li>
@@ -52,7 +54,9 @@
                         <li>와이파이</li>
                     </ul>
                 </div>
-                <div class="info-suite2">
+            </div>
+            <div class="container">
+                <div class="overlay2">
                     <h5 class="info-top-title"><b>Cooking<br>취사도구</b></h5>
                     <ul>
                         <li>인덕션</li>
@@ -60,7 +64,9 @@
                         <li>전기포트</li>
                     </ul>
                 </div>
-                <div class="info-suite3">
+            </div>
+            <div class="container">
+                <div class="overlay3">
                     <h5 class="info-top-title"><b>Bathroom ware<br>욕실용품</b></h5>
                     <ul>
                         <li>수건</li>
@@ -74,14 +80,41 @@
                     </ul>
                 </div>
             </div>
+            <div class="container">
+                <div class="overlay4">  
+                    <p>기준인원 초과 시 1인당 20,000원 추가 요금이 발생됩니다.<br>
+                        애완동물과 함께 입실하실 수 없습니다</p>
+                    <h3>CHECK-IN 15:00   |   CHECK-OUT 11:00</h3>
+         
+                </div>
+            </div>
         </div>
 
-        <v-container>
-        <p>바닥글</p>
-        </v-container>
+        <div>
+             <v-btn x-large text class="reserve_btn" router :to="'/reservation'">
+                <v-icon x-large>room_service</v-icon>실시간 예약하기
+            </v-btn>
+        </div>
+
+        <v-simple-table class="pay-box">
+            <template v-slot:default>
+                <thead>
+                    <tr class="top-tr">
+                        <th>객실명</th>
+                        <th>형태</th>
+                        <th>기준/최대</th>
+                        <th>가격</th>
+                    </tr>
+                    <tr>
+                        <th>201</th>
+                        <th>원룸형</th>
+                        <th>2명/3명</th>
+                        <th>240,000원</th>
+                    </tr>
+                </thead>
+            </template>
+        </v-simple-table>
     </div>
-    
-     
 </template>
 
 <script>
@@ -96,11 +129,13 @@ export default {
     data () {
         return {
             images: [
-                "https://images.pexels.com/photos/2506986/pexels-photo-2506986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                "https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                "https://images.pexels.com/photos/2507014/pexels-photo-2507014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                "https://images.pexels.com/photos/2507016/pexels-photo-2507016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                ],
+                "https://images.pexels.com/photos/7546712/pexels-photo-7546712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/7546714/pexels-photo-7546714.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/7546715/pexels-photo-7546715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/7546724/pexels-photo-7546724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/7546720/pexels-photo-7546720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                "https://images.pexels.com/photos/6782431/pexels-photo-6782431.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            ],
             swiperOption: {
                 //loop: true,
                 effect: 'coverflow',
@@ -131,9 +166,10 @@ export default {
                 }
             },
             rooms: [
-                {name: '# DELUXE ROOM', route: '/deluxe' },
-                {name: '# SUITE POOL VILLA', route: '/suite'},
-                {name: '# ROYAL POOL VILLA', route: '/royal'}
+                {name: '# 301', route: '/room301' },
+                {name: '# 302', route: '/room302' },
+                {name: '# 201', route: '/room201' },
+                {name: '# 202', route: '/room202' }
             ]
         }
     }
@@ -147,49 +183,62 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
 
 
-/*폰트*/
-.info-top-title{
-    font-size: 20px;
-    font-family: 'Gowun Batang';
+/*위치*/
+.container{
+    position: relative;
 }
 
-/*위치*/
-.info-suite{
-    margin-left: 55vw;
-    position: relative;
-    bottom: 30vh;
+.overlay1{
+    position: absolute;
+    z-index: 9;
+    margin-top: 20%;
+    left: 63%;
 }
-.info-suite2{
-    margin-left: 66vw;
-    position: relative;
-    bottom: 55.4vh;
+
+.overlay2{
+    position: absolute;
+    z-index: 9;
+    margin-top: 18%;
+    left: 75%;
 }
-.info-suite3{
-    margin-left: 75vw;
-    position: relative;
-    bottom: 69.5vh;
+
+.overlay3{
+    position: absolute;
+    z-index: 9;
+    margin-top: 16%;
+    left: 85%;
+}
+
+.overlay4{
+    position: absolute;
+    z-index: 9;
+    margin-top: 40%;
+    left: 62%;
 }
 
 .about-img-top {
     max-height: 70vh;
 }
-.suite-img-01{
-    position: relative;
-    right: 28vw;
-    height: 60vh;
-    width: 80vh;
+.room201-img-01{
+    /* position: relative; */
+    /* right: 35%; */
+    margin-top: 5%;
+    left: -20%;
+    position: absolute;
+    z-index: 9;
 }
-.about-img-02 {
+
+.pay-box{
     position: relative;
-    right: 40vw;
-    height: 60vh;
-    margin-top: 55vh;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    left: 20%;
+    width: 60%;
 }
-.about-img-03 {
-    position: relative;
-    left: 18vw;
-    height: 60vh;
-    margin-top: 5vh;
+
+.top-tr {
+    background-color: #f6f7f7;
 }
 
 .about-bottom {
@@ -204,6 +253,17 @@ export default {
     padding: 15px 0px 15px 0px;
 }
 
+
+.about-top {
+    padding-top: 8vh;
+}
+
+/*폰트*/
+.info-top-title{
+    font-size: 20px;
+    font-family: 'Gowun Batang';
+}
+
 p {
     font-family: 'Nanum Myeongjo';
     font-size: 18px;
@@ -212,13 +272,22 @@ p {
     margin-bottom: 0px;
 }
 
-.about-top {
-    padding-top: 8vh;
-}
-
 h1 {
     font-family: "Cinzel";
     font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+h2 {
+    font-family: 'MonteCarlo';
+    font-size: 100px;
+    color:darkgrey
+}
+
+h3 {
+    font-family: "Gowun Batang";
+    font-size: 22px;
     text-align: center;
     margin-top: 10px;
 }
@@ -230,7 +299,7 @@ h1 {
 
 .intro-room01 {
     background: #f6f7f7;
-    height: 100vh;
+    height: 80vh;
 }
 
 .slide {
@@ -247,5 +316,13 @@ h1 {
 .swiper {
     height: 94vh;
     width: 99.6vw;
+}
+
+.reserve_btn {
+    border: 2px solid darkgrey;
+    position: relative;
+    left: 52%;
+    margin: 1% 0% 1% 0%;
+
 }
 </style>
