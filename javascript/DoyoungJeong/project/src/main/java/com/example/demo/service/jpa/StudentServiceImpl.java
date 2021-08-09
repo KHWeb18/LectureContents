@@ -8,6 +8,8 @@ import com.example.demo.repository.jpa.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class StudentServiceImpl implements StudentService{
 
@@ -25,4 +27,10 @@ public class StudentServiceImpl implements StudentService{
 
         repository.save(student);
     }
+
+    @Override
+    public Optional<Student> findByStudentNo(Long studentNo) {
+        return repository.findByStudentNo(studentNo);
+    }
+
 }
