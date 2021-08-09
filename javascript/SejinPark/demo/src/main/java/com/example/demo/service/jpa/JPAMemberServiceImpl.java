@@ -8,6 +8,9 @@ import com.example.demo.repository.jpa.JPAMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class JPAMemberServiceImpl implements JPAMemberService {
 
@@ -36,4 +39,9 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         return repository.list();
     }
      */
+
+    @Override
+    public Optional<Member> findByAuth(Long memberNo) {
+        return memberRepository.findByAuth(memberNo);
+    }
 }
