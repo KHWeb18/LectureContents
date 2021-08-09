@@ -1,34 +1,37 @@
 package com.example.demo.entity.jpa;
 
-import lombok.*;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "member_auth")
-public class MemberAuth {
+@Table(name="test_member")
+public class TestMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberAuthNo;
-
     @Column(name = "member_no")
     private Long memberNo;
 
     @Column(length = 64, nullable = false)
-    private String auth;
+    private String userId;
+
+    @Column(length = 64, nullable = false)
+    private String password;
 
     @CreationTimestamp
     private Date regDate;
 
     @UpdateTimestamp
     private Date updDate;
-
-    public MemberAuth(String auth) {
-        this.auth = auth;
-    }
 }
+
+
