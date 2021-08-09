@@ -172,32 +172,49 @@
         Vuetify 회원 가입 활용
       </router-link>
 
-            <router-link :to="{ name: 'CoverflowTestPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Coverflow Test
-            </router-link>
+      <router-link
+        :to="{ name: 'CoverflowTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Coverflow Test
+      </router-link>
 
-            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Awesome Swiper Test
-            </router-link>
-            <router-link :to="{ name: 'LikesFacebookPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Likes Facebook
-            </router-link>
-                        <router-link :to="{ name: 'ImageGalleryTestPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Image Gallery
-            </router-link>
-                        <router-link :to="{ name: 'CalendarTestPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Calendar 달력
-            </router-link>
+      <router-link
+        :to="{ name: 'AwesomeSwiperTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Awesome Swiper Test
+      </router-link>
+      <router-link
+        :to="{ name: 'LikesFacebookPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Likes Facebook
+      </router-link>
+      <router-link
+        :to="{ name: 'ImageGalleryTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Image Gallery
+      </router-link>
+      <router-link
+        :to="{ name: 'CalendarTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Calendar 달력
+      </router-link>
+      <router-link
+        :to="{ name: 'MemberJoinColumnTestPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Member Join Column
+      </router-link>
     </div>
   </div>
 </template>
