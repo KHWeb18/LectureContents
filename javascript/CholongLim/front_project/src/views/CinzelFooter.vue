@@ -5,6 +5,11 @@
     inset
     app bottom fixed
   >
+    <v-container class="justify center">
+        <v-icon size="50px" color="blue darken-2">room_service</v-icon>
+        <p>CINZEL BOOKING</p>
+        <h4>010.7751.8851</h4>
+    </v-container>
     <v-card
       flat
       tile
