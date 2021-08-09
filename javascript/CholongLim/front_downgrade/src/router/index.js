@@ -78,7 +78,8 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue'
 // JPA Test Page = memberAuth
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 
-
+// 로그인
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
 Vue.use(VueRouter)
 
@@ -365,6 +366,13 @@ const routes = [
     name: 'MemberJoinColumnTestPage',
     components: {
       default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/memberlogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
     }
   },
 ]

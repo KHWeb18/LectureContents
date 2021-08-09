@@ -158,6 +158,11 @@
                     active-class="active">
                 Member Join Column
             </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                로그인
+            </router-link>
         </div>
     </div>
 </template>
