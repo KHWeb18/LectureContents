@@ -1,26 +1,40 @@
 <template>
     <div>
         <form id="board"  class="loginForm">
-            <h2>Login</h2>
-            <div class="idForm">
-                <input type="text" class="id" placeholder="ID" name="id" >
-            </div>
-
-            <div class="passForm">
-                <input type="password" class="pw" placeholder="PW" name="password " >
-            </div>
-
-            <button type="submit" class="btn" id="btnRegister" onclick="button()">
-                LOG IN
-            </button>
-
-            <div class="bottomText">
-                Don't you have ID? <router-link :to="{ name: 'RegisterPage' }"
-                    class="nav-link"
-                    active-class="active">
-                sign up
-            </router-link>
-            </div>
+            <v-dialog v-model="loginDialog"  max-width="500px">
+              
+              <v-card>
+                  <v-card-title>
+                      <span class="headline">
+                          Log in
+                      </span>
+                  </v-card-title>
+                  <v-card-text>
+                      <v-container grid-list-md>
+                          <v-layout wrap>
+                              <v-flex xs12>
+                                  <v-text-field label="Email" v-model="userInfo.email" required flat solo>
+                                  </v-text-field>
+                              </v-flex>
+                              <v-flex xs12>
+                                  <v-text-field label="Password" v-model="userInfo.password"
+                                                  type="password" required flat solo>
+                                  </v-text-field>
+                              </v-flex>
+                          </v-layout>
+                      </v-container>
+                  </v-card-text>
+                  <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
+                          취소
+                      </v-btn>
+                      <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
+                          확인
+                      </v-btn>
+                  </v-card-actions>
+              </v-card>
+        </v-dialog>
         </form>
     </div>
 </template>
@@ -28,98 +42,40 @@
 <script>
 export default {
     name: 'LoginPageForm',
+
+    data(){
+      return{
+            dialog: true,
+            loginDialog: true,
+            
+            userInfo: {
+                email: '',
+                password: ''
+            },
+
+      }
+    },
+    methods:{
+      btnLoginClick ($event) {
+            if ($event.target.innerHTML == " 확인 ") {
+                alert('로그인이 완료되었습니다!')
+
+                // 이부분에 axios를 쓰면 스프링과 연동할 수 있음
+
+                console.log("입력된 정보 - 이메일: " + this.userInfo.email + 
+                            ", 비밀번호: " + this.userInfo.password)
+                this.loginDialog = false
+            }
+            this.userInfo.email = ''
+            this.userInfo.password = ''
+        }
+    }
     
 }
 </script>
 
 <style>
-    *{
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-  font-family:sans-serif;
+ 
 
-}
-
-body {
-  background-color: #34495e;
-  width: 100%;
-  height: 100%;
-}
-
-.loginForm {
-  position:absolute;
-  width:300px;
-  height:400px;
-  padding: 30px, 20px;
-  background-color:#34495e23;
-  text-align:center;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  border-radius: 15px;
-}
-
-.loginForm h2{
-  text-align: center;
-  margin: 30px;
-}
-
-.idForm{
-  border-bottom: 2px solid #adadad;
-  margin: 30px;
-  padding: 10px 10px;
-}
-
-.passForm{
-  border-bottom: 2px solid #adadad;
-  margin: 30px;
-  padding: 10px 10px;
-}
-
-.id {
-  width: 100%;
-  border:none;
-  outline:none;
-  color: #636e72;
-  font-size:16px;
-  height:25px;
-  background: none;
-}
-
-.pw {
-  width: 100%;
-  border:none;
-  outline:none;
-  color: #636e72;
-  font-size:16px;
-  height:25px;
-  background: none;
-}
-
-.btn {
-  position:relative;
-  left:40%;
-  transform: translateX(-50%);
-  margin-bottom: 40px;
-  width:80%;
-  height:40px;
-  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-
-.btn:hover {
-  background-position: right;
-}
-
-.bottomText {
-  text-align: center;
-}
 </style>
+
