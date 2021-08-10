@@ -120,7 +120,7 @@
                     active-class="active">
                 Vuetify 회원 가입 활용
             </router-link>
-         
+        
             <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
                     class="nav-link"
                     active-class="active">
@@ -140,6 +140,11 @@
                     class="nav-link"
                     active-class="active">
                 Member Join Column Test
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member 로그인 Test
             </router-link>
         </div>
     </div>
