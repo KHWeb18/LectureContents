@@ -142,6 +142,22 @@
                     active-class="active">
                 MemberJoinColumnTestPage
             </router-link><br><br>
+            <router-link :to="{ name: 'VuetifyMemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyMemberRegisterPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyMemberLoginPage
+            </router-link><br><br>
+             <router-link :to="{ name: 'SwiperTest' }"
+                    class="nav-link"
+                    active-class="active">
+                SWiperTest
+            </router-link><br><br>
+            
 
 
 

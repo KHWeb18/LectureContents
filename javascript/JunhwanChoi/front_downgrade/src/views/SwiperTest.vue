@@ -3,16 +3,9 @@
         <v-spacer></v-spacer>
         <v-container>
             <swiper class="swiper" :options="swiperOption">
-                <swiper-slide>슬라이드 1</swiper-slide>
-                <swiper-slide>슬라이드 2</swiper-slide>
-                <swiper-slide>슬라이드 3</swiper-slide>
-                <swiper-slide>슬라이드 4</swiper-slide>
-                <swiper-slide>슬라이드 5</swiper-slide>
-                <swiper-slide>슬라이드 6</swiper-slide>
-                <swiper-slide>슬라이드 7</swiper-slide>
-                <swiper-slide>슬라이드 8</swiper-slide>
-                <swiper-slide>슬라이드 9</swiper-slide>
-                <swiper-slide>슬라이드 10</swiper-slide>
+                <swiper-slide class="swiper-slide" :key="banner" v-for="banner in banners">
+                    <img :src="banner">
+                </swiper-slide>         
                 <div class="swiper-pagination" slot="pagination">
                 </div>
             </swiper>
@@ -31,6 +24,11 @@ export default {
     },
     data () {
         return {
+            banners: [ 
+                require('@/assets/imgs/banner1.jpg'),
+                require('@/assets/imgs/spyder.jpg'),
+                require('@/assets/imgs/spyder.jpg'),
+            ],
             swiperOption: {
                 loop: true,
                 effect: 'coverflow',
@@ -38,7 +36,7 @@ export default {
                 centeredSlides: true,
                 slidesPerView: 'auto',
                 coverflowEffect: {
-                    rotate: 50,
+                    rotate: 5,
                     stretch: 0,
                     depth: 100,
                     // 회전 많이 맥이고 싶으면 높을수록 많이 돌아가고
@@ -52,7 +50,7 @@ export default {
                     dynamicBullets: true
                 },
                 autoplay: {
-                    delay: 1000
+                    delay: 1800
                 }
             }
         }
@@ -74,12 +72,12 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 300px;
-        height: 300px;
+        width: 500px;
+        height: 400px;
         text-align: center;
         font-weight: bold;
         font-size: 1.7rem;
-        background-color: mediumpurple;
+        background-color: pink;
         background-position: center;
         background-size: cover;
     }

@@ -66,7 +66,12 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue'
 
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
 
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+
+
+import SwiperTest from '@/views/SwiperTest.vue'
 
 
 
@@ -315,6 +320,27 @@ const routes = [
     name: 'MemberJoinColumnTestPage',
     components: {
       default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/memberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/vuetifyMemberRegister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }
+  },
+  {
+    path: '/swiperTest',
+    name: 'SwiperTest',
+    components: {
+      default: SwiperTest
     }
   },
 

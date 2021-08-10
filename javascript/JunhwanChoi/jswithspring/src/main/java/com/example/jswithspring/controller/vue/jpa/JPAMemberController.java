@@ -1,6 +1,8 @@
 package com.example.jswithspring.controller.vue.jpa;
 
 import com.example.jswithspring.controller.vue.jpa.request.MemberRequest;
+import com.example.jswithspring.entity.jpa.Member;
+import com.example.jswithspring.entity.jpa.MemberAuth;
 import com.example.jswithspring.service.jpa.JPAMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -26,6 +32,38 @@ public class JPAMemberController {
                 (memberRequest.getAuth().equals("사업자") ? "ROLE_BUSINESS" : "ROLE_INDIVIDUAL"));
 
         service.register(memberRequest);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> jpaLogin(
+            @RequestBody MemberRequest memberRequest) throws Exception {
+
+        log.info("jpaLogin() - userId: " + memberRequest.getUserId() + ", password: " + memberRequest.getPassword());
+
+        Boolean isSuccess = service.login(memberRequest);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Failure");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
+    }
+
+    @PostMapping("/test")
+    public ResponseEntity<Void> jpaJPQLTest(
+            @RequestBody MemberRequest memberRequest) throws Exception {
+
+        log.info("jpaJPQLTest()");
+
+        Optional<Member> maybeMember = service.findByAuth(new Long(3));
+        Member member = maybeMember.get();
+
+        log.info("Auth: " + (member.getAuthList().get(0).getAuth().equals("사업자") ?
+                "ROLE_BUSINESS" : "ROLE_CUSTOMER"));
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

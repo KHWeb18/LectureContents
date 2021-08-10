@@ -13,12 +13,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="jpa_member")
-public class JpaMember {
+@Table(name="member")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "jpamember_no")
-    private Long jpamemberNo;
+    @Column(name = "member_no")
+    private Long memberNo;
 
     @Column(length = 64, nullable = false)
     private String userId;
@@ -34,10 +34,10 @@ public class JpaMember {
 
     /* Join Column 파트 */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "jpamember_no")
+    @JoinColumn(name = "member_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
 
-    public JpaMember(String userId, String password) {
+    public Member(String userId, String password) {
         this.userId = userId;
         this.password = password;
     }

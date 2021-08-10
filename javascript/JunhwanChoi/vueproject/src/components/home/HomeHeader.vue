@@ -1,35 +1,89 @@
 <template>
-    <div>
-        <div id="header">
-            <center>
-                <div id="main">
-                    <br><br>
-                    <p><img src="../../assets/mainPageImg.jpg"></p>                    
+    <div id="header" class="slide-3d">
+        <v-spacer></v-spacer>
+        <v-container>
+            <swiper class="swiper" :options="swiperOption">
+                <swiper-slide class="swiper-slide" :key="banner" v-for="banner in banners">
+                    <img :src="banner">
+                </swiper-slide>         
+                <div class="swiper-pagination" slot="pagination">
                 </div>
-            </center> 
-        </div>
+            </swiper>
+        </v-container>
     </div>
-
 </template>
-
+ 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+
 export default {
     name: 'HomeHeader',
-    data(){
-        return{
-            
-        }
+    components: {
+        Swiper,
+        SwiperSlide,
+    },
+    data () {
+            return {
+                banners: [ 
+                    require('@/assets/banner2.jpg'),
+                    require('@/assets/banner2.jpg'),
+                    require('@/assets/banner2.jpg'),
+                ],
+                swiperOption: {
+                    loop: true,
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 5,
+                        stretch: 0,
+                        depth: 100,
+                        // 회전 많이 맥이고 싶으면 높을수록 많이 돌아가고
+                        // 그 대신 폭은 작아짐
+                        // 아예 안주면 회전이 없어져서 일직선임
+                        modifier: 1,
+                        slideShadows: true
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        dynamicBullets: true
+                    },
+                    autoplay: {
+                        delay: 1800
+                    }
+                }
+            }
     }
 }
 </script>
 
-<style>
-
-
-
-
+<style lang="scss" scoped>
+.slide-3d {
+    width: 100%;
+    height: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiper {
+    height: 100%;
+    width: 100%;
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 400px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.7rem;
+        background-color: #C8D7FF;
+        background-position: center;
+        background-size: cover;
+    }
+}
 </style>
-
 
 
 
