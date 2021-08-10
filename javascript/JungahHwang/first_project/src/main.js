@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
+
+import 'material-design-icons/iconfont/material-icons.css'
+
 Vue.config.productionTip = false
 
 new Vue({

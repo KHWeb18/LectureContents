@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import SignUp from '@/views/member/SignUp'
+
+import Signup from '@/views/member/Signup'
 import Login from '@/views/member/Login'
+import Record from '@/views/Record'
+import Challenge from '@/views/Challenge'
+import Recommend from '@/views/Recommend'
+import Together from '@/views/Together'
+import Talk from '@/views/Talk'
 
 Vue.use(VueRouter)
 
@@ -22,13 +28,38 @@ const routes = [
   },
   {
     path: '/signup',
-    name: 'SignUp',
-    component: SignUp
+    name: 'Signup',
+    component: Signup
   },
   {
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/record',
+    name: 'Record',
+    component: Record
+  },
+  {
+    path: '/challenge',
+    name: 'Challenge',
+    component: Challenge
+  },
+  {
+    path: '/recommend',
+    name: 'Recommend',
+    component: Recommend
+  },
+  {
+    path: '/together',
+    name: 'Together',
+    component: Together
+  },
+  {
+    path: '/talk',
+    name: 'Talk',
+    component: Talk
   }
 ]
 

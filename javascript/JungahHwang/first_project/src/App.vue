@@ -1,31 +1,30 @@
 <template>
-  <v-content>
+<v-app>
+  <nav-bar/>
+  <v-main>
     <router-view/>
-  </v-content>
+  </v-main>
+</v-app>  
 </template>
 
+
+<script>
+import NavBar from '@/views/NavBar'
+
+export default {
+  name: 'App', 
+  components: {
+    NavBar
+  }  
+}
+</script>
+
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.basil {
+  background-color: #FFFBE6 !important;
 }
-.home {
-  text-align: center;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.basil--text {
+  color: #356859 !important;
 }
 </style>

@@ -1,19 +1,19 @@
 <template>
   <div>
     <h3>회원가입</h3>
-    <sign-up-form @submit="onSubmit"></sign-up-form>
+    <signup-form @submit="onSubmit"></signup-form>
   </div>
 </template>
 
 
 <script>
 import axios from 'axios'
-import SignUpForm from '@/components/member/SignUpForm'
+import SignupForm from '@/components/member/SignupForm'
 
 export default {
   name: 'SignUp',
   components: {
-    SignUpForm
+    SignupForm
   },
   methods: {
     onSubmit (payload) {

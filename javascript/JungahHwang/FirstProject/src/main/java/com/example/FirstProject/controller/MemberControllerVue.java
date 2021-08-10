@@ -8,13 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.io.PushbackInputStream;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/vue")
+@RequestMapping("/member")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class MemberControllerVue {
 
@@ -22,11 +23,26 @@ public class MemberControllerVue {
     private MemberService service;
 
     @PostMapping("/signup")
-    public ResponseEntity<Member> join(@Validated @RequestBody Member member) throws Exception {
-        log.info("success");
+    public ResponseEntity<Void> signup(@Validated @RequestBody Member member) throws Exception {
+        log.info("Signup");
 
         service.signup(member);
 
-        return new ResponseEntity<>(member, HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> login(@RequestBody Member member) throws Exception {
+        log.info("Login");
+
+        Boolean isSuccess = service.login(member);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Failure");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
     }
 }
