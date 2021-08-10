@@ -11,8 +11,8 @@
             <p>WELCOME TO CINZEL</p>
             <h1>CINZEL ABOUT</h1>
             <p>| 소개 |</p>
-            <v-divider></v-divider>
         </v-container>
+        <v-divider></v-divider>
     
         <v-container>
             <p>바다와 숲이 어우러진 천혜의 휴양지 제주도 서귀포에 위치한 Cinzel은 <br>

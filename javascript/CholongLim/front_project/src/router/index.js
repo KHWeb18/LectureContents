@@ -22,9 +22,8 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 
 // 예약하기
 import Book from '@/views/Book.vue'
+import Book2 from '@/views/Book2.vue' 
 
-// 요금안내
-import PayInformation from '@/views/PayInformation.vue'
 
 Vue.use(VueRouter)
 
@@ -112,10 +111,10 @@ const routes = [
     }
   },
   {
-    path: '/pay-information',
-    name: 'PayInformation',
+    path: '/book2',
+    name: 'Book2',
     components: {
-      default: PayInformation
+      default: Book2
     }
   }
 ]

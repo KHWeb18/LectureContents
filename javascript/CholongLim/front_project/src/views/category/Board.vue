@@ -11,10 +11,10 @@
             <p>WELCOME TO CINZEL</p>
             <h1>CINZEL BOARD</h1>
             <p>| 공지사항 |</p>
-            <v-divider></v-divider>
         </v-container>
+        <v-divider></v-divider>
 
-        <v-container>
+        <v-container class="board-box">
             <v-data-table :headers="headerTitle"
                     :items="contents"
                     :items-per-page="10"
@@ -63,6 +63,10 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
+
+.board-box {
+    padding-bottom: 15%;
+}
 .container{
     position: relative;
 }

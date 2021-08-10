@@ -10,116 +10,97 @@
         <v-container class="about-top">
             <p>WELCOME TO CINZEL</p>
             <h1>CINZEL RESERVATION</h1>
-            <p>| 예약하기 |</p>
+            <p>| 예약안내 |</p>
         </v-container>
 
         <v-divider></v-divider>
 
         <v-container>
             <v-container class="btn-box">
-                <v-btn text v-for="book in booking" :key="book" router :to="book.route">
-                {{ book.name }}
+                <v-btn router :to="'/book'" color="text-white blue lighten-2" width="200px" height="50px">
+                예약하기
                 </v-btn>
             </v-container>
         </v-container>
 
+        <v-divider></v-divider>
+
+         <div class="back-box">
+            <div class="container">
+                  <v-container class="container2">
+                      <h4>[ 요금안내 ]</h4>
+                      <v-divider></v-divider>
+                      
+                      <v-container class="info-text">
+                        예약전화 : 010-7751-8851 / 예약계좌 : 농협 1108-000112-0119 (예금주: 펜션)<br>
+                        입금대기시간<br>
+                        1. 예약신청 후 12시간 내로 전액을 입금하셔야 예약이 완료됩니다.<br>
+                        2. 당일예약/하루 전 예약 시 1시간 내로 결제를 완료해 주셔야됩니다.<br>
+                        * 입금 대기 시간이 경과되면 예약 신청이 자동 취소됩니다.<br>
+                      </v-container>
+
+                        <div>
+                            <v-simple-table class="pay-box">
+                                <template>
+                                    <thead>
+                                        <tr class="top-tr">
+                                            <th>객실명</th>
+                                            <th>형태</th>
+                                            <th>기준/최대</th>
+                                            <th>가격</th>
+                                        </tr>
+                                        <tr v-for="pay in pays" :key="pay">
+                                            <th>{{ pay.name }}</th>
+                                            <th>{{ pay.form }}</th>
+                                            <th>{{ pay.num }}</th>
+                                            <th>{{ pay.price }}</th>
+                                        </tr>
+                                    </thead>
+                                </template>
+                            </v-simple-table>
+                        </div>
+                      
+                      <h4>[ 이용안내 & 유의사항 ]</h4>
+                      <v-divider></v-divider>
+                      <v-container class="info-text">
+                       - 입실시간:오후 3시 /퇴실시간:오전 11시<br>
+                       - 전 객실 및 펜션내부는 금연구역입니다. (절대금연)<br>
+                       - 애완동물은 타 객실 손님을 위해 입실을 금하오니 이점 양해바랍니다. <br>
+                       - 보호자를 동반하지 않은 미성년자는 어떠한 경우라도 입실 하실 수 없습니다.<br>
+                       - 화재의 위험이 있는 촛불 및 폭죽사용, 부탄가스 사용을 금지합니다. <br>
+                       - 퇴실 전 객실정리 후 퇴실점검 부탁드립니다.<br>
+                      </v-container>
+
+                       <h4>[ 환불규정 ]</h4>
+                       <v-divider></v-divider>
+                       <v-container class="info-text">
+                       - 예약을 하실 경우에는 신중히 결정하여 주시길 부탁 드립니다.<br>
+                       - 환불은 입금자 확인후 지정하신 계좌로 보내드립니다. (송금수수료제외)<br>
+                       - 단, 예약 이용일 변경은 예약취소에 해당됩니다. 예약취소 후 다시 예약을 해 주십시오.<br>
+                       <div>
+                            <v-simple-table class="pay-box">
+                                <template>
+                                    <thead>
+                                        <tr class="top-tr">
+                                            <th>취소일기준</th>
+                                            <th>취소수수료</th>
+                                        </tr>
+                                        <tr v-for="refund in refunds" :key="refund">
+                                            <th>{{ refund.day }}</th>
+                                            <th>{{ refund.percent }}</th>
+                                        </tr>
+                                    </thead>
+                                </template>
+                            </v-simple-table>
+                        </div>
+                       </v-container>
+                  </v-container>
+    
+            </div>
+         </div>
+
     <v-divider></v-divider>
 
-    <v-container>
-    <div class="calendar-box">
-        <v-row class="fill-height">
-            <v-col>
-                <v-sheet height="64">
-                    <v-toolbar flat="flat">
-                        <v-btn outlined="outlined" class="mr-4" color="grey darken-2" @click="setToday">
-                            Today
-                        </v-btn>
-                        <v-btn fab="fab" text="text" small="small" color="grey darken-2" @click="prev">
-                            <v-icon small="small">
-                                mdi-chevron-left
-                            </v-icon>
-                        </v-btn>
-                        <v-btn fab="fab" text="text" small="small" color="grey darken-2" @click="next">
-                            <v-icon small="small">
-                                mdi-chevron-right
-                            </v-icon>
-                        </v-btn>
-                        <v-toolbar-title v-if="$refs.calendar">
-                            {{ $refs.calendar.title }}
-                        </v-toolbar-title>
-                        <v-spacer></v-spacer>
-                        <v-menu bottom="bottom" right="right">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn outlined="outlined" color="grey darken-2" v-bind="attrs" v-on="on">
-                                    <span>{{ typeToLabel[type] }}</span>
-                                    <v-icon right="right">
-                                        mdi-menu-down
-                                    </v-icon>
-                                </v-btn>
-                            </template>
-                            <v-list>
-                                <v-list-item @click="type = 'day'">
-                                    <v-list-item-title>Day</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = 'week'">
-                                    <v-list-item-title>Week</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = 'month'">
-                                    <v-list-item-title>Month</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = '4day'">
-                                    <v-list-item-title>4 days</v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </v-menu>
-                    </v-toolbar>
-                </v-sheet>
-                <v-sheet height="600">
-                    <v-calendar
-                        ref="calendar"
-                        v-model="focus"
-                        color="primary"
-                        :events="events"
-                        :event-color="getEventColor"
-                        :type="type"
-                        @click:event="showEvent"
-                        @click:more="viewDay"
-                        @click:date="viewDay"
-                        @change="updateRange"></v-calendar>
-                    <v-menu
-                        v-model="selectedOpen"
-                        :close-on-content-click="false"
-                        :activator="selectedElement"
-                        offset-x="offset-x">
-                        <v-card color="grey lighten-4" min-width="350px" flat="flat">
-                            <v-toolbar :color="selectedEvent.color" dark="dark">
-                                <v-btn icon="icon">
-                                    <v-icon>mdi-pencil</v-icon>
-                                </v-btn>
-                                <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
-                                <v-spacer></v-spacer>
-                                <v-btn icon="icon">
-                                    <v-icon>mdi-heart</v-icon>
-                                </v-btn>
-                                <v-btn icon="icon">
-                                    <v-icon>mdi-dots-vertical</v-icon>
-                                </v-btn>
-                            </v-toolbar>
-                            <v-card-text>
-                                <span v-html="selectedEvent.details"></span>
-                            </v-card-text>
-                            <v-card-actions>
-                                <v-btn text="text" color="secondary" @click="selectedOpen = false">
-                                    Cancel
-                                </v-btn>
-                            </v-card-actions>
-                        </v-card>
-                    </v-menu>
-                </v-sheet>
-            </v-col>
-        </v-row>
-    </div>
-    </v-container>
   </div>
 </template>
 
@@ -128,94 +109,28 @@
   export default {
     data() {
         return {
-            booking: [
-                {name: '예약달력', route: '/reservation' },
-                {name: '예약하기', route: '/book' },
-                {name: '요금안내', route: '/pay-information' },
+            pays: [
+                {name: '301', form: '패밀리형', num: '4명/6명', price: '300,000원' },
+                {name: '302', form: '패밀리형', num: '4명/6명', price: '300,000원' },
+                {name: '201', form: '커플형', num: '2명/4명', price: '240,000원' },
+                {name: '202', form: '커플형', num: '2명/4명', price: '240,000원' },
             ],
-            focus: '',
-            type: 'month',
-            typeToLabel: {
-                month: 'Month',
-                week: 'Week',
-                day: 'Day',
-                '4day': '4 Days',
-            },
-            selectedEvent: {},
-            selectedElement: null,
-            selectedOpen: false,
-            events: [],
-            colors: ['green', 'orange', 'red'],
-            names: ['예약가능', '입금대기', '예약완료']
+            refunds: [
+                {day: '기본 취소 수수료', percent: '0%' },
+                {day: '이용 9일 전', percent: '0%' },
+                {day: '이용 8일 전', percent: '10%' },
+                {day: '이용 7일 전', percent: '20%' },
+                {day: '이용 6일 전', percent: '20%' },
+                {day: '이용 5일 전', percent: '20%' },
+                {day: '이용 4일 전', percent: '30%' },
+                {day: '이용 3일 전', percent: '50%' },
+                {day: '이용 2일 전', percent: '70%' },
+                {day: '이용 1일 전', percent: '100%(환불불가)' },
+                {day: '이용 당일', percent: '100%(환불불가)' },
+            ]
         }
-    },
-    mounted () {
-      this.$refs.calendar.checkChange()
-    },
-    methods: {
-      viewDay ({ date }) {
-        this.focus = date
-        this.type = 'day'
-      },
-      getEventColor (event) {
-        return event.color
-      },
-      setToday () {
-        this.focus = ''
-      },
-      prev () {
-        this.$refs.calendar.prev()
-      },
-      next () {
-        this.$refs.calendar.next()
-      },
-      showEvent ({ nativeEvent, event }) {
-        const open = () => {
-          this.selectedEvent = event
-          this.selectedElement = nativeEvent.target
-          requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
-        }
-
-        if (this.selectedOpen) {
-          this.selectedOpen = false
-          requestAnimationFrame(() => requestAnimationFrame(() => open()))
-        } else {
-          open()
-        }
-
-        nativeEvent.stopPropagation()
-      },
-      updateRange ({ start, end }) {
-        const events = []
-
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
-          })
-        }
-
-        this.events = events
-      },
-      rnd (a, b) {
-        return Math.floor((b - a + 1) * Math.random()) + a
-      }
     }
-  }
+}
 </script>
 
 <style scoped>
@@ -223,17 +138,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
+.container{
+    position: relative;
+}
+
+
+.back-box {
+    background: #f6f7f7;
+    height: 200vh;
+}
+
+.info-text {
+    margin: 5% 10% 5% 0%;
+}
+.pay-box{
+    margin: 5% 0% 5% 0%;
+    padding-bottom: 0%;
+    position: relative;
+}
+
+.top-tr {
+    background-color: #bbdefb;
+}
+/* 기타  페이지 내부*/
 .btn-box{
     padding: 18px 10px 18px 10px;
     text-align: center;
 }
 
-.calendar-box {
-    width:70%;
-    position: relative;
-    left: 15%;
-    margin: 15% 0% 15% 0%;
-}
 
 .intro-top {
     text-align: left;
@@ -260,6 +192,8 @@ p {
     padding-top: 10vh;
 }
 
+/* 폰트 */
+
 h1 {
     font-family: "Cinzel";
     font-size: 40px;
@@ -281,7 +215,7 @@ h3 {
 }
 
 h4 {
-    margin-top: 0px;
+    margin-top: 10%;
     font-family: 'Nanum Myeongjo';
     font-size: 35px;
 }
