@@ -9,11 +9,12 @@
                     v-bind:value="todoItem.content"
                     v-on:blur="handleBlur"
                     v-on:keydown.enter="editTodo"/>
-
+            
             <input type="checkbox"
                     v-bind:checked="todoItem.done"                
                     v-on:change="toggleTodoStatus()">
                     <!-- v-on:change - 입력이 되면 -->
+                    <!--on:change는 checkbox의 변화를 감지한다.-->
 
             <button v-on:click="removeTodo">지우기</button>
         </li>

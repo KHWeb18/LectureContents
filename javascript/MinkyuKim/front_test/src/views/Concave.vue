@@ -8,6 +8,7 @@
         <!--왜 props로 가게(맵핑)되나?
             table-component는 명명규칙에 의하여 TableComponent와 동일하게 인식되므로 TableComponent로 가게된다.
             마찬가지로 :table-data또한 props의 tableData로 가게된다. -->
+            <!-- :turn은 아래의 data()에 있는 turn이고, 뒤에 "turn"은 props의 turn이다-->
         <table-component :table-data="tableData"
                         :turn="turn"
                         :winner="winner"

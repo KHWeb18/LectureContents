@@ -19,7 +19,7 @@ import java.util.Optional;
 @Slf4j
 @Controller
 @RequestMapping("/jpamember")
-@CrossOrigin(origins = { "http://localhost:7777", "http://localhost:8080" }, allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class JPAMemberController {
 
     @Autowired
@@ -34,6 +34,24 @@ public class JPAMemberController {
         service.register(memberRequest);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> jpaLogin(
+            @RequestBody MemberRequest memberRequest) throws Exception {
+
+        // id pw가 null값인것은 RequestBody가 받지 못한다는 의미
+        log.info("jpaLogin() - userId: " + memberRequest.getUserId() + ", password: " + memberRequest.getPassword());
+
+        Boolean isSuccess = service.login(memberRequest);
+
+        if (isSuccess) {
+            log.info("Login Success");
+        } else {
+            log.info("Login Failure");
+        }
+
+        return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
     }
 
     @PostMapping("/test")

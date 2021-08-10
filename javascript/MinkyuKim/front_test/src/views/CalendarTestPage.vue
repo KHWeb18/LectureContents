@@ -48,17 +48,10 @@
                     </v-toolbar>
                 </v-sheet>
                 <v-sheet height="600">
-                    <v-calendar
-                        ref="calendar"
-                        v-model="focus"
-                        color="primary"
-                        :events="events"
-                        :event-color="getEventColor"
-                        :type="type"
-                        @click:event="showEvent"
-                        @click:more="viewDay"
-                        @click:date="viewDay"
-                        @change="updateRange"></v-calendar>
+                    <v-calendar ref="calendar" v-model="focus" color="primary" 
+                                :events="events" :event-color="getEventColor" :type="type"
+                                @click:event="showEvent" @click:more="viewDay" @click:date="viewDay" @change="updateRange">
+                    </v-calendar>
                     <v-menu
                         v-model="selectedOpen"
                         :close-on-content-click="false"
@@ -212,5 +205,5 @@
                 return Math.floor((b - a + 1) * Math.random()) + a
             }
         }
-    }
+    }    
 </script>
