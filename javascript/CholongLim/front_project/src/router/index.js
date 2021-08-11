@@ -2,11 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
-// test
-import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
-
 // 메인홈
 import MainPage from '@/views/main/MainPage.vue'
+
+// 로그인
+import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
+// 회원가입
+import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 
 //카테고리
 import About from '@/views/category/About.vue'
@@ -23,6 +25,7 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 // 예약하기
 import Book from '@/views/Book.vue'
 import Book2 from '@/views/Book2.vue' 
+import CompletePayment from '@/views/CompletePayment.vue' 
 
 
 Vue.use(VueRouter)
@@ -34,17 +37,24 @@ const routes = [
     component: Home
   },
   {
-    path: '/vuetifyTest',
-    name: 'VuetifyAllInOneTestPage',
-    components: {
-      default: VuetifyAllInOneTestPage
-    }
-  },
-  {
     path: '/cinzel',
     name: 'MainPage',
     components: {
       default: MainPage
+    }
+  },
+  {
+    path: '/login',
+    name: 'CinzelMemberLogin',
+    components: {
+      default: CinzelMemberLogin
+    }
+  },
+  {
+    path: '/memberRegister',
+    name: 'CinzelMemberRegister',
+    components: {
+      default: CinzelMemberRegister
     }
   },
   {
@@ -115,6 +125,13 @@ const routes = [
     name: 'Book2',
     components: {
       default: Book2
+    }
+  },
+  {
+    path: '/completePayment',
+    name: 'CompletePayment',
+    components: {
+      default: CompletePayment
     }
   }
 ]

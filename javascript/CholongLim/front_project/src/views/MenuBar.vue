@@ -66,7 +66,8 @@
                     <a href="/cinzel">CINZEL</a></span>
             </v-toolbar-title>
             <v-toolbar-items class="login-locate">
-                <span><member-login-form @submit="onSubmit"/></span>
+                <!-- <span><member-login-form @submit="onSubmit"/></span> -->
+                <v-btn text router :to="'/login'">로그인</v-btn>
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app v-model="nav_drawer" temporary>
@@ -84,15 +85,8 @@
 </template>
 
 <script>
-
-import MemberLoginForm from '@/components/member/MemberLoginForm.vue'
-import axios from 'axios'
-
 export default {
-    name: 'VuetifyAllInOnTestPage',
-    components: {
-        MemberLoginForm
-    },
+    name: 'MenuBar',
     data () {
         return {
             nav_drawer: false,
@@ -124,18 +118,6 @@ export default {
                     text: 'BOARD', name:'BOARD', route: '/board'
                 }
             ]
-        }
-    },
-    methods: {
-         onSubmit (payload) {
-            const { name, id, password, phoneNum, memberBirth } = payload
-            axios.post('http://localhost:7777/vuejpamembering/register', { name, id, password, phoneNum, memberBirth })
-                    .then(res => {
-                        alert('회원가입이 완료되었습니다. - ' + res)
-                    })
-                    .catch(res => {
-                        alert(res.response.data.message)
-                    })
         }
     },
     watch: {

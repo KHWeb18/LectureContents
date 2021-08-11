@@ -145,7 +145,6 @@
 
 .back-box {
     background: #f6f7f7;
-    height: 200vh;
 }
 
 .info-text {
@@ -153,7 +152,6 @@
 }
 .pay-box{
     margin: 5% 0% 5% 0%;
-    padding-bottom: 0%;
     position: relative;
 }
 

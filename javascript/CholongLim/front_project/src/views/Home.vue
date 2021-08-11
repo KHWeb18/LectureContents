@@ -6,11 +6,6 @@
                     active-class="active">
                 Home
             </router-link>
-            <router-link :to="{ name: 'VuetifyAllInOneTestPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Vuetify 활용
-            </router-link>
             <router-link :to="{ name: 'MainPage' }"
                     class="nav-link"
                     active-class="active">

@@ -23,7 +23,7 @@ export default {
                         if(res.data == true) {
                             alert('로그인 성공. - ' + res.data)
                         } else {
-                            alert('로그인 실패. - ' + res.data)
+                            alert('이메일 또는 비밀번호를 다시 확인하세요.')
                         }
                     })
                     .catch(res => {

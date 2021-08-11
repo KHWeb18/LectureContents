@@ -81,6 +81,7 @@ import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 // 로그인
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -374,7 +375,7 @@ const routes = [
     components: {
       default: VuetifyMemberLoginPage
     }
-  },
+  }
 ]
 
 const router = new VueRouter({
