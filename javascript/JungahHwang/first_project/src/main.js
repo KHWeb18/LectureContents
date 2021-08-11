@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify'
 
 
 import 'material-design-icons/iconfont/material-icons.css'
+import './assets/css/font.css'
 
 Vue.config.productionTip = false
 

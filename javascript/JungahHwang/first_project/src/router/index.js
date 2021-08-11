@@ -8,7 +8,7 @@ import Record from '@/views/Record'
 import Challenge from '@/views/Challenge'
 import Recommend from '@/views/Recommend'
 import Together from '@/views/Together'
-import Talk from '@/views/Talk'
+import Chatting from '@/views/Chatting'
 
 Vue.use(VueRouter)
 
@@ -57,9 +57,9 @@ const routes = [
     component: Together
   },
   {
-    path: '/talk',
-    name: 'Talk',
-    component: Talk
+    path: '/chatting',
+    name: 'Chatting',
+    component: Chatting
   }
 ]
 

@@ -3,20 +3,20 @@
     <v-dialog v-model="dialog" persistent max-width="500px">
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
-          <v-icon>lock_open</v-icon>
+          <v-icon color="secondary">lock_open</v-icon>
         </v-btn>
       </template>
     
-      <v-card ref="form" class="basil rounded-xl pa-4" >
+      <v-card ref="form" class="primary rounded-xl pa-4" >
         <v-card-title>
-          <span class="headline basil--text">Login</span>
+          <span class="headline secondary--text">Login</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field ref="id" color="teal darken-3" label="Id" v-model="id" 
-          :rules="[() => !!id || '아이디를 입력해주세요!']" :error-messages="errorMessages"
+          <v-text-field ref="id" color="secondary" label="Id" v-model="id" 
+          :rules="idRules" :error-messages="errorMessages"
           required></v-text-field>
-          <v-text-field ref="pw" color="teal darken-3" label="Password" v-model="pw"
-          :rules="[() => !!pw || '비밀번호를 입력해주세요!']"
+          <v-text-field ref="pw" color="secondary" label="Password" v-model="pw"
+          :rules="pwRules"
           type="password" required></v-text-field>
         </v-card-text>
 
@@ -24,9 +24,9 @@
         
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn class="basil--text" text @click="resetForm">cancel</v-btn>
+          <v-btn class="secondary--text" text @click="resetForm">cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="basil--text" text @click="btnLogin">login</v-btn>
+          <v-btn class="secondary--text" text @click="btnLogin">login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -37,6 +37,7 @@
 <script>
 //import axios from 'axios'
 import SignupForm from '@/components/member/SignupForm'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LoginFrom',
@@ -57,7 +58,11 @@ export default {
         id: this.id,
         pw: this.pw
       }
-    }
+    },
+    ...mapState([
+      'idRules',
+      'pwRules'
+    ])
   },
   watch: {
     id () {
@@ -83,6 +88,6 @@ export default {
       this.dialog = false
     }
   }
-}
+}  
 </script>
 
