@@ -38,35 +38,44 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 
         memberRepository.save(memberEntity);
     }
-
     // 암호화 로그인
     @Override
     public boolean login(MemberRequest memberRequest) throws Exception {
         // 아이디 매칭
         Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
 
-        if(maybeMember == null)
+        if (maybeMember == null)
         {
-            log.info("login(): 회원 정보가 존재하지 않습니다.");
+            log.info("login(): 그런 사람 없다.");
             return false;
         }
 
         Member loginMember = maybeMember.get();
 
         // 비밀번호 매칭
-        if(!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
+        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
         {
-            log.info("login(): 잘못된 비밀번호입니다.");
+            log.info("login(): 비밀번호 잘못 입력하였습니다.");
             return false;
         }
 
         // 모두 통과 시 로그인 성공
         return true;
+    }
 
+    @Override
+    public boolean checkUserIdValidation(String userId) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
+
+        if (maybeMember == null)
+        {
+            log.info("login(): 그런 사람 없다.");
+            return false;
+        }
+        return true;
     }
 
     /*
-    관리자가 회원 목록을 볼떄 쓴다
     @Override
     public List<Member> list() throws Exception {
         return repository.list();
@@ -78,4 +87,3 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         return memberRepository.findByAuth(memberNo);
     }
 }
-

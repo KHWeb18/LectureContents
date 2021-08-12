@@ -10,6 +10,7 @@ public interface JPAMemberService {
     public void register(MemberRequest memberRequest) throws Exception;
 
     public boolean login(MemberRequest memberRequest) throws Exception;
+    public boolean checkUserIdValidation(String userId) throws Exception;
     /*
     public List<Member> list() throws Exception;
      */
