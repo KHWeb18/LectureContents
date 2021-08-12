@@ -14,7 +14,13 @@ import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 import About from '@/views/category/About.vue'
 import Tour from '@/views/category/Tour.vue'
 import Reservation from '@/views/category/Reservation.vue'
-import Board from '@/views/category/Board.vue'
+
+// board
+import Board from '@/views/category/board/Board.vue'
+import BoardListPage from '@/views/category/board/BoardListPage.vue'
+import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
+import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
+import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
 
 // room
 import Room201 from '@/views/category/rooms/Room201.vue'
@@ -111,6 +117,34 @@ const routes = [
     name: 'Board',
     components: {
       default: Board
+    }
+  },
+  {
+    path: '/boardList',
+    name: 'BoardListPage',
+    components: {
+      default: BoardListPage
+    }
+  },
+  {
+    path: '/boardModify',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    }
+  },
+  {
+    path: '/boardRead',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    }
+  },
+  {
+    path: '/boardRegister',
+    name: 'BoardRegisterPage',
+    components: {
+      default: BoardRegisterPage
     }
   },
   {

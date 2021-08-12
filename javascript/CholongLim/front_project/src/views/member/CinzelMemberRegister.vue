@@ -17,23 +17,12 @@ export default {
     },
     methods: {
         onSubmit (payload) {
-            const { userId, password, auth } = payload
-            axios.post('http://localhost:7777/jpamember/register', {
-                        userId, password, auth
+            const {  userName, userId, password, userPhone } = payload
+            axios.post('http://localhost:8888/jpamember/register', {
+                         userName, userId, password, userPhone
                     })
                     .then(res => {
-                        alert('등록 성공! - ' + res)
-                    })
-                    .catch(res => {
-                        alert(res.response.data.message)
-                    })
-        },
-        onJPATest () {
-            axios.post('http://localhost:7777/jpamember/test', {
-                        userId: null, password: null, auth: null
-                    })
-                    .then(res => {
-                        alert('테스트 성공! - ' + res)
+                        alert('회원가입이 완료됐습니다.' + res)
                     })
                     .catch(res => {
                         alert(res.response.data.message)

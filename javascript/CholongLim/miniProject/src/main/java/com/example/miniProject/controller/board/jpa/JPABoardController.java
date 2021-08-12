@@ -1,0 +1,60 @@
+package com.example.miniProject.controller.board.jpa;
+
+import com.example.miniProject.entity.jpa.Board;
+import com.example.miniProject.service.jpa.JPABoardService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Slf4j
+@Controller
+@RequestMapping("/jpaboard")
+@CrossOrigin(origins = "http://localHost:8080", allowedHeaders = "*")
+public class JPABoardController {
+
+
+    @Autowired
+    private JPABoardService service;
+
+    @PostMapping("/register")
+    public ResponseEntity<Board> register(@Validated @RequestBody Board board) throws Exception {
+        log.info("post register request from vue");
+
+        service.register(board);
+
+        return new ResponseEntity<>(board, HttpStatus.OK);
+    }
+
+    @GetMapping("/lists")
+    public ResponseEntity<List<Board>> getLists () throws Exception {
+        log.info("getLists(): " + service.list());
+
+        return new ResponseEntity<>(service.list(), HttpStatus.OK);
+    }
+//    @Autowired
+//    private JPABoardService service;
+//
+//    @PostMapping("/register")
+//    public ResponseEntity<Void> jpaRegister(
+//            @Validated @RequestBody Board board) throws Exception {
+//        log.info("post register request from vue");
+//
+//        service.register(board);
+//
+//        return new ResponseEntity<Void>(HttpStatus.OK);
+//    }
+//
+//    @PostMapping("/lists")
+//    public ResponseEntity<List<Board>> jpaLists () throws Exception {
+//        log.info("getLists(): " + service.list());
+//
+//        return new ResponseEntity<List<Board>>(service.list(), HttpStatus.OK);
+//    }
+
+}

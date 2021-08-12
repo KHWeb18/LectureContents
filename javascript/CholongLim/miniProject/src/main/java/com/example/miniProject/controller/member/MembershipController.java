@@ -1,4 +1,4 @@
-package com.example.miniProject.controller.membership;
+package com.example.miniProject.controller.member;
 
 import com.example.miniProject.entity.Membership;
 import com.example.miniProject.service.MembershipService;

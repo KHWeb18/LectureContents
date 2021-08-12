@@ -2,6 +2,14 @@
     <div class="img">
         <div class="content">
             <member-login-form @submit="onSubmit" class="comp-login"/>
+
+            <v-btn @click="fetchLogout">로그아웃</v-btn><br>
+            <v-btn tile color="teal" @click="showSession">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            로그인 상태 확인
+        </v-btn>
         </div>
         <div class="img-cover"></div>
     </div>
@@ -9,19 +17,31 @@
 
 <script>
 import MemberLoginForm from '@/components/member/MemberLoginForm.vue'
+import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
+
 export default {
     name: 'CinzelMemberLogin',
     components: {
         MemberLoginForm
     },
+    data () {
+        return {
+            isLogin: false
+        }
+    },
+    computed: {
+        ...mapState(['logout'])
+    },
     methods: {
+        ...mapActions(['fetchLogout']),
         onSubmit (payload) {
             const { userId, password } = payload
-            axios.post('http://localhost:7777/jpamember/login', { userId, password, auth: null })
+            axios.post('http://localhost:8888/jpamember/login', { userId, password})
                     .then(res => {
-                        if(res.data == true) {
+                        if(res.data != "") {
                             alert('로그인 성공. - ' + res.data)
+                            this.isLogin = true;
                         } else {
                             alert('이메일 또는 비밀번호를 다시 확인하세요.')
                         }
@@ -29,6 +49,23 @@ export default {
                     .catch(res => {
                         alert(res.response.data.message)
                     })
+        },
+        showSession () {
+            if (this.isLogin == true) {
+                axios.post('http://localhost:8888/jpamember/needSession')
+                        .then(res => {
+                            if (res.data == true) {
+                                alert('세션 정보 유지! - ' + res.data)
+                            } else {
+                                alert('세션 정보 유지 안되는 중! - ' + res.data)
+                            }
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('먼저 로그인부터 하세요!')
+            }
         }
     }
 }

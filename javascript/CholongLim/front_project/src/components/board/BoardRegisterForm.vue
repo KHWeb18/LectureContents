@@ -1,0 +1,92 @@
+<template>
+    <form @submit.prevent="onSubmit">
+        <div justify-center>
+        <h1><strong>게시글 작성</strong> </h1>
+        </div>
+            <div class="board-box">
+            <v-col cols="12" md="12" >
+                
+            <v-text-field label="제목" dense required height="5vh" style="margin-top:10px;" outlined
+                           v-model="title" :rules="[v => !!v || '제목을 입력하세요.']" type="title">
+            </v-text-field>
+
+            <v-text-field label="작성자" dense required height="5vh" style="margin-top:10px;" outlined
+                           v-model="writer" :rules="[v => !!v || '필수정보입니다.']" type="writer">
+            </v-text-field>
+
+            <v-textarea label="본문"  auto-grow style="margin-top:10px;" counter maxlength="500"
+                            full-width single-line outlined
+                        v-model="content" :rules="[v => !!v || '본문을 입력하세요.']" type="content">
+            </v-textarea>
+            </v-col>
+            </div>
+
+
+
+        <div class="btn-size">
+            <v-col cols="12" md="12"> 
+            <v-btn type="submit" color="blue"
+            class="ma-2 white--text">
+            등록
+            </v-btn>
+            <v-btn color="blue darken-4" outlined
+            class="ma-2 white--text" route :to="'/boardList'">
+            취소
+            </v-btn> 
+            </v-col>   
+        </div>
+    </form>
+</template>
+
+<script>
+export default {
+    name: 'BoardRegisterForm',
+    data () {
+        return {
+            // return 받는 값들 전체 this
+            // 만약 title만 받고싶다면 this.title
+            title: '',
+            writer: '',
+            content: '본문을 작성하세요.'
+        }
+    },
+    methods: {
+        onSubmit () {
+            const { title, writer, content } = this
+            this.$emit('submit', { title, writer, content })
+        }
+    }
+}
+</script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.board-box {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+.register-box{
+    border: 1px solid #cccccc;
+    background-color: white;
+    float: left;
+    width: 500px;
+    height: 500px;
+}
+
+.btn-size{
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    padding: 3% 0% 5% 0%;
+}
+
+h1{
+    font-family: "Gowun Dodum";
+    font-size: 30px;
+    margin-top: 5%;
+    text-align: center;
+
+}
+</style>

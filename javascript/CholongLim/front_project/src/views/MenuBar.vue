@@ -68,6 +68,7 @@
             <v-toolbar-items class="login-locate">
                 <!-- <span><member-login-form @submit="onSubmit"/></span> -->
                 <v-btn text router :to="'/login'">로그인</v-btn>
+                
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app v-model="nav_drawer" temporary>
@@ -85,6 +86,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'MenuBar',
     data () {
@@ -115,7 +117,7 @@ export default {
                     text: 'RESERVATION', name:'RESERVATION', route: '/reservation'
                 },
                 { 
-                    text: 'BOARD', name:'BOARD', route: '/board'
+                    text: 'BOARD', name:'BOARD', route: '/boardList'
                 }
             ]
         }
@@ -123,6 +125,11 @@ export default {
     watch: {
         group () {
             this.nav_drawer = false
+        }
+    },
+    methods: {
+        logout() {
+            console.log('로그아웃')
         }
     }
 }
