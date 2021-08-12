@@ -9,4 +9,6 @@ public interface StudentService {
     public void register(StudentRequest studentRequest) throws Exception;
 
     public Optional<Student> findByStudentNo(Long studentNo);
+
+    public boolean login(StudentRequest studentRequest) throws Exception;
 }
