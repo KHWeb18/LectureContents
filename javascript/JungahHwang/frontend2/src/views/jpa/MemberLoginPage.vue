@@ -4,6 +4,9 @@
       <h2>로그인</h2>
     </div>
     <member-login @submit="onSubmit"></member-login>
+    <v-spacer></v-spacer>
+    <v-btn color="teal" @click="showSession">세션 보기</v-btn>
+    <v-btn color="teal" @click="removeSession">세션 끊기</v-btn>
   </div>
 </template>
 
@@ -16,13 +19,42 @@ export default {
   components: {
     MemberLogin
   },
+  data () {
+    // 실제 프로젝트에서는 데이터를 state에 
+    return {
+      isLogin: false
+    }
+  },
   methods: {
     onSubmit (payload) {
       const { id, pw } = payload
-      axios.post('http://localhost:7777/jpamember/login', { id, pw, auth: null }).then(() => {
-        alert('로그인이 완료되었습니다!')
+      axios.post('http://localhost:7777/jpamember/login', { id, pw, auth: null }).then(res => {
+        if (res.data != "") {
+          alert('로그인이 완료되었습니다!')
+          this.isLogin = true;
+        } else {
+          alert('로그인에 실패하였습니다.')
+        }
       }).catch(res => {
         alert(res.response.data.message)
+      })
+    },
+    showSession () {
+      if (this.isLogin == true) {
+        axios.post('http://localhost:7777/jpamember/needSession').then(res => {
+        if (res.data == true) {
+          alert('세션 정보 유지')
+        } else {
+          alert('세션 정보 없음')
+        }
+      }).catch(res => {
+        alert(res.response.data.message)
+      })
+      }
+    },
+    removeSession () {
+      axios.post('http://localhost:7777/jpamember/removeSession').then(res => {
+        this.isLogin = res.data
       })
     }
   }

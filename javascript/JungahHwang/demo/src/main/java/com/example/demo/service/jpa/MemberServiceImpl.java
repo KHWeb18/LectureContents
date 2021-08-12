@@ -61,6 +61,19 @@ public class MemberServiceImpl implements MemberService {
         }
         return true;
     }
+
+    @Override
+    public boolean checkUserIdValidation(String id) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(id);
+
+        if (maybeMember == null) {
+            log.info("회원 정보를 찾을 수 없음");
+
+            return false;
+        }
+
+        return true;
+    }
 }
 
 

@@ -9,4 +9,5 @@ public interface MemberService {
     public void register(MemberRequest memberRequest) throws Exception;
     public Optional<Member> findByAuth(Long memberNo) throws Exception;
     public boolean login(MemberRequest memberRequest) throws Exception;
+    public boolean checkUserIdValidation(String id) throws Exception;
 }
