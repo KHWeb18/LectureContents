@@ -11,4 +11,7 @@ public interface StudentService {
     public Optional<Student> findByStudentNo(Long studentNo);
 
     public boolean login(StudentRequest studentRequest) throws Exception;
+
+    public boolean checkStudentIdValidation(String studentId) throws Exception;
+
 }

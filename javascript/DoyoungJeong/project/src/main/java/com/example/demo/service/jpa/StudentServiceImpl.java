@@ -42,17 +42,31 @@ public class StudentServiceImpl implements StudentService {
     public boolean login(StudentRequest studentRequest) throws Exception {
         Optional<Student> unsureGrade = repository.findByStudentId(studentRequest.getStudentId());
 
-        if(studentRequest == null) {
+        if(unsureGrade == null) {
             log.info("Not Existed ID!");
             return false;
         }
 
-        //Student loginStudent = unsureGrade.get(); 이렇게 말고
+        //Student loginStudent = unsureGrade.get(); 이렇게 말고, passwordEncoder로 복호화해서 match로 비교!
         if(!passwordEncoder.matches(studentRequest.getStudentPw(), unsureGrade.get().getStudentPw())) { //이렇게 해도 됨
             log.info("Wrong Password!");
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean checkStudentIdValidation(String studentId) throws Exception {
+        Optional<Student> maybeStudent = repository.findByStudentId(studentId);
+        log.info("maybeStudent: " + maybeStudent);
+
+        if(maybeStudent == null) {
+            log.info("login(): Not Existed ID");
+            return false;
+        } else {
+            log.info("maybeStudent: " + maybeStudent);
+            return true;
+        }
     }
 
     @Override

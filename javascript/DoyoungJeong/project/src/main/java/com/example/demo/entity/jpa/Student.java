@@ -24,7 +24,7 @@ public class Student {
     @Column(length = 20, nullable = false)
     private String studentId;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 40, nullable = false)
     private String studentPw;
 
     @CreationTimestamp
