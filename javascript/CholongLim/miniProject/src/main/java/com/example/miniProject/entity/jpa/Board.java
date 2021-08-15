@@ -1,12 +1,14 @@
 package com.example.miniProject.entity.jpa;
-// entity 핵심 데이터 관리
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -22,11 +24,11 @@ public class Board {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 500, nullable = false)
-    private String content;
-
     @Column(length = 100, nullable = false)
     private String writer;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String content;
 
     @CreationTimestamp
     private Date regDate;
@@ -34,7 +36,4 @@ public class Board {
     @UpdateTimestamp
     private Date updDate;
 }
-
-
-
 

@@ -3,13 +3,15 @@
         <div class="content">
             <member-login-form @submit="onSubmit" class="comp-login"/>
 
-            <v-btn @click="fetchLogout">로그아웃</v-btn><br>
+            <v-btn @click="login">state 로그인 후 세션 확인</v-btn><br>
+            <v-btn @click="logout">state 로그아웃 확인</v-btn><br>
+            
             <v-btn tile color="teal" @click="showSession">
-            <v-icon left>
-                ads_click
-            </v-icon>
             로그인 상태 확인
-        </v-btn>
+            </v-btn>
+            <v-btn tile color="teal" @click="removeSession">
+            로그아웃 확인
+            </v-btn>
         </div>
         <div class="img-cover"></div>
     </div>
@@ -25,23 +27,38 @@ export default {
     components: {
         MemberLoginForm
     },
+    props: {
+        isLogin: {
+            type: String
+        }
+    },
     data () {
         return {
-            isLogin: false
+            isLogined: false
         }
     },
     computed: {
-        ...mapState(['logout'])
+        ...mapState(['isLogin'])
+    },
+    mounted () {
+        this.login()
     },
     methods: {
-        ...mapActions(['fetchLogout']),
+        ...mapActions(['login']),
         onSubmit (payload) {
             const { userId, password } = payload
             axios.post('http://localhost:8888/jpamember/login', { userId, password})
                     .then(res => {
                         if(res.data != "") {
                             alert('로그인 성공. - ' + res.data)
-                            this.isLogin = true;
+                            this.isLogined = true;
+                            !this.$store.state.isLogin
+
+                            
+                            // this.$router.push({
+                            // name: 'MainPage',
+                        // })
+
                         } else {
                             alert('이메일 또는 비밀번호를 다시 확인하세요.')
                         }
@@ -51,7 +68,7 @@ export default {
                     })
         },
         showSession () {
-            if (this.isLogin == true) {
+            if (this.isLogined == true) {
                 axios.post('http://localhost:8888/jpamember/needSession')
                         .then(res => {
                             if (res.data == true) {
@@ -66,6 +83,13 @@ export default {
             } else {
                 alert('먼저 로그인부터 하세요!')
             }
+        },
+        removeSession () {
+            axios.post('http://localhost:8888/jpamember/removeSession')
+                    .then(res => {
+                        this.isLogined = res.data
+                        alert('로그아웃')
+                    })
         }
     }
 }

@@ -14,7 +14,7 @@
         </v-container>
         <v-divider></v-divider>
 
-        <v-btn color="blue" route :to="'/boardRegister'">글쓰기</v-btn>
+        <v-btn color="blue" route :to="'/board/create'">글쓰기</v-btn>
         <board-list :boards="boards"/>
     </div>  
 </template>
@@ -27,7 +27,6 @@ export default {
     components: {
         BoardList
     },
-    // 실제 값에 변경이 발생할때 동작함
     computed: {
         ...mapState(['boards'])
     },

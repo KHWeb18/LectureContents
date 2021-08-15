@@ -1,38 +1,43 @@
 <template>
-    <div>
-        <h3>Board Modified Form</h3>
         <form @submit.prevent="onSubmit">
-            <table>
-                <tr>
-                    <td>글번호</td>
-                    <td><input type="text" :value="board.boardNo" disabled></td>
-                </tr>
-                <tr>
-                    <td>등록일자</td>
-                    <td><input type="text" :value="board.regDate" disabled></td>
-                </tr>
-                <tr>
-                    <td>제목</td>
-                    <td><input type="text" v-model="title"></td>
-                </tr>
-                <tr>
-                    <td>작성자</td>
-                    <td><input type="text" :value="board.writer" disabled></td>
-                </tr>
-                <tr>
-                    <td>본문</td>
-                    <td><textarea cols="50" rows="20" v-model="content"></textarea></td>
-                </tr>
-            </table>
+            <div class="board-box">
+            <v-col cols="12" md="12" >
 
-            <div>
-                <button type="submit">수정 완료</button>
-                <router-link :to="{ name: 'BoardReadPage', params: { boardNo: board.boardNo.toString() } }">
-                    취소
-                </router-link>
-            </div>
+            <v-text-field label="글번호" dense required height="5vh" style="margin-top:10px;" 
+                            outlined disabled
+                           :value="board.boardNo" type="boardNo">
+            </v-text-field>
+
+            <v-text-field label="제목" dense required height="5vh" style="margin-top:10px;" 
+                            outlined 
+                           :value="board.title" type="title">
+            </v-text-field>
+
+            <v-text-field label="작성자" dense required height="5vh" style="margin-top:10px;" 
+                                outlined disabled
+                           :value="board.writer" type="writer">
+            </v-text-field>
+
+            <v-textarea label="본문"  auto-grow style="margin-top:10px;" counter maxlength="500"
+                            full-width single-line outlined 
+                       :value="board.content" type="content">
+            </v-textarea>
+            </v-col>
+        </div>
+        
+        <div class="btn-size">
+            <v-col cols="12" md="12"> 
+                <v-btn type="submit" color="blue"
+                class="ma-2 white--text">
+                수정등록
+                </v-btn>
+                <v-btn color="blue darken-4" outlined
+                class="ma-2 white--text" route :to="{ name: 'BoardReadPage', params: { boardNo: board.boardNo.toString() } }">
+                취소
+                </v-btn> 
+            </v-col>   
+        </div>
         </form>
-    </div>
 </template>
 
 <script>
@@ -62,3 +67,36 @@ export default {
     }
 }
 </script>
+
+
+<style scoped>
+
+.board-box {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+.register-box{
+    border: 1px solid #cccccc;
+    background-color: white;
+    float: left;
+    width: 500px;
+    height: 500px;
+}
+
+.btn-size{
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    padding: 3% 0% 5% 0%;
+}
+
+h1{
+    font-family: "Gowun Dodum";
+    font-size: 30px;
+    margin-top: 5%;
+    text-align: center;
+
+}
+
+</style>

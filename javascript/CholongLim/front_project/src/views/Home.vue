@@ -11,10 +11,10 @@
                     active-class="active">
                 메인홈
             </router-link>
-            <router-link :to="{ name: 'MenuBar' }"
+            <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
                     class="nav-link"
                     active-class="active">
-                메뉴바 테스트
+                크롤러
             </router-link>
         </div>
     </div>

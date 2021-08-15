@@ -1,15 +1,40 @@
 <template>
-    <div align="center">
-        <h2>Vue + Spring 게시판 읽기</h2>
+    <div id="board">
+        <div>
+            <v-img class="about-img-top" src="https://images.pexels.com/photos/7244366/pexels-photo-7244366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            </v-img>
+        </div>
+        <div class="section">
+            <p class="intro-font">" We travel, some of us forever, to seek other places, other lives, other souls. "</p>
+        </div>
+        <v-container class="about-top">
+            <p>WELCOME TO CINZEL</p>
+            <h1>CINZEL BOARD</h1>
+            <p>| 공지사항 |</p>
+        </v-container>
+        <v-divider></v-divider>
+
         <board-read v-if="board" :board="board"/>
+
         <p v-else>로딩중 ...... </p>
-        <router-link :to="{ name: 'BoardModifyPage', params: { boardNo } }">
-            게시물 수정
-        </router-link>
-        <button @click="onDelete">삭제</button>
-        <router-link :to="{ name: 'BoardListPage' }">
-            게시물 보기
-        </router-link>
+
+        <div class="btn-size">
+            <v-col cols="12" md="12"> 
+            <v-btn color="blue" 
+            class="ma-2 white--text" route :to="{ name: 'BoardListPage' }">
+            목록보기
+            </v-btn> 
+            <v-btn type="submit" color="blue darken-2"
+            class="ma-2 white--text" route :to="{ name: 'BoardModifyPage', params: { boardNo } }">
+            게시글 수정
+            </v-btn>
+            <v-btn color="blue darken-2" outlined
+            class="ma-2 white--text" @click="onDelete">
+            게시글 삭제
+            </v-btn>
+            </v-col>   
+        </div>
+
     </div>
 </template>
 
@@ -21,9 +46,6 @@ import axios from 'axios'
 export default {
     name: 'BoardReadPage',
     props: {
-            // 데이터가 JSON으로 넘어오고,
-            // JSON은 문자이다.
-            // 따라서 처음 넘어올때 String으로 넘어옴
         boardNo: {
             type: String,
             required: true
@@ -35,7 +57,6 @@ export default {
     computed: {
         ...mapState(['board'])
     },
-    // created : 객체가 생성될때
     created () {
         this.fetchBoard(this.boardNo)
                 .catch(err => {
@@ -59,3 +80,126 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
+
+
+.btn-size{
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    padding: 3% 0% 5% 0%;
+}
+
+h1{
+    font-family: "Gowun Dodum";
+    font-size: 30px;
+    margin-top: 5%;
+    text-align: center;
+
+}
+.board-box {
+    padding-bottom: 15%;
+}
+.container{
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+    z-index: 9;
+    margin-top: 9%;
+    left: -8%;
+}
+
+.overlay2{
+    position: absolute;
+    z-index: 9;
+    margin-top: 1%;
+    left: 70%;
+}
+
+.overlay3{
+    position: absolute;
+    z-index: 9;
+    margin-top: 43%;
+    left: 7%;
+}
+
+.test3{
+    margin-left: 50vw;
+    position: relative;
+    bottom: 25vh;
+}
+
+.intro-top {
+    text-align: left;
+}
+
+.about-img-top {
+    max-height: 70vh;
+}
+.about-img-01 {
+    position: relative;
+    left: 20vw;
+    height: 60vh;
+
+}
+.about-img-02 {
+    position: relative;
+    right: 20vw;
+    height: 50vh;
+    margin-top: -5vh;
+}
+.about-img-03 {
+    position: relative;
+    left: 20vw;
+    height: 60vh;
+    margin-top: 5vh;
+}
+
+.section {
+    background: #dcdfdc;
+    height: 10vh;
+}
+
+p {
+    font-family: 'Nanum Myeongjo';
+    font-size: 18px;
+    text-align: center;
+    padding: 18px 0px 18px 0px;
+}
+
+.about-top {
+    padding-top: 10vh;
+}
+
+h1 {
+    font-family: "Cinzel";
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+h2 {
+    font-family: 'MonteCarlo';
+    font-size: 150px;
+    color:darkgrey
+}
+
+h3 {
+    font-family: "Cinzel";
+    font-size: 80px;
+    margin-top: 10px;
+    color:darkgrey;
+}
+
+h4 {
+    margin-top: 0px;
+    font-family: 'Nanum Myeongjo';
+    font-size: 35px;
+}
+</style>

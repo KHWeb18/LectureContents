@@ -43,11 +43,9 @@ export default {
     name: 'BoardRegisterForm',
     data () {
         return {
-            // return 받는 값들 전체 this
-            // 만약 title만 받고싶다면 this.title
             title: '',
             writer: '',
-            content: '본문을 작성하세요.'
+            content: ''
         }
     },
     methods: {

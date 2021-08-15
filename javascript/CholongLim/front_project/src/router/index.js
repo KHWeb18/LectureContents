@@ -15,8 +15,11 @@ import About from '@/views/category/About.vue'
 import Tour from '@/views/category/Tour.vue'
 import Reservation from '@/views/category/Reservation.vue'
 
+// 크롤링
+import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
+
 // board
-import Board from '@/views/category/board/Board.vue'
+// import Board from '@/views/category/board/Board.vue'
 import BoardListPage from '@/views/category/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
@@ -34,6 +37,8 @@ import Book2 from '@/views/Book2.vue'
 import CompletePayment from '@/views/CompletePayment.vue' 
 
 
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -41,6 +46,13 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/daumNewsCrawler',
+    name: 'DaumNewsCrawlerPage',
+    components: {
+      default: DaumNewsCrawlerPage
+    }
   },
   {
     path: '/cinzel',
@@ -112,39 +124,45 @@ const routes = [
       default: Reservation
     }
   },
+  // {
+  //   path: '/board',
+  //   name: 'Board',
+  //   components: {
+  //     default: Board
+  //   }
+  // },
   {
     path: '/board',
-    name: 'Board',
-    components: {
-      default: Board
-    }
-  },
-  {
-    path: '/boardList',
     name: 'BoardListPage',
     components: {
       default: BoardListPage
     }
   },
   {
-    path: '/boardModify',
-    name: 'BoardModifyPage',
-    components: {
-      default: BoardModifyPage
-    }
-  },
-  {
-    path: '/boardRead',
-    name: 'BoardReadPage',
-    components: {
-      default: BoardReadPage
-    }
-  },
-  {
-    path: '/boardRegister',
+    path: '/board/create',
     name: 'BoardRegisterPage',
     components: {
       default: BoardRegisterPage
+    }
+  },
+  {
+    path: '/board/:boardNo',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/board/:boardNo/edit',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    },
+    props: {
+      default: true
     }
   },
   {

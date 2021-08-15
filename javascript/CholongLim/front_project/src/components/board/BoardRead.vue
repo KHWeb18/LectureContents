@@ -1,29 +1,30 @@
 <template>
-    <div>
-        <h3>Vue + Spring 게시물 읽기</h3>
-        <table>
-            <tr>
-                <td>글번호</td>
-                <td><input type="text" :value="board.boardNo" readonly></td>
-            </tr>
-            <tr>
-                <td>등록일자</td>
-                <td><input type="text" :value="board.regDate" readonly></td>
-            </tr>
-            <tr>
-                <td>제목</td>
-                <td><input type="text" :value="board.title" readonly></td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td><input type="text" :value="board.writer" readonly></td>
-            </tr>
-            <tr>
-                <td>본문</td>
-                <td><textarea cols="50" rows="20" :value="board.content" readonly></textarea></td>
-            </tr>
-        </table>
-    </div>
+    <form>
+            <div class="board-box">
+            <v-col cols="12" md="12" >
+
+            <v-text-field label="글번호" dense required height="5vh" style="margin-top:10px;" 
+                            outlined readonly
+                           :value="board.boardNo" type="boardNo">
+            </v-text-field>
+
+            <v-text-field label="제목" dense required height="5vh" style="margin-top:10px;" 
+                            outlined readonly
+                           :value="board.title" type="title">
+            </v-text-field>
+
+            <v-text-field label="작성자" dense required height="5vh" style="margin-top:10px;" 
+                                outlined readonly
+                           :value="board.writer" type="writer">
+            </v-text-field>
+
+            <v-textarea label="본문"  auto-grow style="margin-top:10px;" counter maxlength="500"
+                            full-width single-line outlined readonly
+                       :value="board.content" type="content">
+            </v-textarea>
+            </v-col>
+            </div>
+    </form>
 </template>
 
 <script>
@@ -37,3 +38,35 @@ export default {
     }    
 }
 </script>
+
+<style scoped>
+
+.board-box {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+.register-box{
+    border: 1px solid #cccccc;
+    background-color: white;
+    float: left;
+    width: 500px;
+    height: 500px;
+}
+
+.btn-size{
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    padding: 3% 0% 5% 0%;
+}
+
+h1{
+    font-family: "Gowun Dodum";
+    font-size: 30px;
+    margin-top: 5%;
+    text-align: center;
+
+}
+
+</style>

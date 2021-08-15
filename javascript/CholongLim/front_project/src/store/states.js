@@ -5,5 +5,7 @@ export default {
   boards: [],
   board: null,
   // 로그인
-  logout: true
+  isLogin: false,
+    // 크롤링
+    lists: []
 }

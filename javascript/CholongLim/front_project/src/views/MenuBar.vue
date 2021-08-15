@@ -117,7 +117,7 @@ export default {
                     text: 'RESERVATION', name:'RESERVATION', route: '/reservation'
                 },
                 { 
-                    text: 'BOARD', name:'BOARD', route: '/boardList'
+                    text: 'BOARD', name:'BOARD', route: '/board'
                 }
             ]
         }

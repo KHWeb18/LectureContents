@@ -35,10 +35,9 @@ export default {
             axios.post('http://localhost:8888/jpaboard/register', { title, writer, content })
                 .then(res => {
                     alert('등록이 완료되었습니다.' + res)
-                    console.log('게시물 번호 : ' + res.data.boardNo.toString ())
+                    // console.log('게시물 번호 : ' + res.data.boardNo.toString ())
                     this.$router.push({
                         name: 'BoardListPage',
-                        /* params: {boardNo: res.data.boardNo.toString () } */
                     })
                 })
                 .catch(res => {
