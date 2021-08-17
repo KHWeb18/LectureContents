@@ -67,8 +67,28 @@
             </v-toolbar-title>
             <v-toolbar-items class="login-locate">
                 <!-- <span><member-login-form @submit="onSubmit"/></span> -->
-                <v-btn text router :to="'/login'">로그인</v-btn>
+                <v-btn  v-if="isLogin === false" text router :to="'/login'">로그인</v-btn>
                 
+                <v-menu offset-y v-if="isLogin">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                        text
+                        v-bind="attrs"
+                        v-on="on"
+                        >
+                        <v-icon>account_circle</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item router :to="{name: 'MyPage'}">
+                        <v-list-item-title>마이페이지</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="logout">
+                        <v-list-item-title>로그아웃</v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app v-model="nav_drawer" temporary>
@@ -86,9 +106,13 @@
 </template>
 
 <script>
+import { mapState,mapActions } from 'vuex'
 
 export default {
     name: 'MenuBar',
+    computed: {
+        ...mapState(["isLogin"])
+    },
     data () {
         return {
             nav_drawer: false,
@@ -111,7 +135,7 @@ export default {
                     text: 'ROOMS', name:'ROOMS', route: '/room301'
                 },
                 { 
-                    text: 'TOUR', name:'TOUR', route: '/tour'
+                    text: 'TOUR', name:'TOUR', route: '/tourCrawler'
                 },
                 { 
                     text: 'RESERVATION', name:'RESERVATION', route: '/reservation'
@@ -128,9 +152,7 @@ export default {
         }
     },
     methods: {
-        logout() {
-            console.log('로그아웃')
-        }
+        ...mapActions(["logout"]),
     }
 }
 

@@ -23,7 +23,7 @@
 
         <v-container>
             <v-container class="btn-box">
-                <v-btn text v-for="room in rooms" :key="room" router :to="room.route">
+                <v-btn text v-for="room in rooms" :key="room.name" router :to="room.route">
             {{ room.name }}
             </v-btn>
             </v-container>
@@ -121,7 +121,7 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
-    name: 'RoomSuite',
+    name: 'Room301',
     components: {
         Swiper,
         SwiperSlide
@@ -300,7 +300,7 @@ h3 {
 
 .intro-room01 {
     background: #f6f7f7;
-    height: 80vh;
+    height: 90vh;
 }
 
 .slide {

@@ -16,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/jpaboard")
+@RequestMapping("/board")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class JPABoardController {
 
@@ -40,15 +40,16 @@ public class JPABoardController {
     }
 
     @GetMapping("/{boardNo}")
-    public ResponseEntity<Board> read(@PathVariable("boardNo") Long boardNo) throws Exception {
+    public ResponseEntity<Board> read(@PathVariable("boardNo") Integer boardNo) throws Exception {
         Board board = service.read(boardNo);
 
         return new ResponseEntity<Board>(board, HttpStatus.OK);
     }
 
     @PutMapping("/{boardNo}")
-    public ResponseEntity<Board> modify(@PathVariable("boardNo") Long boardNo,
+    public ResponseEntity<Board> modify(@PathVariable("boardNo") Integer boardNo,
                                         @Validated @RequestBody Board board ) throws Exception {
+        log.info("modify(): ");
         board.setBoardNo(boardNo);
         service.modify(board);
 
@@ -56,7 +57,7 @@ public class JPABoardController {
     }
 
     @DeleteMapping("/{boardNo}")
-    public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
+    public ResponseEntity<Void> remove(@PathVariable("boardNo") Integer boardNo) throws Exception {
         service.remove(boardNo);
 
         return new ResponseEntity<Void>(HttpStatus.OK);

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <v-flex xs12>
         <v-container class="slide">
             <swiper class="swiper" :options="swiperOption">
                 <swiper-slide v-for="image in images" :key="image">
@@ -23,12 +24,13 @@
 
         <v-container>
             <v-container class="btn-box">
-                <v-btn text v-for="room in rooms" :key="room" router :to="room.route">
+                <v-btn text v-for="room in rooms" :key="room.name" router :to="room.route">
             {{ room.name }}
             </v-btn>
             </v-container>
         </v-container>
         <v-divider></v-divider>
+
 
         <div class="intro-room01">
             <div class="container">
@@ -89,12 +91,15 @@
                 </div>
             </div>
         </div>
+        
 
         <div>
              <v-btn x-large text class="reserve_btn" router :to="'/reservation'">
                 <v-icon x-large>room_service</v-icon>실시간 예약하기
             </v-btn>
         </div>
+
+
 
         <v-simple-table class="pay-box">
             <template v-slot:default>
@@ -114,6 +119,7 @@
                 </thead>
             </template>
         </v-simple-table>
+        </v-flex>
     </div>
 </template>
 
@@ -121,7 +127,7 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
-    name: 'RoomSuite',
+    name: 'Room201',
     components: {
         Swiper,
         SwiperSlide
@@ -299,7 +305,7 @@ h3 {
 
 .intro-room01 {
     background: #f6f7f7;
-    height: 80vh;
+    height: 90vh;
 }
 
 .slide {

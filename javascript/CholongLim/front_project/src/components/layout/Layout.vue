@@ -54,7 +54,7 @@ export default {
             (window.location.pathname !== '/') ? router.push('/') : router.go(0)
         },
         category () {
-            (window.location.pathname !== '/daumNewsCrawler') ? router.push('/') : router.go(0)
+            (window.location.pathname !== '/cinzel') ? router.push('/cinzel') : router.go(0)
         }
     }
 }

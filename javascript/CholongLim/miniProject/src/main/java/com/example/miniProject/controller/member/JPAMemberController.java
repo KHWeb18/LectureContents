@@ -71,7 +71,7 @@ public class JPAMemberController {
     }
 
     @PostMapping("/needSession")
-    public ResponseEntity<Boolean> postNeedSession(HttpServletRequest request) throws Exception {
+    public ResponseEntity<UserInfo> postNeedSession(HttpServletRequest request) throws Exception {
 
         //UserInfo info = (UserInfo) session.getAttribute("member");
         Object obj = session.getAttribute("member");
@@ -83,10 +83,12 @@ public class JPAMemberController {
 
             isLogin = service.checkUserIdValidation(info.getUserId());
 
-            return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
+//            return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
+            return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
         }
 
-        return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
+//        return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
+        return new ResponseEntity<UserInfo>(info, HttpStatus.OK);
     }
     @PostMapping("/removeSession")
     public ResponseEntity<Boolean> removeSession(HttpServletRequest request) throws Exception {

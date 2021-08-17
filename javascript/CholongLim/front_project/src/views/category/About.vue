@@ -1,11 +1,12 @@
 <template>
     <div>
+        <v-flex xs4 sm6 md12>
         <div>
             <v-img class="about-img-top" src="https://images.pexels.com/photos/2507007/pexels-photo-2507007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
             </v-img>
         </div>
         <div class="section">
-            <p class="intro-font">" We travel, some of us forever, to seek other places, other lives, other souls. "</p>
+            <h5>" Once a year, go somewhere you have never been before. "</h5>
         </div>
         <v-container class="about-top">
             <p>WELCOME TO CINZEL</p>
@@ -44,23 +45,25 @@
                 </div>
         </div>
 
-        <v-container>
-            <p>" All travel has its advantages. If the passenger visit better countries,<br>
+        <v-container class="middle">
+            <h5>" All travel has its advantages. If the passenger visit better countries,<br>
                 he may learn to improve his own. and if fortune carries him to worse,
-                he may learn to enjoy it. "</p>
+                he may learn to enjoy it. "</h5>
         </v-container>
 
+        <v-col sm12>
         <div class="container">
-            <div class="overlay3">
+            <!-- <div class="overlay3">
                 <h3>CINZEL</h3>
-            </div>
+            </div> -->
             <div>
                 <v-img class="about-img-03" 
                 src="https://images.unsplash.com/photo-1558006297-a916366218d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
             </v-img>
                 </div>
         </div>
-
+        </v-col>
+        </v-flex>
     </div>    
 </template>
 
@@ -96,14 +99,19 @@ export default {
 .overlay3{
     position: absolute;
     z-index: 9;
-    margin-top: 43%;
-    left: 7%;
+    margin-top: 37.5%;
+    left: 5%;
 }
 
 .test3{
     margin-left: 50vw;
     position: relative;
     bottom: 25vh;
+}
+
+.middle {
+    margin-top: 45px;
+    margin-bottom: 15px;
 }
 
 .intro-top {
@@ -172,5 +180,11 @@ h4 {
     margin-top: 0px;
     font-family: 'Nanum Myeongjo';
     font-size: 35px;
+}
+
+h5 {
+    font-family: 'Nanum Myeongjo';
+    font-size: 20px;
+    text-align: center;
 }
 </style>

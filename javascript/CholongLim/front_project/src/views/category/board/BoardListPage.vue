@@ -14,7 +14,7 @@
         </v-container>
         <v-divider></v-divider>
 
-        <v-btn color="blue" route :to="'/board/create'">글쓰기</v-btn>
+        <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
         <board-list :boards="boards"/>
     </div>  
 </template>
@@ -44,6 +44,14 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
+
+.btn-locate{
+    position: relative;
+    left: 75%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    
+}
 
 .board-box {
     padding-bottom: 15%;

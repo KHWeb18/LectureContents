@@ -7,6 +7,7 @@ import MainPage from '@/views/main/MainPage.vue'
 
 // 로그인
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
+import MyPage from '@/views/member/MyPage.vue'
 // 회원가입
 import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 
@@ -16,7 +17,7 @@ import Tour from '@/views/category/Tour.vue'
 import Reservation from '@/views/category/Reservation.vue'
 
 // 크롤링
-import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
+import TourCrawlerPage from '@/views/TourCrawlerPage.vue'
 
 // board
 // import Board from '@/views/category/board/Board.vue'
@@ -48,10 +49,10 @@ const routes = [
     component: Home
   },
   {
-    path: '/daumNewsCrawler',
-    name: 'DaumNewsCrawlerPage',
+    path: '/tourCrawler',
+    name: 'TourCrawlerPage',
     components: {
-      default: DaumNewsCrawlerPage
+      default: TourCrawlerPage
     }
   },
   {
@@ -66,6 +67,13 @@ const routes = [
     name: 'CinzelMemberLogin',
     components: {
       default: CinzelMemberLogin
+    }
+  },
+  {
+    path: '/myPage',
+    name: 'MyPage',
+    components: {
+      default: MyPage
     }
   },
   {

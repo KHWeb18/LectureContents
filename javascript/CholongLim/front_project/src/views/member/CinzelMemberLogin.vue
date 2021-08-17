@@ -1,94 +1,100 @@
 <template>
     <div class="img">
         <div class="content">
-            <member-login-form @submit="onSubmit" class="comp-login"/>
+            <v-container fill-height style="max-width:700px;">
+            <!-- <member-login-form @submit="onSubmit" class="comp-login"/> -->
+            <v-flex xs12> 
+                  <!-- <v-alert
+                    class="mb-3"
+                    :value="isLoginError"
+                    type="error"
+                    >
+                    아이디와 비밀번호를 확인해주세요.
+                </v-alert>
+                <v-alert
+                    class="mb-3"
+                    :value="isLogin"
+                    type="success"
+                    >
+                    로그인이 완료되었습니다.
+                </v-alert> -->
+                <h1>Welcome</h1> <h2>to</h2> <h1>Cinzel</h1>
 
-            <v-btn @click="login">state 로그인 후 세션 확인</v-btn><br>
-            <v-btn @click="logout">state 로그아웃 확인</v-btn><br>
-            
-            <v-btn tile color="teal" @click="showSession">
-            로그인 상태 확인
+                    <div>
+            <v-icon class="mail-icon" color="white">email</v-icon>
+            <v-text-field label="아이디" dense required height="5vh"
+                           v-model="userId" :rules="[v => !!v || '필수정보입니다.']" type="id">
+        </v-text-field>
+
+        <v-icon class="mail-icon" color="white">lock</v-icon>
+        <v-text-field label="비밀번호" dense required height="5vh"
+                       v-model="password" :rules="[v => !!v || '필수정보입니다.']" type="password">
+        </v-text-field>
+
+
+        <div class="btn-size">
+            <v-btn width="410" height="50" @click="login({ userId, password })" color="blue" style="float:left; margin-top:3%;"
+            class="white--text">
+            로그인
             </v-btn>
-            <v-btn tile color="teal" @click="removeSession">
-            로그아웃 확인
-            </v-btn>
+            <v-btn width="410" height="50" color="blue darken-4" style="float:left; margin-top:3%;"
+            class="white--text" route :to="'/memberRegister'">
+            회원가입
+            </v-btn>    
+        </div>  
+                    </div>
+            </v-flex>
+            </v-container>
         </div>
         <div class="img-cover"></div>
     </div>
 </template>
 
 <script>
-import MemberLoginForm from '@/components/member/MemberLoginForm.vue'
-import { mapState, mapActions } from 'vuex'
+// import MemberLoginForm from '@/components/member/MemberLoginForm.vue'
+import { LOGIN_ERROR, LOGIN_SUCCESS } from '@/store/mutation-types'
+import { mapState } from 'vuex'
 import axios from 'axios'
 
 export default {
     name: 'CinzelMemberLogin',
-    components: {
-        MemberLoginForm
-    },
-    props: {
-        isLogin: {
-            type: String
-        }
-    },
+    // components: {
+    //     MemberLoginForm
+    // },
     data () {
         return {
-            isLogined: false
+
+            userId: '',
+            password: '',
         }
     },
     computed: {
-        ...mapState(['isLogin'])
-    },
-    mounted () {
-        this.login()
+        ...mapState(["isLogin", "isLoginError"]),
     },
     methods: {
-        ...mapActions(['login']),
-        onSubmit (payload) {
+        login ( payload) {
             const { userId, password } = payload
             axios.post('http://localhost:8888/jpamember/login', { userId, password})
                     .then(res => {
                         if(res.data != "") {
-                            alert('로그인 성공. - ' + res.data)
+                            alert('로그인이 완료되었습니다.')
+                            console.log(res)
                             this.isLogined = true;
-                            !this.$store.state.isLogin
+                            this.$store.commit(LOGIN_SUCCESS)
 
-                            
-                            // this.$router.push({
-                            // name: 'MainPage',
-                        // })
-
+                            let token = res.data.userId
+                            console.log(token)
+                            localStorage.setItem("access_token", token)
+                            this.$router.push({
+                                    name: 'MainPage'
+                                    })
                         } else {
-                            alert('이메일 또는 비밀번호를 다시 확인하세요.')
+                            alert('아이디와 비밀번호를 확인해주세요.')
+                            this.$store.commit(LOGIN_ERROR)
                         }
                     })
                     .catch(res => {
-                        alert(res.response.data.message)
-                    })
-        },
-        showSession () {
-            if (this.isLogined == true) {
-                axios.post('http://localhost:8888/jpamember/needSession')
-                        .then(res => {
-                            if (res.data == true) {
-                                alert('세션 정보 유지! - ' + res.data)
-                            } else {
-                                alert('세션 정보 유지 안되는 중! - ' + res.data)
-                            }
-                        })
-                        .catch(res => {
-                            alert(res.response.data.message)
-                        })
-            } else {
-                alert('먼저 로그인부터 하세요!')
-            }
-        },
-        removeSession () {
-            axios.post('http://localhost:8888/jpamember/removeSession')
-                    .then(res => {
-                        this.isLogined = res.data
-                        alert('로그아웃')
+                        console(res)
                     })
         }
     }
@@ -96,6 +102,31 @@ export default {
 </script>
 
  <style scoped>
+
+ 
+.btn-size{
+    position: relative;
+    left: 13%;
+}
+
+.mail-icon{
+    float: left;
+    padding: 10px 20px 10px 20px;
+}
+
+h1{
+    font-family: "Cinzel";
+    font-size: 80px;
+    margin: 0;
+
+}
+
+h2{
+    font-family: "Cinzel";
+    font-size: 40px;
+    margin: -3%;
+}
+
 
 .comp-login{
     width: 500px;

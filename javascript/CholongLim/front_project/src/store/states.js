@@ -5,7 +5,12 @@ export default {
   boards: [],
   board: null,
   // 로그인
+  memberRequest: null,
   isLogin: false,
+  isLoginError: false,
+  userInfo: null,
+  // userId: '',
+  // password: '',
     // 크롤링
-    lists: []
+  lists: []
 }

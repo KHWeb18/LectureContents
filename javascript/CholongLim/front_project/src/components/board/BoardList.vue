@@ -1,11 +1,11 @@
 <template>
-    <div align="center">
+    <div align="center" class="board-box">
         <table>
-            <tr>
-                <th align="center" width="100">번호</th>
-                <th align="center" width="400">제목</th>
-                <th align="center" width="150">작성자</th>
-                <th align="center" width="240">등록일자</th>
+            <tr class="top-tr">
+                <th align="center" width="150">번호</th>
+                <th align="center" width="200">제목</th>
+                <th align="center" width="100">작성자</th>
+                <th align="center" width="100">등록일자</th>
             </tr>
             <tr v-if="!boards || (Array.isArray(boards) && boards.length === 0)">
                 <td colspan="4">
@@ -37,3 +37,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+table{
+    width: 55%;
+    border: 1px solid #ebecec;
+}
+
+.top-tr {
+    background-color: #f6f7f7;
+}
+
+.board-box {
+    margin-top: 2%;
+}
+
+</style>

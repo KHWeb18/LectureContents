@@ -27,12 +27,12 @@ public class JPABoardServiceImpl implements JPABoardService {
     }
 
     @Override
-    public Board read(Long boardNo) throws Exception {
+    public Board read(Integer boardNo) throws Exception {
         return boardRepository.read(boardNo);
     }
 
     @Override
-    public void remove(Long boardNo) throws Exception {
+    public void remove(Integer boardNo) throws Exception {
         boardRepository.delete(boardNo);
     }
 

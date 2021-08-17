@@ -3,7 +3,9 @@ import {
    FETCH_BOARD_LIST,
    FETCH_BOARD,
    // 로그인 로그아웃
-   LOGIN,
+   LOGIN_SUCCESS,
+   LOGIN_ERROR,
+   LOGOUT,
      // 크롤링
   CRAWL_START
 } from './mutation-types'
@@ -17,10 +19,22 @@ export default {
   [FETCH_BOARD] (state, board) {
     state.board = board
   },
-  // 로그인
-  [LOGIN] (state) {
-      state.isLogin = false
-    
+  // 로그인이 성공했을 때,
+  [LOGIN_SUCCESS] (state, payload) {
+    state.isLogin = true
+    state.isLoginError = false
+    state.userInfo = payload
+  },
+  // 로그인 실패했을때
+  [LOGIN_ERROR] (state){
+    state.isLogin = false
+    state.isLoginError = true
+  },
+  // 로그아웃
+  [LOGOUT] (state) {
+    state.isLogin = false
+    state.isLoginError = false
+    state.userInfo = null
   },
     // 크롤링
   [CRAWL_START] (state, payload) {

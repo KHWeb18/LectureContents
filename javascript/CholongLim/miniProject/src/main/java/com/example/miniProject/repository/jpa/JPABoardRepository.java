@@ -36,7 +36,7 @@ public class JPABoardRepository {
                     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Board board = new Board();
 
-                        board.setBoardNo(rs.getLong("board_no"));
+                        board.setBoardNo(rs.getInt("board_no"));
                         board.setTitle(rs.getString("title"));
                         board.setContent(rs.getString("content"));
                         board.setWriter(rs.getString("writer"));
@@ -50,7 +50,7 @@ public class JPABoardRepository {
         return results;
     }
 
-    public Board read (Long boardNo) throws Exception {
+    public Board read (Integer boardNo) throws Exception {
         List<Board> results = jdbcTemplate.query(
                 "select board_no, title, content, writer, reg_date from board where board_no = ?",
                 new RowMapper<Board>() {
@@ -58,7 +58,7 @@ public class JPABoardRepository {
                     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Board board = new Board();
 
-                        board.setBoardNo(rs.getLong("board_no"));
+                        board.setBoardNo(rs.getInt("board_no"));
                         board.setTitle(rs.getString("title"));
                         board.setContent(rs.getString("content"));
                         board.setWriter(rs.getString("writer"));
@@ -71,7 +71,7 @@ public class JPABoardRepository {
         return results.isEmpty() ? null : results.get(0);
     }
 
-    public void delete(Long boardNo) throws Exception {
+    public void delete(Integer boardNo) throws Exception {
         String query = "delete from board where board_no = ?";
         jdbcTemplate.update(query, boardNo);
     }

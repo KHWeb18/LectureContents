@@ -76,7 +76,7 @@ export default {
 
 .btn-size{
     position: relative;
-    left: 15%;
+    left: 13%;
 }
 
 .name-icon{

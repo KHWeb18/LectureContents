@@ -1,27 +1,27 @@
 package com.example.miniProject.service;
 
-import com.example.miniProject.entity.DaumNews;
-import com.example.miniProject.repository.DaumNewsRepository;
+import com.example.miniProject.entity.Tour;
+import com.example.miniProject.repository.TourRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
 @Lazy
 @Slf4j
-public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
+public class VueTourCrawlServiceImpl implements VueTourCrawlService {
 
     @Autowired
-    DaumNewsRepository daumNewsRepository;
+    TourRepository tourRepository;
 
     private Document document;
 
@@ -39,17 +39,17 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
 
             document = homepage.parse();
         } catch (Exception e) {
-            log.info("Error in daumNewsMainCrawler");
+            log.info("Error in TourMainCrawler");
         }
 
         return document;
     }
 
     @Override
-    public List<DaumNews> daumNewsFindAll() {
-        log.info("daumNewsFindAll()");
+    public List<Tour> TourFindAll() {
+        log.info("TourFindAll()");
 
-        return daumNewsRepository.findAll();
+        return tourRepository.findAll();
     }
 
     /*
@@ -73,39 +73,43 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
      */
 
     @Override
-    public void daumNewsMainCrawler(String category) {
-        log.info("daumNewsMainCrawler()");
+    public void TourMainCrawler(String category) {
+        log.info("TourMainCrawler()");
 
-        document = connectUrl("https://search.daum.net/search?w=blog&nil_search=btn&DA=NTB&enc=utf8&q=%EC%84%9C%EA%B7%80%ED%8F%AC%20%EB%A7%9B%EC%A7%91" + category);
+        document = connectUrl("https://www.visitjeju.net/kr/" + category);
 
-        daumNewsRepository.deleteAll();
+        tourRepository.deleteAll();
 
-//        daumNewsCrawling(document.select(
-//                "div.item_mainnews>div.cont_thumb>strong.tit_thumb>a"), category);
-//        daumNewsCrawling(document.select(
-//                "ul.list_mainnews>li>div.cont_thumb>strong.tit_thumb>a"), category);
-//        daumNewsCrawling(document.select(
-//                "strong.tit_mainnews>a"), category);
-//        daumNewsCrawling(document.select(
+        TourCrawling(document.select(
+                "ul.item_list>li>dl.item_section>dt.item_top>a"), category);
+        TourCrawling(document.select(
+                "ul.item_list type_thumb>li>dl.item_section>dt.item_top>a"), category);
+        TourCrawling(document.select(
+                "li>dl.item_section>dt.item_top>a>div.score_area>p"), category);
+        TourCrawling(document.select(
+                "li>dl.item_section>dt.item_top>a"), category);
+//        TourCrawling(document.select(
+//                "dl.item_section>dt.item_top>a>div.score_area>p.s_tit"), category);
+//        TourCrawling(document.select(
 //                "ul.list_ranking>li>span.cont_thumb>strong.tit_thumb>a"), category);
-        daumNewsCrawling(document.select(
-                "div.wrap_thumb btn_thumb_handle>div.wrap_cont>div.cont_inner>a"), category);
+
     }
 
     @Override
-    public void daumNewsCrawling(Elements elements, String category) {
-        log.info("daumNewsCrawling(): elements - " + elements + ", category - " + category);
+    public void TourCrawling(Elements elements, String category) {
+        log.info("TourCrawling(): elements - " + elements + ", category - " + category);
 
-        DaumNews news = null;
+        Tour tour = null;
 
         for (int i = 0; i < elements.size(); i++) {
-            news = new DaumNews();
+            tour = new Tour();
 
-            news.setNewsNo(String.valueOf(daumNewsRepository.findAll().size() + 1));
-            news.setAddress(elements.get(i).attr("href"));
-            news.setTitle(elements.get(i).text());
+            tour.setTourNo(String.valueOf(tourRepository.findAll().size() + 1));
+            tour.setAddress(elements.get(i).attr("href"));
+            tour.setCategory(category);
+            tour.setTitle(elements.get(i).text());
 
-            daumNewsRepository.save(news);
+            tourRepository.save(tour);
         }
     }
 }

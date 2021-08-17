@@ -24,7 +24,7 @@ export default {
                     .then(res => {
                         alert('회원가입이 완료됐습니다.' + res)
                         this.$router.push({
-                        name: '/CinzelMemberLogin',
+                        name: 'CinzelMemberLogin'
                         })
                     })
                     .catch(res => {
