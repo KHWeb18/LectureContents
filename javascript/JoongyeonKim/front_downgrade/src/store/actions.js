@@ -163,7 +163,7 @@ export default {
                     }
                 })
     },
-    // 게시판
+    // 회원
     fetchMemberList ({commit}) {
         return axios.get('http://localhost:7777/vuejpamember/lists')
             .then((res) =>{
