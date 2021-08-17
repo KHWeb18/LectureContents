@@ -12,6 +12,24 @@
                 <li><a href="#"><img src="../../assets/banner3.png" alt="banner3"></a></li>
                 <li><a href="/reservation"><img src="../../assets/banner4.png" alt="banner4"></a></li>
            </center>
+
+           <router-link :to="{ name: 'LoginPage' }">
+                <v-card >
+                                               <img src="../../assets/banner1.png" alt="banner1">
+
+                </v-card>
+            </router-link>
+            <router-link :to="{ name: 'LoginPage' }">
+                <v-card >
+                        <v-card-title class="headline">
+                        zz
+                        </v-card-title>
+                        <v-card-text>
+                            5성급 호텔이 30% 할인!  결제하시겠습니까 ?
+                        </v-card-text>  
+                </v-card>
+            </router-link>
+           
         </div>
     </div>
 

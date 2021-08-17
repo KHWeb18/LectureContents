@@ -25,13 +25,13 @@ export default {
     data () {
         return {
             banners: [ 
-                require('@/assets/imgs/banner1.jpg'),
-                require('@/assets/imgs/spyder.jpg'),
-                require('@/assets/imgs/spyder.jpg'),
+                require('@/assets/imgs/test2.jpg'),
+                require('@/assets/imgs/test2.jpg'),
+                require('@/assets/imgs/test2.jpg'),
             ],
             swiperOption: {
                 loop: true,
-                effect: 'coverflow',
+                effect: 'slide',
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: 'auto',
@@ -47,7 +47,7 @@ export default {
                 },
                 pagination: {
                     el: '.swiper-pagination',
-                    dynamicBullets: true
+                    //dynamicBullets: true
                 },
                 autoplay: {
                     delay: 1800
@@ -62,7 +62,7 @@ export default {
 .slide-3d {
     width: 100%;
     height: 400px;
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 50px;
 }
 .swiper {
@@ -72,12 +72,12 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 500px;
+        width: 1000px;
         height: 400px;
         text-align: center;
         font-weight: bold;
         font-size: 1.7rem;
-        background-color: pink;
+        background-color: white;
         background-position: center;
         background-size: cover;
     }
