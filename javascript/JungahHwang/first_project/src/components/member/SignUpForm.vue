@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-dialog v-model="dialog" fullscreen>
+    <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on }">
         <v-btn v-on="on" text>아직 회원이 아니신가요?</v-btn>
       </template>
     
       <v-card ref="form" class="primary rounded-xl pa-4" >
         <v-card-title>
-          <span class="headline secondary--text">Signup</span>
+          <span class="headline secondary--text font-weight-bold">Signup</span>
         </v-card-title>
         
         <v-card-text>
@@ -74,9 +74,9 @@
       
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn class="secondary--text" text @click="resetForm">cancel</v-btn>
+          <v-btn class="secondary--text font-weight-bold" text @click="resetForm">cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="secondary--text" text @click="btnSignup">signup</v-btn>
+          <v-btn class="secondary--text font-weight-bold" text @click="btnSignup">signup</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

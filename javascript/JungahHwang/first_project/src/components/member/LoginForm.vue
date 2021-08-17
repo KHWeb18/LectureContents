@@ -2,31 +2,29 @@
   <div>
     <v-dialog v-model="dialog" persistent max-width="500px">
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on">
+        <v-btn icon v-on="on" class="float-right">
           <v-icon color="secondary">lock_open</v-icon>
         </v-btn>
       </template>
     
       <v-card ref="form" class="primary rounded-xl pa-4" >
         <v-card-title>
-          <span class="headline secondary--text">Login</span>
+          <span class="headline secondary--text font-weight-bold">Login</span>
         </v-card-title>
         <v-card-text>
           <v-text-field ref="id" color="secondary" label="Id" v-model="id" 
-          :rules="idRules" :error-messages="errorMessages"
-          required></v-text-field>
+          :rules="idRules" :error-messages="errorMessages" required></v-text-field>
           <v-text-field ref="pw" color="secondary" label="Password" v-model="pw"
-          :rules="pwRules"
-          type="password" required></v-text-field>
+          :rules="pwRules" type="password" required></v-text-field>
         </v-card-text>
 
         <signup-form></signup-form>
         
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn class="secondary--text" text @click="resetForm">cancel</v-btn>
+          <v-btn class="secondary--text font-weight-bold" text @click="resetForm">cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="secondary--text" text @click="btnLogin">login</v-btn>
+          <v-btn class="secondary--text font-weight-bold" text @click="btnLogin">login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -49,7 +47,8 @@ export default {
       dialog: false,
       id: null,
       pw: null,
-      errorMessages: ''
+      errorMessages: '',
+      formHasErrors: false,
     }
   },
   computed: {
@@ -71,6 +70,13 @@ export default {
   },
   methods: {
     btnLogin () {
+      this.formHasErrors = false
+
+      Object.keys(this.form).forEach(f => {
+        if (!this.form[f]) this.formHasErrors = true
+
+        this.$refs[f].validate(true)
+      })
       
       // axios.post('http://localhost:7777/vue/login', { id, pw }).then(() => {
       //   alert('로그인이 완료되었습니다.')
@@ -82,6 +88,8 @@ export default {
     },
     resetForm () {
       this.errorMessages = []
+      this.formHasErrors = false,
+
       Object.keys(this.form).forEach(f => {
         this.$refs[f].reset()
       })

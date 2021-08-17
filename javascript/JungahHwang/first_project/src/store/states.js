@@ -26,4 +26,5 @@ export default {
   addrRules: [
     addr => !!addr || '주소를 입력해주세요!'
   ],
+
 }

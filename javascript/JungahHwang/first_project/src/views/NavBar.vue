@@ -1,6 +1,5 @@
 <template>
-  <v-card class="primary" scroll-off-screen
-      scroll-target="#scrolling-techniques">
+  <v-card class="primary" >
     <login-form></login-form>
 
     <v-card-title class="text-center justify-center ">
@@ -12,10 +11,9 @@
     <v-text-field append-icon="mdi-magnify" class="mx-16 py-3" color="secondary"
       flat hide-details label="Search" solo></v-text-field>
 
-    <v-tabs v-model="tab" background-color="transparent" color="secondary" grow>
-      <v-tab v-for="tab of tabs" :key="tab.name" :to="tab.route">{{ tab.name }}</v-tab>
+    <v-tabs v-model="tab" background-color="transparent" color="secondary" show-arrows grow>
+      <v-tab class="font-weight-bold" v-for="tab of tabs" :key="tab.name" :to="tab.route">{{ tab.name }}</v-tab>
     </v-tabs>
-    
   </v-card>
 </template>
 
@@ -43,4 +41,5 @@ export default {
     }
   }
 </script>
+
 

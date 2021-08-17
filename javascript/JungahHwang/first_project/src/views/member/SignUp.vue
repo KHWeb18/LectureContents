@@ -11,7 +11,7 @@ import axios from 'axios'
 import SignupForm from '@/components/member/SignupForm'
 
 export default {
-  name: 'SignUp',
+  name: 'Signup',
   components: {
     SignupForm
   },
