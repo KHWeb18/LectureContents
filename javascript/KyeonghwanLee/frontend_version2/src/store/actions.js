@@ -26,7 +26,8 @@ import {
     //성적관리
     SCORE_MANAGEMENT,
     // 크롤링
-    CRAWL_START
+    CRAWL_START,
+  
 } from './mutation-types'
 
 import axios from 'axios'
@@ -149,7 +150,8 @@ export default {
                     router.push('/daumNewsCrawler')
                 }
             })
-    }
+    },
+  
 }
 
 //commit 하면 mutation이 작동한다.

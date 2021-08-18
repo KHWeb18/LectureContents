@@ -116,6 +116,37 @@
                     active-class="active">
                 Vuetify 활용
             </router-link>
+            <router-link :to="{ name: 'MemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                회원 가입
+            </router-link>
+            <router-link :to="{ name: 'CoverFlowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                커버 플로우 테스트
+            </router-link>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Awesome Swiper Test
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGalleryTestPage
+            </router-link>
+            <router-link :to="{ name: 'CalenderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Calender Test
+            </router-link>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member Join Column Test
+            </router-link>
+
         </div>
     </div>
 </template>
