@@ -10,8 +10,9 @@
                 <tr>
                     <td>비밀번호</td>
                     <td><input type="password" v-model="pw"></td>
-                </tr>
+                </tr>                
             </table>
+            
 
             <div>
                 <button type="submit">로그인</button>
@@ -19,11 +20,15 @@
                     취소
                 </router-link>
             </div>
-        </form>
+        </form>        
     </v-container>
 </template>
 
+
 <script>
+
+
+
 export default {
     name: 'VuetifyMemberLoginForm',
     data () {

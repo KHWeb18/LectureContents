@@ -1,30 +1,30 @@
 <template>
     <div>
         <div align="center">
-            <h2>로그인</h2>
+            <h2>회원 가입</h2>
         </div>
-        <vuetify-member-login-form @submit="onSubmit"/>
+        <member-register-form @submit="onSubmit"/>
     </div>
 </template>
 
 <script>
-import VuetifyMemberLoginForm from '@/components/member/VuetifyMemberLoginForm.vue'
+
+import MemberRegisterForm from '@/components/members/MemberRegisterForm.vue'
 import axios from 'axios'
+
 export default {
-    name: 'VuetifyMemberLoginPage',
+    name: 'MemberRegisterPage',
     components: {
-        VuetifyMemberLoginForm
+        MemberRegisterForm
     },
     methods: {
         onSubmit (payload) {
-            const { id, pw } = payload
-            axios.post('http://localhost:7777/jpamember/login', { userId: id, password: pw, auth: null })
+            const { userId, password, name, dateOfBirth, phoneNumber, 
+                    email, address, gender, drawing, article, largeArtwork, auth } = payload
+            axios.post('http://localhost:7777/member/register', { 
+                userId, password, name, dateOfBirth, phoneNumber, email, address, gender, drawing, article, largeArtwork, auth })
                     .then(res => {
-                        if (res.data == true) {
-                            alert('로그인 성공! - ' + res.data)
-                        } else {
-                            alert('로그인 실패! - ' + res.data)
-                        }
+                        alert('등록 성공! - ' + res)
                         /*
                         this.$router.push({
                             name: 'BoardReadPage',
@@ -38,4 +38,4 @@ export default {
         }
     }
 }
-</script>
+</script> 

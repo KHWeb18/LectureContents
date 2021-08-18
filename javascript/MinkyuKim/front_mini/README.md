@@ -1,4 +1,4 @@
-# front_mini
+# front_test
 
 ## Project setup
 ```

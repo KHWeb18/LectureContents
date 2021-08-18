@@ -19,11 +19,15 @@
                     취소
                 </router-link>
             </div>
-        </form>
+        </form>        
     </v-container>
 </template>
 
+
 <script>
+
+
+
 export default {
     name: 'GameMemberLoginForm',
     data () {

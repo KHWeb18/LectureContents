@@ -2,8 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
-import VuetifyMemberRegisterPage from '@/views/member/VuetifyMemberRegisterPage.vue'
-import VuetifyMemberLoginPage from '@/views/member/VuetifyMemberLoginPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+import MemberRegisterPage from '@/views/MemberRegisterPage.vue'
+
 
 Vue.use(VueRouter)
 
@@ -14,28 +16,29 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/memberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
   },
   {
-    path: '/memberRegister',
+    path: '/memberRegiser',
     name: 'VuetifyMemberRegisterPage',
     components: {
       default: VuetifyMemberRegisterPage
     }
   },
   {
-    path: '/memberLogin',
-    name: 'VuetifyMemberLoginPage',
+    path: '/memberRegiserTest',
+    name: 'MemberRegisterPage',
     components: {
-      default: VuetifyMemberLoginPage
+      default: MemberRegisterPage
     }
   }
+  
 ]
+
 
 const router = new VueRouter({
   mode: 'history',

@@ -72,6 +72,8 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue'
 import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+import ztest from '@/views/ztest.vue'
+import ztest2 from '@/views/ztest2.vue'
 
 Vue.use(VueRouter)
 
@@ -361,6 +363,20 @@ const routes = [
     name: 'VuetifyMemberLoginPage',
     components: {
       default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/ztest',
+    name: 'ztest',
+    components: {
+      default: ztest
+    }
+  },
+  {
+    path: '/ztest2',
+    name: 'ztest2',
+    components: {
+      default: ztest2
     }
   }
 ]

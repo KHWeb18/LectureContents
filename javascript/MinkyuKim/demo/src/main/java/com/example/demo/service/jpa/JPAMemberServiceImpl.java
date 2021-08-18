@@ -62,7 +62,20 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         return true;
     }
 
-    /* 관리자가 회원목록 볼때 사용하기 위함 List
+    @Override
+    public boolean checkUserIdValidation(String userId) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
+
+        if (maybeMember == null)
+        {
+            log.info("login(): 그런 사람 없다.");
+            return false;
+        }
+
+        return true;
+    }
+
+    /* /* 관리자가 회원목록 볼때 사용하기 위함 List
     @Override
     public List<Member> list() throws Exception {
         return repository.list();

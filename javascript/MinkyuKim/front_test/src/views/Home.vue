@@ -174,6 +174,17 @@
                     active-class="active">
                 Member 로그인 Test
             </router-link>
+
+            <router-link :to="{ name: 'ztest' }"
+                    class="nav-link"
+                    active-class="active">
+                zz Test
+            </router-link>
+            <router-link :to="{ name: 'ztest2' }"
+                    class="nav-link"
+                    active-class="active">
+                zz Test2
+            </router-link>
             
         </div>
     </div>
