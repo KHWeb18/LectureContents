@@ -86,6 +86,8 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
                 "strong.tit_mainnews>a"), category);
         daumNewsCrawling(document.select(
                 "ul.list_ranking>li>span.cont_thumb>strong.tit_thumb>a"), category);
+        daumNewsCrawling(document.select(
+                "container.list_news>li>div.wrap_thumb>div.wrap_cont>a.tit_main.ff_dot"), category);
     }
 
     @Override

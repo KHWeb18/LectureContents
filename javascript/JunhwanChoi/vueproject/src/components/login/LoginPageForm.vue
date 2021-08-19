@@ -26,12 +26,18 @@
                   </v-card-text>
                   <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
-                          취소
-                      </v-btn>
+                      
                       <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
                           확인
                       </v-btn>
+
+                      <router-link :to="{ name: 'Home' }"
+                                        class="nav-link"
+                                        active-class="active">
+                            <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
+                                     나가기
+                             </v-btn>
+                      </router-link>
                   </v-card-actions>
               </v-card>
         </v-dialog>

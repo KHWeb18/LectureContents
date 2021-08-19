@@ -1,35 +1,11 @@
 <template>
     <div>
         <div id="footer">
-           <center>
-               <li>
-                   <router-link :to="{ name: 'DaumNewsCrawlerPage' }">
-                       <img src="../../assets/banner1.png" alt="banner1">
-                   </router-link>
-               </li>
-               
-                <li><a href="#"><img src="../../assets/banner2.png" alt="banner2"></a></li>
-                <li><a href="#"><img src="../../assets/banner3.png" alt="banner3"></a></li>
-                <li><a href="/reservation"><img src="../../assets/banner4.png" alt="banner4"></a></li>
-           </center>
 
-           <router-link :to="{ name: 'LoginPage' }">
-                <v-card >
-                                               <img src="../../assets/banner1.png" alt="banner1">
-
-                </v-card>
-            </router-link>
-            <router-link :to="{ name: 'LoginPage' }">
-                <v-card >
-                        <v-card-title class="headline">
-                        zz
-                        </v-card-title>
-                        <v-card-text>
-                            5성급 호텔이 30% 할인!  결제하시겠습니까 ?
-                        </v-card-text>  
-                </v-card>
-            </router-link>
-           
+        <router-link :to="{name:'MemberListPage'}">
+                <div class="listpage">list page</div>
+        </router-link>
+          
         </div>
     </div>
 
@@ -43,45 +19,11 @@ export default {
 
 
 <style>
-    ul{ list-style: none;}
-    a{text-decoration: none;}
-
-    body{
-        background-color: white;
-        color: white;
-        margin: 0;
-        padding: 0;
-        font-size: 1.2em;
-        font-family: 'Hack';
+    .listpage{
+        margin-top: 100px;
+        text-align: center;
+        color : white;
     }
-    #header{
-        color:  black;
-        background-color: #C8D7FF;
-        padding: 15px;
-    }
-
-    #footer{
-        color: black;
-        background-color: #f1f1f1;
-        padding: 10px;
-    }
-
-
-    ul{
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        float: right;
-    }
-
-    li{
-        display: inline;
-        margin: 0 20px 0 0 ;
-    }
-
-
-    /* 전체 페이지가 가운데로 오도록 */
-    #page{width: 820px; margin: 0px auto;}
     
 </style>
 

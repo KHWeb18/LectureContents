@@ -24,9 +24,19 @@
             <!-- Grid 시스템의 한 행을 정의함 -->
             <v-layout row wrap>
                 <!-- 12개의 컬럼으로 이뤄져 한 행에서 제일 작은것들이 12개가 만들어지면 다음으로 자동 넘김 처리 -->
-                <v-flex xs12 md6 class="primary white--text">
+                <v-flex xs12 md6 class="primary black--text">
                     <div>{{ message }}</div>
                 </v-flex>
+                <v-flex xs12 md6 class="primary black--text">
+                    <div>{{ message }}</div>
+                </v-flex>
+                <v-flex xs6 md3 class="primary black--text">
+                    <div><v-btn color="primary" dark v-on="on">결제</v-btn></div>
+                </v-flex>
+                <v-flex xs6 md3 class="primary black--text">
+                    <div><v-btn color="primary" dark v-on="on">결제</v-btn></div>
+                </v-flex>
+                
                 <v-flex xs4 md2 class="green white--text">
                     <div>{{ message }}</div>
                 </v-flex>
@@ -259,7 +269,8 @@ export default {
                 {title: 'click me'},
                 {title: 'click me'},
                 {title: 'click me'},
-            ]
+            ],
+            
         }
     },
     methods: {
@@ -291,7 +302,8 @@ export default {
             this.nav_drawer = false
 
         }
-    }    
+    },
+        
 }
 </script>
 

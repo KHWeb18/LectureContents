@@ -15,6 +15,11 @@ import MemberModifyPage from '@/views/MemberModifyPage.vue'
 import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
 
 
+import InfoPage from '@/views/InfoPage.vue'
+
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -68,6 +73,16 @@ const routes = [
       default: DaumNewsCrawlerPage
     }
   },
+  {
+    path: '/infoPage',
+    name: 'InfoPage',
+    components: {
+      default: InfoPage
+    }
+  },
+
+
+  
 
   
 ]

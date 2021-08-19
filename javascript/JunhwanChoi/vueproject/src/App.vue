@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="test">
     <nav-bar-component/>
     <v-main>
       <router-view/>
@@ -17,3 +17,5 @@ export default {
 </script>
 
 <style>
+
+</style>
