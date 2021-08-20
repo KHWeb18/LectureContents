@@ -70,6 +70,13 @@ import CalendarTestPage from '@/views/CalendarTestPage'
 //JPA
 import MemberJoinColumTestPage from '@/views/MemberJoinColumTestPage';
 
+import LoginPage from '@/views/LoginTest';
+
+
+import FileUploadPage from '@/views/FileUploadPage';
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -78,6 +85,7 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
   {
     path: '/test',
     name: 'Test',
@@ -325,7 +333,21 @@ const routes = [
     components: {
       default: MemberJoinColumTestPage
     }
-  }
+  },
+  {
+    path: '/login-Page',
+    name: 'LoginPage',
+    components: {
+      default: LoginPage
+    }
+  },
+  {
+    path: '/file-upload-page',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  },
 
 ]
 

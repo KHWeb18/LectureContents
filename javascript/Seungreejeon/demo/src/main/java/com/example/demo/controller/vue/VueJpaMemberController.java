@@ -32,6 +32,7 @@ public class VueJpaMemberController {
         log.info("post register request from vue");
 
         service.register(member);
+
         return new ResponseEntity<>(member, HttpStatus.OK);
     }
 }
