@@ -12,7 +12,9 @@
       flat hide-details label="Search" solo></v-text-field>
 
     <v-tabs v-model="tab" background-color="transparent" color="secondary" show-arrows grow>
-      <v-tab class="font-weight-bold" v-for="tab of tabs" :key="tab.name" :to="tab.route">{{ tab.name }}</v-tab>
+      <v-tab class="font-weight-bold" v-for="tab of tabs" :key="tab.name" :to="tab.route">
+        {{ tab.name }}
+      </v-tab>
     </v-tabs>
   </v-card>
 </template>

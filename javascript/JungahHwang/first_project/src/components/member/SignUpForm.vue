@@ -5,7 +5,7 @@
         <v-btn v-on="on" text>아직 회원이 아니신가요?</v-btn>
       </template>
     
-      <v-card ref="form" class="primary rounded-xl pa-4" >
+      <v-card ref="form" class="primary rounded-xl pa-0" >
         <v-card-title>
           <span class="headline secondary--text font-weight-bold">Signup</span>
         </v-card-title>
