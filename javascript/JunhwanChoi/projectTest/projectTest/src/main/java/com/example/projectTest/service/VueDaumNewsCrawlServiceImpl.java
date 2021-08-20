@@ -74,9 +74,13 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
     public void daumNewsMainCrawler(String category) {
         log.info("daumNewsMainCrawler()");
 
-        document = connectUrl("https://news.daum.net/" + category);
+        document = connectUrl("https://news.daum.net/breakingnews/culture/health/" + category);
 
         daumNewsRepository.deleteAll();
+
+        daumNewsCrawling(document.select(
+                "ul.list_news2.list_allnews>li>div.cont_thumb>strong.tit_thumb>a"), category);
+/*
 
         daumNewsCrawling(document.select(
                 "div.item_mainnews>div.cont_thumb>strong.tit_thumb>a"), category);
@@ -87,7 +91,7 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
         daumNewsCrawling(document.select(
                 "ul.list_ranking>li>span.cont_thumb>strong.tit_thumb>a"), category);
         daumNewsCrawling(document.select(
-                "container.list_news>li>div.wrap_thumb>div.wrap_cont>a.tit_main.ff_dot"), category);
+                "container.list_news>li>div.wrap_thumb>div.wrap_cont>a.tit_main.ff_dot"), category);*/
     }
 
     @Override
