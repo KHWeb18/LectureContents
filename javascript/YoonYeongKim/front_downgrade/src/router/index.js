@@ -12,7 +12,7 @@ import BoardReadPage from '@/views/BoardReadPage.vue'
 import BoardModifyPage from '@/views/BoardModifyPage.vue'
 
 // game
-import GameMemberRegisterPage from '@/views/GameMemberRegisterPage.vue'
+//import GameMemberRegisterPage from '@/views/GameMemberRegisterPage.vue'
 
 // 삼목
 import Concave from '@/views/Concave.vue'
@@ -71,6 +71,8 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue'
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage'
 
+// File Upload
+import FileUploadPage from '@/views/FileUploadPage.vue'
 
 Vue.use(VueRouter)
 
@@ -130,13 +132,13 @@ const routes = [
       default: true
     }
   },
-  {
-    path: '/member/create',
-    name: 'GameMemberRegisterPage',
-    components: {
-      default: GameMemberRegisterPage
-    }
-  },
+  // {
+  //   path: '/member/create',
+  //   name: 'GameMemberRegisterPage',
+  //   components: {
+  //     default: GameMemberRegisterPage
+  //   }
+  // },
   {
     path: '/concave',
     name: 'Concave',
@@ -317,9 +319,22 @@ const routes = [
     components: {
       default: VuetifyMemberLoginPage
     }
-  }        
+  },
+  {
+    path: '/vuetifyMemberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/fileUploadPage',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  }          
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

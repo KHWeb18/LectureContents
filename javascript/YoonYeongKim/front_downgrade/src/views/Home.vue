@@ -139,7 +139,17 @@
                     class="nav-link"
                     active-class="active">
                 MemberJoin Column Test
-            </router-link>                                                                   
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member 로그인 Test
+            </router-link>  
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                File 업로드 Test
+            </router-link>                                                                              
         </div>
     </div>
 </template>
