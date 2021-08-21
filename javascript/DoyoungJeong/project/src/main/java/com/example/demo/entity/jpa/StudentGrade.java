@@ -1,17 +1,15 @@
 package com.example.demo.entity.jpa;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name="student_grade")
 public class StudentGrade {
