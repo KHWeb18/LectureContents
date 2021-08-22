@@ -17,9 +17,11 @@
 
 <template>
     <div>
-        <div class="container">
+        <v-container class="container" fill-height>
+            <v-layout align-center wrap>
             <h2 class="overlay">Hello <br>Cinzel</h2>
-        </div>
+            </v-layout>
+        </v-container>
         <div class="slide">
             <v-container class="slide">
                 <swiper class="swiper" :options="swiperOption">
@@ -77,11 +79,13 @@ export default {
                 }
             ],
             swiperOption: {
-                loop: true,
-                effect: 'coverflow',
+                // loop: true,
+                loopedSlides: 2,
+                // effect: 'coverflow',
                 calculateHeight:true,
                 grabCursor: true,
                 centeredSlides: true,
+                watchSlideProgress:true,
                 slidesPerView: 'auto',
                 coverflowEffect: {
                     // rotate: 50,
@@ -98,7 +102,7 @@ export default {
                     //dynamicBullets: true
                 },
                 autoplay: {
-                    delay: 3000
+                    delay: 5000
                     // 1000(1초)
                 }
             }
@@ -119,7 +123,7 @@ export default {
 .overlay{
     position: absolute;
     z-index: 9;
-    margin-top: 18%;
+    margin-top: 70%;
     left: 30%;
 }
 

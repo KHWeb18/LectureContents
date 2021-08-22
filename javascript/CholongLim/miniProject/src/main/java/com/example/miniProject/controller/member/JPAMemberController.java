@@ -10,13 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.http.HttpHeaders;
 import java.util.Optional;
 
 @Slf4j
@@ -27,6 +25,8 @@ public class JPAMemberController {
 
     private UserInfo info;
 
+    private Member memberId;
+
     @Autowired
     private JPAMemberService service;
 
@@ -34,13 +34,50 @@ public class JPAMemberController {
 
     @PostMapping("/register")
     public ResponseEntity<Void> jpaRegister(
-            @Validated @RequestBody Member member) throws Exception {
-        log.info("jpaRegister(): " + member.getUserId() + ", " + member.getPassword());
+            @Validated @RequestBody Member member,
+            HttpServletRequest request) throws Exception {
 
-        service.register(member);
+        log.info("jpaRegister(): " + member.getUserId() + ", " + member.getPassword()  + ", " + member.getPasswordReInput());
+
+            boolean ableId = service.duplicateCheck(member);
+
+
+            if (member.getPassword().equals(member.getPasswordReInput())) {
+                if(ableId){
+                    log.info("able id");
+                    log.info("register Success");
+                    service.register(member);
+                    return new ResponseEntity<Void>(HttpStatus.OK);
+
+                } else {
+                    log.info("unable id");
+                    this.info = null;
+                }
+
+            } else {
+                log.info("register Fail");
+                this.info = null;
+            }
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+//
+//    @PostMapping("/register")
+//    public ResponseEntity<Void> jpaRegister(
+//            @Validated @RequestBody Member member, HttpServletRequest request) throws Exception {
+//        log.info("jpaRegister(): " + member.getUserId() + ", " + member.getPassword());
+//
+//        Boolean isCheck = service.duplicateCheckId(member);
+//
+//        if (isCheck) {
+//            log.info("able Id");
+//            service.register(member);
+//
+//        }
+//        return new ResponseEntity<Void>(HttpStatus.OK);
+//    }
+
+
 
     @PostMapping("/login")
     public ResponseEntity<UserInfo> jpaLogin(
@@ -70,6 +107,7 @@ public class JPAMemberController {
         return new ResponseEntity<UserInfo>(info, HttpStatus.OK);
     }
 
+    // 로그인 세션
     @PostMapping("/needSession")
     public ResponseEntity<UserInfo> postNeedSession(HttpServletRequest request) throws Exception {
 
@@ -82,14 +120,13 @@ public class JPAMemberController {
             log.info("Session Info: " + info);
 
             isLogin = service.checkUserIdValidation(info.getUserId());
-
-//            return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
             return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
         }
 
-//        return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
         return new ResponseEntity<UserInfo>(info, HttpStatus.OK);
     }
+
+    // 세션 로그아웃
     @PostMapping("/removeSession")
     public ResponseEntity<Boolean> removeSession(HttpServletRequest request) throws Exception {
         Boolean mustFalse = false;
@@ -98,4 +135,5 @@ public class JPAMemberController {
 
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
     }
+
 }

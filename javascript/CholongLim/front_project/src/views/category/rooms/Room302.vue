@@ -138,7 +138,7 @@ export default {
                 "https://images.pexels.com/photos/6782573/pexels-photo-6782573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             ],
             swiperOption: {
-                loop: true,
+                loopedSlides: 2,
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
@@ -162,7 +162,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 3000
+                    delay: 1000
                     // 1000(1초)
                 }
             },

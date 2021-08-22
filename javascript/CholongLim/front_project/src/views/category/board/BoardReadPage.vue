@@ -68,7 +68,7 @@ export default {
         ...mapActions(['fetchBoard']),
         onDelete () {
             const { boardNo } = this.board
-            axios.delete(`http://localhost:8888/jpaboard/${boardNo}`)
+            axios.delete(`http://localhost:8888/board/${boardNo}`)
                 .then(() => {
                     alert('게시글을 삭제했습니다.')
                     this.$router.push({ name: 'BoardListPage' })

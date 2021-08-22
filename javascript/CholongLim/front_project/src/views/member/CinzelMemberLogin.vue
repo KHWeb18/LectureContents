@@ -33,7 +33,9 @@
 
 
         <div class="btn-size">
-            <v-btn width="410" height="50" @click="login({ userId, password })" color="blue" style="float:left; margin-top:3%;"
+            <v-btn width="410" height="50" @click="login({ userId, password })"
+        
+             color="blue" style="float:left; margin-top:3%;"
             class="white--text">
             로그인
             </v-btn>
@@ -69,7 +71,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(["isLogin", "isLoginError"]),
+        ...mapState(["isLogin", "isLoginError", "administratorLogin"]),
     },
     methods: {
         login ( payload) {
@@ -94,7 +96,7 @@ export default {
                         }
                     })
                     .catch(res => {
-                        console(res)
+                        console.log(res)
                     })
         }
     }

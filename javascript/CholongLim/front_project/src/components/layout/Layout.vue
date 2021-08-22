@@ -1,42 +1,46 @@
 <template>
     <v-app id="inspire">
-        <v-app-bar
-                app
-                clipped-right
-                color="blue"
-                dark>
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title><div @click="home">Daum News Crawling Project</div></v-toolbar-title>
-            <v-spacer></v-spacer>
-            <slot name="menubar"></slot>
-        </v-app-bar>
-        <v-navigation-drawer
-                v-model="drawer"
-                app>
-            <v-list dense>
-                <v-list-item @click.stop="left = !left">
-                    <v-list-item-action>
-                        <v-icon>mdi-exit-to-app</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-action>
-                        <v-list-item-title @click="category">카테고리별 분류 보기</v-list-item-title>
-                    </v-list-item-action>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
+
+        <div>
+        <v-flex xs4 sm6 md12>
+        <div>
+            <v-img class="about-img-top" src="https://images.pexels.com/photos/4254556/pexels-photo-4254556.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            </v-img>
+        </div>
+        <div class="section">
+            <h5>" Once a year, go somewhere you have never been before. "</h5>
+        </div>
+        <v-container class="about-top">
+            <p>WELCOME TO CINZEL</p>
+            <h1>CINZEL TOUR</h1>
+            <p>| 관광 |</p>
+        </v-container>
+        <v-divider></v-divider>
+
+        
+
+
+        <div >
+            <iframe width="900" height="506" src="https://www.youtube.com/embed/a8taNpbLV4Y" 
+                    style="margin-top:5%; margin-bottom:5%; position: relative; left: 25%;"
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+   
+        </div>
+
+
+        <slot name="news"></slot>
+
         <v-container>
             <v-main id="content">
                 <slot name="content" class="font">
                 </slot>
             </v-main>
         </v-container>
-        <v-footer
-                app
-                color="blue"
-                class="white--text">
-            <v-spacer></v-spacer>
-            <span>&copy; Daum News Crawling Project</span>
-        </v-footer>
+        </v-flex>
+        </div>
     </v-app>
 </template>
 
@@ -59,3 +63,48 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+
+
+.video-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    width: 10%;
+}
+.about-img-top {
+    max-height: 70vh;
+}
+
+
+.section {
+    background: #dcdfdc;
+    height: 10vh;
+}
+
+p {
+    font-family: 'Nanum Myeongjo';
+    font-size: 18px;
+    text-align: center;
+    padding: 18px 0px 18px 0px;
+}
+
+.about-top {
+    padding-top: 10vh;
+}
+
+h1 {
+    font-family: "Cinzel";
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+h5 {
+    font-family: 'Nanum Myeongjo';
+    font-size: 20px;
+    text-align: center;
+}
+</style>

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @NoArgsConstructor
 public class MemberRequest {
+    private Long memberNo;
     private String userId;
     private String password;
+    private String userName;
 }

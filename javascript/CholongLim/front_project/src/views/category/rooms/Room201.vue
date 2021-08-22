@@ -143,32 +143,26 @@ export default {
                 "https://images.pexels.com/photos/6782431/pexels-photo-6782431.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             ],
             swiperOption: {
-                //loop: true,
+                loopedSlides: 2,
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: 'auto',
                 coverflowEffect: {
-                    // rotate: 50,
                     stretch: 0,
                     depth: 100,
-                    // 회전 많이하고 싶으면 높을수록 많이 돌아가고
-                    // 그 대신 폭이 작아짐
-                    // 아예 0으로 두면 회전이 없어져서 일직선이다
                     modifier: 0,
                     slideShadows: true
                 },
                 pagination: {
                     el: '.swiper-pagination'
-                    //dynamicBullets: true
                 },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 3000
-                    // 1000(1초)
+                    delay: 4000
                 }
             },
             rooms: [

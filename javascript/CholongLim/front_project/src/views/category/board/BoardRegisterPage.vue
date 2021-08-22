@@ -32,7 +32,7 @@ export default {
     methods: {
         onSubmit (payload) {
             const { title, writer, content } = payload
-            axios.post('http://localhost:8888/jpaboard/register', { title, writer, content })
+            axios.post('http://localhost:8888/board/register', { title, writer, content })
                 .then(res => {
                     alert('등록이 완료되었습니다.' + res)
                     // console.log('게시물 번호 : ' + res.data.boardNo.toString ())

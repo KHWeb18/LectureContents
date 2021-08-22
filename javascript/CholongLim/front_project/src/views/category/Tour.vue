@@ -14,7 +14,6 @@
         </v-container>
 
         <v-divider></v-divider>
-
   </div>
 </template>
 

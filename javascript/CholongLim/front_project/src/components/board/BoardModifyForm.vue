@@ -10,7 +10,7 @@
 
             <v-text-field label="제목" dense required height="5vh" style="margin-top:10px;" 
                             outlined 
-                           :value="board.title" type="title">
+                           v-model="title" type="title">
             </v-text-field>
 
             <v-text-field label="작성자" dense required height="5vh" style="margin-top:10px;" 
@@ -20,7 +20,7 @@
 
             <v-textarea label="본문"  auto-grow style="margin-top:10px;" counter maxlength="500"
                             full-width single-line outlined 
-                       :value="board.content" type="content">
+                       v-model="content" type="content">
             </v-textarea>
             </v-col>
         </div>

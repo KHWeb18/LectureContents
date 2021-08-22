@@ -18,8 +18,7 @@ public class Tour {
     @Column(length = 20, nullable = false)
     private String tourNo;
 
-    @Column(length = 20, nullable = false)
-
+    @Column(length = 500, nullable = false)
     private String category;
 
     @Column(length = 500, nullable = false)

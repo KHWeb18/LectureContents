@@ -43,7 +43,7 @@ export default {
         ...mapActions(['fetchBoard']),
         onSubmit (payload) {
             const { title, content } = payload
-            axios.put(`http://localhost:8888/jpaboard/${this.boardNo}`, { title, content })
+            axios.put(`http://localhost:8888/board/${this.boardNo}/edit`, { title, content })
                     .then(res => {
                         alert('수정하였습니다.')
                         this.$router.push({

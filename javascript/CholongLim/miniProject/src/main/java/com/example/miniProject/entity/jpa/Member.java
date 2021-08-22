@@ -27,13 +27,19 @@ public class Member {
     private String password;
 
     @Column(length = 64, nullable = false)
+    private String passwordReInput;
+
+    @Column(length = 64, nullable = false)
     private String userName;
 
     @Column(length = 64, nullable = false)
     private Integer userPhone;
 
+//     예약일자 - 8/15
+//    private Date reservedDate;
+
     @CreationTimestamp
-    private Date regDate;
+    private Date regDate; // 예약을 언제했는지   - 7/30
 
     @UpdateTimestamp
     private Date updDate;

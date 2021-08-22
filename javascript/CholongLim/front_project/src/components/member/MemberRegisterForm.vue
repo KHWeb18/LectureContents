@@ -8,22 +8,32 @@
         <div>
 
             <v-icon class="name-icon" color="white">face</v-icon>
-            <v-text-field label="이름" dense required height="5vh" style="margin-top:10px;" solo
+            <v-text-field label="이름 (ex. 홍길동)" dense required height="5vh" style="margin-top:10px;" solo
+
                            v-model="userName" :rules="[v => !!v || '필수정보입니다.']" type="name">
             </v-text-field>
 
+    
             <v-icon class="mail-icon" color="white">email</v-icon>
-            <v-text-field label="아이디" dense required height="5vh" style="margin-top:10px;" solo
+            <v-text-field label="아이디 (ex. cinzel)" dense required height="5vh" 
+                          style="margin-top:10px;" solo
                            v-model="userId" :rules="[v => !!v || '필수정보입니다.']" type="id">
             </v-text-field>
+            
 
             <v-icon class="pass-icon" color="white">lock</v-icon>
             <v-text-field label="비밀번호" dense required height="5vh" style="margin-top:10px;" solo
                         v-model="password" :rules="[v => !!v || '필수정보입니다.']" type="password">
             </v-text-field>
+            
+
+            <v-icon class="pass-icon" color="white">lock</v-icon>
+            <v-text-field label="비밀번호 재입력" dense required height="5vh" style="margin-top:10px;" solo
+                        v-model="passwordReInput" :rules="[v => !!v || '필수정보입니다.']" type="password">
+            </v-text-field>
 
             <v-icon class="phone-icon" color="white">call</v-icon>
-            <v-text-field label="전화번호" dense required height="5vh" style="margin-top:10px;" solo
+            <v-text-field label="전화번호 (ex.01012345678)" dense required height="5vh" style="margin-top:10px;" solo
                         v-model="userPhone" :rules="[v => !!v || '필수정보입니다.']" type="phone">
             </v-text-field>
 
@@ -52,13 +62,14 @@ export default {
             userName: '',
             userId: '',
             password: '',
+            passwordReInput: '',
             userPhone: ''
         }
     },
     methods: {
         onSubmit () {
-            const {  userName, userId, password, userPhone } = this
-            this.$emit('submit', { userName, userId, password, userPhone })
+            const {  userName, userId, password, passwordReInput, userPhone } = this
+            this.$emit('submit', { userName, userId, password, passwordReInput, userPhone })
         }
     }
 }
@@ -81,22 +92,22 @@ export default {
 
 .name-icon{
     float: left;
-    padding: 7px 20px 15px 20px;
+    padding: 15px 20px 15px 20px;
 }
 
 .pass-icon{
     float: left;
-    padding: 16px 20px 15px 20px;
+    padding: 25px 20px 15px 20px;
 }
 
 .phone-icon{
     float: left;
-    padding: 16px 20px 15px 20px;
+    padding: 25px 20px 15px 20px;
 }
 
 .mail-icon{
     float: left;
-    padding: 16px 20px 15px 20px;
+    padding: 25px 20px 15px 20px;
 }
 
 h1{

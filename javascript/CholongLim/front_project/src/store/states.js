@@ -4,13 +4,16 @@ export default {
   // 게시판
   boards: [],
   board: null,
+  // 회원 관리
+  members: [],
+  member: null,
+  //
+  search:[],
   // 로그인
   memberRequest: null,
   isLogin: false,
   isLoginError: false,
   userInfo: null,
-  // userId: '',
-  // password: '',
     // 크롤링
   lists: []
 }

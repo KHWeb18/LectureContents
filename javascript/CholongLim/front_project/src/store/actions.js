@@ -2,8 +2,12 @@ import {
     // 게시판
   FETCH_BOARD_LIST,
   FETCH_BOARD,
-  // 로그인 연습
+  // 회원관리
+  FETCH_MEMBER_LIST,
+  FETCH_MEMBER,
+  // 로그인
   LOGIN_SUCCESS,
+
   // LOGIN_ERROR,
   LOGOUT,
    // 크롤링
@@ -20,7 +24,7 @@ export default {
      fetchBoardList ({ commit }) {
         return axios.get('http://localhost:8888/board/lists')
                 .then((res) => {
-                    commit(FETCH_BOARD_LIST, res.data)
+                    commit(FETCH_MEMBER_LIST, res.data)
                 })
       },
       fetchBoard ({ commit }, boardNo) {
@@ -29,8 +33,21 @@ export default {
                     commit(FETCH_BOARD, res.data)
                 })
       },
+      // 회원관리
+     fetchMemberList ({ commit }) {
+      return axios.get('http://localhost:8888/memberManage/lists')
+              .then((res) => {
+                  commit(FETCH_BOARD_LIST, res.data)
+              })
+    },
+    fetchMember ({ commit }, boardNo) {
+      return axios.get(`http://localhost:8888/memberManage/${boardNo}`)
+              .then((res) => {
+                  commit(FETCH_MEMBER, res.data)
+              })
+    },
        // 로그인 연습
-  // 로그인 시도
+  //로그인 시도
       getMemberInfo({commit}) {
         let token = localStorage.getItem("access_token")
         let config = {
@@ -53,7 +70,7 @@ export default {
     logout({commit}) {
       axios.post('http://localhost:8888/jpamember/removeSession')
       .then(res => {
-          alert('로그아웃이 완료되었습니다.')
+          alert('로그아웃이 완료되었습니다`${category}`.')
           console.log(res)
           commit(LOGOUT)
           router.push({name: 'MainPage'})
@@ -61,7 +78,7 @@ export default {
     },
     // 크롤링
   async crawlFind ({ commit }, category) {
-    axios.get('http://localhost:8888/Crawler/' + `${category}`)
+    axios.get('http://localhost:8888/' + `${category}`)
             .then(({ data }) => {
                 commit(CRAWL_START, data)
 

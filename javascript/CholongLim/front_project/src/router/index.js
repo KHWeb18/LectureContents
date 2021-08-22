@@ -8,6 +8,8 @@ import MainPage from '@/views/main/MainPage.vue'
 // 로그인
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
+import ManagerLogin from '@/views/ManagerLogin.vue'
+
 // 회원가입
 import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 
@@ -26,6 +28,7 @@ import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
 import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
 
+
 // room
 import Room201 from '@/views/category/rooms/Room201.vue'
 import Room202 from '@/views/category/rooms/Room202.vue'
@@ -37,6 +40,9 @@ import Book from '@/views/Book.vue'
 import Book2 from '@/views/Book2.vue' 
 import CompletePayment from '@/views/CompletePayment.vue' 
 
+// 관리자 페이지
+import administratorPage from '@/views/administratorPage.vue'
+
 
 
 
@@ -47,6 +53,13 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/administrator',
+    name: 'administratorPage',
+    components: {
+      default: administratorPage
+    }
   },
   {
     path: '/tourCrawler',
@@ -70,10 +83,20 @@ const routes = [
     }
   },
   {
-    path: '/myPage',
+    path: '/managerLogin',
+    name: 'ManagerLogin',
+    components: {
+      default: ManagerLogin
+    }
+  },
+  {
+    path: '/myPage/:memberNo',
     name: 'MyPage',
     components: {
       default: MyPage
+    },
+    props: {
+      default: true
     }
   },
   {
@@ -146,6 +169,7 @@ const routes = [
       default: BoardListPage
     }
   },
+ 
   {
     path: '/board/create',
     name: 'BoardRegisterPage',

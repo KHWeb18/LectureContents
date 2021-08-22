@@ -1,7 +1,9 @@
 package com.example.miniProject.service;
 
+
 import com.example.miniProject.entity.Tour;
 import com.example.miniProject.repository.TourRepository;
+import com.example.miniProject.service.jpa.JPAMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -18,8 +20,8 @@ import java.util.List;
 @Service
 @Lazy
 @Slf4j
-public class VueTourCrawlServiceImpl implements VueTourCrawlService {
 
+public class VueTourCrawlServiceImpl implements VueTourCrawlService {
     @Autowired
     TourRepository tourRepository;
 
@@ -39,64 +41,36 @@ public class VueTourCrawlServiceImpl implements VueTourCrawlService {
 
             document = homepage.parse();
         } catch (Exception e) {
-            log.info("Error in TourMainCrawler");
+            log.info("Error in daumNewsMainCrawler");
         }
 
         return document;
     }
 
     @Override
-    public List<Tour> TourFindAll() {
-        log.info("TourFindAll()");
+    public List<Tour> tourFindAll() {
+        log.info("tourFindAll()");
 
         return tourRepository.findAll();
     }
 
-    /*
-    @Override
-    public void daumNewsHomeCrawling() {
-        log.info("daumNewsHomeCrawling()");
-        daumNewsHomeRepository.deleteAll();
-        document = connectUrl("https://news.daum.net/");
-        Elements total = document.select("strong.tit_thumb>a.link_txt");
-        Elements image = document.select("div.item_issue>a.link_thumb>img.thumb_g");
-        DaumNewsHome dnh = null;
-        for (int i = 0; i < total.size(); i++) {
-            dnh = new DaumNewsHome();
-            dnh.setDaumNewsHomeNo(String.valueOf(i + 1));
-            dnh.setTitle(total.get(i).text());
-            dnh.setAddress(total.get(i).attr("href"));
-            dnh.setImage(image.get(i).attr("src"));
-            daumNewsHomeRepository.save(dnh);
-        }
-    }
-     */
+
 
     @Override
-    public void TourMainCrawler(String category) {
-        log.info("TourMainCrawler()");
+    public void tourMainCrawler(String category) {
+        log.info("tourMainCrawler()");
 
-        document = connectUrl("https://www.visitjeju.net/kr/" + category);
-
+        document = connectUrl("https://search.naver.com/search.naver?where=view&sm=tab_jum&query=" + category);
         tourRepository.deleteAll();
+        tourCrawling(document.select(
+                "div.total_area>a"), category);
 
-        TourCrawling(document.select(
-                "ul.item_list>li>dl.item_section>dt.item_top>a"), category);
-        TourCrawling(document.select(
-                "ul.item_list type_thumb>li>dl.item_section>dt.item_top>a"), category);
-        TourCrawling(document.select(
-                "li>dl.item_section>dt.item_top>a>div.score_area>p"), category);
-        TourCrawling(document.select(
-                "li>dl.item_section>dt.item_top>a"), category);
-//        TourCrawling(document.select(
-//                "dl.item_section>dt.item_top>a>div.score_area>p.s_tit"), category);
-//        TourCrawling(document.select(
-//                "ul.list_ranking>li>span.cont_thumb>strong.tit_thumb>a"), category);
+
 
     }
 
     @Override
-    public void TourCrawling(Elements elements, String category) {
+    public void tourCrawling(Elements elements, String category) {
         log.info("TourCrawling(): elements - " + elements + ", category - " + category);
 
         Tour tour = null;
@@ -109,7 +83,10 @@ public class VueTourCrawlServiceImpl implements VueTourCrawlService {
             tour.setCategory(category);
             tour.setTitle(elements.get(i).text());
 
+
             tourRepository.save(tour);
         }
     }
 }
+
+

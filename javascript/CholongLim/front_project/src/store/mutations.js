@@ -2,6 +2,10 @@ import {
    // 게시판
    FETCH_BOARD_LIST,
    FETCH_BOARD,
+   FETCH_BOARD_SEARCH,
+   // 회원관리
+   FETCH_MEMBER_LIST,
+   FETCH_MEMBER,
    // 로그인 로그아웃
    LOGIN_SUCCESS,
    LOGIN_ERROR,
@@ -19,6 +23,17 @@ export default {
   [FETCH_BOARD] (state, board) {
     state.board = board
   },
+  [FETCH_BOARD_SEARCH] (state, search) {
+    state.search = search
+  },
+  // 회원 관리
+  [FETCH_MEMBER_LIST] (state, members) {
+    state.members = members;
+  },
+  [FETCH_MEMBER] (state, member) {
+    state.member = member
+  },
+
   // 로그인이 성공했을 때,
   [LOGIN_SUCCESS] (state, payload) {
     state.isLogin = true
