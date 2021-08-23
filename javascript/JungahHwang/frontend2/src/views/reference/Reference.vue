@@ -16,5 +16,9 @@
       class="nav-link" 
       active-class="active">Calendar
     </router-link>
+    <router-link :to="{ name: 'FileUploadPage' }" 
+      class="nav-link" 
+      active-class="active">FileUploadPage
+    </router-link>
   </div>  
 </template>

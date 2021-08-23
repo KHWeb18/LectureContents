@@ -11,6 +11,7 @@ import CoverFlowPage from '@/views/reference/CoverFlowPage'
 import AwesomeSwiperPage from '@/views/reference/AwesomeSwiperPage'
 import ImageGalleryPage from '@/views/reference/ImageGalleryPage'
 import CalendarPage from '@/views/reference/CalendarPage'
+import FileUploadPage from '@/views/reference/FileUploadPage'
 
 // Quiz
 import Quiz from '@/views/quiz/Quiz'
@@ -109,6 +110,11 @@ const routes = [
     path: '/reference/calendar',
     name: 'CalendarPage',
     component: CalendarPage
+  },
+  {
+    path: '/reference/fileUpload',
+    name: 'FileUploadPage',
+    component: FileUploadPage
   },
 
   // Quiz 
