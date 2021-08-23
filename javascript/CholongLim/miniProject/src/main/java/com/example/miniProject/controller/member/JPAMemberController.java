@@ -34,26 +34,25 @@ public class JPAMemberController {
 
     @PostMapping("/register")
     public ResponseEntity<Void> jpaRegister(
-            @Validated @RequestBody Member member,
+            @Validated @RequestBody MemberRequest memberRequest,
             HttpServletRequest request) throws Exception {
+        log.info("jpaRegister(): " + memberRequest.getUserId() + ", " + memberRequest.getPassword() + ", " +
+                (memberRequest.getAuth().equals("개인") ? "ROLE_INDIVIDUAL" : "ROLE_MANAGER"));
 
-        log.info("jpaRegister(): " + member.getUserId() + ", " + member.getPassword()  + ", " + member.getPasswordReInput());
+        log.info("jpaRegister(): " + memberRequest.getUserId() + ", " + memberRequest.getPassword()  + ", " + memberRequest.getPasswordReInput());
 
-            boolean ableId = service.duplicateCheck(member);
+            boolean ableId = service.duplicateCheck(memberRequest);
 
-
-            if (member.getPassword().equals(member.getPasswordReInput())) {
+            if (memberRequest.getPassword().equals(memberRequest.getPasswordReInput())) {
                 if(ableId){
                     log.info("able id");
                     log.info("register Success");
-                    service.register(member);
+                    service.register(memberRequest);
                     return new ResponseEntity<Void>(HttpStatus.OK);
-
                 } else {
                     log.info("unable id");
                     this.info = null;
                 }
-
             } else {
                 log.info("register Fail");
                 this.info = null;
@@ -61,23 +60,6 @@ public class JPAMemberController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
-//
-//    @PostMapping("/register")
-//    public ResponseEntity<Void> jpaRegister(
-//            @Validated @RequestBody Member member, HttpServletRequest request) throws Exception {
-//        log.info("jpaRegister(): " + member.getUserId() + ", " + member.getPassword());
-//
-//        Boolean isCheck = service.duplicateCheckId(member);
-//
-//        if (isCheck) {
-//            log.info("able Id");
-//            service.register(member);
-//
-//        }
-//        return new ResponseEntity<Void>(HttpStatus.OK);
-//    }
-
-
 
     @PostMapping("/login")
     public ResponseEntity<UserInfo> jpaLogin(

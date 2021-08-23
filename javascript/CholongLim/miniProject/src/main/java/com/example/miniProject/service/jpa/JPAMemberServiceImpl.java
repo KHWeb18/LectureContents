@@ -2,10 +2,12 @@ package com.example.miniProject.service.jpa;
 
 import com.example.miniProject.controller.member.request.MemberRequest;
 import com.example.miniProject.entity.jpa.Member;
+import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.repository.jpa.JPAMemberAuthRepository;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,27 +39,46 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 //    }
 
     @Override
-    public void register(Member member) throws Exception {
-        String encodedPassword = passwordEncoder.encode(member.getPassword());
-        member.setPassword(encodedPassword);
-        String encodedPasswordReInput = passwordEncoder.encode(member.getPasswordReInput());
-        member.setPasswordReInput(encodedPasswordReInput);
+    public void register(MemberRequest memberRequest) throws Exception {
+        String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
+        memberRequest.setPassword(encodedPassword);
+        String encodedPasswordReInput = passwordEncoder.encode(memberRequest.getPasswordReInput());
+        memberRequest.setPasswordReInput(encodedPasswordReInput);
 
-        memberRepository.save(member);
+        MemberAuth authEntity = new MemberAuth(memberRequest.getAuth());
+        Member memberEntity = new Member(memberRequest.getUserId(), memberRequest.getPassword(),
+                memberRequest.getPasswordReInput(),memberRequest.getUserName(),memberRequest.getUserPhone());
+        memberEntity.addAuth(authEntity);
+
+        memberRepository.save(memberEntity);
 
     }
 
     @Override
-    public boolean duplicateCheck(Member member) throws Exception {
-        Optional<Member> checkMember = memberRepository.findByDuplicateCheck(member.getUserId());
-
-        if (checkMember == null)
-        {
-            log.info("check(): Able");
+    public boolean duplicateCheck(MemberRequest memberRequest) throws Exception {
+        Optional<Member> checkMember = memberRepository.findByDuplicateCheck(memberRequest.getUserId());
+        if(checkMember.isPresent()) {
+            log.info("already exist");
+            return false;
+        } else {
             return true;
         }
-        log.info("check(): Able");
-        return false;
+
+
+//        Member registerMember = checkMember.get();
+//        if (checkMember)
+//        {
+//            String possibleId = member.getUserId();
+//            log.info(possibleId);
+//            return true;
+//
+//        } else {
+//
+//        log.info("check(): unable");
+//        return false;
+//
+//        }
+
     }
 
 
@@ -101,11 +122,10 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 
 
 
-    /*
     @Override
-    public List<Member> list() throws Exception {
-        return repository.list();
+    public Optional<Member> findByAuth(Long memberNo) {
+        return memberRepository.findByAuth(memberNo);
     }
-     */
+
 
 }

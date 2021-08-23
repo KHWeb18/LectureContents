@@ -29,6 +29,7 @@ public class Board {
     @Column(length = 150, nullable = false)
     private String writer;
 
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 

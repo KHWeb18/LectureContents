@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface JPAMemberRepository extends JpaRepository<Member, Long> {
 
-//    @Query("select m from Member m join fetch m.authList where m.memberNo = :memberNo")
-//    Optional<Member> findByAuth(Long memberNo);
 
     // 아이디 중복 검사
     @Query("select m from Member m where m.userId = :userId")
@@ -19,4 +17,8 @@ public interface JPAMemberRepository extends JpaRepository<Member, Long> {
     // 게시판 검색기능 가능
     @Query("select m from Member m where m.userId = :userId")
     Optional<Member> findByUserId(String userId);
+
+
+    @Query("select m from Member m join fetch m.authList where m.memberNo = :memberNo")
+    Optional<Member> findByAuth(Long memberNo);
 }

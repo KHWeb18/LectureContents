@@ -43,7 +43,7 @@ export default {
         ...mapActions(['fetchBoard']),
         onSubmit (payload) {
             const { title, content } = payload
-            axios.put(`http://localhost:8888/board/${this.boardNo}/edit`, { title, content })
+            axios.put(`http://localhost:8888/board/${this.boardNo}`, { title, content })
                     .then(res => {
                         alert('수정하였습니다.')
                         this.$router.push({
@@ -51,7 +51,7 @@ export default {
                             params: { boardNo: res.data.boardNo.toString() }
                         })
                     })
-                    .catch(err => {
+                     .catch(err => {
                         alert(err.response.data.message)
                     })
         }

@@ -2,13 +2,15 @@ package com.example.miniProject.service.jpa;
 
 
 import com.example.miniProject.entity.jpa.Board;
-import com.example.miniProject.entity.jpa.BoardDto;
+import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,87 +21,53 @@ public class JPABoardServiceImpl implements JPABoardService {
 
     @Autowired
     private JPABoardRepository boardRepository;
-/* Dto 이용했을때 */
-    public JPABoardServiceImpl (JPABoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
+
+
+    @Override
+    public void register(Board board) throws Exception {
+        boardRepository.save(board);
     }
 
     @Override
-    public Long register(BoardDto boardDto) throws Exception {
-        return boardRepository.save(boardDto.toEntity()).getBoardNo();
-//    boardRepository.save(board);
+    public List<Board> list() throws Exception {
+        return boardRepository.findAll();
     }
 
     @Override
-    public List<BoardDto> list() throws Exception {
-        List<Board> boards = boardRepository.findAll();
-        List<BoardDto> boardDtoList = new ArrayList<>();
+    public Board read(Long boardNo) throws Exception {
+        Optional<Board> optional = boardRepository.findById(boardNo);
+        if(optional.isPresent()) {
+            Board board = optional.get();
+            boardRepository.save(board);
 
-        for(Board board : boards) {
-            BoardDto boardDto = BoardDto.builder()
-                    .boardNo(board.getBoardNo())
-                    .title(board.getTitle())
-                    .writer(board.getWriter())
-                    .content(board.getContent())
-                    .regDate(board.getRegDate())
-                    .build();
-
-            boardDtoList.add(boardDto);
+            return board;
+        } else {
+            throw new NullPointerException();
         }
-        return boardDtoList;
-//        return boardRepository.findAll();
+
     }
-
-    @Override
-    public BoardDto read(Long boardNo) throws Exception {
-        Optional<Board> boardWrapper = boardRepository.findById(boardNo);
-        Board board = boardWrapper.get();
-
-        BoardDto boardDto = BoardDto.builder()
-                .boardNo(board.getBoardNo())
-                .title(board.getTitle())
-                .writer(board.getWriter())
-                .content(board.getContent())
-                .regDate(board.getRegDate())
-                .build();
-
-        return boardDto;
-    }
-
-
 
     @Override
     public void remove(Long boardNo) throws Exception {
         boardRepository.deleteById(boardNo);
     }
 
-//    @Override
-//    public void modify(BoardDto boardDto) throws Exception {
-//        boardRepository.update(boardDto.getTitle(), boardDto.getBoardNo());
-//    }
 
-//    @Override
-//    public List<BoardDto> search(String keyword) throws Exception {
-//        List<Board> boards = boardRepository.findByKeyword(keyword);
-//        List<BoardDto> boardDtoList = new ArrayList<>();
-//
-//        if(boards.isEmpty()) return  boardDtoList;
-//
-//        for(Board board : boards) {
-//            boardDtoList.add(this.convertEntityToDto(board));
-//        }
-//        return boardDtoList;
-//    }
-//
-//    private BoardDto convertEntityToDto(Board board) {
-//        return BoardDto.builder()
-//                .boardNo(board.getBoardNo())
-//                .title(board.getTitle())
-//                .writer(board.getWriter())
-//                .content(board.getContent())
-//                .regDate(board.getRegDate())
-//                .build();
-//    }
+
+    @Transactional
+    public void modify(Board board) throws Exception {
+        Optional<Board> Update= boardRepository.updateBoard(board.getBoardNo(),board.getTitle(),board.getContent());
+
+
+        if(Update.isPresent()) {
+            Board input = Update.get();
+            log.info("null = x");
+        } else {
+            log.info("null = o");
+        }
+
+
+    }
 
 }
 

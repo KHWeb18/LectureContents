@@ -37,13 +37,13 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 
 // 예약하기
 import Book from '@/views/Book.vue'
-import Book2 from '@/views/Book2.vue' 
 import CompletePayment from '@/views/CompletePayment.vue' 
 
 // 관리자 페이지
 import administratorPage from '@/views/administratorPage.vue'
 
 
+  
 
 
 Vue.use(VueRouter)
@@ -202,13 +202,6 @@ const routes = [
     name: 'Book',
     components: {
       default: Book
-    }
-  },
-  {
-    path: '/book2',
-    name: 'Book2',
-    components: {
-      default: Book2
     }
   },
   {

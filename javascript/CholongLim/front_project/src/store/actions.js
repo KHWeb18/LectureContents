@@ -24,7 +24,7 @@ export default {
      fetchBoardList ({ commit }) {
         return axios.get('http://localhost:8888/board/lists')
                 .then((res) => {
-                    commit(FETCH_MEMBER_LIST, res.data)
+                    commit(FETCH_BOARD_LIST, res.data)
                 })
       },
       fetchBoard ({ commit }, boardNo) {
@@ -37,7 +37,7 @@ export default {
      fetchMemberList ({ commit }) {
       return axios.get('http://localhost:8888/memberManage/lists')
               .then((res) => {
-                  commit(FETCH_BOARD_LIST, res.data)
+                  commit(FETCH_MEMBER_LIST, res.data)
               })
     },
     fetchMember ({ commit }, boardNo) {
@@ -70,10 +70,12 @@ export default {
     logout({commit}) {
       axios.post('http://localhost:8888/jpamember/removeSession')
       .then(res => {
-          alert('로그아웃이 완료되었습니다`${category}`.')
-          console.log(res)
-          commit(LOGOUT)
-          router.push({name: 'MainPage'})
+            alert('로그아웃이 완료되었습니다.')
+            console.log(res)
+            commit(LOGOUT)
+            let token = null
+            localStorage.setItem("access_token", token)
+            router.push({name: 'MainPage'})
       })
     },
     // 크롤링

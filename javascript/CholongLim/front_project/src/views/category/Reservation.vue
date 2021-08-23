@@ -16,10 +16,14 @@
         <v-divider></v-divider>
 
         <v-container>
+            
             <v-container class="btn-box">
-                <v-btn color="text-white blue lighten-2" v-if="isLogin === false" router :to="'/login'"
-                width="200px" height="50px">예약하기</v-btn>
-                <v-btn v-else router :to="'/book'" color="text-white blue lighten-2" width="200px" height="50px">
+                <!--  v-if="isLogin === false" -->
+                <!-- <v-btn color="text-white blue lighten-2" router :to="'/login'"
+                width="200px" height="50px">예약하기</v-btn> -->
+                <!-- v-else router :to="'/book'" -->
+                <v-btn color="text-white blue lighten-2"
+                 @click="reservation()" width="200px" height="50px">
                 예약하기
                 </v-btn>
             </v-container>
@@ -143,6 +147,21 @@ import { mapState } from 'vuex'
                 {day: '이용 1일 전', percent: '100%(환불불가)' },
                 {day: '이용 당일', percent: '100%(환불불가)' },
             ]
+        }
+    },
+    methods: {  
+        reservation(){
+                 if(this.isLogin == false) {
+                    alert('로그인이 필요한 서비스입니다.')
+                     this.$router.push({
+                                    name: 'CinzelMemberLogin'
+                                    })
+                 } else {
+                     this.$router.push({
+                                    name: 'Book'
+                                    })
+                 }
+            
         }
     }
 }

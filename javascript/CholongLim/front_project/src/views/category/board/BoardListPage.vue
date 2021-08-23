@@ -17,25 +17,21 @@
         <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
         <board-list :boards="boards"/>
         
-        <!-- <v-col cols="12" sm="12" md="12"> -->
-            <v-container class="search-box">
-                <div style="float: left; width: 165px;">
-                    <!-- <v-select :items="days" label="제목"  flat solo outlined style="margin-right:30px;" 
-                            class="search-select"></v-select></div>
 
-                    <div style="float: left;"> -->
+            <!-- <v-container class="search-box">
+                <div style="float: left; width: 165px;">
                     <v-text-field label="검색" required height="6.5vh" style=" width: 300px;" solo 
-                            type="text" name="keyword" v-model="keyword">
+                            type="text" name="keyword" >
                     </v-text-field></div>
 
                     <div style="float: left; padding:10px;">
-                        <v-btn text style="float:left;" @click="find({ search })">
+                        <v-btn text style="float:left;">
                             <v-icon middel>search</v-icon>
                         </v-btn>
                     </div>
     
-            </v-container>
-        <!-- </v-col> -->
+            </v-container> -->
+
 
     </div>  
 </template>
@@ -43,17 +39,10 @@
 <script>
 import BoardList from '@/components/board/BoardList.vue'
 import { mapState, mapActions } from 'vuex'
-import axios from 'axios'
-
 export default {
     name: 'BoardListPage',
     components: {
         BoardList
-    },
-    data() {
-        return {
-            days: ['제목', '내용', '제목+내용']
-        }
     },
     computed: {
         ...mapState(['boards'])
@@ -62,18 +51,7 @@ export default {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList']),
-        find (payload) {
-            const { keyword } = payload
-            axios.get(`http://localhost:8888/board/search`, { keyword })
-                    .then(res => {
-                        alert('검색성공.' + res)
-                    })
-                    .catch(err => {
-                        alert(err.response.data.message)
-                    })
-        }
-
+        ...mapActions(['fetchBoardList'])
     }
 }
 </script>

@@ -7,6 +7,7 @@
             <div justify-center>
         <div>
 
+
             <v-icon class="name-icon" color="white">face</v-icon>
             <v-text-field label="이름 (ex. 홍길동)" dense required height="5vh" style="margin-top:10px;" solo
 
@@ -59,6 +60,7 @@ export default {
     name: 'MemberRegisterForm',
     data () {
         return {
+            auth: '개인',
             userName: '',
             userId: '',
             password: '',
@@ -68,8 +70,8 @@ export default {
     },
     methods: {
         onSubmit () {
-            const {  userName, userId, password, passwordReInput, userPhone } = this
-            this.$emit('submit', { userName, userId, password, passwordReInput, userPhone })
+            const {  userName, userId, password, passwordReInput, userPhone, auth } = this
+            this.$emit('submit', { userName, userId, password, passwordReInput, userPhone, auth })
         }
     }
 }

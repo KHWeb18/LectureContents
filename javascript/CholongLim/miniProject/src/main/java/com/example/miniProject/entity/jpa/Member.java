@@ -43,23 +43,26 @@ public class Member {
 
     @UpdateTimestamp
     private Date updDate;
-}
 
-    /* Join Column 파트 */
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "member_no")
-//    private List<MemberAuth> authList = new ArrayList<MemberAuth>();
-//
-//    public Member(String userId, String password) {
-//        this.userId = userId;
-//        this.password = password;
-//    }
-//
-//    public void addAuth(MemberAuth auth) {
-//        authList.add(auth);
-//    }
-//
-//    public void clearAuthList () {
-//        authList.clear();
-//    }
-//}
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "member_no")
+    private List<MemberAuth> authList = new ArrayList<MemberAuth>();
+
+    public Member(String userId, String password, String passwordReInput, String userNam, Integer userPhone) {
+        this.userId = userId;
+        this.password = password;
+        this.passwordReInput = passwordReInput;
+        this.userName = userNam;
+        this.userPhone = userPhone;
+    }
+
+    public void addAuth(MemberAuth auth) {
+        authList.add(auth);
+    }
+
+    public void clearAuthList () {
+        authList.clear();
+    }
+
+}

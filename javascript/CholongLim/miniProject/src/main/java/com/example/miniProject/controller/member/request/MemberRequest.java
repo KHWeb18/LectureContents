@@ -11,5 +11,10 @@ public class MemberRequest {
     private Long memberNo;
     private String userId;
     private String password;
+    private String passwordReInput;
     private String userName;
+    private Integer userPhone;
+    private String auth;
+
+
 }

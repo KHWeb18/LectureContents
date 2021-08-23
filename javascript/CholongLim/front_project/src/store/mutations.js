@@ -2,7 +2,6 @@ import {
    // 게시판
    FETCH_BOARD_LIST,
    FETCH_BOARD,
-   FETCH_BOARD_SEARCH,
    // 회원관리
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
@@ -23,8 +22,22 @@ export default {
   [FETCH_BOARD] (state, board) {
     state.board = board
   },
-  [FETCH_BOARD_SEARCH] (state, search) {
-    state.search = search
+    // 관리자 로그인 로그아웃
+  [LOGIN_SUCCESS] (state, payload) {
+    state.isManagerLogin = true
+    state.isManagerLoginError = false
+    state.userInfo = payload
+  },
+  // 로그인 실패했을때
+  [LOGIN_ERROR] (state){
+    state.isManagerLogin = false
+    state.isManagerLoginError = true
+  },
+  // 로그아웃
+  [LOGOUT] (state) {
+    state.isManagerLogin = false
+    state.isManagerLoginError = false
+    state.userInfo = null
   },
   // 회원 관리
   [FETCH_MEMBER_LIST] (state, members) {

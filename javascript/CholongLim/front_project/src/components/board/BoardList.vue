@@ -7,6 +7,7 @@
                 <th align="center" width="100">작성자</th>
                 <th align="center" width="100">등록일자</th>
             </tr>
+             
             <tr v-if="!boards || (Array.isArray(boards) && boards.length === 0)">
                 <td colspan="4">
                     현재 등록된 게시물이 없습니다!
@@ -21,7 +22,7 @@
                     </router-link>
                 </td>
                 <td align="right">{{ board.writer }}</td>
-                <td align="center">{{ board.regDate}}</td>
+                <td align="center">{{ board.regDate }}</td>
             </tr>
         </table>
     </div>
