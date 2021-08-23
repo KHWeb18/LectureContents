@@ -73,6 +73,10 @@ import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
 import SwiperTest from '@/views/SwiperTest.vue'
 
+import FileUploadPage from '@/views/FileUploadPage.vue'
+
+
+
 
 
 
@@ -343,6 +347,15 @@ const routes = [
       default: SwiperTest
     }
   },
+
+  {
+    path: '/fileUploadPage',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  },
+  
 
 
 

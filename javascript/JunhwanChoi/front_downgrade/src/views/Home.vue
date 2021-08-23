@@ -157,6 +157,11 @@
                     active-class="active">
                 SWiperTest
             </router-link><br><br>
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                파일 업로드 test
+            </router-link><br><br>
             
 
 
