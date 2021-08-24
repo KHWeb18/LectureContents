@@ -43,4 +43,34 @@ public class MemberServiceImpl implements MemberService {
         }
         return true;
     }
+
+    @Override
+    public boolean validationId(String id) throws Exception {
+        Optional<Member> maybeMember = repository.findById(id);
+
+        if (maybeMember == null) {
+            log.info("회원 정보 없음");
+
+            return false;
+        }
+        log.info(String.valueOf(maybeMember.get()));
+        return true;
+    }
+
+    @Override
+    public Optional<Member> userInfo(String id) throws Exception {
+        return repository.findById(id);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

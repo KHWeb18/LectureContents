@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.json:json:20190722'
 	implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.2'
+	implementation group: 'org.springframework.session', name: 'spring-session-core', version: '2.5.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'

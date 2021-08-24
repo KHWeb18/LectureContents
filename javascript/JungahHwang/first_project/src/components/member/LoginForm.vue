@@ -2,7 +2,7 @@
   <div>
     <v-dialog v-model="dialog" persistent max-width="500px">
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on" class="float-right">
+        <v-btn v-on="on" icon class="float-right">
           <v-icon color="secondary">lock_open</v-icon>
         </v-btn>
       </template>
@@ -22,9 +22,9 @@
         
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn class="secondary--text font-weight-bold" text @click="resetForm">cancel</v-btn>
+          <v-btn @click="resetForm" class="secondary--text font-weight-bold" text>cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="secondary--text font-weight-bold" text @click="btnLogin">login</v-btn>
+          <v-btn @click="btnLogin" class="secondary--text font-weight-bold" text>login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -33,9 +33,9 @@
 
 
 <script>
-//import axios from 'axios'
+import axios from 'axios'
 import SignupForm from '@/components/member/SignupForm'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'LoginFrom',
@@ -69,6 +69,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions ([ 'userLogin' ]),
+
     btnLogin () {
       this.formHasErrors = false
 
@@ -77,13 +79,28 @@ export default {
 
         this.$refs[f].validate(true)
       })
+
+      const id = this.id
+      const pw = this.pw
       
-      // axios.post('http://localhost:7777/vue/login', { id, pw }).then(() => {
-      //   alert('로그인이 완료되었습니다.')
-      //   this.dialog = false
-      // }).catch(res => {
-      //   alert(res.response.data.message)
-      // })
+      axios.post('http://localhost:7777/member/login', { id, pw }).then(res => {
+        
+        if (res.data) {
+          alert('로그인이 완료되었습니다.')
+
+          this.$store.commit('USER_LOGIN', res.data)
+          this.userLogin(id)
+
+          this.dialog = false
+        } else if (!res.data) {
+          alert('아이디와 비밀번호를 확인해주세요!')
+
+          console.log('isLogin: ' + res.data)
+        }
+        
+      }).catch(err => {
+        alert(err)
+      })
       
     },
     resetForm () {

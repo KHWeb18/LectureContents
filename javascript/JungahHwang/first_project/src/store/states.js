@@ -1,4 +1,8 @@
 export default {
+// Login
+  isLogin: false,
+  userInfo: [],
+
   idRules: [
     id => !!id || '아이디를 입력해주세요!',
     id => /^[a-zA-Z0-9]*$/.test(id) || '아이디는 영문 + 숫자만 입력 가능합니다.',
@@ -32,6 +36,6 @@ export default {
 
 // Calendar
   dialog: false,
-  date: null,
-  focus: ''
+  date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+  activity: []
 }

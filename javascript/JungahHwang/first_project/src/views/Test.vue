@@ -175,8 +175,6 @@
         const open = () => {
           this.selectedEvent = event
           this.selectedElement = nativeEvent.target
-          console.log(this.selectedEvent)
-          console.log(this.selectedElement)
           requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
         }
 

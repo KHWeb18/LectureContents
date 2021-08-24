@@ -11,6 +11,8 @@ import Recommend from '@/views/Recommend'
 import Together from '@/views/Together'
 import Chatting from '@/views/Chatting'
 
+import Mypage from '@/views/member/Mypage'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -66,6 +68,11 @@ const routes = [
     path: '/chatting',
     name: 'Chatting',
     component: Chatting
+  },
+  {
+    path: '/mypage',
+    name: 'Mypage',
+    component: Mypage
   },
 ]
 

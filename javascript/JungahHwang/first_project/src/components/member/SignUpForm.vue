@@ -74,9 +74,9 @@
       
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn class="secondary--text font-weight-bold" text @click="resetForm">cancel</v-btn>
+          <v-btn @click="resetForm" class="secondary--text font-weight-bold" text>cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="secondary--text font-weight-bold" text @click="btnSignup">signup</v-btn>
+          <v-btn @click="btnSignup" class="secondary--text font-weight-bold" text>signup</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

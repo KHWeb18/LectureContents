@@ -1,6 +1,7 @@
 <template>
   <v-card class="primary" >
-    <login-form></login-form>
+    <login-form v-if="!isLogin"></login-form>
+    <login-info v-else></login-info>
 
     <v-card-title class="text-center justify-center ">
       <router-link :to="{ name: 'Home' }">
@@ -22,11 +23,15 @@
 
 <script>
 import LoginForm from '@/components/member/LoginForm'
+import LoginInfo from '@/components/member/LoginInfo'
+
+import { mapState } from 'vuex'
 
 export default {
   name: 'NavBar',
   components: {
-    LoginForm
+    LoginForm,
+    LoginInfo
   },
   data () {
     return {
@@ -40,6 +45,9 @@ export default {
           { name: "Chatting", route: `/chatting` }, 
         ]
       }
+    },
+    computed: {
+      ...mapState([ 'isLogin' ])
     }
   }
 </script>
