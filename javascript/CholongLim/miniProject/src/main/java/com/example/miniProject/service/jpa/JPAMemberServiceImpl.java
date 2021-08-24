@@ -57,7 +57,7 @@ public class JPAMemberServiceImpl implements JPAMemberService {
     @Override
     public boolean duplicateCheck(MemberRequest memberRequest) throws Exception {
         Optional<Member> checkMember = memberRepository.findByDuplicateCheck(memberRequest.getUserId());
-        if(checkMember.isPresent()) {
+        if (checkMember.isPresent()) {
             log.info("already exist");
             return false;
         } else {
@@ -65,24 +65,7 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         }
 
 
-//        Member registerMember = checkMember.get();
-//        if (checkMember)
-//        {
-//            String possibleId = member.getUserId();
-//            log.info(possibleId);
-//            return true;
-//
-//        } else {
-//
-//        log.info("check(): unable");
-//        return false;
-//
-//        }
-
     }
-
-
-
     // 암호화 로그인
     @Override
     public boolean login(MemberRequest memberRequest) throws Exception {

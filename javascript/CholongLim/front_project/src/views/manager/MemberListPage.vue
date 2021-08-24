@@ -1,62 +1,32 @@
 <template>
-    <div id="board">
-        <div>
-            <v-img class="about-img-top" src="https://images.pexels.com/photos/7244366/pexels-photo-7244366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-            </v-img>
-        </div>
-        <div class="section">
-            <p class="intro-font">" We travel, some of us forever, to seek other places, other lives, other souls. "</p>
-        </div>
-        <v-container class="about-top">
-            <p>WELCOME TO CINZEL</p>
-            <h1>CINZEL BOARD</h1>
-            <p>| 공지사항 |</p>
-        </v-container>
-        <v-divider></v-divider>
+    <div id="member">
+        <v-row justify="center" style="margin:3%;">
+            <h4>회원목록</h4>
+        </v-row>
 
-        
-        <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
-
-        <board-list :boards="boards"/>
-
-            <v-container class="justify-center">
-            <v-row align="center" justify="center">
-                <div style="float: left; width: 165px;">
-                    <v-text-field label="검색" required height="6.5vh" style=" width: 300px;" solo 
-                            type="text">
-                    </v-text-field></div>
-
-                    <div style="float: left; padding:10px;">
-                        <v-btn text style="float:left;" route :to="{name:'BoardSearchPage'}">
-                            <v-icon middel>search</v-icon>
-                        </v-btn>
-                    </div>
-    
-            </v-row>
-            </v-container>
+        <member-list :members="members"/>
 
 
     </div>  
 </template>
 
 <script>
-import BoardList from '@/components/board/BoardList.vue'
+import MemberList from '@/components/manager/MemberList.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
-    name: 'BoardListPage',
+    name: 'MemberListPage',
     components: {
-        BoardList
+        MemberList
     },
     computed: {
-        ...mapState(['boards'])
+        ...mapState(['members'])
     },
     mounted () {
-        this.fetchBoardList()
+        this.fetchMemberList()
     },
     methods: {
-        ...mapActions(['fetchBoardList'])
+        ...mapActions(['fetchMemberList'])
     }
-
 }
 </script>
 
@@ -186,4 +156,4 @@ h4 {
     font-family: 'Nanum Myeongjo';
     font-size: 35px;
 }
-</style>
+</style> 

@@ -1,5 +1,6 @@
 package com.example.miniProject.entity.jpa;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,6 +24,7 @@ public class MemberAuth {
     @Column(length = 64, nullable = false)
     private String auth;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @CreationTimestamp
     private Date regDate;
 

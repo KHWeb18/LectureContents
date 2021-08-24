@@ -14,7 +14,6 @@ public interface JPAMemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findByDuplicateCheck(String userId);
 
 
-    // 게시판 검색기능 가능
     @Query("select m from Member m where m.userId = :userId")
     Optional<Member> findByUserId(String userId);
 

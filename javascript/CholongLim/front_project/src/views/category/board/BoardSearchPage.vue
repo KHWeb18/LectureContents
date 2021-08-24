@@ -17,46 +17,84 @@
         
         <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
 
-        <board-list :boards="boards"/>
+        <board-search-form :boards="boards"/>
 
-            <v-container class="justify-center">
+        <v-container class="justify-center">
             <v-row align="center" justify="center">
+            <div style="float: left; width: 165px;">         
+                <v-text-field label="검색" required height="6.5vh" style=" width: 300px;" solo 
+                    type="text" v-model="keyword">
+                </v-text-field>
+            </div>
+
+            <div style="float: left; padding:10px;">
+                <v-btn text style="float:left;" @click="onSearch({ keyword })">
+                    <v-icon middel>search</v-icon>
+                    </v-btn>  
+                    </div>
+            </v-row>
+        </v-container>
+
+          
+            <!-- <v-container class="search-box">
+
                 <div style="float: left; width: 165px;">
+                  
                     <v-text-field label="검색" required height="6.5vh" style=" width: 300px;" solo 
                             type="text">
-                    </v-text-field></div>
+                    </v-text-field>
+                    </div>
 
                     <div style="float: left; padding:10px;">
-                        <v-btn text style="float:left;" route :to="{name:'BoardSearchPage'}">
+                        <v-btn text style="float:left;" @click="onSearch()">
                             <v-icon middel>search</v-icon>
-                        </v-btn>
+                        </v-btn>  
                     </div>
-    
-            </v-row>
-            </v-container>
+
+                
+  
+            </v-container> -->
 
 
     </div>  
 </template>
 
 <script>
-import BoardList from '@/components/board/BoardList.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
+
+import BoardSearchForm from '@/components/board/BoardSearchForm.vue'
+import axios from 'axios'
+
 export default {
-    name: 'BoardListPage',
+    name: 'BoardSearchPage',
     components: {
-        BoardList
+        BoardSearchForm
     },
     computed: {
         ...mapState(['boards'])
+    },
+    props: {
+        boardNo: {
+            type: String,
+            required: true
+        }
     },
     mounted () {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList'])
-    }
+        onSearch(payload) {
+            const { keyword } = payload
+            axios.put('http://localhost:8888/board/list/search', { keyword })
+                    .then(res => {
+                        alert('검색가능?' + res)
+                    })
+                    .catch(err => {
+                        alert(err.response.data.message)
+                    })
+        }
 
+    }
 }
 </script>
 

@@ -4,8 +4,10 @@
             <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
             </v-app-bar-nav-icon>
             <v-toolbar-title >
+
                 <span class="logo">
                     <a href="/cinzel">CINZEL</a></span>
+
             </v-toolbar-title>
             <v-toolbar-items class="login-locate">
                 <!-- <span><member-login-form @submit="onSubmit"/></span> -->
@@ -110,7 +112,7 @@ export default {
 }
 
 .logo {
-    padding-left: 41vw;
+    padding-left: 43vw;
     vertical-align: middle;
     font-family: "Cinzel Decorative";
     font-size: 40px;

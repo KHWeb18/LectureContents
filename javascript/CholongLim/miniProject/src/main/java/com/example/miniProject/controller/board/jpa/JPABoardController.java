@@ -58,13 +58,22 @@ public class JPABoardController {
         return new ResponseEntity<Board>(board, HttpStatus.OK);
     }
 
-//    @PutMapping("/{boardNo}")
-//    public ResponseEntity<Board> modify(@PathVariable("boardNo") Long boardNo,
-//                                        @Validated @RequestBody Board board ) throws Exception {
-//
-//        boardRepository.modify(board.getBoardNo(),board.getTitle(),board.getContent());
-//        return new ResponseEntity<>(board, HttpStatus.OK);
-//    }
+    @PutMapping("/{boardNo}")
+    public ResponseEntity<Board> modify(@PathVariable("boardNo") Long boardNo,
+                                        @Validated @RequestBody Board board ) throws Exception {
+
+
+        Optional<Board> modifyBoard = boardRepository.findById(boardNo);
+
+        modifyBoard.ifPresent( changeBoard ->{
+            changeBoard.setTitle(board.getTitle());
+            changeBoard.setContent(board.getContent());
+            board.setBoardNo(boardNo);
+            boardRepository.save(changeBoard);
+        });
+
+        return new ResponseEntity<>(board, HttpStatus.OK);
+    }
 
     @DeleteMapping("/{boardNo}")
     public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
@@ -73,7 +82,13 @@ public class JPABoardController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @PutMapping("/lists/search")
+    public ResponseEntity<List<Board>> searchLists ( @RequestParam(value = "keyword") String keyword) throws Exception {
 
+        List<Board> searchList = service.search(keyword);
+
+        return new ResponseEntity<>(service.search(keyword), HttpStatus.OK);
+    }
 
 
 

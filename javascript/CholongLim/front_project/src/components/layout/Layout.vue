@@ -19,16 +19,17 @@
 
         
 
-
+        <v-row align="center" justify="center">
         <div >
             <iframe width="900" height="506" src="https://www.youtube.com/embed/a8taNpbLV4Y" 
-                    style="margin-top:5%; margin-bottom:5%; position: relative; left: 25%;"
+                    style="margin-top:5%; margin-bottom:5%; position: relative;"
                     title="YouTube video player" frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
             </iframe>
    
         </div>
+        </v-row>
 
 
         <slot name="news"></slot>

@@ -25,11 +25,11 @@ import java.util.stream.Stream;
 
 public interface JPABoardRepository extends JpaRepository<Board, Long> {
 
-    @Transactional
-    @Modifying
-    @Query( "update Board b set b.title = :title, b.content = :content where b.boardNo = :boardNo")
-    Optional<Board> updateBoard(@Param("boardNo") Long boardNo, @Param("title") String title, @Param("content") String content);
+    // 게시판 검색기능 (제목)
+//    @Query("select b from Board b where b.title like '%:title%' or b.content like %:content%")
+//    Optional<Board> findByTitle(String title);
 
+    List<Board> findByTitleContaining(String keyword);
 }
 
 

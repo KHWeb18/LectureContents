@@ -44,7 +44,7 @@ export default {
     data () {
         return {
             title: '',
-            writer: '',
+            writer: '관리자',
             content: ''
         }
     },

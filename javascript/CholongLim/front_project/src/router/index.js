@@ -6,9 +6,18 @@ import Home from '../views/Home.vue'
 import MainPage from '@/views/main/MainPage.vue'
 
 // 로그인
+import CookieTest from '@/views/CookieTest.vue'
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
-import ManagerLogin from '@/views/ManagerLogin.vue'
+
+// 관리자
+import ManagerLogin from '@/views/manager/ManagerLogin.vue'
+import ManagerPage from '@/views/manager/ManagerPage.vue'
+import MemberAdminister from '@/views/manager/MemberAdminister.vue'
+import MemberListPage from '@/views/manager/MemberListPage.vue'
+import MemberReadPage from '@/views/manager/MemberReadPage.vue'
+import MemberModifyPage from '@/views/manager/MemberModifyPage.vue'
+
 
 // 회원가입
 import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
@@ -27,7 +36,7 @@ import BoardListPage from '@/views/category/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
 import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
-
+import BoardSearchPage from '@/views/category/board/BoardSearchPage.vue'
 
 // room
 import Room201 from '@/views/category/rooms/Room201.vue'
@@ -39,11 +48,6 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 import Book from '@/views/Book.vue'
 import CompletePayment from '@/views/CompletePayment.vue' 
 
-// 관리자 페이지
-import administratorPage from '@/views/administratorPage.vue'
-
-
-  
 
 
 Vue.use(VueRouter)
@@ -55,11 +59,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/administrator',
-    name: 'administratorPage',
-    components: {
-      default: administratorPage
-    }
+    path: '/cookie',
+    name: 'CookieTest',
+    component: CookieTest
   },
   {
     path: '/tourCrawler',
@@ -80,6 +82,48 @@ const routes = [
     name: 'CinzelMemberLogin',
     components: {
       default: CinzelMemberLogin
+    }
+  },
+  // 관리자
+  {
+    path: '/managerPage',
+    name: 'ManagerPage',
+    components: {
+      default: ManagerPage
+    }
+  },
+  {
+    path: '/memberList',
+    name: 'MemberListPage',
+    components: {
+      default: MemberListPage
+    }
+  },
+  {
+    path: '/member/:memberNo',
+    name: 'MemberReadPage',
+    components: {
+      default: MemberReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/member/:memberNo/edit',
+    name: 'MemberModifyPage',
+    components: {
+      default: MemberModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/managerAdiminister',
+    name: 'MemberAdminister',
+    components: {
+      default: MemberAdminister
     }
   },
   {
@@ -155,13 +199,6 @@ const routes = [
       default: Reservation
     }
   },
-  // {
-  //   path: '/board',
-  //   name: 'Board',
-  //   components: {
-  //     default: Board
-  //   }
-  // },
   {
     path: '/board',
     name: 'BoardListPage',
@@ -169,7 +206,13 @@ const routes = [
       default: BoardListPage
     }
   },
- 
+  {
+    path: '/boardSearch',
+    name: 'BoardSearchPage',
+    components: {
+      default: BoardSearchPage
+    }
+  },
   {
     path: '/board/create',
     name: 'BoardRegisterPage',

@@ -40,8 +40,8 @@ export default {
                   commit(FETCH_MEMBER_LIST, res.data)
               })
     },
-    fetchMember ({ commit }, boardNo) {
-      return axios.get(`http://localhost:8888/memberManage/${boardNo}`)
+    fetchMember ({ commit }, memberNo) {
+      return axios.get(`http://localhost:8888/memberManage/${memberNo}`)
               .then((res) => {
                   commit(FETCH_MEMBER, res.data)
               })

@@ -2,17 +2,15 @@ package com.example.miniProject.service.jpa;
 
 
 import com.example.miniProject.entity.jpa.Board;
-import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -52,21 +50,10 @@ public class JPABoardServiceImpl implements JPABoardService {
         boardRepository.deleteById(boardNo);
     }
 
-
-
-    @Transactional
-    public void modify(Board board) throws Exception {
-        Optional<Board> Update= boardRepository.updateBoard(board.getBoardNo(),board.getTitle(),board.getContent());
-
-
-        if(Update.isPresent()) {
-            Board input = Update.get();
-            log.info("null = x");
-        } else {
-            log.info("null = o");
-        }
-
-
+    @Override
+    public List<Board> search(String keyword) throws Exception {
+       List<Board> boardList = boardRepository.findByTitleContaining(keyword);
+       return boardList;
     }
 
 }
