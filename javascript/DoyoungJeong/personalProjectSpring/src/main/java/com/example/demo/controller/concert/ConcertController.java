@@ -1,6 +1,6 @@
 package com.example.demo.controller.concert;
 
-import com.example.demo.entity.Concert;
+import com.example.demo.entity.concert.Concert;
 import com.example.demo.entity.member.LikedConcert;
 import com.example.demo.service.concert.ConcertService;
 import lombok.extern.slf4j.Slf4j;

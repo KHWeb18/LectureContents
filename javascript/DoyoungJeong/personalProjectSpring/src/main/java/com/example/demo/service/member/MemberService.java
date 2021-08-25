@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface MemberService {
 
-    public void register(MemberRequest memberRequest) throws Exception;
+    public boolean register(MemberRequest memberRequest) throws Exception;
 
     public Member login(MemberRequest memberRequest) throws Exception;
 
