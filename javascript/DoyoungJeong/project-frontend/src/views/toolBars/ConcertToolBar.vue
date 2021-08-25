@@ -1,0 +1,219 @@
+<template>
+    <div>
+        <v-toolbar dense dark>
+            <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
+                <v-icon>dehaze</v-icon>
+            </v-app-bar-nav-icon>
+            <v-toolbar-title>
+                <span class="font-weight-light" style="margin-right: 40px;">NAVI</span>
+            </v-toolbar-title>
+
+            <v-toolbar-items v-if="!isLoggedIn">
+                <v-btn text v-for="link in links" :key="link.name" :to="link.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                    <login-dialogue v-if="link.text == 'LOG IN'"></login-dialogue>
+                    <p v-else id="topBarText">{{ link.text }}</p>
+                </v-btn>
+            </v-toolbar-items>
+
+            <v-toolbar-items v-if="isLoggedIn && userIdentity != 'admin'">
+                <v-btn text v-for="loggedInlink in loggedInlinks" :key="loggedInlink.name" :to="loggedInlink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                    <p id="topBarText" @click="logOut($event)">{{ loggedInlink.text }}</p>
+                </v-btn>
+            </v-toolbar-items>
+
+            <v-toolbar-items v-else-if="isLoggedIn && userIdentity == 'admin'">
+                <v-btn text v-for="managerLink in managerLinks" :key="managerLink.name" :to="managerLink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                    <p id="topBarText" @click="logOut($event)">{{ managerLink.text }}</p>
+                </v-btn>
+            </v-toolbar-items>
+
+            <div class="flex-grow-1"></div> <!-- 간격 벌리기 -->
+
+            <v-toolbar-items>
+            
+                <v-icon class="material-icons small teal-text">search</v-icon>
+                <input type="text" style="font-size: 13px; font-style: italic; width: 250px;" v-model="searchTest" v-on:click="blankText"/>
+                <p id="topBarText" class="btn-flat" style="padding-top: 5px;">&copy; MUSIC GHUETTO</p>
+           
+            </v-toolbar-items>
+
+        </v-toolbar>
+
+        <v-navigation-drawer v-model="nav_drawer" app temporary width="150px">
+            <v-list nav>
+                <v-list-item-group active-class="red--text text--accent-4">
+                    <v-list-item v-for="(link, index) in navLinks" :key="index" router :to="link.route" @click="btn_needSession(index)">
+                        <v-list-item-action>
+                            <v-icon>{{ link. icon }}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            {{ link.text }}
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+    </div>
+</template>
+
+<script>
+import axios from 'axios'
+import { mapState } from 'vuex'
+import LoginDialogue from '@/components/concertMainDialogue/LoginDialogue'
+
+export default {
+    name: 'ConcertToolBar',
+    components: {
+        LoginDialogue
+    },
+    computed: {
+        ...mapState(['isLoggedIn', 'userIdentity'])
+    },
+    data() {
+        return {
+            nav_drawer: false,
+            searchTest: '  찾고자 하는 장르 또는 아티스트',
+            links: [
+                {
+                    text: 'ABOUT US',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'LOG IN',
+                    icon: 'people'
+                },
+                {
+                    text: 'SIGN UP',
+                    icon: 'people',
+                    route: 'signupPage',
+                },
+                {
+                    text: 'SUPPORT',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'COMMUNITY',
+                    icon: 'people',
+                    route: 'CommunityPage',
+                },
+                {
+                    text: 'MORE',
+                    icon: 'people',
+                    route: 'indieNewsCrawlerPage',
+                }
+            ],
+            loggedInlinks: [
+                {
+                    text: 'LOG OUT',
+                    icon: '',
+                },
+                {
+                    text: 'ABOUT US',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'SUPPORT',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'COMMUNITY',
+                    icon: 'people',
+                    route: 'CommunityPage',
+                },
+                {
+                    text: 'MORE',
+                    icon: 'people',
+                    route: 'indieNewsCrawlerPage',
+                }
+            ],
+            managerLinks: [
+                {
+                    text: 'LOG OUT',
+                    icon: '',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'ABOUT US',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'SUPPORT',
+                    icon: 'people',
+                    route: 'mainPage',
+                },
+                {
+                    text: 'COMMUNITY',
+                    icon: 'people',
+                    route: 'CommunityPage',
+                },
+                {
+                    text: 'ADMIN',
+                    icon: 'people',
+                    route: 'memberListPage',
+                }
+            ],
+            navLinks: [
+                { text: 'Home', icon: 'home', route: 'mainPage' },
+                { text: 'Profile', icon: 'person_outline'},
+                { text: 'Liked', icon: 'star' }
+            ]
+        }
+    },
+    methods: {
+        blankText() {
+            this.searchTest = ''
+        },
+        logOut($event) {
+            if($event.target.innerHTML == 'LOG OUT') {
+                this.$store.state.isLoggedIn = false
+                alert('로그아웃되었습니다.')
+
+                this.$router.push ({
+                    name: 'MainPage'
+                })
+            }
+        },
+        btn_needSession(index) {
+            if(this.$store.state.isLoggedIn == true) {
+                if(index == 1 || index == 2) {
+                    axios.post('http://localhost:8888/member/needSession')
+                    .then(res => {
+                        if(res.data == true && index == 1) {
+                            this.$router.push ({
+                                name: 'MyProfilePage'
+                            })
+                        } else if(res.data == true && index == 2) {
+                            this.$router.push ({
+                                name: 'LikedListPage'
+                            })
+                        } else if(res.data == false) {
+                            alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
+                            this.$store.state.isLoggedIn = false
+                        }
+                    })
+                }
+            } else if(index != 0) {
+                alert('로그인이 필요한 서비스입니다!')
+            }
+        }
+    }
+    
+
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
+
+#topBarText {
+    font-style: italic;
+    margin-right: 25px;
+    color: white;
+}
+</style>
+
