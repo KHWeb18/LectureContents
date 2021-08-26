@@ -30,7 +30,7 @@
 
 <script>
 import axios from 'axios'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   data () {
@@ -50,6 +50,7 @@ export default {
     this.weight = this.activity.weight
   },
   methods: {
+    ...mapActions (['fetchActivity']),
     closeForm () {
       this.dialog = false
     },
@@ -68,6 +69,7 @@ export default {
       })
       
       this.dialog = false
+      this.fetchActivity(this.date)
     },
   }
 }
