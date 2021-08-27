@@ -7,7 +7,7 @@
     </v-card>
 
     <v-card v-else>
-      <v-card v-if="!activity || (Array.isArray(activity) && activity.length === 0)">
+      <v-card v-if="!record || (Array.isArray(record) && record.length === 0)">
         <v-card-text>
           <p>{{ date }}의 활동 기록이 없습니다.</p>
         </v-card-text>
@@ -25,21 +25,21 @@
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title>식단</v-list-item-title>
-              <v-list-item-subtitle>{{ activity.food }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ record.food }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title>운동</v-list-item-title>
-              <v-list-item-subtitle>{{ activity.exercise }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ record.exercise }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title>체중</v-list-item-title>
-              <v-list-item-subtitle>{{ activity.weight }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ record.weight }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-card-text>  
@@ -74,16 +74,16 @@ export default {
     }
   },
   computed: {
-    ...mapState ([ 'date', 'activity', 'isLogin' ]),
+    ...mapState ([ 'date', 'record', 'isLogin' ]),
   },
   methods: {
-    ...mapActions(['fetchActivity']),
+    ...mapActions(['fetchRecord']),
     deleteRecord () {
       const date = this.date
 
       axios.delete(`http://localhost:7777/record/remove/${date}`).then(() => {
         alert(date + ' 의 활동이 삭제되었습니다!')
-        this.fetchActivity(this.date)
+        this.fetchRecord(this.date)
       }).catch(res => {
         alert(res.response.data.message)
       })

@@ -42,10 +42,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['date', 'activity', 'userInfo'])
+    ...mapState(['date', 'record', 'userInfo'])
   },
   methods: {
-    ...mapActions(['fetchActivity']),
+    ...mapActions(['fetchRecord']),
     closeForm () {
       this.dialog = false
     },
@@ -65,7 +65,7 @@ export default {
       })
       
       this.dialog = false
-      this.fetchActivity(this.date)
+      this.fetchRecord(this.date)
     },
   }
 }

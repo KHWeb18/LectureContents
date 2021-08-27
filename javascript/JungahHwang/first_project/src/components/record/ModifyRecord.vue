@@ -42,15 +42,15 @@ export default {
     }
   },
   computed: {
-    ...mapState(['date', 'activity'])
+    ...mapState(['date', 'record'])
   },
   created () {
-    this.food = this.activity.food,
-    this.exercise = this.activity.exercise,
-    this.weight = this.activity.weight
+    this.food = this.record.food,
+    this.exercise = this.record.exercise,
+    this.weight = this.record.weight
   },
   methods: {
-    ...mapActions (['fetchActivity']),
+    ...mapActions (['fetchRecord']),
     closeForm () {
       this.dialog = false
     },
@@ -69,7 +69,7 @@ export default {
       })
       
       this.dialog = false
-      this.fetchActivity(this.date)
+      this.fetchRecord(this.date)
     },
   }
 }

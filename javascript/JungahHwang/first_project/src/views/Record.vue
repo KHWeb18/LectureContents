@@ -53,12 +53,12 @@ export default {
     ...mapState([ 'date' ])
   },
   methods: {
-    ...mapActions(['fetchActivity']),
+    ...mapActions(['fetchRecord']),
 
     viewDay ({ date }) {
       this.focus = date
       this.$store.commit('OPEN_DETAIL', date)
-      this.fetchActivity(date)
+      this.fetchRecord(date)
     },
     setToday () {
       this.focus = ''
