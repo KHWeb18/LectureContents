@@ -41,7 +41,6 @@ public class Record {
     @UpdateTimestamp
     private Date updDate;
 
-    @Builder
     public Record(String date, String food, String exercise, String weight) {
         this.date = date;
         this.exercise = exercise;
