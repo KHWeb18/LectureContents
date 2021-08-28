@@ -1,6 +1,6 @@
 <template>
   <v-card class="primary" >
-    <login-form v-if="!isLogin"></login-form>
+    <login v-if="!isLogin"></login>
     <login-info v-else></login-info>
 
     <v-card-title class="text-center justify-center ">
@@ -13,7 +13,7 @@
       flat hide-details label="Search" solo></v-text-field>
 
     <v-tabs v-model="tab" background-color="transparent" color="secondary" show-arrows grow>
-      <v-tab class="font-weight-bold" v-for="tab of tabs" :key="tab.name" :to="tab.route">
+      <v-tab v-for="tab of tabs" :key="tab.name" :to="tab.route" class="font-weight-bold">
         {{ tab.name }}
       </v-tab>
     </v-tabs>
@@ -22,7 +22,7 @@
 
 
 <script>
-import LoginForm from '@/components/member/LoginForm'
+import Login from '@/views/member/Login'
 import LoginInfo from '@/components/member/LoginInfo'
 
 import { mapState } from 'vuex'
@@ -30,7 +30,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'NavBar',
   components: {
-    LoginForm,
+    Login,
     LoginInfo
   },
   data () {

@@ -15,11 +15,11 @@
         </v-card-title>
         
         <v-card-actions>
-          <v-btn class="secondary--text font-weight-bold" text >
+          <v-btn @click="btnLogout" class="secondary--text font-weight-bold" text >
             Logout
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="goMypage" class="secondary--text font-weight-bold" text>
+          <v-btn @click="btnMypage" class="secondary--text font-weight-bold" text>
             Mypage
           </v-btn>
         </v-card-actions>
@@ -30,7 +30,8 @@
 
 
 <script>
-import { mapState } from 'vuex'
+import axios from 'axios'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   data () {
@@ -42,7 +43,15 @@ export default {
     ...mapState([ 'userInfo' ])
   },
   methods: {
-    goMypage () {
+    ...mapActions([ 'fetchSession' ]),
+
+    btnLogout () {
+      axios.post('http://localhost:7777/member/logout').then(res => {
+        this.$store.commit('USER_LOGIN', res.data)
+        this.fetchSession(this.$cookies.remove('session'))
+      })
+    },
+    btnMypage () {
       this.$router.push({ name: 'Mypage' })
       this.dialog = false
     }
