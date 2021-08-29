@@ -1,7 +1,6 @@
 package com.example.demo.service.concert;
 
-import com.example.demo.controller.concert.request.ConcertRequest;
-import com.example.demo.entity.Concert;
+import com.example.demo.entity.concert.Concert;
 import com.example.demo.entity.member.LikedConcert;
 
 import java.util.List;

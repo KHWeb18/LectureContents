@@ -5,7 +5,6 @@ import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.LikedOrNotRequest;
 import com.example.demo.controller.member.request.MemberRequest;
 import com.example.demo.controller.session.MemberInfo;
-import com.example.demo.entity.Concert;
 import com.example.demo.entity.member.Member;
 import com.example.demo.service.member.MemberService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -35,12 +33,12 @@ public class MemberController {
     private HttpSession session;
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> singup(@Validated @RequestBody MemberRequest memberRequest) throws Exception {
+    public ResponseEntity<Boolean> singup(@Validated @RequestBody MemberRequest memberRequest) throws Exception {
         log.info("memberRequest(): " + memberRequest);
 
-        service.register(memberRequest);
+        boolean NotIdThatExists = service.register(memberRequest);
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Boolean>(NotIdThatExists, HttpStatus.OK);
     }
 
     @PostMapping("/login")

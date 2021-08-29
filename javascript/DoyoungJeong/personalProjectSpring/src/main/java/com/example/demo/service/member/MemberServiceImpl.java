@@ -7,12 +7,12 @@ import com.example.demo.entity.member.LikedConcert;
 import com.example.demo.entity.member.Member;
 import com.example.demo.entity.member.MemberIdentity;
 import com.example.demo.repository.concert.ConcertRepository;
+import com.example.demo.repository.board.BoardRepository;
 import com.example.demo.repository.member.LikedConcertRepository;
 import com.example.demo.repository.member.MemberIdentityRepository;
 import com.example.demo.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,28 +42,48 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private ConcertRepository concertRepository;
 
+    @Autowired
+    private BoardRepository boardRepository;
+
     @Override
     @Transactional
-    public void register(MemberRequest memberRequest) throws Exception {
-        String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
-        memberRequest.setPassword(encodedPassword);
+    public boolean register(MemberRequest memberRequest) throws Exception {
 
-        MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
-        Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo());
+        if(!memberRepository.findByMemberId(memberRequest.getId()).isEmpty()) {
+            log.info("ID that Already Exists!");
+            return false;
 
-        LikedConcert likedConcert = new LikedConcert();
-        likedConcert.setConcertNo(new Long(0));
-        likedConcert.setConcertName("default");
-        likedConcert.setConcertArtist("default");
-        likedConcert.setConcertVenue("default");
-        likedConcert.setConcertPrice("default");
-        likedConcert.setConcertDate("default");
-        likedConcert.setConcertInfo("default");
+        } else {
 
-        member.addIdentity(memberIdentity);
-        member.addLikedConcert(likedConcert);
-        memberRepository.save(member);
+            String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
+            memberRequest.setPassword(encodedPassword);
+
+            MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
+            Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
+                    memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo());
+
+            LikedConcert likedConcert = new LikedConcert();
+            likedConcert.setConcertNo(new Long(0));
+            likedConcert.setConcertName("default");
+            likedConcert.setConcertArtist("default");
+            likedConcert.setConcertVenue("default");
+            likedConcert.setConcertPrice("default");
+            likedConcert.setConcertDate("default");
+            likedConcert.setConcertInfo("default");
+
+//            Board board = new Board("default", "default");
+//            board.setId("default");
+//            BoardReply boardReply = new BoardReply("default", "default");
+//            board.addBoardReply(boardReply);
+
+            member.addIdentity(memberIdentity);
+            member.addLikedConcert(likedConcert);
+            //member.addBoardContent(board);
+            memberRepository.save(member);
+
+            log.info("New ID has registered!");
+            return true;
+        }
     }
 
     @Override
@@ -115,26 +135,23 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void delete(Long memberNo) throws Exception {
-        memberIdentityRepository.delete(memberNo); //자식 먼저 지워주고 뒤에 부모를 지워줌
-        //likedConcert.delete도 만들어줘야한다
+        memberIdentityRepository.delete(memberNo); //자식 먼저 지워주고 뒤에 부모를 지워야 전부 깔끔하게 지워짐
+        likedConcertRepository.delete(memberNo);
+        //boardRepository.delete(memberNo);
         memberRepository.delete(memberNo);
     }
 
     @Override
-    public void modify(MemberRequest memberRequest) throws Exception {
+    public void modify(MemberRequest memberRequest) throws Exception { //자식 레퍼지토리와 부모 레퍼지토리를 동시에 수정해줘야 함
         String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
         memberRequest.setPassword(encodedPassword);
 
-        MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
-        Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo());
-
-        member.addIdentity(memberIdentity);
         Long memberNo = new Long(memberRequest.getMemberNo());
 
-        memberRepository.modify(member, memberNo);
-//        memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-//                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
+        memberIdentityRepository.modify(memberRequest.getIdentity(), memberNo);
+
+        memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
+                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
     }
 
     @Override

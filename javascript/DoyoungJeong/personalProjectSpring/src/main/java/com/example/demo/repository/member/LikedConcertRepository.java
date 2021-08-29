@@ -25,4 +25,9 @@ public interface LikedConcertRepository extends JpaRepository<LikedConcert, Long
 
     @Query("select lk from LikedConcert lk where lk.memberNo = :memberNo and lk.concertNo != 0")
     List<LikedConcert> findByMemberNo(Long memberNo);
+
+    @Transactional
+    @Modifying(clearAutomatically = true) //탈퇴할 때 쓰는 전체 삭제
+    @Query("delete from LikedConcert lk where lk.memberNo = :memberNo")
+    void delete(Long memberNo);
 }
