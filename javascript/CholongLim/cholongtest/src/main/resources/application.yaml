@@ -21,6 +21,11 @@ spring:
     hibernate:
       ddl-auto: update
 
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
 logging:
   level:
     org:

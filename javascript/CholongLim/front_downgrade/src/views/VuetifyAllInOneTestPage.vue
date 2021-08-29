@@ -204,6 +204,7 @@
             </v-menu>
         </div>
 
+        <!--  :items-per-page="10" = 한페이지당 보여줄 게시물 갯수 -->
         <v-container>
             <v-data-table :headers="headerTitle"
                     :items="contents"

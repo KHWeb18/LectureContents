@@ -78,9 +78,19 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue'
 // JPA Test Page = memberAuth
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
 
+// 파일업로드 test
+import FileUploadPage from '@/views/FileUploadPage.vue'
+
 // 로그인
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
+
+
+// 로그인(도전)
+import Login from '@/views/Login.vue'
+import MyPage from '@/views/MyPage.vue'
+
+import store from "../store/index";
 
 Vue.use(VueRouter)
 
@@ -89,6 +99,34 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    beforeEnter: (to, from, next) => {
+      if(store.state.isLogin === true) {
+            // 이미 로그인 된 유저 = 막아야한다
+            alert('이미 로그인 하였습니다.')
+            next("/")
+          } else {
+            next()
+          }
+    },
+    component: Login
+  },
+  {
+    path: '/mypage',
+    name: 'MyPage',
+    beforeEnter: (to, from, next) => {
+      if(store.state.isLogin === false) {
+                // 아직 로그인 안된 유저 = 막아야한다
+                alert('로그인이 필요한 기능입니다')
+                next("/login")
+              } else {
+                next()
+              }
+    },
+    component: MyPage
   },
   {
     path: '/test',
@@ -374,6 +412,13 @@ const routes = [
     name: 'VuetifyMemberLoginPage',
     components: {
       default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/fileUpload',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
     }
   }
 ]

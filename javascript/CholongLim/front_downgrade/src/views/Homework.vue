@@ -93,6 +93,7 @@ export default {
             var monsterList = []
             for (var i =0; i < 100; i++ ){
                 var read = Math.floor(Math.random() * this.monsterBook.length)
+                // i값을 state를 통해서 얻어와야함
                 monsterList.push({ monsterId: i, name:this.monsterBook[read].name, hp:this.monsterBook[read].hp})
             }
             this.addManyMonster(monsterList)

@@ -26,7 +26,12 @@ import {
   // 성적 관리
   SCORE_MANAGEMENT,
   // 크롤링
-  CRAWL_START
+  CRAWL_START,
+  // 로그인 연습
+//   LOGIN_SUCCESS,
+//   LOGIN_ERROR,
+  // 로그아웃
+  LOGOUT
 } from './mutation-types'
 
 import axios from 'axios'
@@ -147,5 +152,46 @@ export default {
                     router.push('/daumNewsCrawler')
                 }
             })
+  },
+  // 로그인 연습
+  // 로그인 시도
+//   login( {state, commit}, loginObj ) {
+//     let selectedUser = null
+//     state.allUsers.forEach(user => {
+//         if(user.email ===  loginObj.email) selectedUser = user
+//     })
+//     if(selectedUser === null || selectedUser.password !== loginObj.password)
+//         commit(LOGIN_ERROR)
+//         else {
+//             commit(LOGIN_SUCCESS, selectedUser)
+//             router.push({name: 'MyPage'})
+//         }
+//   },
+
+
+//   login({ userId, password }) {    
+//     axios.post('http://localhost:7777/jpamember/login', { userId, password })
+//             .then(res => {
+            
+//                 if (res.data != "") {
+//                     // alert('로그인 성공! - ' + res.data)
+//                     console.log(res)
+//                 } else {
+//                     alert('로그인 실패! - ' + res.data)
+//                 }
+//                 /*
+//                 this.$router.push({
+//                     name: 'BoardReadPage',
+//                     params: { boardNo: res.data.boardNo.toString() }
+//                 })
+//                 */
+//             })
+//             .catch(res => {
+//                 alert(res.response.data.message)
+//             })
+//   },
+  logout({commit}) {
+      commit(LOGOUT)
+      router.push({name: 'Home'})
   }
 }

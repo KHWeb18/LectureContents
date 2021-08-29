@@ -10,7 +10,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/daumCrawler")
+//@RequestMapping("/daumCrawler")
 @CrossOrigin(origins = "http://localHost:8080", allowedHeaders = "*")
 public class VueCrawlController {
 

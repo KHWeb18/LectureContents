@@ -8,9 +8,31 @@
                 <span>숙소</span>
             </v-toolbar-title>
             <v-toolbar-items>
-                <v-btn text v-for="link in links" :key="link.icon" :to="link.route">
-                    {{ link.text }}
-                </v-btn>
+                
+                <v-btn v-if="isLogin === false" route :to="{name : 'Login'}">Login</v-btn>
+
+                <v-menu offset-y v-if="isLogin">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                        flat
+                        dark
+                        v-bind="attrs"
+                        v-on="on"
+                        >
+                        <v-icon>account_circle</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item router :to="{name: 'MyPage'}">
+                        <v-list-item-title>마이페이지</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item @click="logout">
+                        <v-list-item-title>로그아웃</v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+                <v-btn v-if="isLogin === true" route :to="{name: 'MyPage'}">MyPage</v-btn>
+
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app v-model="nav_drawer" temporary>
@@ -31,6 +53,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'VuetifyAllInOnTestPage',
@@ -53,15 +76,19 @@ export default {
                     icon: 'home', text: 'Home', name: 'Home', route: '/'
                 },
                 { 
-                    icon: 'account_circle', text: '로그인', name: 'account_circle', route: '/product'
+                    icon: 'account_circle', text: '로그인', name: 'account_circle', route: '/login'
                 },
                 { 
-                    icon: 'favorite', text: '찜하기', name: 'favorite', route: '/materialize'
+                    icon: 'favorite', text: '마이페이지', name: 'favorite', route: '/mypage'
                 },
             ]
         }
     },
+    computed: {
+        ...mapState(["isLogin"])
+    },
     methods: {
+        ...mapActions(["logout"]),
         btn_click ($event) {
             if($event.target.innerHTML == " 결제승인 ") {
                 alert('결제가 완료되었습니다.')

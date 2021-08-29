@@ -30,12 +30,6 @@ export default {
                     })
                     .then(res => {
                         alert('등록 성공! - ' + res)
-                        /*
-                        this.$router.push({
-                            name: 'BoardReadPage',
-                            params: { boardNo: res.data.boardNo.toString() }
-                        })
-                        */
                     })
                     .catch(res => {
                         alert(res.response.data.message)

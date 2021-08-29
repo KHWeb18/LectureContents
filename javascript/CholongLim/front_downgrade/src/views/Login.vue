@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <v-container fill-height style="max-width:450px;">
         <v-layout align-center row wrap>
             <v-flex xs12>
@@ -98,4 +98,4 @@ export default {
         // }
     }
 }
-</script>
+</script> -->

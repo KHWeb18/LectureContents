@@ -25,6 +25,7 @@ export default {
   students: [],
   // 크롤링
   lists: [],
+  session: [],
 
   //로그인 연습
   allUsers:[

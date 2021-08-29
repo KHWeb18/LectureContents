@@ -39,7 +39,7 @@ export default {
     data () {
         return {
             swiperOption: {
-                //loop: true,
+                loop: true,
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,

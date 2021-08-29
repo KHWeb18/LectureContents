@@ -1,6 +1,11 @@
 <template>
     <div class="home">
         <div id="header">
+            <router-link :to="{ name: 'Login' }"
+                    class="nav-link"
+                    active-class="active">
+                login
+            </router-link>
             <router-link :to="{ name: 'Home' }"
                     class="nav-link"
                     active-class="active">
@@ -162,6 +167,11 @@
                     class="nav-link"
                     active-class="active">
                 로그인
+            </router-link>
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                파일업로드 test
             </router-link>
         </div>
     </div>

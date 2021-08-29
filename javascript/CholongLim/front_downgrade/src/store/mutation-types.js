@@ -27,3 +27,12 @@ export const ALLOC_RANDOM_DUNGEON = 'ALLOC_RANDOM_DUNGEON'
 export const SCORE_MANAGEMENT = 'SCORE_MANAGEMENT'
 
 export const CRAWL_START = 'CRAWL_START'
+
+
+// 로그인 연습
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+// 로그아웃
+export const LOGOUT = 'LOGOUT'
+
+
