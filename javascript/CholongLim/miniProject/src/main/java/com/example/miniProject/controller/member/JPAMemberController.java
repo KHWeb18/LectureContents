@@ -3,11 +3,13 @@ package com.example.miniProject.controller.member;
 import com.example.miniProject.controller.member.request.MemberRequest;
 import com.example.miniProject.controller.session.UserInfo;
 import com.example.miniProject.entity.jpa.Member;
+import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import com.example.miniProject.service.jpa.JPAMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +50,7 @@ public class JPAMemberController {
                     log.info("able id");
                     log.info("register Success");
                     service.register(memberRequest);
+                    log.info(memberRequest.getAuth(),memberRequest.getUserName());
                     return new ResponseEntity<Void>(HttpStatus.OK);
                 } else {
                     log.info("unable id");
@@ -76,9 +79,7 @@ public class JPAMemberController {
             // 세션 할당
             info = new UserInfo();
             info.setUserId(memberRequest.getUserId());
-            info.setUserName(memberRequest.getUserName());
-            info.setAuth(memberRequest.getAuth());
-            info.setUserPhone(memberRequest.getUserPhone());
+
 
             log.info("Session Info: " + info);
 
@@ -90,7 +91,7 @@ public class JPAMemberController {
         }
 
         // return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
-        return new ResponseEntity<UserInfo>(info, HttpStatus.OK);
+        return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
     }
 
     // 로그인 세션

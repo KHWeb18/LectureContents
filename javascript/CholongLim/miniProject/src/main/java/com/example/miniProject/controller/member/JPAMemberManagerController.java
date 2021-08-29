@@ -1,6 +1,7 @@
 package com.example.miniProject.controller.member;
 
 
+import com.example.miniProject.controller.member.request.MemberRequest;
 import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.repository.jpa.JPABoardRepository;

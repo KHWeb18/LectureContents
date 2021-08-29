@@ -6,14 +6,12 @@ import Home from '../views/Home.vue'
 import MainPage from '@/views/main/MainPage.vue'
 
 // 로그인
-import CookieTest from '@/views/CookieTest.vue'
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
 
 // 관리자
 import ManagerLogin from '@/views/manager/ManagerLogin.vue'
 import ManagerPage from '@/views/manager/ManagerPage.vue'
-import MemberAdminister from '@/views/manager/MemberAdminister.vue'
 import MemberListPage from '@/views/manager/MemberListPage.vue'
 import MemberReadPage from '@/views/manager/MemberReadPage.vue'
 import MemberModifyPage from '@/views/manager/MemberModifyPage.vue'
@@ -36,7 +34,7 @@ import BoardListPage from '@/views/category/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
 import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
-import BoardSearchPage from '@/views/category/board/BoardSearchPage.vue'
+
 
 // room
 import Room201 from '@/views/category/rooms/Room201.vue'
@@ -50,6 +48,8 @@ import CompletePayment from '@/views/CompletePayment.vue'
 
 
 
+import test from '@/views/test.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,9 +59,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/cookie',
-    name: 'CookieTest',
-    component: CookieTest
+    path: '/test',
+    name: 'test',
+    component: test
   },
   {
     path: '/tourCrawler',
@@ -117,13 +117,6 @@ const routes = [
     },
     props: {
       default: true
-    }
-  },
-  {
-    path: '/managerAdiminister',
-    name: 'MemberAdminister',
-    components: {
-      default: MemberAdminister
     }
   },
   {
@@ -204,13 +197,6 @@ const routes = [
     name: 'BoardListPage',
     components: {
       default: BoardListPage
-    }
-  },
-  {
-    path: '/boardSearch',
-    name: 'BoardSearchPage',
-    components: {
-      default: BoardSearchPage
     }
   },
   {

@@ -1,38 +1,34 @@
 package com.example.miniProject.entity.jpa;
 
+import jdk.jfr.Timestamp;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Reservation {
 
-    @Data
+@Data
     @NoArgsConstructor
     @Entity
     @Table(name="reservation")
-    public class Member {
+    public class Reservation {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "reserve_no")
-        private Long reserveNo;
+        private Long reservationNo;
+
+        @Column(name = "room_no")
+        private Long roomNo;
 
         @Column(length = 64, nullable = false)
         private String roomId;
 
-        @Column(length = 64, nullable = false)
-        private Integer maxNum;
-
-        @Column(length = 64, nullable = false)
-        private String userName;
-
-        @Column(length = 64, nullable = false)
-        private Integer userPhone;
-
-        // 예약일자 - 8/15
+        @Temporal(TemporalType.DATE)
         private Date reservedDate;
 
         @CreationTimestamp
@@ -40,6 +36,23 @@ public class Reservation {
 
         @UpdateTimestamp
         private Date updDate;
+
+        @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+        @JoinColumn(name = "room_no")
+        private List<Room> roomList = new ArrayList<Room>();
+
+        public Reservation(Date reservedDate) {
+            this.reservedDate = reservedDate;
+        }
+
+        public void addRoom(Room room) {
+            roomList.add(room);
+        }
+
+        public void clearRoomList () {
+            roomList.clear();
+        }
+
+
     }
 
-}

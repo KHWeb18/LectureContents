@@ -4,9 +4,13 @@
             <v-img class="about-img-top" src="https://images.pexels.com/photos/7244366/pexels-photo-7244366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
             </v-img>
         </div>
+
+        
         <div class="section">
             <p class="intro-font">" We travel, some of us forever, to seek other places, other lives, other souls. "</p>
         </div>
+        
+    
         <v-container class="about-top">
             <p>WELCOME TO CINZEL</p>
             <h1>CINZEL BOARD</h1>
@@ -18,7 +22,31 @@
         <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
 
         <board-list :boards="boards"/>
+        
+    
+        <!-- <v-container class="justify-center">
+        <v-row align="center" justify="center">
+        <nav aria-label="Page navigation example" class="page-num">
+            <ul class="pagination">
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li class="page-item" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:text="${i}">1</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+        </v-row>
+        </v-container> -->
 
+    
+<!-- 
             <v-container class="justify-center">
             <v-row align="center" justify="center">
                 <div style="float: left; width: 165px;">
@@ -33,7 +61,19 @@
                     </div>
     
             </v-row>
-            </v-container>
+            </v-container> -->
+
+            <!-- <v-container class="justify-center">
+            <v-row align="center" justify="center"> -->
+                <form class="form-inline d-flex justify-content-end">
+                    <div>
+                        <label for="searchText" class="sr-only">검색</label>
+                        <input type="text" class="form-control" id="searchText" name="searchText" v-model="searchText">
+                    </div>
+                    <v-btn class="btn btn-outline-primary" @click="search({searchText})">검색</v-btn>
+                </form>
+            <!-- </v-row>
+            </v-container> -->
 
 
     </div>  
@@ -41,11 +81,18 @@
 
 <script>
 import BoardList from '@/components/board/BoardList.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapActions,mapState } from 'vuex'
+
+
 export default {
     name: 'BoardListPage',
     components: {
         BoardList
+    },
+    data() {
+        return {
+            searchText: ''
+        }
     },
     computed: {
         ...mapState(['boards'])
@@ -54,7 +101,11 @@ export default {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList'])
+        ...mapActions(['fetchBoardList']),
+        search (payload) {
+        const { searchText } = payload
+        this.fetchBoardList(searchText)
+      }
     }
 
 }
@@ -66,6 +117,18 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
 
+
+.pagination li a {
+    padding: 0 15px;
+}
+
+.page-num {
+    background-color:white;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 0%),
+                0 0px 0px -0px rgb(0 0 0 / 0%), 
+                0 0px 0px 0 rgb(0 0 0 / 0%); 
+    width: 16%;    
+}
 
 
 .search-box{
@@ -86,7 +149,7 @@ export default {
 }
 
 .board-box {
-    padding-bottom: 15%;
+    padding-bottom: 5%;
 }
 .container{
     position: relative;

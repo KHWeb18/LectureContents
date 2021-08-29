@@ -17,5 +17,7 @@ export default {
   isLoginError: false,
   userInfo: null,
     // 크롤링
-  lists: []
+  lists: [],
+  todoItems: [],
+  session: [],
 }

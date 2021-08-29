@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -34,7 +35,7 @@ public class Member {
     private String userName;
 
     @Column(length = 64, nullable = false)
-    private Integer userPhone;
+    private String userPhone;
 
 //     예약일자 - 8/15
 //    private Date reservedDate;
@@ -51,7 +52,7 @@ public class Member {
     @JoinColumn(name = "member_no")
     private List<MemberAuth> authList = new ArrayList<MemberAuth>();
 
-    public Member(String userId, String password, String passwordReInput, String userNam, Integer userPhone) {
+    public Member(String userId, String password, String passwordReInput, String userNam, String userPhone) {
         this.userId = userId;
         this.password = password;
         this.passwordReInput = passwordReInput;

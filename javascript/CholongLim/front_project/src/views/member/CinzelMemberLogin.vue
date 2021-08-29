@@ -2,49 +2,33 @@
     <div class="img">
         <div class="content">
             <v-container fill-height style="max-width:700px;">
-            <!-- <member-login-form @submit="onSubmit" class="comp-login"/> -->
             <v-flex xs12> 
-                  <!-- <v-alert
-                    class="mb-3"
-                    :value="isLoginError"
-                    type="error"
-                    >
-                    아이디와 비밀번호를 확인해주세요.
-                </v-alert>
-                <v-alert
-                    class="mb-3"
-                    :value="isLogin"
-                    type="success"
-                    >
-                    로그인이 완료되었습니다.
-                </v-alert> -->
                 <h1>Welcome</h1> <h2>to</h2> <h1>Cinzel</h1>
 
                     <div>
             <v-icon class="mail-icon" color="white">email</v-icon>
             <v-text-field label="아이디" dense required height="5vh"
                            v-model="userId" :rules="[v => !!v || '필수정보입니다.']" type="id">
-        </v-text-field>
+            </v-text-field>
 
-        <v-icon class="mail-icon" color="white">lock</v-icon>
-        <v-text-field label="비밀번호" dense required height="5vh"
-                       v-model="password" :rules="[v => !!v || '필수정보입니다.']" type="password">
-        </v-text-field>
+            <v-icon class="mail-icon" color="white">lock</v-icon>
+            <v-text-field label="비밀번호" dense required height="5vh"
+                        v-model="password" :rules="[v => !!v || '필수정보입니다.']" type="password">
+            </v-text-field>
 
 
-        <div class="btn-size">
-            <v-btn width="410" height="50" @click="login({ userId, password })"
-        
-             color="blue" style="float:left; margin-top:3%;"
-            class="white--text">
-            로그인
-            </v-btn>
-            <v-btn width="410" height="50" color="blue darken-4" style="float:left; margin-top:3%;"
-            class="white--text" route :to="'/memberRegister'">
-            회원가입
-            </v-btn>    
-        </div>  
-                    </div>
+            <div class="btn-size">
+                <v-btn width="410" height="50" @click="login({ userId, password })"
+                    color="blue" style="float:left; margin-top:3%;"
+                    class="white--text">
+                    로그인
+                </v-btn>
+                <v-btn width="410" height="50" color="blue darken-4" style="float:left; margin-top:3%;"
+                    class="white--text" route :to="'/memberRegister'">
+                    회원가입
+                </v-btn>    
+            </div>  
+            </div>
             </v-flex>
             </v-container>
         </div>
@@ -53,55 +37,125 @@
 </template>
 
 <script>
-// import MemberLoginForm from '@/components/member/MemberLoginForm.vue'
-import { LOGIN_ERROR, LOGIN_SUCCESS } from '@/store/mutation-types'
-import { mapState } from 'vuex'
-import axios from 'axios'
+import { LOGIN_SUCCESS } from '@/store/mutation-types'
+// import { mapActions, mapState } from 'vuex'
+// import axios from 'axios'
+// import cookies from 'vue-cookies'
+
 
 export default {
     name: 'CinzelMemberLogin',
-    // components: {
-    //     MemberLoginForm
-    // },
     data () {
         return {
-
             userId: '',
             password: '',
         }
     },
-    computed: {
-        ...mapState(["isLogin", "isLoginError", "administratorLogin"]),
-    },
-    methods: {
-        login ( payload) {
-            const { userId, password } = payload
-            axios.post('http://localhost:8888/jpamember/login', { userId, password})
-                    .then(res => {
-                        if(res.data != "") {
-                            alert('로그인이 완료되었습니다.')
-                            console.log(res)
-                            this.isLogined = true;
-                            this.$store.commit(LOGIN_SUCCESS)
+    mounted () {
+        this.$store.state.session = this.$cookies.get("user")
 
-                            let token = res.data.userId
-                            console.log(token)
-                            localStorage.setItem("access_token", token)
-                            this.$router.push({
-                                    name: 'MainPage'
-                                    })
-                        } else {
-                            alert('아이디와 비밀번호를 확인해주세요.')
-                            this.$store.commit(LOGIN_ERROR)
-                        }
-                    })
-                    .catch(res => {
-                        console.log(res)
-                    })
+        if(this.$store.state.session != null) {
+            LOGIN_SUCCESS
         }
+    },
+    // computed: {
+    //     ...mapState(["isLogin", "isLoginError", "session"])
+    // },
+    methods: {
+        login (payload) {
+            if(this.$store.state.session == null) {
+            const { userId, password } = payload
+            this.$store.dispatch('login', {userId, password})
+            this.$router.push({
+                    name: 'MainPage'
+            })
+            } else  {
+              alert('이미 로그인 되어 있습니다.')
+          }
+        }
+
+        // 수업시간 로그인
+    //     login ( payload) {
+    //     if(this.$store.state.session == null) {
+    //     const { userId, password } = payload
+    //     axios.post('http://localhost:8888/jpamember/login', { userId, password})
+    //             .then(res => {
+    //                 if(res.data != "") {
+    //                     alert('로그인이 완료되었습니다.')
+    //                     console.log(res)
+    //                     this.$store.loginCookie
+    //                     cookies.set("user",res.data)
+    //                     this.$store.state.session = res.data
+    //                     console.log(res.data)
+    //                     console.log(this.$store.state.session.userId)
+
+    //                     // this.$store.commit(LOGIN_SUCCESS)
+    //                     // cookies.set("user", res.date)
+    //                     // this.$store.state.session = res.data
+    //                     // console.log(res.data)
+    //                     // console.log(this.$store.state.session.userId)
+
+
+    //                     // this.$cookies.set("user", res.date, '1h')
+
+    //                     // let token = res.data.userId
+    //                     // console.log(token)
+    //                     // localStorage.setItem("access_token", token)
+    //                     this.$router.push({
+    //                             name: 'MainPage'
+    //                             })
+    //                 } else {
+    //                     alert('아이디와 비밀번호를 확인해주세요.')
+    //                     this.$store.commit(LOGIN_ERROR)
+    //                     // this.$store.state.isLogin = false
+    //                 }
+    //             })
+    //             .catch(res => {
+    //                 console.log(res)
+    //             })
+    //     } else  {
+    //         alert('이미 로그인 되어 있습니다.' + this.$store.state.session.userId)
+    //         console.log(this.$store.state.session.userId)
+    //     }
+        
+    // }
+
+
+    // 기존에 쓰던 로그인
+        // login ( payload) {
+        //     const { userId, password } = payload
+        //     axios.post('http://localhost:8888/jpamember/login', { userId, password})
+        //             .then(res => {
+        //                 if(res.data != "") {
+        //                     alert('로그인이 완료되었습니다.')
+        //                     console.log(res)
+        //                     this.$store.commit(LOGIN_SUCCESS)
+                            
+        //                     this.isLogin = true
+
+        //                     let token = res.data.userId
+        //                     console.log(token)
+        //                     localStorage.setItem("access_token", token)
+        //                     this.$router.push({
+        //                             name: 'MainPage'
+        //                             })
+        //                 } else {
+        //                     alert('아이디와 비밀번호를 확인해주세요.')
+        //                     this.$store.commit(LOGIN_ERROR)
+        //                 }
+        //             })
+        //             .catch(res => {
+        //                 console.log(res)
+        //             })
+        //     } 
+        // },
     }
+
+    
 }
 </script>
+
+
 
  <style scoped>
 

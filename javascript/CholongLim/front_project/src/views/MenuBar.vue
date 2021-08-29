@@ -11,15 +11,13 @@
             </v-toolbar-title>
             <v-toolbar-items class="login-locate">
                 <!-- <span><member-login-form @submit="onSubmit"/></span> -->
-                <v-btn  v-if="isLogin === false" text router :to="'/login'">로그인</v-btn>
-                
-                <v-menu offset-y v-if="isLogin">
+                <!-- <v-btn  v-if="isLogin === false" text router :to="'/login'">로그인</v-btn> -->
+
+                    <v-btn  text v-if="!cookie" router :to="'/login'">로그인</v-btn>
+     
+                    <v-menu offset-y v-if="cookie">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                        text
-                        v-bind="attrs"
-                        v-on="on"
-                        >
+                        <v-btn text v-bind="attrs" v-on="on">
                         <v-icon>account_circle</v-icon>
                         </v-btn>
                     </template>
@@ -31,7 +29,8 @@
                         <v-list-item-title>로그아웃</v-list-item-title>
                         </v-list-item>
                     </v-list>
-                </v-menu>
+                    </v-menu>
+
             
 
             </v-toolbar-items>
@@ -51,7 +50,9 @@
 </template>
 
 <script>
-import { mapState,mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import cookies from 'vue-cookies'
+// import { LOGOUT } from '@/store/mutation-types'
 
 export default {
     name: 'MenuBar',
@@ -62,16 +63,17 @@ export default {
         return {
             nav_drawer: false,
             group: false,
-            message: '오잉',
-            dialog: false,
-            loginDialog: false,
-            service: {
-                name: 'Room 401호'
-            },
-            userInfo: {
-                email: '',
-                password: ''
-            },
+            cookie: cookies.get('user'),
+
+            // dialog: false,
+            // loginDialog: false,
+            // service: {
+            //     name: 'Room 401호'
+            // },
+            // userInfo: {
+            //     email: '',
+            //     password: ''
+            // },
             links: [
                 { 
                     text: 'ABOUT', name:'ABOUT',  route: '/about'
@@ -97,7 +99,15 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["logout"]),
+        ...mapActions(['logout'])
+            // logout () {
+            // this.isLogout = true
+            // cookies.remove("user")
+            // this.$store.commit(LOGOUT)
+            // alert('로그아웃.')
+       
+
+        // }
     }
 }
 

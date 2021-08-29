@@ -1,23 +1,23 @@
 package com.example.miniProject.controller.board.jpa;
 
 
-import com.example.miniProject.controller.board.BoardController;
 import com.example.miniProject.entity.jpa.Board;
-import com.example.miniProject.entity.jpa.BoardDto;
-import com.example.miniProject.repository.BoardRepository;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
 import com.example.miniProject.service.jpa.JPABoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.util.StringUtils;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +34,16 @@ public class JPABoardController {
     @Autowired
     private JPABoardRepository boardRepository;
 
+
+    @GetMapping("/lists")
+    public ResponseEntity<List<Board>> getLists (@PageableDefault(size=2) @RequestParam(required = false,defaultValue = "")
+                                                      String searchText, Model model) throws Exception {
+//        Page<Board> boards = boardRepository.findAll(PageRequest.of(0,20));
+//        model.addAttribute("boards",boards);
+        model.addAttribute("boards", service.list(searchText,searchText));
+        return new ResponseEntity<>(service.list(searchText,searchText), HttpStatus.OK);
+    }
+
     @PostMapping("/register")
     public ResponseEntity<Board> register(@Validated @RequestBody Board board) throws Exception {
         log.info("post register request from vue");
@@ -43,13 +53,6 @@ public class JPABoardController {
         return new ResponseEntity<>(board, HttpStatus.OK);
     }
 
-
-    @GetMapping("/lists")
-    public ResponseEntity<List<Board>> getLists () throws Exception {
-        log.info("getLists(): " + service.list());
-
-        return new ResponseEntity<>(service.list(), HttpStatus.OK);
-    }
 
     @GetMapping("/{boardNo}")
     public ResponseEntity<Board> read(@PathVariable("boardNo") Long boardNo) throws Exception {
@@ -81,15 +84,6 @@ public class JPABoardController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
-    @PutMapping("/lists/search")
-    public ResponseEntity<List<Board>> searchLists ( @RequestParam(value = "keyword") String keyword) throws Exception {
-
-        List<Board> searchList = service.search(keyword);
-
-        return new ResponseEntity<>(service.search(keyword), HttpStatus.OK);
-    }
-
 
 
 }

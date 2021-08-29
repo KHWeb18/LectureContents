@@ -22,7 +22,7 @@
                 <!-- <v-btn color="text-white blue lighten-2" router :to="'/login'"
                 width="200px" height="50px">예약하기</v-btn> -->
                 <!-- v-else router :to="'/book'" -->
-                <v-btn color="text-white blue lighten-2"
+                <v-btn color="text-white blue lighten-2" 
                  @click="reservation()" width="200px" height="50px">
                 예약하기
                 </v-btn>
@@ -120,19 +120,21 @@
 
 
 <script>
-import { mapState } from 'vuex' 
+import cookies from 'vue-cookies';
+// import { mapState } from 'vuex' 
   export default {
-    computed: {
-        ...mapState(["isLogin"])
-    },
+
+    // computed: {
+    //     ...mapState(["isLogin"])
+    // },
     data() {
         return {
-
+            cookie: cookies.get('user'),
             pays: [
-                {name: '301', form: '패밀리형', num: '4명/6명', price: '300,000원' },
-                {name: '302', form: '패밀리형', num: '4명/6명', price: '300,000원' },
-                {name: '201', form: '커플형', num: '2명/4명', price: '240,000원' },
-                {name: '202', form: '커플형', num: '2명/4명', price: '240,000원' },
+                {name: '301', form: '패밀리형', num: '4명/4명', price: '300,000원' },
+                {name: '302', form: '패밀리형', num: '4명/4명', price: '300,000원' },
+                {name: '201', form: '커플형', num: '2명/2명', price: '240,000원' },
+                {name: '202', form: '커플형', num: '2명/2명', price: '240,000원' },
             ],
             refunds: [
                 {day: '기본 취소 수수료', percent: '0%' },
@@ -151,7 +153,7 @@ import { mapState } from 'vuex'
     },
     methods: {  
         reservation(){
-                 if(this.isLogin == false) {
+                 if(!this.cookie) {
                     alert('로그인이 필요한 서비스입니다.')
                      this.$router.push({
                                     name: 'CinzelMemberLogin'

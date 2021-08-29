@@ -2,6 +2,7 @@ import {
    // 게시판
    FETCH_BOARD_LIST,
    FETCH_BOARD,
+   ADD_TODO, 
    // 회원관리
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
@@ -21,6 +22,9 @@ export default {
   },
   [FETCH_BOARD] (state, board) {
     state.board = board
+  },
+  [ADD_TODO] (state, todoItems) {
+    state.todoItems = todoItems
   },
     // 관리자 로그인 로그아웃
   [LOGIN_SUCCESS] (state, payload) {
@@ -62,7 +66,7 @@ export default {
   [LOGOUT] (state) {
     state.isLogin = false
     state.isLoginError = false
-    state.userInfo = null
+    state.session = null
   },
     // 크롤링
   [CRAWL_START] (state, payload) {
