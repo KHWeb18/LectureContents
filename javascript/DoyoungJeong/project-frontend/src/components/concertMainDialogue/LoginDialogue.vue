@@ -65,15 +65,16 @@ export default {
                 axios.post('http://localhost:8888/member/login', { id, password }) //null값이 반환되면 무조건 콘솔창에 에러 메시지
                 .then(res => {
                     if(res.data.id.length > 2) {
-                        
-                        alert('로그인되었습니다!')
+                        alert(res.data.id + '으로 로그인되었습니다!')
+
                         this.$store.state.isLoggedIn = true;
-                        // this.$store.state.loggedInID = this.userInfo.id 
-                        // console.log(this.userInfo.id + this.$store.state.loggedInID) 왜 안될까..
+         
                         this.$store.state.userIdentity = res.data.memberIdentityList[0].identity
                         this.$store.state.userProfile = res.data
-                        console.log(this.$store.state.userIdentity)
-                        console.log(this.$store.state.userProfile)
+
+                        // console.log(this.$store.state.userIdentity)
+                        // console.log(this.$store.state.userProfile)
+
                     } else {
                         alert('로그인 실패!')
                     }

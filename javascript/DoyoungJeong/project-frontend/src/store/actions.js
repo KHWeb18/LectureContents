@@ -3,7 +3,10 @@ import {
     FETCH_MEMBER_LIST,
     CRAWL_FIND,
     FETCH_LIKED_LIST,
-    FETCH_LIKED_OR_NOT
+    FETCH_LIKED_OR_NOT,
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
+    FETCH_REPLY_LIST
 
 } from './mutation-types'
 
@@ -57,6 +60,35 @@ export default {
             .then((res) => {
                 commit(FETCH_LIKED_OR_NOT, res.data)
                 console.log("This page's likedOrNot is: " + res.data)
+            })
+    },
+
+    fetchBoardList({ commit }) {
+        return axios.get('http://localhost:8888/board/list')
+            .then((res) => {
+                commit(FETCH_BOARD_LIST, res.data)
+            })
+    },
+
+    fetchBoard({ commit }, num) {
+
+        const boardNo = num
+        //console.log('boardNo' + boardNo)
+
+        return axios.get(`http://localhost:8888/board/read/${ boardNo }`)
+            .then((res) => {
+                commit(FETCH_BOARD, res.data)
+            })
+    },
+
+    fetchReplyList({ commit }, num) {
+
+        const boardNo = num
+        //console.log('boardNo' + boardNo)
+
+        return axios.get(`http://localhost:8888/board/replyList/${ boardNo }`)
+            .then((res) => {
+                commit(FETCH_REPLY_LIST, res.data)
             })
     }
 }

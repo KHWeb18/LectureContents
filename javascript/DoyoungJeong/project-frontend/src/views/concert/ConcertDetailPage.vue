@@ -1,47 +1,86 @@
 <template>
     <div style="padding-top: 30px; height: 1000px;" class="grey darken-3">
-        <input type="text" id="title" disabled v-bind:value="concert.concertName"/>    
+        <input type="text" class="detailTitle" disabled v-bind:value="concert.concertName" style="font-size: 50px; color: white;"/>    
 
         <div style="width: 25%; margin: 0px auto; padding-top: 10px;" class="circle responsive-img" v-on:mouseover="turnOffColor" v-on:mouseout="turnOnColor">
 
-      
             <img v-if="concert.concertNo == 1 && onColor == true" class="circle responsive-img" src="@/assets/img/flyingDog2.jpg" >
             <a href="https://ko-kr.facebook.com/bandflyingdog" target="_blank" v-else-if="concert.concertNo == 1 && onColor == false">
-            <img class="circle responsive-img" src="@/assets/img/flyingDog2.jpg" id="bluredImg"
+            <img class="circle responsive-img bluredImg" src="@/assets/img/flyingDog2.jpg"
             style="position: relative"></a>
             
             <img v-if="concert.concertNo == 2 && onColor == true" class="circle responsive-img" src="@/assets/img/kidmilli2.jpg">
             <a href="https://www.instagram.com/kidcozyboy/?hl=ko" target="_blank" v-else-if="concert.concertNo == 2 && onColor == false">
-            <img class="circle responsive-img" src="@/assets/img/kidmilli2.jpg" id="bluredImg"
+            <img class="circle responsive-img bluredImg" src="@/assets/img/kidmilli2.jpg"
             style="position: relative"></a>
 
             <img v-if="concert.concertNo == 3 && onColor == true" class="circle responsive-img" src="@/assets/img/messgram2.jpg">
             <a href="https://ko-kr.facebook.com/Messgram/" target="_blank" v-else-if="concert.concertNo == 3 && onColor == false">
-            <img class="circle responsive-img" src="@/assets/img/messgram2.jpg" id="bluredImg"
+            <img class="circle responsive-img bluredImg" src="@/assets/img/messgram2.jpg"
             style="position: relative"></a>
 
             <img v-if="concert.concertNo == 4 && onColor == true" class="circle responsive-img" src="@/assets/img/crackshot2.jpg">
             <a href="https://www.instagram.com/crackshot_official/?hl=ko" target="_blank" v-else-if="concert.concertNo == 4 && onColor == false">
-            <img class="circle responsive-img" src="@/assets/img/crackshot2.jpg" id="bluredImg"
+            <img class="circle responsive-img bluredImg" src="@/assets/img/crackshot2.jpg"
             style="position: relative"></a>
 
-            <div v-if="onColor == false" class="hide-on-med-and-down search">사진을 클릭하시면 해당 아티스트의 포털사이트 정보페이지로 이동합니다!</div>
-        </div>
-         
-        <div>
-            <input type="text" id="name" disabled v-bind:value="concert.concertArtist"/>
-        </div>
-         
-        <input type="text" id="date2" disabled v-bind:value="concert.concertDate"/>
-          
-        <input type="text" id="venue" disabled v-bind:value="concert.concertVenue"/>
+            <img v-if="concert.concertNo == 5 && onColor == true" class="circle responsive-img" src="@/assets/img/박소은2.jpg">
+            <a href="https://www.facebook.com/singersongwritersoeun" target="_blank" v-else-if="concert.concertNo == 5 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/박소은2.jpg"
+            style="position: relative"></a>
 
-        <input type="text" id="venue" disabled v-bind:value="concert.numberOfLikes + '명이 좋아요했습니다!'" style="font-size: 12px;"/>
+            <img v-if="concert.concertNo == 6 && onColor == true" class="circle responsive-img" src="@/assets/img/RollingQuartz2.jpeg">
+            <a href="https://www.instagram.com/rolling_quartz/?hl=ko" target="_blank" v-else-if="concert.concertNo == 6 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/RollingQuartz2.jpeg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 7 && onColor == true" class="circle responsive-img" src="@/assets/img/OceanFromTheBlue2.jpg">
+            <a href="https://www.instagram.com/oceanfromtheblue/" target="_blank" v-else-if="concert.concertNo == 7 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/OceanFromTheBlue2.jpg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 8 && onColor == true" class="circle responsive-img" src="@/assets/img/김심야2.jpg">
+            <a href="http://www.beastsandnatives.com/#subscribe" target="_blank" v-else-if="concert.concertNo == 8 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/김심야2.jpg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 9 && onColor == true" class="circle responsive-img" src="@/assets/img/DJ 팁토2.jpg">
+            <a href="http://www.beastsandnatives.com/#subscribe" target="_blank" v-else-if="concert.concertNo == 9 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/DJ 팁토2.jpg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 10 && onColor == true" class="circle responsive-img" src="@/assets/img/이준형2.jpg">
+            <a href="http://www.beastsandnatives.com/#subscribe" target="_blank" v-else-if="concert.concertNo == 10 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/이준형2.jpg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 11 && onColor == true" class="circle responsive-img" src="@/assets/img/Surl2.jpg">
+            <a href="http://www.beastsandnatives.com/#subscribe" target="_blank" v-else-if="concert.concertNo == 11 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/Surl2.jpg"
+            style="position: relative"></a>
+
+            <img v-if="concert.concertNo == 12 && onColor == true" class="circle responsive-img" src="@/assets/img/Net Gala2.jpg">
+            <a href="http://www.beastsandnatives.com/#subscribe" target="_blank" v-else-if="concert.concertNo == 12 && onColor == false">
+            <img class="circle responsive-img bluredImg" src="@/assets/img/Net Gala2.jpg"
+            style="position: relative"></a>
+
+            <div v-if="onColor == false" class="hide-on-med-and-down search">사진을 클릭하시면 해당 아티스트의 관련 페이지로 이동합니다!</div>
+        </div>
+         
+        <div style="margin-top: 10px;">
+            <input type="text" class="name" disabled v-bind:value="concert.concertArtist" style="font-size: 40px; color: white;"/>
+        </div>
+         
+        <input type="text" class="date2" disabled v-bind:value="concert.concertDate" style="color: white;"/>
+          
+        <input type="text" class="venue" disabled v-bind:value="concert.concertVenue" style="color: white;"/>
+
+        <input type="text" class="venue" disabled v-bind:value="concert.numberOfLikes + '명이 좋아요했습니다!'" style="font-size: 15px; color: white;"/>
        
         <hr style="width: 25%">
 
         <div class="container" style="width: 25%;">
-            <textarea id="infoText" style='height: 90px;' disabled v-bind:value="concert.concertInfo"/>
+            <textarea class="infoText" style='height: 90px; color: white;' disabled v-bind:value="concert.concertInfo"/>
         </div>
           
         <div align="center">
@@ -50,10 +89,10 @@
             <booking-dialogue/>
 
             <v-btn v-if="notLikedYet == true" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
-            @click="addLiked(concert.concertNo)">찜하기!</v-btn>
+            @click="addLiked(concert.concertNo)" color="black"><v-icon>mdi-heart</v-icon></v-btn>
 
             <v-btn v-else-if="notLikedYet == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
-            @click="unLiked(concert.concertNo)">찜해제</v-btn>
+            @click="unLiked(concert.concertNo)" color="pink"><v-icon>mdi-heart</v-icon></v-btn>
 
             <!-- <p>.....{{ likedList }}</p> -->
         </div>
@@ -166,6 +205,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
 
 td, th {
     padding: 0px 0px;
@@ -175,25 +215,23 @@ hr{
 	margin: 0px auto;
 }
 
-#title {
-    font-size: 45px;
+.detailTitle {
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
     font-style: italic;
     text-align: center;
 }
 
-#name {
+.name {
     font-size: 90px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
     font-style: italic;
     text-align: center;
     margin-top: 10px;
 }
 
-#date2 {
-    font-size: 18px;
+.date2 {
     color: white;
     font-family: 'Roboto', sans-serif;
     font-style: italic;
@@ -201,16 +239,16 @@ hr{
     margin-top: -300px;
 }
 
-#venue {
+.venue {
     font-size: 15px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
     font-style: italic;
     text-align: center;
     margin-top: -100px;
 }
 
-#bluredImg {
+.bluredImg {
     filter: blur(2px) grayscale(80%); 
     opacity: 0.6;
 }
