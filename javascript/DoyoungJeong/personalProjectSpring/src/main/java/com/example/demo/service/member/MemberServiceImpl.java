@@ -142,20 +142,16 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void modify(MemberRequest memberRequest) throws Exception { //아직 미구현 수정 중
+    public void modify(MemberRequest memberRequest) throws Exception { //자식 레퍼지토리와 부모 레퍼지토리를 동시에 수정해줘야 함
         String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
         memberRequest.setPassword(encodedPassword);
 
-        MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
-        Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo());
-
-        member.addIdentity(memberIdentity);
         Long memberNo = new Long(memberRequest.getMemberNo());
 
-        memberRepository.modify(member, memberNo);
-//        memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-//                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
+        memberIdentityRepository.modify(memberRequest.getIdentity(), memberNo);
+
+        memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
+                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
     }
 
     @Override

@@ -27,14 +27,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("delete from Member mem where mem.memberNo = :memberNo")
     void delete(Long memberNo);
 
-    @Transactional
-    @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query("update Member mem set mem = :member where mem.memberNo = :memberNo")
-    void modify(Member member, Long memberNo) throws Exception;
-    
     //회원 정보 업데이트 구현 중...
-//    @Modifying
-//    @Query("UPDATE Member mem set mem.id = ?1, mem.password = ?2, mem.name = ?3, mem.location = ?4, mem.birthDay = ?5, " +
-//            "mem.phoneNo = ?6 where mem.memberNo = :memberNo")
-//    void modify(String id, String password, String name, String location, Date birthday, String phoneNo, Long memberNo);
+    @Transactional
+    @Modifying
+    @Query("update Member mem set mem.id = :id, mem.password = :password, mem.name = :name, mem.location = :location, mem.birthDay = :birthDay, " +
+            "mem.phoneNo = :phoneNo where mem.memberNo = :memberNo")
+    void modify(String id, String password, String name, String location, Date birthDay, String phoneNo, Long memberNo);
 }

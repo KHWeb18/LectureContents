@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="board")
+@Table(name="board") //이 엔티티가 데이터 스키마 역할을 하는것이다.
 public class Board {
 
     @Id
