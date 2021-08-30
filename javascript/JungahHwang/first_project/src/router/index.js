@@ -2,12 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Test from '@/views/Test'
+import ListTest from '@/views/ListTest'
 
-import Signup from '@/views/member/Signup'
-import Login from '@/views/member/Login'
 import Record from '@/views/Record'
 import Challenge from '@/views/Challenge'
-import Recommend from '@/views/Recommend'
+import Recommend from '@/views/recommend/Recommend'
+import AddRecommend from '@/views/recommend/AddRecommend'
+import ReadRecommend from '@/views/recommend/ReadRecommend'
+import ModifyRecommend from '@/views/recommend/ModifyRecommend'
 import Together from '@/views/Together'
 import Chatting from '@/views/Chatting'
 
@@ -35,14 +37,9 @@ const routes = [
     component: Test
   },
   {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: '/listTest',
+    name: 'ListTest',
+    component: ListTest
   },
   {
     path: '/record',
@@ -58,6 +55,21 @@ const routes = [
     path: '/recommend',
     name: 'Recommend',
     component: Recommend
+  },
+  {
+    path: '/recommend/register',
+    name: 'AddRecommend',
+    component: AddRecommend
+  },
+  {
+    path: '/recommend/read/:boardNo',
+    name: 'ReadRecommend',
+    component: ReadRecommend
+  },
+  {
+    path: '/recommend/modify/:boardNo',
+    name: 'ModifyRecommend',
+    component: ModifyRecommend
   },
   {
     path: '/together',

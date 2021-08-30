@@ -2,6 +2,7 @@ export default {
 // Login
   isLogin: false,
   userInfo: [],
+  session: [],
 
   idRules: [
     id => !!id || '아이디를 입력해주세요!',
@@ -37,5 +38,9 @@ export default {
 // Calendar
   dialog: false,
   date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-  activity: []
+  record: [],
+
+// Recommend
+  items: [],
+  recommend:[]
 }
