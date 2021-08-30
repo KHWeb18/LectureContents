@@ -115,14 +115,43 @@
                     active-class="active">
                 Vuetify 활용
             </router-link>
+            <router-link :to="{ name: 'VuetifyMemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Vuetify 회원 가입 활용
+            </router-link>
+        
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Awesome Swiper Test
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Image Gallery Test
+            </router-link>
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Calendar Test
+            </router-link>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member Join Column Test
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member 로그인 Test
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
-  export default {
-    name: 'Home',
-    components: {
-    },
-  }
+export default {
+    name: 'Home'
+}
 </script>
