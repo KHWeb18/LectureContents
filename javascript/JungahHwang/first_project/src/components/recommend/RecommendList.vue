@@ -21,7 +21,7 @@
               cols="12" sm="6" md="4" lg="3">
               <v-hover v-slot="{hover}" close-delay="50">
                 <v-card :elevation="hover ? 16:2" class="{ 'on-hover': hover }" 
-                  @click="readRecommend(item.boardNo)" height="250px">
+                  @click="readRecommend(item.boardNo, item.id)" height="250px">
                   <v-toolbar flat>
                     <v-toolbar-title>
                       {{ item.title }}
@@ -78,27 +78,28 @@ export default {
     }
   },
   mounted () {
-    this.fetchRecommend()
+    this.fetchRecommends()
   },
   computed: {
-    ...mapState([ 'recommends' ]),
+    ...mapState([ 'recommends', 'recommend' ]),
     numberOfPages () {
       return Math.ceil(this.recommends.length / this.itemsPerPage)
     },
   },
   methods: {
-    ...mapActions([ 'fetchRecommend', 'fetchRecommendDetail' ]),
+    ...mapActions([ 'fetchRecommends', 'fetchRecommend' ]),
     nextPage () {
       if (this.page + 1 <= this.numberOfPages) this.page += 1
     },
     formerPage () {
       if (this.page - 1 >= 1) this.page -= 1
     },
-    readRecommend (boardNo) {
+    readRecommend (boardNo, id) {
+      this.fetchRecommend(boardNo)
+
       this.$router.push(
-        { name: 'ReadRecommend', params: { boardNo: boardNo} }
+        { name: 'ReadRecommend', params: { boardNo: boardNo, id: id } }
       )
-      
     },
     addButton () {
       this.$emit('addButton')

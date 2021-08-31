@@ -13,8 +13,8 @@ public interface RecommendJPARepository extends JpaRepository<Recommend, Long> {
             "date_format(r.regDate, '%Y.%m.%d') from Recommend r")
     List<Object[]> lists();
 
-    @Query("select r.boardNo, r.id, r.title, r.content, date_format(r.regDate, '%Y.%m.%d') from Recommend r " +
-            "where r.boardNo like :boardNo")
+    @Query("select r.boardNo, r.id, r.title, r.content, date_format(r.regDate, '%Y.%m.%d / %T') " +
+            "from Recommend r where r.boardNo like :boardNo")
     List<Object[]> read(@Param("boardNo") Long boardNo);
 
 

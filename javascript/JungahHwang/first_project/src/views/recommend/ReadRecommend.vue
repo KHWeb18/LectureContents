@@ -8,7 +8,7 @@
         <v-spacer></v-spacer>
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn v-if="userInfo.id != null && userInfo.id == recommend.id" v-bind="attrs" v-on="on" icon>
+            <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
               <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
           </template>
@@ -49,7 +49,7 @@
 <script>
 import RemoveBoardDialog from '@/components/RemoveBoardDialog'
 import axios from 'axios'
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -58,20 +58,24 @@ export default {
   props: {
     boardNo: {
       type: Number
+    },
+    id: {
+      type: String
     }
   },
   created () {
-    this.fetchRecommendDetail(this.boardNo)
+    console.log(this.id)
+    console.log('recommend: ' + this.recommend.id)
+    console.log('userInfo: ' + this.userInfo.id)
   },
   computed: {
-    ...mapState([ 'recommend', 'userInfo' ])
+    ...mapState([ 'recommend', 'userInfo' ]),
   },
   methods: {
-    ...mapActions([ 'fetchRecommendDetail' ]),
     modifyRecommend () {
       
       this.$router.push(
-        { name: 'ModifyRecommend', params: {boardNo: this.boardNo} }
+        { name: 'ModifyRecommend', params: { boardNo: this.boardNo, id: this.id } }
       )
     },
     removeRecommend () {

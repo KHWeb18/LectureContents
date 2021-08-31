@@ -23,6 +23,9 @@ export default {
   props: {
     boardNo: {
       type: Number
+    },
+    id: {
+      type: String
     }
   },
   data () {
@@ -39,7 +42,7 @@ export default {
     this.content = this.recommend.content
   },
   methods: {
-    ...mapActions([ 'fetchRecommendDetail' ]),
+    ...mapActions([ 'fetchRecommend' ]),
     modify() {
       const title = this.title
       const content = this.content
@@ -47,10 +50,10 @@ export default {
       axios.put(`http://localhost:7777/recommend/modify/${this.boardNo}`, { title, content }).then(() => {
         alert("수정이 완료되었습니다!")
 
-        this.fetchRecommendDetail(this.boardNo)
+        this.fetchRecommend(this.boardNo)
 
         this.$router.push(
-          { name: 'ReadRecommend' } 
+          { name: 'ReadRecommend', params: { id: this.id } } 
         )
       })
     }

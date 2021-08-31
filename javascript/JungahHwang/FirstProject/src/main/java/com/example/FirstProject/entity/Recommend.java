@@ -26,7 +26,7 @@ public class Recommend {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 3000, nullable = false)
+    @Column(length = 50000, nullable = false)
     private String content;
 
     @CreationTimestamp
