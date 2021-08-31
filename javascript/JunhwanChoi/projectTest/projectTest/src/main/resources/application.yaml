@@ -23,3 +23,9 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+
+
+openapi:
+  service:
+    url: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson
+    key: 56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D

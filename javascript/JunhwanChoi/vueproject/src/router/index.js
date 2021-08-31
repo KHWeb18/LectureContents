@@ -17,6 +17,14 @@ import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
 
 import InfoPage from '@/views/InfoPage.vue'
 
+import Test from '@/views/Test.vue'
+
+import CovidCrawlerPage from '@/views/CovidCrawlerPage.vue'
+
+
+import SessionLoginPage from '@/views/SessionLoginPage.vue'
+import AccountRegisterPage from '@/views/AccountRegisterPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
 
 
@@ -80,6 +88,47 @@ const routes = [
       default: InfoPage
     }
   },
+
+  {
+    path: '/test',
+    name: 'Test',
+    components: {
+      default: Test
+    }
+  },
+
+
+  {
+    path: '/covidtest',
+    name: 'CovidCrawlerPage',
+    components: {
+      default: CovidCrawlerPage
+    }
+  },
+
+  {
+    path: '/sessionLogin',
+    name: 'SessionLoginPage',
+    components: {
+      default: SessionLoginPage
+    }
+  },
+  {
+    path: '/accountRegister',
+    name: 'AccountRegisterPage',
+    components: {
+      default: AccountRegisterPage
+    }
+  },
+  {
+    path: '/vuetifyMemberLoginPage',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+
+  
 
 
   

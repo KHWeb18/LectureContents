@@ -8,7 +8,7 @@
                     </v-toolbar-title>
                     <div class="flex-grow-1"></div>
                     <v-toolbar-items>
-                        <v-btn text class="text-right" 
+                        <v-btn  text class="text-right" 
                                     v-for="link in links" :key="link.icon" :to="link.route">
                                     {{link.text}}
                         </v-btn>
@@ -25,6 +25,7 @@
                         <v-list-item-content>
                             <v-list-item-title>{{ link.text }}</v-list-item-title>
                         </v-list-item-content>
+                        
                     </v-list-item>
                 </v-list-item-group>
             </v-list>
@@ -39,6 +40,7 @@ export default {
         return {
             nav_drawer: false,
             group: false,
+            mypage: false,
         
             links:
                 [

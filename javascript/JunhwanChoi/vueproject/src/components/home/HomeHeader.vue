@@ -1,11 +1,16 @@
 <template>
-    <div> 
+    <div id="app"> 
         <div class="wrap">
             <div class="intro_bg">
                 <img class="responsive-img" src="@/assets/mainPageImg.jpg">
             </div>
         </div> 
-        
+
+<!-- 
+http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20200310&endCreateDt=20200315
+
+-->
+
         <ul class="amount">
         <li>
           <div>
@@ -84,6 +89,16 @@
                         MORE
                     </div>
             </router-link>
+            <router-link :to="{ name: 'AccountRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Account 회원 가입
+            </router-link>
+            <router-link :to="{ name: 'SessionLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Account 로그인 Test
+            </router-link>
           </li>
         </ul>
     </div>
@@ -93,7 +108,7 @@
 
 
 export default {
-   
+  
 }
 </script>
 

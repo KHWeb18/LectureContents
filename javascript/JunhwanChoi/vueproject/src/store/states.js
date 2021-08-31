@@ -4,5 +4,9 @@ export default {
     member: null,
 
     // 크롤링
-    lists: []
+    lists: [],
+
+    covidlists:[],
+
+    session: []
 }

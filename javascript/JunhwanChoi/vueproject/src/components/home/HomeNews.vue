@@ -1,12 +1,22 @@
 <template>
     <div>
         <template >
-            <v-card>
+            <div class="tablemargin">
+                 <v-card>
                 <v-simple-table>
                     <template>
                         <thead>
                             <tr>
-                                <th class="text-left">No.</th>
+                                <th class="text-left">
+                                    <h5>코로나 뉴스</h5>
+                                    <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
+                                                                class="nav-link"
+                                                                active-class="active">
+                                        <div class="more">
+                                            MORE
+                                        </div>
+                                    </router-link>
+                                </th>
                             </tr>
                         </thead>
                         <tbody >
@@ -21,6 +31,8 @@
                     </template>
                 </v-simple-table>
             </v-card>
+            </div>
+           
         </template>
     </div>
 </template>
@@ -53,3 +65,11 @@ export default {
     }
 }
 </script>
+
+<style>
+    .tablemargin{
+        margin-top: 50px;
+        margin-left: 200px;
+        width:600px;
+    }
+</style>

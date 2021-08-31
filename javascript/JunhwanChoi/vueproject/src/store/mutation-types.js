@@ -3,3 +3,8 @@ export const FETCH_MEMBER_LIST = 'FETCH_MEMBER_LIST'
 export const FETCH_MEMBER = 'FETCH_MEMBER'
 
 export const CRAWL_START = 'CRAWL_START'
+
+export const COVID_CRAWL_START = 'COVID_CRAWL_START'
+
+export const FETCH_SESSION = 'FETCH_SESSION'
+

@@ -3,7 +3,13 @@ import {
     FETCH_MEMBER,
 
     // 크롤링
-    CRAWL_START
+    CRAWL_START,
+
+    COVID_CRAWL_START,
+
+
+     // 세션
+     //FETCH_SESSION
 } from './mutation-types'
 
 export default {
@@ -17,5 +23,15 @@ export default {
 
     [CRAWL_START] (state, payload) {
         state.lists = payload
-    }
+    },
+
+     [COVID_CRAWL_START] (state, payload) {
+        state.covidlists = payload
+    },
+
+    // [FETCH_SESSION] (state) {
+    //     state.session = this.$cookies.get(userSession)
+    // },
+
+
 }
