@@ -10,6 +10,12 @@
       class="nav-link" 
       active-class="active">Test
     </router-link>
+    <router-link :to="{ name: 'ListTest' }" 
+      class="nav-link" 
+      active-class="active">ListTest
+    </router-link>
+
+    <v-btn @click="cookies">쿠키</v-btn>
   </div>
 </template>
 
@@ -22,5 +28,11 @@ export default {
   components: {
 
   },
+  methods: {
+    cookies () {
+      let userCookies = this.$cookies.get('user')
+      console.log(userCookies)
+    }
+  }
 }
 </script>

@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class RecommendController {
 
     @GetMapping("/read/{boardNo}")
     public ResponseEntity<List<Object[]>> read(@PathVariable("boardNo") @RequestBody Long boardNo) throws Exception {
-        log.info("read");
+        log.info("Recommend Read");
 
         return new ResponseEntity<List<Object[]>>(service.read(boardNo), HttpStatus.OK);
     }
@@ -48,13 +49,22 @@ public class RecommendController {
     @PutMapping("/modify/{boardNo}")
     public ResponseEntity<Recommend> modify(@PathVariable("boardNo") Long boardNo,
                                        @Validated @RequestBody Recommend recommend) throws Exception {
-        log.info("modify");
+        log.info("Recommend Modify");
 
         recommend.setBoardNo(boardNo);
 
         service.modify(recommend);
 
         return new ResponseEntity<>(recommend, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/remove/{boardNo}")
+    public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
+        log.info("Recommend Remove");
+
+        service.remove(boardNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 }

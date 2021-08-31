@@ -12,8 +12,14 @@ public class RecommendRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void modify(Recommend recommend) throws Exception {
-        String query = "update recommend set id = ?, title = ?, content = ? where board_no = ?";
+        String query = "update recommend set title = ?, content = ? where board_no = ?";
 
-        jdbcTemplate.update(query, recommend.getId(), recommend.getTitle(), recommend.getContent(), recommend.getBoardNo());
+        jdbcTemplate.update(query, recommend.getTitle(), recommend.getContent(), recommend.getBoardNo());
+    }
+
+    public void remove(Long boardNo) throws Exception {
+        String query = "delete from recommend where board_no = ?";
+
+        jdbcTemplate.update(query, boardNo);
     }
 }

@@ -1,17 +1,18 @@
 <template>
-  <v-sheet class="pa-3 ma-3">
-    <table>
-      <tr>
-        <td>제목</td>
-        <td><v-text-field v-model="title" label="제목" solo></v-text-field></td>
-      </tr>
-      <tr>
-        <td>내용</td>
-        <td><v-textarea v-model="content" label="내용" solo></v-textarea></td>
-      </tr>
-    </table>
-    <v-btn @click="addRecommend">등록</v-btn>
-  </v-sheet>
+  <v-card class="my-5 pt-1" color="primary">
+    <v-card class="ma-5" height="600px">
+      <v-text-field v-model="title" class="mb-n7" label="제목을 입력하세요." solo flat></v-text-field>
+      <v-divider></v-divider>
+      <v-textarea v-model="content" height="500px" label="내용을 입력하세요." solo flat></v-textarea>
+    </v-card>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn @click="addRecommend" class="pa-6" color="secondary" icon>
+        <v-icon>done</v-icon>
+      </v-btn>
+    </v-card-actions>
+    
+  </v-card>
 </template>
 
 
@@ -37,6 +38,10 @@ export default {
 
       axios.post('http://localhost:7777/recommend/register', { title, content, id }).then(() => {
         alert('등록이 완료되었습니다!')
+
+        this.$router.push(
+          { name: 'Recommend' }
+        )
       })
     }
   }

@@ -42,8 +42,8 @@ export default {
   },
 
 // Recommend
-  [FETCH_RECOMMEND] (state, recommend) {
-    state.items = recommend
+  [FETCH_RECOMMEND] (state, recommends) {
+    state.recommends = recommends
   },
   [FETCH_RECOMMEND_DETAIL] (state, recommend) {
     state.recommend = recommend

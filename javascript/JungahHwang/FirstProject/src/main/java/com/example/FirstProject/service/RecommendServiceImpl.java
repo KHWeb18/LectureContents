@@ -18,6 +18,7 @@ public class RecommendServiceImpl implements RecommendService {
     @Autowired
     private RecommendJPARepository jpaRepository;
 
+    @Autowired
     private RecommendRepository repository;
 
     @Override
@@ -39,5 +40,10 @@ public class RecommendServiceImpl implements RecommendService {
     public void modify(Recommend recommend) throws Exception {
 
         repository.modify(recommend);
+    }
+
+    @Override
+    public void remove(Long boardNo) throws Exception {
+        repository.remove(boardNo);
     }
 }

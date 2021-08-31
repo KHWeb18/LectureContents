@@ -9,9 +9,6 @@
       </router-link>
     </v-card-title>
 
-    <v-text-field append-icon="mdi-magnify" class="mx-16 py-3" color="secondary"
-      flat hide-details label="Search" solo></v-text-field>
-
     <v-tabs v-model="tab" background-color="transparent" color="secondary" show-arrows grow>
       <v-tab v-for="tab of tabs" :key="tab.name" :to="tab.route" class="font-weight-bold">
         {{ tab.name }}

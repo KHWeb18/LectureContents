@@ -1,7 +1,9 @@
+import cookies from 'vue-cookies'
+
 export default {
 // Login
   isLogin: false,
-  userInfo: [],
+  userInfo: cookies.get('session'),
   session: [],
 
   idRules: [
@@ -41,6 +43,6 @@ export default {
   record: [],
 
 // Recommend
-  items: [],
+  recommends: [],
   recommend:[]
 }

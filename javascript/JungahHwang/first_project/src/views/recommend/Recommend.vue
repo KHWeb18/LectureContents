@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <h2>추천 페이지</h2>
-    <v-btn @click="addRecommend">글쓰기</v-btn>
+  <v-card class="mt-5" flat>
+
+    <recommend-list v-on:addButton="addRecommend"></recommend-list>
+
     <v-snackbar v-model="login" :timeout="timeout" color="secondary" outlined
         bottom rounded="xl">
       <p>로그인 해주세요!!</p>
       <login></login>
     </v-snackbar>
 
-    <recommend-list></recommend-list>
-  </div>
+  </v-card>
 </template>
 
 
 <script>
 import { mapState } from 'vuex'
-import RecommendList from '../../components/recommend/RecommendList.vue'
-import Login from '../member/Login.vue'
+import RecommendList from '@/components/recommend/RecommendList'
+import Login from '@/views/member/Login'
 
 export default {
   data() {

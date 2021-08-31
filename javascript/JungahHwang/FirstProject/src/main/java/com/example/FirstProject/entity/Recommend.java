@@ -26,7 +26,7 @@ public class Recommend {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 1000, nullable = false)
+    @Column(length = 3000, nullable = false)
     private String content;
 
     @CreationTimestamp
@@ -34,6 +34,13 @@ public class Recommend {
 
     @UpdateTimestamp
     private Date updDate;
+
+    public Recommend(Long boardNo, String id, String title, String content) {
+        this.boardNo = boardNo;
+        this.id = id;
+        this.title = title;
+        this.content = content;
+    }
 }
 
 

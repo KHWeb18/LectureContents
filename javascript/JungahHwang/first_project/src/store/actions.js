@@ -38,23 +38,23 @@ export default {
     return axios.get('http://localhost:7777/recommend/lists').then(res => {
       console.log(res.data)
       
-      let recommend = []
+      let recommends = []
 
       for (let i = 0; i < res.data.length; i++) {
-        let list = { no: res.data[i][0], id: res.data[i][1], 
+        let list = { boardNo: res.data[i][0], id: res.data[i][1], 
           title: res.data[i][2], content: res.data[i][3], regDate: res.data[i][4] }
         
-          recommend.push(list)
+          recommends.push(list)
       }
 
-      commit(FETCH_RECOMMEND, recommend)
-      console.log(recommend)
+      commit(FETCH_RECOMMEND, recommends)
+      console.log(recommends)
     })
   },
   fetchRecommendDetail ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/recommend/read/${boardNo}`).then(res => {
       console.log(res.data)
-      let recommend = { no: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
+      let recommend = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
         content: res.data[0][3], regDate: res.data[0][4] }
       
       console.log(recommend)

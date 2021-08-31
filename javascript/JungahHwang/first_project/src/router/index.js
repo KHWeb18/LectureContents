@@ -64,12 +64,14 @@ const routes = [
   {
     path: '/recommend/read/:boardNo',
     name: 'ReadRecommend',
-    component: ReadRecommend
+    component: ReadRecommend,
+    props: true
   },
   {
     path: '/recommend/modify/:boardNo',
     name: 'ModifyRecommend',
-    component: ModifyRecommend
+    component: ModifyRecommend,
+    props: true
   },
   {
     path: '/together',

@@ -9,4 +9,5 @@ public interface RecommendService {
     public List<Object[]> lists() throws Exception;
     public List<Object[]> read(Long boardNo) throws Exception;
     public void modify(Recommend recommend) throws Exception;
+    public void remove(Long boardNo) throws Exception;
 }
