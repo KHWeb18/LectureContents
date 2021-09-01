@@ -7,6 +7,8 @@ export default {
   // 회원 관리
   members: [],
   member: null,
+  users: [],
+  user: null,
   // 로그인
   memberRequest: null,
   // 관리자 로그인 로그아웃
@@ -15,7 +17,6 @@ export default {
   // 회원 로그인 로그아웃
   isLogin: false,
   isLoginError: false,
-  userInfo: null,
     // 크롤링
   lists: [],
   todoItems: [],

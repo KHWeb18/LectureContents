@@ -1,29 +1,15 @@
-<!-- <template>
-    <div class="slide-3d">
-        <v-container class="slide-3d" fluid ma-0 pa-0 fill-height>
-            <swiper class="swiper" :options="swiperOption"
-            v-for="image in images" :key="image">
-                <swiper-slide>
-                    <v-img :src="image" max-height="100%">
-                    </v-img>
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination">
-                </div>
-            </swiper>
-        </v-container>
-    </div>
-
-</template> -->
-
 <template>
     <div>
-        <v-container class="container" fill-height>
+        
+        <v-container class="container " fill-height>
             <v-layout align-center wrap>
             <h2 class="overlay">Hello <br>Cinzel</h2>
             </v-layout>
         </v-container>
+        
         <div class="slide">
             <v-container class="slide">
+              
                 <swiper class="swiper" :options="swiperOption">
                     <swiper-slide v-for="image in images" :key="image">
                         <v-img :src="image" max-height="100%">
@@ -32,8 +18,10 @@
                     <div class="swiper-pagination" slot="pagination">
                     </div>
                 </swiper>
+               
             </v-container>
         </div>
+        
     </div>
 </template>
 
@@ -79,31 +67,16 @@ export default {
                 }
             ],
             swiperOption: {
-                // loop: true,
                 loopedSlides: 2,
-                // effect: 'coverflow',
                 calculateHeight:true,
                 grabCursor: true,
                 centeredSlides: true,
                 watchSlideProgress:true,
-                slidesPerView: 'auto',
-                coverflowEffect: {
-                    // rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    // 회전 많이하고 싶으면 높을수록 많이 돌아가고
-                    // 그 대신 폭이 작아짐
-                    // 아예 0으로 두면 회전이 없어져서 일직선이다
-                    modifier: 0,
-                    slideShadows: true
-                },
                 pagination: {
                     el: '.swiper-pagination'
-                    //dynamicBullets: true
                 },
                 autoplay: {
-                    delay: 5000
-                    // 1000(1초)
+                    delay: 3000
                 }
             }
         }
@@ -123,8 +96,9 @@ export default {
 .overlay{
     position: absolute;
     z-index: 9;
-    margin-top: 70%;
+    margin-top: 60%;
     left: 30%;
+    text-align: center;
 }
 
 h1 {
@@ -158,9 +132,8 @@ p {
     height: 94vh;
     width: 100vw;
     .swiper-slide {
-        //display: flex;
+        display: flex;
         justify-content: center;
-        align-items: center;
         width: 100%;
         height: 100%;
         text-align: center;

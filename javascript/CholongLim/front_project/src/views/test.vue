@@ -8,11 +8,11 @@
               
               
                 <v-col md="6" class="book-calendar" >
-                  <div>
+                  <div style="margin-top:40%;">
                    
-                        <h2 v-if="$refs.calendar" class="month">
+                        <!-- <h2 v-if="$refs.calendar" class="month">
                             {{ $refs.calendar.title }}
-                        </h2>
+                        </h2> -->
                         <v-btn text @click="prev">
                             <v-icon>mdi-chevron-left </v-icon>
                         </v-btn>
@@ -20,9 +20,7 @@
                             <v-icon>mdi-chevron-right</v-icon>
                         </v-btn>
                    
-                       
-                         
-                 
+        
                     <v-sheet height="400" width="600">
                         <v-calendar
                             ref="calendar"
@@ -143,6 +141,10 @@
         <v-card>
             <v-toolbar color="blue darken-3">
                         <v-toolbar-title><h2 style="color:white;">객실예약</h2></v-toolbar-title>
+                        <v-btn text x-large color="white" class="exit"
+                         @click="reserve($event)">
+                               <v-icon>clear</v-icon>
+                        </v-btn>
             </v-toolbar>
               
             <v-card-text>
@@ -193,12 +195,15 @@
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" @click="reserve($event)">
+                <!-- <v-btn color="blue darken-1" @click="reserve($event)">
                     취소
-                </v-btn>
-                <v-btn color="blue darken-1" type="submit" @click="reserve($event)">
+                </v-btn> -->
+            
+                <v-btn text color="blue darken-1" type="submit" outlined
+                 @click="reserve($event)">
                     예약하기
                 </v-btn>
+         
           
             </v-card-actions>
         </v-card>
@@ -230,6 +235,7 @@
       roomCnt:1,
       period:1,
       price:'',
+      guest: '',
       kindsOfRoom: 
       ['301','302','201','202'],
       boxs: [
@@ -278,9 +284,10 @@
                     this.personNum = '2'
                     this.price = '240000'
                   }
-                  const { roomId, personNum, period, price, roomCnt, bankName, reservationDate } = this
-                  this.$emit('submit', { roomId, personNum, period, price, roomCnt, bankName, reservationDate  })
-                  console.log(roomId, personNum, period, price, roomCnt, bankName, reservationDate )
+                  this.guest = this.$cookies.get('user')
+                  const { roomId, personNum, period, price, roomCnt, bankName, reservationDate, guest } = this
+                  this.$emit('submit', { roomId, personNum, period, price, roomCnt, bankName, reservationDate, guest  })
+                  console.log(roomId, personNum, period, price, roomCnt, bankName, reservationDate, guest )
         } else {
             this.dialog = false
         }
@@ -313,12 +320,18 @@
   
 }
 
+.exit{
+ position: relative;
+ left: 82%;
+}
+
 .info-table{
   border: 2px solid #dfdfdf;
 }
 
 .calendar{
     position: relative;
+    bottom: 10%;
     /* right: 35%; */
     /* margin-top: 2%; */
     right: 60%;

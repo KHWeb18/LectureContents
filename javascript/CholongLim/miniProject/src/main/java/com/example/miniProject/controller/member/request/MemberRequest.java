@@ -4,6 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.persistence.Entity;
+
+
+
 @Data
 @Slf4j
 @NoArgsConstructor
@@ -13,8 +17,6 @@ public class MemberRequest {
     private String password;
     private String passwordReInput;
     private String userName;
-    private Integer userPhone;
+    private String userPhone;
     private String auth;
-
-
 }

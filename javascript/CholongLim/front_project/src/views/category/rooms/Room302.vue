@@ -82,7 +82,7 @@
             </div>
             <div class="container">
                 <div class="overlay4">  
-                    <p>기준인원 초과 시 1인당 20,000원 추가 요금이 발생됩니다.<br>
+                    <p>
                         애완동물과 함께 입실하실 수 없습니다</p>
                     <h3>CHECK-IN 15:00   |   CHECK-OUT 11:00</h3>
          
@@ -139,20 +139,6 @@ export default {
             ],
             swiperOption: {
                 loopedSlides: 2,
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 'auto',
-                coverflowEffect: {
-                    // rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    // 회전 많이하고 싶으면 높을수록 많이 돌아가고
-                    // 그 대신 폭이 작아짐
-                    // 아예 0으로 두면 회전이 없어져서 일직선이다
-                    modifier: 0,
-                    slideShadows: true
-                },
                 pagination: {
                     el: '.swiper-pagination'
                     //dynamicBullets: true
@@ -162,8 +148,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 1000
-                    // 1000(1초)
+                    delay: 3000
                 }
             },
             rooms: [
@@ -178,7 +163,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
@@ -317,8 +302,19 @@ h3 {
 .swiper {
     height: 94vh;
     width: 99.6vw;
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 3rem;
+        background-color:lightsteelblue;
+        background-position: center;
+        background-size: center;
+    }
 }
-
 .reserve_btn {
     border: 2px solid darkgrey;
     position: relative;

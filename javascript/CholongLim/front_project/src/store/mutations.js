@@ -1,20 +1,17 @@
 import {
-   // 게시판
    FETCH_BOARD_LIST,
    FETCH_BOARD,
    ADD_TODO, 
-   // 회원관리
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
-   // 로그인 로그아웃
+   FETCH_USER_LIST,
+   FETCH_USER,
    LOGIN_SUCCESS,
    LOGIN_ERROR,
    LOGOUT,
-     // 크롤링
   CRAWL_START
 } from './mutation-types'
 
-// 여기는 동기 처리를 하기 때문에 데이터 무결성이 보장됨
 export default {
   // 게시판
   [FETCH_BOARD_LIST] (state, boards) {
@@ -22,6 +19,12 @@ export default {
   },
   [FETCH_BOARD] (state, board) {
     state.board = board
+  },
+  [FETCH_USER_LIST] (state, users) {
+    state.users = users;
+  },
+  [FETCH_USER] (state, user) {
+    state.user = user
   },
   [ADD_TODO] (state, todoItems) {
     state.todoItems = todoItems

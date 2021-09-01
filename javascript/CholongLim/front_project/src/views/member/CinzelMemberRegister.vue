@@ -17,20 +17,37 @@ export default {
     },
     methods: {
         onSubmit (payload) {
-            const {  userName, userId, password, userPhone } = payload
+            const {  userName, userId, password, passwordReInput,  userPhone, auth } = payload
             axios.post('http://localhost:8888/jpamember/register', {
-                         userName, userId, password, userPhone
-                    })
+                         userName, userId, password, passwordReInput, userPhone, auth})
                     .then(res => {
-                        alert('회원가입이 완료됐습니다.' + res)
-                        this.$router.push({
-                        name: 'CinzelMemberLogin'
+                            alert('회원가입이 완료됐습니다.' + res)
+                            this.$router.push({
+                            name: 'CinzelMemberLogin'
                         })
                     })
                     .catch(res => {
                         alert(res.response.data.message)
                     })
+        
+                    /*  if(res.data != "") {
+                            alert('로그인이 완료되었습니다.')
+                            console.log(res)
+                            this.isLogined = true;
+                            this.$store.commit(LOGIN_SUCCESS)
+
+                            let token = res.data.userId
+                            console.log(token)
+                            localStorage.setItem("access_token", token)
+                            this.$router.push({
+                                    name: 'MainPage'
+                                    })
+                        } else {
+                            alert('아이디와 비밀번호를 확인해주세요.')
+                            this.$store.commit(LOGIN_ERROR)
+                        }*/
         }
+        
     }
 }
 </script>
@@ -67,4 +84,5 @@ export default {
      z-index: 2;
      text-align: center;
   }
+
  </style>

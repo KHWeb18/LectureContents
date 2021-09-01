@@ -49,6 +49,8 @@ export default {
         return {
             userId: '',
             password: '',
+            // userName: '',
+            // userPhone: '', 
         }
     },
     mounted () {
@@ -63,6 +65,9 @@ export default {
     // },
     methods: {
         login (payload) {
+            console.log( this.userId)
+            console.log( this.userName)
+            console.log( this.userPhone)
             if(this.$store.state.session == null) {
             const { userId, password } = payload
             this.$store.dispatch('login', {userId, password})

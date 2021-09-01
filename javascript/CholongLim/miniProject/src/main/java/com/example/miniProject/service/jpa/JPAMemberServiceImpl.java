@@ -1,17 +1,21 @@
 package com.example.miniProject.service.jpa;
 
 import com.example.miniProject.controller.member.request.MemberRequest;
+import com.example.miniProject.controller.member.request.UserRequest;
 import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.repository.jpa.JPAMemberAuthRepository;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,11 +67,8 @@ public class JPAMemberServiceImpl implements JPAMemberService {
     @Override
     public boolean login(MemberRequest memberRequest) throws Exception {
         // 아이디 매칭
-        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
-
-        String userNames = memberRepository.findByUserName(memberRequest.getUserId());
-        log.info("user's name === " + userNames);
-
+//        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
+        Optional<Member> maybeMember = memberRepository.findByDuplicateCheck(memberRequest.getUserId());
 
         if (maybeMember == null)
         {
@@ -82,13 +83,14 @@ public class JPAMemberServiceImpl implements JPAMemberService {
             log.info("login(): 비밀번호 잘못 입력하였습니다.");
             return false;
         }
-        memberRequest.setUserName(userNames);
+
         return true;
     }
 
     @Override
     public boolean checkUserIdValidation(String userId) throws Exception {
-        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
+        Optional<Member> maybeMember = memberRepository.findByDuplicateCheck(userId);
+//        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
 
 
         if (maybeMember == null)
@@ -99,6 +101,29 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         return true;
     }
 
+
+
+
+//    @Override
+//    public Member read(String userId) throws Exception {
+//        Optional<Member> memberDetail = memberRepository.findByUserInfo(userId);
+//        if(memberDetail.isPresent()) {
+//            Member member = memberDetail.get();
+//            memberRepository.save(member);
+//
+//            return member;
+//        } else {
+//            throw new NullPointerException();
+//        }
+//
+//    }
+
+    @Override
+    public List<Member> list() throws Exception {
+//        return memberRepository.findByUserInfo(userId);
+
+        return memberRepository.findAll();
+    }
 
 
     @Override

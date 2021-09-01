@@ -9,33 +9,35 @@
 
 
             <v-icon class="name-icon" color="white">face</v-icon>
-            <v-text-field label="이름 (ex. 홍길동)" dense required height="5vh" style="margin-top:10px;" solo
-
-                           v-model="userName" :rules="[v => !!v || '필수정보입니다.']" type="name">
+            <v-text-field label="이름 (ex. 홍길동)" dense required height="5vh" 
+            style="margin-top:10px;" solo
+            v-model="userName" :rules="rules_name"
+            type="name">
             </v-text-field>
 
     
             <v-icon class="mail-icon" color="white">email</v-icon>
             <v-text-field label="아이디 (ex. cinzel)" dense required height="5vh" 
                           style="margin-top:10px;" solo
-                           v-model="userId" :rules="[v => !!v || '필수정보입니다.']" type="id">
+                           v-model="userId" :rules="rules_id"
+                            type="id">
             </v-text-field>
             
 
             <v-icon class="pass-icon" color="white">lock</v-icon>
             <v-text-field label="비밀번호" dense required height="5vh" style="margin-top:10px;" solo
-                        v-model="password" :rules="[v => !!v || '필수정보입니다.']" type="password">
+                        v-model="password" :rules="rules_pw" type="password">
             </v-text-field>
             
 
             <v-icon class="pass-icon" color="white">lock</v-icon>
             <v-text-field label="비밀번호 재입력" dense required height="5vh" style="margin-top:10px;" solo
-                        v-model="passwordReInput" :rules="[v => !!v || '필수정보입니다.']" type="password">
+                        v-model="passwordReInput"  :rules="rules_pw2" type="password">
             </v-text-field>
 
             <v-icon class="phone-icon" color="white">call</v-icon>
             <v-text-field label="전화번호 (ex.01012345678)" dense required height="5vh" style="margin-top:10px;" solo
-                        v-model="userPhone" :rules="[v => !!v || '필수정보입니다.']" type="phone">
+                        v-model="userPhone" :rules="rules_call" type="phone">
             </v-text-field>
 
         <div class="btn-size">
@@ -62,6 +64,27 @@ export default {
         return {
             auth: '개인',
             userName: '',
+            rules_name: [
+                v => !!v || '이름을 입력해주세요.',
+                v => !(v.length >= 5) || '이름은 5자 이상 입력할 수 없습니다.',
+                v => !/[~!@#$%^&*()_+|<>?:{}]/.test(v) || '특수문자를 사용할 수 없습니다.'
+            ],
+            rules_pw: [
+                v => !!v || '비밀번호를 입력해주세요.',
+                v => v.length >= 6 || '비밀번호를 6자 이상 입력해주세요',
+            ],
+            rules_pw2: [
+                v => !!v || '비밀번호를 입력해주세요.',
+                v => v === this.password || '비밀번호가 일치하지 않습니다.'
+            ],
+            rules_id:[
+                v => !!v ||  '아이디를 입력해주세요.',
+                v => v.length >= 5 || '아이디를 5자 이상 입력해주세요.'
+            ],
+            rules_call: [
+                v => !!v || '전화번호를 입력해주세요.',
+            ],
+            
             userId: '',
             password: '',
             passwordReInput: '',

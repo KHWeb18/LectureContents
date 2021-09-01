@@ -1,16 +1,11 @@
 import {
-    // 게시판
   FETCH_BOARD_LIST,
   FETCH_BOARD,
-  // 회원관리
   FETCH_MEMBER_LIST,
   FETCH_MEMBER,
-  // 로그인
   LOGIN_SUCCESS,
-
   LOGIN_ERROR,
   LOGOUT,
-   // 크롤링
    CRAWL_START,
 
 } from './mutation-types'
@@ -22,7 +17,7 @@ import cookies from 'vue-cookies'
 
 
 
-// 보통 action에서 처리하는 것은 비동기 처리를 함
+
 export default {
      // 게시판
      fetchBoardList ({ commit }) {
@@ -37,8 +32,23 @@ export default {
                     commit(FETCH_BOARD, res.data)
                 })
       },
-      // 회원관리
-     fetchMemberList ({ commit }) {
+      // fetchUserList({ commit }, userId ) {
+      //   this.userId = cookies.get('user')
+      //   console.log(userId)
+      //   console.log(this.userId)
+      //   return axios.get('http://localhost:8888/jpamember/lists', {userId})
+      //           .then((res) => {
+      //               commit(FETCH_MEMBER_LIST, res.data)
+      //           })
+      // },
+      // fetchUser ({ commit }, userId) {
+      //   this.userId = this.$cookies.get('user') 
+      //   return axios.get(`http://localhost:8888/jpamember/${userId}`)
+      //           .then((res) => {
+      //               commit(FETCH_MEMBER, res.data)
+      //           })
+      // },
+    fetchMemberList ({ commit }) {
       return axios.get('http://localhost:8888/memberManage/lists')
               .then((res) => {
                   commit(FETCH_MEMBER_LIST, res.data)
@@ -87,24 +97,21 @@ export default {
                   .then(res => {
                       if(res.data != "") {
                           alert('로그인이 완료되었습니다.')
-                          // console.log(res)
-                          commit(LOGIN_SUCCESS)
-                          // cookies.set("user",res.data)
+                          // cookies.set("user",res.data, '1h')
+                          cookies.set("user",userId, '1h')
                           this.state.session = res.data
-                          // console.log(res.data)
-                          // console.log(this.state.session.userId)
-          
+                          commit(LOGIN_SUCCESS)
+                  
                       } else {
                           alert('아이디와 비밀번호를 확인해주세요.')
                           commit(LOGIN_ERROR)
-  
                       }
                   })
                   .catch(res => {
                       console.log(res)
                   })
-          
       },
+
     logout ({commit}) {
       cookies.remove("user")
       commit(LOGOUT)

@@ -13,16 +13,16 @@
                 <!-- <span><member-login-form @submit="onSubmit"/></span> -->
                 <!-- <v-btn  v-if="isLogin === false" text router :to="'/login'">로그인</v-btn> -->
 
-                    <v-btn  text v-if="!cookie" router :to="'/login'">로그인</v-btn>
+                    <v-btn  text v-if="cookie == false" router :to="'/login'">로그인</v-btn>
      
-                    <v-menu offset-y v-if="cookie">
+                    <v-menu offset-y v-if="cookie == true">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn text v-bind="attrs" v-on="on">
                         <v-icon>account_circle</v-icon>
                         </v-btn>
                     </template>
                     <v-list>
-                        <v-list-item router :to="{name: 'MyPage'}">
+                        <v-list-item @click="userPage">
                         <v-list-item-title>마이페이지</v-list-item-title>
                         </v-list-item>
                         <v-list-item @click="logout">
@@ -51,29 +51,21 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import cookies from 'vue-cookies'
+// import cookies from 'vue-cookies'
+// import axios from 'axios'
 // import { LOGOUT } from '@/store/mutation-types'
 
 export default {
     name: 'MenuBar',
     computed: {
-        ...mapState(["isLogin"])
+        ...mapState(["isLogin","userInfo"])
     },
     data () {
         return {
             nav_drawer: false,
             group: false,
-            cookie: cookies.get('user'),
-
-            // dialog: false,
-            // loginDialog: false,
-            // service: {
-            //     name: 'Room 401호'
-            // },
-            // userInfo: {
-            //     email: '',
-            //     password: ''
-            // },
+            cookie: this.$cookies.isKey('user'),
+            userId: this.$cookies.get('user'),
             links: [
                 { 
                     text: 'ABOUT', name:'ABOUT',  route: '/about'
@@ -99,15 +91,17 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['logout'])
-            // logout () {
-            // this.isLogout = true
-            // cookies.remove("user")
-            // this.$store.commit(LOGOUT)
-            // alert('로그아웃.')
-       
-
-        // }
+        ...mapActions(['logout']),
+        userPage() {
+            this.userId = this.$cookies.get('user')
+            
+            // const { userId } = payload
+            // const { userId } = this 
+            console.log(this.userId)
+            this.$router.push({
+                name: 'MyPage'
+            })
+        }
     }
 }
 
@@ -122,7 +116,7 @@ export default {
 }
 
 .logo {
-    padding-left: 43vw;
+    padding-left: 40vw;
     vertical-align: middle;
     font-family: "Cinzel Decorative";
     font-size: 40px;

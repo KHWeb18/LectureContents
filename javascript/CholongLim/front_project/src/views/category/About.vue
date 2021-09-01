@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-flex xs4 sm6 md12>
+        <v-flex xs12 sm12 md12>
         <div>
             <v-img class="about-img-top" src="https://images.pexels.com/photos/2507007/pexels-photo-2507007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
             </v-img>

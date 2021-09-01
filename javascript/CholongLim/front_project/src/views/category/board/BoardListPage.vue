@@ -65,13 +65,7 @@
 
             <!-- <v-container class="justify-center">
             <v-row align="center" justify="center"> -->
-                <form class="form-inline d-flex justify-content-end">
-                    <div>
-                        <label for="searchText" class="sr-only">검색</label>
-                        <input type="text" class="form-control" id="searchText" name="searchText" v-model="searchText">
-                    </div>
-                    <v-btn class="btn btn-outline-primary" @click="search({searchText})">검색</v-btn>
-                </form>
+        
             <!-- </v-row>
             </v-container> -->
 
@@ -101,11 +95,8 @@ export default {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList']),
-        search (payload) {
-        const { searchText } = payload
-        this.fetchBoardList(searchText)
-      }
+        ...mapActions(['fetchBoardList'])
+      
     }
 
 }

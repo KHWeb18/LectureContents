@@ -1,22 +1,30 @@
 package com.example.miniProject.controller.member;
 
 import com.example.miniProject.controller.member.request.MemberRequest;
+import com.example.miniProject.controller.member.request.UserRequest;
 import com.example.miniProject.controller.session.UserInfo;
+import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import com.example.miniProject.service.jpa.JPAMemberService;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.http.HttpHeaders;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -31,6 +39,8 @@ public class JPAMemberController {
 
     @Autowired
     private JPAMemberService service;
+
+    private JPAMemberRepository memberRepository;
 
     private HttpSession session;
 
@@ -64,6 +74,7 @@ public class JPAMemberController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    // 로그인
     @PostMapping("/login")
     public ResponseEntity<UserInfo> jpaLogin(
             @RequestBody MemberRequest memberRequest,
@@ -73,6 +84,7 @@ public class JPAMemberController {
         log.info("jpaLogin() - userId: " + memberRequest.getUserId() + ", password: " + memberRequest.getPassword());
 
         Boolean isSuccess = service.login(memberRequest);
+
 
         if (isSuccess) {
             log.info("Login Success");
@@ -85,14 +97,36 @@ public class JPAMemberController {
 
             session = request.getSession();
             session.setAttribute("member", info);
+
         } else {
             log.info("Login Fail");
             info = null;
         }
-
-        // return new ResponseEntity<Boolean>(isSuccess, HttpStatus.OK);
         return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
     }
+
+    //  @RequestParam(required = false) String userId
+    @GetMapping("/lists")
+    public ResponseEntity<List<Member>> getLists (HttpServletRequest request,
+                                                  @RequestParam(required = false) String userId, Model model) throws Exception {
+//            model.addAttribute("userInfo", requestUser.list());
+
+            log.info("getLists(): " + service.list());
+            return new ResponseEntity<>(service.list(), HttpStatus.OK);
+
+    }
+
+//
+//    @GetMapping("/{userId}")
+//    public ResponseEntity<Member> read(@PathVariable("userId") String userId) throws Exception {
+//        Member member = service.read(userId);
+//
+//        return new ResponseEntity<Member>(member, HttpStatus.OK);
+//    }
+
+
+
+
 
     // 로그인 세션
     @PostMapping("/needSession")
@@ -122,5 +156,12 @@ public class JPAMemberController {
 
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
     }
+
+    // 권한
+//    @GetMapping("/auth")
+//    public ResponseEntity<Member> getAuth (@RequestParam(required = false) String userId) throws Exception {
+//        log.info("getLists(): " + service.list(userId));
+//        return new ResponseEntity<Member>(service.list(userId), HttpStatus.OK);
+//    }
 
 }

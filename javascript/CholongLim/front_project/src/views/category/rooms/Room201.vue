@@ -31,7 +31,7 @@
         </v-container>
         <v-divider></v-divider>
 
-
+   
         <div class="intro-room01">
             <div class="container">
                 <v-container class="room201-img-01">
@@ -41,6 +41,7 @@
                 </v-img>
                 </v-container></div>
 
+       
             <div class="container">
                 <div class="overlay1">
                     <h5 class="info-top-title"><b>Basic facilities <br>기본시설</b></h5>
@@ -56,6 +57,7 @@
                         <li>와이파이</li>
                     </ul>
                 </div>
+                
             </div>
             <div class="container">
                 <div class="overlay2">
@@ -82,10 +84,10 @@
                     </ul>
                 </div>
             </div>
+         
             <div class="container">
                 <div class="overlay4">  
-                    <p>기준인원 초과 시 1인당 20,000원 추가 요금이 발생됩니다.<br>
-                        애완동물과 함께 입실하실 수 없습니다</p>
+                    <p>애완동물과 함께 입실하실 수 없습니다</p>
                     <h3>CHECK-IN 15:00   |   CHECK-OUT 11:00</h3>
          
                 </div>
@@ -119,6 +121,7 @@
                 </thead>
             </template>
         </v-simple-table>
+      
         </v-flex>
     </div>
 </template>
@@ -144,16 +147,9 @@ export default {
             ],
             swiperOption: {
                 loopedSlides: 2,
-                effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: 'auto',
-                coverflowEffect: {
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 0,
-                    slideShadows: true
-                },
                 pagination: {
                     el: '.swiper-pagination'
                 },
@@ -162,7 +158,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 4000
+                    delay: 3000
                 }
             },
             rooms: [
@@ -177,7 +173,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
@@ -316,6 +312,18 @@ h3 {
 .swiper {
     height: 94vh;
     width: 99.6vw;
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 3rem;
+        background-color:lightsteelblue;
+        background-position: center;
+        background-size: center;
+    }
 }
 
 .reserve_btn {

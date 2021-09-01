@@ -7,6 +7,8 @@ export const ADD_TODO = 'ADD_TODO'
 
 export const FETCH_MEMBER_LIST = 'FETCH_MEMBER_LIST'
 export const FETCH_MEMBER = 'FETCH_MEMBER'
+export const FETCH_USER_LIST = 'FETCH_USER_LIST'
+export const FETCH_USER = 'FETCH_USER'
 
 // 로그인
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

@@ -22,37 +22,20 @@ import java.util.List;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long reservationNo;
 
-        @Column(name = "room_no")
-        private Long roomNo;
+        @Column(name = "book_no")
+        private Long bookNo;
 
         @Column(length = 64, nullable = false)
         private String roomId;
 
         @Temporal(TemporalType.DATE)
-        private Date reservedDate;
+        private Date reservedDate; // 예약할 날짜
 
         @CreationTimestamp
         private Date regDate; // 예약을 언제했는지   - 7/30
 
         @UpdateTimestamp
         private Date updDate;
-
-        @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-        @JoinColumn(name = "room_no")
-        private List<Room> roomList = new ArrayList<Room>();
-
-        public Reservation(Date reservedDate) {
-            this.reservedDate = reservedDate;
-        }
-
-        public void addRoom(Room room) {
-            roomList.add(room);
-        }
-
-        public void clearRoomList () {
-            roomList.clear();
-        }
-
 
     }
 

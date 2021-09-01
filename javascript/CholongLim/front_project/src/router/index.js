@@ -8,6 +8,10 @@ import MainPage from '@/views/main/MainPage.vue'
 // 로그인
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
+// 마이페이지
+
+import UserList from '@/views/member/UserList.vue'
+
 
 // 관리자
 import ManagerLogin from '@/views/manager/ManagerLogin.vue'
@@ -48,6 +52,7 @@ import CompletePayment from '@/views/CompletePayment.vue'
 
 
 
+
 import test from '@/views/test.vue'
 
 Vue.use(VueRouter)
@@ -62,6 +67,13 @@ const routes = [
     path: '/test',
     name: 'test',
     component: test
+  },
+  {
+    path: '/mypage',
+    name: 'MyPage',
+    components: {
+      default: MyPage
+    }
   },
   {
     path: '/tourCrawler',
@@ -82,6 +94,14 @@ const routes = [
     name: 'CinzelMemberLogin',
     components: {
       default: CinzelMemberLogin
+    }
+  },
+  // 마이페이지
+  {
+    path: '/userList',
+    name: 'UserList',
+    components: {
+      default: UserList
     }
   },
   // 관리자
@@ -124,16 +144,6 @@ const routes = [
     name: 'ManagerLogin',
     components: {
       default: ManagerLogin
-    }
-  },
-  {
-    path: '/myPage/:memberNo',
-    name: 'MyPage',
-    components: {
-      default: MyPage
-    },
-    props: {
-      default: true
     }
   },
   {

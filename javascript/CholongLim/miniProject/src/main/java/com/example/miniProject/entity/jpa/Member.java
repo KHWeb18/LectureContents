@@ -1,6 +1,7 @@
 package com.example.miniProject.entity.jpa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,16 +38,12 @@ public class Member {
     @Column(length = 64, nullable = false)
     private String userPhone;
 
-//     예약일자 - 8/15
-//    private Date reservedDate;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @CreationTimestamp
-    private Date regDate; // 예약을 언제했는지   - 7/30
+    private Date regDate;
 
     @UpdateTimestamp
     private Date updDate;
-
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
@@ -69,3 +66,8 @@ public class Member {
     }
 
 }
+
+
+
+//     예약일자 - 8/15
+//    private Date reservedDate;
