@@ -16,10 +16,10 @@
 
             <div style="padding-right: 100px; padding-top: 50px;">
 
-                <v-btn text v-if="notLikedYet == true" class="red-text waves-effect waves-teal" style="margin-right: 30px;" 
+                <v-btn text v-if="notLikedYet == true || isLoggedIn == false" class="red-text waves-effect waves-teal" style="margin-right: 30px;" 
                 @click="addLiked" color="white"><v-icon>mdi-heart</v-icon></v-btn>
 
-                <v-btn text v-else-if="notLikedYet == false" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
+                <v-btn text v-else-if="notLikedYet == false && isLoggedIn == true" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
                 @click="unLiked" color="pink"><v-icon>mdi-heart</v-icon></v-btn>  <!-- text 값을 주면 버튼 배경이 없어짐 -->
 
                 <v-btn class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;"
@@ -71,6 +71,7 @@ export default {
         sendToDetailPage() {
             this.$router.push({
                 name: 'ConcertDetailPage',
+                params: { concertNo: this.concert.concertNo }
             })
         },
         addLiked() {

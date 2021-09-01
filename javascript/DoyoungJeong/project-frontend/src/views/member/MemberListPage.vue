@@ -20,13 +20,21 @@ export default {
         MemberList
     },
     computed: {
-        ...mapState(['members'])
+        ...mapState(['members', 'isLoggedIn'])
     },
     methods: {
         ...mapActions(['fetchMemberList'])
     },
     mounted() {
-        this.fetchMemberList()
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+
+            this.fetchMemberList()
+        }
     }
 }
 </script>

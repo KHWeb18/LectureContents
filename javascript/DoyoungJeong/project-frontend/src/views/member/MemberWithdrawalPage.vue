@@ -14,26 +14,39 @@
 </template>
 
 <script>
-import EventBus from '@/eventBus.js'
+//import EventBus from '@/eventBus.js'
 import axios from 'axios'
 import { mapState } from 'vuex'
 
 export default {
     name: 'MemberWithdrawalPage',
+    props: {
+        memberNo: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
-            memberNo: 0
+            //memberNo: 0
         }
     },
     methods: {
         btn_delete() {
-            console.log('탈퇴할 멤버 번호' + this.memberNo)
-            axios.delete(`http://localhost:8888/member/delete/${ this.memberNo }`)
+
+            console.log('탈퇴할 멤버 번호' + this.$store.state.userProfile.memberNo)
+
+            axios.delete(`http://localhost:8888/member/delete/${ this.$store.state.userProfile.memberNo }`)
                 .then(() => {
                     alert('탈퇴처리 완료되었습니다!')
-                    this.$store.state.isLoggedIn = false
 
-                     this.$router.push({
+                    this.$cookies.remove("currentUser")
+                
+                    this.$store.state.isLoggedIn = false
+                    this.$store.state.userProfile = null
+                    this.$store.state.userIdentity = null
+
+                    this.$router.push({
                         name: 'MainPage'
                     })
                 })
@@ -45,12 +58,21 @@ export default {
         }
     },
     created() {
-        EventBus.$on('sendNum', (payload) => {
-            this.memberNo = payload
-        })
+        // EventBus.$on('sendNum', (payload) => {
+        //     this.memberNo = payload
+        // })
     },
     computed: {
-        ...mapState(['isLoggedIn'])
+        ...mapState(['isLoggedIn', 'userProfile'])
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+        }
     }
 }
 </script>

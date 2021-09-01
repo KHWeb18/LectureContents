@@ -1,6 +1,8 @@
 import {
     FETCH_CONCERT,
+
     FETCH_MEMBER_LIST,
+    FETCH_MEMBER,
     
     CRAWL_FIND,
 
@@ -22,6 +24,10 @@ export default {
     
     [FETCH_MEMBER_LIST] (state, members) {
         state.members = members
+    },
+
+    [FETCH_MEMBER] (state, member) {
+        state.member = member
     },
 
     [CRAWL_FIND] (state, payload) {

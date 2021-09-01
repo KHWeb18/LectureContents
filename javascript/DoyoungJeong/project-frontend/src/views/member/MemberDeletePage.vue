@@ -15,21 +15,26 @@
 </template>
 
 <script>
-import EventBus from '@/eventBus.js'
+//import EventBus from '@/eventBus.js'
 import axios from 'axios'
+
+import { mapState } from 'vuex'
 
 export default {
     name: 'MemberDeletePage',
     props: {
-        // memberNo: { //이게 왜 안받아질까
-        //     type: String,
-        //     required: true
-        // }
+        memberNo: { //이게 왜 안받아질까 --> router에서 components랑 props설정 때문
+            type: String,
+            required: true
+        }
     },
     data() {
         return {
-            memberNo: 0
+            //memberNo: 0
         }
+    },
+    computed: {
+        ...mapState(['isLoggedIn'])
     },
     methods: {
         btn_delete() {
@@ -51,9 +56,18 @@ export default {
 
     },
     created() {
-        EventBus.$on('sendNum', (payload) => {
-            this.memberNo = payload
-        })
+        // EventBus.$on('sendNum', (payload) => {
+        //     this.memberNo = payload
+        // })
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+        }
     }
 }
 </script>

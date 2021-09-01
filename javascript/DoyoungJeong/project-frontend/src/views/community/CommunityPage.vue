@@ -1,4 +1,4 @@
-<template>
+ZXWWW<template>
 
     <div align="center" class="grey darken-0.1" style="height: 100%;"> 
         <h3 class="topBar" style="margin-top: 0px; padding-top: 30px;">COMMUNITY COMMENT</h3>
@@ -44,6 +44,15 @@ export default {
     },
     mounted() {
         this.fetchBoardList()
+
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+        }
     }
 }
 </script>
+     

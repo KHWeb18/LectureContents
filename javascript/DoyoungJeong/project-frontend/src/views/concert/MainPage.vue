@@ -24,6 +24,12 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies'
+import Vue from 'vue'
+Vue.use(cookies)
+
+import { mapState } from 'vuex'
+
 import GenreDialogue from '@/components/concertMainDialogue/GenreDialogue'
 import ArtistDialogue from '@/components/concertMainDialogue/ArtistDialogue'
 import DateDialogue from '@/components/concertMainDialogue/DateDialogue'
@@ -51,6 +57,25 @@ export default {
         return {
             nav_drawer: false,
         }
+    },
+    computed: {
+        ...mapState(['isLoggedIn', 'userProfile', 'userIdentity'])
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+        }
+        //alert(this.$store.state.userProfile.id + ' ' + this.$store.state.userProfile.identity + ' ' + this.$store.state.userProfile.memberNo)
+        //alert(JSON.stringify(this.$store.state.userProfile))
+
+        //alert('isLoggedIn: ' + this.$store.state.isLoggedIn)
+        //alert('currentUser ' + JSON.stringify(this.$cookies.get("currentUser")))
+        //alert(JSON.stringify(this.$store.state.userProfile.id))
+        //alert('userProfile ' + this.$store.state.userProfile)
     }
 }
 </script>

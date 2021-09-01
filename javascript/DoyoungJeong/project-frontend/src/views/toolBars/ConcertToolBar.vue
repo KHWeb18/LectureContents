@@ -16,13 +16,13 @@
             </v-toolbar-items>
 
             <v-toolbar-items v-if="isLoggedIn && userIdentity != 'admin'">
-                <v-btn text v-for="loggedInlink in loggedInlinks" :key="loggedInlink.name" :to="loggedInlink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                <v-btn text v-for="loggedInlink in loggedInlinks" :key="loggedInlink.name" router :to="loggedInlink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
                     <p id="topBarText" @click="logOut($event)">{{ loggedInlink.text }}</p>
                 </v-btn>
             </v-toolbar-items>
 
             <v-toolbar-items v-else-if="isLoggedIn && userIdentity == 'admin'">
-                <v-btn text v-for="managerLink in managerLinks" :key="managerLink.name" :to="managerLink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                <v-btn text v-for="managerLink in managerLinks" :key="managerLink.name" router :to="managerLink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
                     <p id="topBarText" @click="logOut($event)">{{ managerLink.text }}</p>
                 </v-btn>
             </v-toolbar-items>
@@ -57,6 +57,10 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies'
+import Vue from 'vue'
+Vue.use(cookies)
+
 import axios from 'axios'
 import { mapState } from 'vuex'
 import LoginDialogue from '@/components/concertMainDialogue/LoginDialogue'
@@ -67,7 +71,7 @@ export default {
         LoginDialogue
     },
     computed: {
-        ...mapState(['isLoggedIn', 'userIdentity'])
+        ...mapState(['isLoggedIn', 'userIdentity', 'userProfile'])
     },
     data() {
         return {
@@ -77,31 +81,31 @@ export default {
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'aboutUsPage',
+                    route: '/aboutUsPage',
                 },
                 {
                     text: 'LOG IN',
-                    icon: 'people'
+                    icon: '/people'
                 },
                 {
                     text: 'SIGN UP',
                     icon: 'people',
-                    route: 'signupPage',
+                    route: '/signupPage',
                 },
                 {
                     text: 'SUPPORT',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: '/preferenceFillInPage',
                 },
                 {
                     text: 'COMMUNITY',
                     icon: 'people',
-                    route: 'CommunityPage',
+                    route: '/Community',
                 },
                 {
                     text: 'MORE',
                     icon: 'people',
-                    route: 'indieNewsCrawlerPage',
+                    route: '/indieNewsCrawlerPage',
                 }
             ],
             loggedInlinks: [
@@ -112,55 +116,55 @@ export default {
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'aboutUsPage',
+                    route: '/aboutUsPage',
                 },
                 {
                     text: 'SUPPORT',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: '/preferenceFillInPage',
                 },
                 {
                     text: 'COMMUNITY',
                     icon: 'people',
-                    route: 'CommunityPage',
+                    route: '/Community',
                 },
                 {
                     text: 'MORE',
                     icon: 'people',
-                    route: 'indieNewsCrawlerPage',
+                    route: '/indieNewsCrawlerPage',
                 }
             ],
             managerLinks: [
                 {
                     text: 'LOG OUT',
                     icon: '',
-                    route: 'mainPage',
+                    route: '/mainPage',
                 },
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'aboutUsPage',
+                    route: '/aboutUsPage',
                 },
                 {
                     text: 'SUPPORT',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: '/preferenceFillInPage',
                 },
                 {
                     text: 'COMMUNITY',
                     icon: 'people',
-                    route: 'CommunityPage',
+                    route: '/Community',
                 },
                 {
                     text: 'ADMIN',
                     icon: 'people',
-                    route: 'memberListPage',
+                    route: '/memberListPage',
                 }
             ],
             navLinks: [
-                { text: 'Home', icon: 'home', route: 'mainPage' },
+                { text: 'Home', icon: 'home'},
                 { text: 'Profile', icon: 'person_outline'},
-                { text: 'Liked', icon: 'star' }
+                { text: 'Liked', icon: 'star'}
             ]
         }
     },
@@ -170,7 +174,13 @@ export default {
         },
         logOut($event) {
             if($event.target.innerHTML == 'LOG OUT') {
+                
+                this.$cookies.remove("currentUser")
+                
                 this.$store.state.isLoggedIn = false
+                this.$store.state.userProfile = null
+                this.$store.state.userIdentity = null
+
                 alert('로그아웃되었습니다.')
 
                 this.$router.push ({
@@ -179,7 +189,11 @@ export default {
             }
         },
         btn_needSession(index) {
-            if(this.$store.state.isLoggedIn == true) {
+            if(index == 0) {
+                this.$router.push ({
+                    name: 'MainPage'
+                })
+            } else if(this.$store.state.isLoggedIn == true) {
                 if(index == 1 || index == 2) {
                     axios.post('http://localhost:8888/member/needSession')
                     .then(res => {
@@ -202,8 +216,6 @@ export default {
             }
         }
     }
-    
-
 }
 </script>
 
