@@ -5,12 +5,19 @@ import Test from '@/views/Test'
 import ListTest from '@/views/ListTest'
 
 import Record from '@/views/Record'
+
 import Challenge from '@/views/Challenge'
+
 import Recommend from '@/views/recommend/Recommend'
 import AddRecommend from '@/views/recommend/AddRecommend'
 import ReadRecommend from '@/views/recommend/ReadRecommend'
 import ModifyRecommend from '@/views/recommend/ModifyRecommend'
-import Together from '@/views/Together'
+
+import Together from '@/views/together/Together'
+import AddTogether from '@/views/together/AddTogether'
+import ReadTogether from '@/views/together/ReadTogether'
+import ModifyTogether from '@/views/together/ModifyTogether'
+
 import Chatting from '@/views/Chatting'
 
 import Mypage from '@/views/member/Mypage'
@@ -77,6 +84,23 @@ const routes = [
     path: '/together',
     name: 'Together',
     component: Together
+  },
+  {
+    path: '/together/register',
+    name: 'AddTogether',
+    component: AddTogether
+  },
+  {
+    path: '/together/read/:boardNo',
+    name: 'ReadTogether',
+    component: ReadTogether,
+    props: true
+  },
+  {
+    path: '/together/modify/:boardNo',
+    name: 'ModifyTogether',
+    component: ModifyTogether,
+    props: true
   },
   {
     path: '/chatting',

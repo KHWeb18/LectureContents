@@ -44,5 +44,10 @@ export default {
 
 // Recommend
   recommends: [],
-  recommend:[]
+  recommend: [],
+
+// Together
+  togethers: [],
+  together: [],
+
 }

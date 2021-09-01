@@ -2,13 +2,15 @@ import {
 // Login
   USER_INFO,
   FETCH_SESSION,
-
 // Calendar
   FETCH_RECORD,
-
 // Recommend
+  FETCH_RECOMMENDS,
   FETCH_RECOMMEND,
-  FETCH_RECOMMEND_DETAIL
+// Together
+  FETCH_TOGETHERS,
+  FETCH_TOGETHER,
+
 } from './mutation-types'
 
 import axios from 'axios'
@@ -16,7 +18,7 @@ import cookies from 'vue-cookies'
 
 export default {
 // Login
-  userLogin ({ commit }, id) {
+  userInfo ({ commit }, id) {
     return axios.get(`http://localhost:7777/member/mypage/${id}`).then(res => {
       cookies.set('session', res.data)
       commit(USER_INFO, cookies.get('session'))
@@ -34,9 +36,9 @@ export default {
   },
   
 // Recommend
-  fetchRecommend ({ commit }) {
+  fetchRecommends ({ commit }) {
     return axios.get('http://localhost:7777/recommend/lists').then(res => {
-      console.log(res.data)
+
       
       let recommends = []
 
@@ -47,18 +49,46 @@ export default {
           recommends.push(list)
       }
 
-      commit(FETCH_RECOMMEND, recommends)
-      console.log(recommends)
+      commit(FETCH_RECOMMENDS, recommends)
     })
   },
-  fetchRecommendDetail ({ commit }, boardNo) {
+  fetchRecommend ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/recommend/read/${boardNo}`).then(res => {
-      console.log(res.data)
+ 
       let recommend = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
         content: res.data[0][3], regDate: res.data[0][4] }
       
       console.log(recommend)
-      commit(FETCH_RECOMMEND_DETAIL, recommend)
+      commit(FETCH_RECOMMEND, recommend)
     })
-  }
+  },
+
+// Together
+  fetchTogethers ({ commit }) {
+    return axios.get('http://localhost:7777/together/lists').then(res => {
+      console.log(res.data)
+      
+      let togethers = []
+
+      for (let i = 0; i < res.data.length; i++) {
+        let list = { boardNo: res.data[i][0], id: res.data[i][1], 
+          title: res.data[i][2], content: res.data[i][3], regDate: res.data[i][4] }
+        
+          togethers.push(list)
+      }
+
+      commit(FETCH_TOGETHERS, togethers)
+      console.log(togethers)
+    })
+  },
+  fetchTogether ({ commit }, boardNo) {
+    return axios.get(`http://localhost:7777/together/read/${boardNo}`).then(res => {
+      console.log(res.data)
+      let together = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
+        content: res.data[0][3], regDate: res.data[0][4] }
+      
+      console.log(together)
+      commit(FETCH_TOGETHER, together)
+    })
+  },
 }

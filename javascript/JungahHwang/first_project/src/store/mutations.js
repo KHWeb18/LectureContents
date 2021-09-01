@@ -7,8 +7,11 @@ import {
   OPEN_DETAIL,
   FETCH_RECORD,
 // Recommend
+  FETCH_RECOMMENDS,
   FETCH_RECOMMEND,
-  FETCH_RECOMMEND_DETAIL
+// Together
+  FETCH_TOGETHERS,
+  FETCH_TOGETHER,
 } from './mutation-types'
 
 export default {
@@ -42,11 +45,20 @@ export default {
   },
 
 // Recommend
-  [FETCH_RECOMMEND] (state, recommends) {
+  [FETCH_RECOMMENDS] (state, recommends) {
     state.recommends = recommends
   },
-  [FETCH_RECOMMEND_DETAIL] (state, recommend) {
+  [FETCH_RECOMMEND] (state, recommend) {
     state.recommend = recommend
-  }
+  },
+
+// Together
+  [FETCH_TOGETHERS] (state, togethers) {
+    state.togethers = togethers
+  },
+  [FETCH_TOGETHER] (state, together) {
+    state.together = together
+  },
+
   
 }
