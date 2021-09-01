@@ -17,6 +17,8 @@ public interface MemberService {
 
     public List<Member> getList() throws Exception;
 
+    public Member read(Long memberNo) throws Exception;
+
     public void delete(Long memberNo) throws Exception;
 
     public void modify(MemberRequest memberRequest) throws Exception;

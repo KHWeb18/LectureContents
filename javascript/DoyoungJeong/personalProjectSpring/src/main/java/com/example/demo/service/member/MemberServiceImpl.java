@@ -100,7 +100,6 @@ public class MemberServiceImpl implements MemberService{
                 log.info("Valid ID");
 
                 Member confirmedMember = requestedId.get();
-
                 return confirmedMember;
             } else {
                 log.info("Wrong Password has been input!");
@@ -131,6 +130,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<Member> getList() throws Exception {
         return memberRepository.getList();
+    }
+
+    @Override
+    public Member read(Long memberNo) throws Exception {
+
+        Member member = memberRepository.findByMemberNo(memberNo).get();
+
+        return member;
     }
 
     @Override

@@ -4,8 +4,10 @@ import com.example.demo.controller.concert.request.ConcertDeleteRequest;
 import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.LikedOrNotRequest;
 import com.example.demo.controller.member.request.MemberRequest;
+import com.example.demo.controller.member.response.MemberResponse;
 import com.example.demo.controller.session.MemberInfo;
 import com.example.demo.entity.member.Member;
+import com.example.demo.repository.member.MemberIdentityRepository;
 import com.example.demo.service.member.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class MemberController {
     @Autowired
     private MemberService service;
 
+    @Autowired
+    private MemberIdentityRepository memberIdentityRepository;
+
     private MemberInfo info;
 
     private HttpSession session;
@@ -42,7 +47,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Member> login(@Validated @RequestBody MemberRequest memberRequest, HttpServletRequest request) throws Exception {
+    public ResponseEntity<MemberResponse> login(@Validated @RequestBody MemberRequest memberRequest, HttpServletRequest request) throws Exception {
         log.info("login(): " + memberRequest.getId() + ", " + memberRequest.getPassword());
 
         log.info("confirmedMember: " + service.login(memberRequest));
@@ -56,11 +61,20 @@ public class MemberController {
 
             session = request.getSession();
             session.setAttribute("member", info);
+
+            MemberResponse memberResponse = new MemberResponse(service.login(memberRequest).getMemberNo(), service.login(memberRequest).getId(),
+                    memberIdentityRepository.findIdentityByMemberNo(new Long(service.login(memberRequest).getMemberNo())).get().getIdentity());
+                    // * memberNo, id, identity 3가지만 login에 대한 응답으로 보내줌 *
+
+            log.info("response: " + memberResponse.getMemberNo(), memberResponse.getId(), memberResponse.getIdentity());
+            return new ResponseEntity<MemberResponse>(memberResponse, HttpStatus.OK);
+
         } else {
             log.info("Login Failure");
-        }
 
-        return new ResponseEntity<Member>(service.login(memberRequest), HttpStatus.OK);
+            MemberResponse memberResponse = new MemberResponse(new Long(0), "no", "no");
+            return new ResponseEntity<MemberResponse>(memberResponse, HttpStatus.OK);
+        }
     }
 
     @PostMapping("/needSession")
@@ -98,6 +112,13 @@ public class MemberController {
         List<Member> list = service.getList();
 
         return new ResponseEntity<List<Member>>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/read/{memberNo}")
+    public ResponseEntity<Member> read(@PathVariable("memberNo") Integer memberNo) throws Exception {
+        log.info("getRead(): " + service.read(new Long(memberNo)));
+
+        return new ResponseEntity<Member>(service.read(new Long(memberNo)), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{memberNo}")

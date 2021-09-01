@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.Optional;
 
 public interface MemberIdentityRepository extends JpaRepository<MemberIdentity, Long> {
 
@@ -20,4 +21,7 @@ public interface MemberIdentityRepository extends JpaRepository<MemberIdentity, 
     @Modifying
     @Query("update MemberIdentity mem set mem.identity = :identity where mem.memberNo = :memberNo")
     void modify(String identity, Long memberNo);
+
+    @Query("select mem from MemberIdentity mem where mem.memberNo = :memberNo")
+    Optional<MemberIdentity> findIdentityByMemberNo(Long memberNo);
 }
