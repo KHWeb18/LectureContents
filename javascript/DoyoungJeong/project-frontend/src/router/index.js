@@ -6,6 +6,7 @@ import ConcertToolBar from '../views/toolBars/ConcertToolBar.vue'
 import BottomToolBar from '../views/toolBars/BottomToolBar.vue'
 import ConcertDetailPage from '../views/concert/ConcertDetailPage.vue'
 import LikedListPage from '../views/concert/LikedListPage.vue'
+import AboutUsPage from '../views/concert/AboutUsPage.vue'
 
 import SignupPage from '../views/member/SignupPage.vue'
 import InterestedSetUpPage from '../views/member/InterestedSetUpPage.vue'
@@ -18,6 +19,9 @@ import MemberWithdrawalPage from '../views/member/MemberWithdrawalPage.vue'
 import IndieNewsCrawlerPage from '../views/crawling/IndieNewsCrawlerPage.vue'
 
 import CommunityPage from '../views/community/CommunityPage.vue'
+import CommunityWritePage from '../views/community/CommunityWritePage.vue'
+import CommunityReadPage from '../views/community/CommunityReadPage.vue'
+import CommunityModifyPage from '../views/community/CommunityModifyPage.vue'
 
 Vue.use(VueRouter)
 
@@ -78,7 +82,10 @@ const routes = [
   {
     path: '/memberDelete/:memberNo',
     name: 'MemberDeletePage',
-    component: MemberDeletePage
+    component: MemberDeletePage,
+    props: {
+      default: true
+    }
   },
   {
     path: '/myProfilePage',
@@ -104,7 +111,33 @@ const routes = [
     path: '/communityPage',
     name: 'CommunityPage',
     component: CommunityPage
-}
+  },
+  {
+    path: '/communityWritePage',
+    name: 'CommunityWritePage',
+    component: CommunityWritePage
+  },
+  {
+    path: '/communityReadPage',
+    name: 'CommunityReadPage',
+    component: CommunityReadPage,
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/communityModifyPage', // /:boardNo을 붙이면 그 화면에서 다른 화면으로 가는 버튼이 안먹히고.. 무조건 나중에 수정하자
+    name: 'CommunityModifyPage',
+    component: CommunityModifyPage,
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/aboutUsPage',
+    name: 'AboutUsPage',
+    component: AboutUsPage
+  }
 
 ]
 

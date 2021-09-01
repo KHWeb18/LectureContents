@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="bookingDialog" persistent max-width="400">
         <template v-slot:activator="{ on }">
-            <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;"  v-on="on" outlined>예약하기!</v-btn>
+            <v-btn class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" v-on="on" outlined>예약하기!</v-btn>
         </template>
 
         <v-card>

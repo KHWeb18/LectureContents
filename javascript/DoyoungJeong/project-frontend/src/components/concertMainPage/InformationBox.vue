@@ -1,34 +1,37 @@
 <template>
-    <div v-if="infoBar" class="col xs12 sm12 md12 lg12 app grey darken-5" style="margin-bottom: -40px;">
+    <div v-if="infoBar" class="col xs12 sm12 md12 lg12 app grey darken-5">
         <div style="padding-left: 50px; margin-top: 10px;" class="row">
-            <div style="margin-right: -700px; margin-left: 20px;">
-                <input type="text" disabled id="infoText" style="font-size: 50px;" v-bind:value="concert.concertName"/>
-                <input type="text" disabled id="infoText" style="font-size: 35px;" v-bind:value="concert.concertArtist"/>
-                <input type="text" disabled id="infoText" style="font-size: 22px;" v-bind:value="concert.concertVenue"/>
-            </div>
+            <div style="margin-right: -500px; margin-left: 20px;">
+                <input type="text" disabled class="infoText" style="font-size: 50px; color: white;" v-bind:value="concert.concertName"/>
+                <input type="text" disabled class="infoText" style="font-size: 35px; color: white;" v-bind:value="concert.concertArtist"/>
+                <input type="text" disabled class="infoText" style="font-size: 22px; color: white;" v-bind:value="concert.concertVenue"/>
+            </div> 
             <div>
-                <input type="text" disabled id="infoText" style="font-size: 20px; margin-top: -10px; display: inline;" v-bind:value="date + concert.concertDate"/>
-                <input type="text" disabled id="infoText" style="font-size: 20px; margin-top: -10px;" v-bind:value="concert.concertPrice"/>
-                <textarea id="infoText" cols="50" style='height: 90px;' disabled v-bind:value="concert.concertInfo"/>
+                <input type="text" disabled class="infoText" style="font-size: 20px; margin-top: -10px; display: inline; color: white;" v-bind:value="date + concert.concertDate"/>
+                <input type="text" disabled class="infoText" style="font-size: 20px; margin-top: -10px; color: white;" v-bind:value="concert.concertPrice"/>
+                <textarea class="infoText" cols="50" style='height: 90px;' disabled v-bind:value="concert.concertInfo"/>
             </div>
 
             <div class="flex-grow-1"></div> <!-- 간격 벌리기 -->
 
             <div style="padding-right: 100px; padding-top: 50px;">
-                <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;"
+
+                <v-btn text v-if="notLikedYet == true" class="red-text waves-effect waves-teal" style="margin-right: 30px;" 
+                @click="addLiked" color="white"><v-icon>mdi-heart</v-icon></v-btn>
+
+                <v-btn text v-else-if="notLikedYet == false" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
+                @click="unLiked" color="pink"><v-icon>mdi-heart</v-icon></v-btn>  <!-- text 값을 주면 버튼 배경이 없어짐 -->
+
+                <v-btn class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;"
                 @click="sendToDetailPage">자세히보기</v-btn>
 
-                <v-btn v-if="notLikedYet == true" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
-                @click="addLiked">찜하기!</v-btn>
-                <v-btn v-else-if="notLikedYet == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
-                @click="unLiked">찜해제</v-btn>
-
-                <v-btn text="text" @click="offInfoBox" class="btn-flat red-text waves-effect waves-teal">취소</v-btn>
+                <v-btn @click="offInfoBox" class="btn-flat red-text waves-effect waves-teal">취소</v-btn>
                 <!-- <p>.....{{ likedList }}</p> -->
+                <p style="text-align: right; padding-right: 15px; padding-top: 60px; font-style: italic; color: rgba(0, 0, 0, 0.3);">MUSIC GHUETTO</p>
             </div>    
         </div>
         
-
+    <hr> 
     </div>
 </template>
 
@@ -136,11 +139,11 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
 
-#infoText {
-    color: aliceblue;
-    font-family: 'Roboto', sans-serif;
+.infoText {
+    color: #FFFFFF;
+    font-family: 'Do Hyeon', sans-serif;
     font-style: italic;
     font-size: 12px;
     line-height: 20px;

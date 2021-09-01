@@ -77,7 +77,7 @@ export default {
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: 'aboutUsPage',
                 },
                 {
                     text: 'LOG IN',
@@ -112,7 +112,7 @@ export default {
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: 'aboutUsPage',
                 },
                 {
                     text: 'SUPPORT',
@@ -139,7 +139,7 @@ export default {
                 {
                     text: 'ABOUT US',
                     icon: 'people',
-                    route: 'mainPage',
+                    route: 'aboutUsPage',
                 },
                 {
                     text: 'SUPPORT',

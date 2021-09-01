@@ -1,17 +1,13 @@
-<template>
+<template> <!-- 쓰지않는 컴포넌트 -->
     <v-layout row justify-center>
             <v-dialog v-model="signupDialogue" persistent max-width="500">
    
                 <template v-slot:activator="{ on }">
-                    <div v-if="!allWritten">
-                        <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" @click="signup">제출</v-btn>
+
+                    <div v-if="allWritten && signupSuccess">
+                        <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" v-on="on">추가 설정</v-btn>
                         <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" 
-                        style="margin-left: 10px;" outlined @click="goBack">뒤로가기</v-btn>
-                    </div>
-                    <div v-else-if="allWritten">
-                        <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" @click="confirm" v-on="on">가입하기</v-btn>
-                        <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" 
-                        style="margin-left: 10px;" outlined @click="goBack">뒤로가기</v-btn>
+                        style="margin-left: 10px;" outlined @click="goBack">다음에 할래요</v-btn>
                     </div>
                 </template>
          
@@ -45,6 +41,9 @@ export default {
         allWritten: {
             type: Boolean,
             required: true
+        },
+        signupSuccess: {
+            type: Boolean
         }
     },
     data() {
@@ -53,23 +52,12 @@ export default {
         }
     },
     methods: {
-        cancel() {
-            this.$emit('cancel')
-        },
-        signup() {
-            this.$emit('signup')
-        },
-        confirm() {
-            this.$emit('confirm')
-        },
         btn_apply() {
-            this.signupDialogue = false
             this.$router.push({
                 name: 'InterestedSetUpPage',
             })
         },
         btn_cancel() {
-            this.signupDialogue = false
             this.$router.push({
                 name: 'MainPage',
             })

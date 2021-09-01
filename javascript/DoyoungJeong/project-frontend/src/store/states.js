@@ -12,6 +12,10 @@ export default {
     newsList: [],
 
     likedList: [],
+    notLikedYet: false, //해당 ConcertDetailPage의 공연이 이 멤버에게 찜된건지 아닌지를 판별해서 찜하기, 취소 버튼 구별
 
-    notLikedYet: false //해당 ConcertDetailPage의 공연이 이 멤버에게 찜된건지 아닌지를 판별해서 찜하기, 취소 버튼 구별
+    boards: [],
+    board: null,
+
+    replyList: []
 }
