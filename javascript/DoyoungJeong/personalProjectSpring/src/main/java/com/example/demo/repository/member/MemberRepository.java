@@ -19,6 +19,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("select mem from Member mem where mem.id = :id")
     Optional<Member> findByMemberId(String id);
 
+    @Query("select mem from Member mem where mem.memberNo = :memberNo")
+    Optional<Member> findByMemberNo(Long memberNo);
+
     @Query("select mem from Member mem where mem.memberNo > 0 order by memberNo asc") //여기 쿼리문 제대로 안써주면 에러가난다..
     List<Member> getList();
 
@@ -27,7 +30,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("delete from Member mem where mem.memberNo = :memberNo")
     void delete(Long memberNo);
 
-    //회원 정보 업데이트 구현 중...
     @Transactional
     @Modifying
     @Query("update Member mem set mem.id = :id, mem.password = :password, mem.name = :name, mem.location = :location, mem.birthDay = :birthDay, " +

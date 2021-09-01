@@ -1,13 +1,17 @@
 package com.example.demo.entity.member;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Setter
+@Getter
 @Data
 @NoArgsConstructor
 @Entity
