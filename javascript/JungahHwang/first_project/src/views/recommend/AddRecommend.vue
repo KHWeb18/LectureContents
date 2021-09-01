@@ -1,9 +1,12 @@
 <template>
   <v-card class="my-5 pt-1" color="primary">
     <v-card class="ma-5" height="600px">
-      <v-text-field v-model="title" class="mb-n7" label="제목을 입력하세요." solo flat></v-text-field>
+      <v-text-field v-model="title" class="mb-n7" color="secondary"
+        label="제목을 입력하세요." solo flat></v-text-field>
       <v-divider></v-divider>
-      <v-textarea v-model="content" height="500px" label="내용을 입력하세요." solo flat></v-textarea>
+      <file-upload-menu></file-upload-menu>
+      <v-textarea v-model="content" color="secondary" height="500px" 
+        label="내용을 입력하세요." solo flat></v-textarea>
     </v-card>
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -17,6 +20,7 @@
 
 
 <script>
+import FileUploadMenu from '@/components/FileUploadMenu'
 import axios from 'axios'
 import { mapState } from 'vuex'
 
@@ -26,6 +30,9 @@ export default {
       title: null,
       content: null
     }
+  },
+  components: {
+    FileUploadMenu
   },
   computed: {
     ...mapState([ 'userInfo' ])

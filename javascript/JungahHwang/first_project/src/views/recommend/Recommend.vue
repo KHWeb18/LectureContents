@@ -6,7 +6,7 @@
     <v-snackbar v-model="login" :timeout="timeout" color="secondary" outlined
         bottom rounded="xl">
       <p>로그인 해주세요!!</p>
-      <login></login>
+      <login v-on:onLogin="addRecommend"></login>
     </v-snackbar>
 
   </v-card>

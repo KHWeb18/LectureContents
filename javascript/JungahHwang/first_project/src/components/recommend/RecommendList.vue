@@ -5,7 +5,7 @@
       :sort-by="['boardNo']" :sort-desc="[true]">
 
       <template v-slot:header>
-        <v-toolbar class="my-2 pt-3" color="primary" flat>
+        <v-toolbar class="my-3 pt-3" color="primary" flat>
           <v-text-field v-model="search" label="Search" append-icon="mdi-magnify" 
             solo hide-details></v-text-field>
           <v-btn @click="addButton" class="float-right ml-2" color="secondary" icon>

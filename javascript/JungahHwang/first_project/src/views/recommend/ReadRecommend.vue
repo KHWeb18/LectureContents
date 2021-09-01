@@ -1,11 +1,12 @@
 <template>
   <v-card class="my-5 pt-1" color="primary">
-    <v-card class="ma-5" height="600px">
+    <v-card class="ma-5">
       <v-toolbar flat>
         <v-toolbar-title>
           {{ recommend.title }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
+
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
@@ -24,7 +25,7 @@
 
       <v-divider></v-divider>
       <v-card-text>
-        {{ recommend.content }}
+        <p v-html="content"></p>
       </v-card-text>
       <v-card-text class="card-text-id caption">
         {{ recommend.id }}
@@ -70,6 +71,9 @@ export default {
   },
   computed: {
     ...mapState([ 'recommend', 'userInfo' ]),
+    content () {
+      return this.recommend.content.replace(/(?:\r\n|\r|\n)/g, '<br />')
+    }
   },
   methods: {
     modifyRecommend () {
