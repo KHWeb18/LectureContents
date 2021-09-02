@@ -14,7 +14,7 @@ public class MemberRequest {
     private String id;
     private String password;
     private String name;
-    private String location;
+    private String location; // []로 고쳐야함
     private Date birthDay;
     private String identity;
     private String phoneNo;

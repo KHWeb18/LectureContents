@@ -6,11 +6,13 @@ import com.example.demo.controller.member.request.MemberRequest;
 import com.example.demo.entity.member.LikedConcert;
 import com.example.demo.entity.member.Member;
 import com.example.demo.entity.member.MemberIdentity;
+import com.example.demo.entity.member.MemberTaste;
 import com.example.demo.repository.concert.ConcertRepository;
 import com.example.demo.repository.board.BoardRepository;
 import com.example.demo.repository.member.LikedConcertRepository;
 import com.example.demo.repository.member.MemberIdentityRepository;
 import com.example.demo.repository.member.MemberRepository;
+import com.example.demo.repository.member.MemberTasteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,6 +47,9 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private BoardRepository boardRepository;
 
+    @Autowired
+    private MemberTasteRepository memberTasteRepository;
+
     @Override
     @Transactional
     public boolean register(MemberRequest memberRequest) throws Exception {
@@ -71,13 +76,18 @@ public class MemberServiceImpl implements MemberService{
             likedConcert.setConcertDate("default");
             likedConcert.setConcertInfo("default");
 
-//            Board board = new Board("default", "default");
+            String[] defaultOne = new String[0];
+            String[] defaultTwo = new String[0];
+            MemberTaste memberTaste = new MemberTaste(defaultOne, "default", "default", defaultTwo);
+
+//            Board board = new Board("default", "default"); 보드를 멤버에 엮을까 하다가 취소
 //            board.setId("default");
 //            BoardReply boardReply = new BoardReply("default", "default");
 //            board.addBoardReply(boardReply);
 
             member.addIdentity(memberIdentity);
             member.addLikedConcert(likedConcert);
+            member.addMemberTaste(memberTaste);
             //member.addBoardContent(board);
             memberRepository.save(member);
 
@@ -144,6 +154,7 @@ public class MemberServiceImpl implements MemberService{
     public void delete(Long memberNo) throws Exception {
         memberIdentityRepository.delete(memberNo); //자식 먼저 지워주고 뒤에 부모를 지워야 전부 깔끔하게 지워짐
         likedConcertRepository.delete(memberNo);
+        memberTasteRepository.delete(memberNo);
         //boardRepository.delete(memberNo);
         memberRepository.delete(memberNo);
     }
