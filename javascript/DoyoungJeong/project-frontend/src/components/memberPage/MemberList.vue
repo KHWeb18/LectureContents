@@ -23,7 +23,7 @@
                    <td>{{ member.memberNo }}</td>
                    <td>
                        <p @click="sendNum(member.memberNo)" style="margin-bottom: -0px;">
-                            <router-link :to="{ name: 'MemberDeletePage' }">
+                            <router-link :to="{ name: 'MemberDeletePage', params: { memberNo: member.memberNo } }">
                                     {{ member.id }}
                             </router-link>
                        </p>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import EventBus from '@/eventBus.js'
+//import EventBus from '@/eventBus.js'
 
 export default {
     name: 'MemberList',
@@ -60,7 +60,7 @@ export default {
         sendNum(memberNo) {
             const payload = [ memberNo ]
 
-            EventBus.$emit('sendNum', payload)
+            //EventBus.$emit('sendNum', payload)
             console.log('The num has been sent! ' + payload)
         }
     }

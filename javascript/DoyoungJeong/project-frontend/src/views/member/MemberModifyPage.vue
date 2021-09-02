@@ -47,7 +47,7 @@ import { mapState } from 'vuex'
 export default {
     name: 'MemberModifyPage',
     computed: {
-        ...mapState(['userProfile', 'userIdentity'])
+        ...mapState(['userProfile', 'userIdentity', 'isLoggedIn'])
     },
     data() {
         return {       
@@ -83,7 +83,7 @@ export default {
             && this.user.birthDay != '' && this.user.identity != ''  && this.user.phoneNo != '' ) {
 
                 if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{11,}$/.test(this.user.password)) {
-                    alert("최소 11 자, 최소 하나의 문자 및 하나의 숫자를 입력해 주세요.") 
+                    alert("비밀번호는 최소 11 자, 최소 하나의 문자 및 하나의 숫자를 입력해 주세요.") 
                 } else if(this.user.password != this.user.passwordCheck) {
                     alert('비밀번호와 비밀번호 재확인이 일치하지 않습니다!')
                 } else if(!/^\d{11}$/.test(this.user.phoneNo)) {
@@ -106,8 +106,10 @@ export default {
             } else if(this.user.password != this.user.passwordCheck) {
                 alert('비밀번호와 비밀번호 재확인이 일치하지 않습니다!')
             } else {
+                
+                const memberNo = this.$store.state.userProfile.memberNo
                 const location = JSON.stringify(this.user.location)
-                const { memberNo, id, password, name, birthDay, identity, phoneNo } = this.user
+                const { id, password, name, birthDay, identity, phoneNo } = this.user
 
                 console.log(JSON.stringify({ memberNo, id, password, name, birthDay, identity, phoneNo } + { location }))
 
@@ -129,6 +131,15 @@ export default {
              this.$router.push({
                 name: 'MyProfilePage',
             })
+        }
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
         }
     }
 }

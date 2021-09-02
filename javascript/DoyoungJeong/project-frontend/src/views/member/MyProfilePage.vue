@@ -18,14 +18,14 @@
                     <td colspan="8">회원 정보를 불러오지 못했습니다!</td>
                 </tr>
                 <tr v-else class="item">
-                   <td>{{ userProfile.id }}</td>
+                   <td>{{ member.id }}</td>
                    <td>{{ password }}</td>
-                   <td>{{ userProfile.name }}</td>
-                   <td>{{ userProfile.location }}</td>
+                   <td>{{ member.name }}</td>
+                   <td>{{ member.location }}</td>
                    <td>{{ userIdentity }}</td>
-                   <td>{{ userProfile.birthDay }}</td>
-                   <td>{{ userProfile.phoneNo }}</td>
-                   <td style="text-align: right">{{ userProfile.regDate }}</td>
+                   <td>{{ member.birthDay }}</td>
+                   <td>{{ member.phoneNo }}</td>
+                   <td style="text-align: right">{{ member.regDate }}</td>
                 </tr>
             </table>
             <div style="margin-top: 20px;">
@@ -34,7 +34,7 @@
                     수정
                 </router-link>
         
-                <router-link :to="{ name: 'MemberWithdrawalPage' }" @click.native="btn_withdrawal(userProfile.memberNo)" 
+                <router-link :to="{ name: 'MemberWithdrawalPage', params: { memberNo: member.memberNo.toString() } }" @click.native="btn_withdrawal(userProfile.memberNo)" 
                 class="btn-flat red-text waves-effect waves-teal" text="text">
                     탈퇴
                 </router-link>
@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import EventBus from '@/eventBus.js'
-import { mapState } from 'vuex'
+//import EventBus from '@/eventBus.js'
+import { mapActions, mapState } from 'vuex'
 
 export default {
     name: 'MyProfilePage',
@@ -55,17 +55,30 @@ export default {
         }
     },
     computed: {
-        ...mapState(['userProfile', 'userIdentity'])
+        ...mapState(['userProfile', 'userIdentity', 'isLoggedIn', 'member'])
     },
     methods: {
+        ...mapActions(['fetchMember']),
+
         btn_modify() {
            
         },
         btn_withdrawal(memberNo) {
             const payload = [ memberNo ]
 
-            EventBus.$emit('sendNum', payload)
+            //EventBus.$emit('sendNum', payload)
             console.log('The num has been sent! ' + payload)
+        }
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+
+            this.fetchMember(this.$store.state.userProfile.memberNo)
         }
     }
 }

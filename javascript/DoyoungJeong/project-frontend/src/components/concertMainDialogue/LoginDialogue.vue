@@ -35,15 +35,22 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies'
+import Vue from 'vue'
+
 import axios from 'axios'
 import { mapState } from 'vuex'
+
+Vue.use(cookies)
 
 export default {
     name: 'LoginDialogue',
     data() {
         return {
             userInfo: { id: '', password: "" },
-            loginDialog: false
+            loginDialog: false,
+
+            //currentUser: []
         }
     },
     computed: {
@@ -66,14 +73,22 @@ export default {
                 .then(res => {
                     if(res.data.id.length > 2) {
                         alert(res.data.id + '으로 로그인되었습니다!')
-
+                    
                         this.$store.state.isLoggedIn = true;
          
-                        this.$store.state.userIdentity = res.data.memberIdentityList[0].identity
+                        //this.$store.state.userIdentity = res.data.memberIdentityList[0].identity
+                        this.$store.state.userIdentity = res.data.identity
                         this.$store.state.userProfile = res.data
 
-                        // console.log(this.$store.state.userIdentity)
-                        // console.log(this.$store.state.userProfile)
+                        //this.currentUser.push( [ res.data.id ], [ res.data.memberNo ], [ res.data.memberIdentityList[0].identity ] )
+                        //this.currentUser.push(res.data.id, res.data.memberNo, res.data.memberIdentityList[0].identity)
+
+                        this.$cookies.set("currentUser", res.data, '120m') //처음에 서버에서 멤버의 모든 정보가 든 객체 전부를 받으려해서 안받아진듯?
+
+                        //alert(JSON.stringify(res.data)) // 값 들어옴
+                        //alert("currentUser: " + this.currentUser[2])
+                        alert('currentUser ' + JSON.stringify(this.$cookies.get("currentUser")))
+                        
 
                     } else {
                         alert('로그인 실패!')
@@ -88,7 +103,6 @@ export default {
             } 
         }
     }
-    
 }
 </script>
 

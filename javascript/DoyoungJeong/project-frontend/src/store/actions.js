@@ -1,6 +1,7 @@
 import {
     FETCH_CONCERT,
     FETCH_MEMBER_LIST,
+    FETCH_MEMBER,
     CRAWL_FIND,
     FETCH_LIKED_LIST,
     FETCH_LIKED_OR_NOT,
@@ -23,11 +24,19 @@ export default {
                 alert(err.response.data.message)
             })
     },
+
     fetchMemberList({ commit }) {
         return axios.get('http://localhost:8888/member/list')
-        .then((res) => {
-            commit(FETCH_MEMBER_LIST, res.data)
-        })
+            .then((res) => {
+                commit(FETCH_MEMBER_LIST, res.data)
+            })
+    },
+
+    fetchMember({ commit }, memberNo) {
+        return axios.get(`http://localhost:8888/member/read/${memberNo}`)
+            .then((res) => {
+                commit(FETCH_MEMBER, res.data)
+            })
     },
 
     async crawlFind({ commit }, keyword) {

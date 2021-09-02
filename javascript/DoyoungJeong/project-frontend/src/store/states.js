@@ -3,6 +3,7 @@ export default {
     //likedList: [0, 0, 0, 0], 필요 없음
 
     members: [],
+    member: null,
 
     isLoggedIn: false,
     loggedInID: '',

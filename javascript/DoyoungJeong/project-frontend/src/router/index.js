@@ -9,7 +9,7 @@ import LikedListPage from '../views/concert/LikedListPage.vue'
 import AboutUsPage from '../views/concert/AboutUsPage.vue'
 
 import SignupPage from '../views/member/SignupPage.vue'
-import InterestedSetUpPage from '../views/member/InterestedSetUpPage.vue'
+import PreferenceFillInPage from '../views/member/PreferenceFillInPage.vue'
 import MemberListPage from '../views/member/MemberListPage.vue'
 import MemberDeletePage from '../views/member/MemberDeletePage.vue'
 import MyProfilePage from '../views/member/MyProfilePage.vue'
@@ -32,14 +32,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: '/mainPage',
     name: 'MainPage',
     component: MainPage
@@ -55,9 +47,14 @@ const routes = [
     component: BottomToolBar
   },
   {
-    path: '/concertDetailPage',
+    path: '/concertDetailPage/:concertNo',
     name: 'ConcertDetailPage',
-    component: ConcertDetailPage
+    components: {
+      default: ConcertDetailPage //default쓸거면 components --> s를 붙여줘야된다! props받는데 필요한듯
+    },
+    props: {
+      default: true
+    }
   },
   {
     path: '/likedListPage',
@@ -70,9 +67,11 @@ const routes = [
     component: SignupPage
   },
   {
-    path: '/interestedSetUpPage',
-    name: 'InterestedSetUpPage',
-    component: InterestedSetUpPage
+    path: '/preferenceFillInPage',
+    name: 'PreferenceFillInPage',
+    components: {
+      default: PreferenceFillInPage
+    }
   },
   {
     path: '/memberListPage',
@@ -82,7 +81,9 @@ const routes = [
   {
     path: '/memberDelete/:memberNo',
     name: 'MemberDeletePage',
-    component: MemberDeletePage,
+    components: {
+      default: MemberDeletePage
+    },
     props: {
       default: true
     }
@@ -100,7 +101,12 @@ const routes = [
   {
     path: '/memberWithdrawalPage',
     name: 'MemberWithdrawalPage',
-    component: MemberWithdrawalPage
+    components: {
+      default: MemberWithdrawalPage
+    },
+    props: {
+      default: true
+    }
   },
   {
     path: '/indieNewsCrawlerPage',
@@ -108,27 +114,33 @@ const routes = [
     component: IndieNewsCrawlerPage
   },
   {
-    path: '/communityPage',
+    path: '/community',
     name: 'CommunityPage',
     component: CommunityPage
   },
   {
-    path: '/communityWritePage',
+    path: '/community/write', //뒤에 /~~ 가 오면 화면 전환이 안되는것이다. 질문해야할듯
     name: 'CommunityWritePage',
-    component: CommunityWritePage
+    components: {
+      default: CommunityWritePage
+    }
   },
   {
-    path: '/communityReadPage',
+    path: '/community/:boardNo',
     name: 'CommunityReadPage',
-    component: CommunityReadPage,
+    components: {
+      default: CommunityReadPage
+    },
     props: {
       default: true
     }
   },
   {
-    path: '/communityModifyPage', // /:boardNo을 붙이면 그 화면에서 다른 화면으로 가는 버튼이 안먹히고.. 무조건 나중에 수정하자
+    path: '/community/:boardNo/modify', // /:boardNo을 붙이면 그 화면에서 다른 화면으로 가는 버튼이 안먹히고.. 무조건 나중에 수정하자
     name: 'CommunityModifyPage',
-    component: CommunityModifyPage,
+    components: {
+      default: CommunityModifyPage
+    },
     props: {
       default: true
     }

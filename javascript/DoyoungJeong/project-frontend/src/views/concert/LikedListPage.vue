@@ -1,5 +1,5 @@
 <template>
-    <div align="center" class="grey darken-0.1" style="height: 850px;">
+    <div align="center" class="grey darken-0.1" style="height: 100%;">
         <h3 class="topBar" style="margin-top: 0px; padding-top: 30px;">Wish List</h3>
         <p class="description" style="margin-right: 20px;">찜하신 공연을 한눈에 확인해보세요 :)</p>
 
@@ -21,10 +21,10 @@
                     <td class="description">{{ likedElem.concertDate }}</td>
                     <td class="description">{{ likedElem.concertVenue }}</td>
                     <td class="description">{{ likedElem.concertInfo }}</td>
-                    <span>
+                    <div style="margin-top: 15px;">
                         <v-btn style="margin-left: 20px;" class="btn-flat red-text waves-effect waves-teal" @click="goToDetailPage(likedElem.concertNo)">바로가기</v-btn>
                         <v-btn style="margin-left: 10px;" class="btn-flat red-text waves-effect waves-teal" @click="deleteLikedConcert(likedElem.concertNo, index)">찜해제</v-btn>
-                    </span>
+                    </div>
                 </tr>
             </table>
         </v-container>
@@ -53,7 +53,8 @@ export default {
             this.fetchConcert(concertNo)
 
             this.$router.push({
-                name: 'ConcertDetailPage'
+                name: 'ConcertDetailPage',
+                params: { concertNo: concertNo } //이렇게 해주니까 됨
             })
         },
         deleteLikedConcert(conNo, index) { //conNo는 concertNo랑 같음
@@ -86,8 +87,16 @@ export default {
         }
     },
     mounted() {
-        this.fetchLikedList(this.$store.state.userProfile.memberNo)
-        console.log("즐겨찾기를 찾을 회원 번호: " + this.$store.state.userProfile.memberNo)
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+
+            this.fetchLikedList(this.$store.state.userProfile.memberNo)
+            //console.log("즐겨찾기를 찾을 회원 번호: " + this.$store.state.userProfile.memberNo)
+        }
     }
 }
 </script>

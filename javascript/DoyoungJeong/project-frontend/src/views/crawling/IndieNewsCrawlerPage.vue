@@ -34,11 +34,20 @@ export default {
         }
     },
     computed: {
-        ...mapState({ newsList: state => state.newsList })
+        ...mapState({ newsList: state => state.newsList }, ['isLoggedIn'])
     },
     methods: {
         update(keyword) {
             this.$store.dispatch('crawlFind', keyword)
+        }
+    },
+    mounted() {
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
         }
     }
 }

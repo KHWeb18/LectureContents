@@ -88,27 +88,33 @@
             @click="onReservation" outlined>예약하기!</v-btn> -->
             <booking-dialogue/>
 
-            <v-btn v-if="notLikedYet == true" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
+            <v-btn v-if="notLikedYet == true || isLoggedIn == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
             @click="addLiked(concert.concertNo)" color="black"><v-icon>mdi-heart</v-icon></v-btn>
 
-            <v-btn v-else-if="notLikedYet == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
+            <v-btn v-else-if="notLikedYet == false && isLoggedIn == true" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
             @click="unLiked(concert.concertNo)" color="pink"><v-icon>mdi-heart</v-icon></v-btn>
 
             <!-- <p>.....{{ likedList }}</p> -->
         </div>
-
     </div>    
 </template>
 
 <script>
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
+
 import BookingDialogue from '@/components/concertMainDialogue/BookingDialogue'
 
 export default {
     name: 'ConcertDetailPage',
     components: {
         BookingDialogue
+    },
+    props: {
+        concertNo: {
+            type: String,
+            required: true
+        }
     },
     data() {
         return {
@@ -120,7 +126,7 @@ export default {
         ...mapState(['concert', 'likedList', 'isLoggedIn', 'userProfile', 'notLikedYet'])
     },
     methods: {
-        ...mapActions(['fetchLikedOrNot']),
+        ...mapActions(['fetchLikedOrNot', 'fetchConcert']),
 
         addLiked() {
             if(this.$store.state.isLoggedIn == true) {
@@ -195,11 +201,21 @@ export default {
         }
     },
     mounted() {
+        this.fetchConcert(this.concertNo) //이상하네.. 이게 맨 뒤에 있을 때는 실행이 안되다가 왜 지금처럼 위에 놓으면 실행되지?
+        //alert(this.concertNo)
 
+        this.$store.state.userProfile = this.$cookies.get("currentUser")
+
+        if(this.$store.state.userProfile.id != '') {
+
+            this.$store.state.isLoggedIn = true
+            this.$store.state.userIdentity = this.$store.state.userProfile.identity
+        }
         this.memNoAndConNoArr.push(this.$store.state.userProfile.memberNo)
-        this.memNoAndConNoArr.push(this.$store.state.concert.concertNo)
-        
+        this.memNoAndConNoArr.push(this.concertNo) //얘가 this.$store.state.concert.concertNo에서 this.concertNo로 수정해주니까 잘됨 --> 위의 fetchConcert가 
+        //db에서 concert를 가져와 concert.concertNo를 주기 전에 이 명령이 실행되니까 그런거였음. 그래서 애초에 props로 받은 this.concertNo를 사용해주니까 잘됨
         this.fetchLikedOrNot(this.memNoAndConNoArr)
+        //alert(this.memNoAndConNoArr)
     }
 }
 </script>
