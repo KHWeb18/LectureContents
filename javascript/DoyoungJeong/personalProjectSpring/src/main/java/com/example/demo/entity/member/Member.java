@@ -53,6 +53,10 @@ public class Member {
     @JoinColumn(name = "member_no")
     private Set<LikedConcert> likedConcertList = new HashSet<LikedConcert>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "member_no")
+    private Set<MemberTaste> memberTasteList = new HashSet<MemberTaste>();
+
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JoinColumn(name = "member_no")
 //    private Set<Board> boardContentList = new HashSet<Board>();
@@ -72,6 +76,10 @@ public class Member {
 
     public void addLikedConcert(LikedConcert likedConcert) {
         likedConcertList.add(likedConcert);
+    }
+
+    public void addMemberTaste(MemberTaste memberTaste) {
+        memberTasteList.add(memberTaste);
     }
 
 //    public void addBoardContent(Board board) {

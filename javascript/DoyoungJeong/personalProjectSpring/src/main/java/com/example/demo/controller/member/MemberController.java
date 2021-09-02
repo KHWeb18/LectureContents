@@ -4,6 +4,7 @@ import com.example.demo.controller.concert.request.ConcertDeleteRequest;
 import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.LikedOrNotRequest;
 import com.example.demo.controller.member.request.MemberRequest;
+import com.example.demo.controller.member.request.TasteRequest;
 import com.example.demo.controller.member.response.MemberResponse;
 import com.example.demo.controller.session.MemberInfo;
 import com.example.demo.entity.member.Member;
