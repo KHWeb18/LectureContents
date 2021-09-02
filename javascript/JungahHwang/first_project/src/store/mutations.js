@@ -12,6 +12,9 @@ import {
 // Together
   FETCH_TOGETHERS,
   FETCH_TOGETHER,
+
+// Comment 
+  FETCH_COMMENT,
 } from './mutation-types'
 
 export default {
@@ -60,5 +63,8 @@ export default {
     state.together = together
   },
 
-  
+// Comment
+  [FETCH_COMMENT] (state, comments) {
+    state.comments = comments
+  }
 }

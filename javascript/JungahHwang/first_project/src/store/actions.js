@@ -10,6 +10,8 @@ import {
 // Together
   FETCH_TOGETHERS,
   FETCH_TOGETHER,
+// Comment
+  FETCH_COMMENT,  
 
 } from './mutation-types'
 
@@ -91,4 +93,13 @@ export default {
       commit(FETCH_TOGETHER, together)
     })
   },
+
+// Comment
+  fetchComments ({ commit }, boardNo) {
+    return axios.get(`http://localhost:7777/comment/read/${boardNo}`).then(res => {
+      console.log(res.data)
+
+      commit(FETCH_COMMENT, res.data)
+    })
+  }
 }

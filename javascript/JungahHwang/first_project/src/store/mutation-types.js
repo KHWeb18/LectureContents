@@ -14,3 +14,6 @@ export const FETCH_RECOMMEND = 'FETCH_RECOMMEND'
 // Together
 export const FETCH_TOGETHERS = 'FETCH_TOGETHERS'
 export const FETCH_TOGETHER = 'FETCH_TOGETHER'
+
+// Comment
+export const FETCH_COMMENT = 'FETCH_COMMENT'

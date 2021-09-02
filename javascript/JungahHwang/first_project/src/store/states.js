@@ -50,4 +50,6 @@ export default {
   togethers: [],
   together: [],
 
+// Comment
+  comments: []
 }
