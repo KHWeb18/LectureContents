@@ -16,20 +16,11 @@ public interface JPAMemberRepository extends JpaRepository<Member, Long> {
     @Query("select m from Member m where m.userId = :userId")
     Optional<Member> findByDuplicateCheck(String userId);
 
-//    @Query("select m from Member m where m.userId = :userId")
-//    Optional<Member> findByUserId(String userId);
 
-    @Query("select m.memberNo, m.userPhone, m.userName from Member m where m.userId = :userId")
-    List<UserRequest> findByUserInfo(String userId);
+//    List<Member> findByUserId(String userId);
 
-    @Query("select m.userName from Member m where m.userId = :userId")
-    String findByUserName(String userId);
-
-
-    List<Member> findByUserId(String userId);
-//
-//    @Query("select m.memberNo, m.userName, m.userPhone form member where m.userId = :userId")
-//    Optional<Member> findByUserInfo(String userId);
+    @Query("select m from Member m where m.userId = :userId")
+    Optional<Member> findByUserInfo(String userId);
 
 
     @Query("select m from Member m join fetch m.authList where m.memberNo = :memberNo")

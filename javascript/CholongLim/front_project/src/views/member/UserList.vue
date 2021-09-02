@@ -1,13 +1,13 @@
 <template>
-    <div id="member">
-        <div class="container">
+    <div id="user" class="img-cover">
+        <div class="container" style="margin-bottom:2%">
             <div>
-                <v-card height="480">
+                <v-card height="450">
                     <v-row justify="center" style="margin:3%;">
                         <h4 style="margin-top:5%;">회원정보</h4>
                     </v-row>
 
-                    <user-list-form :members="members"/>
+                    <user-list-form :users="users"/>
                 </v-card>
 
             </div>
@@ -17,14 +17,13 @@
 
 <script>
 import UserListForm from '@/components/member/UserListForm.vue'
-// import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
 import { mapState } from 'vuex'
-import { FETCH_MEMBER_LIST } from '@/store/mutation-types'
+import { FETCH_USER_LIST, FETCH_AUTH_LIST } from '@/store/mutation-types'
 
 
 export default {
-    name: 'MemberListPage',
+    name: 'UserList',
     components: {
         UserListForm
     },
@@ -35,27 +34,21 @@ export default {
         }
     },
     computed: {
-        ...mapState(['members'])
+        ...mapState(['users'])
     },
     mounted () {
-        this.fetchMemberList()
+        this.fetchUserList()
     },
     methods: {
         // ...mapActions(['fetchUserList'])
-    //     fetchUserList() {
-    //     // const { userId } = this
-    //     return axios.get('http://localhost:8888/jpamember/lists')
-    //             .then((res) => {
-    //                 this.$store.commit(FETCH_MEMBER_LIST, res.data)
-    //             })
-    //   },
-      fetchMemberList () {
-          let user = this.$cookies.get('user')
-          const { userId } = user
-
-      return axios.get('http://localhost:8888/jpamember/lists', { userId })
+      fetchUserList () {
+      return axios.get('http://localhost:8888/jpamember/lists', { params: { userId : this.userId} })
               .then((res) => {
-                  this.$store.commit(FETCH_MEMBER_LIST, res.data)
+                this.$store.commit(FETCH_USER_LIST, res.data)
+                this.$store.commit(FETCH_AUTH_LIST, res.data.authList[0])
+                // console.log(res)
+                // console.log(res.data)
+                // console.log(res.data.authList[0])
               })
     },
     }
@@ -68,91 +61,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
 
-
-
-.search-box{
-    margin: 0;
-    margin-top: -10%;
-    position: relative;
-    left:35%;
-    width: 80%;
-}
-
-
-.btn-locate{
-    position: relative;
-    left: 75%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    
-}
-
-.board-box {
-    padding-bottom: 15%;
-}
-.container{
-    position: relative;
-    text-align: center;
-}
-
-.overlay{
-    position: absolute;
-    z-index: 9;
-    margin-top: 9%;
-    left: -8%;
-}
-
-.overlay2{
-    position: absolute;
-    z-index: 9;
-    margin-top: 1%;
-    left: 70%;
-}
-
-.overlay3{
-    position: absolute;
-    z-index: 9;
-    margin-top: 43%;
-    left: 7%;
-}
-
-.test3{
-    margin-left: 50vw;
-    position: relative;
-    bottom: 25vh;
-}
-
-.intro-top {
-    text-align: left;
-}
-
-.about-img-top {
-    max-height: 70vh;
-}
-.about-img-01 {
-    position: relative;
-    left: 20vw;
-    height: 60vh;
-
-}
-.about-img-02 {
-    position: relative;
-    right: 20vw;
-    height: 50vh;
-    margin-top: -5vh;
-}
-.about-img-03 {
-    position: relative;
-    left: 20vw;
-    height: 60vh;
-    margin-top: 5vh;
-}
-
-.section {
-    background: #dcdfdc;
-    height: 10vh;
-}
-
 p {
     font-family: 'Nanum Myeongjo';
     font-size: 18px;
@@ -160,33 +68,18 @@ p {
     padding: 18px 0px 18px 0px;
 }
 
-.about-top {
-    padding-top: 10vh;
-}
-
-h1 {
-    font-family: "Cinzel";
-    font-size: 40px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-h2 {
-    font-family: 'MonteCarlo';
-    font-size: 150px;
-    color:darkgrey
-}
-
-h3 {
-    font-family: "Cinzel";
-    font-size: 80px;
-    margin-top: 10px;
-    color:darkgrey;
-}
 
 h4 {
     margin-top: 0px;
     font-family: 'Nanum Myeongjo';
-    font-size: 35px;
+    font-size: 25px;
 }
+
+.img-cover{
+     position: relative;
+     height: 100%;
+     width: 100%;
+     background-color:rgba(23, 155, 160, 0.144);                                                             
+     z-index:1;
+  }
 </style> 

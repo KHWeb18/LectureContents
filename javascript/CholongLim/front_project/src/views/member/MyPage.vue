@@ -1,66 +1,28 @@
 <template>
-
-        <div class="img-cover">
-        <div class="container">
-            
-        <div v-if="cookie == true">
-            <v-card style="margin:5%;">
-                
-                    <v-container>
-                     
+    <div class="img-cover">
+        <div class="container">   
+            <div v-if="cookie == true">
+                <v-card style="margin:5%;">
+                        <v-container>
                             <h1>WELCOME TO CINZEL</h1>
-                        
-                        <v-icon size="100" style="margin-top: 2%;">account_circle</v-icon>
-                    <p><b>{{ userId }}</b></p>
-                    <v-container style="left:1%;">
-                    <!-- <v-btn text route :to="{name: 'UserList'}"> -->
-                        <v-btn text route :to="{ name: 'UserList'}">
-
-                    <b>내정보 관리</b><v-icon>chevron_right</v-icon></v-btn>
-                    </v-container>
-                    <v-container>
-                    <v-btn text @click="what"><b>예약내역</b><v-icon>chevron_right</v-icon></v-btn>
-                    </v-container>
-                    </v-container>
-               
-            </v-card>
-            
-            <!-- <my-page-read v-if="member" :board="member"/> -->
-            <!-- <p v-else>로딩중 ...... </p> -->
-            <!-- <router-link :to="{ name: 'BoardModifyPage', params: { boardNo } }">
-                게시물 수정
-            </router-link> -->
-        
-    
-
-            <!-- <v-dialog v-model="deleteId" persistent max-width="500px">
-                <template v-slot:activator="{ on }">
-                        <v-btn color="primary" dark v-on="on">계정 탈퇴</v-btn>
-                </template>
-                <v-card>
-                    <v-toolbar flat color="grey lighten-3">
-                            <v-toolbar-title>계정 탈퇴</v-toolbar-title>
-                        </v-toolbar>
-                        <div class="pa-3">
-                            <v-text-field
-                                v-model="password"
-                                label="탈퇴하실 계정의 비밀번호를 입력하세요."
-                            >
-                            </v-text-field>
-                            <button @click="onDelete">계정을 삭제합니다.</button>
-                            <v-btn color="blue darken-1" text @click="deleteCheck($event)">
-                            취소
-                        </v-btn>
-                        </div>
-                </v-card>
-            </v-dialog>  -->
+                            <v-icon size="100" style="margin-top: 2%;">account_circle</v-icon>
+                            <p><b>{{ userId }}</b></p>
+                            <v-container style="left:1%;">
+                                <v-btn text route :to="{ name: 'UserList'}">
+                                <b>내정보 관리</b><v-icon>chevron_right</v-icon></v-btn>
+                            </v-container>
+                            <v-container>
+                            <v-btn text route :to="{ name: 'MyReservation'}">
+                                <b>예약내역</b><v-icon>chevron_right</v-icon></v-btn>
+                            </v-container>
+                        </v-container>
+                </v-card>    
+            </div>
         </div>
         <div v-if="cookie == false">
-            잘못된 호출입니다.
-        </div>
+                로그인 시간이 초과되었습니다.
         </div>
     </div>
-
 </template>
 
 <script>
@@ -75,18 +37,6 @@ export default {
         }
     },
     methods: {
-        what(payload) {
-            const { userId } = payload
-        // userId = this.$cookies.get('user')
-        // this.$cookies.get('user')
-        alert(userId)
-        console.log(userId)
-        console.log(this.userId)
-        // return axios.get('http://localhost:8888/jpamember/lists', {userId})
-        //         .then((res) => {
-        //             this.$store.commit(FETCH_MEMBER_LIST, res.data)
-        //         })
-        }
     }
 }
 </script>
@@ -105,7 +55,7 @@ export default {
      position: relative;
      height: 100%;
      width: 100%;
-     background-color:rgba(23, 126, 160, 0.048);                                                             
+     background-color:rgba(23, 155, 160, 0.144);                                                             
      z-index:1;
   }
 

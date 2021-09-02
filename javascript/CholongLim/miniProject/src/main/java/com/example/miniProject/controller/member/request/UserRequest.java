@@ -1,9 +1,10 @@
 package com.example.miniProject.controller.member.request;
 
 
-import com.example.miniProject.entity.jpa.Member;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 
 
 @Data

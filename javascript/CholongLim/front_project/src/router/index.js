@@ -9,8 +9,10 @@ import MainPage from '@/views/main/MainPage.vue'
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
 // 마이페이지
-
 import UserList from '@/views/member/UserList.vue'
+import UserModify from '@/views/member/UserModify.vue'
+import MyReservation from '@/views/member/MyReservation.vue'
+
 
 
 // 관리자
@@ -33,7 +35,6 @@ import Reservation from '@/views/category/Reservation.vue'
 import TourCrawlerPage from '@/views/TourCrawlerPage.vue'
 
 // board
-// import Board from '@/views/category/board/Board.vue'
 import BoardListPage from '@/views/category/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
@@ -48,7 +49,7 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 
 // 예약하기
 import Book from '@/views/Book.vue'
-import CompletePayment from '@/views/CompletePayment.vue' 
+import Book2 from '@/views/Book2.vue'
 
 
 
@@ -102,6 +103,23 @@ const routes = [
     name: 'UserList',
     components: {
       default: UserList
+    }
+  },
+  {
+    path: '/myReservation',
+    name: 'MyReservation',
+    components: {
+      default: MyReservation
+    }
+  },
+  {
+    path: '/modify',
+    name: 'UserModify',
+    components: {
+      default: UserModify
+    },
+    props: {
+      default: true
     }
   },
   // 관리자
@@ -244,10 +262,10 @@ const routes = [
     }
   },
   {
-    path: '/completePayment',
-    name: 'CompletePayment',
+    path: '/book2',
+    name: 'Book2',
     components: {
-      default: CompletePayment
+      default: Book2
     }
   }
 ]

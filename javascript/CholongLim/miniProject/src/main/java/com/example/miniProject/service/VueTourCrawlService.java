@@ -1,7 +1,7 @@
 package com.example.miniProject.service;
 
 
-import com.example.miniProject.entity.Tour;
+import com.example.miniProject.entity.jpa.Tour;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 

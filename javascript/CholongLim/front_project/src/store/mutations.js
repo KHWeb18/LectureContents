@@ -1,7 +1,10 @@
 import {
    FETCH_BOARD_LIST,
    FETCH_BOARD,
-   ADD_TODO, 
+   FETCH_AUTH_LIST,
+   FETCH_DATES_LIST,
+   FETCH_BOOK_LIST,
+   FETCH_BOOK,
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
    FETCH_USER_LIST,
@@ -20,14 +23,23 @@ export default {
   [FETCH_BOARD] (state, board) {
     state.board = board
   },
+  [FETCH_DATES_LIST] (state, dates) {
+    state.dates = dates;
+  },
+  [FETCH_AUTH_LIST] (state, auths) {
+    state.auths = auths;
+  },
+  [FETCH_BOOK_LIST] (state, books) {
+    state.books = books;
+  },
+  [FETCH_BOOK] (state, book) {
+    state.book = book
+  },
   [FETCH_USER_LIST] (state, users) {
     state.users = users;
   },
   [FETCH_USER] (state, user) {
     state.user = user
-  },
-  [ADD_TODO] (state, todoItems) {
-    state.todoItems = todoItems
   },
     // 관리자 로그인 로그아웃
   [LOGIN_SUCCESS] (state, payload) {

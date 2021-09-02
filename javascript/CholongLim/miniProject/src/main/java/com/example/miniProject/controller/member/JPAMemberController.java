@@ -85,7 +85,6 @@ public class JPAMemberController {
 
         Boolean isSuccess = service.login(memberRequest);
 
-
         if (isSuccess) {
             log.info("Login Success");
             // 세션 할당
@@ -101,32 +100,20 @@ public class JPAMemberController {
         } else {
             log.info("Login Fail");
             info = null;
+            return null;
         }
         return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
     }
 
-    //  @RequestParam(required = false) String userId
     @GetMapping("/lists")
-    public ResponseEntity<List<Member>> getLists (HttpServletRequest request,
-                                                  @RequestParam(required = false) String userId, Model model) throws Exception {
-//            model.addAttribute("userInfo", requestUser.list());
+    public ResponseEntity<Member> getUsers (HttpServletRequest request,
+                                                  @RequestParam("userId") String userId, UserRequest userRequest) throws Exception {
 
-            log.info("getLists(): " + service.list());
-            return new ResponseEntity<>(service.list(), HttpStatus.OK);
+        log.info("getLists(): " + service.user(userId));
+        return new ResponseEntity<>(service.user(userId), HttpStatus.OK);
+
 
     }
-
-//
-//    @GetMapping("/{userId}")
-//    public ResponseEntity<Member> read(@PathVariable("userId") String userId) throws Exception {
-//        Member member = service.read(userId);
-//
-//        return new ResponseEntity<Member>(member, HttpStatus.OK);
-//    }
-
-
-
-
 
     // 로그인 세션
     @PostMapping("/needSession")
@@ -157,11 +144,11 @@ public class JPAMemberController {
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
     }
 
-    // 권한
-//    @GetMapping("/auth")
-//    public ResponseEntity<Member> getAuth (@RequestParam(required = false) String userId) throws Exception {
-//        log.info("getLists(): " + service.list(userId));
-//        return new ResponseEntity<Member>(service.list(userId), HttpStatus.OK);
-//    }
+    @DeleteMapping("/{memberNo}")
+    public ResponseEntity<Void> removeUser(@PathVariable("memberNo") Long memberNo) throws Exception {
+        service.removeUser(memberNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 
 }

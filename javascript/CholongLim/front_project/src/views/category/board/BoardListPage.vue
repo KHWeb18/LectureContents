@@ -19,55 +19,14 @@
         <v-divider></v-divider>
 
         
-        <v-btn color="text-white gray" class="btn-locate" route :to="'/board/create'">글쓰기</v-btn>
+        <v-btn color="text-white gray" class="btn-locate" v-if="this.$store.state.auths.auth == '개인'"
+            route :to="'/board/create'">글쓰기</v-btn>
+
+        <v-btn color="text-white gray" class="btn-locate" @click="what"
+            >권한</v-btn>
 
         <board-list :boards="boards"/>
         
-    
-        <!-- <v-container class="justify-center">
-        <v-row align="center" justify="center">
-        <nav aria-label="Page navigation example" class="page-num">
-            <ul class="pagination">
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li class="page-item" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                    <a class="page-link" href="#" th:text="${i}">1</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
-        </nav>
-        </v-row>
-        </v-container> -->
-
-    
-<!-- 
-            <v-container class="justify-center">
-            <v-row align="center" justify="center">
-                <div style="float: left; width: 165px;">
-                    <v-text-field label="검색" required height="6.5vh" style=" width: 300px;" solo 
-                            type="text">
-                    </v-text-field></div>
-
-                    <div style="float: left; padding:10px;">
-                        <v-btn text style="float:left;" route :to="{name:'BoardSearchPage'}">
-                            <v-icon middel>search</v-icon>
-                        </v-btn>
-                    </div>
-    
-            </v-row>
-            </v-container> -->
-
-            <!-- <v-container class="justify-center">
-            <v-row align="center" justify="center"> -->
-        
-            <!-- </v-row>
-            </v-container> -->
 
 
     </div>  
@@ -85,7 +44,8 @@ export default {
     },
     data() {
         return {
-            searchText: ''
+            searchText: '',
+            check: this.$store.state.auths.auth
         }
     },
     computed: {
@@ -95,8 +55,10 @@ export default {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList'])
-      
+        ...mapActions(['fetchBoardList']),
+        what() {
+            console.log(this.$store.state.auths.auth)
+        }
     }
 
 }

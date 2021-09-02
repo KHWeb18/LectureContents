@@ -1,4 +1,4 @@
-package com.example.miniProject.entity;
+package com.example.miniProject.entity.jpa;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,20 +1,17 @@
 package com.example.miniProject.service;
 
 
-import com.example.miniProject.entity.Tour;
+import com.example.miniProject.entity.jpa.Tour;
 import com.example.miniProject.repository.TourRepository;
-import com.example.miniProject.service.jpa.JPAMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Service

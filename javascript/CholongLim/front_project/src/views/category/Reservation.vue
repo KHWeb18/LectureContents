@@ -160,7 +160,8 @@ import cookies from 'vue-cookies';
                                     })
                  } else {
                      this.$router.push({
-                                    name: 'Book'
+                                    // name: 'Book'
+                                    name: 'Book2'
                                     })
                  }
             

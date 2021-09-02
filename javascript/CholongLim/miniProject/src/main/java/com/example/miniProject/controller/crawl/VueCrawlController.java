@@ -1,7 +1,7 @@
 package com.example.miniProject.controller.crawl;
 
 
-import com.example.miniProject.entity.Tour;
+import com.example.miniProject.entity.jpa.Tour;
 
 import com.example.miniProject.service.VueTourCrawlService;
 import lombok.extern.slf4j.Slf4j;

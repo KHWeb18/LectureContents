@@ -19,11 +19,10 @@ public interface JPAMemberService {
 
     public Optional<Member> findByAuth(Long memberNo);
 
-//    public Member read(String userId) throws Exception;
+    public Member user(String userId) throws Exception;
 
-    public List<Member> list() throws Exception;
+    public void removeUser(Long memberNo) throws Exception;
 
-//    public Member readUser(MemberRequest memberRequest) throws Exception;
 
 
 }

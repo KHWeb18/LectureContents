@@ -10,9 +10,15 @@ import java.util.Date;
 @Data
 @Slf4j
 @NoArgsConstructor
-public class ReservationRequest {
-//    private Date reservedDate;
+public class RoomRequest {
+    private Date reservedDate;
+    private Long bookNo;
     private String roomId;
     private String period;
+    private String personNum;
+    private String bankName;
+    private String price;
+    private String userId;
+    private Integer roomCnt;
 
 }

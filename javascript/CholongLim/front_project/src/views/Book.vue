@@ -2,11 +2,8 @@
     <div>
     <div class="intro-top">
       <div class="container">
-         
-
-    
-          <!-- <reservation-form @submit="onSubmit"/> -->
-     <test @submit="onSubmit"/>
+          <reservation-form @submit="onSubmit"/>
+     <!-- <test @submit="onSubmit"/> -->
 
 
         </div>
@@ -16,41 +13,50 @@
 
 
 <script>
-// import ReservationForm from '@/components/reservation/ReservationForm.vue'
-import test from '@/views/test.vue'
+import ReservationForm from '@/components/reservation/ReservationForm.vue'
+import axios from 'axios'
+
   export default {
     name: 'Book',
     components: {
-        test
+        ReservationForm
 
     },
-    data() {
-        return {
-          // date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-          // landscape : false,
-            attrs: [
-        {
-          key: 'today',
-          dates: new Date(2018, 0, 1),
-          highlight: {
-            backgroundColor: '#ff8080',
-          },
-          // Just use a normal style
-          contentStyle: {
-            color: '#fafafa',
-          },
-          // Our new popover here
-          popover: {
-            label: 'You just hovered over today\'s date!',
-          }
-        },
-      ],
-        }
-    },
+    // data() {
+    //     return {
+    //         attrs: [
+    //     {
+    //       key: 'today',
+    //       dates: new Date(2018, 0, 1),
+    //       highlight: {
+    //         backgroundColor: '#ff8080',
+    //       },
+
+    //       contentStyle: {
+    //         color: '#fafafa',
+    //       },
+    
+    //       popover: {
+    //         label: 'You just hovered over today\'s date!',
+    //       }
+    //     },
+    //   ],
+    //     }
+    // },
     methods: {
-      onSubmit() {
-
-      }
+      onSubmit (payload) {
+            const { roomId, personNum, period, price, roomCnt, bankName, reservationDate, userId } = payload
+            axios.post('http://localhost:8888/room/book', {
+                        roomId, personNum, period, price, roomCnt, bankName, reservationDate, userId
+                    })
+                    .then(res => {
+                        alert('예약이 완료되었습니다.')
+                        console(res.date)
+                    })
+                    .catch(res => {
+                        alert(res.response.data.message)
+                    })
+        }
     }
   }
 </script>

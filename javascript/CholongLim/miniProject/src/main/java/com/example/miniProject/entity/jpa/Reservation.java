@@ -25,8 +25,8 @@ import java.util.List;
         @Column(name = "book_no")
         private Long bookNo;
 
-        @Column(length = 64, nullable = false)
-        private String roomId;
+//        @Column(length = 64, nullable = false)
+//        private String roomId;
 
         @Temporal(TemporalType.DATE)
         private Date reservedDate; // 예약할 날짜
@@ -36,6 +36,10 @@ import java.util.List;
 
         @UpdateTimestamp
         private Date updDate;
+
+        public Reservation(Date reservedDate) {
+            this.reservedDate = reservedDate;
+        }
 
     }
 

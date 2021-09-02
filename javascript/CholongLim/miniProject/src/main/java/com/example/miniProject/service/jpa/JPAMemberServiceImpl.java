@@ -72,15 +72,16 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 
         if (maybeMember == null)
         {
-            log.info("login(): 그런 사람 없다.");
+            log.info("doesn't exist.");
             return false;
         }
+
 
         Member loginMember = maybeMember.get();
 
         if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
         {
-            log.info("login(): 비밀번호 잘못 입력하였습니다.");
+            log.info("wrong password");
             return false;
         }
 
@@ -102,33 +103,25 @@ public class JPAMemberServiceImpl implements JPAMemberService {
     }
 
 
-
-
-//    @Override
-//    public Member read(String userId) throws Exception {
-//        Optional<Member> memberDetail = memberRepository.findByUserInfo(userId);
-//        if(memberDetail.isPresent()) {
-//            Member member = memberDetail.get();
-//            memberRepository.save(member);
-//
-//            return member;
-//        } else {
-//            throw new NullPointerException();
-//        }
-//
-//    }
-
     @Override
-    public List<Member> list() throws Exception {
-//        return memberRepository.findByUserInfo(userId);
+    public Member user(String userId) throws Exception {
+        Optional<Member> userInfo =  memberRepository.findByUserInfo(userId);
 
-        return memberRepository.findAll();
+        if(!userInfo.isPresent()){
+            throw new IllegalStateException();
+        }
+        return userInfo.get();
     }
 
 
     @Override
     public Optional<Member> findByAuth(Long memberNo) {
         return memberRepository.findByAuth(memberNo);
+    }
+
+    @Override
+    public void removeUser(Long memberNo) throws Exception {
+        memberRepository.deleteById(memberNo);
     }
 
 }
