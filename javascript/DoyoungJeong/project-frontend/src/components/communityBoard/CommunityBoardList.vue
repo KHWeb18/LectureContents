@@ -1,7 +1,7 @@
 <template>
     <div style="margin-top: 20px;">
         <v-container>
-            <table>
+            <!-- <table>
                 <tr>
                     <td class="description" width="15%;">No</td>
                     <td class="description" width="50%;">제목</td>
@@ -15,7 +15,7 @@
                     <td>{{ board.boardNo }}</td>
                     <td>
                         <p @click="sendNum(board.boardNo)" style="margin-bottom: 0px;">
-                            <router-link :to="{ name: 'CommunityReadPage', params: { boardNo: board.boardNo.toString() }}"> <!-- 역시나 params가 안작동함 -->
+                            <router-link :to="{ name: 'CommunityReadPage', params: { boardNo: board.boardNo.toString() }}"> 
                                 {{ board.title }}
                             </router-link>
                         </p>
@@ -23,7 +23,22 @@
                     <td>{{ board.id }}</td>
                     <td style="text-align: right;">{{ board.regDate }}</td>
                 </tr>
-            </table>
+            </table> -->
+            <v-data-table :headers="headerTitle"
+                        :items="boards"
+                        :items-per-page="5"
+                        class="elevation-1">
+
+                    <template v-slot:item="{ item, index }"> <!-- v-data-table에서 index뽑는 법 -->
+                        <tr>
+                            <td>{{ index + 1 }}</td>
+                            <td @click="handleClick(item.boardNo)">{{ item.title }}</td>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.regDate }}</td>
+                        </tr>
+                    </template>
+
+            </v-data-table>
         </v-container>
         
     </div>
@@ -39,12 +54,28 @@ export default {
             type: Array
         }
     },
+    data() {
+        return {
+            headerTitle: [
+                { text: 'NO', value: 'boardNo', width: '10%'},
+                { text: '제목', value: 'title', width: '50%'},
+                { text: '작성자', value: 'id', width: '20%'},
+                { text: '게시일', value: 'regDate', width: '20%'}
+            ]
+        }
+    },
     methods: {
         sendNum() { //(boardNo)
             // const payload = [ boardNo ]
 
             // EventBus.$emit('sendNum', payload)
             // console.log('The num has been sent! ' + payload)
+        },
+        handleClick(boardNo) {
+            this.$router.push({
+                name:'CommunityReadPage',
+                params: { boardNo: boardNo }
+            })
         }
     }
 }

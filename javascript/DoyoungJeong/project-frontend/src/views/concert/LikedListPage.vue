@@ -4,7 +4,7 @@
         <p class="description" style="margin-right: 20px;">찜하신 공연을 한눈에 확인해보세요 :)</p>
 
         <v-container fluid style="margin-top: 30px; width: 100%">
-            <table>
+            <!-- <table>
                 <tr>
                     <td class="description" style="width: 130px;">공연 명</td>
                     <td class="description" style="width: 100px;">아티스트</td>
@@ -26,7 +26,31 @@
                         <v-btn style="margin-left: 10px;" class="btn-flat red-text waves-effect waves-teal" @click="deleteLikedConcert(likedElem.concertNo, index)">찜해제</v-btn>
                     </div>
                 </tr>
-            </table>
+            </table> -->
+            <v-data-table :headers="headerTitle"
+                        :items="likedList"
+                        :items-per-page="5"
+                        class="elevation-1">
+
+                    <template v-slot:item="{ item, index }"> <!-- v-data-table에서 index뽑는 법 -->
+                        <tr>
+                            <td>{{ index + 1 }}</td>
+                            <td>{{ item.concertName }}</td>
+                            <td>{{ item.concertArtist }}</td>
+                            <td>{{ item.concertDate }}</td>
+                            <td>{{ item.concertVenue }}</td>
+                            
+                            <div style="margin-top: 5px; margin-right: 60px; text-align: right;">
+                                <v-btn style="margin-right: 40px;" class="btn-flat red-text waves-effect waves-teal" 
+                                @click="goToDetailPage(item.concertNo)">바로가기</v-btn>
+
+                                <v-btn style="margin-left: 10px;" class="btn-flat red-text waves-effect waves-teal" 
+                                @click="deleteLikedConcert(item.concertNo, index)">찜해제</v-btn>
+                            </div>
+                        </tr>
+                    </template>
+
+            </v-data-table>
         </v-container>
     </div>
 
@@ -43,7 +67,13 @@ export default {
     },
     data() {
         return {
-            
+            headerTitle: [
+                { text: 'NO', value: 'concertName', width: '8%'},
+                { text: '공연 명', value: 'concertName', width: '15%'},
+                { text: '아티스트', value: 'concertArtist', width: '10%'},
+                { text: '일시', value: 'concertDate', width: '15%'},
+                { text: '장소', value: 'concertVenue', width: '25%'}
+            ]
         }
     },
     methods: {
