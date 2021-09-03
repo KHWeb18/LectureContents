@@ -5,6 +5,7 @@ import com.example.miniProject.controller.member.request.UserRequest;
 import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.MemberAuth;
+import com.example.miniProject.entity.jpa.Room;
 import com.example.miniProject.repository.jpa.JPAMemberAuthRepository;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -70,12 +71,11 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 //        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
         Optional<Member> maybeMember = memberRepository.findByDuplicateCheck(memberRequest.getUserId());
 
-        if (maybeMember == null)
+        if (maybeMember.equals(Optional.empty()))
         {
             log.info("doesn't exist.");
             return false;
         }
-
 
         Member loginMember = maybeMember.get();
 
@@ -120,8 +120,20 @@ public class JPAMemberServiceImpl implements JPAMemberService {
     }
 
     @Override
+    public Member userRead(Long memberNo) throws Exception{
+        Optional<Member> userDetail = memberRepository.findById(memberNo);
+        if(userDetail.isPresent()) {
+            Member member = userDetail.get();
+            memberRepository.save(member);
+
+            return member;
+        } else {
+            throw new NullPointerException();
+        }
+    }
+
+    @Override
     public void removeUser(Long memberNo) throws Exception {
         memberRepository.deleteById(memberNo);
     }
-
 }

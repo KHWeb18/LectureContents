@@ -1,8 +1,10 @@
 import {
   FETCH_BOARD_LIST,
   FETCH_BOARD,
+  FETCH_BOOK,
   FETCH_MEMBER_LIST,
   FETCH_MEMBER,
+  FETCH_USER,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT,
@@ -23,6 +25,8 @@ export default {
      fetchBoardList ({ commit }) {
         return axios.get('http://localhost:8888/board/lists')
                 .then((res) => {
+                    console.log(res)
+                    console.log(res.data)
                     commit(FETCH_BOARD_LIST, res.data)
                 })
       },
@@ -41,13 +45,21 @@ export default {
       //               commit(FETCH_MEMBER_LIST, res.data)
       //           })
       // },
-      // fetchUser ({ commit }, userId) {
-      //   this.userId = this.$cookies.get('user') 
-      //   return axios.get(`http://localhost:8888/jpamember/${userId}`)
-      //           .then((res) => {
-      //               commit(FETCH_MEMBER, res.data)
-      //           })
-      // },
+      fetchUser ({ commit }, memberNo) {
+        return axios.get(`http://localhost:8888/jpamember/${memberNo}`)
+                .then((res) => {
+                   console.log(res)
+                   console.log(res.data)
+                    commit(FETCH_USER, res.data)
+                })
+      },
+    fetchBook ({ commit }, bookNo) {
+      return axios.get(`http://localhost:8888/room/${bookNo}`)
+              .then((res) => {
+                  commit(FETCH_BOOK, res.data)
+                  
+              })
+    },
     fetchMemberList ({ commit }) {
       return axios.get('http://localhost:8888/memberManage/lists')
               .then((res) => {
@@ -58,51 +70,41 @@ export default {
       return axios.get(`http://localhost:8888/memberManage/${memberNo}`)
               .then((res) => {
                   commit(FETCH_MEMBER, res.data)
+                  
               })
     },
-  //로그인 시도
-    //   getMemberInfo({commit}) {
-    //     let token = localStorage.getItem("access_token")
-    //     let config = {
-    //         headers: {
-    //             "access-token":token
-    //         }
-    //     }
-    //     axios.post('http://localhost:8888/jpamember/needSession', config)
-    //                     .then(response => {
-    //                         let userInfo = {
-    //                           userId: response.data.userId
-    //                         }
-    //                         commit(LOGIN_SUCCESS, userInfo)
-    //                     }) 
-    //                     .catch(error => {
-    //                         // alert('이메일과 비밀번호를 확인하세요.')
-    //                         console.log(error)
-    //                     })
-    // },
-    // logout({commit}) {
-    //   axios.post('http://localhost:8888/jpamember/removeSession')
-    //   .then(res => {
-    //         alert('로그아웃이 완료되었습니다.')
-    //         console.log(res)
-    //         commit(LOGOUT)
-    //         cookies.remove("user")
-    //         // let token = null
-    //         // localStorage.setItem("access_token", token)
-    //         router.push({name: 'MainPage'})
-    //   })
-    // },
-    async login ( { commit },  { userId,password }) {
+    // async login ( { commit },  { userId, password }) {
+    //       axios.post('http://localhost:8888/jpamember/login', { userId, password})
+    //               .then(res => {
+    //                   if(res.data != "") {
+    //                       alert('로그인이 완료되었습니다.')
+    //                       cookies.set("user",userId, '1h')
+    //                       this.state.session = res.data
+    //                       commit(LOGIN_SUCCESS)
+    //                       router.push({name: 'MainPage'})
+                  
+    //                   } else {
+    //                       alert('아이디와 비밀번호를 확인해주세요.')
+    //                       commit(LOGIN_ERROR)
+    //                   }
+    //               })
+    //               .catch(res => {
+    //                   console.log(res)
+    //               })
+    //   },
+    async login ( { commit },  { userId, password }) {
           axios.post('http://localhost:8888/jpamember/login', { userId, password})
                   .then(res => {
                       if(res.data != "") {
                           alert('로그인이 완료되었습니다.')
-                          // cookies.set("user",res.data, '1h')
                           cookies.set("user",userId, '1h')
                           this.state.session = res.data
                           commit(LOGIN_SUCCESS)
+                          router.push({name: 'MainPage'})
+                          console.log(res)
+                          console.log(res.data)
                   
-                      } else {
+                      } if(res.data == "" ) {
                           alert('아이디와 비밀번호를 확인해주세요.')
                           commit(LOGIN_ERROR)
                       }

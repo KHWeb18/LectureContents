@@ -38,9 +38,6 @@
 
 <script>
 import { LOGIN_SUCCESS } from '@/store/mutation-types'
-// import { mapActions, mapState } from 'vuex'
-// import axios from 'axios'
-// import cookies from 'vue-cookies'
 
 
 export default {
@@ -49,8 +46,6 @@ export default {
         return {
             userId: '',
             password: '',
-            // userName: '',
-            // userPhone: '', 
         }
     },
     mounted () {
@@ -60,20 +55,11 @@ export default {
             LOGIN_SUCCESS
         }
     },
-    // computed: {
-    //     ...mapState(["isLogin", "isLoginError", "session"])
-    // },
     methods: {
         login (payload) {
-            console.log( this.userId)
-            console.log( this.userName)
-            console.log( this.userPhone)
             if(this.$store.state.session == null) {
             const { userId, password } = payload
             this.$store.dispatch('login', {userId, password})
-            this.$router.push({
-                    name: 'MainPage'
-            })
             } else  {
               alert('이미 로그인 되어 있습니다.')
           }

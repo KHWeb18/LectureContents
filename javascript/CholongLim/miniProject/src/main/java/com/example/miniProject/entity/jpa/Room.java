@@ -58,7 +58,8 @@ public class Room {
         @JoinColumn(name = "book_no")
         private List<Reservation> dateList = new ArrayList<Reservation>();
 
-        public Room(String roomId, String period, String personNum, String bankName, String price, String userId, Integer roomCnt ) {
+        @Builder
+        public Room(String roomId, String period, String personNum, String bankName, String price, String userId, Integer roomCnt, Date regDate) {
         this.roomId = roomId;
         this.period = period;
         this.personNum = personNum;
@@ -66,6 +67,7 @@ public class Room {
         this.price = price;
         this.userId = userId;
         this.roomCnt = roomCnt;
+        this.regDate = regDate;
         }
 
         public void addDate(Reservation date) {

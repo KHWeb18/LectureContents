@@ -21,10 +21,14 @@ export default {
             axios.post('http://localhost:8888/jpamember/register', {
                          userName, userId, password, passwordReInput, userPhone, auth})
                     .then(res => {
+                        if(res.data != "") {
                             alert('회원가입이 완료됐습니다.' + res)
                             this.$router.push({
                             name: 'CinzelMemberLogin'
                         })
+                        } else {
+                            alert('중복된 아이디입니다.')
+                        }
                     })
                     .catch(res => {
                         alert(res.response.data.message)

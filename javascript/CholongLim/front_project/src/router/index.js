@@ -10,9 +10,9 @@ import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
 import MyPage from '@/views/member/MyPage.vue'
 // 마이페이지
 import UserList from '@/views/member/UserList.vue'
-import UserModify from '@/views/member/UserModify.vue'
+import UserReadPage from '@/views/member/UserReadPage.vue'
 import MyReservation from '@/views/member/MyReservation.vue'
-
+import ReservationReadPage from '@/views/member/ReservationReadPage.vue'
 
 
 // 관리자
@@ -113,10 +113,20 @@ const routes = [
     }
   },
   {
-    path: '/modify',
-    name: 'UserModify',
+    path: '/book/:bookNo',
+    name: 'ReservationReadPage',
     components: {
-      default: UserModify
+      default: ReservationReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/member/:memberNo',
+    name: 'UserReadPage',
+    components: {
+      default: UserReadPage
     },
     props: {
       default: true

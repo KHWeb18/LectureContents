@@ -5,6 +5,8 @@ import com.example.miniProject.controller.member.request.UserRequest;
 import com.example.miniProject.controller.session.UserInfo;
 import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
+import com.example.miniProject.entity.jpa.MemberAuth;
+import com.example.miniProject.entity.jpa.Room;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import com.example.miniProject.service.jpa.JPAMemberService;
 import lombok.Getter;
@@ -45,7 +47,7 @@ public class JPAMemberController {
     private HttpSession session;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> jpaRegister(
+    public ResponseEntity<MemberRequest> jpaRegister(
             @Validated @RequestBody MemberRequest memberRequest,
             HttpServletRequest request) throws Exception {
         log.info("jpaRegister(): " + memberRequest.getUserId() + ", " + memberRequest.getPassword() + ", " +
@@ -53,25 +55,42 @@ public class JPAMemberController {
 
         log.info("jpaRegister(): " + memberRequest.getUserId() + ", " + memberRequest.getPassword()  + ", " + memberRequest.getPasswordReInput());
 
+
             boolean ableId = service.duplicateCheck(memberRequest);
 
-            if (memberRequest.getPassword().equals(memberRequest.getPasswordReInput())) {
+        if (memberRequest.getPassword().equals(memberRequest.getPasswordReInput())) {
                 if(ableId){
                     log.info("able id");
                     log.info("register Success");
                     service.register(memberRequest);
                     log.info(memberRequest.getAuth(),memberRequest.getUserName());
-                    return new ResponseEntity<Void>(HttpStatus.OK);
+                    return new ResponseEntity<MemberRequest>(memberRequest,HttpStatus.OK);
                 } else {
                     log.info("unable id");
-                    this.info = null;
+                    return null;
                 }
             } else {
                 log.info("register Fail");
-                this.info = null;
+                return null;
             }
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+//            if (memberRequest.getPassword().equals(memberRequest.getPasswordReInput())) {
+//                if(ableId){
+//                    log.info("able id");
+//                    log.info("register Success");
+//                    service.register(memberRequest);
+//                    log.info(memberRequest.getAuth(),memberRequest.getUserName());
+//                    return new ResponseEntity<MemberRequest>(memberRequest,HttpStatus.OK);
+//                } else {
+//                    log.info("unable id");
+//                    return null;
+//                }
+//            } else {
+//                log.info("register Fail");
+//                return null;
+//            }
+
+//        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     // 로그인
@@ -91,6 +110,12 @@ public class JPAMemberController {
             info = new UserInfo();
             info.setUserId(memberRequest.getUserId());
 
+            //
+//            service.user(memberRequest.getUserId());
+//            Member userNo = service.user(memberRequest.getUserId());
+//            log.info("111111111" + userNo.getAuthList());
+//
+            //
 
             log.info("Session Info: " + info);
 
@@ -104,6 +129,7 @@ public class JPAMemberController {
         }
         return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
     }
+
 
     @GetMapping("/lists")
     public ResponseEntity<Member> getUsers (HttpServletRequest request,
@@ -142,6 +168,13 @@ public class JPAMemberController {
         session.invalidate();
 
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
+    }
+
+    @GetMapping("/{memberNo}")
+    public ResponseEntity<Member> userRead(@PathVariable("memberNo") Long memberNo) throws Exception {
+        Member member = service.userRead(memberNo);
+
+        return new ResponseEntity<Member>(member, HttpStatus.OK);
     }
 
     @DeleteMapping("/{memberNo}")

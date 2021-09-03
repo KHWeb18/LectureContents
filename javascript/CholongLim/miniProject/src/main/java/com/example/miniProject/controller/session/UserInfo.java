@@ -13,6 +13,8 @@ public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // 원래 userId 하나만 !
     private String userId;
+//    private String auth;
 
 }

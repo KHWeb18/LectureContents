@@ -275,10 +275,12 @@ import axios from 'axios'
                         roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId
                     })
                     .then(res => {
-                      if(res.date != "") {
+                      console.log(res)
+                      console.log(res.data)
+                      if(res.data != "") {
                         alert('예약이 완료되었습니다.')
                         this.dialog = false
-                        console(res.date)
+                        console(res.data)
                       } else {
                         alert('이미 예약된 방입니다.')
                       }

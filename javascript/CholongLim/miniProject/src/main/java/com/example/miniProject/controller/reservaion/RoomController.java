@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -26,7 +28,7 @@ public class RoomController {
     private JPARoomService roomService;
 
     @PostMapping("/book")
-    public ResponseEntity<Void> booking(@Validated @RequestBody RoomRequest roomRequest) throws Exception {
+    public ResponseEntity<RoomRequest> booking(@Validated @RequestBody RoomRequest roomRequest) throws Exception {
         log.info("bookDate: " + roomRequest.getReservedDate() + "roomId: " + roomRequest.getRoomId() + "personNum: " + roomRequest.getPersonNum() +
                 "bankName: " + roomRequest.getBankName()+ "price: " + roomRequest.getPrice() + "period: " + roomRequest.getPeriod() +
                 "guest: " + roomRequest.getUserId() + "roomCnt: " + roomRequest.getRoomCnt());
@@ -38,6 +40,7 @@ public class RoomController {
         if (isSuccess) {
             log.info("You can reserve");
             roomService.bookRoom(roomRequest);
+            return new ResponseEntity<RoomRequest>(roomRequest,HttpStatus.OK);
 
         } else {
             log.info("You can't reserve");
@@ -45,15 +48,31 @@ public class RoomController {
 
         }
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+//        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/lists")
-    public ResponseEntity<Room> getReservation (@RequestParam("userId") String userId, UserRequest userRequest) throws Exception {
+//    @GetMapping("/lists")
+//    public ResponseEntity<Room> getReservation (@RequestParam("userId") String userId, UserRequest userRequest) throws Exception {
+//
+//        log.info("getLists(): " + roomService.bookList(userId));
+//        return new ResponseEntity<>(roomService.bookList(userId), HttpStatus.OK);
+//
+//    }
 
+    @GetMapping("/lists")
+    public ResponseEntity<List<RoomRequest>> getReservation (@RequestParam("userId") String userId, UserRequest userRequest, Model model) throws Exception {
+        List<RoomRequest> roomRequestList = roomService.bookList(userId);
+        model.addAttribute("roomRequestList", roomRequestList);
         log.info("getLists(): " + roomService.bookList(userId));
         return new ResponseEntity<>(roomService.bookList(userId), HttpStatus.OK);
 
+    }
+
+    @GetMapping("/{bookNo}")
+    public ResponseEntity<Room> read(@PathVariable("bookNo") Long bookNo) throws Exception {
+        Room room = roomService.read(bookNo);
+
+        return new ResponseEntity<Room>(room, HttpStatus.OK);
     }
 
     @DeleteMapping("/{bookNo}")
@@ -62,6 +81,8 @@ public class RoomController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+
 
 
 }

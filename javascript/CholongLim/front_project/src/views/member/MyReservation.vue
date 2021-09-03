@@ -1,13 +1,13 @@
 <template>
-    <div id="user" class="img-cover">
+    <div id="book" class="img-cover">
         <div class="container" style="margin-bottom:2%">
             <div>
                 <v-card class="reserve">
                     <v-row justify="center" style="margin:3%;">
-                        <h4 style="margin-top:5%;">회원정보</h4>
+                        <h4 style="margin-top:5%;">예약정보</h4>
                     </v-row>
 
-                    <user-list-form :users="users"/>
+                    <my-reservation-form :books="books"/>
                 </v-card>
 
             </div>
@@ -16,16 +16,16 @@
 </template>
 
 <script>
-import UserListForm from '@/components/member/UserListForm.vue'
+import MyReservationForm from '@/components/member/MyReservationForm.vue'
 import axios from 'axios'
 import { mapState } from 'vuex'
-import { FETCH_USER_LIST, FETCH_AUTH_LIST } from '@/store/mutation-types'
+import { FETCH_BOOK_LIST, FETCH_DATES_LIST } from '@/store/mutation-types'
 
 
 export default {
-    name: 'UserList',
+    name: 'MyReservation',
     components: {
-        UserListForm
+        MyReservationForm
     },
     data() {
         return {
@@ -34,21 +34,21 @@ export default {
         }
     },
     computed: {
-        ...mapState(['users'])
+        ...mapState(['books'])
     },
     mounted () {
-        this.fetchUserList()
+        this.fetchBookList()
     },
     methods: {
-        // ...mapActions(['fetchUserList'])
-      fetchUserList () {
-      return axios.get('http://localhost:8888/jpamember/lists', { params: { userId : this.userId} })
+      fetchBookList () {
+      return axios.get('http://localhost:8888/room/lists', { params: { userId : this.userId} })
               .then((res) => {
-                this.$store.commit(FETCH_USER_LIST, res.data)
-                this.$store.commit(FETCH_AUTH_LIST, res.data.authList[0])
-                // console.log(res)
-                // console.log(res.data)
-                // console.log(res.data.authList[0])
+                  this.$store.commit(FETCH_BOOK_LIST, res.data)
+                  console.log(res)
+                  console.log(res.data)
+                this.$store.commit(FETCH_DATES_LIST, res.data.dateList[0])
+                //   console.log(res.data.dateList[0])
+                //   console.log(this.$store.state.books)
               })
     },
     }
@@ -83,7 +83,7 @@ h4 {
      z-index:1;
   }
 
-  .reserve{
+.reserve{
     position: relative;
     height: 100;
 }
