@@ -10,8 +10,8 @@ import lombok.ToString;
 public class TasteRequest {
 
     private Integer memberNo;
-    private String[] chosenGenres;
+    private String chosenGenres;
     private String speedTaste;
     private String atmosphereTaste;
-    private String[] chosenArtists;
+    private String chosenArtists;
 }
