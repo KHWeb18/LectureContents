@@ -16,9 +16,11 @@
                         <p id="headline">SIGN UP</p>
                         <p id="description">가입을 축하드려요 :) 지금 관심있는 장르, 아티스트 설정을 하실 수 있습니다!</p>
                     </v-card-title>
+                    
                     <v-card-text>
                         
                     </v-card-text>
+
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="teal darken-1" text @click.native="btn_apply($event)">

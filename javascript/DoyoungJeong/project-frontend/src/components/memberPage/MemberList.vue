@@ -5,7 +5,7 @@
             <p style="font-size: 12px; margin-top: -10px;">회원을 탈퇴시키려면 해당 회원의 id를 클릭하세요.</p>
         </span>
         <v-container style="width: 75%">
-            <table border="1px">
+            <!-- <table border="1px">
                 <tr class="listItem">
                     <td width="30">memberNo</td>
                     <td width="80" style="text-align: center">id</td>
@@ -35,7 +35,26 @@
                    <td>{{ member.phoneNo }}</td>
                    <td style="text-align: right">{{ member.regDate }}</td>
                 </tr>
-            </table>
+            </table> -->
+            <v-data-table :headers="headerTitle"
+                        :items="members"
+                        :items-per-page="5"
+                        class="elevation-1">
+
+                    <template v-slot:item="{ item, index }"> <!-- v-data-table에서 index뽑는 법 * item * 얘는 고정된 이름 -->
+                        <tr>
+                            <td>{{ index + 1 }}</td>
+                            <td @click="handleClick(item.memberNo)">{{ item.id }}</td> 
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.location }}</td>
+                            <td>{{ item.memberIdentityList[0].identity }}</td>
+                            <td>{{ item.birthDay }}</td>
+                            <td>{{ item.phoneNo }}</td>
+                            <td style="text-align: right">{{ item.regDate }}</td>
+                        </tr>
+                    </template>
+
+            </v-data-table>
         </v-container>
     </div>
 </template>
@@ -53,7 +72,16 @@ export default {
     },
     data() {
         return {
-            
+            headerTitle: [
+                { text: '회원 번호', value: 'memberNo' },
+                { text: 'ID', value: 'id', width: '15%'},
+                { text: '이름', value: 'name', width: '10%'},
+                { text: '지역', value: 'location', width: '10%'},
+                { text: 'Auth', value: 'identity', width: '5%'},
+                { text: '생일', value: 'birthDay', width: '20%'},
+                { text: '연락처', value: 'phoneNo', width: '10%'},
+                { text: '가입일자', value: 'regDate', width: '20%'}
+            ]
         }
     },
     methods: {
@@ -62,6 +90,12 @@ export default {
 
             //EventBus.$emit('sendNum', payload)
             console.log('The num has been sent! ' + payload)
+        },
+        handleClick(memberNo) {
+            this.$router.push({
+                name:'MemberDeletePage',
+                params: { memberNo: memberNo }
+            })
         }
     }
 }

@@ -134,7 +134,7 @@ export default {
         },
         addSetting() {
             this.$router.push({
-                name: 'InterestedSetUpPage',
+                name: 'PreferenceFillInPage',
             })
         }
     }
