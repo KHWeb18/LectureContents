@@ -23,7 +23,7 @@ public class MemberTaste {
     private Long memberNo;
 
     @Column(length = 100, nullable = false)
-    private String[] chosenGenres;
+    private String chosenGenres;
 
     @Column(length = 20, nullable = false)
     private String speedTaste;
@@ -32,7 +32,7 @@ public class MemberTaste {
     private String atmosphereTaste;
 
     @Column(length = 30, nullable = true)
-    private String[] chosenArtists;
+    private String chosenArtists;
 
     @CreationTimestamp
     private Date regDate;
@@ -40,7 +40,7 @@ public class MemberTaste {
     @UpdateTimestamp
     private Date updDate;
 
-    public MemberTaste(String[] chosenGenres, String speedTaste, String atmosphereTaste, String[] chosenArtists) {
+    public MemberTaste(String chosenGenres, String speedTaste, String atmosphereTaste, String chosenArtists) {
         this.chosenGenres = chosenGenres;
         this.speedTaste = speedTaste;
         this.atmosphereTaste = atmosphereTaste;

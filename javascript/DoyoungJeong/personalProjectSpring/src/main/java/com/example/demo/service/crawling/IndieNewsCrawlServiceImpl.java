@@ -51,12 +51,16 @@ public class IndieNewsCrawlServiceImpl implements IndieNewsCrawlService {
     public void indieNewsMainCrawler(String keyword) {
         log.info("indieNewsMainCrawler()");
 
-        document = connectUrl("https://search.daum.net/search?w=news&nil_" +
-                "search=btn&DA=NTB&enc=utf8&cluster=y&cluster_page=1&q=" + keyword);
+//        document = connectUrl("https://search.daum.net/search?w=news&nil_" +
+//                "search=btn&DA=NTB&enc=utf8&cluster=y&cluster_page=1&q=" + keyword); //<-- 뉴스 긁어오기
 
-        indieNewsRepository.deleteAll(); //여기서 왜 delete를 해주지??
+        document = connectUrl("https://search.daum.net/search?w=blog&nil_search=btn&DA=NTB&enc=utf8&q=" + keyword);
 
-        indieNewsCrawling(document.select("ul.list_news>li>div.wrap_cont>a"), keyword);
+        indieNewsRepository.deleteAll(); //여기서 왜 delete를 해주지?? --> 다 지우려고
+
+//        indieNewsCrawling(document.select("ul.list_news>li>div.wrap_cont>a"), keyword);
+
+        indieNewsCrawling(document.select("div.cont_inner>div.wrap_tit>a"), keyword); // *** 띄어쓰기가 안먹힘, 클래스명에 띄어쓰기 있으면 띄어쓰기 다음 철자들 생략!
     }
 
     @Override

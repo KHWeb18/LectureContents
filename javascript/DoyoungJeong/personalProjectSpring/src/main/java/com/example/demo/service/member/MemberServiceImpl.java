@@ -63,9 +63,12 @@ public class MemberServiceImpl implements MemberService{
             String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
             memberRequest.setPassword(encodedPassword);
 
+            String location = memberRequest.getLocation().replace("\\[", "").replaceAll("\\]","").
+                    replaceAll("\"", "");
+
             MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
             Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                    memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo());
+                    location, memberRequest.getBirthDay(), memberRequest.getPhoneNo());
 
             LikedConcert likedConcert = new LikedConcert();
             likedConcert.setConcertNo(new Long(0));
@@ -76,9 +79,9 @@ public class MemberServiceImpl implements MemberService{
             likedConcert.setConcertDate("default");
             likedConcert.setConcertInfo("default");
 
-            String[] defaultOne = new String[0];
-            String[] defaultTwo = new String[0];
-            MemberTaste memberTaste = new MemberTaste(defaultOne, "default", "default", defaultTwo);
+//            String[] defaultOne = new String[0];
+//            String[] defaultTwo = new String[0];
+            MemberTaste memberTaste = new MemberTaste("default", "default", "default", "default");
 
 //            Board board = new Board("default", "default"); 보드를 멤버에 엮을까 하다가 취소
 //            board.setId("default");
