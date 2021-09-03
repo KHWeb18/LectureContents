@@ -199,25 +199,25 @@ export default {
         async confirm(num) { //num
 
             if(num == 1) {
-                if(this.firstSlide == 1) {
+                if(this.firstSlide == 0) {
                     this.speedTaste = this.firstLabels[0]
-                } else if(this.firstSlide == 2) {
+                } else if(this.firstSlide == 1) {
                     this.speedTaste = this.firstLabels[1]
-                } else if(this.firstSlide == 3) {
+                } else if(this.firstSlide == 2) {
                     this.speedTaste = this.firstLabels[2]
-                } else if(this.firstSlide == 4) {
+                } else if(this.firstSlide == 3) {
                     this.speedTaste = this.firstLabels[3]
-                } else if(this.firstSlide == 5) {
+                } else if(this.firstSlide == 4) {
                     this.speedTaste = this.firstLabels[4]
                 }
 
-                if(this.secondSlide == 1) {
+                if(this.secondSlide == 0) {
                     this.atmosphereTaste = this.secondLabels[0]
-                } else if(this.secondSlide == 2) {
+                } else if(this.secondSlide == 1) {
                     this.atmosphereTaste = this.secondLabels[1]
-                } else if(this.secondSlide == 3) {
+                } else if(this.secondSlide == 2) {
                     this.atmosphereTaste = this.secondLabels[2]
-                } else if(this.secondSlide == 4) {
+                } else if(this.secondSlide == 3) {
                     this.atmosphereTaste = this.secondLabels[3]
                 } 
                 //alert(this.speedTaste + ' ' + this.atmosphereTaste)
@@ -279,17 +279,18 @@ export default {
         },
         complete() {
 
-            const chosenGenres = this.chosenGenresForRequest
-            const speedtTaste = this.speedTaste
+            const chosenGenres = JSON.stringify(this.chosenGenresForRequest)
+            const speedTaste = this.speedTaste
             const atmosphereTaste = this.atmosphereTaste
-            const chosenArtists = this.chosenArtistsForRequest
+            const chosenArtists = JSON.stringify(this.chosenArtistsForRequest)
 
-            this.$emit('complete', { chosenGenres, speedtTaste, atmosphereTaste, chosenArtists })
+            this.$emit('complete', { chosenGenres, speedTaste, atmosphereTaste, chosenArtists })
 
             //alert(JSON.stringify({ chosenGenres, taste, chosenArtists }))
         }
     },
     computed: {
+       
         color1() {
             if (this.firstSlide == 1) return 'teal'
             if (this.firstSlide == 2) return 'yellow'
@@ -303,7 +304,7 @@ export default {
             if (this.secondSlide == 2) return 'yellow'
             if (this.secondSlide == 3) return 'red'
             return 'indigo'
-        },
+        }
     }
 }
 </script>

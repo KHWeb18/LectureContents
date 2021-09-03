@@ -4,29 +4,48 @@
         <p class="subTitle" style="font-style: italic;">현재 회원님의 가입 정보입니다.</p>
         <v-container style="width: 75%">
             <table border="1px">
-                <tr class="listItem">
-                    <td width="80" style="text-align: left">id</td>
-                    <td width="80">password</td>
-                    <td width="80">name</td>
-                    <td width="100">location</td>
-                    <td width="80">identity</td>
-                    <td width="100">birthDay</td>
-                    <td width="80">phoneNo</td>
-                    <td width="180" style="text-align: right">regDate</td>
+                <tr class="footerText">
+                    <td width="12%" style="text-align: left">id</td>
+                    <td width="10%">password</td>
+                    <td width="8%">name</td>
+                    <td width="15%">location</td>
+                    <td width="10%">identity</td>
+                    <td width="15%">birthDay</td>
+                    <td width="10%">phoneNo</td>
+                    <td width="20%" style="text-align: right">regDate</td>
                 </tr>
                 <tr v-if="!userProfile">
                     <td colspan="8">회원 정보를 불러오지 못했습니다!</td>
                 </tr>
-                <tr v-else class="item">
-                   <td>{{ member.id }}</td>
-                   <td>{{ password }}</td>
-                   <td>{{ member.name }}</td>
-                   <td>{{ member.location }}</td>
-                   <td>{{ userIdentity }}</td>
-                   <td>{{ member.birthDay }}</td>
-                   <td>{{ member.phoneNo }}</td>
-                   <td style="text-align: right">{{ member.regDate }}</td>
+
+                <tr v-else-if="userProfile" class="item">
+                    <td>{{ member.id }}</td>
+                    <td>{{ password }}</td>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.location }}</td>
+                    <td>{{ userIdentity }}</td>
+                    <td>{{ member.birthDay }}</td>
+                    <td>{{ member.phoneNo }}</td>
+                    <td style="text-align: right">{{ member.regDate }}</td>
                 </tr>
+                <tr class="footerText">
+                    <td>선택 취향</td>
+                    <td colspan="2">선택한 장르</td>
+                    <td colspan="2">곡 느낌 선호사항</td>
+                    <td colspan="2">공연장 선호사항</td>
+                    <td colspan="2" style="text-align: right">선택한 아티스트</td>
+                </tr>
+                <tr v-if="taste" class="item">
+                    <td></td>
+                    <td colspan="2">{{ taste.chosenGenres }}</td>
+                    <td colspan="2">{{ taste.speedTaste }}</td>
+                    <td colspan="2">{{ taste.atmosphereTaste }}</td>
+                    <td colspan="2" style="text-align: right">{{ taste.chosenArtists }}</td>
+                </tr>
+                <tr v-else-if="!taste" class="item">
+                    <td colspan="8">아직 선호사항을 정하지 않으셨어요!</td>             
+                </tr>
+           
             </table>
             <div style="margin-top: 20px;">
                 <router-link :to="{ name: 'MemberModifyPage' }" @click.native="btn_withdrawal(userProfile.memberNo)" 
@@ -55,10 +74,10 @@ export default {
         }
     },
     computed: {
-        ...mapState(['userProfile', 'userIdentity', 'isLoggedIn', 'member'])
+        ...mapState(['userProfile', 'userIdentity', 'isLoggedIn', 'member', 'taste'])
     },
     methods: {
-        ...mapActions(['fetchMember']),
+        ...mapActions(['fetchMember', 'fetchTaste']),
 
         btn_modify() {
            
@@ -79,6 +98,7 @@ export default {
             this.$store.state.userIdentity = this.$store.state.userProfile.identity
 
             this.fetchMember(this.$store.state.userProfile.memberNo)
+            this.fetchTaste(this.$store.state.userProfile.memberNo)
         }
     }
 }

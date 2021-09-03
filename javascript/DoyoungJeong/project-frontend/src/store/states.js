@@ -18,5 +18,9 @@ export default {
     boards: [],
     board: null,
 
-    replyList: []
+    replyList: [],
+
+    notDecidedYet: false,
+
+    taste: null
 }
