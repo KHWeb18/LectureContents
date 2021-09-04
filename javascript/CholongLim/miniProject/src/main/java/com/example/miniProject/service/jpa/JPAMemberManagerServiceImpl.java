@@ -4,6 +4,7 @@ package com.example.miniProject.service.jpa;
 import com.example.miniProject.controller.member.request.MemberRequest;
 import com.example.miniProject.entity.jpa.Member;
 
+import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.repository.jpa.JPAMemberAuthRepository;
 import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +46,11 @@ public class JPAMemberManagerServiceImpl implements JPAMemberManagerService {
     @Override
     public void remove(Long memberNo) throws Exception {
         memberRepository.deleteById(memberNo);
+    }
+
+    //auth
+    public List<MemberAuth> authList( ) throws Exception {
+        return memberAuthRepository.findAll();
     }
 
 

@@ -7,12 +7,16 @@
                     style="margin:3% 0% 3% 0%;" disabled type="member"></v-text-field>
                 <v-text-field  label="가입날짜" :value="user.regDate" 
                     style="margin:3% 0% 3% 0%;" disabled type="dates"></v-text-field>
+                <v-text-field  label="회원명" :value="user.userName" 
+                     style="margin:3% 0% 3% 0%;" disabled type="userName"></v-text-field>
                 <v-text-field  label="회원 아이디" :value="user.userId" 
                      style="margin:3% 0% 3% 0%;" disabled type="userId"></v-text-field>
                 <v-text-field  label="전화번호" :value="user.userPhone" 
                      style="margin:3% 0% 3% 0%;" disabled type="phone"></v-text-field>
 
-                <v-btn outlined class="ma-2 edit">수정하기</v-btn> 
+             
+                <v-btn outlined class="ma-2 edit" route :to="{ name: 'UserModifyPage', params: { memberNo: user.memberNo.toString() } }">
+                    수정하기</v-btn> 
 
                 </div>
 
@@ -20,12 +24,8 @@
                     <v-row class="justify-center">
                 <v-btn color="blue" outlined class="ma-2 white--text" route :to="{ name: 'UserList' }">
                     이전으로</v-btn> 
-                    <!-- <v-btn outlined class="ma-2">
-                    수정하기</v-btn>  -->
                     </v-row>
                 </div>
-                
-           
             </v-container>
         </v-container>
     </div>
@@ -38,26 +38,16 @@ export default {
     name: 'UserReadPage',
     props: {
         user: {
-            type: Object,
-            required: true
+            // type: Object,
+            authList: Array,
+            password:String,
+            userId: String,
+            userName: String,
+            userPhone: String,
+            memberNo: String,
+            // required: true
         }
-    },
-    methods: {
-        // onEdit (payload) {
-        //     const { userPhone } = payload
-        //     axios.put(`http://localhost:8888/jpamember/${this.memberNo}`, { userPhone })
-        //             .then(res => {
-        //                 alert('수정하였습니다.')
-        //                 this.$router.push({
-        //                     name: 'UserList',
-        //                     params: { memberNo: res.data.memberNo.toString() }
-        //                 })
-        //             })
-        //              .catch(err => {
-        //                 alert(err.response.data.message)
-        //             })
-        // }
-    }    
+    } 
 }
 </script>
 
@@ -75,7 +65,7 @@ h4 {
 
 .edit{
     position: absolute;
-    top: 66%;
+    top: 70%;
     left: 65%;
     width: 5px;
     font-size: 6px;

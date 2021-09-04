@@ -1,36 +1,33 @@
 <template>
-    <div id="member">
+    <div id="room">
         <div class="container" style="margin-bottom:2%">
             <div>
                 <v-row justify="center" style="margin:3%;">
-                    <h4 style="margin-top:5%;">회원목록</h4>
+                    <h4 style="margin-top:5%;">예약목록</h4>
                 </v-row>
-                <member-list :members="members" :memberAuths="memberAuths" class="table-box"/>
+                <room-list :rooms="rooms" :reserveDate="reserveDate" class="table-box"/>
             </div>
         </div>  
     </div>
 </template>
 
 <script>
-import MemberList from '@/components/manager/MemberList.vue'
+import RoomList from '@/components/manager/RoomList.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
-    name: 'MemberListPage',
+    name: 'BookingListPage',
     components: {
-        MemberList
+        RoomList
     },
     computed: {
-        ...mapState(['members','memberAuths'])
+        ...mapState(['rooms','reserveDate'])
     },
     mounted () {
-        this.fetchMemberList(),
-        this.fetchMemberAuthList()
+        this.fetchRoomList(),
+        this.fetchReserveList()
     },
     methods: {
-        ...mapActions(['fetchMemberList','fetchMemberAuthList']),
-        auth() {
-            console.log(this.$store.state.memberAuths)
-        }
+        ...mapActions(['fetchRoomList','fetchReserveList']),
     }
 }
 </script>

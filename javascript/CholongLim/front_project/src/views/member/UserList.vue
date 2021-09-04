@@ -46,9 +46,6 @@ export default {
               .then((res) => {
                 this.$store.commit(FETCH_USER_LIST, res.data)
                 this.$store.commit(FETCH_AUTH_LIST, res.data.authList[0])
-                // console.log(res)
-                // console.log(res.data)
-                // console.log(res.data.authList[0])
               })
     },
     }

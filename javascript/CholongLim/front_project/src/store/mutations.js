@@ -7,6 +7,11 @@ import {
    FETCH_BOOK,
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
+   FETCH_MEMBERAUTH_LIST,
+   FETCH_MEMBERAUTH,
+   FETCH_RESERVE_LIST,
+   FETCH_ROOM_LIST,
+   FETCH_ROOM,
    FETCH_USER_LIST,
    FETCH_USER,
    LOGIN_SUCCESS,
@@ -29,23 +34,26 @@ export default {
   [FETCH_AUTH_LIST] (state, auths) {
     state.auths = auths;
   },
+  [FETCH_RESERVE_LIST] (state, reserveDate) {
+    state.reserveDate = reserveDate;
+  },
   [FETCH_BOOK_LIST] (state, books) {
     state.books = books;
   },
   [FETCH_BOOK] (state, book) {
     state.book = book
   },
+  [FETCH_ROOM_LIST] (state, rooms) {
+    state.rooms = rooms;
+  },
+  [FETCH_ROOM] (state, room) {
+    state.room = room
+  },
   [FETCH_USER_LIST] (state, users) {
     state.users = users;
   },
   [FETCH_USER] (state, user) {
     state.user = user
-  },
-    // 관리자 로그인 로그아웃
-  [LOGIN_SUCCESS] (state, payload) {
-    state.isManagerLogin = true
-    state.isManagerLoginError = false
-    state.userInfo = payload
   },
   // 로그인 실패했을때
   [LOGIN_ERROR] (state){
@@ -65,7 +73,12 @@ export default {
   [FETCH_MEMBER] (state, member) {
     state.member = member
   },
-
+  [FETCH_MEMBERAUTH_LIST] (state, memberAuths) {
+    state.memberAuths = memberAuths;
+  },
+  [FETCH_MEMBERAUTH] (state, memberAuth) {
+    state.memberAuth = memberAuth
+  },
   // 로그인이 성공했을 때,
   [LOGIN_SUCCESS] (state, payload) {
     state.isLogin = true

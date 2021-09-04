@@ -1,40 +1,53 @@
 <template>
     <div>
         <v-toolbar>
-            <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
-            </v-app-bar-nav-icon>
-            <v-toolbar-title >
-
-                <span class="logo">
-                    <a href="/cinzel">CINZEL</a></span>
-
+            <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer"></v-app-bar-nav-icon>
+            <v-toolbar-title class="logo">
+                <span ><a href="/cinzel">CINZEL</a></span>
             </v-toolbar-title>
             <v-toolbar-items class="login-locate">
-                <!-- <span><member-login-form @submit="onSubmit"/></span> -->
-                <!-- <v-btn  v-if="isLogin === false" text router :to="'/login'">로그인</v-btn> -->
+                    <!-- <v-btn  text v-if="cookie == false" router :to="'/login'">로그인</v-btn> -->
+                    <v-btn  text v-if="this.cookie == false " router :to="'/login'">로그인</v-btn>
 
-                    <v-btn  text v-if="cookie == false" router :to="'/login'">로그인</v-btn>
-     
-                    <v-menu offset-y v-if="cookie == true">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text v-bind="attrs" v-on="on">
-                        <v-icon>account_circle</v-icon>
-                        </v-btn>
-                    </template>
-                    <v-list>
-                        <v-list-item @click="userPage">
-                        <v-list-item-title>마이페이지</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item @click="logout">
-                        <v-list-item-title>로그아웃</v-list-item-title>
-                        </v-list-item>
-                    </v-list>
+
+                    <!-- <v-menu offset-y v-if="cookie == true"> -->
+                        <v-menu offset-y v-if="(this.cookie == true) && (this.individual == '개인')">
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn text v-bind="attrs" v-on="on">
+                                <v-icon>account_circle</v-icon>
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item @click="userPage">
+                                <v-list-item-title>마이페이지</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="logout">
+                                <v-list-item-title>로그아웃</v-list-item-title>
+                            </v-list-item>
+                        </v-list>
                     </v-menu>
 
-            
-
+                    <v-menu offset-y v-if="(this.cookie == true) && (this.individual != '개인')">
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn text v-bind="attrs" v-on="on">
+                                <v-icon>account_circle</v-icon>
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item router :to="{name: 'MemberListPage'}">
+                                <v-list-item-title >회원관리</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item  router :to="{name: 'BookingListPage'}">
+                                <v-list-item-title>예약숙소관리</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item @click="logout">
+                                <v-list-item-title>로그아웃</v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
             </v-toolbar-items>
         </v-toolbar>
+
         <v-navigation-drawer app v-model="nav_drawer" temporary>
             <v-list nav dense  class="menubar">
                 <v-list-item-group v-model="group" active-class="deep-blue--text text--accent-4">
@@ -50,10 +63,8 @@
 </template>
 
 <script>
+
 import { mapActions, mapState } from 'vuex'
-// import cookies from 'vue-cookies'
-// import axios from 'axios'
-// import { LOGOUT } from '@/store/mutation-types'
 
 export default {
     name: 'MenuBar',
@@ -65,6 +76,7 @@ export default {
             nav_drawer: false,
             group: false,
             cookie: this.$cookies.isKey('user'),
+            individual: this.$cookies.get('auth'),
             userId: this.$cookies.get('user'),
             links: [
                 { 
@@ -95,8 +107,6 @@ export default {
         userPage() {
             this.userId = this.$cookies.get('user')
             
-            // const { userId } = payload
-            // const { userId } = this 
             console.log(this.userId)
             this.$router.push({
                 name: 'MyPage'
@@ -107,7 +117,10 @@ export default {
 
 </script>
 
+
+
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 
 .menubar {
@@ -116,10 +129,11 @@ export default {
 }
 
 .logo {
-    padding-left: 40vw;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     font-family: "Cinzel Decorative";
     font-size: 40px;
+    margin: 0 auto;
+
 }
 .account {
     padding-left: 40vw;

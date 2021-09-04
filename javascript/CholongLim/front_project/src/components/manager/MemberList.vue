@@ -1,34 +1,51 @@
 <template>
     <div align="center" class="member-box">
-        <table>
+        <v-row align="center" class="table-row">
+            <table class="table-b">
             <tr class="top-tr">
-                <th align="center" width="100">회원번호</th>
-                <th align="center" width="100">권한</th>
-                <th align="center" width="100">이름</th>
-                <th align="center" width="100">아이디</th>
-                <th align="center" width="200">전화번호</th>
-                <th align="center" width="200">가입일자</th>
+                <th>권한</th>
+            </tr>
+             
+                <tr v-if="!memberAuths || (Array.isArray(memberAuths) && memberAuths.length === 0)">
+                <td colspan="1">.</td>
+            </tr>
+            <tr v-else v-for="memberAuth in memberAuths" :key="memberAuth.memberNo">
+                <td>
+                    <router-link :to="{ name: 'MemberReadPage',
+                                    params: { memberNo: memberAuth.memberNo.toString() } }">
+                        {{ memberAuth.auth }}
+                    </router-link>
+                </td>
+            </tr>
+        </table>
+
+
+        <table class="table-a">
+            <tr class="top-tr">
+                <th width="100">회원번호</th>
+                <th width="100">이름</th>
+                <th width="100">아이디</th>
+                <th width="200">가입일자</th>
             </tr>
              
             <tr v-if="!members || (Array.isArray(members) && members.length === 0)">
-                <td colspan="5">
+                <td colspan="4">
                     등록된 회원이 존재하지 않습니다.
                 </td>
             </tr>
             <tr v-else v-for="member in members" :key="member.memberNo">
-                <td align="center">{{ member.memberNo }}</td>
-                <td align="center">{{ member.auth }}</td>
-                <td align="left">
+                <td>{{ member.memberNo }}</td>
+                <td>
                     <router-link :to="{ name: 'MemberReadPage',
                                     params: { memberNo: member.memberNo.toString() } }">
                         {{ member.userName }}
                     </router-link>
                 </td>
-                <td align="right">{{ member.userId }}</td>
-                <td align="right">{{ member.userPhone }}</td>
-                <td align="center">{{ member.regDate }}</td>
+                <td>{{ member.userId }}</td>
+                <td>{{ member.regDate }}</td>
             </tr>
         </table>
+    </v-row>
     </div>
 </template>
 
@@ -38,6 +55,19 @@ export default {
     props: {
         members: {
             type: Array
+        },
+        memberAuths: {
+            type: Array
+        }
+    },
+    data() {
+        return {
+            dialog: false
+        }
+    },
+    methods: {
+        cancle() {
+            this.dialog = false
         }
     }
 }
@@ -45,17 +75,45 @@ export default {
 
 <style scoped>
 
-table{
+.table-a{
     width: 55%;
-    border: 1px solid #ebecec;
+    border: 0.5px solid #ebecec;
+    float: left;
+    margin-bottom: 5%;
+}
+.table-b{
+    width: 8%;
+    border: 0.5px solid #ebecec;
+    float: left;
+    margin-bottom: 5%;
+    /* margin-left:50pt; */
+}
+
+.table-row{
+    margin: 0 auto;
+    position: relative;
+    left: 20%;
+    
 }
 
 .top-tr {
-    background-color: #f6f7f7;
+    background-color: #fafafa;
 }
 
 .member-box {
     margin-top: 2%;
+    margin-bottom: 2%;
 }
+
+th, td{
+    text-align: center;
+    height: 80px;
+}
+
+.exit{
+    position: relative;
+    left: 85%;
+}
+
 
 </style>

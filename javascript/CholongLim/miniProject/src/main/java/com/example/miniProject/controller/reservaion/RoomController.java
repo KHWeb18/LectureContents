@@ -33,8 +33,6 @@ public class RoomController {
                 "bankName: " + roomRequest.getBankName()+ "price: " + roomRequest.getPrice() + "period: " + roomRequest.getPeriod() +
                 "guest: " + roomRequest.getUserId() + "roomCnt: " + roomRequest.getRoomCnt());
 
-
-
         Boolean isSuccess = roomService.checkRoom(roomRequest);
 
         if (isSuccess) {

@@ -49,6 +49,7 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 
     }
 
+    // 회원가입 시 아이디 중복체크
     @Override
     public boolean duplicateCheck(MemberRequest memberRequest) throws Exception {
         Optional<Member> checkMember = memberRepository.findByDuplicateCheck(memberRequest.getUserId());
@@ -58,8 +59,6 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         } else {
             return true;
         }
-
-
     }
 
 
@@ -88,11 +87,10 @@ public class JPAMemberServiceImpl implements JPAMemberService {
         return true;
     }
 
+
     @Override
     public boolean checkUserIdValidation(String userId) throws Exception {
         Optional<Member> maybeMember = memberRepository.findByDuplicateCheck(userId);
-//        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
-
 
         if (maybeMember == null)
         {

@@ -11,16 +11,17 @@ import MyPage from '@/views/member/MyPage.vue'
 // 마이페이지
 import UserList from '@/views/member/UserList.vue'
 import UserReadPage from '@/views/member/UserReadPage.vue'
+import UserModifyPage from '@/views/member/UserModifyPage.vue'
 import MyReservation from '@/views/member/MyReservation.vue'
 import ReservationReadPage from '@/views/member/ReservationReadPage.vue'
 
 
 // 관리자
-import ManagerLogin from '@/views/manager/ManagerLogin.vue'
-import ManagerPage from '@/views/manager/ManagerPage.vue'
 import MemberListPage from '@/views/manager/MemberListPage.vue'
 import MemberReadPage from '@/views/manager/MemberReadPage.vue'
 import MemberModifyPage from '@/views/manager/MemberModifyPage.vue'
+import BookingListPage from '@/views/manager/BookingListPage.vue'
+import BookingReadPage from '@/views/manager/BookingReadPage.vue'
 
 
 // 회원가입
@@ -123,6 +124,16 @@ const routes = [
     }
   },
   {
+    path: '/member/:memberNo/editpage',
+    name: 'UserModifyPage',
+    components: {
+      default: UserModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
     path: '/member/:memberNo',
     name: 'UserReadPage',
     components: {
@@ -134,17 +145,27 @@ const routes = [
   },
   // 관리자
   {
-    path: '/managerPage',
-    name: 'ManagerPage',
-    components: {
-      default: ManagerPage
-    }
-  },
-  {
     path: '/memberList',
     name: 'MemberListPage',
     components: {
       default: MemberListPage
+    }
+  },
+  {
+    path: '/bookingList',
+    name: 'BookingListPage',
+    components: {
+      default: BookingListPage
+    }
+  },
+  {
+    path: '/room/:bookNo',
+    name: 'BookingReadPage',
+    components: {
+      default: BookingReadPage
+    },
+    props: {
+      default: true
     }
   },
   {
@@ -165,13 +186,6 @@ const routes = [
     },
     props: {
       default: true
-    }
-  },
-  {
-    path: '/managerLogin',
-    name: 'ManagerLogin',
-    components: {
-      default: ManagerLogin
     }
   },
   {

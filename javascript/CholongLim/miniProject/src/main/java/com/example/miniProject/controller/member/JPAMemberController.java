@@ -42,6 +42,7 @@ public class JPAMemberController {
     @Autowired
     private JPAMemberService service;
 
+    @Autowired
     private JPAMemberRepository memberRepository;
 
     private HttpSession session;
@@ -95,7 +96,7 @@ public class JPAMemberController {
 
     // 로그인
     @PostMapping("/login")
-    public ResponseEntity<UserInfo> jpaLogin(
+    public ResponseEntity<Member> jpaLogin(
             @RequestBody MemberRequest memberRequest,
             HttpServletRequest request
     ) throws Exception {
@@ -109,13 +110,8 @@ public class JPAMemberController {
             // 세션 할당
             info = new UserInfo();
             info.setUserId(memberRequest.getUserId());
+            service.user(memberRequest.getUserId());
 
-            //
-//            service.user(memberRequest.getUserId());
-//            Member userNo = service.user(memberRequest.getUserId());
-//            log.info("111111111" + userNo.getAuthList());
-//
-            //
 
             log.info("Session Info: " + info);
 
@@ -127,7 +123,7 @@ public class JPAMemberController {
             info = null;
             return null;
         }
-        return new ResponseEntity<UserInfo>(info,HttpStatus.OK);
+        return new ResponseEntity<>(service.user(memberRequest.getUserId()),HttpStatus.OK);
     }
 
 
@@ -175,6 +171,22 @@ public class JPAMemberController {
         Member member = service.userRead(memberNo);
 
         return new ResponseEntity<Member>(member, HttpStatus.OK);
+    }
+
+    @PutMapping("/{memberNo}")
+    public ResponseEntity<MemberRequest> userModify(@PathVariable("memberNo") Long memberNo,
+                                        @Validated @RequestBody MemberRequest memberRequest ) throws Exception {
+
+
+        Optional<Member> modifyUser = memberRepository.findById(memberNo);
+
+        modifyUser.ifPresent( changeUser ->{
+            changeUser.setUserPhone(memberRequest.getUserPhone());
+            memberRequest.setMemberNo(memberNo);
+            memberRepository.save(changeUser);
+        });
+
+        return new ResponseEntity<>(memberRequest, HttpStatus.OK);
     }
 
     @DeleteMapping("/{memberNo}")

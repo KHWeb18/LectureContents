@@ -77,63 +77,108 @@ public class JPARoomServiceImpl implements JPARoomService {
     @Override
     public boolean checkRoom(RoomRequest roomRequest) throws Exception {
         List<Room> already = roomRepository.findByRoomId(roomRequest.getRoomId());
-        List<Reservation> bookDate = reservationRepository.findByDate(roomRequest.getReservedDate());
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String inputDate = format.format(roomRequest.getReservedDate());
-        inputDate = format.format(new Date());
-        Date date = format.parse(inputDate);
+        Date inputDate = roomRequest.getReservedDate();
+        String comeDate = "";
+        comeDate = format.format(inputDate);
+
+//        String inputDate = format.format(strDate);
+//        inputDate = format.format(new Date());
+        log.info("comeDate" + comeDate);
+        List<Reservation> bookDate = reservationRepository.findByDate(roomRequest.getReservedDate());
 
 
         if (already.isEmpty()) {
             log.info("room is empty : " + roomRepository.findByRoomId(roomRequest.getRoomId()));
             return true;
         }
-        for (Room room : already) {
-            if (room.getRoomId().equals(roomRequest.getRoomId())) {
-                log.info("same roomId" + room.getRoomId() + " : " + roomRequest.getRoomId());
-                for (Reservation reservation : bookDate) {
-                    log.info("reservation.getReservedDate() : " + reservation.getReservedDate() + ", " + "date : " + date );
-                    if (reservation.getReservedDate().compareTo(date) != 0) {
-                        log.info("same reserveDate" + reservation.getReservedDate() + " : " + inputDate);
-                        log.info("u can't reserve");
-                        return false;
+
+
+        if(!already.isEmpty()) {
+            log.info("0");
+            for(Room room : already) {
+                if(room.getRoomId().equals(roomRequest.getRoomId()))
+                    log.info("1");
+                for(Reservation reservation : bookDate) {
+                    log.info("2");
+                    log.info("dd" + room.getBookNo() + reservation.getBookNo());
+                    if(room.getBookNo().equals(reservation.getBookNo())){
+                        log.info("3");
+                        log.info("same bookNo :" + room.getBookNo() + reservation.getBookNo());
+                        if(room.getRoomId().equals(roomRequest.getRoomId())) {
+                            log.info("same room :" + room.getRoomId() + roomRequest.getRoomId());
+                            log.info("reservation.getReservedDate() :" + reservation.getReservedDate() +
+                                    "comeDate:"  + comeDate);
+                            if(reservation.getReservedDate().equals(comeDate)) {
+                                log.info("same date :" + reservation.getReservedDate() + comeDate);
+                                return false;
+                            }
+
+                        }
                     }
+
                 }
-            } else {
-                log.info("u can reserve");
-                return true;
+
             }
+
         }
 
-        return true;
-    }
+//            if (already.indexOf(roomRequest.getBookNo()) == bookDate.indexOf(roomRequest.getBookNo())) {
+//                log.info(already.indexOf(roomRequest.getBookNo()) + "," +bookDate.indexOf(roomRequest.getBookNo()));
+//                if (((!already.isEmpty()) && (!bookDate.isEmpty())) || ((!bookDate.isEmpty()) && (!already.isEmpty()))) {
+//                    return false;
+//                } else {
+//                    return true;
+//                }
+//            }
 
 
 
-//
-//        log.info("11111111 roomRequest.getRoomId()? " + roomRequest.getRoomId());
-//        log.info("22222222 inputDate? " + inputDate);
-//
-//        log.info("3333 already? " + already);
-//        log.info("4444 bookDate? " + bookDate);
-
-
-//        if (room.getRoomId()) {
-//            log.info("same roomId");
-//            if (bookDate.indexOf(inputDate) != -1) {
-//                log.info("same date, you can't reserve");
+//            if (((!already.isEmpty()) && (!bookDate.isEmpty())) || ((!bookDate.isEmpty()) && (!already.isEmpty()))) {
+//                log.info("already" + already);
+//                log.info("bookDate" + bookDate);
 //                return false;
 //            }
-//        } else {
-//            log.info("You can reserved");
-//            return true;
-//        }
-//        return true;
-//    }
+        return false;
+        }
 
 
+
+
+
+//    @Override
+//    public boolean checkRoom(RoomRequest roomRequest) throws Exception {
+//        List<Room> already = roomRepository.findByRoomId(roomRequest.getRoomId());
+//        List<Reservation> bookDate = reservationRepository.findByDate(roomRequest.getReservedDate());
 //        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //        String inputDate = format.format(roomRequest.getReservedDate());
+//        inputDate = format.format(new Date());
+//        Date date = format.parse(inputDate);
+//
+//
+//        if (already.isEmpty()) {
+//            log.info("room is empty : " + roomRepository.findByRoomId(roomRequest.getRoomId()));
+//            return true;
+//        }
+//        for (Room room : already) {
+//            if (room.getRoomId().equals(roomRequest.getRoomId())) {
+//                log.info("same roomId" + room.getRoomId() + " : " + roomRequest.getRoomId());
+//                for (Reservation reservation : bookDate) {
+//                    log.info("reservation.getReservedDate() : " + reservation.getReservedDate() + ", " + "date : " + date );
+//                    if (reservation.getReservedDate().compareTo(date) != 0) {
+//                        log.info("same reserveDate" + reservation.getReservedDate() + " : " + inputDate);
+//                        log.info("u can't reserve");
+//                        return false;
+//                    }
+//                }
+//            } else {
+//                log.info("u can reserve");
+//                return true;
+//            }
+//        }
+//
+//        return true;
+//    }
 
 
 

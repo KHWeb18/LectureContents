@@ -4,7 +4,12 @@ import {
   FETCH_BOOK,
   FETCH_MEMBER_LIST,
   FETCH_MEMBER,
+  FETCH_MEMBERAUTH_LIST,
+  // FETCH_MEMBERAUTH,
+  FETCH_ROOM_LIST,
+  FETCH_ROOM,
   FETCH_USER,
+  FETCH_RESERVE_LIST,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT,
@@ -36,15 +41,6 @@ export default {
                     commit(FETCH_BOARD, res.data)
                 })
       },
-      // fetchUserList({ commit }, userId ) {
-      //   this.userId = cookies.get('user')
-      //   console.log(userId)
-      //   console.log(this.userId)
-      //   return axios.get('http://localhost:8888/jpamember/lists', {userId})
-      //           .then((res) => {
-      //               commit(FETCH_MEMBER_LIST, res.data)
-      //           })
-      // },
       fetchUser ({ commit }, memberNo) {
         return axios.get(`http://localhost:8888/jpamember/${memberNo}`)
                 .then((res) => {
@@ -60,6 +56,19 @@ export default {
                   
               })
     },
+    fetchMemberAuthList ({ commit }) {
+      return axios.get('http://localhost:8888/memberManage/authLists')
+              .then((res) => {
+                  commit(FETCH_MEMBERAUTH_LIST, res.data)
+              })
+    },
+    // fetchMemberAuth ({ commit }, memberNo) {
+    //   return axios.get(`http://localhost:8888/memberManage/${memberNo}`)
+    //           .then((res) => {
+    //               commit(FETCH_MEMBERAUTH, res.data)
+                  
+    //           })
+    // },
     fetchMemberList ({ commit }) {
       return axios.get('http://localhost:8888/memberManage/lists')
               .then((res) => {
@@ -73,31 +82,33 @@ export default {
                   
               })
     },
-    // async login ( { commit },  { userId, password }) {
-    //       axios.post('http://localhost:8888/jpamember/login', { userId, password})
-    //               .then(res => {
-    //                   if(res.data != "") {
-    //                       alert('로그인이 완료되었습니다.')
-    //                       cookies.set("user",userId, '1h')
-    //                       this.state.session = res.data
-    //                       commit(LOGIN_SUCCESS)
-    //                       router.push({name: 'MainPage'})
+    fetchRoomList ({ commit }) {
+      return axios.get('http://localhost:8888/roomManage/lists')
+              .then((res) => {
+                  commit(FETCH_ROOM_LIST, res.data)
+              })
+    },
+    fetchRoom ({ commit }, bookNo) {
+      return axios.get(`http://localhost:8888/roomManage/${bookNo}`)
+              .then((res) => {
+                  commit(FETCH_ROOM, res.data)
                   
-    //                   } else {
-    //                       alert('아이디와 비밀번호를 확인해주세요.')
-    //                       commit(LOGIN_ERROR)
-    //                   }
-    //               })
-    //               .catch(res => {
-    //                   console.log(res)
-    //               })
-    //   },
+              })
+    },
+    fetchReserveList ({ commit }) {
+      return axios.get('http://localhost:8888/roomManage/reservationLists')
+              .then((res) => {
+                  commit(FETCH_RESERVE_LIST, res.data)
+              })
+    },
     async login ( { commit },  { userId, password }) {
           axios.post('http://localhost:8888/jpamember/login', { userId, password})
                   .then(res => {
                       if(res.data != "") {
                           alert('로그인이 완료되었습니다.')
+                          // cookies.set("user",userId, '1h')
                           cookies.set("user",userId, '1h')
+                          cookies.set("auth",res.data.authList[0].auth, '1h')
                           this.state.session = res.data
                           commit(LOGIN_SUCCESS)
                           router.push({name: 'MainPage'})
@@ -116,9 +127,10 @@ export default {
 
     logout ({commit}) {
       cookies.remove("user")
+      cookies.remove("auth")
       commit(LOGOUT)
       alert('로그아웃.')
-      // this.$store.state.session = null
+      router.push('/cinzel')
 
   },
     // 크롤링

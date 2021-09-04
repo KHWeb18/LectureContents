@@ -4,6 +4,7 @@ package com.example.miniProject.controller.member;
 import com.example.miniProject.controller.member.request.MemberRequest;
 import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
+import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
 import com.example.miniProject.service.jpa.JPABoardService;
 import com.example.miniProject.service.jpa.JPAMemberManagerService;
@@ -33,6 +34,13 @@ public class JPAMemberManagerController {
         log.info("getLists(): " + memberManagerService.list());
 
         return new ResponseEntity<>(memberManagerService.list(), HttpStatus.OK);
+    }
+
+    @GetMapping("/authLists")
+    public ResponseEntity<List<MemberAuth>> getAuthLists () throws Exception {
+        log.info("getAuthLists(): " + memberManagerService.authList());
+
+        return new ResponseEntity<>(memberManagerService.authList(), HttpStatus.OK);
     }
 
     @GetMapping("/{memberNo}")

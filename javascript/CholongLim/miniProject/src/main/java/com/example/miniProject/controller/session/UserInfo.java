@@ -15,6 +15,6 @@ public class UserInfo implements Serializable {
 
     // 원래 userId 하나만 !
     private String userId;
-//    private String auth;
+    private String auth;
 
 }
