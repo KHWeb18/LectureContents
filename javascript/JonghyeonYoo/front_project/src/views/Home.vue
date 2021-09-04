@@ -13,11 +13,11 @@
         Home
       </router-link>
             <router-link
-        :to="{ name: 'Test' }"
+        :to="{ name: 'MainHome' }"
         class="nav-link"
         active-class="active"
       >
-        Test
+        Main Home
       </router-link>
                   <router-link
         :to="{ name: 'VuetifyAllInOne' }"
@@ -25,6 +25,72 @@
         active-class="active"
       >
         VuetifyAllInOne
+      </router-link>
+ <router-link
+        :to="{ name: 'Banner' }"
+        class="nav-link"
+        active-class="active"
+      >
+        Banner
+      </router-link>
+       <router-link
+        :to="{ name: 'MemberRegister' }"
+        class="nav-link"
+        active-class="active"
+      >
+        회원가입
+      </router-link>
+             <router-link
+        :to="{ name: 'MemberLogin' }"
+        class="nav-link"
+        active-class="active"
+      >
+        로그인
+      </router-link>
+      
+            <router-link
+        :to="{ name: 'BoardListPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        BoardListPage
+      </router-link>
+                  <router-link
+        :to="{ name: 'membertest' }"
+        class="nav-link"
+        active-class="active"
+      >
+        membertest
+      </router-link>
+                        <router-link
+        :to="{ name: 'DetailPageTaxi' }"
+        class="nav-link"
+        active-class="active"
+      >
+        DetailPageTaxi
+      </router-link>
+      <!-- 로그인 세션 테스트 -->
+                              <router-link
+        :to="{ name: 'Login' }"
+        class="nav-link"
+        active-class="active"
+      >
+        로그인 세션 테스트
+      </router-link>
+            <router-link
+        :to="{ name: 'DaumNewsCrawlerPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        다음 뉴스 크롤러
+      </router-link>
+          <!-- 좋아요 싫어요 -->
+            <router-link
+        :to="{ name: 'like' }"
+        class="nav-link"
+        active-class="active"
+      >
+        좋아요 싫어요 
       </router-link>
     </div>
   </div>
@@ -36,3 +102,9 @@ export default {
   components: {},
 };
 </script>
+
+<style scoped>
+.home{
+     margin: 100px auto 0;
+}
+</style>
