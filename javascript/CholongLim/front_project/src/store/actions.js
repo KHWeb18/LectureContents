@@ -5,7 +5,8 @@ import {
   FETCH_MEMBER_LIST,
   FETCH_MEMBER,
   FETCH_MEMBERAUTH_LIST,
-  // FETCH_MEMBERAUTH,
+  FETCH_MEMBERAUTH,
+  FETCH_BOOK_READ,
   FETCH_ROOM_LIST,
   FETCH_ROOM,
   FETCH_USER,
@@ -30,8 +31,6 @@ export default {
      fetchBoardList ({ commit }) {
         return axios.get('http://localhost:8888/board/lists')
                 .then((res) => {
-                    console.log(res)
-                    console.log(res.data)
                     commit(FETCH_BOARD_LIST, res.data)
                 })
       },
@@ -44,8 +43,6 @@ export default {
       fetchUser ({ commit }, memberNo) {
         return axios.get(`http://localhost:8888/jpamember/${memberNo}`)
                 .then((res) => {
-                   console.log(res)
-                   console.log(res.data)
                     commit(FETCH_USER, res.data)
                 })
       },
@@ -53,7 +50,7 @@ export default {
       return axios.get(`http://localhost:8888/room/${bookNo}`)
               .then((res) => {
                   commit(FETCH_BOOK, res.data)
-                  
+                  commit(FETCH_BOOK_READ, res.data.dateList[0])    
               })
     },
     fetchMemberAuthList ({ commit }) {
@@ -62,13 +59,6 @@ export default {
                   commit(FETCH_MEMBERAUTH_LIST, res.data)
               })
     },
-    // fetchMemberAuth ({ commit }, memberNo) {
-    //   return axios.get(`http://localhost:8888/memberManage/${memberNo}`)
-    //           .then((res) => {
-    //               commit(FETCH_MEMBERAUTH, res.data)
-                  
-    //           })
-    // },
     fetchMemberList ({ commit }) {
       return axios.get('http://localhost:8888/memberManage/lists')
               .then((res) => {
@@ -76,10 +66,10 @@ export default {
               })
     },
     fetchMember ({ commit }, memberNo) {
-      return axios.get(`http://localhost:8888/memberManage/${memberNo}`)
+      return axios.get(`http://localhost:8888/memberManage/manager/${memberNo}`)
               .then((res) => {
                   commit(FETCH_MEMBER, res.data)
-                  
+                  commit(FETCH_MEMBERAUTH,res.data.authList[0])
               })
     },
     fetchRoomList ({ commit }) {
@@ -112,8 +102,6 @@ export default {
                           this.state.session = res.data
                           commit(LOGIN_SUCCESS)
                           router.push({name: 'MainPage'})
-                          console.log(res)
-                          console.log(res.data)
                   
                       } if(res.data == "" ) {
                           alert('아이디와 비밀번호를 확인해주세요.')
@@ -138,7 +126,6 @@ export default {
     axios.get('http://localhost:8888/' + `${category}`)
             .then(({ data }) => {
                 commit(CRAWL_START, data)
-
                 if (window.location.pathname !== '/tourCrawler') {
                     router.push('/tourCrawler')
                 }

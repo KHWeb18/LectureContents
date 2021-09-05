@@ -35,12 +35,7 @@
             </tr>
             <tr v-else v-for="member in members" :key="member.memberNo">
                 <td>{{ member.memberNo }}</td>
-                <td>
-                    <router-link :to="{ name: 'MemberReadPage',
-                                    params: { memberNo: member.memberNo.toString() } }">
-                        {{ member.userName }}
-                    </router-link>
-                </td>
+                <td>{{ member.userName }}</td>
                 <td>{{ member.userId }}</td>
                 <td>{{ member.regDate }}</td>
             </tr>
@@ -62,12 +57,12 @@ export default {
     },
     data() {
         return {
-            dialog: false
+            authSelect: false
         }
     },
     methods: {
         cancle() {
-            this.dialog = false
+            this.authSelect = false
         }
     }
 }
@@ -97,7 +92,7 @@ export default {
 }
 
 .top-tr {
-    background-color: #fafafa;
+    background-color: #6c98a362;
 }
 
 .member-box {

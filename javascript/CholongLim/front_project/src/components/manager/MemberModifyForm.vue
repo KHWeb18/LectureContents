@@ -3,26 +3,37 @@
             <div class="member-box">
             <v-col cols="12" md="12" >
 
-            <v-text-field label="회원번호" dense required height="5vh" style="margin-top:10px;" 
-                            outlined disabled
-                           :value="member.memberNo" type="memberNo">
-            </v-text-field>
+                <v-container>
+                    <v-text-field label="회원번호" required height="5vh" style="margin-top:10px;" 
+                                    disabled 
+                                :value="member.memberNo" type="memberNo">
+                    </v-text-field>
 
-            <v-text-field label="이름" dense required height="5vh" style="margin-top:10px;" 
-                            outlined  disabled
-                          :value="member.userName" type="userName">
-            </v-text-field>
+                     <v-radio-group v-model="radioGroup" row>
+                        <v-radio v-for="kinds in kindsOfMember" :key="kinds" :label="`${kinds}`"> 
+                        </v-radio>
+                    </v-radio-group>    
 
-            <v-text-field label="아이디" dense required height="5vh" style="margin-top:10px;" 
-                                outlined disabled
-                           :value="member.userId" type="userId">
-            </v-text-field>
+                    <!-- <v-text-field label="권한" required height="5vh" style="margin-top:10px;" 
+                                v-model="auth" type="auth">
+                    </v-text-field> -->
 
-            <v-textarea label="전화번호"  auto-grow style="margin-top:10px;" counter maxlength="500"
-                            full-width single-line outlined  disabled
-                       :value="member.userPhone" type="userPhone">
-            </v-textarea>
+                    <v-text-field label="이름" required height="5vh" style="margin-top:10px;" 
+                                    disabled 
+                                :value="member.userName" type="userName">
+                    </v-text-field>
 
+                    <v-text-field label="아이디" required height="5vh" style="margin-top:10px;" 
+                                    disabled 
+                                :value="member.userId" type="id">
+                    </v-text-field>
+
+                    <v-text-field label="휴대전화" required height="5vh" style="margin-top:10px;" 
+                                    disabled 
+                                :value="member.userPhone" type="userPhone">
+                    </v-text-field>
+
+                </v-container>
       
             </v-col>
         </div>
@@ -49,21 +60,27 @@ export default {
         member: {
             type: Object,
             required: true
+        },
+        memberAuth: {
+            type: Object,
+            required: true
         }
     },
     data () {
         return {
-            auth:''
-        }
+            radioGroup: 1,
+            kindsOfMember: [
+                '개인',
+                '관리자'
+            ]
+        }   
     },
     methods: {
-        // onSubmit () {
-            // const { } = this
-            // this.$emit('submit', { })
-        // }
-    },
-    created () {
-        
+        onSubmit () {
+            const { radioGroup } = this
+            const auth = radioGroup == 0 ? '개인' : '관리자'
+            this.$emit('submit', { auth })
+        }
     }
 }
 </script>

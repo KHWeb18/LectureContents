@@ -150,7 +150,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 3000
+                    delay: 2000
                     // 1000(1초)
                 }
             },
@@ -188,14 +188,14 @@ export default {
 .overlay2{
     position: absolute;
     z-index: 9;
-    margin-top: 18%;
-    left: 75%;
+    margin-top: 17.8%;
+    left: 76%;
 }
 
 .overlay3{
     position: absolute;
     z-index: 9;
-    margin-top: 16%;
+    margin-top: 15.5%;
     left: 85%;
 }
 

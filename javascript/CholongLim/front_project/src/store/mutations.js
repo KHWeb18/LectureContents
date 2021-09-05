@@ -5,6 +5,7 @@ import {
    FETCH_DATES_LIST,
    FETCH_BOOK_LIST,
    FETCH_BOOK,
+   FETCH_BOOK_READ,
    FETCH_MEMBER_LIST,
    FETCH_MEMBER,
    FETCH_MEMBERAUTH_LIST,
@@ -30,6 +31,9 @@ export default {
   },
   [FETCH_DATES_LIST] (state, dates) {
     state.dates = dates;
+  },
+  [FETCH_BOOK_READ] (state, bookReadDates) {
+    state.bookReadDates = bookReadDates;
   },
   [FETCH_AUTH_LIST] (state, auths) {
     state.auths = auths;
@@ -80,10 +84,10 @@ export default {
     state.memberAuth = memberAuth
   },
   // 로그인이 성공했을 때,
-  [LOGIN_SUCCESS] (state, payload) {
+  [LOGIN_SUCCESS] (state) {
     state.isLogin = true
     state.isLoginError = false
-    state.userInfo = payload
+    // state.userInfo = payload
   },
   // 로그인 실패했을때
   [LOGIN_ERROR] (state){

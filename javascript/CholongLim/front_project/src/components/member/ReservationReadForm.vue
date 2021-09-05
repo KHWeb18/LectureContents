@@ -1,6 +1,6 @@
 <template>
-    <div>
-         <v-container class="reserve">
+    <div class="reserve-card">
+         <v-container>
         <v-card width="700" class="over">
             <v-card-title class="book-title">{{ book.regDate }}</v-card-title>
             <v-card-actions>
@@ -10,9 +10,9 @@
             <div  style="margin:3%;">
                 <b>객실명 :</b> {{ book.roomId }}
             </div>
-            <!-- <div style="margin:3%;">
-                <b>예약일 :</b> {{ this.$store.state.dates.reservedDate }} 
-            </div> -->
+            <div style="margin:3%;">
+                <b>예약일 :</b> {{ bookReadDates.reservedDate }} 
+            </div>
             </v-card-actions>
             <v-card-actions>
             <div  style="margin:3%;">
@@ -41,8 +41,11 @@ export default {
         book: {
             type: Object,
             required: true
+        },
+        bookReadDates :{
+            type: Object
         }
-    }    
+    }
 }
 </script>
 
@@ -62,7 +65,7 @@ table{
 }
 
 .book-title{
-    background-color: #1565C0;
+    background-color: #15686cbd;
     color: white;
 }
 
@@ -71,7 +74,9 @@ table{
  left: 85%;
 }
 
-.reserve{
+
+
+.reserve-card{
     margin: 5% 0% 5% 0%;
 }
 </style>

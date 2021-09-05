@@ -32,7 +32,7 @@
         </v-row>
 
 
-        <slot name="news"></slot>
+        <slot name="tour"></slot>
 
         <v-container>
             <v-main id="content">

@@ -42,7 +42,6 @@ export default {
             axios.put(`http://localhost:8888/jpamember/${this.memberNo}`, { userPhone })
                     .then(res => {
                         alert('수정하였습니다.')
-                        console.log(res)
                         this.$router.push({
                             name: 'UserReadPage',
                             params: { memberNo: res.data.memberNo.toString() }
@@ -88,9 +87,11 @@ h4 {
      position: relative;
      height: 100%;
      width: 100%;
-     background-color:rgba(23, 155, 160, 0.144);                                                             
+     background-image: url('https://images.pexels.com/photos/287229/pexels-photo-287229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+     background-size: cover;                                                            
      z-index:1;
-  }
+}
+
 
   .reserve{
     position: relative;

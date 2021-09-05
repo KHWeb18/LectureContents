@@ -24,6 +24,7 @@ import BookingListPage from '@/views/manager/BookingListPage.vue'
 import BookingReadPage from '@/views/manager/BookingReadPage.vue'
 
 
+
 // 회원가입
 import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 
@@ -169,7 +170,7 @@ const routes = [
     }
   },
   {
-    path: '/member/:memberNo',
+    path: '/manager/member/:memberNo',
     name: 'MemberReadPage',
     components: {
       default: MemberReadPage

@@ -83,6 +83,7 @@ export default {
             ],
             rules_call: [
                 v => !!v || '전화번호를 입력해주세요.',
+                v => v.length >= 11 || '전화번호를 입력해주세요.'
             ],
             
             userId: '',

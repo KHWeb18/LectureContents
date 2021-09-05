@@ -84,7 +84,7 @@ export default {
 }
 
 .top-tr {
-    background-color: #fafafa;
+    background-color: #7d9ed283;
 }
 
 .room-box {

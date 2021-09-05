@@ -22,6 +22,7 @@
         <div v-if="cookie == false">
                 로그인 시간이 초과되었습니다.
         </div>
+        <div class="img-overlay"></div>
     </div>
 </template>
 
@@ -35,8 +36,6 @@ export default {
             cookie: this.$cookies.isKey('user'),
             userId : this.$cookies.get('user')
         }
-    },
-    methods: {
     }
 }
 </script>
@@ -49,15 +48,22 @@ export default {
     background: #f6f7f7;
 }
 
-
+.img-overlay{
+     position: absolute;
+     height: 100%;
+     width: 100%;
+     background-color: rgb(0, 0, 0);                                                                 
+     z-index:1;
+}
 
 .img-cover{
      position: relative;
      height: 100%;
      width: 100%;
-     background-color:rgba(23, 155, 160, 0.144);                                                             
+     background-image: url('https://images.pexels.com/photos/287229/pexels-photo-287229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+     background-size: cover;                                                            
      z-index:1;
-  }
+}
 
 .container {
     position: relative;

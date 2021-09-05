@@ -32,10 +32,9 @@
                            ></v-calendar>
                     </v-sheet>
                       </div>
-                    <!-- <p>*2박 이상의 경우 1박씩 예약하셔야 합니다.<br></p> -->
+              
                 </v-col>
-            <!-- </v-row> -->
-            <!-- <p>*2박 이상의 경우 1박씩 예약하셔야 합니다.<br></p> -->
+
 
             <v-col md="6">
               <div class="overlay1">
@@ -67,7 +66,7 @@
   
     </div>
     <div>
-      <!-- <v-container> -->
+
 
             <p>객실선택</p>
             <v-divider></v-divider>
@@ -126,7 +125,7 @@
                             </v-col>
                         </div>
                     </div>
-                <!-- </v-container> -->
+  
 
               
                   <div class="justify-center">
@@ -182,7 +181,7 @@
                              <v-text-field label="입금자명" 
                                         :rules="[v => !!v || '필수정보입니다.']" type="bankName"
                                         v-model="bankName" required flat  outlined >
-                                        <!-- type="name" 하면 미입력 시 다 빨갛게 변함 -->
+                                    
                             </v-text-field>
                             </v-container>
 
@@ -275,12 +274,9 @@ import axios from 'axios'
                         roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId
                     })
                     .then(res => {
-                      console.log(res)
-                      console.log(res.data)
                       if(res.data != "") {
                         alert('예약이 완료되었습니다.')
                         this.dialog = false
-                        console(res.data)
                       } else {
                         alert('이미 예약된 방입니다.')
                       }

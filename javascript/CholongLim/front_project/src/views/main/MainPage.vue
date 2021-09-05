@@ -18,10 +18,46 @@
                     <div class="swiper-pagination" slot="pagination">
                     </div>
                 </swiper>
-               
             </v-container>
+
+            <v-container>
+                <h3 style="font-size: 15px;">CINZEL ALL AROUND</h3>
+                <p>자연속에서의 낭만같은 휴식이 있는 날들</p>
+                <p>To travel hopefully is a better thing than to arrive.</p>
+            </v-container>
+
+            <v-divider></v-divider>
+
+            <div class="main-colorbox">
+            <v-row>
+                <v-flex xs3 sm12 lg24>
+                <div class="img-s">
+                    <v-img style="overflow: visible" contain width="900px" height="600px"
+                        src="https://images.pexels.com/photos/355580/pexels-photo-355580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                    </v-img>
+                </div>
+           
+                <div style="float:left; width:600px; margin-top:8%;">
+                    <h3 style="font-size: 45px; text-align:center; margin-bottom:0px;">SPECIAL DAY</h3>
+                    <p style="margin-top:0%; font-size:12px;">break in time of life</p>
+                    
+                    <p style="margin-top:0%; font-size:14px;">파노라마같은 낭만적인 바다속에서 보내는 오늘은<br>
+                        당신에게 특별한 선물을 가져다 주어요.<br></p>
+                       <p> 당신이 원하던 삶 속 황홀한 휴식이 기다립니다.</p>
+                       <div style="text-align:center;">
+                       <v-btn text route :to="{name : 'Room301'}">
+                            more<v-icon>navigate_next</v-icon></v-btn>
+                            
+                       </div>
+                </div>
+                </v-flex>
+            </v-row>
+            </div>
+
+            <div>
+
+            </div>
         </div>
-        
     </div>
 </template>
 
@@ -88,6 +124,15 @@ export default {
 
 <style lang="scss" scoped>
 
+.img-s{
+    float: left;
+}
+
+.main-colorbox{
+    margin: 3% 0% 3% 0%;
+    background-color: #ececec;
+}
+
 .container{
     position: relative;
     padding: 0px;
@@ -101,6 +146,13 @@ export default {
     text-align: center;
 }
 
+p {
+    font-family: 'Nanum Myeongjo';
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+}
+
 h1 {
     margin: 10px;
 }
@@ -110,6 +162,12 @@ h2 {
     font-size: 200px;
     color:white;
     text-shadow: 3px 2px 2px rgb(5, 68, 119);
+}
+
+h3 {
+    font-family: "Cinzel";
+    text-align: center;
+    margin: 10% 0% 5% 0%;
 }
 
 p {
