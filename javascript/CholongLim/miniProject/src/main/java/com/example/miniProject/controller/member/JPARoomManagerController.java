@@ -1,6 +1,8 @@
 package com.example.miniProject.controller.member;
 
 
+import com.example.miniProject.controller.member.request.UserRequest;
+import com.example.miniProject.controller.reservaion.request.RoomRequest;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.entity.jpa.Reservation;
@@ -14,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j

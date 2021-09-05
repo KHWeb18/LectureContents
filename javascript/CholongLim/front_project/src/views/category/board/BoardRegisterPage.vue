@@ -14,6 +14,7 @@
         </v-container>
         <v-divider></v-divider>
         
+        
         <board-register-form @submit="onSubmit"/>
     </div>
 </template>
@@ -55,6 +56,10 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
+  .reserve{
+    position: relative;
+    height: 100;
+}
 
 .container{
     position: relative;

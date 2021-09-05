@@ -6,6 +6,8 @@ import com.example.miniProject.entity.jpa.Board;
 import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.MemberAuth;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
+import com.example.miniProject.repository.jpa.JPAMemberAuthRepository;
+import com.example.miniProject.repository.jpa.JPAMemberRepository;
 import com.example.miniProject.service.jpa.JPABoardService;
 import com.example.miniProject.service.jpa.JPAMemberManagerService;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +30,9 @@ public class JPAMemberManagerController {
     @Autowired
     private JPAMemberManagerService memberManagerService;
 
+    @Autowired
+    private JPAMemberAuthRepository memberAuthRepository;
+
 
     @GetMapping("/lists")
     public ResponseEntity<List<Member>> getLists () throws Exception {
@@ -43,11 +48,27 @@ public class JPAMemberManagerController {
         return new ResponseEntity<>(memberManagerService.authList(), HttpStatus.OK);
     }
 
-    @GetMapping("/{memberNo}")
+    @GetMapping("/manager/{memberNo}")
     public ResponseEntity<Member> read(@PathVariable("memberNo") Long memberNo) throws Exception {
         Member member = memberManagerService.read(memberNo);
 
         return new ResponseEntity<Member>(member, HttpStatus.OK);
+    }
+
+    @PutMapping("/manager/{memberNo}")
+    public ResponseEntity<MemberRequest> modify(@PathVariable("memberNo") Long memberNo,
+                                        @Validated @RequestBody MemberRequest memberRequest ) throws Exception {
+
+
+        Optional<MemberAuth> modifyAuth = memberAuthRepository.findById(memberNo);
+
+        modifyAuth.ifPresent( changeAuth ->{
+            changeAuth.setAuth(memberRequest.getAuth());
+            memberRequest.setMemberNo(memberNo);
+            memberAuthRepository.save(changeAuth);
+        });
+
+        return new ResponseEntity<>(memberRequest, HttpStatus.OK);
     }
 
     @DeleteMapping("/{memberNo}")

@@ -24,11 +24,11 @@
             class="ma-2 white--text" route :to="{ name: 'BoardListPage' }">
             목록보기
             </v-btn> 
-            <v-btn type="submit" color="blue darken-2"
+            <v-btn type="submit" color="blue darken-2" v-if="this.auth == '관리자'"
             class="ma-2 white--text" route :to="{ name: 'BoardModifyPage', params: { boardNo } }">
             게시글 수정
             </v-btn>
-            <v-btn color="blue darken-2" outlined
+            <v-btn color="blue darken-2" outlined v-if="this.auth == '관리자'"
             class="ma-2 white--text" @click="onDelete">
             게시글 삭제
             </v-btn>
@@ -51,6 +51,11 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            auth: this.$cookies.get("auth")
+        }
+    } ,
     components: {
         BoardRead
     },

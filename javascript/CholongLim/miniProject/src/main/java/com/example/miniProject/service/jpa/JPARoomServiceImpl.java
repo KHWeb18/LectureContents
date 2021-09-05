@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,51 +43,17 @@ public class JPARoomServiceImpl implements JPARoomService {
         roomRepository.save(roomEntity);
     }
 
-    // 수정전
-//    @Override
-//    public boolean checkRoom(RoomRequest roomRequest) throws Exception {
-//        Optional<Room> already = roomRepository.findByRoomId(roomRequest.getRoomId());
-//        Optional<Reservation> bookDate = reservationRepository.findByRoomId(roomRequest.getReservedDate());
-//
-//        if(!already.isPresent()){
-//            log.info("what is " + roomRepository.findByRoomId(roomRequest.getRoomId()));
-//            return true;
-//        }
-//
-//        Room checkDate = already.get();
-//        Reservation dates = bookDate.get();
-//
-//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//        String inputDate = format.format(roomRequest.getReservedDate());
-//
-//
-//        if (roomRequest.getRoomId().equals(checkDate.getRoomId())) {
-//            log.info("same room number");
-//            if(roomRequest.getReservedDate().equals(dates.getReservedDate())) {
-//                log.info("room already reserved");
-//                return false;
-//            }  else {
-//                log.info("You can reserved");
-//                return true;
-//
-//            }
-//
-//        }
-//        return true;
-//    }
-
 
     @Override
     public boolean checkRoom(RoomRequest roomRequest) throws Exception {
         List<Room> already = roomRepository.findByRoomId(roomRequest.getRoomId());
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date inputDate = roomRequest.getReservedDate();
+
         String comeDate = "";
         comeDate = format.format(inputDate);
+        Date reserveDate = format.parse(comeDate);
 
-//        String inputDate = format.format(strDate);
-//        inputDate = format.format(new Date());
-        log.info("comeDate" + comeDate);
         List<Reservation> bookDate = reservationRepository.findByDate(roomRequest.getReservedDate());
 
 
@@ -95,103 +64,29 @@ public class JPARoomServiceImpl implements JPARoomService {
 
 
         if(!already.isEmpty()) {
-            log.info("0");
             for(Room room : already) {
                 if(room.getRoomId().equals(roomRequest.getRoomId()))
-                    log.info("1");
                 for(Reservation reservation : bookDate) {
-                    log.info("2");
-                    log.info("dd" + room.getBookNo() + reservation.getBookNo());
                     if(room.getBookNo().equals(reservation.getBookNo())){
-                        log.info("3");
                         log.info("same bookNo :" + room.getBookNo() + reservation.getBookNo());
                         if(room.getRoomId().equals(roomRequest.getRoomId())) {
+                            Date inDate = reservation.getReservedDate();
+                            String savedDate = "";
+                            savedDate = format.format(inDate);
                             log.info("same room :" + room.getRoomId() + roomRequest.getRoomId());
-                            log.info("reservation.getReservedDate() :" + reservation.getReservedDate() +
-                                    "comeDate:"  + comeDate);
-                            if(reservation.getReservedDate().equals(comeDate)) {
-                                log.info("same date :" + reservation.getReservedDate() + comeDate);
+                            if(savedDate.equals(comeDate)) {
+                                log.info("same date :" + savedDate + comeDate);
                                 return false;
                             }
-
                         }
                     }
-
                 }
-
             }
-
         }
-
-//            if (already.indexOf(roomRequest.getBookNo()) == bookDate.indexOf(roomRequest.getBookNo())) {
-//                log.info(already.indexOf(roomRequest.getBookNo()) + "," +bookDate.indexOf(roomRequest.getBookNo()));
-//                if (((!already.isEmpty()) && (!bookDate.isEmpty())) || ((!bookDate.isEmpty()) && (!already.isEmpty()))) {
-//                    return false;
-//                } else {
-//                    return true;
-//                }
-//            }
+        return true;
+    }
 
 
-
-//            if (((!already.isEmpty()) && (!bookDate.isEmpty())) || ((!bookDate.isEmpty()) && (!already.isEmpty()))) {
-//                log.info("already" + already);
-//                log.info("bookDate" + bookDate);
-//                return false;
-//            }
-        return false;
-        }
-
-
-
-
-
-//    @Override
-//    public boolean checkRoom(RoomRequest roomRequest) throws Exception {
-//        List<Room> already = roomRepository.findByRoomId(roomRequest.getRoomId());
-//        List<Reservation> bookDate = reservationRepository.findByDate(roomRequest.getReservedDate());
-//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//        String inputDate = format.format(roomRequest.getReservedDate());
-//        inputDate = format.format(new Date());
-//        Date date = format.parse(inputDate);
-//
-//
-//        if (already.isEmpty()) {
-//            log.info("room is empty : " + roomRepository.findByRoomId(roomRequest.getRoomId()));
-//            return true;
-//        }
-//        for (Room room : already) {
-//            if (room.getRoomId().equals(roomRequest.getRoomId())) {
-//                log.info("same roomId" + room.getRoomId() + " : " + roomRequest.getRoomId());
-//                for (Reservation reservation : bookDate) {
-//                    log.info("reservation.getReservedDate() : " + reservation.getReservedDate() + ", " + "date : " + date );
-//                    if (reservation.getReservedDate().compareTo(date) != 0) {
-//                        log.info("same reserveDate" + reservation.getReservedDate() + " : " + inputDate);
-//                        log.info("u can't reserve");
-//                        return false;
-//                    }
-//                }
-//            } else {
-//                log.info("u can reserve");
-//                return true;
-//            }
-//        }
-//
-//        return true;
-//    }
-
-
-
-    // 수정 전 하나의 내역만 볼 수 있음
-//    @Override
-//    public Room bookList(String userId) throws Exception {
-//        Optional<Room> bookInfo =  roomRepository.findByUserInfo(userId);
-//        log.info("reservation list :" + roomRepository.findByUserInfo(userId) );
-//        if(!bookInfo.isPresent()){
-//            throw new IllegalStateException();
-//        }
-//        return bookInfo.get();
-//    }
 
     // 수정 후 여러 내역을 볼 수있음
     @Override
@@ -204,18 +99,25 @@ public class JPARoomServiceImpl implements JPARoomService {
         for(Room room : rooms) {
             roomsList.add(this.convertEntityToRequest(room));
         }
+
         return roomsList;
     }
 
     private RoomRequest convertEntityToRequest(Room room) {
-        return RoomRequest.builder()
-                .bookNo(room.getBookNo())
-                .personNum(room.getPersonNum())
-                .bankName(room.getBankName())
-                .roomId(room.getRoomId())
-                .price(room.getPrice())
-                .regDate(room.getRegDate())
-                .build();
+        for (Reservation reservation : room.getDateList()) {
+            Date date = reservation.getReservedDate();
+
+            return RoomRequest.builder()
+                    .bookNo(room.getBookNo())
+                    .reservedDate(date)
+                    .personNum(room.getPersonNum())
+                    .bankName(room.getBankName())
+                    .roomId(room.getRoomId())
+                    .price(room.getPrice())
+                    .regDate(room.getRegDate())
+                    .build();
+        }
+        return null;
     }
 
     @Override
@@ -236,8 +138,5 @@ public class JPARoomServiceImpl implements JPARoomService {
     public void remove(Long bookNo) throws Exception {
         roomRepository.deleteById(bookNo);
     }
-
-
-
 
 }

@@ -14,12 +14,14 @@
             </tr>
             <tr v-else v-for="board in boards" :key="board.boardNo">
                 <td align="center">{{ board.boardNo }}</td>
+               
                 <td align="left">
                     <router-link :to="{ name: 'BoardReadPage',
                                     params: { boardNo: board.boardNo.toString() } }">
                         {{ board.title }}
                     </router-link>
                 </td>
+        
                 <td align="right">{{ board.writer }}</td>
                 <td align="center">{{ board.regDate }}</td>
             </tr>
@@ -50,7 +52,17 @@ table{
 }
 
 .board-box {
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
+h4 {
+    margin-top: 0px;
+    font-family: 'Nanum Myeongjo';
+    font-size: 18px;
+    margin-left: 40%;
+}
+
+.member-box {
+    margin-top: 2%;
+}
 </style>

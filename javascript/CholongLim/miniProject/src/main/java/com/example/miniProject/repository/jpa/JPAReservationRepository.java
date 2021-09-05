@@ -1,6 +1,7 @@
 package com.example.miniProject.repository.jpa;
 
 
+import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.Reservation;
 import com.example.miniProject.entity.jpa.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +22,8 @@ public interface JPAReservationRepository extends JpaRepository<Reservation, Lon
 
     @Query("select e from Reservation e where e.bookNo = :bookNo")
     Optional<Reservation> findByBookNo(Long bookNo);
+
+    @Query
+    List<Reservation> findByBookNoContaining(Long bookNo);
 
 }

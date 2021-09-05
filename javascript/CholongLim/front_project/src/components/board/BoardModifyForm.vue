@@ -3,18 +3,18 @@
             <div class="board-box">
             <v-col cols="12" md="12" >
 
-            <v-text-field label="글번호" dense required height="5vh" style="margin-top:10px;" 
-                            outlined disabled
+            <v-text-field label="글번호"  required height="5vh" style="margin-top:10px;" 
+                             disabled
                            :value="board.boardNo" type="boardNo">
             </v-text-field>
 
-            <v-text-field label="제목" dense required height="5vh" style="margin-top:10px;" 
-                            outlined 
+            <v-text-field label="제목"  required height="5vh" style="margin-top:10px;" 
+                             
                            v-model="title" type="title">
             </v-text-field>
 
-            <v-text-field label="작성자" dense required height="5vh" style="margin-top:10px;" 
-                                outlined disabled
+            <v-text-field label="작성자"  required height="5vh" style="margin-top:10px;" 
+                                 disabled
                            :value="board.writer" type="writer">
             </v-text-field>
 
@@ -74,6 +74,7 @@ export default {
 .board-box {
     text-align: center;
     width: 50%;
+    padding-top: 5%;
     margin: 0 auto;
 }
 .register-box{

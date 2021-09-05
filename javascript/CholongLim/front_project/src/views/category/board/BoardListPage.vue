@@ -18,14 +18,10 @@
         </v-container>
         <v-divider></v-divider>
 
-        
-        <v-btn color="text-white gray" class="btn-locate" v-if="this.$store.state.auths.auth == '개인'"
-            route :to="'/board/create'">글쓰기</v-btn>
-
-        <v-btn color="text-white gray" class="btn-locate" @click="what"
-            >권한</v-btn>
-
         <board-list :boards="boards"/>
+
+        <v-btn color="blue" outlined class="btn-locate" v-if="this.auth == '관리자'"
+            route :to="'/board/create'">글쓰기</v-btn>
         
 
 
@@ -45,7 +41,7 @@ export default {
     data() {
         return {
             searchText: '',
-            check: this.$store.state.auths.auth
+            auth: this.$cookies.get("auth")
         }
     },
     computed: {
@@ -57,7 +53,7 @@ export default {
     methods: {
         ...mapActions(['fetchBoardList']),
         what() {
-            console.log(this.$store.state.auths.auth)
+            console.log(this.$cookies.get("auth"))
         }
     }
 
@@ -95,9 +91,8 @@ export default {
 
 .btn-locate{
     position: relative;
-    left: 75%;
-    margin-top: 2%;
-    margin-bottom: 1%;
+    left: 72%;
+    margin-bottom: 5%;
     
 }
 
