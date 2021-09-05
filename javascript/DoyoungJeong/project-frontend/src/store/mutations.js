@@ -12,7 +12,10 @@ import {
     FETCH_BOARD_LIST,
     FETCH_BOARD,
 
-    FETCH_REPLY_LIST
+    FETCH_REPLY_LIST,
+
+    FETCH_DECIDE_OR_NOT,
+    FETCH_TASTE
 
     
 } from './mutation-types'
@@ -52,5 +55,13 @@ export default {
 
     [FETCH_REPLY_LIST] (state, payload) {
         state.replyList = payload
+    },
+
+    [FETCH_DECIDE_OR_NOT] (state, payload) {
+        state.notDecidedYet = payload
+    },
+
+    [FETCH_TASTE] (state, payload) {
+        state.taste = payload
     }
 }

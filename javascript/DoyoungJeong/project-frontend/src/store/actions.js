@@ -7,7 +7,10 @@ import {
     FETCH_LIKED_OR_NOT,
     FETCH_BOARD_LIST,
     FETCH_BOARD,
-    FETCH_REPLY_LIST
+    FETCH_REPLY_LIST,
+
+    FETCH_DECIDE_OR_NOT,
+    FETCH_TASTE
 
 } from './mutation-types'
 
@@ -99,5 +102,22 @@ export default {
             .then((res) => {
                 commit(FETCH_REPLY_LIST, res.data)
             })
+    },
+
+    fetchAlreadyDecidePrefOrNot({ commit }, num) {
+        
+        return axios.get(`http://localhost:8888/member/taste/alreadyDecidePref/${ num }`)
+            .then(res => {
+                commit(FETCH_DECIDE_OR_NOT, res.data)
+            })
+    },
+
+    fetchTaste({ commit }, num) {
+
+        return axios.get(`http://localhost:8888/member/taste/getTaste/${ num }`)
+        .then(res => {
+            commit(FETCH_TASTE, res.data)
+            //alert('res.data:' + JSON.stringify(res.data))
+        })
     }
 }
