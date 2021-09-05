@@ -10,7 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileOutputStream;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -58,5 +61,37 @@ public class TasteController {
 
             return null;
         }
+    }
+
+    @PostMapping("/uploadImg")
+    @ResponseBody
+    public String requestUploadFile(
+            // @RequestParam("fileList") List<MultipartFile> fileList) {
+            @RequestParam("fileList") List<MultipartFile> fileList) {
+
+        log.info("requestUploadFile(): " + fileList);
+
+        try {
+            // 결국 저장되는 위치가 images/사진파일명.확장자
+            // images/아이디/사진파일명.확장자
+            for (MultipartFile multipartFile : fileList) {
+                log.info("requestUploadFile(): Make File");
+                FileOutputStream writer = new FileOutputStream("./imgFiles/" + multipartFile.getOriginalFilename());
+                writer.write(multipartFile.getBytes());
+                writer.close();
+            }
+
+            /*
+            FileOutputStream writer = new FileOutputStream("./images/" + fileList.getOriginalFilename());
+            writer.write(fileList.getBytes());
+            writer.close();
+             */
+        } catch (Exception e) {
+            return "Upload Fail!!!";
+        }
+
+        log.info("requestUploadFile(): Success!!!");
+
+        return "Upload Success!!!";
     }
 }

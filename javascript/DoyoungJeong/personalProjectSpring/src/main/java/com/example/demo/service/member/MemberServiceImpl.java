@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -63,7 +66,7 @@ public class MemberServiceImpl implements MemberService{
             String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
             memberRequest.setPassword(encodedPassword);
 
-            String location = memberRequest.getLocation().replace("\\[", "").replaceAll("\\]","").
+            String location = memberRequest.getLocation().replaceAll("\\[", "").replaceAll("\\]","").
                     replaceAll("\"", "");
 
             MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
@@ -149,6 +152,16 @@ public class MemberServiceImpl implements MemberService{
     public Member read(Long memberNo) throws Exception {
 
         Member member = memberRepository.findByMemberNo(memberNo).get();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formatDate = sdf.format(member.getRegDate());
+
+        Date newDate = sdf.parse(member.getRegDate().getDate() + " " + member.getRegDate().getTime()); //ParseException: Unparseable date: "4 1630730129000"
+
+        log.info("newDate: " + newDate);
+        member.setRegDate(newDate);
+        //Date date = sdf.parse("2018.09.09"); sdf에 있는 형식에 맞춰줘야 파싱됨
+        //log.info("date: " + date);
 
         return member;
     }
