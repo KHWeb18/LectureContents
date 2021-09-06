@@ -155,11 +155,11 @@ public class MemberServiceImpl implements MemberService{
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formatDate = sdf.format(member.getRegDate());
+        log.info("formatDate: " + formatDate);
 
-        Date newDate = sdf.parse(member.getRegDate().getDate() + " " + member.getRegDate().getTime()); //ParseException: Unparseable date: "4 1630730129000"
+        //Date newDate = sdf.parse(member.getRegDate().getDate() + " " + member.getRegDate().getTime()); //ParseException: Unparseable date: "4 1630730129000"
+        //log.info("newDate: " + newDate);\
 
-        log.info("newDate: " + newDate);
-        member.setRegDate(newDate);
         //Date date = sdf.parse("2018.09.09"); sdf에 있는 형식에 맞춰줘야 파싱됨
         //log.info("date: " + date);
 
@@ -182,10 +182,13 @@ public class MemberServiceImpl implements MemberService{
 
         Long memberNo = new Long(memberRequest.getMemberNo());
 
+        String location = memberRequest.getLocation().replaceAll("\\[", "").replaceAll("\\]","").
+                replaceAll("\"", "");
+
         memberIdentityRepository.modify(memberRequest.getIdentity(), memberNo);
 
         memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
+                location, memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
     }
 
     @Override

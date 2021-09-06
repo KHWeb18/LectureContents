@@ -84,7 +84,7 @@ public class MemberController {
         Boolean isLoggedIn = false;
 
         try {
-          Object obj = session.getAttribute("member");
+          //Object obj = session.getAttribute("member");
           isLoggedIn = service.checkSessionValidation(info.getMemberId());
 
           log.info("Session Validation: " + isLoggedIn);
