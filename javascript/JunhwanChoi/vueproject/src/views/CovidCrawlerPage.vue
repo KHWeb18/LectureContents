@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-btn @click="start('covidcategory')" text color="black"
+        <v-btn @click="start()" text color="black"
                     style="padding: 10px; width: 90px;">현황보기</v-btn>
         <v-simple-table>
         <thead>
@@ -16,6 +16,7 @@
             </tr>
         </tbody>
         </v-simple-table>
+
     </div>
 
 </template>

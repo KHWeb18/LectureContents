@@ -1,15 +1,15 @@
 <template>
     <v-container>
         <form @submit.prevent="onSubmit">
-            <h3>로그인 양식</h3>
+            <v-card >
             <table>
                 <tr>
                     <td>이메일</td>
-                    <td><input type="text" v-model="email"></td>
+                    <td><input type="text" v-model="email" ></td>
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td><input type="password" v-model="password"></td>
+                    <td><input type="password"  v-model="password"></td>
                 </tr>
             </table>
 
@@ -19,7 +19,10 @@
                     취소
                 </router-link>
             </div>
+            </v-card>
+            
         </form>
+        
     </v-container>
 </template>
 

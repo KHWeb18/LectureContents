@@ -31,3 +31,14 @@ create table vueproject(
 
 
 
+create table board(
+   board_no int not null auto_increment,
+   age int not null,
+   gender varchar(10) not null,
+   vaccine varchar(20) not null,
+   content varchar(200),
+   reg_date timestamp not null default now(),
+   primary key(board_no)
+);
+
+

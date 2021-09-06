@@ -1,7 +1,8 @@
 <template>
     <div>
         <template >
-            <div class="tablemargin">
+            <v-container>
+                 <div class="tablemargin">
                  <v-card>
                 <v-simple-table>
                     <template>
@@ -23,16 +24,29 @@
                             <tr v-for="(list,idx) in lists" :key="idx" width="50px">
                                 <div v-show="(idx<5)">
                                     <td style="color: gray">{{ list.newsNo }}</td>
-                                    <!-- <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td> -->
-                                    <td>{{ list.title }}</td>
+                                    <td><a @click="clickNews(list.address)">{{ list.title }}</a></td>
                                 </div>
                             </tr> 
                         </tbody>
                     </template>
                 </v-simple-table>
             </v-card>
+<br><br><br><br>
+            <v-card>
+                  <router-link :to="{ name: 'AccountRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Account 회원 가입
+            </router-link><br>
+            <router-link :to="{ name: 'SessionLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Account 로그인
+            </router-link>
+            </v-card>
             </div>
            
+            </v-container>
         </template>
     </div>
 </template>
@@ -46,6 +60,10 @@ export default {
            
         }
     },
+    created(){
+        this.$store.dispatch('crawlFind', 'daumnews')
+
+    },
 
     components: {
        // Layout
@@ -56,13 +74,11 @@ export default {
         })
     },
     methods: {
-        start (category) {
-            // action 수동 호출
-            this.$store.dispatch('crawlFind', category)
-        },
-    
-        
+        clickNews(address){
+            window.open(address, 'newslink', 'width: 200px, height: 200px')
+        }
     }
+    
 }
 </script>
 

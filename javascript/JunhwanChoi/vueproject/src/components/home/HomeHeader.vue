@@ -6,34 +6,34 @@
             </div>
         </div> 
 
-<!-- 
-http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20200310&endCreateDt=20200315
-
--->
-
         <ul class="amount">
         <li>
           <div>
             <div class="contents1">누적 확진자</div>
-            <div class="result">226,021</div>
+            <font color="red">+</font>{{todayDecideCnt - yesterdayDecideCnt}}
+            <div class="result">{{todayDecideString}}명</div>
           </div>
         </li>
         <li>
           <div>
-            <div class="contents1">금일 확진자</div>
-            <div class="result">1,064</div>
+            <div class="contents1">검사 중 </div>
+            <font color="red">+</font>{{todayExamCnt - yesterdayExamCnt}}
+            <div class="result">{{todayExamString}}명</div>
+            
           </div>
         </li>
         <li>
           <div>
             <div class="contents1">격리 해제</div>
-            <div class="result">27,011+</div>
+            <font color="red">+</font>{{todayClearCnt - yesterdayClearCnt}}
+            <div class="result">{{todayClearString}}명</div>
           </div>
         </li>
         <li>
             <div>
               <div class="contents1">사망</div>
-              <div class="result">2.773</div>
+              <font color="red">+</font>{{todayDeathCnt - yesterdayDeathCnt}}
+              <div class="result">{{todayDeathString}}명</div>
             </div>
         </li>
       </ul>
@@ -82,23 +82,14 @@ http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?se
             <div class="contents2">
                 온라인 예약으로 보다 안전하고 편리하게 진료 받으세요.
             </div>
-            <router-link :to="{ name: 'InfoPage' }"
+            <router-link :to="{ name: 'Appointment' }"
                     class="nav-link"
                     active-class="active">
                     <div class="more">
                         MORE
                     </div>
             </router-link>
-            <router-link :to="{ name: 'AccountRegisterPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Account 회원 가입
-            </router-link>
-            <router-link :to="{ name: 'SessionLoginPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Account 로그인 Test
-            </router-link>
+            
           </li>
         </ul>
     </div>
@@ -106,10 +97,76 @@ http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?se
 
 <script>
 
+import axios from 'axios'
 
 export default {
+  data () {
+    return {
+      coviditems: [],
+      yesterday:[],
+
+      //누적확진자 / 금일확진자
+      todayDecideCnt: 0,
+      todayDecideString: 0,  //.locale사용
+      yesterdayDecideCnt: 0,
+
+      //검사중 
+      todayExamCnt: 0,
+      todayExamString: 0,
+      yesterdayExamCnt: 0,
+
+      //격리해제 
+      todayClearCnt: 0,
+      todayClearString: 0,
+      yesterdayClearCnt: 0,
+
+      //사망자
+      todayDeathCnt: 0,
+      todayDeathString: 0,
+      yesterdayDeathCnt: 0,
+      
+    
+    }
+  },
+  created () {
+    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210905&endCreateDt=20210905')
+
+      .then((response) => {
+        var xml = response.data.response.body.items.item
+        this.coviditems=xml
+
+        this.todayDecideCnt= response.data.response.body.items.item.decideCnt
+        this.todayExamCnt= response.data.response.body.items.item.examCnt
+        this.todayClearCnt= response.data.response.body.items.item.clearCnt
+        this.todayDeathCnt= response.data.response.body.items.item.deathCnt
+
+        this.todayDecideString= this.todayDecideCnt.toLocaleString('en-US')
+        this.todayExamString= this.todayExamCnt.toLocaleString('en-US')
+        this.todayClearString= this.todayClearCnt.toLocaleString('en-US')
+        this.todayDeathString= this.todayDeathCnt.toLocaleString('en-US')
+
+      }),
+      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210904&endCreateDt=20210904')
+
+      .then((response) => {
+        var yxml = response.data.response.body.items.item
+        this.yesterday= yxml
+
+        this.yesterdayDecideCnt= response.data.response.body.items.item.decideCnt
+        this.yesterdayExamCnt= response.data.response.body.items.item.examCnt
+        this.yesterdayClearCnt= response.data.response.body.items.item.clearCnt
+        this.yesterdayDeathCnt= response.data.response.body.items.item.deathCnt
+
+      
+
+      })
+
+  },
+  
   
 }
+  
+
 </script>
 
 <style  scoped>

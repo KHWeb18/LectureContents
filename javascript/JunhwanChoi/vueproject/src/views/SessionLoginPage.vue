@@ -43,6 +43,7 @@ export default {
     data () {
         return {
             isLogin: false,
+
         }
     },
     mounted () {
@@ -66,7 +67,7 @@ export default {
                                 alert('로그인 성공! - ' + res.data)
                                 this.isLogin = true
                                 this.$store.state.session = res.data
-                                this.$cookies.set("user", res.data, '1h')
+                                this.$cookies.set("user", res.data, '10h')
                             } else {
                                 alert('로그인 실패! - ' + res.data)
                                 this.isLogin = false

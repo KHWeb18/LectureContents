@@ -17,7 +17,7 @@ import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
 
 import InfoPage from '@/views/InfoPage.vue'
 
-import Test from '@/views/Test.vue'
+import Appointment from '@/views/Appointment.vue'
 
 import CovidCrawlerPage from '@/views/CovidCrawlerPage.vue'
 
@@ -25,6 +25,12 @@ import CovidCrawlerPage from '@/views/CovidCrawlerPage.vue'
 import SessionLoginPage from '@/views/SessionLoginPage.vue'
 import AccountRegisterPage from '@/views/AccountRegisterPage.vue'
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+
+import InfoCovid from '@/views/InfoCovid.vue'
+import InfoCovidCnt from '@/views/InfoCovidCnt.vue'
+import InfoActive from '@/views/InfoActive.vue'
+import InfoNews from '@/views/InfoNews.vue'
+
 
 
 
@@ -90,10 +96,10 @@ const routes = [
   },
 
   {
-    path: '/test',
-    name: 'Test',
+    path: '/appointment',
+    name: 'Appointment',
     components: {
-      default: Test
+      default: Appointment
     }
   },
 
@@ -127,9 +133,37 @@ const routes = [
       default: VuetifyMemberLoginPage
     }
   },
+  {
+    path: '/infoCovid',
+    name: 'InfoCovid',
+    components: {
+      default: InfoCovid
+    }
+  },
+  {
+    path: '/infoCovidCnt',
+    name: 'InfoCovidCnt',
+    components: {
+      default: InfoCovidCnt
+    }
+  },
+  {
+    path: '/infoNews',
+    name: 'InfoNews',
+    components: {
+      default: InfoNews
+    }
+  },
+  {
+    path: '/infoActive',
+    name: 'InfoActive',
+    components: {
+      default: InfoActive
+    }
+  },
+
 
   
-
 
   
 

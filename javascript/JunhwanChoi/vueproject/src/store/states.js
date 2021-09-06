@@ -8,5 +8,6 @@ export default {
 
     covidlists:[],
 
-    session: []
+    session: [],
+    login:[],
 }
