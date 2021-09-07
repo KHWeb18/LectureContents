@@ -12,7 +12,7 @@ import java.util.Date;
 public class CommentDto {
     private Long commentNo;
     private String id;
-    private String comment;
+    private String content;
     private Long boardNo;
     private Date regDate;
     private Date updDate;
@@ -21,7 +21,7 @@ public class CommentDto {
         return Comment.builder()
                 .commentNo(commentNo)
                 .id(id)
-                .comment(comment)
+                .content(content)
                 .boardNo(boardNo)
                 .regDate(regDate)
                 .updDate(updDate)

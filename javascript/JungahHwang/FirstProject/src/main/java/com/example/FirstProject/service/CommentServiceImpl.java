@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Lazy
@@ -33,12 +32,21 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public void modify(Comment comment, CommentDto commentDto) throws Exception {
-        comment.modify(commentDto);
+    public Comment findByCommentNo(Long commentNo) throws Exception {
+        Comment comment = repository.findById(commentNo).orElseThrow();
+
+        return comment;
     }
 
-//    @Override
-//    public void remove(Long commentNo) throws Exception {
-//        repository.delete(commentNo);
-//    }
+    @Override
+    public void modify(Comment comment, CommentDto commentDto) throws Exception {
+        comment.updateContent(commentDto);
+
+        repository.save(comment);
+    }
+
+    @Override
+    public void remove(Comment comment) throws Exception {
+        repository.delete(comment);
+    }
 }

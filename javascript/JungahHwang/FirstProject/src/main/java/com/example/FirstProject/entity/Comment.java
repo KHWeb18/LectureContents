@@ -24,7 +24,7 @@ public class Comment {
     private String id;
 
     @Column(length = 300, nullable = false)
-    private String comment;
+    private String content;
 
     @Column(nullable = false)
     private Long boardNo;
@@ -35,8 +35,8 @@ public class Comment {
     @UpdateTimestamp
     private Date updDate;
 
-    public void modify(CommentDto commentDto) {
-        this.comment = commentDto.getComment();
+    public void updateContent(CommentDto commentDto) {
+        this.content = commentDto.getContent();
     }
 
 }
