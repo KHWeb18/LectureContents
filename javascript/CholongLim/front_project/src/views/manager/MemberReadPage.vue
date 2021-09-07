@@ -31,8 +31,8 @@
                     <v-card-title> 회원 삭제</v-card-title>
                     <v-card-text>
                         <br>
-                        <p style="font-size:15px">아이디 '{{ member.userId }}'님을 삭제하시겠습니까?</p>
-                        </v-card-text>
+                        <p style="font-size:15px">해당 회원을 삭제하시겠습니까?</p>
+                    </v-card-text>
                     <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" text @click="dialog = false">취소</v-btn>

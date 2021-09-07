@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <div>
     <div class="intro-top">
       <div class="container">
@@ -12,10 +12,7 @@
               
                 <v-col md="6" class="book-calendar" >
                   <div style="margin-top:40%;">
-                   
-                        <!-- <h2 v-if="$refs.calendar" class="month">
-                            {{ $refs.calendar.title }}
-                        </h2> -->
+
                         <v-btn text @click="prev">
                             <v-icon>mdi-chevron-left </v-icon>
                         </v-btn>
@@ -32,10 +29,9 @@
                            ></v-calendar>
                     </v-sheet>
                       </div>
-                    <!-- <p>*2박 이상의 경우 1박씩 예약하셔야 합니다.<br></p> -->
+              
                 </v-col>
-            <!-- </v-row> -->
-            <!-- <p>*2박 이상의 경우 1박씩 예약하셔야 합니다.<br></p> -->
+
 
             <v-col md="6">
               <div class="overlay1">
@@ -60,11 +56,14 @@
             </v-col>
             </v-row>
            
-
+            
+        
+   
         </v-container>
   
     </div>
     <div>
+
 
             <p>객실선택</p>
             <v-divider></v-divider>
@@ -123,7 +122,7 @@
                             </v-col>
                         </div>
                     </div>
-                <!-- </v-container> -->
+  
 
               
                   <div class="justify-center">
@@ -179,7 +178,7 @@
                              <v-text-field label="입금자명" 
                                         :rules="[v => !!v || '필수정보입니다.']" type="bankName"
                                         v-model="bankName" required flat  outlined >
-                                        <!-- type="name" 하면 미입력 시 다 빨갛게 변함 -->
+                                    
                             </v-text-field>
                             </v-container>
 
@@ -205,7 +204,7 @@
         </v-card>
         </v-dialog>
     </v-layout>
-        </div>
+                  </div>
                
 
         </div>
@@ -219,7 +218,7 @@
 
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
   export default {
     name: 'Book2',
@@ -258,31 +257,31 @@
       onClick() {
             this.dialog = false
       },
-    //   onSubmit () {
-    //     if(this.roomId == '301' || this.roomId == '302') {
-    //                 this.personNum = '4'
-    //                 this.price = '300000'
-    //               } else {
-    //                 this.personNum = '2'
-    //                 this.price = '240000'
-    //               }
-    //               this.userId = this.$cookies.get('user')
-    //         const { roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId } = this
-    //         axios.post('http://localhost:8888/room/book', {
-    //                     roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId
-    //                 })
-    //                 .then(res => {
-    //                   if(res.data != "") {
-    //                     alert('예약이 완료되었습니다.')
-    //                     this.dialog = false
-    //                   } else {
-    //                     alert('이미 예약된 방입니다.')
-    //                   }
-    //                 })
-    //                 .catch(res => {
-    //                     alert(res.response.data.message)
-    //                 })
-    //     }
+      onSubmit () {
+        if(this.roomId == '301' || this.roomId == '302') {
+                    this.personNum = '4'
+                    this.price = '300000'
+                  } else {
+                    this.personNum = '2'
+                    this.price = '240000'
+                  }
+                  this.userId = this.$cookies.get('user')
+            const { roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId } = this
+            axios.post('http://localhost:8888/room/book', {
+                        roomId, personNum, period, price, roomCnt, bankName, reservedDate, userId
+                    })
+                    .then(res => {
+                      if(res.data != "") {
+                        alert('예약이 완료되었습니다.')
+                        this.dialog = false
+                      } else {
+                        alert('이미 예약된 방입니다.')
+                      }
+                    })
+                    .catch(res => {
+                        alert(res.response.data.message)
+                    })
+        }
     }
   }
 </script>
@@ -370,7 +369,7 @@
 .top-tr {
     background-color: #bbdefb;
 }
-/* 기타  페이지 내부*/
+
 .btn-box{
     padding: 18px 10px 18px 10px;
     text-align: center;
@@ -398,7 +397,7 @@ p {
     padding-top: 10vh;
 }
 
-/* 폰트 */
+
 
 h1 {
     font-family: "Cinzel";
@@ -440,4 +439,4 @@ h6 {
     text-align: center;
 
 }
-</style>
+</style>-->

@@ -1,6 +1,6 @@
 <template>
     <div id="member" class="img-cover">
-        <div class="container" style="margin-bottom:2%">
+        <div class="container" style="margin-bottom:2%" v-if="cookie == true">
             <div>
                 <v-card class="reserve">
                 <v-row justify="center" style="margin:3%;">
@@ -8,6 +8,13 @@
                 </v-row>
                 <member-list :members="members" :memberAuths="memberAuths" class="table-box"/>
                 </v-card>
+            </div>
+        </div>
+        <div class="container" style="margin-bottom:2%" v-if="cookie == false">
+            <div>            
+                <v-row justify="center" style="margin:10% auto;">
+                <h4 style="margin-top:5%; color:white;">로그인 시간이 초과되었습니다.</h4>
+                </v-row>
             </div>
         </div>  
     </div>
@@ -21,18 +28,20 @@ export default {
     components: {
         MemberList
     },
+    data() {
+        return {
+            cookie: this.$cookies.isKey('user'),
+        }
+    },
     computed: {
         ...mapState(['members','memberAuths'])
     },
     mounted () {
         this.fetchMemberList(),
-        this.fetchMemberAuthList()
+        this.fetchMemberAuthList() 
     },
     methods: {
-        ...mapActions(['fetchMemberList','fetchMemberAuthList']),
-        auth() {
-            console.log(this.$store.state.memberAuths)
-        }
+        ...mapActions(['fetchMemberList','fetchMemberAuthList'])
     }
 }
 </script>

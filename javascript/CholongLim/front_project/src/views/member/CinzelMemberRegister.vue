@@ -33,23 +33,6 @@ export default {
                     .catch(res => {
                         alert(res.response.data.message)
                     })
-        
-                    /*  if(res.data != "") {
-                            alert('로그인이 완료되었습니다.')
-                            console.log(res)
-                            this.isLogined = true;
-                            this.$store.commit(LOGIN_SUCCESS)
-
-                            let token = res.data.userId
-                            console.log(token)
-                            localStorage.setItem("access_token", token)
-                            this.$router.push({
-                                    name: 'MainPage'
-                                    })
-                        } else {
-                            alert('아이디와 비밀번호를 확인해주세요.')
-                            this.$store.commit(LOGIN_ERROR)
-                        }*/
         }
         
     }

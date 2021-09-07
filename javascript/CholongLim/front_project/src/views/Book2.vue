@@ -12,23 +12,25 @@
               
                 <v-col md="6" class="book-calendar" >
                   <div style="margin-top:40%;">
-                   
-                        <!-- <h2 v-if="$refs.calendar" class="month">
-                            {{ $refs.calendar.title }}
-                        </h2> -->
+
                         <v-btn text @click="prev">
                             <v-icon>mdi-chevron-left </v-icon>
                         </v-btn>
                         <v-btn text @click="next">
                             <v-icon>mdi-chevron-right</v-icon>
                         </v-btn>
-                   
+                       
+                        <!-- <h2 v-if="$refs.calendar">
+                            {{ $refs.calendar.title }}
+                        </h2> -->
+              
         
                     <v-sheet height="400" width="600">
                         <v-calendar
                             ref="calendar"
                             v-model="reservedDate"
                             :type="type"
+                            @click:date="view"
                            ></v-calendar>
                     </v-sheet>
                       </div>
@@ -76,7 +78,10 @@
                     <v-col cols="12" sm="12">
                      <table>
                          <tr>
-                          <td><v-checkbox v-model="roomId" id="301" value="301" required></v-checkbox></td>
+                          <!-- <td v-for="alreadyRoom in checkIn" :key="alreadyRoom.roomId"> -->
+                            <td>
+                            <v-checkbox v-model="roomId" id="301" value="301"
+                            :disabled="this.roomNum.indexOf('301') != -1"></v-checkbox></td>
                           <td><v-img width="200"
                                 src="https://images.pexels.com/photos/7533766/pexels-photo-7533766.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
                                 </v-img>
@@ -87,7 +92,8 @@
                           <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 300,000원 </h1></td>
                         </tr>
                          <tr>
-                          <td><v-checkbox value="302" v-model="roomId" required id="302"></v-checkbox></td>
+                          <td><v-checkbox value="302" v-model="roomId" :disabled="this.roomNum.indexOf('302') != -1"
+                          required id="302"></v-checkbox></td>
                           <td><v-img width="200"
                                 src="https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
                                 </v-img>
@@ -99,7 +105,8 @@
                             
                         </tr>
                         <tr>
-                          <td><v-checkbox v-model="roomId" id="201" value="201" required></v-checkbox></td>
+                          <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('201') != -1"
+                          id="201" value="201" required></v-checkbox></td>
                           <td><v-img width="200"
                                 src="https://images.pexels.com/photos/7546712/pexels-photo-7546712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
                                 </v-img>
@@ -110,7 +117,8 @@
                           <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 240,000원 </h1></td>
                         </tr>
                         <tr>
-                          <td><v-checkbox v-model="roomId" id="202" value="202" required></v-checkbox></td>
+                          <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('202') != -1"
+                          id="202" value="202" required></v-checkbox></td>
                           <td><v-img width="200"
                                 src="https://images.pexels.com/photos/7546707/pexels-photo-7546707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
                                 </v-img>
@@ -221,6 +229,7 @@
 
 
 <script>
+import { ALREADYS } from '@/store/mutation-types'
 import axios from 'axios'
 
   export default {
@@ -228,7 +237,6 @@ import axios from 'axios'
     data() {
       return {
       reservedDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-
       dialog:false,
       type: 'month',
       room: false,
@@ -246,8 +254,9 @@ import axios from 'axios'
         {id: '302', value: '302', adultNum:'adult', image: 'https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'},
         {id: '201', value: '201', adultNum:'adult', image: 'https://images.pexels.com/photos/7546712/pexels-photo-7546712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'},
         {id: '202', value: '202', adultNum:'adult', image: 'https://images.pexels.com/photos/7546707/pexels-photo-7546707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'}
-      ]
-    }
+      ],
+      roomNum:[]
+      }
     },
 
     methods: {
@@ -259,6 +268,25 @@ import axios from 'axios'
         },
       onClick() {
             this.dialog = false
+      },
+      view() {            
+            axios.get('http://localhost:8888/room/already', { params: { reservedDate : this.reservedDate} })
+                    .then(res => {
+                      if(res.data != "") {
+                        this.$store.commit(ALREADYS, res.data)
+                          this.roomNum =[]
+                          for(var i =0; i <= (res.data.length-1) ; i++) {
+                            this.roomNum.push(res.data[i].roomId)
+                          }
+                          console.log(this.roomNum)
+                          console.log(this.roomNum.indexOf(res.data[0].roomId))
+                        } else {
+                          this.roomNum =[]
+                        }
+                    })
+                    .catch(res => {
+                        alert(res.response.data.message)
+                    })
       },
       onSubmit () {
         if(this.roomId == '301' || this.roomId == '302') {
@@ -277,6 +305,7 @@ import axios from 'axios'
                       if(res.data != "") {
                         alert('예약이 완료되었습니다.')
                         this.dialog = false
+                         this.$router.push({name: 'MyReservation'})
                       } else {
                         alert('이미 예약된 방입니다.')
                       }
@@ -372,7 +401,7 @@ import axios from 'axios'
 .top-tr {
     background-color: #bbdefb;
 }
-/* 기타  페이지 내부*/
+
 .btn-box{
     padding: 18px 10px 18px 10px;
     text-align: center;
@@ -400,7 +429,7 @@ p {
     padding-top: 10vh;
 }
 
-/* 폰트 */
+
 
 h1 {
     font-family: "Cinzel";

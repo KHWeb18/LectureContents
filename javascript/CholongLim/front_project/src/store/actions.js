@@ -96,12 +96,13 @@ export default {
                   .then(res => {
                       if(res.data != "") {
                           alert('로그인이 완료되었습니다.')
-                          // cookies.set("user",userId, '1h')
                           cookies.set("user",userId, '1h')
                           cookies.set("auth",res.data.authList[0].auth, '1h')
                           this.state.session = res.data
                           commit(LOGIN_SUCCESS)
-                          router.push({name: 'MainPage'})
+                          // router.push({name: 'MainPage'})
+                          location.href='/cinzel'
+                          
                   
                       } if(res.data == "" ) {
                           alert('아이디와 비밀번호를 확인해주세요.')
@@ -118,7 +119,9 @@ export default {
       cookies.remove("auth")
       commit(LOGOUT)
       alert('로그아웃.')
-      router.push('/cinzel')
+      location.href='/cinzel'
+      // router.push('/cinzel')
+      // location.reload()
 
   },
     // 크롤링

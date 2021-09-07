@@ -21,6 +21,8 @@ export default {
 
   dates:[],
   memberRequest: null,
+
+  alreadyCheckIn:[],
   // reservation read
   bookReadDates:[],
   isLogin: false,

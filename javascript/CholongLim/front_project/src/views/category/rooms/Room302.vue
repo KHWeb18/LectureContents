@@ -139,16 +139,19 @@ export default {
             ],
             swiperOption: {
                 loopedSlides: 2,
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                effect: 'fade',
                 pagination: {
                     el: '.swiper-pagination'
-                    //dynamicBullets: true
                 },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 2000
+                    delay: 4000
                 }
             },
             rooms: [

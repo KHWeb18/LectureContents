@@ -1,11 +1,7 @@
 <template>
     <div>
         
-        <v-container class="container " fill-height>
-            <v-layout align-center wrap>
-            <h2 class="overlay">Hello <br>Cinzel</h2>
-            </v-layout>
-        </v-container>
+        
         
         <div class="slide">
             <v-container class="slide">
@@ -13,6 +9,11 @@
                 <swiper class="swiper" :options="swiperOption">
                     <swiper-slide v-for="image in images" :key="image">
                         <v-img :src="image" max-height="100%">
+                            <v-container class="container " fill-height>
+                                <v-layout align-center wrap>
+                                <h2 class="overlay">Hello <br>Cinzel</h2>
+                                </v-layout>
+                            </v-container>
                         </v-img>
                     </swiper-slide>
                     <div class="swiper-pagination" slot="pagination">
@@ -30,13 +31,13 @@
 
             <div class="main-colorbox">
             <v-row>
-                <v-flex xs3 sm12 lg24>
+                <v-flex xs3 sm12 lg12>
                 <div class="img-s">
                     <v-img style="overflow: visible" contain width="900px" height="600px"
                         src="https://images.pexels.com/photos/355580/pexels-photo-355580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                     </v-img>
                 </div>
-           
+       
                 <div style="float:left; width:600px; margin-top:8%;">
                     <h3 style="font-size: 45px; text-align:center; margin-bottom:0px;">SPECIAL DAY</h3>
                     <p style="margin-top:0%; font-size:12px;">break in time of life</p>
@@ -54,6 +55,23 @@
             </v-row>
             </div>
 
+            <v-container>
+                <p> 자연을 당신의 품 안에 한껏 담아드릴께요.<br>
+                사랑하는 사람과 맑은 하늘 푸른 바다가 닿는 이곳에서 추억을 만들어 보세요.</p>
+                 <p style="margin-top:0%; font-size:14px;">
+                     I'll put nature in your arms...make memories from where you love, the clear skies and the blue sea.
+                 </p>       
+            </v-container>
+
+            <v-container style="margin-top:5%;margin-bottom:10%;">
+                <v-row align="center" class="justify-center">
+                    <v-btn outlined x-large 
+                    route :to="{name: 'Reservation'}">RESERVATION<v-icon>navigate_next</v-icon></v-btn>
+                <!-- <v-img style="overflow: visible" contain width="900px" height="600px"
+                        src="https://images.pexels.com/photos/6010420/pexels-photo-6010420.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                    </v-img> -->
+                </v-row>
+            </v-container>
             <div>
 
             </div>
@@ -105,6 +123,7 @@ export default {
             swiperOption: {
                 loopedSlides: 2,
                 calculateHeight:true,
+                effect: 'fade',
                 grabCursor: true,
                 centeredSlides: true,
                 watchSlideProgress:true,
@@ -112,7 +131,7 @@ export default {
                     el: '.swiper-pagination'
                 },
                 autoplay: {
-                    delay: 3000
+                    delay: 5000
                 }
             }
         }
@@ -123,6 +142,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 
 .img-s{
     float: left;
@@ -140,11 +160,12 @@ export default {
 
 .overlay{
     position: absolute;
-    z-index: 9;
-    margin-top: 60%;
+    z-index:0;
+    margin: 0 auto;
     left: 30%;
-    text-align: center;
 }
+
+
 
 p {
     font-family: 'Nanum Myeongjo';
@@ -163,6 +184,7 @@ h2 {
     color:white;
     text-shadow: 3px 2px 2px rgb(5, 68, 119);
 }
+
 
 h3 {
     font-family: "Cinzel";

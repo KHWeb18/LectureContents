@@ -30,7 +30,7 @@
                                     <v-card-title> 예약 삭제</v-card-title>
                                     <v-card-text>
                                         <br>
-                                        <p style="font-size:15px">No.{{ room.bookNo }} 예약을 취소하시겠습니까?</p>
+                                        <p style="font-size:15px">예약을 취소하시겠습니까?</p>
                                     </v-card-text>
                                     <v-card-actions>
                                     <v-spacer></v-spacer>

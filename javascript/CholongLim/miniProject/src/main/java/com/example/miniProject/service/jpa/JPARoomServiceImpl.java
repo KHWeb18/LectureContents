@@ -1,22 +1,17 @@
 package com.example.miniProject.service.jpa;
 
+import com.example.miniProject.controller.reservaion.request.DateRequest;
 import com.example.miniProject.controller.reservaion.request.RoomRequest;
-import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.Reservation;
 import com.example.miniProject.entity.jpa.Room;
 import com.example.miniProject.repository.jpa.JPAReservationRepository;
 import com.example.miniProject.repository.jpa.JPARoomRepository;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,6 +132,42 @@ public class JPARoomServiceImpl implements JPARoomService {
     @Override
     public void remove(Long bookNo) throws Exception {
         roomRepository.deleteById(bookNo);
+    }
+
+    // string -> date
+    public Date changeDate(DateRequest dateRequest) throws Exception {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date inputDate = format.parse(dateRequest.getReservedDate());
+        log.info("reservedDate = " + inputDate);
+
+
+        return inputDate;
+    }
+
+
+    // 캘린더 체크
+    @Override
+    public List<RoomRequest> checkIn(Date reservedDate) throws Exception {
+
+        List<Reservation> checkDate = reservationRepository.findByDate(reservedDate);
+        List<RoomRequest> checkList = new ArrayList<>();
+
+        for (Reservation reservation : checkDate) {
+            List<Room> matchRoomId = roomRepository.findByBookNo(reservation.getBookNo());
+            for (Room room : matchRoomId) {
+                log.info("======roomId : " + room.getRoomId());
+                checkList.add(convertEntityToCheckIn(room));
+            }
+
+        }
+        return checkList;
+    }
+
+    private RoomRequest convertEntityToCheckIn(Room room) {
+            return RoomRequest.builder()
+                    .bookNo(room.getBookNo())
+                    .roomId(room.getRoomId())
+                    .build();
     }
 
 }

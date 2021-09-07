@@ -19,9 +19,13 @@
                 </v-card>    
             </div>
         </div>
-        <div v-if="cookie == false">
-                로그인 시간이 초과되었습니다.
-        </div>
+       <div class="container" style="margin-bottom:2%" v-if="cookie == false">
+            <div>            
+                <v-row justify="center" style="margin:10% auto;">
+                <h4 style="margin-top:5%; color:white;">로그인 시간이 초과되었습니다.</h4>
+                </v-row>
+            </div>
+        </div>  
         <div class="img-overlay"></div>
     </div>
 </template>
@@ -48,13 +52,6 @@ export default {
     background: #f6f7f7;
 }
 
-.img-overlay{
-     position: absolute;
-     height: 100%;
-     width: 100%;
-     background-color: rgb(0, 0, 0);                                                                 
-     z-index:1;
-}
 
 .img-cover{
      position: relative;
@@ -85,5 +82,11 @@ p {
     text-align: center;
     padding: 2vh 0vh 2vh 0vh;
     margin-bottom: 0px;
+}
+
+h4 {
+    margin-top: 0px;
+    font-family: 'Gowun Batang';
+    font-size: 25px;
 }
 </style>

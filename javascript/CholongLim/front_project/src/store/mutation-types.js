@@ -13,6 +13,10 @@ export const FETCH_ROOM = 'FETCH_ROOM'
 
 export const FETCH_BOOK_READ = 'FETCH_BOOK_READ'
 
+// TEST
+export const ALREADYS = 'ALREADYS'
+
+// TEST
 
 export const FETCH_DATES_LIST = 'FETCH_DATES_LIST'
 export const FETCH_USER_LIST = 'FETCH_USER_LIST'

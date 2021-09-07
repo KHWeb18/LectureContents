@@ -142,22 +142,16 @@ export default {
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: 'auto',
-                // coverflowEffect: {
-                //     stretch: 0,
-                //     depth: 100,
-                //     modifier: 0,
-                //     slideShadows: true
-                // },
+                effect: 'fade',
                 pagination: {
                     el: '.swiper-pagination'
-                    //dynamicBullets: true
                 },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 2000
+                    delay: 4000
                 }
             },
             rooms: [

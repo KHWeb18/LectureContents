@@ -2,23 +2,22 @@
     <div>
         <v-toolbar>
             <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title class="logo">
-                <span ><a href="/cinzel">CINZEL</a></span>
-            </v-toolbar-title>
-            <v-toolbar-items class="login-locate">
-                    <!-- <v-btn  text v-if="cookie == false" router :to="'/login'">로그인</v-btn> -->
-                    <v-btn  text v-if="this.cookie == false " router :to="'/login'">로그인</v-btn>
+                <v-toolbar-title class="logo">
+                    <span ><a href="/cinzel">CINZEL</a></span>
+                </v-toolbar-title>
+                <v-toolbar-items class="login-locate">
+                    <v-btn text v-if="this.cookie == false " router :to="'/login'">로그인</v-btn>
+                    
 
-
-                    <!-- <v-menu offset-y v-if="cookie == true"> -->
-                        <v-menu offset-y v-if="(this.cookie == true) && (this.individual == '개인')">
+                    <v-menu offset-y v-if="(this.cookie == true) && (this.individual == '개인')">
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn text v-bind="attrs" v-on="on">
                                 <v-icon>account_circle</v-icon>
                             </v-btn>
                         </template>
                         <v-list>
-                            <v-list-item @click="userPage">
+                            <!-- <v-list-item @click="userPage"> -->
+                            <v-list-item router :to="{name: 'MyPage'}">
                                 <v-list-item-title>마이페이지</v-list-item-title>
                             </v-list-item>
                             <v-list-item @click="logout">
@@ -45,6 +44,8 @@
                             </v-list-item>
                         </v-list>
                     </v-menu>
+
+           
             </v-toolbar-items>
         </v-toolbar>
 
@@ -103,15 +104,13 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['logout']),
-        userPage() {
-            this.userId = this.$cookies.get('user')
-            
-            console.log(this.userId)
-            this.$router.push({
-                name: 'MyPage'
-            })
-        }
+        ...mapActions(['logout'])
+        // userPage() {
+        //     this.userId = this.$cookies.get('user')
+        //     this.$router.push({
+        //         name: 'MyPage'
+        //     })
+        // }
     }
 }
 

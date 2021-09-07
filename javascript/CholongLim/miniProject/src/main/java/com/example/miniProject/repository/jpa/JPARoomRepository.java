@@ -20,6 +20,8 @@ public interface JPARoomRepository extends JpaRepository<Room, Long> {
     @Query("select r from Room r where r.roomId = :roomId")
     List<Room> findByRoomId(String roomId);
 
+    @Query("select r from Room r where r.bookNo = :bookNo")
+    List<Room> findByBookNo(Long bookNo);
 
 
 

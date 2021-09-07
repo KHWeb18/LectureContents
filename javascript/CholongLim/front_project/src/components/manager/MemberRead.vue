@@ -18,10 +18,10 @@
                                 :value="member.userName" type="userName">
                     </v-text-field>
 
-                    <v-text-field label="아이디" required height="5vh" style="margin-top:10px;" 
+                    <!-- <v-text-field label="아이디" required height="5vh" style="margin-top:10px;" 
                                         readonly 
                                 :value="member.userId" type="id">
-                    </v-text-field>
+                    </v-text-field> -->
 
                     <v-text-field label="휴대전화" required height="5vh" style="margin-top:10px;" 
                                         readonly 

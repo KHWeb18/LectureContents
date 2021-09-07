@@ -1,11 +1,11 @@
 package com.example.miniProject.service.jpa;
 
+import com.example.miniProject.controller.reservaion.request.DateRequest;
 import com.example.miniProject.controller.reservaion.request.RoomRequest;
 import com.example.miniProject.entity.jpa.Room;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public interface JPARoomService {
 
@@ -21,5 +21,10 @@ public interface JPARoomService {
 
     public void remove(Long bookNo) throws Exception;
 
+
+    // 캘린더 체크
+    public Date changeDate(DateRequest dateRequest) throws Exception;
+
+    public List<RoomRequest> checkIn(Date reservedDate) throws Exception;
 
 }

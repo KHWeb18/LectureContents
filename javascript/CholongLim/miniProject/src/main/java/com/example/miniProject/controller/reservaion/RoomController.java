@@ -2,8 +2,8 @@ package com.example.miniProject.controller.reservaion;
 
 
 import com.example.miniProject.controller.member.request.UserRequest;
+import com.example.miniProject.controller.reservaion.request.DateRequest;
 import com.example.miniProject.controller.reservaion.request.RoomRequest;
-import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.entity.jpa.Room;
 import com.example.miniProject.service.jpa.JPARoomService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -80,7 +80,25 @@ public class RoomController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    // 캘린더에서 날짜 클릭했을떄 예약 여부를 확인할 수 있을지
+    // vue에서 보내는 date가 string이다
+    @GetMapping("/already")
+    public ResponseEntity<List<RoomRequest>> getRoomId (@RequestParam("reservedDate") String reservedDate, DateRequest dateRequest) throws Exception {
+//        log.info("getRoomId(): " + roomService.checkIn(reservedDate));
+//        return new ResponseEntity<>(roomService.checkIn(reservedDate), HttpStatus.OK);
+        roomService.changeDate(dateRequest);
+        log.info("change? == " + roomService.changeDate(dateRequest));
 
+        roomService.checkIn(roomService.changeDate(dateRequest));
+
+        log.info("checkIn? == " + roomService.checkIn(roomService.changeDate(dateRequest)));
+
+
+        return new ResponseEntity<>(roomService.checkIn(roomService.changeDate(dateRequest)), HttpStatus.OK);
+//        return null;
+
+
+    }
 
 
 }

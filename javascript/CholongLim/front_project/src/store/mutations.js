@@ -1,4 +1,6 @@
 import {
+  // TEST
+   ALREADYS,
    FETCH_BOARD_LIST,
    FETCH_BOARD,
    FETCH_AUTH_LIST,
@@ -22,6 +24,10 @@ import {
 } from './mutation-types'
 
 export default {
+  // test용
+  [ALREADYS] (state, alreadyCheckIn) {
+    state.alreadyCheckIn = alreadyCheckIn;
+  },
   // 게시판
   [FETCH_BOARD_LIST] (state, boards) {
     state.boards = boards;

@@ -41,14 +41,15 @@
                 </div>
                 <div style="float:left; width:50%;">
                     <v-img style="overflow: visible" contain
-                            src="https://images.pexels.com/photos/5231749/pexels-photo-5231749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></v-img>
+                            src="https://images.pexels.com/photos/843633/pexels-photo-843633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                            </v-img>
                 </div>
             </div>
 
             <div style="display: block;">
-                <div style="float:left; width:60%;">
+                <div style="float:left; width:60%; margin-left:0%;">
                     <v-img style="overflow: visible" contain
-                    src="https://images.pexels.com/photos/3417701/pexels-photo-3417701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                    src="https://images.pexels.com/photos/3511543/pexels-photo-3511543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                     </v-img> 
                     </div>
                 <div style="float:left; padding:5% 0% 0% 5%; width:40%;">

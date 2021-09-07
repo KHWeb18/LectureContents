@@ -1,6 +1,6 @@
 <template>
     <div id="room" class="img-cover">
-        <div class="container" style="margin-bottom:2%">
+        <div class="container" style="margin-bottom:2%" v-if="cookie == true">
             <div>
                 <v-card>
                 <v-row justify="center" style="margin:3%;">
@@ -8,6 +8,13 @@
                 </v-row>
                 <room-list :rooms="rooms" :reserveDate="reserveDate" class="table-box"/>
                 </v-card>
+            </div>
+        </div>  
+        <div class="container" style="margin-bottom:2%" v-if="cookie == false">
+            <div>            
+                <v-row justify="center" style="margin:10% auto;">
+                <h4 style="margin-top:5%; color:white;">로그인 시간이 초과되었습니다.</h4>
+                </v-row>
             </div>
         </div>  
     </div>
@@ -20,6 +27,11 @@ export default {
     name: 'BookingListPage',
     components: {
         RoomList
+    },
+    data() {
+        return {
+            cookie: this.$cookies.isKey('user')
+        }
     },
     computed: {
         ...mapState(['rooms','reserveDate'])
