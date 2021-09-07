@@ -149,23 +149,7 @@
                         ticks
                         ></v-slider>
 
-                        <v-list class="transparent">
-                        <v-list-item
-                            v-for="item in forecast"
-                            :key="item.day"
-                        >
-                            <v-list-item-title>{{ item.day }}</v-list-item-title>
-
-                            <v-list-item-icon>
-                            <v-icon>{{ item.icon }}</v-icon>
-                            </v-list-item-icon>
-
-                            <v-list-item-subtitle class="text-right">
-                            {{ item.temp }}
-                            </v-list-item-subtitle>
-                        </v-list-item>
-                        </v-list>
-
+                       
                         <v-divider></v-divider>
 
                         <v-card-actions>
@@ -236,7 +220,7 @@ export default {
     }
   },
   created () {
-    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210905&endCreateDt=20210905')
+    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210907&endCreateDt=20210907')
 
       .then((response) => {
         var xml = response.data.response.body.items.item
@@ -260,7 +244,7 @@ export default {
 
 
       }),
-      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210904&endCreateDt=20210904')
+      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210906&endCreateDt=20210906')
 
       .then((response) => {
         var yxml = response.data.response.body.items.item
@@ -311,6 +295,8 @@ export default {
     color:white;
     vertical-align: top;
     padding: 0 6px;
+    border-radius: 10px;
+
 }
 
 .covidtitle{

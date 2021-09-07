@@ -8,6 +8,10 @@ export default {
 
     covidlists:[],
 
-    session: [],
-    login:[],
+    session: null,
+    log:0,
+
+    // 게시판
+    boards: [],
+    board: null,
 }

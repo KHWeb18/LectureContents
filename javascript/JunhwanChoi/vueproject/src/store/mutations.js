@@ -9,7 +9,12 @@ import {
 
 
      // 세션
-     //FETCH_SESSION
+     //FETCH_SESSION,
+
+
+     // 게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
 } from './mutation-types'
 
 export default {
@@ -32,6 +37,14 @@ export default {
     // [FETCH_SESSION] (state) {
     //     state.session = this.$cookies.get(userSession)
     // },
+
+    // 게시판
+    [FETCH_BOARD_LIST] (state, boards) {
+        state.boards = boards;
+    },
+    [FETCH_BOARD] (state, board) {
+        state.board = board
+    },
 
 
 }

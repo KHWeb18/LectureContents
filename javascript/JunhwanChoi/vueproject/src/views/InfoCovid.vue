@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style scoped>
+p{
+    font-weight: 500;
+}
 hr{
     background-color: black;
     height:1.5px;

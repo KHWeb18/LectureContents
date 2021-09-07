@@ -8,3 +8,6 @@ export const COVID_CRAWL_START = 'COVID_CRAWL_START'
 
 export const FETCH_SESSION = 'FETCH_SESSION'
 
+export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
+export const FETCH_BOARD = 'FETCH_BOARD'
+

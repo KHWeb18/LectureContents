@@ -17,20 +17,30 @@ import DaumNewsCrawlerPage from '@/views/DaumNewsCrawlerPage.vue'
 
 import InfoPage from '@/views/InfoPage.vue'
 
+//예약시스템
 import Appointment from '@/views/Appointment.vue'
 
 import CovidCrawlerPage from '@/views/CovidCrawlerPage.vue'
 
-
+//로그인
 import SessionLoginPage from '@/views/SessionLoginPage.vue'
 import AccountRegisterPage from '@/views/AccountRegisterPage.vue'
-import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
+//코로나 정보페이지
 import InfoCovid from '@/views/InfoCovid.vue'
 import InfoCovidCnt from '@/views/InfoCovidCnt.vue'
 import InfoActive from '@/views/InfoActive.vue'
 import InfoNews from '@/views/InfoNews.vue'
 
+
+//// board
+import BoardListPage from '@/views/BoardListPage.vue'
+import BoardRegisterPage from '@/views/BoardRegisterPage.vue'
+import BoardReadPage from '@/views/BoardReadPage.vue'
+import BoardModifyPage from '@/views/BoardModifyPage.vue'
+
+//백신정보
+import VaccineInfo from '@/views/VaccineInfo.vue'
 
 
 
@@ -126,13 +136,7 @@ const routes = [
       default: AccountRegisterPage
     }
   },
-  {
-    path: '/vuetifyMemberLoginPage',
-    name: 'VuetifyMemberLoginPage',
-    components: {
-      default: VuetifyMemberLoginPage
-    }
-  },
+  
   {
     path: '/infoCovid',
     name: 'InfoCovid',
@@ -162,7 +166,50 @@ const routes = [
     }
   },
 
+  //vaccine board
+  {
+    path: '/board',
+    name: 'BoardListPage',
+    components: {
+      default: BoardListPage
+    }
+  },
+  {
+    path: '/board/create',
+    name: 'BoardRegisterPage',
+    components: {
+      default: BoardRegisterPage
+    }
+  },
+  {
+    path: '/board/:boardNo',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/board/:boardNo/edit',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    },
+    props: {
+      // 라우팅 파라미터를 props에 자동으로 설정하게 서포트함
+      default: true
+    }
+  },
 
+  {
+    path: '/vaccineInfo',
+    name: 'VaccineInfo',
+    components: {
+      default: VaccineInfo
+    }
+  },
   
 
   

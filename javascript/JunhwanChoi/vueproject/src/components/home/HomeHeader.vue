@@ -47,7 +47,7 @@
             <div class="contents2">
                 예방수칙, 확진자 정보 등 코로나 관련 정보를 확인하세요.
             </div>
-            <router-link :to="{ name: 'InfoPage' }"
+            <router-link :to="{ name: 'InfoCovid' }"
                     class="nav-link"
                     active-class="active">
                     <div class="more">
@@ -65,7 +65,7 @@
             <div class="contents2">
                 각종 백신 정보를 확인하고, 경험도 공유해 보세요.
             </div>
-            <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
+            <router-link :to="{ name: 'BoardListPage' }"
                     class="nav-link"
                     active-class="active">
                     <div class="more">

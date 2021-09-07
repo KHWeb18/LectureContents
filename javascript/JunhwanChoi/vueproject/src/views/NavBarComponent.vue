@@ -4,7 +4,7 @@
                 <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
                 </v-app-bar-nav-icon>
                     <v-toolbar-title>
-                        <span class="font-weight-light">COVID-19 PAGE</span>
+                        <span class="font-weight-light">COVID-19 PAGE </span>
                     </v-toolbar-title>
                     <div class="flex-grow-1"></div>
                     <v-toolbar-items v-if="$store.state.session == null">
@@ -51,7 +51,6 @@
 
 <script>
 export default {
-    name: 'VuetifyAllInOneTestPage',
     data () {
         return {
             nav_drawer: false,
@@ -100,6 +99,8 @@ export default {
                         route:'/mypage'
                     }
                 ],
+                session:[],
+
         }
     },
 
@@ -108,7 +109,17 @@ export default {
         group () {
             this.nav_drawer = false
         }
-    }
+    },
+    created(){
+        this.session= this.$store.state.session
+        // if(this.$store.state.session==null){
+        //    this.$store.state.log=1
+        // }
+        // if(this.$store.state.session!=null){
+        //    this.$store.state.log=2
+        // }
+    },
+    
 }
 </script>
 

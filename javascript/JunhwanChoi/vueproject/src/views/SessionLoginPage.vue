@@ -56,6 +56,9 @@ export default {
     computed: {
         ...mapState(['session'])
     },
+    created(){
+        
+    },
     methods: {
         ...mapActions(['fetchSession']),
         onSubmit (payload) {

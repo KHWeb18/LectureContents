@@ -7,8 +7,12 @@ import {
 
     COVID_CRAWL_START,
 
-     // 세션
-     FETCH_SESSION
+    // 세션
+    FETCH_SESSION,
+
+    //게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
 
 } from './mutation-types'
 
@@ -55,5 +59,19 @@ export default {
     // Session
     fetchSession ({ commit }) {
         commit(FETCH_SESSION)
-    }
+    },
+
+    // 게시판
+    fetchBoardList ({ commit }) {
+        return axios.get('http://localhost:3647/vueboard/lists')
+                .then((res) => {
+                    commit(FETCH_BOARD_LIST, res.data)
+                })
+    },
+    fetchBoard ({ commit }, boardNo) {
+        return axios.get(`http://localhost:3647/vueboard/${boardNo}`)
+                .then((res) => {
+                    commit(FETCH_BOARD, res.data)
+                })
+    },
 }

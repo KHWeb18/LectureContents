@@ -7,7 +7,7 @@
 
             <v-card class="card">
                 <div class="section">
-                        <img src="@/assets/info-active.png" width="1280px" height="1200px">
+                        <img class="activeimg" src="@/assets/info-active.png" width="1000px" height="900px">
                 </div>
             </v-card>
         </v-container>
@@ -29,7 +29,14 @@ export default {
 
 .section{
     display:flex;
+    border-radius: 10px;
 
+}
+.activeimg{
+    border-radius: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
