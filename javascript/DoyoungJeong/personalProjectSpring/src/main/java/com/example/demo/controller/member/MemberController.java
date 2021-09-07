@@ -63,8 +63,10 @@ public class MemberController {
             session = request.getSession();
             session.setAttribute("member", info);
 
-            MemberResponse memberResponse = new MemberResponse(service.login(memberRequest).getMemberNo(), service.login(memberRequest).getId(),
-                    memberIdentityRepository.findIdentityByMemberNo(new Long(service.login(memberRequest).getMemberNo())).get().getIdentity());
+            Member member = service.login(memberRequest);
+
+            MemberResponse memberResponse = new MemberResponse(member.getMemberNo(), member.getId(),
+                    memberIdentityRepository.findIdentityByMemberNo(new Long(member.getMemberNo())).get().getIdentity());
                     // * memberNo, id, identity 3가지만 login에 대한 응답으로 보내줌 *
 
             log.info("response: " + memberResponse.getMemberNo(), memberResponse.getId(), memberResponse.getIdentity());
@@ -132,12 +134,12 @@ public class MemberController {
     }
 
     @PutMapping("/modify")
-    public ResponseEntity<Void> modify(@Validated @RequestBody MemberRequest memberRequest) throws Exception {
+    public ResponseEntity<MemberResponse> modify(@Validated @RequestBody MemberRequest memberRequest) throws Exception {
         log.info("modify(): " + memberRequest);
 
-        service.modify(memberRequest);
+        MemberResponse memberResponse = service.modify(memberRequest);
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<MemberResponse>(memberResponse, HttpStatus.OK);
     }
 
     @PostMapping("/addLiked")
@@ -182,5 +184,16 @@ public class MemberController {
         }
 
         return new ResponseEntity<Boolean>(isAlreadyLiked, HttpStatus.OK);
+    }
+
+    @PostMapping("/checkPassword")
+    public ResponseEntity<Boolean> checkPassword(@Validated @RequestBody MemberRequest memberRequest) throws Exception {
+        log.info("checkPassword: " + memberRequest);
+
+        boolean isRightPassword = false;
+
+        isRightPassword = service.checkPassword(memberRequest);
+
+        return new ResponseEntity<Boolean>(isRightPassword, HttpStatus.OK);
     }
 }
