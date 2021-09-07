@@ -22,24 +22,20 @@ import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  props: {
-    boardNo: {
-      type: Number
-    },
-    id: {
-      type: String
-    }
-  },
   data () {
     return {
       title: null,
-      content: null
+      content: null,
+      boardNo: null,
+      id: null
     }
   },
   computed: {
     ...mapState([ 'together' ])
   },
   created () {
+    this.boardNo = this.$route.query.boardNo
+    this.id = this.$route.query.id
     this.title = this.together.title
     this.content = this.together.content
   },
@@ -49,13 +45,13 @@ export default {
       const title = this.title
       const content = this.content
       
-      axios.put(`http://localhost:7777/together/modify/${this.boardNo}`, { title, content }).then(() => {
+      axios.patch(`http://localhost:7777/together/modify/${this.boardNo}`, { title, content }).then(() => {
         alert("수정이 완료되었습니다!")
 
         this.fetchTogether(this.boardNo)
 
         this.$router.push(
-          { name: 'ReadTogether', params: { id: this.id } } 
+          { name: 'ReadTogether', query: { boardNo: this.boardNo, id: this.id } } 
         )
       })
     }

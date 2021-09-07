@@ -1,16 +1,19 @@
 package com.example.FirstProject.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.FirstProject.request.RecommendDto;
+import com.example.FirstProject.request.TogetherDto;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
+@Builder
+@Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "together")
 public class Together {
 
@@ -29,17 +32,19 @@ public class Together {
     @Column(length = 50000, nullable = false)
     private String content;
 
+    @Column
+    private String img;
+
     @CreationTimestamp
     private Date regDate;
 
     @UpdateTimestamp
     private Date updDate;
 
-    public Together(Long boardNo, String id, String title, String content) {
-        this.boardNo = boardNo;
-        this.id = id;
-        this.title = title;
-        this.content = content;
+    public void updateTogether(TogetherDto togetherDto) {
+        this.title = togetherDto.getTitle();
+        this.content = togetherDto.getContent();
+        this.img = togetherDto.getImg();
     }
 }
 

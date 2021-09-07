@@ -1,8 +1,8 @@
 package com.example.FirstProject.service;
 
 import com.example.FirstProject.entity.Together;
-import com.example.FirstProject.repository.TogetherJPARepository;
 import com.example.FirstProject.repository.TogetherRepository;
+import com.example.FirstProject.request.TogetherDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,34 +16,41 @@ import java.util.List;
 public class TogetherServiceImpl implements TogetherService {
 
     @Autowired
-    private TogetherJPARepository jpaRepository;
-
-    @Autowired
     private TogetherRepository repository;
 
     @Override
-    public void register(Together together) throws Exception {
-        jpaRepository.save(together);
+    public Together register(TogetherDto togetherDto) throws Exception {
+        Together together = repository.save(togetherDto.toEntity());
+
+        return together;
     }
 
     @Override
     public List<Object[]> lists() throws Exception {
-        return  jpaRepository.lists();
+        return  repository.lists();
     }
 
     @Override
     public List<Object[]> read(Long boardNo) throws Exception {
-        return jpaRepository.read(boardNo);
+        return repository.read(boardNo);
     }
 
     @Override
-    public void modify(Together together) throws Exception {
+    public Together findByBoardNo(Long boardNo) throws Exception {
+        Together together = repository.findById(boardNo).orElseThrow();
 
-        repository.modify(together);
+        return together;
     }
 
     @Override
-    public void remove(Long boardNo) throws Exception {
-        repository.remove(boardNo);
+    public void modify(Together together, TogetherDto togetherDto) throws Exception {
+        together.updateTogether(togetherDto);
+
+        repository.save(together);
+    }
+
+    @Override
+    public void remove(Together together) throws Exception {
+        repository.delete(together);
     }
 }

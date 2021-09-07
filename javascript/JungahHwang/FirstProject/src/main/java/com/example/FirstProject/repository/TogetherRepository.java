@@ -1,25 +1,21 @@
 package com.example.FirstProject.repository;
 
 import com.example.FirstProject.entity.Together;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-@Repository
-public class TogetherRepository {
+import java.util.List;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+public interface TogetherRepository extends JpaRepository<Together, Long> {
 
-    public void modify(Together together) throws Exception {
-        String query = "update together set title = ?, content = ? where board_no = ?";
+    @Query("select t.boardNo, t.id, t.title, substring(t.content, 1, 90), " +
+            "date_format(t.regDate, '%Y.%m.%d') from Together t")
+    List<Object[]> lists();
 
-        jdbcTemplate.update(query, together.getTitle(), together.getContent(), together.getBoardNo());
-    }
+    @Query("select t.boardNo, t.id, t.title, t.content, date_format(t.regDate, '%Y.%m.%d') from Together t " +
+            "where t.boardNo like :boardNo")
+    List<Object[]> read(@Param("boardNo") Long boardNo);
 
-    public void remove(Long boardNo) throws Exception {
-        String query = "delete from together where board_no = ?";
 
-        jdbcTemplate.update(query, boardNo);
-    }
 }

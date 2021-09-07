@@ -1,49 +1,54 @@
 <template>
-  <v-card class="my-5 pt-1" color="primary">
-    <v-card class="ma-5">
-      <v-toolbar flat>
-        <v-toolbar-title>
-          {{ together.title }}
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-menu offset-y>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item @click="modifyTogether">
-              수정
-            </v-list-item>
-            <!-- 삭제 확인 dialog -->
-            <remove-board-dialog v-on:remove="removeTogether"></remove-board-dialog>
-          </v-list>
-        </v-menu>
-      </v-toolbar>
+  <v-sheet>
+    <v-card class="my-5 pt-1" color="primary">
+      <v-card class="ma-5">
+        <v-toolbar flat>
+          <v-toolbar-title>
+            {{ together.title }}
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="modifyTogether">
+                수정
+              </v-list-item>
+              <!-- 삭제 확인 dialog -->
+              <remove-board-dialog v-on:remove="removeTogether"></remove-board-dialog>
+            </v-list>
+          </v-menu>
+        </v-toolbar>
 
-      <v-divider></v-divider>
-      <v-card-text>
-        <p v-html="content"></p>
-      </v-card-text>
+        <v-divider></v-divider>
+        <v-card-text>
+          <p v-html="content"></p>
+        </v-card-text>
+
+        <v-card-text></v-card-text>
+        
+        <v-card-text class="card-text-id caption">
+          {{ together.id }}
+        </v-card-text>
+        <v-card-text class="card-text-date caption">
+          {{ together.regDate }}
+        </v-card-text>
       
-      <v-card-text class="card-text-id caption">
-        {{ together.id }}
-      </v-card-text>
-      <v-card-text class="card-text-date caption">
-        {{ together.regDate }}
-      </v-card-text>
+      </v-card>
     
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="showTogetherList" class="pa-6" color="secondary" icon>
+          <v-icon>apps</v-icon>
+        </v-btn>
+      </v-card-actions>
     </v-card>
-  
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="showTogetherList" class="pa-6" color="secondary" icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-  
+
+    <read-comment :boardNo="boardNo"></read-comment>
+  </v-sheet>  
 </template>
 
 
@@ -51,18 +56,26 @@
 import RemoveBoardDialog from '@/components/RemoveBoardDialog'
 import axios from 'axios'
 import { mapState } from 'vuex'
+import ReadComment from '@/components/comment/ReadComment'
 
 export default {
   components: {
-    RemoveBoardDialog
+    RemoveBoardDialog,
+    ReadComment
   },
-  props: {
-    boardNo: {
-      type: Number
-    },
-    id: {
-      type: String
+  data () {
+    return {
+      boardNo: null,
+      id: null
     }
+  },
+  created () {
+    console.log(this.id)
+    this.boardNo = this.$route.query.boardNo
+    this.id = this.$route.query.id
+  },
+  mounted() {
+    this.fetchComments(this.boardNo)
   },
   computed: {
     ...mapState([ 'together', 'userInfo' ]),
@@ -74,7 +87,7 @@ export default {
     modifyTogether () {
       
       this.$router.push(
-        { name: 'ModifyTogether', params: { boardNo: this.boardNo, id: this.id } }
+        { name: 'ModifyTogether', query: { boardNo: this.boardNo, id: this.id } }
       )
     },
     removeTogether () {

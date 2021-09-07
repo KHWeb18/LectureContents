@@ -98,7 +98,7 @@ export default {
       this.fetchTogether(boardNo)
 
       this.$router.push(
-        { name: 'ReadTogether', params: { boardNo: boardNo, id: id } }
+        { name: 'ReadTogether', query: { boardNo: boardNo, id: id } }
       )
       
     },

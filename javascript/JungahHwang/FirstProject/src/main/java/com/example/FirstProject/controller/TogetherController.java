@@ -1,6 +1,8 @@
 package com.example.FirstProject.controller;
 
+import com.example.FirstProject.entity.Recommend;
 import com.example.FirstProject.entity.Together;
+import com.example.FirstProject.request.TogetherDto;
 import com.example.FirstProject.service.TogetherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,10 @@ public class TogetherController {
     private TogetherService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@Validated @RequestBody Together together) throws Exception {
+    public ResponseEntity<Void> register(@RequestBody TogetherDto togetherDto) throws Exception {
         log.info("Together Register");
 
-        service.register(together);
+        Together together = service.register(togetherDto);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
@@ -44,23 +46,25 @@ public class TogetherController {
         return new ResponseEntity<List<Object[]>>(service.read(boardNo), HttpStatus.OK);
     }
 
-    @PutMapping("/modify/{boardNo}")
-    public ResponseEntity<Together> modify(@PathVariable("boardNo") Long boardNo,
-                                       @Validated @RequestBody Together together) throws Exception {
+    @PatchMapping("/modify/{boardNo}")
+    public ResponseEntity<Void> modify(@PathVariable("boardNo") Long boardNo,
+                                       @RequestBody TogetherDto togetherDto) throws Exception {
         log.info("Together Modify");
 
-        together.setBoardNo(boardNo);
+        Together together = service.findByBoardNo(boardNo);
 
-        service.modify(together);
+        service.modify(together, togetherDto);
 
-        return new ResponseEntity<>(together, HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @DeleteMapping("/remove/{boardNo}")
     public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
         log.info("Together Remove");
 
-        service.remove(boardNo);
+        Together together = service.findByBoardNo(boardNo);
+
+        service.remove(together);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
