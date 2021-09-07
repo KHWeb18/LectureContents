@@ -9,9 +9,10 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+// jpa 사용시 필수적인 Annotation이 Entity
 @Entity
 @ToString
-public class DaumNews {
+public class DaumNews {  //@Id, @GeneratedValue, @Column db에 들어갈 데이터를 자동으로 만들어준다
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long newsSeq;
@@ -28,11 +29,13 @@ public class DaumNews {
     @Column(length = 2000, nullable = false)
     private String address;
 
-    @Builder
+    /*
+    @Builder <= 객체를 새로 생성한다
     public DaumNews(String newsNo, String category, String title, String address) {
         this.newsNo = newsNo;
         this.address = address;
         this.category = category;
         this.title = title;
     }
+     */
 }

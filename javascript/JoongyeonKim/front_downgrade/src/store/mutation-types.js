@@ -27,3 +27,6 @@ export const SCORE_MANAGEMENT = 'SCORE_MANAGEMENT'
 export const CALC_MEAN = 'CALC_MEAN' 
 
 export const CRAWL_START = 'CRAWL_START'
+
+export const FETCH_MEMBER_LIST = 'FETCH_MEMBER_LIST'
+export const FETCH_MEMBER = 'FETCH_MEMBER'

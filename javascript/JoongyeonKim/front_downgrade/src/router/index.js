@@ -60,6 +60,27 @@ import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 //vuetify
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
+//coverflow
+import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
+
+//vue-awesome-swiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+//Image Gallery
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+
+// Calendar
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+//JPA
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+import VuetifyMemberListPage from '@/views/VuetifyMemberListPage.vue'
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+
+//File Upload
+import FileUploadPage from '@/views/FileUploadPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -296,6 +317,69 @@ const routes = [
     name: 'VuetifyAllInOneTestPage',
     components: {
       default: VuetifyAllInOneTestPage
+    }
+  },
+  {
+    path: '/vutifyMemberRegister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }
+  },
+  {
+    path: '/VuetifyMemberListPage',
+    name: 'VuetifyMemberListPage',
+    components: {
+      default: VuetifyMemberListPage
+    }
+  },
+  {
+    path: '/coverflowtest',
+    name: 'CoverFlowTestPage',
+    components: {
+      default: CoverFlowTestPage
+    }
+  },
+  {
+    path: '/Awesomeswipertest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  {
+    path: '/Imagegallery',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }
+  },
+  {
+    path: '/Calendartest',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/memberJoinColumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/Vuetifylogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/fileUpload',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
     }
   }
 ]

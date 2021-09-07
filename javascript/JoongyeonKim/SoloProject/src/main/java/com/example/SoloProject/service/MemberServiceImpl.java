@@ -14,32 +14,19 @@ public class MemberServiceImpl implements MemberService {
     private MemberRepository repository;
 
     @Override
-    public void signup(Member member) {
-        repository.create(member);
+    public void register(Member member) throws Exception {
+        repository.save(member);
     }
 
+    /*
     @Override
     public void login(Member member) throws Exception {
-        repository.create(member);
+        repository.login(member);
     }
 
     @Override
-    public List<Member> list() throws Exception {
-        return repository.list();
+    public List<Member> lists() throws Exception {
+        return repository.findAll();
     }
-
-    @Override
-    public Member read(Integer memberNo) throws Exception {
-        return repository.read(memberNo);
-    }
-
-    @Override
-    public void remove(Integer memberNo) throws Exception {
-        repository.delete(memberNo);
-    }
-
-    @Override
-    public void modify(Member member) throws Exception {
-        repository.update(member);
-    }
+     */
 }

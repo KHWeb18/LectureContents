@@ -31,8 +31,12 @@ import {
     SCORE_MANAGEMENT,
 
     // 크롤링
-    CRAWL_START
-    
+    CRAWL_START,
+
+    //JPA
+    FETCH_MEMBER_LIST,
+    FETCH_MEMBER
+
 } from './mutation-types'
 
 import axios from 'axios'
@@ -150,7 +154,7 @@ export default {
     },
      // 크롤링
      async crawlFind ({ commit }, category) {
-        axios.get('http://localhost:7777/' + `${category}`)
+        axios.get('http://localhost:7777/crawl/' + `${category}`)
                 .then(({ data }) => {
                     commit(CRAWL_START, data)
 
@@ -158,5 +162,18 @@ export default {
                         router.push('/daumNewsCrawler')
                     }
                 })
-    }
+    },
+    // 회원
+    fetchMemberList ({commit}) {
+        return axios.get('http://localhost:7777/vuejpamember/lists')
+            .then((res) =>{
+                commit(FETCH_MEMBER_LIST, res.data)
+            })
+    },
+    fetchMember({ commit }, memberNo) {
+        return axios.get(`http://localhost:7777/vuejpamember/${memberNo}`)
+        .then((res) => {
+            commit(FETCH_MEMBER, res.data)
+        })
+    },
 }
