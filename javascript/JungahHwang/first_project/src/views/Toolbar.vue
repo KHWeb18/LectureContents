@@ -11,7 +11,7 @@
       
       <v-spacer></v-spacer>
 
-      <login-form></login-form>
+      <login></login>
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer" color="primary" temporary>
@@ -31,12 +31,12 @@
 
 
 <script>
-import LoginForm from '@/components/member/LoginForm'
+import Login from '@/views/member/Login'
 
 export default {
   name: 'Toolbar',
   components: {
-    LoginForm
+    Login
   },
   data() {
     return {
