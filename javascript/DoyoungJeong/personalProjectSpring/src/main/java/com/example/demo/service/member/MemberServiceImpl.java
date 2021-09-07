@@ -3,6 +3,7 @@ package com.example.demo.service.member;
 import com.example.demo.controller.concert.request.ConcertDeleteRequest;
 import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.MemberRequest;
+import com.example.demo.controller.member.response.MemberResponse;
 import com.example.demo.entity.member.LikedConcert;
 import com.example.demo.entity.member.Member;
 import com.example.demo.entity.member.MemberIdentity;
@@ -20,6 +21,9 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -63,7 +67,7 @@ public class MemberServiceImpl implements MemberService{
             String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
             memberRequest.setPassword(encodedPassword);
 
-            String location = memberRequest.getLocation().replace("\\[", "").replaceAll("\\]","").
+            String location = memberRequest.getLocation().replaceAll("\\[", "").replaceAll("\\]","").
                     replaceAll("\"", "");
 
             MemberIdentity memberIdentity = new MemberIdentity(memberRequest.getIdentity());
@@ -150,29 +154,60 @@ public class MemberServiceImpl implements MemberService{
 
         Member member = memberRepository.findByMemberNo(memberNo).get();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formatDate = sdf.format(member.getRegDate());
+        log.info("formatDate: " + formatDate);
+
+        //Date newDate = sdf.parse(member.getRegDate().getDate() + " " + member.getRegDate().getTime()); //ParseException: Unparseable date: "4 1630730129000"
+        //log.info("newDate: " + newDate);\
+
+        //Date date = sdf.parse("2018.09.09"); sdf에 있는 형식에 맞춰줘야 파싱됨
+        //log.info("date: " + date);
+
         return member;
     }
 
     @Override
     public void delete(Long memberNo) throws Exception {
         memberIdentityRepository.delete(memberNo); //자식 먼저 지워주고 뒤에 부모를 지워야 전부 깔끔하게 지워짐
+
+        Long deleteNo;
+        List<LikedConcert> likedConcertList = likedConcertRepository.findByMemberNo(memberNo);//탈퇴할 때 콘서트에서 해당 탈퇴하는 사용자가 찜한 number_of_likes를 1씩 빼주는 알고리즘
+
+        for(int i=0; i<likedConcertList.size(); i++) {
+
+            deleteNo = likedConcertList.get(i).getConcertNo();
+
+            concertRepository.minusNumberOfLikes(deleteNo);
+        }
+
         likedConcertRepository.delete(memberNo);
+
         memberTasteRepository.delete(memberNo);
         //boardRepository.delete(memberNo);
         memberRepository.delete(memberNo);
     }
 
     @Override
-    public void modify(MemberRequest memberRequest) throws Exception { //자식 레퍼지토리와 부모 레퍼지토리를 동시에 수정해줘야 함
+    public MemberResponse modify(MemberRequest memberRequest) throws Exception { //자식 레퍼지토리와 부모 레퍼지토리를 동시에 수정해줘야 함
         String encodedPassword = passwordEncoder.encode(memberRequest.getPassword());
         memberRequest.setPassword(encodedPassword);
 
         Long memberNo = new Long(memberRequest.getMemberNo());
 
+        String location = memberRequest.getLocation().replaceAll("\\[", "").replaceAll("\\]","").
+                replaceAll("\"", "");
+
         memberIdentityRepository.modify(memberRequest.getIdentity(), memberNo);
 
         memberRepository.modify(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
-                memberRequest.getLocation(), memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
+                location, memberRequest.getBirthDay(), memberRequest.getPhoneNo(), memberNo);
+
+        //위는 넣어서 수정, 아래는 수정된 기본 정보 반환
+
+        MemberResponse memberResponse = new MemberResponse(new Long(memberRequest.getMemberNo()), memberRequest.getId(), memberRequest.getIdentity());
+
+        return memberResponse;
     }
 
     @Override
@@ -201,5 +236,19 @@ public class MemberServiceImpl implements MemberService{
     public void deleteLiked(ConcertDeleteRequest concertDeleteRequest) throws Exception {
         likedConcertRepository.deleteByConcertNo(new Long(concertDeleteRequest.getConcertNo()), new Long(concertDeleteRequest.getMemberNo()));
         concertRepository.minusNumberOfLikes(new Long(concertDeleteRequest.getConcertNo())); //concert테이블에 number_of_likes가 1씩 감소
+    }
+
+    @Override
+    public boolean checkPassword(MemberRequest memberRequest) throws Exception {
+
+        Optional<Member> tmpMember = memberRepository.findByMemberId(memberRequest.getId());
+        boolean ismatchedPassword = false;
+
+        if(!tmpMember.isEmpty()) {
+
+            ismatchedPassword = passwordEncoder.matches(memberRequest.getPassword(), tmpMember.get().getPassword()); //암호화된 코드가 먼저옴
+            return ismatchedPassword;
+        }
+        return ismatchedPassword;
     }
 }
