@@ -1,25 +1,23 @@
 package com.example.FirstProject.repository;
 
 import com.example.FirstProject.entity.Record;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class RecordRepository {
+import java.util.Optional;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
-    public void modify(Record record) throws Exception {
-        String query = "update record set food = ?, exercise = ?, weight = ? where date = ?";
+public interface RecordRepository extends JpaRepository<Record, Long> {
 
-        jdbcTemplate.update(query, record.getFood(), record.getExercise(), record.getWeight(), record.getDate());
-    }
-
-    public void remove(String date) throws Exception {
-        String query = "delete from record where date = ?";
-
-        jdbcTemplate.update(query, date);
-    }
+    Optional<Record> findByDate(String date);
 }
+
+
+
+
+
+
+
+
+
+
+

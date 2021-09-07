@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="my-3 mr-3">
     <v-card v-if="!isLogin">
       <v-card-text>
         <p>로그인을 해주세요!</p>

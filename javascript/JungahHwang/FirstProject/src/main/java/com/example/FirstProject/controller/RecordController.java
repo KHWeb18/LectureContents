@@ -1,6 +1,10 @@
 package com.example.FirstProject.controller;
 
+import com.example.FirstProject.entity.Recommend;
 import com.example.FirstProject.entity.Record;
+import com.example.FirstProject.entity.Together;
+import com.example.FirstProject.request.RecordDto;
+import com.example.FirstProject.request.TogetherDto;
 import com.example.FirstProject.service.RecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -22,38 +27,42 @@ public class RecordController {
     private RecordService service;
 
     @PostMapping("/add")
-    public ResponseEntity<Void> register(@Validated @RequestBody Record record) throws Exception {
-        log.info("add");
+    public ResponseEntity<Void> register(@RequestBody RecordDto recordDto) throws Exception {
+        log.info("Together Register");
 
-        service.add(record);
+        Record record = service.register(recordDto);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @GetMapping("/{date}")
-    public ResponseEntity<List<Object[]>> list(@PathVariable("date") @RequestBody String date) throws Exception {
-        log.info("list" + service.findByDate(date));
+    public ResponseEntity<Record> list(@PathVariable("date") @RequestBody String date) throws Exception {
+        log.info("list" );
 
-        List<Object[]> resultLists = service.findByDate(date);
+        Record record = service.findByDate(date);
 
-        return new ResponseEntity<List<Object[]>>(resultLists, HttpStatus.OK);
+        return new ResponseEntity<Record>(record, HttpStatus.OK);
     }
 
-    @PutMapping("/modify/{date}")
-    public ResponseEntity<Record> modify(@PathVariable("date") String date,
-                                         @Validated @RequestBody Record record) throws Exception {
+    @PatchMapping("/modify/{date}")
+    public ResponseEntity<Void> modify(@PathVariable("date") String date,
+                                         @RequestBody RecordDto recordDto) throws Exception {
         log.info("modify");
 
-        record.setDate(date);
+        Record record = service.findByDate(date);
 
-        service.modify(record);
+        service.modify(record, recordDto);
 
-        return new ResponseEntity<>(record,HttpStatus.OK);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @DeleteMapping("/remove/{date}")
     public ResponseEntity<Void> remove(@PathVariable("date") String date) throws Exception {
-        service.remove(date);
+
+        Record record = service.findByDate(date);
+
+        service.remove(record);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

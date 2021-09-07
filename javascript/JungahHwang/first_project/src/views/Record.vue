@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <h2>기록 페이지</h2>
+  <v-card class="mt-8" color="primary">
     <v-row>
       <v-col cols="12" md="8">
-        <v-card class="pa-3 primary">
-          <v-toolbar flat class="primary">
+        <v-card class="ma-3 px-3 pb-3">
+          <v-toolbar flat>
             <!--
             <v-btn class="mr-4 secondary--text" color="primary" @click="setToday">Today</v-btn>
             -->
@@ -20,7 +19,7 @@
             </v-btn>
           </v-toolbar>
         
-          <v-calendar ref="calendar" v-model="focus" color="secondary" 
+          <v-calendar ref="calendar" v-model="focus"  color="secondary" 
           :type="type" @click:date="viewDay">
           </v-calendar>
           
@@ -32,7 +31,7 @@
       </v-col>
     </v-row>
     
-  </div>
+  </v-card>
 </template>
 
 

@@ -1,17 +1,20 @@
 package com.example.FirstProject.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.FirstProject.request.RecommendDto;
+import com.example.FirstProject.request.RecordDto;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
+@Builder
+@Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "record")
 public class Record {
     @Id
@@ -41,10 +44,9 @@ public class Record {
     @UpdateTimestamp
     private Date updDate;
 
-    public Record(String date, String food, String exercise, String weight) {
-        this.date = date;
-        this.exercise = exercise;
-        this.food = food;
-        this.weight = weight;
+    public void updateRecord(RecordDto recordDto) {
+        this.food = recordDto.getFood();
+        this.exercise = recordDto.getExercise();
+        this.weight = recordDto.getWeight();
     }
 }

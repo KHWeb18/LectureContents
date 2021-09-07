@@ -62,7 +62,7 @@ export default {
 
       console.log(date + ': ' + food + ', ' + exercise + ', ' + weight)
       
-      axios.put(`http://localhost:7777/record/modify/${date}`, { food, exercise, weight }).then(() => {
+      axios.patch(`http://localhost:7777/record/modify/${date}`, { food, exercise, weight }).then(() => {
         alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 수정되었습니다!')
        }).catch(res => {
         alert(res.response.data.message)

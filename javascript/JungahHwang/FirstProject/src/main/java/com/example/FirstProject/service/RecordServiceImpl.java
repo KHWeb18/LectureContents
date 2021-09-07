@@ -1,8 +1,8 @@
 package com.example.FirstProject.service;
 
 import com.example.FirstProject.entity.Record;
-import com.example.FirstProject.repository.RecordJPARepository;
 import com.example.FirstProject.repository.RecordRepository;
+import com.example.FirstProject.request.RecordDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,29 +16,32 @@ import java.util.List;
 public class RecordServiceImpl implements RecordService {
 
     @Autowired
-    private RecordJPARepository jpaRepository;
-
-    @Autowired
     private RecordRepository repository;
 
     @Override
-    public void add(Record record) throws Exception {
-        jpaRepository.save(record);
+    public Record register(RecordDto recordDto) throws Exception {
+        Record record = repository.save(recordDto.toEntity());
+
+        return record;
     }
 
     @Override
-    public List<Object[]> findByDate(String date) throws Exception {
-        return jpaRepository.findByDate(date);
+    public Record findByDate(String date) throws Exception {
+        Record record = repository.findByDate(date).orElse(null);
+
+        return record;
     }
 
     @Override
-    public void modify(Record record) throws Exception {
-        repository.modify(record);
+    public void modify(Record record, RecordDto recordDto) throws Exception {
+        record.updateRecord(recordDto);
+
+        repository.save(record);
     }
 
     @Override
-    public void remove(String date) throws Exception {
-        repository.remove(date);
+    public void remove(Record record) throws Exception {
+        repository.delete(record);
     }
 }
 
