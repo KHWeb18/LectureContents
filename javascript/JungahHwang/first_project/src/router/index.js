@@ -6,7 +6,7 @@ import ListTest from '@/views/ListTest'
 
 import Record from '@/views/Record'
 
-import Challenge from '@/views/Challenge'
+import Challenge from '@/views/challenge/Challenge'
 
 import Recommend from '@/views/recommend/Recommend'
 import AddRecommend from '@/views/recommend/AddRecommend'
@@ -61,7 +61,7 @@ const routes = [
   {
     path: '/recommend',
     name: 'Recommend',
-    component: Recommend
+    component: Recommend,
   },
   {
     path: '/recommend/register',
@@ -69,16 +69,14 @@ const routes = [
     component: AddRecommend
   },
   {
-    path: '/recommend/read/:boardNo',
+    path: '/recommend/read',
     name: 'ReadRecommend',
     component: ReadRecommend,
-    props: true
   },
   {
-    path: '/recommend/modify/:boardNo',
+    path: '/recommend/modify',
     name: 'ModifyRecommend',
     component: ModifyRecommend,
-    props: true
   },
   {
     path: '/together',
@@ -91,16 +89,14 @@ const routes = [
     component: AddTogether
   },
   {
-    path: '/together/read/:boardNo',
+    path: '/together/read',
     name: 'ReadTogether',
     component: ReadTogether,
-    props: true
   },
   {
-    path: '/together/modify/:boardNo',
+    path: '/together/modify',
     name: 'ModifyTogether',
     component: ModifyTogether,
-    props: true
   },
   {
     path: '/chatting',
