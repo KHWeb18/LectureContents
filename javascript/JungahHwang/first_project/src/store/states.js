@@ -1,9 +1,7 @@
-import cookies from 'vue-cookies'
-
 export default {
 // Login
   isLogin: false,
-  userInfo: cookies.get('session'),
+  userInfo: [],
   session: [],
 
   idRules: [
@@ -51,5 +49,6 @@ export default {
   together: [],
 
 // Comment
-  comments: []
+  comments: [],
+  comment: []
 }

@@ -11,7 +11,8 @@ import {
   FETCH_TOGETHERS,
   FETCH_TOGETHER,
 // Comment
-  FETCH_COMMENT,  
+  FETCH_COMMENTS,
+  FETCH_COMMENT  
 
 } from './mutation-types'
 
@@ -33,15 +34,13 @@ export default {
 // Calendar
   fetchRecord ({ commit }, date) {
     return axios.get(`http://localhost:7777/record/${date}`).then(res => {
-      commit(FETCH_RECORD, res.data[0])
+      commit(FETCH_RECORD, res.data)
     })
   },
   
 // Recommend
   fetchRecommends ({ commit }) {
     return axios.get('http://localhost:7777/recommend/lists').then(res => {
-
-      
       let recommends = []
 
       for (let i = 0; i < res.data.length; i++) {
@@ -97,6 +96,13 @@ export default {
 // Comment
   fetchComments ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/comment/read/${boardNo}`).then(res => {
+      console.log('commentList: ' + res.data)
+
+      commit(FETCH_COMMENTS, res.data)
+    })
+  },
+  fetchComment ({ commit }, commentNo) {
+    return axios.get(`http://localhost:7777/comment/read/only/${commentNo}`).then(res => {
       console.log(res.data)
 
       commit(FETCH_COMMENT, res.data)

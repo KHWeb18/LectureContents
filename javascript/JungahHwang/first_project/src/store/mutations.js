@@ -14,7 +14,8 @@ import {
   FETCH_TOGETHER,
 
 // Comment 
-  FETCH_COMMENT,
+  FETCH_COMMENTS,
+  FETCH_COMMENT
 } from './mutation-types'
 
 export default {
@@ -38,12 +39,8 @@ export default {
     console.log(state.date)
   },
   [FETCH_RECORD] (state, record) {
-    if (record) {
-      record = { food: record[0], exercise: record[1], weight: record[2] }
-    } else {
-      record = null
-    }
     state.record = record
+
     console.log(record)
   },
 
@@ -64,7 +61,10 @@ export default {
   },
 
 // Comment
-  [FETCH_COMMENT] (state, comments) {
+  [FETCH_COMMENTS] (state, comments) {
     state.comments = comments
+  },
+  [FETCH_COMMENT] (state, comment) {
+    state.comment = comment
   }
 }
