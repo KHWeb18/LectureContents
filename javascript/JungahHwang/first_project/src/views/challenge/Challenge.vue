@@ -39,7 +39,7 @@ export default {
         q: `${this.search} 운동`,
         type: 'video',
         videoDefinition: 'high',
-        key: 'AIzaSyB9gbohKgJ9m39FCCRvtUnhhmYQL6HSyQs'
+        key: ''
       }
 
       axios.get('https://www.googleapis.com/youtube/v3/search', { params }).then(res => {
