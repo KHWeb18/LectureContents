@@ -1,12 +1,12 @@
 <template>
     <v-dialog v-model="loginDialog" persistent max-width="290">
         <template v-slot:activator="{ on }">
-            <p id="topBarText" class="flat waves-effect waves-red" v-on="on" style="margin-top: -5px;">lOG IN</p>
+            <p class="flat waves-effect waves-red topBarText" v-on="on" style="margin-top: -5px;">lOG IN</p>
         </template>
 
         <v-card>
             <v-card-title class="headLine">
-                <p id="headline" style="margin-bottom: -5px;">Login</p>
+                <p class="headline" style="margin-bottom: -5px;">Login</p>
             </v-card-title>
             <v-card-text>
                 <v-container grid-list-md>
@@ -89,7 +89,6 @@ export default {
                         //alert("currentUser: " + this.currentUser[2])
                         alert('currentUser ' + JSON.stringify(this.$cookies.get("currentUser")))
                         
-
                     } else {
                         alert('로그인 실패!')
                     }
@@ -109,7 +108,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
-#headline {
+.headline {
     font-size: 30px;
     color: white;
     font-family: 'Roboto', sans-serif;

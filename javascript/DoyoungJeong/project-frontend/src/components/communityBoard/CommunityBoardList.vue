@@ -27,6 +27,7 @@
             <v-data-table :headers="headerTitle"
                         :items="boards"
                         :items-per-page="5"
+                        :search="searchTitle"
                         class="elevation-1">
 
                     <template v-slot:item="{ item, index }"> <!-- v-data-table에서 index뽑는 법 -->
@@ -39,6 +40,10 @@
                     </template>
 
             </v-data-table>
+            
+            <v-text-field label="찾을 게시글의 제목 또는 작성자를 검색하세요." v-model="searchTitle" class="footerText"
+            style="width: 300px; float: right;"/>
+
         </v-container>
         
     </div>
@@ -61,7 +66,8 @@ export default {
                 { text: '제목', value: 'title', width: '50%'},
                 { text: '작성자', value: 'id', width: '20%'},
                 { text: '게시일', value: 'regDate', width: '20%'}
-            ]
+            ],
+            searchTitle: ''
         }
     },
     methods: {
@@ -80,3 +86,4 @@ export default {
     }
 }
 </script>
+

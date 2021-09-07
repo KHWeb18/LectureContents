@@ -91,8 +91,8 @@ export default {
                             const concertDate = this.$store.state.concert.concertDate
                             const concertInfo = this.$store.state.concert.concertInfo
                             
-                            console.log("{ memberNo }: " + memberNo)
-                            console.log("{ concert }: " + JSON.stringify(this.$store.state.concert))
+                            // console.log("{ memberNo }: " + memberNo)
+                            // console.log("{ concert }: " + JSON.stringify(this.$store.state.concert))
 
                             axios.post('http://localhost:8888/member/addLiked', { memberNo, concertNo, concertName, concertArtist, concertVenue, concertPrice, concertDate, concertInfo })
                                 .then(alert('관심 목록에 추가되었습니다!'))

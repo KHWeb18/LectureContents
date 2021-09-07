@@ -10,12 +10,12 @@
              
                 <v-card>
                     <v-card-title class="headline">
-                        <p id="headline">Genre</p>
-                        <p id="description">장르를 설정하시면 맞는 공연을 추천해드려요! :)</p>
+                        <p class="headline">Genre</p>
+                        <p class="description">장르를 설정하시면 맞는 공연을 추천해드려요! :)</p>
                     </v-card-title>
                     <v-card-text>
                         <div class="row">
-                            <p id="genreText">Rock</p>
+                            <p class="genreText">Rock</p>
                             <v-checkbox style="margin-top: 5px;" class="shrink mr-2" label="전부 좋아요!"></v-checkbox>
                             <div class="row">                            
                                 <v-checkbox class="shrink mr-2" label="Pop"></v-checkbox>
@@ -28,7 +28,7 @@
                             </div>
                        </div>
                        <div class="row">
-                            <p id="genreText">Hip-Hop</p>
+                            <p class="genreText">Hip-Hop</p>
                             <v-checkbox style="margin-top: 5px;" class="shrink mr-2" label="전부 좋아요!"></v-checkbox>
                             <div class="row">                            
                                 <v-checkbox class="shrink mr-2" label="BoomBap"></v-checkbox>
@@ -42,7 +42,7 @@
                             </div>
                        </div>
                        <div class="row">
-                            <p id="genreText">EDM</p>
+                            <p class="genreText">EDM</p>
                             <v-checkbox style="margin-top: 5px;" class="shrink mr-2" label="전부 좋아요!"></v-checkbox>
                             <div class="row">                            
                                 <v-checkbox class="shrink mr-2" label="House"></v-checkbox>
@@ -54,7 +54,7 @@
                             </div>
                        </div>
                        <div class="row">
-                            <p id="genreText">Jazz</p>
+                            <p class="genreText">Jazz</p>
                             <v-checkbox style="margin-top: 5px;" class="shrink mr-2" label="전부 좋아요!"></v-checkbox>
                             <div class="row">                            
                                 <v-checkbox class="shrink mr-2" label="Blues"></v-checkbox>
@@ -65,7 +65,7 @@
                             </div>
                        </div>
                        <div>
-                           <p id="description">찾으시는 장르가 없나요? :( <br> 밑에 입력하시면 저희가 취향을 최대한 반영해드릴게요!</p>
+                           <p class="description">찾으시는 장르가 없나요? :( <br> 밑에 입력하시면 저희가 취향을 최대한 반영해드릴게요!</p>
                            <input type="text" style="font-size: 12px; font-style: italic;" v-model="basicText" @click="resetText"/>
                        </div>
                     </v-card-text>
@@ -116,7 +116,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
-#headline {
+.headline {
     font-size: 30px;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -124,21 +124,21 @@ export default {
     margin-right: 10px;
 }
 
-#description {
+.description {
     font-size: 12px;
     font-style: italic;
     margin-top: 10px;
 }
 
-#genreText {
+.genreText {
     font-size: 17px;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-style: italic;
-    margin-top: 10px;
+    margin-top: -5px;
 }
 
-#checkAll {
+.checkAll {
     font-size: 12px;
     font-style: italic;
     margin-top: -20px;

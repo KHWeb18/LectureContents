@@ -23,6 +23,8 @@ import CommunityWritePage from '../views/community/CommunityWritePage.vue'
 import CommunityReadPage from '../views/community/CommunityReadPage.vue'
 import CommunityModifyPage from '../views/community/CommunityModifyPage.vue'
 
+import RegisterRequest from '../views/member/authArtist/RegisterRequest.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -149,6 +151,11 @@ const routes = [
     path: '/aboutUsPage',
     name: 'AboutUsPage',
     component: AboutUsPage
+  },
+  {
+    path: '/registerRequest',
+    name: 'RegisterRequest',
+    component: RegisterRequest
   }
 
 ]

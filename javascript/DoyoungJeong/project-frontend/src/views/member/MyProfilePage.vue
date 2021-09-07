@@ -47,7 +47,10 @@
                 </tr>
            
             </table>
-            <div style="margin-top: 20px;">
+
+            <check-dialogue v-bind:memberNo="member.memberNo"/>
+
+            <!-- <div style="margin-top: 20px;">
                 <router-link :to="{ name: 'MemberModifyPage' }" @click.native="btn_withdrawal(userProfile.memberNo)" 
                 class="btn-flat red-text waves-effect waves-teal" text="text" style="margin-right: 40px;">
                     수정
@@ -57,7 +60,7 @@
                 class="btn-flat red-text waves-effect waves-teal" text="text">
                     탈퇴
                 </router-link>
-            </div>
+            </div> -->
         </v-container>
     </div>
 </template>
@@ -66,8 +69,13 @@
 //import EventBus from '@/eventBus.js'
 import { mapActions, mapState } from 'vuex'
 
+import CheckDialogue from '@/components/memberPage/CheckDialogue'
+
 export default {
     name: 'MyProfilePage',
+    components: {
+        CheckDialogue
+    },
     data() {
         return {
             password: "***********"
@@ -82,12 +90,12 @@ export default {
         btn_modify() {
            
         },
-        btn_withdrawal(memberNo) {
-            const payload = [ memberNo ]
+        // btn_withdrawal(memberNo) {
+        //     const payload = [ memberNo ]
 
-            //EventBus.$emit('sendNum', payload)
-            console.log('The num has been sent! ' + payload)
-        }
+        //     //EventBus.$emit('sendNum', payload)
+        //     console.log('The num has been sent! ' + payload)
+        // }
     },
     mounted() {
         this.$store.state.userProfile = this.$cookies.get("currentUser")
