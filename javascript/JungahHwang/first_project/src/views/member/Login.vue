@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-sheet>
     <v-dialog v-model="dialog" persistent max-width="500px">
       <template v-slot:activator="{ on }">
         <v-btn v-on="on" icon class="float-right">
@@ -28,12 +28,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-
-    <v-snackbar v-model="loginSuccess" :timeout="timeout" color="secondary" 
-       bottom rounded="xl">
-      <p>로그인이 완료되었습니다!</p>
-    </v-snackbar>
-  </div>
+  </v-sheet>
 </template>
 
 
@@ -55,8 +50,6 @@ export default {
       pw: null,
       errorMessages: '',
       formHasErrors: false,
-      loginSuccess: false,
-      timeout: 1500
     }
   },
   mounted () {
@@ -64,6 +57,7 @@ export default {
     
     if (this.session != null) {
       this.$store.state.isLogin = true
+      this.$store.state.userInfo = this.$cookies.get('session')
     }
   },
   computed: {
@@ -81,7 +75,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions ([ 'userLogin', 'fetchSession' ]),
+    ...mapActions ([ 'userInfo', 'fetchSession' ]),
 
     btnLogin () {
       this.formHasErrors = false
@@ -101,12 +95,14 @@ export default {
           
           this.$store.commit('USER_LOGIN', res.data)
           
-          this.userLogin(id)
+          this.userInfo(id)
 
           this.dialog = false
           alert('로그인이 완료되었습니다!')
           
-          this.loginSuccess = true
+          // recommend(together) 로 보냄
+          this.$emit('onLogin')
+
 
         } else if (res.data == false) {
           alert('아이디와 비밀번호를 확인해주세요!')

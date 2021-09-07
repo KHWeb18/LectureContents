@@ -49,6 +49,7 @@ export default {
       axios.post('http://localhost:7777/member/logout').then(res => {
         this.$store.commit('USER_LOGIN', res.data)
         this.fetchSession(this.$cookies.remove('session'))
+        this.$store.commit('USER_INFO', [])
       })
     },
     btnMypage () {
