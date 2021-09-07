@@ -1,48 +1,55 @@
 <template>
-  <v-card class="my-5 pt-1" color="primary">
-    <v-card class="ma-5">
-      <v-toolbar flat>
-        <v-toolbar-title>
-          {{ recommend.title }}
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+  <v-sheet>
+    <v-card class="my-5 pt-1" color="primary">
+      <v-card class="ma-5">
+        <v-toolbar flat>
+          <v-toolbar-title>
+            {{ recommend.title }}
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
 
-        <v-menu offset-y>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item @click="modifyRecommend">
-              수정
-            </v-list-item>
-            <!-- 삭제 확인 dialog -->
-            <remove-board-dialog v-on:remove="removeRecommend"></remove-board-dialog>
-          </v-list>
-        </v-menu>
-      </v-toolbar>
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="modifyRecommend">
+                수정
+              </v-list-item>
+              <!-- 삭제 확인 dialog -->
+              <remove-board-dialog v-on:remove="removeRecommend"></remove-board-dialog>
+            </v-list>
+          </v-menu>
+        </v-toolbar>
 
-      <v-divider></v-divider>
-      <v-card-text>
-        <p v-html="content"></p>
-      </v-card-text>
-      <v-card-text class="card-text-id caption">
-        {{ recommend.id }}
-      </v-card-text>
-      <v-card-text class="card-text-date caption">
-        {{ recommend.regDate }}
-      </v-card-text>
+        <v-divider></v-divider>
+        <v-card-text>
+          <p v-html="content"></p>
+        </v-card-text>
+
+        <v-card-text></v-card-text>
+        
+        <v-card-text class="card-text-id caption">
+          {{ recommend.id }}
+        </v-card-text>
+        <v-card-text class="card-text-date caption">
+          {{ recommend.regDate }}
+        </v-card-text>
+      
+      </v-card>
     
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="showRecommendList" class="pa-6" color="secondary" icon>
+          <v-icon>apps</v-icon>
+        </v-btn>
+      </v-card-actions>
     </v-card>
-  
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="showRecommendList" class="pa-6" color="secondary" icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+
+    <read-comment :boardNo="boardNo"></read-comment>
+  </v-sheet>
   
 </template>
 
@@ -50,24 +57,35 @@
 <script>
 import RemoveBoardDialog from '@/components/RemoveBoardDialog'
 import axios from 'axios'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import ReadComment from '@/components/comment/ReadComment'
 
 export default {
   components: {
-    RemoveBoardDialog
+    RemoveBoardDialog,
+    ReadComment
   },
-  props: {
-    boardNo: {
-      type: Number
-    },
-    id: {
-      type: String
+  // props: {
+  //   boardNo: {
+      
+  //   },
+  //   id: {
+  //     type: String
+  //   }
+  // },
+  data () {
+    return {
+      boardNo: null,
+      id: null
     }
   },
   created () {
     console.log(this.id)
-    console.log('recommend: ' + this.recommend.id)
-    console.log('userInfo: ' + this.userInfo.id)
+    this.boardNo = this.$route.query.boardNo
+    this.id = this.$route.query.id
+  },
+  mounted() {
+    this.fetchComments(this.boardNo)
   },
   computed: {
     ...mapState([ 'recommend', 'userInfo' ]),
@@ -76,10 +94,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions([ 'fetchComments' ]),
     modifyRecommend () {
-      
       this.$router.push(
-        { name: 'ModifyRecommend', params: { boardNo: this.boardNo, id: this.id } }
+        { name: 'ModifyRecommend', query: { boardNo: this.boardNo, id: this.id } }
       )
     },
     removeRecommend () {

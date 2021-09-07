@@ -22,24 +22,28 @@ import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  props: {
-    boardNo: {
-      type: Number
-    },
-    id: {
-      type: String
-    }
-  },
+  // props: {
+  //   boardNo: {
+     
+  //   },
+  //   id: {
+  //     type: String
+  //   }
+  // },
   data () {
     return {
       title: null,
-      content: null
+      content: null,
+      boardNo: null,
+      id: null
     }
   },
   computed: {
     ...mapState([ 'recommend' ])
   },
   created () {
+    this.boardNo = this.$route.query.boardNo
+    this.id = this.$route.query.id
     this.title = this.recommend.title
     this.content = this.recommend.content
   },
@@ -49,13 +53,13 @@ export default {
       const title = this.title
       const content = this.content
       
-      axios.put(`http://localhost:7777/recommend/modify/${this.boardNo}`, { title, content }).then(() => {
+      axios.patch(`http://localhost:7777/recommend/modify/${this.boardNo}`, { title, content }).then(() => {
         alert("수정이 완료되었습니다!")
 
         this.fetchRecommend(this.boardNo)
 
         this.$router.push(
-          { name: 'ReadRecommend', params: { id: this.id } } 
+          { name: 'ReadRecommend', query: { boardNo: this.boardNo, id: this.id } } 
         )
       })
     }

@@ -67,14 +67,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+
 export default {
   data () {
     return {
       search: '',
-      sortDesc: false,
+      //sortDesc: false,
       page: 1,
       itemsPerPage: 12,
-      sortBy: 'title'
+      //sortBy: 'title'
     }
   },
   mounted () {
@@ -98,10 +99,11 @@ export default {
       this.fetchRecommend(boardNo)
 
       this.$router.push(
-        { name: 'ReadRecommend', params: { boardNo: boardNo, id: id } }
+        { name: 'ReadRecommend', query: { boardNo: boardNo, id: id } }
       )
     },
     addButton () {
+      // recommend로 보냄
       this.$emit('addButton')
     }
   },

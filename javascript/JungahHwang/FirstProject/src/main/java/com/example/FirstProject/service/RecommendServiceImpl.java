@@ -1,8 +1,8 @@
 package com.example.FirstProject.service;
 
 import com.example.FirstProject.entity.Recommend;
-import com.example.FirstProject.repository.RecommendJPARepository;
 import com.example.FirstProject.repository.RecommendRepository;
+import com.example.FirstProject.request.RecommendDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,34 +16,41 @@ import java.util.List;
 public class RecommendServiceImpl implements RecommendService {
 
     @Autowired
-    private RecommendJPARepository jpaRepository;
-
-    @Autowired
     private RecommendRepository repository;
 
     @Override
-    public void register(Recommend recommend) throws Exception {
-        jpaRepository.save(recommend);
+    public Recommend register(RecommendDto recommendDto) throws Exception {
+        Recommend recommend = repository.save(recommendDto.toEntity());
+
+        return recommend;
     }
 
     @Override
     public List<Object[]> lists() throws Exception {
-        return  jpaRepository.lists();
+        return  repository.lists();
     }
 
     @Override
     public List<Object[]> read(Long boardNo) throws Exception {
-        return jpaRepository.read(boardNo);
+        return repository.read(boardNo);
     }
 
     @Override
-    public void modify(Recommend recommend) throws Exception {
+    public Recommend findByBoardNo(Long boardNo) throws Exception {
+        Recommend recommend = repository.findById(boardNo).orElseThrow();
 
-        repository.modify(recommend);
+        return recommend;
     }
 
     @Override
-    public void remove(Long boardNo) throws Exception {
-        repository.remove(boardNo);
+    public void modify(Recommend recommend, RecommendDto recommendDto) throws Exception {
+        recommend.updateRecommend(recommendDto);
+
+        repository.save(recommend);
+    }
+
+    @Override
+    public void remove(Recommend recommend) throws Exception {
+        repository.delete(recommend);
     }
 }
