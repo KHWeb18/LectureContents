@@ -6,38 +6,38 @@
         <template v-slot:content>
 
             <div class="row" style="margin-top: 25px; justify-content: center;">
-                <v-btn v-if="btnArr[0] == 0" class="ma-1" x-large color="red" plain @click="chooseGenre('ROCK', 0)">
+                <v-btn v-if="btnArr[0] == 0" class="ma-1" x-large plain @click="chooseGenre('ROCK', 0)">
+                    <p class="genreText" style="color: red;">Rock</p>
+                </v-btn>
+                <v-btn v-if="btnArr[0] == 1" class="ma-1" x-large plain disabled>
                     <p class="genreText">Rock</p>
                 </v-btn>
-                <v-btn v-if="btnArr[0] == 1" class="ma-1" x-large color="red" plain disabled>
-                    <p class="genreText">Rock</p>
-                </v-btn>
 
-                <v-btn v-if="btnArr[1] == 0" class="ma-1" x-large color="teal" plain @click="chooseGenre('HIP-HOP', 1)">
-                    <p class="genreText">HipHop</p>
+                <v-btn v-if="btnArr[1] == 0" class="ma-1" x-large plain @click="chooseGenre('HIP-HOP', 1)">
+                    <p class="genreText" style="color: teal;">HipHop</p>
                 </v-btn>
-                <v-btn v-if="btnArr[1] != 0" class="ma-1" x-large color="red" plain disabled>
+                <v-btn v-if="btnArr[1] != 0" class="ma-1" x-large plain disabled>
                     <p class="genreText">HipHop</p>
                 </v-btn>
 
-                <v-btn v-if="btnArr[2] == 0" class="ma-1" x-large color="primary" plain @click="chooseGenre('EDM', 2)">
-                    <p class="genreText">EDM</p>
+                <v-btn v-if="btnArr[2] == 0" class="ma-1" x-large plain @click="chooseGenre('EDM', 2)">
+                    <p class="genreText" style="color: blue;">EDM</p>
                 </v-btn>
-                <v-btn v-if="btnArr[2] != 0" class="ma-1" x-large color="red" plain disabled>
+                <v-btn v-if="btnArr[2] != 0" class="ma-1" x-large plain disabled>
                     <p class="genreText">EDM</p>
                 </v-btn>
 
-                <v-btn v-if="btnArr[3] == 0" class="ma-1" x-large color="orange" plain @click="chooseGenre('JAZZ', 3)">
-                    <p class="genreText">JAZZ</p>
+                <v-btn v-if="btnArr[3] == 0" class="ma-1" x-large plain @click="chooseGenre('JAZZ', 3)">
+                    <p class="genreText" style="color: orange">JAZZ</p>
                 </v-btn>
-                <v-btn v-if="btnArr[3] != 0" class="ma-1" x-large color="red" plain disabled>
+                <v-btn v-if="btnArr[3] != 0" class="ma-1" x-large plain disabled>
                     <p class="genreText">JAZZ</p>
                 </v-btn>
 
-                <v-btn  v-if="btnArr[4] == 0" class="ma-1" x-large color="yellow" plain @click="chooseGenre('ACOUSTIC', 4)">
-                    <p class="genreText">ACOUSTIC</p>
+                <v-btn  v-if="btnArr[4] == 0" class="ma-1" x-large plain @click="chooseGenre('ACOUSTIC', 4)">
+                    <p class="genreText" style="color: yellow">ACOUSTIC</p>
                 </v-btn>
-                <v-btn v-if="btnArr[4] != 0" class="ma-1" x-large color="red" plain disabled>
+                <v-btn v-if="btnArr[4] != 0" class="ma-1" x-large plain disabled>
                     <p class="genreText">ACOUSTIC</p>
                 </v-btn>
             </div>
@@ -248,6 +248,7 @@ export default {
         },
         removeGenre(index, $event) {
             this.chosenGenres.splice(index, 1)
+            this.chosenGenresForRequest.splice(index, 1)
 
             if($event.target.innerHTML == 'ROCK ') {
                 this.btnArr[0] = 0
@@ -264,7 +265,7 @@ export default {
         pushArtist(artist) {
 
             ///([^가-힣\x20])/i
-            if(!/^[가-힣|a-z|A-Z|0-9|/\s/g]+$/.test(artist)) { //   /\s/g   <--스페이스바 허용
+            if(!/^[가-힣|a-z|A-Z|0-9|?'#!$|/\s/g]+$/.test(artist)) { //   /\s/g   <--스페이스바 허용
                 alert('올바른 문자를 입력해주세요. :)')
 
             } else {
@@ -276,9 +277,10 @@ export default {
         },
         removeArtist(index) {
             this.chosenArtists.splice(index, 1)
+            this.chosenArtistsForRequest.splice(index, 1)
         },
         complete() {
-
+            
             const chosenGenres = JSON.stringify(this.chosenGenresForRequest)
             const speedTaste = this.speedTaste
             const atmosphereTaste = this.atmosphereTaste

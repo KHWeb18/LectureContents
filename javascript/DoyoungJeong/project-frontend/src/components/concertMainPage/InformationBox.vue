@@ -146,7 +146,7 @@ export default {
     color: #FFFFFF;
     font-family: 'Do Hyeon', sans-serif;
     font-style: italic;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 20px;
 }
 

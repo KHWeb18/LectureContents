@@ -89,6 +89,8 @@ export default {
                     alert("비밀번호는 최소 11 자, 최소 하나의 문자 및 하나의 숫자를 입력해 주세요.") 
                 } else if(this.user.password != this.user.passwordCheck) {
                     alert('비밀번호와 비밀번호 재확인이 일치하지 않습니다!')
+                } else if(!/^[가-힣|a-z|A-Z|/\s/g]+$/.test(this.user.name)) { //   /\s/g   <--스페이스바 허용
+                    alert('이름에 올바른 문자를 입력해주세요.') 
                 } else if(!/^\d{11}$/.test(this.user.phoneNo)) {
                     alert('올바른 휴대전화 번호 형식이 아닙니다!')
                 } else {
