@@ -1,8 +1,8 @@
 <template>
     <div>
         <template >
-            <v-container>
-                 <div class="tablemargin">
+            
+            <div class="tablemargin">
                  <v-card>
                 <v-simple-table>
                     <template>
@@ -10,7 +10,7 @@
                             <tr>
                                 <th class="text-left">
                                     <h5>코로나 뉴스</h5>
-                                    <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
+                                    <router-link :to="{ name: 'InfoNews' }"
                                                                 class="nav-link"
                                                                 active-class="active">
                                         <div class="more">
@@ -31,22 +31,8 @@
                     </template>
                 </v-simple-table>
             </v-card>
-<br><br><br><br>
-            <v-card>
-                  <router-link :to="{ name: 'AccountRegisterPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Account 회원 가입
-            </router-link><br>
-            <router-link :to="{ name: 'SessionLoginPage' }"
-                    class="nav-link"
-                    active-class="active">
-                Account 로그인
-            </router-link>
-            </v-card>
             </div>
            
-            </v-container>
         </template>
     </div>
 </template>

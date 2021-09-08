@@ -1,87 +1,127 @@
+
 <template>
     <div>
-        <form id="board"  class="loginForm">
-            <v-dialog v-model="loginDialog"  max-width="500px">
-              
-              <v-card>
-                  <v-card-title>
-                      <span class="headline">
-                          Log in
-                      </span>
-                  </v-card-title>
-                  <v-card-text>
-                      <v-container grid-list-md>
-                          <v-layout wrap>
-                              <v-flex xs12>
-                                  <v-text-field label="Email" v-model="userInfo.email" required flat solo>
-                                  </v-text-field>
-                              </v-flex>
-                              <v-flex xs12>
-                                  <v-text-field label="Password" v-model="userInfo.password"
-                                                  type="password" required flat solo>
-                                  </v-text-field>
-                              </v-flex>
-                          </v-layout>
-                      </v-container>
-                  </v-card-text>
-                  <v-card-actions>
-                      <v-spacer></v-spacer>
-                      
-                      <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
-                          확인
-                      </v-btn>
-
-                      <router-link :to="{ name: 'Home' }"
-                                        class="nav-link"
-                                        active-class="active">
-                            <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
-                                     나가기
-                             </v-btn>
-                      </router-link>
-                  </v-card-actions>
-              </v-card>
-        </v-dialog>
-        </form>
+        <session-login-form @submit="onSubmit"/>
+        <v-spacer></v-spacer>
+        <!-- <v-btn tile color="teal" @click="showSession">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            세션 보기
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn tile color="teal" @click="removeSession">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            세션 끊기
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn tile color="teal" @click="logout" v-if="isLogin">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            로그 아웃
+        </v-btn> -->
     </div>
 </template>
 
 <script>
+import SessionLoginForm from '@/components/session/SessionLoginForm.vue'
+import { mapState, mapActions } from 'vuex'
+import Vue from 'vue'
+import cookies from 'vue-cookies'
+import axios from 'axios'
+Vue.use(cookies)
 export default {
-    name: 'LoginPageForm',
-
-    data(){
-      return{
-            dialog: true,
-            loginDialog: true,
-            
-            userInfo: {
-                email: '',
-                password: ''
-            },
-
-      }
+    name: 'SessionLoginPage',
+    components: {
+        SessionLoginForm
     },
-    methods:{
-      btnLoginClick ($event) {
-            if ($event.target.innerHTML == " 확인 ") {
-                alert('로그인이 완료되었습니다!')
+    data () {
+        return {
+            isLogin: false,
 
-                // 이부분에 axios를 쓰면 스프링과 연동할 수 있음
-
-                console.log("입력된 정보 - 이메일: " + this.userInfo.email + 
-                            ", 비밀번호: " + this.userInfo.password)
-                this.loginDialog = false
+        }
+    },
+    mounted () {
+        // this.fetchSession()
+        this.$store.state.session = this.$cookies.get("user")
+        if (this.$store.state.session != null) {
+            this.isLogin = true
+        }
+    },
+    computed: {
+        ...mapState(['session'])
+    },
+    created(){
+        
+    },
+    methods: {
+        ...mapActions(['fetchSession']),
+        onSubmit (payload) {
+            if (this.$store.state.session == null) {
+                const { email, password } = payload
+                axios.post('http://localhost:3647/jpasession/sign-in', { email, password })
+                        .then(res => {
+                            if (res.data.hashcode != null) {
+                                alert('로그인 성공! - ' + res.data)
+                                this.isLogin = true
+                                this.$store.state.session = res.data
+                                this.$cookies.set("user", res.data, '10h')
+                                
+                            } else {
+                                alert('로그인 실패! - ' + res.data)
+                                this.isLogin = false
+                            }
+                            /*
+                            this.$router.push({
+                                name: 'BoardReadPage',
+                                params: { boardNo: res.data.boardNo.toString() }
+                            })
+                            */
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('이미 로그인 되어 있습니다 - 계정: ' + this.$store.state.session.email)
             }
-            this.userInfo.email = ''
-            this.userInfo.password = ''
+        },
+        showSession () {
+            if (this.isLogin == true) {
+                axios.post('http://localhost:3647/jpamember/needSession')
+                        .then(res => {
+                            if (res.data == true) {
+                                alert('세션 정보 유지! - ' + res.data)
+                            } else {
+                                alert('세션 정보 유지 안되는 중! - ' + res.data)
+                            }
+                            /*
+                            this.$router.push({
+                                name: 'BoardReadPage',
+                                params: { boardNo: res.data.boardNo.toString() }
+                            })
+                            */
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('먼저 로그인부터 하세요!')
+            }
+        },
+        removeSession () {
+            axios.post('http://localhost:3647/jpamember/removeSession')
+                    .then(res => {
+                        this.isLogin = res.data
+                    })
+        },
+        logout () {
+            this.$cookies.remove("user")
+            this.isLogin = false
+            this.$store.state.session = null
         }
     }
-    
 }
 </script>
-
-<style>
- 
-
-</style>
-

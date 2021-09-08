@@ -41,11 +41,14 @@
                         </v-list-item-action>
                         <v-list-item-content>
                             <v-list-item-title>{{ flink.text }}</v-list-item-title>
-                        </v-list-item-content>               
+                        </v-list-item-content>      
+                        <v-list-item-content>
+                        </v-list-item-content>           
                     </v-list-item>
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
+
     </div>
 </template>
 
@@ -55,7 +58,6 @@ export default {
         return {
             nav_drawer: false,
             group: false,
-            mypage: false,
         
             links:
                 [
@@ -69,13 +71,13 @@ export default {
                         icon: 'open_in_new',
                         text: '로그인',
                         name: 'login',
-                        route:'/login'
+                        route:'/sessionLogin'
                     },
                     {
                         icon: 'account_circle',
                         text: '회원가입',
                         name: 'register',
-                        route:'/register'
+                        route:'/accountRegister'
                     }
                 ],
             flinks:
@@ -90,7 +92,8 @@ export default {
                         icon: 'open_in_new',
                         text: '로그아웃',
                         name: 'logout',
-                        click:'logout'
+                        route:'/logout'
+
                     },
                     {
                         icon: 'account_circle',
@@ -112,13 +115,9 @@ export default {
     },
     created(){
         this.session= this.$store.state.session
-        // if(this.$store.state.session==null){
-        //    this.$store.state.log=1
-        // }
-        // if(this.$store.state.session!=null){
-        //    this.$store.state.log=2
-        // }
+        
     },
+    
     
 }
 </script>

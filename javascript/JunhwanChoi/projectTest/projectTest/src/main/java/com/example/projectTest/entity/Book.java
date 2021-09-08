@@ -1,23 +1,41 @@
 package com.example.projectTest.entity;
 
-
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.Date;
+import javax.persistence.*;
 
-@Getter
-@Setter
-@ToString
+@Slf4j
+@Entity
+@Table
+@NoArgsConstructor
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bookNo;
 
-    private int bookNo;
-    private int month;
-    private int day;
-    private int time;
+    @Getter
+    @Column(nullable = false)
+    private Integer month;
+
+    @Getter
+    @Column(nullable = false)
+    private Integer day;
+
+    @Getter
+    @Column(nullable = false)
+    private Integer time;
+
+    @Getter
+    @Column(nullable = false)
     private String place;
-    private Date regDate;
 
+    public Book(Integer month, Integer day, Integer time, String place) {
+        this.month = month;
+        this.day = day;
+        this.time = time;
+        this.place = place;
+    }
 }

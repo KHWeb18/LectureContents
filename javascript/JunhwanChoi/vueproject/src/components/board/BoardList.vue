@@ -1,8 +1,8 @@
 <template>
     <div>
-        <br><br><br>
         <center>
-        <table border="1" >
+        <v-card>
+            <table border="1" >
             <tr>
                 <th align="center" width="100">번호</th>
                 <th align="center" width="150" class="trstyle">백신종류</th>
@@ -30,6 +30,8 @@
                 </td>
             </tr>
         </table>
+        </v-card>
+        
         </center>
     </div>
 </template>
@@ -47,8 +49,13 @@ export default {
 
 
 <style scoped>
-    
-    .trstyle{
-        color: blue;
+    th{
+        text-align: center;
+        color: rgba(29, 117, 199, 0.945);
     }
+    td{
+        text-align: center;
+
+    }
+    
 </style>

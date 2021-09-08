@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div align="center">
-            <h2>회원 가입</h2>
-        </div>
         <account-register-form @submit="onSubmit"/>
     </div>
 </template>

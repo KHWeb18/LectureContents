@@ -1,7 +1,5 @@
 <template>
     <div>
-        <!-- <v-btn @click="start('daumnews')" text color="black"
-                    style="padding: 10px; width: 90px;">뉴스보기</v-btn> -->
         <v-simple-table>
         <thead>
             <tr>
@@ -12,7 +10,6 @@
             <tr v-for="(list,idx) in lists" :key="idx">
                     <td style="color: gray" width="200px" >{{ list.newsNo }}</td>
                     <td><a @click="clickNews(list.address)">{{ list.title }}</a></td>
-                    <!-- <td>{{ list.title }}</td> -->
             </tr>
         </tbody>
         </v-simple-table>
@@ -26,7 +23,6 @@
 import { mapState } from 'vuex'
 export default {
     created() {
-
         this.$store.dispatch('crawlFind', 'daumnews')
     },
     computed: {

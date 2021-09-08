@@ -42,6 +42,14 @@ import BoardModifyPage from '@/views/BoardModifyPage.vue'
 //백신정보
 import VaccineInfo from '@/views/VaccineInfo.vue'
 
+//예약
+import BookRegisterPage from '@/views/BookRegisterPage.vue'
+
+import MyPage from '@/views/MyPage.vue'
+
+import Logout from '@/views/Logout.vue'
+
+
 
 
 Vue.use(VueRouter)
@@ -210,6 +218,30 @@ const routes = [
       default: VaccineInfo
     }
   },
+
+
+  {
+    path: '/bookregister',
+    name: 'BookRegisterPage',
+    components: {
+      default: BookRegisterPage
+    }
+  },
+  {
+    path: '/mypage',
+    name: 'MyPage',
+    components: {
+      default: MyPage
+    }
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    components: {
+      default: Logout
+    }
+  },
+  
   
 
   

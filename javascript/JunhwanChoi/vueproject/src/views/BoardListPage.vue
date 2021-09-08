@@ -1,12 +1,18 @@
 <template>
     <div id="board">
         <vaccine-page-bar></vaccine-page-bar>
+        
 
         <v-container>
+            <h4>백신 정보</h4>
+            <hr><br>
             <board-list :boards="boards"/>
+            <br>
+            <center>
             <router-link :to="{ name: 'BoardRegisterPage' }">
-                후기 작성
+               <v-btn color="blue lighten-5"> 후기 작성 </v-btn> 
             </router-link>
+            </center>
         </v-container>
     </div>
 </template>

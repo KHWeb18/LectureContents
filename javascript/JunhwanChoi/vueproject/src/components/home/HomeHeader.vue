@@ -82,7 +82,7 @@
             <div class="contents2">
                 온라인 예약으로 보다 안전하고 편리하게 진료 받으세요.
             </div>
-            <router-link :to="{ name: 'Appointment' }"
+            <router-link :to="{ name: 'BookRegisterPage' }"
                     class="nav-link"
                     active-class="active">
                     <div class="more">
@@ -129,7 +129,7 @@ export default {
     }
   },
   created () {
-    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210905&endCreateDt=20210905')
+    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210908&endCreateDt=20210908')
 
       .then((response) => {
         var xml = response.data.response.body.items.item
@@ -146,7 +146,7 @@ export default {
         this.todayDeathString= this.todayDeathCnt.toLocaleString('en-US')
 
       }),
-      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210904&endCreateDt=20210904')
+      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210907&endCreateDt=20210907')
 
       .then((response) => {
         var yxml = response.data.response.body.items.item
@@ -184,6 +184,7 @@ export default {
 .contents1{
   font-size: 20px;
   font-weight: lighter;
+  margin-top:-13px;
 }
 .contents2{
   font-size: 18px;
@@ -208,7 +209,7 @@ export default {
   display: flex;
   width:1000px;
   background: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   margin: 0px auto;
   text-align: center;
 

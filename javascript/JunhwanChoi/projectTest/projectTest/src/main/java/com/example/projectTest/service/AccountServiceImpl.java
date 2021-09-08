@@ -1,12 +1,9 @@
 package com.example.projectTest.service;
 
-import com.example.projectTest.controller.request.MemberRequest;
+
 import com.example.projectTest.controller.request.SignInForm;
 import com.example.projectTest.entity.Account;
-import com.example.projectTest.entity.Member;
-import com.example.projectTest.entity.MemberAuth;
-import com.example.projectTest.repository.JPAMemberAuthRepository;
-import com.example.projectTest.repository.JPAMemberRepository;
+
 import com.example.projectTest.repository.JpaAccountRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
