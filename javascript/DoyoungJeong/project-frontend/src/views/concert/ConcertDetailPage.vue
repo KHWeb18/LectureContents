@@ -86,7 +86,7 @@
         <div align="center">
             <!-- <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
             @click="onReservation" outlined>예약하기!</v-btn> -->
-            <booking-dialogue/>
+            <booking-dialogue :member="member"/>
 
             <v-btn v-if="notLikedYet == true || isLoggedIn == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
             @click="addLiked(concert.concertNo)" color="black"><v-icon>mdi-heart</v-icon></v-btn>
@@ -123,10 +123,10 @@ export default {
         }
     },
     computed: {
-        ...mapState(['concert', 'likedList', 'isLoggedIn', 'userProfile', 'notLikedYet'])
+        ...mapState(['concert', 'likedList', 'isLoggedIn', 'userProfile', 'notLikedYet', 'member'])
     },
     methods: {
-        ...mapActions(['fetchLikedOrNot', 'fetchConcert']),
+        ...mapActions(['fetchLikedOrNot', 'fetchConcert', 'fetchMember']),
 
         addLiked() {
             if(this.$store.state.isLoggedIn == true) {
@@ -145,8 +145,8 @@ export default {
                             const concertDate = this.$store.state.concert.concertDate
                             const concertInfo = this.$store.state.concert.concertInfo
                             
-                            console.log("{ memberNo }: " + memberNo)
-                            console.log("{ concert }: " + JSON.stringify(this.$store.state.concert))
+                            // console.log("{ memberNo }: " + memberNo)
+                            // console.log("{ concert }: " + JSON.stringify(this.$store.state.concert))
 
                             axios.post('http://localhost:8888/member/addLiked', { memberNo, concertNo, concertName, concertArtist, concertVenue, concertPrice, concertDate, concertInfo })
                                 .then(alert('관심 목록에 추가되었습니다!'))
@@ -210,12 +210,16 @@ export default {
 
             this.$store.state.isLoggedIn = true
             this.$store.state.userIdentity = this.$store.state.userProfile.identity
+
+            this.memNoAndConNoArr.push(this.$store.state.userProfile.memberNo)
+            this.memNoAndConNoArr.push(this.concertNo) //얘가 this.$store.state.concert.concertNo에서 this.concertNo로 수정해주니까 잘됨 --> 위의 fetchConcert가 
+            //db에서 concert를 가져와 concert.concertNo를 주기 전에 이 명령이 실행되니까 그런거였음. 그래서 애초에 props로 받은 this.concertNo를 사용해주니까 잘됨
+            this.fetchLikedOrNot(this.memNoAndConNoArr)
+            //alert(this.memNoAndConNoArr)
+
+            this.fetchMember(this.$store.state.userProfile.memberNo)
         }
-        this.memNoAndConNoArr.push(this.$store.state.userProfile.memberNo)
-        this.memNoAndConNoArr.push(this.concertNo) //얘가 this.$store.state.concert.concertNo에서 this.concertNo로 수정해주니까 잘됨 --> 위의 fetchConcert가 
-        //db에서 concert를 가져와 concert.concertNo를 주기 전에 이 명령이 실행되니까 그런거였음. 그래서 애초에 props로 받은 this.concertNo를 사용해주니까 잘됨
-        this.fetchLikedOrNot(this.memNoAndConNoArr)
-        //alert(this.memNoAndConNoArr)
+        
     }
 }
 </script>

@@ -1,33 +1,35 @@
 <template>
     <v-dialog v-model="bookingDialog" persistent max-width="400">
         <template v-slot:activator="{ on }">
-            <v-btn class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" v-on="on" outlined>예약하기!</v-btn>
+            <v-btn v-if="isLoggedIn" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" v-on="on" @click="setInfo" outlined>예약하기!</v-btn>
+
+            <v-btn v-else class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" outlined
+            @click="notLoggedIn">예약하기!</v-btn>
         </template>
 
         <v-card>
             <v-card-title class="headLine">
-                <p id="headline" style="margin-bottom: -5px;">Booking Receipt</p>
+                <p id="headline" style="margin-bottom: 20px;">Booking Receipt</p>
             </v-card-title>
             <v-card-text>
                 <v-container style="width: 80%">
                     <v-layout wrap>
-                        <v-flex xs12>
-                            <v-text-field label="휴대폰 번호" type="text" required v-model="phoneNumber"></v-text-field>
-                        </v-flex>
-                        <v-flex xs12>
-                            <v-text-field label="휴대폰 번호 재확인" type="text" required v-model="phoneNumberSub"></v-text-field>
-                        </v-flex>
-                        <v-flex xs12>
-                            <v-text-field label="이름" type="text" style="width: 70%" required v-model="name"></v-text-field>
-                        </v-flex>
-                        <v-flex xs12>
-                            <v-text-field label="예약 인원" type="number" style="width: 40%" required v-model="numOfVisitor"></v-text-field>
-                        </v-flex>
-                        <v-flex xs12>
-                            <input type="text" id="message" label="메시지" @click="resetText" v-model="message"/>
-                        </v-flex>
-                        <p align="center" id="description">확인을 누르시면 예약정보가 문자로 전송됩니다!<br>
-            본 예약 서비스는 로그인 정보를 기반으로 해당 공연장소로 전달됩니다 :)</p>
+                        <form>
+                            <v-flex xs12>
+                                <v-text-field label="휴대폰 번호" type="text" required v-model="phoneNumber"></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="이름" type="text" style="width: 70%" required v-model="name"></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="예약 인원" type="number" style="width: 40%" required v-model="numOfVisitor"></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <input type="text" id="message" label="메시지" @click="resetText" v-model="message"/>
+                            </v-flex>
+                            <p align="center" id="description">확인을 누르시면 예약정보가 문자로 전송됩니다!<br>
+                            본 예약 서비스는 로그인 정보를 기반으로 해당 공연장소로 전달됩니다 :)</p>
+                        </form>
                     </v-layout>
                 </v-container>
             
@@ -52,17 +54,24 @@ import { mapState } from 'vuex'
 
 export default {
     name: 'BookingDialogue',
+    props: {
+        member: {
+            type: Object
+        }
+    },
     data() {
         return {
             phoneNumber: '',
-            phoneNumberSub: '',
             name: '',
-            numOfVisitor: '',
+            numOfVisitors: '',
             message: '해당 공연장 매니저에게 미리 남길 말이 있나요?',
             bookingDialog: false
         }
     },
     methods: {
+        notLoggedIn() {
+            alert('로그인이 필요한 서비스입니다!')
+        },
         confirm() {
             if(this.$store.state.isLoggedIn == true) {
                 axios.post('http://localhost:8888/member/needSession')
@@ -79,21 +88,23 @@ export default {
             }
             this.bookingDialog = false  
             this.phoneNumber = '',
-            this.phoneNumberSub = '',
             this.name = '',
-            this.numOfVisitor = '',
+            this.numOfVisitors = '',
             this.message =  '해당 공연장 매니저에게 미리 남길 말이 있나요?'
         },
         cancel() {
             this.bookingDialog = false   
             this.phoneNumber = '',
-            this.phoneNumberSub = '',
             this.name = '',
-            this.numOfVisitor = '',
+            this.numOfVisitors = '',
             this.message =  '해당 공연장 매니저에게 미리 남길 말이 있나요?'
         },
         resetText() {
             this.message = ''
+        },
+        setInfo() {
+            this.phoneNumber = this.member.phoneNo
+            this.name = this.member.name
         }
     },
     computed: {

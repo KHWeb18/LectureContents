@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <td class="description" style="width: 100px; color: red;" @click="addReply">댓글 달기</td>
-                    <v-text-field style="width: 500px;" v-model="reply"></v-text-field>
+                    <v-text-field style="width: 500px;" v-model="reply" @keydown.enter="addReply"></v-text-field>
                 </tr>
             </table>
 

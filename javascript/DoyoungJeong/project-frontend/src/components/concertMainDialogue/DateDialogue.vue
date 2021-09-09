@@ -12,8 +12,8 @@
                 어쨋든 이 dialog 기능을 on시키는거라고 생각하면된다. -->
                 <v-card>
                     <v-card-title class="headline">
-                        <p id="headline">Date</p>
-                        <p id="description">입력하신 날짜에 해당하는 공연을 추천해드려요! :)</p>
+                        <p class="headline">Date</p>
+                        <p class="description">입력하신 날짜에 해당하는 공연을 추천해드려요! :)</p>
                     </v-card-title>
                     <v-card-text>
                         <div class="row">
@@ -65,7 +65,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
-#headline {
+.headline {
     font-size: 30px;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -73,7 +73,7 @@ export default {
     margin-right: 10px;
 }
 
-#description {
+.description {
     font-size: 12px;
     font-style: italic;
     margin-top: 10px;

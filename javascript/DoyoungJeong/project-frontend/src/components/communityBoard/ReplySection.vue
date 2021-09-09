@@ -9,7 +9,8 @@
                 <tr v-for="(reply, index) in replyList" :key="index">
                     <td class="description" style="width: 14%;">{{ reply.id }}</td>
 
-                    <td v-if="modifyIndex == index" class="description" style="width: 75%;"><v-text-field v-model="modifyContent"></v-text-field></td>
+                    <td v-if="modifyIndex == index" class="description" style="width: 75%;"><v-text-field v-model="modifyContent"
+                    @keydown.enter="submitModified(reply.boardReplyNo, reply.id, index)"></v-text-field></td>
 
                     <td v-else-if="modifyIndex != index" class="description" style="width: 75%;">{{ reply.content }}</td>
 
@@ -59,7 +60,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['isLoggedIn', 'userProfile', 'board', 'replyList'])
+        ...mapState(['isLoggedIn', 'userProfile', 'board', 'replyList']),
     },
     methods: {
         ...mapActions(['fetchReplyList']),

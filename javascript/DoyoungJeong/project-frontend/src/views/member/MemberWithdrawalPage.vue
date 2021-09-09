@@ -1,8 +1,9 @@
 <template>
     <div align="center" style="margin-top: 60px;">
         <h3 class="topBar" style="margin-top: 0px; padding-top: 30px;">Withdrawal</h3>
-        <p class="description">정말로 탈퇴하시나요? 탈퇴하시면 기록된 모든 정보가 사라집니다!</p>
-        <div>
+        <p class="description" style="margin-right: 20px;">정말로 탈퇴하시나요? 탈퇴하시면 기록된 모든 정보가 사라집니다!</p>
+
+        <div style="margin-top: 50px; margin-right: 20px;">
             <v-btn class="btn-flat red-text waves-effect waves-teal" text="text" @click.native="btn_delete($event)" style="margin-right: 40px;">
                 탈퇴
             </v-btn>
@@ -10,6 +11,7 @@
                 취소
             </v-btn>
         </div>
+        
     </div>
 </template>
 

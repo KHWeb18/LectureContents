@@ -39,6 +39,7 @@ export default {
         return axios.get(`http://localhost:8888/member/read/${memberNo}`)
             .then((res) => {
                 commit(FETCH_MEMBER, res.data)
+                //alert(JSON.stringify(res.data))
             })
     },
 
@@ -62,16 +63,16 @@ export default {
     },
 
     fetchLikedOrNot({ commit }, payload) {
-        console.log("payload: " + payload)
+        //console.log("payload: " + payload)
 
         const likedOrNotCheckNums = payload //const로 꼭 받는 쪽과 이름을 같게 해줘야한다!
 
-        console.log(likedOrNotCheckNums)
+        //console.log(likedOrNotCheckNums)
 
         return axios.put('http://localhost:8888/member/fetchLikedOrNot', { likedOrNotCheckNums })
             .then((res) => {
                 commit(FETCH_LIKED_OR_NOT, res.data)
-                console.log("This page's likedOrNot is: " + res.data)
+                //console.log("This page's likedOrNot is: " + res.data)
             })
     },
 

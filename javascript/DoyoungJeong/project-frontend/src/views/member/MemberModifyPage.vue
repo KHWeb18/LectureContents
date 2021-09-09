@@ -1,5 +1,5 @@
 <template>
-    <div align="center">
+    <div align="center" style="height: 100%;">
         <p class="memberListTitle" style="margin-top: 60px;">Profile Modify</p>
         <p class="subTitle" style="font-style: italic;">원하시는 정보를 수정하세요.</p>
 
@@ -28,12 +28,14 @@
 
                 <div style="margin-top: 20px;">
                     <v-btn class="btn-flat red-text waves-effect waves-teal" type="submit" @click.native="btn_confirm($event)" style="margin-right: 40px;">
-                    수정
+                        수정
                     </v-btn>
                     <v-btn class="btn-flat red-text waves-effect waves-teal" type="text" @click.native="btn_cancel($event)">
                         취소
                     </v-btn>
                 </div>
+
+                <check-dialogue/> 
 
             </form>
         </v-container>
@@ -41,6 +43,7 @@
 </template>
 
 <script>
+
 import axios from 'axios'
 import { mapState } from 'vuex'
 
@@ -53,14 +56,14 @@ export default {
         return {       
             user: {
                 memberNo: this.$store.state.userProfile.memberNo,
-                id: this.$store.state.userProfile.id,
+                id: '',
                 password: '',
                 passwordCheck: '',
-                name: this.$store.state.userProfile.name,
+                name: this.$store.state.userProfile.name, //userProfile을 축소하면서 이게 안나오게됨
                 location: '',
                 birthDay: '',
                 identity: '',
-                phoneNo: this.$store.state.userProfile.phoneNo,
+                phoneNo: this.$store.state.userProfile.phoneNo //userProfile을 축소하면서 이게 안나오게됨
             },
             locations: [
                 { text: '서울 - 강남', value: '서울 - 강남'},
@@ -86,6 +89,8 @@ export default {
                     alert("비밀번호는 최소 11 자, 최소 하나의 문자 및 하나의 숫자를 입력해 주세요.") 
                 } else if(this.user.password != this.user.passwordCheck) {
                     alert('비밀번호와 비밀번호 재확인이 일치하지 않습니다!')
+                } else if(!/^[가-힣|a-z|A-Z|/\s/g]+$/.test(this.user.name)) { //   /\s/g   <--스페이스바 허용
+                    alert('이름에 올바른 문자를 입력해주세요.') 
                 } else if(!/^\d{11}$/.test(this.user.phoneNo)) {
                     alert('올바른 휴대전화 번호 형식이 아닙니다!')
                 } else {
@@ -115,10 +120,17 @@ export default {
 
                 axios.put('http://localhost:8888/member/modify', { memberNo, id, password, name, location, birthDay, identity, phoneNo })
                 .then(res => {
-                    alert('정보가 변경되었습니다 :)' + res)
+                    alert('정보가 변경되었습니다 :)' + res.data)
+
+                    this.$store.state.isLoggedIn = true;
+                    this.$store.state.userIdentity = res.data.identity
+                    this.$store.state.userProfile = res.data
+
+                    this.$cookies.set("currentUser", res.data, '120m')
+                    //alert('currentUser ' + JSON.stringify(this.$cookies.get("currentUser")))
 
                     this.$router.push({
-                        name: 'MainPage' //유효성 검사 넣기 그리고... 바뀐거 받아올 수 있도록 바뀐 정보로 userProfile fetch해와야함
+                        name: 'MainPage' 
                     })
                     
                 })
@@ -140,6 +152,9 @@ export default {
 
             this.$store.state.isLoggedIn = true
             this.$store.state.userIdentity = this.$store.state.userProfile.identity
+
+            this.user.id = this.$store.state.userProfile.id //data()가 화면에 깔리는게 mounted()보다 빨라서 새로고침 시 값이 없어지기 때문에 여기에 이렇게 적어줌
+            this.user.identity = this.$store.state.userIdentity
         }
     }
 }

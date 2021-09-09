@@ -1,9 +1,8 @@
 <template>
     <div>
-        <span>
-            <p class="subTitle">현재 등록된 회원 정보입니다.</p>
-            <p style="font-size: 12px; margin-top: -10px;">회원을 탈퇴시키려면 해당 회원의 id를 클릭하세요.</p>
-        </span>
+        <div>
+            <p style="font-size: 12px; display: inline;">현재 등록된 회원 정보입니다.  회원을 탈퇴시키려면 해당 회원의 id를 클릭하세요.</p>
+        </div>
         <v-container style="width: 75%">
             <!-- <table border="1px">
                 <tr class="listItem">
@@ -36,9 +35,11 @@
                    <td style="text-align: right">{{ member.regDate }}</td>
                 </tr>
             </table> -->
+
             <v-data-table :headers="headerTitle"
                         :items="members"
                         :items-per-page="5"
+                        :search="searchMember"
                         class="elevation-1">
 
                     <template v-slot:item="{ item, index }"> <!-- v-data-table에서 index뽑는 법 * item * 얘는 고정된 이름 -->
@@ -55,6 +56,10 @@
                     </template>
 
             </v-data-table>
+
+            <v-text-field label="찾을 회원의 정보를 입력하세요." v-model="searchMember" class="footerText"
+            style="width: 300px; float: right;" color="error"/>
+
         </v-container>
     </div>
 </template>
@@ -81,7 +86,8 @@ export default {
                 { text: '생일', value: 'birthDay', width: '20%'},
                 { text: '연락처', value: 'phoneNo', width: '10%'},
                 { text: '가입일자', value: 'regDate', width: '20%'}
-            ]
+            ],
+            searchMember: ''
         }
     },
     methods: {

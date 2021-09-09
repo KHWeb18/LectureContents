@@ -11,19 +11,25 @@
             <v-toolbar-items v-if="!isLoggedIn">
                 <v-btn text v-for="link in links" :key="link.name" :to="link.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
                     <login-dialogue v-if="link.text == 'LOG IN'"></login-dialogue>
-                    <p v-else id="topBarText">{{ link.text }}</p>
+                    <p v-else class="topBarText">{{ link.text }}</p>
                 </v-btn>
             </v-toolbar-items>
 
-            <v-toolbar-items v-if="isLoggedIn && userIdentity != 'admin'">
+            <v-toolbar-items v-if="isLoggedIn && userIdentity == 'individual'">
                 <v-btn text v-for="loggedInlink in loggedInlinks" :key="loggedInlink.name" router :to="loggedInlink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
-                    <p id="topBarText" @click="logOut($event)">{{ loggedInlink.text }}</p>
+                    <p class="topBarText" @click="logOut($event)">{{ loggedInlink.text }}</p>
                 </v-btn>
             </v-toolbar-items>
 
             <v-toolbar-items v-else-if="isLoggedIn && userIdentity == 'admin'">
                 <v-btn text v-for="managerLink in managerLinks" :key="managerLink.name" router :to="managerLink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
-                    <p id="topBarText" @click="logOut($event)">{{ managerLink.text }}</p>
+                    <p class="topBarText" @click="logOut($event)">{{ managerLink.text }}</p>
+                </v-btn>
+            </v-toolbar-items>
+
+            <v-toolbar-items v-else-if="isLoggedIn && userIdentity == 'artist'">
+                <v-btn text v-for="artistLink in artistLinks" :key="artistLink.name" router :to="artistLink.route" style="padding-top: 15px;" class="btn-flat waves-effect waves-red">
+                    <p class="topBarText" @click="logOut($event)">{{ artistLink.text }}</p>
                 </v-btn>
             </v-toolbar-items>
 
@@ -33,7 +39,7 @@
             
                 <v-icon class="material-icons small teal-text">search</v-icon>
                 <input type="text" style="font-size: 13px; font-style: italic; width: 250px;" v-model="searchTest" v-on:click="blankText"/>
-                <p id="topBarText" class="btn-flat" style="padding-top: 5px;">&copy; MUSIC GHUETTO</p>
+                <p class="btn-flat topBarText" style="padding-top: 5px;">&copy; MUSIC GHUETTO</p>
            
             </v-toolbar-items>
 
@@ -42,6 +48,27 @@
         <v-navigation-drawer v-model="nav_drawer" app temporary width="150px">
             <v-list nav>
                 <v-list-item-group active-class="red--text text--accent-4">
+
+                    <div v-if="isLoggedIn">
+                        <v-list-item-avatar style="margin-left: 35%;">
+                            <v-img src="@/assets/img/Net Gala2.jpg"></v-img>
+                        </v-list-item-avatar>
+
+                        <v-list-item-title style="text-align: center; font-size: 12px; line-height: 20px; margin-bottom: 10px;">
+                            로그인된 ID:<br/>{{ userProfile.id }}
+                        </v-list-item-title>
+                    </div>
+
+                    <div v-if="!isLoggedIn">
+                        <v-list-item-avatar style="margin-left: 35%;">
+                            <v-img src="@/assets/img/background.jpg"></v-img>
+                        </v-list-item-avatar>
+
+                        <v-list-item-title style="text-align: center; font-size: 10px; line-height: 20px; margin-bottom: 10px;">
+                            로그인된 ID:<br/>아직 로그인되지 않았습니다.
+                        </v-list-item-title>
+                    </div>
+
                     <v-list-item v-for="(link, index) in navLinks" :key="index" router :to="link.route" @click="btn_needSession(index)">
                         <v-list-item-action>
                             <v-icon>{{ link. icon }}</v-icon>
@@ -111,7 +138,7 @@ export default {
             loggedInlinks: [
                 {
                     text: 'LOG OUT',
-                    icon: '',
+                    icon: ''           
                 },
                 {
                     text: 'ABOUT US',
@@ -138,7 +165,6 @@ export default {
                 {
                     text: 'LOG OUT',
                     icon: '',
-                    route: '/mainPage',
                 },
                 {
                     text: 'ABOUT US',
@@ -159,6 +185,32 @@ export default {
                     text: 'ADMIN',
                     icon: 'people',
                     route: '/memberListPage',
+                }
+            ],
+            artistLinks: [
+                {
+                    text: 'LOG OUT',
+                    icon: '',
+                },
+                {
+                    text: 'ABOUT US',
+                    icon: 'people',
+                    route: '/aboutUsPage',
+                },
+                {
+                    text: 'SUPPORT',
+                    icon: 'people',
+                    route: '/preferenceFillInPage',
+                },
+                {
+                    text: 'COMMUNITY',
+                    icon: 'people',
+                    route: '/Community',
+                },
+                {
+                    text: 'ConcertReg',
+                    icon: 'people',
+                    route: '/registerRequest',
                 }
             ],
             navLinks: [
@@ -222,7 +274,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
-#topBarText {
+.topBarText {
     font-style: italic;
     margin-right: 25px;
     color: white;
