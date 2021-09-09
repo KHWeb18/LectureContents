@@ -18,6 +18,7 @@
 <script>
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -41,11 +42,14 @@ export default {
 
       axios.post('http://localhost:7777/comment/add', { id, content, boardNo }).then(() => {
         alert('댓글이 등록되었습니다!')
+
+        this.fetchComments(boardNo)
+
+        this.content = null
+      }).catch(res => {
+        alert(res)
       })
-
-      this.fetchComments(boardNo)
-
-      this.comment = null
+      
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="400">
     <template v-slot:activator="{ on }">
-      <v-list-item v-on="on">
+      <v-list-item v-on="on" @click="readComment">
         수정
       </v-list-item>
     </template>
@@ -10,9 +10,8 @@
       <v-card-title class="secondary--text">
         <p>댓글 수정</p>
       </v-card-title>
-      <v-text-field v-model="content">
+      <v-text-field v-model="content" class="px-3" color="secondary"></v-text-field>
 
-      </v-text-field>
       <v-card-actions>
         <v-btn @click="btnCancle" class="secondary--text font-weight-bold" text >
           Cancle
@@ -36,6 +35,9 @@ export default {
   props: {
     commentNo: {
 
+    },
+    boardNo: {
+
     }
   },
   data () {
@@ -47,25 +49,27 @@ export default {
   computed: {
     ...mapState([ 'comments', 'comment' ])
   },
-  created () {
-    
-  },
   mounted () {
     this.fetchComment(this.commentNo)
-    this.content = this.comment.content
   },
   methods: {
-    ...mapActions(['fetchComment']),
+    ...mapActions([ 'fetchComment', 'fetchComments' ]),
     btnCancle () {
       this.dialog = false
     },
     modifyComment () {
       const content  = this.content
-      axios.patch(`http://localhost:7777/comment/modify/${this.commentNo}`, { content }).then(res => {
+      axios.patch(`http://localhost:7777/comment/modify/${this.commentNo}`, { content }).then(() => {
         alert('수정이 완료되었습니다')
-        console.log(res.data)
+
+        this.fetchComments(this.boardNo)
+
+        this.dialog = false
       })
-      this.dialog = false
+    },
+    readComment () {
+      this.fetchComment(this.commentNo)
+      this.content = this.comment.content
     }
   }
 }

@@ -9,48 +9,48 @@
     </v-card>
 
     <v-card v-else v-for="item in comments" :key="item.commentNo" class="mx-4" color="primary" flat>
-      
-      <v-list-item>
-        <v-list-item-avatar>
-          {{ item.id }}
-        </v-list-item-avatar>
-        
+      <v-list color="primary">
         <v-list-item>
-          {{ item.content }}
+          <v-list-item-avatar>
+            {{ item.id }}
+          </v-list-item-avatar>
+          
+          <v-list-item>
+            {{ item.content }}
+          </v-list-item>
+          
+          
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+              <v-btn v-if="userInfo.id == item.id" v-on="on" icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+
+              <modify-comment :commentNo="item.commentNo" :boardNo="boardNo"></modify-comment>
+
+              <v-list-item @click="removeComment(item.commentNo)">
+                삭제
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          
+          <!--
+          <v-btn icon small color="secondary" class="pa-6">
+            <v-icon>create</v-icon>
+          </v-btn>
+          <v-btn icon small color="secondary" class="pa-6">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+          -->
         </v-list-item>
-        
         <!--
         <v-list-item class="caption">
-          {{ item.regDate }}
-        </v-list-item>
-        -->
-        
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn v-if="userInfo.id == item.id" v-on="on" icon>
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-
-            <modify-comment :commentNo="item.commentNo"></modify-comment>
-
-            <v-list-item @click="removeComment(item.commentNo)">
-              삭제
-            </v-list-item>
-          </v-list>
-        </v-menu>
-        
-        <!--
-        <v-btn icon small color="secondary" class="pa-6">
-          <v-icon>create</v-icon>
-        </v-btn>
-        <v-btn icon small color="secondary" class="pa-6">
-          <v-icon>mdi-delete</v-icon>
-        </v-btn>
-        -->
-      </v-list-item>
-      
+            {{ item.regDate }}
+          </v-list-item>
+          -->
+      </v-list>
       <v-divider></v-divider>
       
       
@@ -78,13 +78,13 @@ export default {
   },
   data () {
     return {
-      modify: false,
+
     }
   },
   computed: {
     ...mapState([ 'comments', 'userInfo' ])
   },
-  mounted() {
+  mounted () {
     this.fetchComments(this.boardNo)
   },
   methods: {
@@ -93,8 +93,12 @@ export default {
     removeComment (commentNo) {
       axios.delete(`http://localhost:7777/comment/remove/${commentNo}`).then(() => {
         alert('댓글이 삭제되었습니다!')
+
+        this.fetchComments(this.boardNo)
+
+        
       })
-      this.fetchComments(this.boardNo)
+      
     },
   }
 }

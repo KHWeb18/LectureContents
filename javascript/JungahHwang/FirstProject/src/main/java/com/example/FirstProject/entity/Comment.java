@@ -1,6 +1,7 @@
 package com.example.FirstProject.entity;
 
 import com.example.FirstProject.request.CommentDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -29,7 +30,9 @@ public class Comment {
     @Column(nullable = false)
     private Long boardNo;
 
+
     @CreationTimestamp
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd HH:mm")
     private Date regDate;
 
     @UpdateTimestamp

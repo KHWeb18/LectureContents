@@ -3,13 +3,10 @@ package com.example.FirstProject.controller;
 import com.example.FirstProject.entity.Comment;
 import com.example.FirstProject.request.CommentDto;
 import com.example.FirstProject.service.CommentService;
-import lombok.Data;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +23,8 @@ public class CommentController {
 
     @PostMapping("/add")
     public ResponseEntity add(@RequestBody CommentDto commentDto) throws Exception {
+        log.info("Comment Register");
+
         Comment comment = service.add(commentDto);
 
         return new ResponseEntity(comment, HttpStatus.OK);
@@ -33,6 +32,8 @@ public class CommentController {
 
     @GetMapping("/read/{boardNo}")
     public ResponseEntity read(@PathVariable Long boardNo) throws Exception {
+        log.info("Comment Read");
+
         List<Comment> commentList = service.findAllComment(boardNo);
 
         return new ResponseEntity(commentList, HttpStatus.OK);
@@ -40,6 +41,8 @@ public class CommentController {
 
     @GetMapping("/read/only/{commentNo}")
     public ResponseEntity readOnly(@PathVariable Long commentNo) throws Exception {
+        log.info("Comment Read Only");
+
         Comment comment =  service.findByCommentNo(commentNo);
 
         return new ResponseEntity(comment, HttpStatus.OK);
@@ -47,7 +50,8 @@ public class CommentController {
 
     @PatchMapping("/modify/{commentNo}")
     public ResponseEntity<Void> modify(@PathVariable Long commentNo, @RequestBody CommentDto commentDto) throws Exception {
-        log.info("Modify Comment");
+        log.info("Comment Modify");
+
         Comment comment = service.findByCommentNo(commentNo);
 
         service.modify(comment, commentDto);
@@ -57,6 +61,8 @@ public class CommentController {
 
     @DeleteMapping("/remove/{commentNo}")
     public ResponseEntity<Void> remove(@PathVariable Long commentNo) throws Exception {
+        log.info("Comment Remove");
+
         Comment comment = service.findByCommentNo(commentNo);
 
         service.remove(comment);
