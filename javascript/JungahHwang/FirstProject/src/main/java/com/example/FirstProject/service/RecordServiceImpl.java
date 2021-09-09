@@ -33,6 +33,13 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
+    public List<Record> findAllRecord() throws Exception {
+        List<Record> records = repository.findAll();
+
+        return records;
+    }
+
+    @Override
     public void modify(Record record, RecordDto recordDto) throws Exception {
         record.updateRecord(recordDto);
 

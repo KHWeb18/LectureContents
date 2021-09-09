@@ -19,10 +19,12 @@
             </v-btn>
           </v-toolbar>
         
-          <v-calendar ref="calendar" v-model="focus"  color="secondary" 
-          :type="type" @click:date="viewDay">
+        <v-sheet height="350">
+          <v-calendar ref="calendar" v-model="focus" color="secondary" 
+          :type="type" :events="events" @click:date="viewDay"
+          @change="updateRange">
           </v-calendar>
-          
+        </v-sheet>  
         </v-card>
       </v-col>
 
@@ -47,12 +49,18 @@ export default {
   data: () => ({
     focus: '',
     type: 'month',
+    events: []
   }),
   computed: {
-    ...mapState([ 'date' ])
+    ...mapState([ 'date', 'records' ])
+  },
+  mounted () {
+    this.fetchRecords()
+    this.fetchRecord(this.date)
+    this.$refs.calendar.checkChange()
   },
   methods: {
-    ...mapActions(['fetchRecord']),
+    ...mapActions(['fetchRecord', 'fetchRecords']),
 
     viewDay ({ date }) {
       this.focus = date
@@ -68,7 +76,20 @@ export default {
     next () {
       this.$refs.calendar.next()
     },
-    
+    updateRange () {
+      const events = []
+      
+      for (let i = 0; i < this.records.length; i++) {
+        events.push({
+          name: '',
+          start: this.records[i].date,
+          end: this.records[i].date,
+          color: 'primary',
+        })
+      }
+      
+      this.events = events
+    }
   },
 }
 </script>

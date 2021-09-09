@@ -83,6 +83,7 @@ export default {
 
       axios.delete(`http://localhost:7777/record/remove/${date}`).then(() => {
         alert(date + ' 의 활동이 삭제되었습니다!')
+        
         this.fetchRecord(this.date)
       }).catch(res => {
         alert(res.response.data.message)

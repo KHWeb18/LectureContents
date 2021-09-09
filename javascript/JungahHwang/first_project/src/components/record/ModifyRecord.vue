@@ -64,12 +64,16 @@ export default {
       
       axios.patch(`http://localhost:7777/record/modify/${date}`, { food, exercise, weight }).then(() => {
         alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 수정되었습니다!')
+
+        this.fetchRecord(this.date)
+
+        this.dialog = false
        }).catch(res => {
         alert(res.response.data.message)
       })
       
-      this.dialog = false
-      this.fetchRecord(this.date)
+      
+      
     },
   }
 }

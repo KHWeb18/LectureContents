@@ -60,12 +60,16 @@ export default {
       
       axios.post('http://localhost:7777/record/add', { id, date, food, exercise, weight }).then(() => {
         alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 등록되었습니다!')
+        
+        this.fetchRecord(this.date)
+        
+        this.dialog = false
        }).catch(res => {
         alert(res.response.data.message)
       })
       
-      this.dialog = false
-      this.fetchRecord(this.date)
+      
+      
     },
   }
 }
