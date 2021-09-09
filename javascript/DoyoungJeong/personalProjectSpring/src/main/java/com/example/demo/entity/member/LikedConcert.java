@@ -46,6 +46,9 @@ public class LikedConcert {
     @CreationTimestamp
     private Date regDate;
 
+    @UpdateTimestamp
+    private Date updDate;
+
     public LikedConcert(Long concertNo, String concertName, String concertArtist, String concertVenue, String concertPrice, String concertDate, String concertInfo) {
         this.concertNo = concertNo;
         this.concertName = concertName;

@@ -172,7 +172,7 @@ public class MemberServiceImpl implements MemberService{
         memberIdentityRepository.delete(memberNo); //자식 먼저 지워주고 뒤에 부모를 지워야 전부 깔끔하게 지워짐
 
         Long deleteNo;
-        List<LikedConcert> likedConcertList = likedConcertRepository.findByMemberNo(memberNo);//탈퇴할 때 콘서트에서 해당 탈퇴하는 사용자가 찜한 number_of_likes를 1씩 빼주는 알고리즘
+        List<LikedConcert> likedConcertList = likedConcertRepository.findByMemberNo(memberNo);//탈퇴할 때 해당 탈퇴하는 사용자가 찜한 concert에서 number_of_likes를 1씩 빼주는 알고리즘
 
         for(int i=0; i<likedConcertList.size(); i++) {
 

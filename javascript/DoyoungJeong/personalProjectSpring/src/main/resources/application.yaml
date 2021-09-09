@@ -3,7 +3,7 @@ server:
   port: 8888
   servlet:
     session:
-      timeout: 120m
+      timeout: 10m
 
 spring:
   datasource:
