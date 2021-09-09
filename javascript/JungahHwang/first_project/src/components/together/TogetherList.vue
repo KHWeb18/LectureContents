@@ -95,12 +95,9 @@ export default {
       if (this.page - 1 >= 1) this.page -= 1
     },
     readTogether (boardNo, id) {
-      this.fetchTogether(boardNo)
-
       this.$router.push(
         { name: 'ReadTogether', query: { boardNo: boardNo, id: id } }
       )
-      
     },
     addButton () {
       this.$emit('addButton')

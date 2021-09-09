@@ -55,7 +55,7 @@
 <script>
 import RemoveBoardDialog from '@/components/RemoveBoardDialog'
 import axios from 'axios'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import ReadComment from '@/components/comment/ReadComment'
 
 export default {
@@ -70,11 +70,11 @@ export default {
     }
   },
   created () {
-    console.log(this.id)
     this.boardNo = this.$route.query.boardNo
     this.id = this.$route.query.id
   },
   mounted() {
+    this.fetchTogether(this.boardNo)
     this.fetchComments(this.boardNo)
   },
   computed: {
@@ -84,6 +84,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions([ 'fetchTogether', 'fetchComments' ]),
     modifyTogether () {
       
       this.$router.push(

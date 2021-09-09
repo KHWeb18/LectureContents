@@ -1,6 +1,5 @@
 package com.example.FirstProject.controller;
 
-import com.example.FirstProject.entity.Recommend;
 import com.example.FirstProject.entity.Together;
 import com.example.FirstProject.request.TogetherDto;
 import com.example.FirstProject.service.TogetherService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
