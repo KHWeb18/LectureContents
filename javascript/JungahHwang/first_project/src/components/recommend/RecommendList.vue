@@ -96,7 +96,6 @@ export default {
       if (this.page - 1 >= 1) this.page -= 1
     },
     readRecommend (boardNo, id) {
-      this.fetchRecommend(boardNo)
 
       this.$router.push(
         { name: 'ReadRecommend', query: { boardNo: boardNo, id: id } }

@@ -47,7 +47,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-
+    
     <read-comment :boardNo="boardNo"></read-comment>
   </v-sheet>
   
@@ -65,14 +65,6 @@ export default {
     RemoveBoardDialog,
     ReadComment
   },
-  // props: {
-  //   boardNo: {
-      
-  //   },
-  //   id: {
-  //     type: String
-  //   }
-  // },
   data () {
     return {
       boardNo: null,
@@ -80,11 +72,11 @@ export default {
     }
   },
   created () {
-    console.log(this.id)
     this.boardNo = this.$route.query.boardNo
     this.id = this.$route.query.id
   },
   mounted() {
+    this.fetchRecommend(this.boardNo)
     this.fetchComments(this.boardNo)
   },
   computed: {
@@ -94,7 +86,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'fetchComments' ]),
+    ...mapActions([ 'fetchRecommend', 'fetchComments' ]),
     modifyRecommend () {
       this.$router.push(
         { name: 'ModifyRecommend', query: { boardNo: this.boardNo, id: this.id } }
