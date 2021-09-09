@@ -22,14 +22,6 @@ import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  // props: {
-  //   boardNo: {
-     
-  //   },
-  //   id: {
-  //     type: String
-  //   }
-  // },
   data () {
     return {
       title: null,
@@ -46,6 +38,7 @@ export default {
     this.id = this.$route.query.id
     this.title = this.recommend.title
     this.content = this.recommend.content
+    console.log(this.id, this.boardNo)
   },
   methods: {
     ...mapActions([ 'fetchRecommend' ]),
