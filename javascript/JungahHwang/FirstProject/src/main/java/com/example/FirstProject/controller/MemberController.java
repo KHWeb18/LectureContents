@@ -2,10 +2,8 @@ package com.example.FirstProject.controller;
 
 import com.example.FirstProject.controller.session.UserInfo;
 import com.example.FirstProject.entity.Member;
-import com.example.FirstProject.repository.MemberRepository;
 import com.example.FirstProject.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +30,7 @@ public class MemberController {
 
     @PostMapping("/signup")
     public ResponseEntity<Void> signup(@Validated @RequestBody Member member) throws Exception {
-        log.info("Signup");
+        log.info("Member Signup");
 
         service.signup(member);
 
@@ -41,7 +39,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<Boolean> login(@RequestBody Member member, HttpServletRequest request) throws Exception {
-        log.info("Login");
+        log.info("Member Login");
 
         Boolean isSuccess = service.login(member);
 
@@ -79,7 +77,7 @@ public class MemberController {
 
         session.invalidate();
 
-        log.info("Logout");
+        log.info("Member Logout");
 
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
     }

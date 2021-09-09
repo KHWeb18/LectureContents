@@ -32,15 +32,16 @@ public class MemberServiceImpl implements MemberService {
     public boolean login(Member member) throws Exception {
         Optional<Member> maybeMember = repository.findById(member.getId());
 
-        if (maybeMember == null) {
-            return  false;
+        if (maybeMember.isPresent()) {
+            log.info("Find Id");
+
+            Member loginMember = maybeMember.get();
+
+            if(!passwordEncoder.matches(member.getPw(), loginMember.getPw())) {
+                return false;
+            }
         }
 
-        Member loginMember = maybeMember.get();
-
-        if (!passwordEncoder.matches(member.getPw(), loginMember.getPw())) {
-            return false;
-        }
         return true;
     }
 
@@ -48,12 +49,12 @@ public class MemberServiceImpl implements MemberService {
     public boolean validationId(String id) throws Exception {
         Optional<Member> maybeMember = repository.findById(id);
 
-        if (maybeMember == null) {
-            log.info("회원 정보 없음");
+        if (!maybeMember.isPresent()) {
+            log.info("Not Find Id");
 
             return false;
         }
-        log.info(String.valueOf(maybeMember.get()));
+
         return true;
     }
 

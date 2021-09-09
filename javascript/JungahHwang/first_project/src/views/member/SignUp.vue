@@ -28,25 +28,6 @@
           <v-text-field ref="birth" color="secondary" label="Birth" v-model="birth" 
           :rules="birthRules" required></v-text-field>
 
-          <!--
-          <v-row>
-            <v-col cols="12" md="4">
-              <v-autocomplete ref="birth" color="secondary" label="Year" v-model="birth" 
-              :rules="birthRules" required></v-autocomplete>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-autocomplete ref="birth" color="secondary" label="Month" v-model="birth" 
-                required></v-autocomplete>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-autocomplete ref="birth" color="secondary" label="Day" v-model="birth" 
-                required></v-autocomplete>
-            </v-col>
-          </v-row>
-          -->
-
-          <v-text-field ref="gender" color="secondary" label="Gender" v-model="gender" 
-          :rules="genderRules" required></v-text-field>
 
           <v-text-field ref="email" color="secondary" label="Email" v-model="email" 
           :rules="emailRules" required></v-text-field>
@@ -57,18 +38,7 @@
           <v-text-field ref="address" color="secondary" label="Address" v-model="address" 
           :rules="addrRules" required></v-text-field>
 
-          <!--
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-autocomplete ref="address" color="secondary" label="City" v-model="address" 
-              :items="cities" :rules="addrRules" required></v-autocomplete>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-autocomplete ref="address" color="secondary" label="District" v-model="address" 
-              :rules="addrRules" required></v-autocomplete>
-            </v-col>
-          </v-row>
-          -->
+    
 
         </v-card-text>
       
@@ -97,13 +67,11 @@ export default {
       pw: null,
       name: null,
       birth: null,
-      gender: null,
       email: null,
       phone: null,
       address: null,
       errorMessages: '',
       formHasErrors: false,
-      cities: [ '서울시', '인천시', '경기도' ],
     }
   },
   computed: {
@@ -113,7 +81,6 @@ export default {
         pw: this.pw,
         name: this.name,
         birth: this.birth,
-        gender: this.gender,
         email: this.email,
         phone: this.phone,
         address: this.address
@@ -125,7 +92,6 @@ export default {
       'matchPwRules',
       'nameRules',
       'birthRules',
-      'genderRules',
       'emailRules',
       'phoneRules',
       'addrRules'

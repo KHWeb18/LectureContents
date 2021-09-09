@@ -6,9 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -28,9 +26,6 @@ public class Member {
 
     @Column(length = 20, nullable = false)
     private String name;
-
-    @Column(length = 10, nullable = false)
-    private String gender;
 
     @Column(length = 20, nullable = false)
     private String birth;
