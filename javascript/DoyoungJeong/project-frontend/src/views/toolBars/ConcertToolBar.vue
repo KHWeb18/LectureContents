@@ -69,14 +69,28 @@
                         </v-list-item-title>
                     </div>
 
-                    <v-list-item v-for="(link, index) in navLinks" :key="index" router :to="link.route" @click="btn_needSession(index)">
-                        <v-list-item-action>
-                            <v-icon>{{ link. icon }}</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content>
-                            {{ link.text }}
-                        </v-list-item-content>
-                    </v-list-item>
+                    <div v-if="userIdentity == 'artist'"> 
+                        <v-list-item v-for="(link, index) in navLinksForArtist" :key="index" router :to="link.route" @click="btn_needSession(index)">
+                            <v-list-item-action>
+                                <v-icon>{{ link. icon }}</v-icon>
+                            </v-list-item-action>
+                            <v-list-item-content>
+                                {{ link.text }}
+                            </v-list-item-content>
+                        </v-list-item>
+                    </div>
+
+                    <div v-else-if="userIdentity != 'artist'"> 
+                        <v-list-item v-for="(link, index) in navLinks" :key="index" router :to="link.route" @click="btn_needSession(index)">
+                            <v-list-item-action>
+                                <v-icon>{{ link. icon }}</v-icon>
+                            </v-list-item-action>
+                            <v-list-item-content>
+                                {{ link.text }}
+                            </v-list-item-content>
+                        </v-list-item>
+                    </div>
+                    
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
@@ -172,9 +186,9 @@ export default {
                     route: '/aboutUsPage',
                 },
                 {
-                    text: 'SUPPORT',
+                    text: 'REQUEST STORE', 
                     icon: 'people',
-                    route: '/preferenceFillInPage',
+                    route: '/requestStorePage', 
                 },
                 {
                     text: 'COMMUNITY',
@@ -217,7 +231,14 @@ export default {
                 { text: 'Home', icon: 'home'},
                 { text: 'Profile', icon: 'person_outline'},
                 { text: 'Liked', icon: 'star'}
-            ]
+            ],
+            navLinksForArtist: [
+                { text: 'Home', icon: 'home'},
+                { text: 'Profile', icon: 'person_outline'},
+                { text: 'Liked', icon: 'star'},
+                { text: 'Request', icon: 'email'}
+            ],
+
         }
     },
     methods: {

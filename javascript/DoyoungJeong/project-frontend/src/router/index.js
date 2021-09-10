@@ -25,6 +25,8 @@ import CommunityModifyPage from '../views/community/CommunityModifyPage.vue'
 
 import RegisterRequest from '../views/member/authArtist/RegisterRequest.vue'
 
+import RequestStorePage from '../views/member/authAdmin/RequestStorePage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -156,6 +158,11 @@ const routes = [
     path: '/registerRequest',
     name: 'RegisterRequest',
     component: RegisterRequest
+  },
+  {
+    path: '/requestStorePage',
+    name: 'RequestStorePage',
+    component: RequestStorePage
   }
 
 ]

@@ -15,7 +15,11 @@ import {
     FETCH_REPLY_LIST,
 
     FETCH_DECIDE_OR_NOT,
-    FETCH_TASTE
+    FETCH_TASTE,
+    
+    FETCH_USER_NAME,
+
+    FETCH_CONCERT_REQUEST
 
     
 } from './mutation-types'
@@ -63,5 +67,13 @@ export default {
 
     [FETCH_TASTE] (state, payload) {
         state.taste = payload
+    },
+
+    [FETCH_USER_NAME] (state, payload) {
+        state.userName = payload
+    },
+
+    [FETCH_CONCERT_REQUEST] (state, payload) {
+        state.concertRequestList = payload
     }
 }

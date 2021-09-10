@@ -10,7 +10,11 @@ import {
     FETCH_REPLY_LIST,
 
     FETCH_DECIDE_OR_NOT,
-    FETCH_TASTE
+    FETCH_TASTE,
+
+    FETCH_USER_NAME,
+
+    FETCH_CONCERT_REQUEST
 
 } from './mutation-types'
 
@@ -116,9 +120,23 @@ export default {
     fetchTaste({ commit }, num) {
 
         return axios.get(`http://localhost:8888/member/taste/getTaste/${ num }`)
-        .then(res => {
-            commit(FETCH_TASTE, res.data)
-            //alert('res.data:' + JSON.stringify(res.data))
-        })
+            .then(res => {
+                commit(FETCH_TASTE, res.data)
+                //alert('res.data:' + JSON.stringify(res.data))
+            })
+    },
+
+    fetchUserName({ commit }, num) {
+        return axios.get(`http://localhost:8888/member/concertRegister/getName/${ num }`)
+            .then(res => {
+                commit(FETCH_USER_NAME, res.data)
+            })
+    },
+
+    fetchConcertRequest({ commit }) {
+        return axios.get('http://localhost:8888/member/concertRegister/getConcertRequest')
+            .then(res => {
+                commit(FETCH_CONCERT_REQUEST, res.data)
+            })
     }
 }

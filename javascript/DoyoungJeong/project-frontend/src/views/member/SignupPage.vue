@@ -1,5 +1,5 @@
 <template>
-    <div align="center" class="grey darken-0.1" style="height: 850px;">
+    <div align="center" class="grey darken-0.1" style="height: 100%;">
         <h3 class="topBar" style="margin-top: 0px; padding-top: 30px;">SIGN UP</h3>
         <p class="description">MUSIC GHUETTO에 오신것을 환영합니다! 가입하셔서 다양한 공연 정보와 서비스를 사용해보세요. :)</p>
         

@@ -22,5 +22,9 @@ export default {
 
     notDecidedYet: false,
 
-    taste: null
+    taste: null,
+
+    userName: '',
+
+    concertRequestList: []
 }
