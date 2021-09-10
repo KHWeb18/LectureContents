@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -64,9 +65,8 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
             dateOfCon = conDateFormat.format(tmpConcertRequestList.get(i).getDateOfConcert());
             regDate = regDateFormat.format(tmpConcertRequestList.get(i).getRegDate());
 
-
-            concertRequestResponse = new ConcertRequestResponse(tmpConcertRequestList.get(i).getConcertRequestNo(), tmpConcertRequestList.get(i).getRegName(), tmpConcertRequestList.get(i).getArtistName(),
-                    tmpConcertRequestList.get(i).getVenueName(), tmpConcertRequestList.get(i).getConcertName(), dateOfCon,
+            concertRequestResponse = new ConcertRequestResponse(tmpConcertRequestList.get(i).getConcertRequestNo(), tmpConcertRequestList.get(i).getRegName(),
+                    tmpConcertRequestList.get(i).getArtistName(), tmpConcertRequestList.get(i).getVenueName(), tmpConcertRequestList.get(i).getConcertName(), dateOfCon,
                     tmpConcertRequestList.get(i).getTimeOfConcert(), tmpConcertRequestList.get(i).getApprovedOrNot(), regDate);
             //log.info("concertRequestResponse: " + concertRequestResponse);
 
@@ -77,8 +77,34 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
     }
 
     @Override
-    public void updateApproveOrNot(Integer concertRequestNo) {
+    public ConcertRequestResponse getConcertRequest(Integer concertRequestNo) {
 
-        concertRequestRepository.updateApproveOrNot(new Long(concertRequestNo));
+        Optional<ConcertRequest> tmpConcertRequest = concertRequestRepository.findByConcertRequestNo(new Long(concertRequestNo));
+
+        SimpleDateFormat conDateFormat = new SimpleDateFormat("20yy년 MM월 dd일");
+        SimpleDateFormat regDateFormat = new SimpleDateFormat("20yy-MM-dd hh:mm");
+
+        String dateOfCon = conDateFormat.format(tmpConcertRequest.get().getDateOfConcert());
+        String regDate = regDateFormat.format(tmpConcertRequest.get().getRegDate());
+
+        ConcertRequestResponse concertRequestResponse = new ConcertRequestResponse(tmpConcertRequest.get().getConcertRequestNo(),
+                tmpConcertRequest.get().getRegName(), tmpConcertRequest.get().getArtistName(),
+                tmpConcertRequest.get().getVenueName(), tmpConcertRequest.get().getConcertName(), dateOfCon,
+                tmpConcertRequest.get().getTimeOfConcert(), tmpConcertRequest.get().getApprovedOrNot(), regDate);
+
+        //log.info("concertRequestResponse: " + concertRequestResponse);
+        return concertRequestResponse;
+    }
+
+    @Override
+    public void approveConcertRequest(Integer concertRequestNo) {
+
+        concertRequestRepository.approveConcertRequest(new Long(concertRequestNo));
+    }
+
+    @Override
+    public void denyConcertRequest(Integer concertRequestNo) {
+
+        concertRequestRepository.denyConcertRequest(new Long(concertRequestNo));
     }
 }

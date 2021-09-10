@@ -71,7 +71,7 @@ public class ArtistAuthController {
         return new ResponseEntity<String>(userName, HttpStatus.OK);
     }
 
-    @GetMapping("/getConcertRequest")
+    @GetMapping("/getConcertRequestList")
     public ResponseEntity<List<ConcertRequestResponse>> getConcertRequestList() throws Exception {
 
         List<ConcertRequestResponse> list = concertRequestService.getConcertRequestList();
@@ -79,10 +79,27 @@ public class ArtistAuthController {
         return new ResponseEntity<List<ConcertRequestResponse>>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/approveOrDenyRequest/{concertRequestNo}")
-    public ResponseEntity<Void> approveOrDenyRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+    @GetMapping("/getConcertRequest/{concertRequestNo}")
+    public ResponseEntity<ConcertRequestResponse> getConcertRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+        log.info("getConcertRequest: " + concertRequestNo);
 
-        concertRequestService.updateApproveOrNot(concertRequestNo);
+        ConcertRequestResponse concertRequestResponse = concertRequestService.getConcertRequest(concertRequestNo);
+
+        return new ResponseEntity<ConcertRequestResponse>(concertRequestResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/approveRequest/{concertRequestNo}")
+    public ResponseEntity<Void> approveRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+
+        concertRequestService.approveConcertRequest(concertRequestNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping("/denyRequest/{concertRequestNo}")
+    public ResponseEntity<Void> denyRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+
+        concertRequestService.denyConcertRequest(concertRequestNo);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

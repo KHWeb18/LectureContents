@@ -13,5 +13,9 @@ public interface ConcertRequestService {
 
     public List<ConcertRequestResponse> getConcertRequestList();
 
-    public void updateApproveOrNot(Integer concertRequestNo);
+    public ConcertRequestResponse getConcertRequest(Integer concertRequestNo);
+
+    public void approveConcertRequest(Integer concertRequestNo);
+
+    public void denyConcertRequest(Integer concertRequestNo);
 }
