@@ -1,15 +1,17 @@
 package com.example.FirstProject.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.FirstProject.request.MemberDto;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+@Builder
 @Entity
+@Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Member {
     @Id
@@ -45,27 +47,16 @@ public class Member {
     @UpdateTimestamp
     private Date updDate;
 
+    public void updateMember(MemberDto memberDto) {
+        this.pw = memberDto.getPw();
+        this.name = memberDto.getName();
+        this.birth = memberDto.getBirth();
+        this.email = memberDto.getEmail();
+        this.phone = memberDto.getPhone();
+        this.address = memberDto.getAddress();
+    }
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "id")
-//    private List<Record> recordList = new ArrayList<Record>();
-//
-//    public Member(String id, String pw, String name, String gender, String birth, String email, String phone, String address) {
-//        this.id = id;
-//        this.pw = pw;
-//        this.name = name;
-//        this.gender = gender;
-//        this.birth = birth;
-//        this.email = email;
-//        this.phone = phone;
-//        this.address = address;
-//    }
-//    public void addId(Record record) {
-//        recordList.add(record);
-//    }
-//    public void clearRecordList () {
-//        recordList.clear();
-//    }
+
 }
 
 

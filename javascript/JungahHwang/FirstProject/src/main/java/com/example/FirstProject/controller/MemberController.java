@@ -2,8 +2,10 @@ package com.example.FirstProject.controller;
 
 import com.example.FirstProject.controller.session.UserInfo;
 import com.example.FirstProject.entity.Member;
+import com.example.FirstProject.request.MemberDto;
 import com.example.FirstProject.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.slf4j.MDCContextMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +31,10 @@ public class MemberController {
     private HttpSession session;
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> signup(@Validated @RequestBody Member member) throws Exception {
+    public ResponseEntity<Void> signup(@RequestBody MemberDto memberDto) throws Exception {
         log.info("Member Signup");
 
-        service.signup(member);
+        Member member = service.signup(memberDto);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
@@ -71,6 +73,7 @@ public class MemberController {
         return new ResponseEntity<Boolean>(isLogin, HttpStatus.OK);
     }
 
+
     @PostMapping("/logout")
     public ResponseEntity<Boolean> removeSession(HttpServletRequest request) throws Exception {
         Boolean mustFalse = false;
@@ -88,6 +91,24 @@ public class MemberController {
         Optional<Member> result = service.userInfo(id);
 
         return new ResponseEntity<Optional<Member>>(result, HttpStatus.OK);
+    }
+
+    @PatchMapping("/mypage/modify/{id}")
+    public ResponseEntity<Void> modify(@PathVariable("id") String id, @RequestBody MemberDto memberDto) throws Exception {
+        Member member = service.findById(id);
+
+        service.modify(member, memberDto);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/mypage/remove/{id}")
+    public ResponseEntity<Void> remove(@PathVariable("id") String id) throws Exception {
+        Member member = service.findById(id);
+
+        service.remove(member);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

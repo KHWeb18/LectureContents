@@ -1,5 +1,4 @@
 <template>
-  <div>
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on" class="float-right">
@@ -14,6 +13,9 @@
           </p>
         </v-card-title>
         
+        <v-card-text></v-card-text>
+        
+        <v-divider></v-divider>
         <v-card-actions>
           <v-btn @click="btnLogout" class="secondary--text font-weight-bold" text >
             Logout
@@ -25,7 +27,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
 </template>
 
 
@@ -49,7 +50,7 @@ export default {
       axios.post('http://localhost:7777/member/logout').then(res => {
         this.$store.commit('USER_LOGIN', res.data)
         this.fetchSession(this.$cookies.remove('session'))
-        this.$store.commit('USER_INFO', [])
+        this.$store.commit('FETCH_USER_INFO', [])
       })
     },
     btnMypage () {

@@ -24,6 +24,7 @@ import LoginInfo from '@/components/member/LoginInfo'
 
 import { mapState } from 'vuex'
 
+
 export default {
   name: 'NavBar',
   components: {

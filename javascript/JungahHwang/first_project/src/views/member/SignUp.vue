@@ -13,6 +13,7 @@
         <v-card-text>
           <v-text-field ref="id" color="secondary" label="Id" v-model="id" 
           :rules="idRules" :error-messages="errorMessages" required></v-text-field>
+          <v-btn @click="checkId">아이디 확인</v-btn>
 
           <v-text-field ref="pw" color="secondary" label="Password" v-model="pw"
           :rules="pwRules" type="password" required></v-text-field>
@@ -124,12 +125,16 @@ export default {
       axios.post('http://localhost:7777/member/signup', this.form)
       .then(() => {
         alert('회원가입이 완료되었습니다.')
+
         this.dialog = false
       }).catch(res => {
         alert(res)
       })
       
     },
+    checkId () {
+      
+    }
   }
 }
   </script>

@@ -22,7 +22,7 @@
         
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn @click="resetForm" class="secondary--text font-weight-bold" text>cancel</v-btn>
+          <v-btn @click="btnCancle" class="secondary--text font-weight-bold" text>cancel</v-btn>
           <v-spacer></v-spacer>
           <v-btn @click="btnLogin" class="secondary--text font-weight-bold" text>login</v-btn>
         </v-card-actions>
@@ -57,7 +57,7 @@ export default {
     
     if (this.session != null) {
       this.$store.state.isLogin = true
-      this.$store.state.userInfo = this.$cookies.get('session')
+      this.$store.state.userInfo = this.fetchUserInfo(this.$cookies.get('session')) 
     }
   },
   computed: {
@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions ([ 'userInfo', 'fetchSession' ]),
+    ...mapActions ([ 'fetchUserInfo', 'fetchSession' ]),
 
     btnLogin () {
       this.formHasErrors = false
@@ -95,7 +95,7 @@ export default {
           
           this.$store.commit('USER_LOGIN', res.data)
           
-          this.userInfo(id)
+          this.fetchUserInfo(id)
 
           this.dialog = false
           alert('로그인이 완료되었습니다!')
@@ -115,7 +115,7 @@ export default {
       })
       
     },
-    resetForm () {
+    btnCancle () {
       this.errorMessages = []
       this.formHasErrors = false,
 

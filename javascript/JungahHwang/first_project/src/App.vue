@@ -14,8 +14,8 @@
 
 
 <script>
-import NavBar from '@/views/NavBar'
-import Toolbar from '@/views/Toolbar'
+import NavBar from '@/views/bar/NavBar'
+import Toolbar from '@/views/bar/Toolbar'
 
 export default {
   name: 'App', 
