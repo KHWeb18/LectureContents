@@ -32,7 +32,7 @@
                     <input type="time" v-model="timeOfEnd" style="width: 230px; margin-right: 0px;"/>
                 </div>
 
-                <p class="footerText" style="text-align: center; margin-right: 235px; margin-top: 30px;">회원님의 공연을 홍보할 사진을 업로드해주세요!</p>
+                <p class="footerText" style="text-align: center; margin-top: 30px;">회원님의 공연을 홍보할 사진을 업로드해주세요 :) (파일 이름은 신청자 이름으로 해주세요!)</p>
 
                 <label>Files
                     <input type="file" id="files" ref="files" multiple v-on:change="handleFileUpload()"> <!-- 변화를 감지하면 handleFileUpload메소드를 실행 -->

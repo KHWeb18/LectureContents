@@ -26,6 +26,7 @@ import CommunityModifyPage from '../views/community/CommunityModifyPage.vue'
 import RegisterRequest from '../views/member/authArtist/RegisterRequest.vue'
 
 import RequestStorePage from '../views/member/authAdmin/RequestStorePage.vue'
+import RequestReadPage from '../views/member/authAdmin/RequestReadPage.vue'
 
 Vue.use(VueRouter)
 
@@ -163,6 +164,17 @@ const routes = [
     path: '/requestStorePage',
     name: 'RequestStorePage',
     component: RequestStorePage
+  },
+  {
+    path: '/requestReadPage/:concertRequestNo',
+    name: 'RequestReadPage',
+    components: {
+      default: RequestReadPage,
+    },
+    props: {
+      default: true
+    }
+
   }
 
 ]

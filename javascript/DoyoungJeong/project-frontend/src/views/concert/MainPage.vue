@@ -68,7 +68,7 @@ export default {
 
             this.$store.state.isLoggedIn = true
             this.$store.state.userIdentity = this.$store.state.userProfile.identity
-        }
+        } 
         //alert(this.$store.state.userProfile.id + ' ' + this.$store.state.userProfile.identity + ' ' + this.$store.state.userProfile.memberNo)
         //alert(JSON.stringify(this.$store.state.userProfile))
 

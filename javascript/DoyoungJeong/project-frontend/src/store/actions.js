@@ -14,7 +14,9 @@ import {
 
     FETCH_USER_NAME,
 
-    FETCH_CONCERT_REQUEST
+    FETCH_CONCERT_REQUEST_LIST,
+    FETCH_CONCERT_REQUEST,
+    FETCH_REQUEST_REPLY
 
 } from './mutation-types'
 
@@ -133,10 +135,26 @@ export default {
             })
     },
 
-    fetchConcertRequest({ commit }) {
-        return axios.get('http://localhost:8888/member/concertRegister/getConcertRequest')
+    fetchConcertRequestList({ commit }) {
+        return axios.get('http://localhost:8888/member/concertRegister/getConcertRequestList')
+            .then(res => {
+                commit(FETCH_CONCERT_REQUEST_LIST, res.data)
+            })
+    },
+    
+    fetchConcertRequest({ commit }, num) {
+        return axios.get(`http://localhost:8888/member/concertRegister/getConcertRequest/${ num }`)
             .then(res => {
                 commit(FETCH_CONCERT_REQUEST, res.data)
+                //alert(JSON.stringify(res.data))
             })
-    }
+    },
+
+    fetchRequestReply({ commit }, num) {
+        return axios.get(`http://localhost:8888/member/concertRegister/getRequestReply/${ num }`)
+            .then(res => {
+                commit(FETCH_REQUEST_REPLY, res.data)
+            })
+    },
+
 }

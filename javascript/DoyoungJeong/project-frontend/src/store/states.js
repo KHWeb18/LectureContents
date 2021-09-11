@@ -26,5 +26,7 @@ export default {
 
     userName: '',
 
-    concertRequestList: []
+    concertRequestList: [],
+    concertRequest: null,
+    requestReply: ''
 }

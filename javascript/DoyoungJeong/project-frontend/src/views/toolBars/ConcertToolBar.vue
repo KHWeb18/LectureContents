@@ -281,6 +281,10 @@ export default {
                         } else if(res.data == false) {
                             alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
                             this.$store.state.isLoggedIn = false
+
+                            this.$cookies.remove("currentUser")
+                            this.$store.state.userProfile = null
+                            this.$store.state.userIdentity = null
                         }
                     })
                 }
@@ -301,4 +305,5 @@ export default {
     color: white;
 }
 </style>
+        
 
