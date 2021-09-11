@@ -5,15 +5,19 @@
         <v-icon>create</v-icon>
       </v-btn>
     </template>
-    <v-card>
-      <v-card-title>
-        <p>{{ date }} 활동 수정하기</p>
-      </v-card-title>
-      <v-card-text>
-        <v-textarea outlined color="secondary" label="식단" v-model="food"></v-textarea>
-        <v-textarea outlined color="secondary" label="운동" v-model="exercise"></v-textarea>
-        <v-textarea outlined color="secondary" label="체중" v-model="weight"></v-textarea>
-      </v-card-text>
+    <v-card class="primary rounded-xl">
+      <v-card-title class="headline secondary--text font-weight-bold">
+          <p>{{ date }} 기록하기</p>
+        </v-card-title>
+        <v-card-text>
+          <v-textarea color="secondary" v-model="food" label="식단" 
+          clearable clear-icon="mdi-close" outlined></v-textarea>
+          <v-textarea color="secondary" v-model="exercise" label="운동" 
+          clearable clear-icon="mdi-close" outlined></v-textarea>
+          <v-textarea color="secondary" v-model="weight" label="체중" 
+          clearable clear-icon="mdi-close" outlined></v-textarea>
+        </v-card-text>
+        <v-divider></v-divider>
       <v-card-actions>
         <v-btn @click="closeForm" icon small color="secondary" class="pa-6">
           <v-icon>close</v-icon>

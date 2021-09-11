@@ -2,14 +2,14 @@
   <v-card class="my-3 mr-3">
     <v-card v-if="!isLogin">
       <v-card-text>
-        <p>로그인을 해주세요!</p>
+        <p>로그인 해주세요.</p>
       </v-card-text>
     </v-card>
 
     <v-card v-else>
       <v-card v-if="!record || (Array.isArray(record) && record.length === 0)">
         <v-card-text>
-          <p>{{ date }}의 활동 기록이 없습니다.</p>
+          <p>{{ date }}의 기록이 없습니다.</p>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -20,7 +20,7 @@
       <v-card v-else>
         <v-card-text>
           <v-list-item-title>
-            <p>{{ date }}의 활동 기록</p>
+            <p>{{ date }}의 기록</p>
           </v-list-item-title>
           <v-list-item two-line>
             <v-list-item-content>
