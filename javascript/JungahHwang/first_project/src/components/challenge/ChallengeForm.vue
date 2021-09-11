@@ -77,7 +77,10 @@ export default {
   props: {
     videoList: {
       type: Array
-    }
+    },
+    // videoId: {
+    //   type: String
+    // }
   },
   data () {
     return {

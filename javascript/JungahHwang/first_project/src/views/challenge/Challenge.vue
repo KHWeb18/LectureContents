@@ -8,7 +8,7 @@
       </v-btn>
     </v-toolbar>
 
-    <challenge-form :videoList="videoList"></challenge-form>
+    <challenge-form :videoList="videoList" :videoId="videoId"></challenge-form>
   </v-card>  
 </template>
 
@@ -25,7 +25,8 @@ export default {
   data () {
     return {
       videoList: thankyouBubu.items,
-      search: null
+      search: null,
+      //videoId: null
     }
   },
   methods: {
