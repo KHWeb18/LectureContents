@@ -7,11 +7,14 @@
     </template>
 
     <v-card class="primary rounded-xl pa-4">
-      <v-card-title class="secondary--text">
+      <v-card-title class="headline secondary--text font-weight-bold">
         <p>댓글 수정</p>
       </v-card-title>
       <v-text-field v-model="content" class="px-3" color="secondary"></v-text-field>
 
+      <v-card-text></v-card-text>
+
+      <v-divider></v-divider>
       <v-card-actions>
         <v-btn @click="btnCancle" class="secondary--text font-weight-bold" text >
           Cancle
