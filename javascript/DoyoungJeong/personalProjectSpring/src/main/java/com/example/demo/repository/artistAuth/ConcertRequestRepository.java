@@ -26,4 +26,9 @@ public interface ConcertRequestRepository extends JpaRepository<ConcertRequest, 
     @Modifying
     @Query("update ConcertRequest cr set cr.approvedOrNot = 'N' where cr.concertRequestNo = :concertRequestNo")
     void denyConcertRequest(Long concertRequestNo);
+
+    @Transactional
+    @Modifying
+    @Query("update ConcertRequest cr set cr.approvedOrNot = 'A' where cr.concertRequestNo = :concertRequestNo")
+    void deferConcertRequest(Long concertRequestNo);
 }

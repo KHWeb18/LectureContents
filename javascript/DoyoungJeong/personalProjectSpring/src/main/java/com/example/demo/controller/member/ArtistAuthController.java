@@ -1,12 +1,15 @@
 package com.example.demo.controller.member;
 
+import com.example.demo.controller.member.request.ApproveOrNotRequest;
 import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
+import com.example.demo.entity.artistAuth.RequestReply;
 import com.example.demo.service.artistAuth.ConcertRequestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -88,19 +91,31 @@ public class ArtistAuthController {
         return new ResponseEntity<ConcertRequestResponse>(concertRequestResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/approveRequest/{concertRequestNo}")
-    public ResponseEntity<Void> approveRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
-
-        concertRequestService.approveConcertRequest(concertRequestNo);
+    @PostMapping("/approveOrNotRequest") //왜 PutMapping만 되는거지? Post도 된다.
+    public ResponseEntity<Void> approveOrNotRequest(@Validated @RequestBody ApproveOrNotRequest approveOrNotRequest) throws Exception {
+        log.info("approveOrNotRequest: " + approveOrNotRequest);
+        concertRequestService.approveOrNotRequest(approveOrNotRequest);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/denyRequest/{concertRequestNo}")
-    public ResponseEntity<Void> denyRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+    @PostMapping("/leaveReply")
+    public ResponseEntity<Void> leaveReply(@Validated @RequestBody RequestReply requestReply) throws Exception {
 
-        concertRequestService.denyConcertRequest(concertRequestNo);
+        //log.info("leaveReply: " + requestReply);
+        concertRequestService.inputReply(requestReply);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getRequestReply/{concertRequestNo}")
+    public ResponseEntity<String> getRequestReply(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+        //log.info("getRequestReply: " + concertRequestNo);
+
+        String requestReply = concertRequestService.findRequestReply(concertRequestNo);
+
+        //log.info("requestReply: " + requestReply);
+
+        return new ResponseEntity<String>(requestReply, HttpStatus.OK);
     }
 }

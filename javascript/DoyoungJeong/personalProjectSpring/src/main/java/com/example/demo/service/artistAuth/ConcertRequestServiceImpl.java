@@ -1,9 +1,12 @@
 package com.example.demo.service.artistAuth;
 
+import com.example.demo.controller.member.request.ApproveOrNotRequest;
 import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
 import com.example.demo.entity.artistAuth.ConcertRequest;
+import com.example.demo.entity.artistAuth.RequestReply;
 import com.example.demo.repository.artistAuth.ConcertRequestRepository;
+import com.example.demo.repository.artistAuth.RequestReplyRepository;
 import com.example.demo.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,9 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
     @Autowired
     MemberRepository memberRepository;
 
+    @Autowired
+    RequestReplyRepository requestReplyRepository;
+
     @Override
     public void regRequest(ArtistAuthRequest artistAuthRequest) {
 
@@ -33,6 +39,9 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
 
         ConcertRequest concertRequest = new ConcertRequest(memberNo, artistAuthRequest.getRegName(), artistAuthRequest.getArtistName(),
                 artistAuthRequest.getVenueName(), artistAuthRequest.getConcertName(), artistAuthRequest.getDateOfConcert(), timeOfConcert);
+
+        RequestReply requestReply = new RequestReply("");
+        concertRequest.addRequestReply(requestReply);
 
         concertRequestRepository.save(concertRequest);
     }
@@ -97,14 +106,35 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
     }
 
     @Override
-    public void approveConcertRequest(Integer concertRequestNo) {
+    public void approveOrNotRequest(ApproveOrNotRequest approveOrNotRequest) {
 
-        concertRequestRepository.approveConcertRequest(new Long(concertRequestNo));
+        int concertRequestNo = approveOrNotRequest.getNumArr()[0];
+        int statusNum = approveOrNotRequest.getNumArr()[1];
+
+        if(statusNum == 1) {
+            concertRequestRepository.approveConcertRequest(new Long(concertRequestNo));
+        } else if(statusNum == 2) {
+            concertRequestRepository.denyConcertRequest(new Long(concertRequestNo));
+        } else if(statusNum == 3) {
+            concertRequestRepository.deferConcertRequest(new Long(concertRequestNo));
+        }
     }
 
     @Override
-    public void denyConcertRequest(Integer concertRequestNo) {
+    public void inputReply(RequestReply requestReply) {
 
-        concertRequestRepository.denyConcertRequest(new Long(concertRequestNo));
+        Long concertRequestNo = requestReply.getConcertRequestNo();
+        String replyContent = requestReply.getRequestReply();
+
+        requestReplyRepository.saveReply(replyContent, concertRequestNo);
+    }
+
+    @Override
+    public String findRequestReply(Integer concertRequestNo) {
+
+        Optional<RequestReply> tmpRequestReply = requestReplyRepository.findByConcertRequestNo(new Long(concertRequestNo));
+        String requestReply = tmpRequestReply.get().getRequestReply();
+
+        return requestReply;
     }
 }
