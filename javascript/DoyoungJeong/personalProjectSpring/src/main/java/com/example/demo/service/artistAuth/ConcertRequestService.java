@@ -1,7 +1,9 @@
 package com.example.demo.service.artistAuth;
 
+import com.example.demo.controller.member.request.ApproveOrNotRequest;
 import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
+import com.example.demo.entity.artistAuth.RequestReply;
 
 import java.util.List;
 
@@ -13,5 +15,11 @@ public interface ConcertRequestService {
 
     public List<ConcertRequestResponse> getConcertRequestList();
 
-    public void updateApproveOrNot(Integer concertRequestNo);
+    public ConcertRequestResponse getConcertRequest(Integer concertRequestNo);
+
+    public void approveOrNotRequest(ApproveOrNotRequest approveOrNotRequest);
+
+    public void inputReply(RequestReply requestReply);
+
+    public String findRequestReply(Integer concertRequestNo);
 }

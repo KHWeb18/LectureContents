@@ -1,12 +1,15 @@
 package com.example.demo.controller.member;
 
+import com.example.demo.controller.member.request.ApproveOrNotRequest;
 import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
+import com.example.demo.entity.artistAuth.RequestReply;
 import com.example.demo.service.artistAuth.ConcertRequestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -71,7 +74,7 @@ public class ArtistAuthController {
         return new ResponseEntity<String>(userName, HttpStatus.OK);
     }
 
-    @GetMapping("/getConcertRequest")
+    @GetMapping("/getConcertRequestList")
     public ResponseEntity<List<ConcertRequestResponse>> getConcertRequestList() throws Exception {
 
         List<ConcertRequestResponse> list = concertRequestService.getConcertRequestList();
@@ -79,11 +82,40 @@ public class ArtistAuthController {
         return new ResponseEntity<List<ConcertRequestResponse>>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/approveOrDenyRequest/{concertRequestNo}")
-    public ResponseEntity<Void> approveOrDenyRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+    @GetMapping("/getConcertRequest/{concertRequestNo}")
+    public ResponseEntity<ConcertRequestResponse> getConcertRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+        log.info("getConcertRequest: " + concertRequestNo);
 
-        concertRequestService.updateApproveOrNot(concertRequestNo);
+        ConcertRequestResponse concertRequestResponse = concertRequestService.getConcertRequest(concertRequestNo);
+
+        return new ResponseEntity<ConcertRequestResponse>(concertRequestResponse, HttpStatus.OK);
+    }
+
+    @PostMapping("/approveOrNotRequest") //왜 PutMapping만 되는거지? Post도 된다.
+    public ResponseEntity<Void> approveOrNotRequest(@Validated @RequestBody ApproveOrNotRequest approveOrNotRequest) throws Exception {
+        log.info("approveOrNotRequest: " + approveOrNotRequest);
+        concertRequestService.approveOrNotRequest(approveOrNotRequest);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/leaveReply")
+    public ResponseEntity<Void> leaveReply(@Validated @RequestBody RequestReply requestReply) throws Exception {
+
+        //log.info("leaveReply: " + requestReply);
+        concertRequestService.inputReply(requestReply);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getRequestReply/{concertRequestNo}")
+    public ResponseEntity<String> getRequestReply(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+        //log.info("getRequestReply: " + concertRequestNo);
+
+        String requestReply = concertRequestService.findRequestReply(concertRequestNo);
+
+        //log.info("requestReply: " + requestReply);
+
+        return new ResponseEntity<String>(requestReply, HttpStatus.OK);
     }
 }

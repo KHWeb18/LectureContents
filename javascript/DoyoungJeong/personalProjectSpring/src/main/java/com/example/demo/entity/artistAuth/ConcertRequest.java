@@ -1,5 +1,7 @@
 package com.example.demo.entity.artistAuth;
 
+import com.example.demo.entity.member.MemberIdentity;
+import com.example.demo.entity.member.MemberTaste;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,6 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -48,6 +52,14 @@ public class ConcertRequest {
 
     @UpdateTimestamp
     private Date updDate;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "concert_request_no")
+    private Set<RequestReply> requestReplies = new HashSet<RequestReply>();
+
+    public void addRequestReply(RequestReply requestReply) {
+        requestReplies.add(requestReply);
+    }
 
     public ConcertRequest(Long memberNo, String regName, String artistName, String venueName, String concertName, Date dateOfConcert, String timeOfConcert) {
         this.memberNo = memberNo;
