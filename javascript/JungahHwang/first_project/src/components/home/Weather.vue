@@ -22,28 +22,26 @@
         <v-img width="200" :src="require(`@/assets/icon/weather/${icon}.png`)"></v-img>
       </v-card>
 
-      <v-card class="primary" flat>
-        <v-list class="primary">
+      <v-list class="primary">
+        <v-list-item class="text-center">
+          <v-list-item-title class="title font-weight-bold gray--text">
+            날씨 {{ weather }}
+          </v-list-item-title>
+        </v-list-item> 
 
-          <v-list-item class="text-center">
-            <v-list-item-title class="title font-weight-bold gray--text">
-              날씨 {{ weather }}
-            </v-list-item-title>
-          </v-list-item> 
+        <v-list-item class="text-center">
+          <v-list-item-title class="gray--text">
+            현재 기온 {{ temp }} ℃
+          </v-list-item-title>
+        </v-list-item>
 
-          <v-list-item class="text-center">
-            <v-list-item-title class="gray--text">
-              현재 기온 {{ temp }} ℃
-            </v-list-item-title>
-          </v-list-item>
+        <v-list-item class="text-center">
+          <v-list-item-title class="gray--text">
+            습도 {{ clouds }} %
+          </v-list-item-title>
+        </v-list-item> 
+      </v-list>
 
-          <v-list-item class="text-center">
-            <v-list-item-title class="gray--text">
-              습도 {{ clouds }} %
-            </v-list-item-title>
-          </v-list-item> 
-        </v-list>
-      </v-card>
     </v-card>
 
     <v-card class="my-5 mx-auto text-center gray--text rounded-xl" max-width="300" flat>
@@ -54,7 +52,7 @@
 
 
 <script>
-//import axios from 'axios'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -66,12 +64,12 @@ export default {
       name: '서울',
       cities: [
         { name: '서울', eng: 'Seoul'},
+        { name: '인천', eng: 'Incheon'},
         { name: '광주', eng: 'Gwangju'},
         { name: '대구', eng: 'Daegu'},
         { name: '대전', eng: 'Daejeon'},
         { name: '부산', eng: 'Busan'},
         { name: '울산', eng: 'Ulsan'},
-        { name: '인천', eng: 'Incheon'},
         { name: '제주', eng: 'Jeju'},
       ]
     }
@@ -80,23 +78,22 @@ export default {
     //this.selectCity(this.name, this.city)
   },
   methods: {
-    // selectCity (name, city) {
-    //   this.name = name
+    selectCity (name, city) {
+      this.name = name
 
-    //   const key = ''
+      const key = ''
 
-    //   axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`).then(res => {
-    //     console.log(res.data)
-    //     const list = res.data
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`).then(res => {
+        console.log(res.data)
+        const list = res.data
 
-    //     this.temp = Math.round(list.main.temp)
-    //     this.clouds = list.clouds.all
-    //     this.icon = list.weather[0].icon
-    //     this.weatherCondition(list.weather[0].main)
-    //   })
-     
-      
-    // },
+        this.temp = Math.round(list.main.temp)
+        this.clouds = list.clouds.all
+        this.icon = list.weather[0].icon
+        this.weatherCondition(list.weather[0].main)
+      })
+  
+    },
     weatherCondition (data) {
       switch (data) {
         case 'Thunderstorm' :

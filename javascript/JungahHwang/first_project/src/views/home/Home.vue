@@ -1,5 +1,6 @@
 <template>
   <v-sheet class="home">
+    <!--
     <h2>메인 페이지</h2>
     <v-btn color="red" class="hidden-xs-only">xs(폰)</v-btn>
     <v-btn color="orange" class="hidden-sm-only">sm(태블릿)</v-btn>
@@ -16,6 +17,7 @@
     </router-link>
 
     <v-btn @click="cookies">쿠키</v-btn>
+    -->
 
     <weather></weather>
 

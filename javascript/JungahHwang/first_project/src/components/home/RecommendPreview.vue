@@ -42,7 +42,6 @@ export default {
       let list = res.data.reverse()
       
       for (let i = 0; i < 3; i++) {
-        
         this.recommendList.push({ boardNo: list[i][0], id: list[i][1], title: list[i][2] })
       }
     })

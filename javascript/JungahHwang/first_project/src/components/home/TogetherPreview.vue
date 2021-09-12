@@ -43,7 +43,6 @@ export default {
       let list = res.data.reverse()
       
       for (let i = 0; i < 3; i++) {
-        
         this.togetherList.push({ boardNo: list[i][0], id: list[i][1], title: list[i][2] })
       }
     })

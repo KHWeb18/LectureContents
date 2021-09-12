@@ -10,12 +10,14 @@
 
       <v-divider></v-divider>
       <v-list v-for="video in videoList" :key="video.index">
-        <v-list-item>
-          <img class="mr-2" :src="video.thumbnail" width="60">
-          <v-list-item-title @click="readChallenge">
-            {{ video.title }}
-          </v-list-item-title>
-        </v-list-item>
+        <v-list-item-group>
+          <v-list-item>
+            <img class="mr-2" :src="video.thumbnail" width="60">
+            <v-list-item-title @click="readChallenge">
+              {{ video.title }}
+            </v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-card>
  </v-card>
@@ -46,7 +48,7 @@ export default {
   methods: {
     readChallenge () {
       this.$router.push(
-        { name: 'Challenge'} //, query: { videoId: videoId} }
+        { name: 'Challenge' } 
       )
     }
   }
