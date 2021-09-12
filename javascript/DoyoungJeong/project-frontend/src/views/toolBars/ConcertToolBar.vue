@@ -224,7 +224,7 @@ export default {
                 {
                     text: 'ConcertReg',
                     icon: 'people',
-                    route: '/registerRequest',
+                    route: '/registerRequestPage',
                 }
             ],
             navLinks: [
@@ -267,7 +267,7 @@ export default {
                     name: 'MainPage'
                 })
             } else if(this.$store.state.isLoggedIn == true) {
-                if(index == 1 || index == 2) {
+              
                     axios.post('http://localhost:8888/member/needSession')
                     .then(res => {
                         if(res.data == true && index == 1) {
@@ -278,6 +278,10 @@ export default {
                             this.$router.push ({
                                 name: 'LikedListPage'
                             })
+                        } else if(res.data == true && index == 3) {
+                            this.$router.push ({
+                                name: 'MyRequestListPage'
+                            })
                         } else if(res.data == false) {
                             alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
                             this.$store.state.isLoggedIn = false
@@ -287,7 +291,7 @@ export default {
                             this.$store.state.userIdentity = null
                         }
                     })
-                }
+                
             } else if(index != 0) {
                 alert('로그인이 필요한 서비스입니다!')
             }

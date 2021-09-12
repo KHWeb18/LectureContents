@@ -21,7 +21,8 @@ import {
 
     FETCH_CONCERT_REQUEST_LIST,
     FETCH_CONCERT_REQUEST,
-    FETCH_REQUEST_REPLY
+
+    FETCH_MY_REQUEST_LIST
 
     
 } from './mutation-types'
@@ -83,7 +84,7 @@ export default {
         state.concertRequest = payload
     },
 
-    [FETCH_REQUEST_REPLY] (state, payload) {
-        state.requestReply = payload
+    [FETCH_MY_REQUEST_LIST] (state, payload) {
+        state.myRequestList = payload
     }
 }

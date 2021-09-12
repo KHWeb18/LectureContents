@@ -23,7 +23,10 @@ import CommunityWritePage from '../views/community/CommunityWritePage.vue'
 import CommunityReadPage from '../views/community/CommunityReadPage.vue'
 import CommunityModifyPage from '../views/community/CommunityModifyPage.vue'
 
-import RegisterRequest from '../views/member/authArtist/RegisterRequest.vue'
+import RegisterRequestPage from '../views/member/authArtist/RegisterRequestPage.vue'
+import MyRequestListPage from '../views/member/authArtist/MyRequestListPage.vue'
+import MyRequestReadPage from '../views/member/authArtist/MyRequestReadPage.vue'
+import MyRequestModifyPage from '../views/member/authArtist/MyRequestModifyPage.vue'
 
 import RequestStorePage from '../views/member/authAdmin/RequestStorePage.vue'
 import RequestReadPage from '../views/member/authAdmin/RequestReadPage.vue'
@@ -156,9 +159,9 @@ const routes = [
     component: AboutUsPage
   },
   {
-    path: '/registerRequest',
-    name: 'RegisterRequest',
-    component: RegisterRequest
+    path: '/registerRequestPage',
+    name: 'RegisterRequestPage',
+    component: RegisterRequestPage
   },
   {
     path: '/requestStorePage',
@@ -174,9 +177,32 @@ const routes = [
     props: {
       default: true
     }
-
+  },
+  {
+    path: '/myRequestListPage',
+    name: 'MyRequestListPage',
+    component: MyRequestListPage
+  },
+  {
+    path: '/myRequestReadPage/:concertRequestNo',
+    name: 'MyRequestReadPage',
+    components: {
+      default: MyRequestReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/myRequestModifyPage/:concertRequestNo',
+    name: 'MyRequestModifyPage',
+    components: {
+      default: MyRequestModifyPage
+    },
+    props: {
+      default: true
+    }
   }
-
 ]
 
 const router = new VueRouter({

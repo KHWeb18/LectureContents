@@ -34,6 +34,7 @@
                 </v-container>
             
             </v-card-text>
+            
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="teal darken-1" text @click.native="confirm($event)">
@@ -43,6 +44,7 @@
                     취소
                 </v-btn>
             </v-card-actions>
+
         </v-card>
     </v-dialog>
 
@@ -62,7 +64,7 @@ export default {
     data() {
         return {
             phoneNumber: '',
-            name: '',
+            name: '김남자',
             numOfVisitors: '',
             message: '해당 공연장 매니저에게 미리 남길 말이 있나요?',
             bookingDialog: false
@@ -77,7 +79,29 @@ export default {
                 axios.post('http://localhost:8888/member/needSession')
                     .then(res => {
                         if(res.data == true) {
-                            alert('예약 정보가 전송되었습니다 :) 이용해주셔서 감사합니다.')
+
+                            if(!/^[가-힣|a-z|A-Z|0-9|?'#!$|/\s/g]+$/.test(this.name)) {
+                                alert('올바른 이름를 입력해주세요. :)' + this.name)
+                            } else if(!/^\d{11}$/.test(this.phoneNumber)) {
+                                alert('올바른 휴대번호를 입력해주세요!')
+                            } else if(this.numOfVisitors > 6) {
+                                alert('함께 예약 할 수 있는 인원은 6명 이하입니다!')
+                            } else {
+                            
+                                const memberNo = this.$store.state.userProfile.memberNo
+                                const name = this.name
+                                const phoneNumber = this.phoneNumber
+                                const numOfVisitors = this.numOfVisitors
+                                const message = this.message
+
+                                axios.post('http://localhost:8888/concert/makeBooking', { memberNo, name, phoneNumber, numOfVisitors, message })
+                                    .then(() => {
+                                        alert('예약 정보가 전송되었습니다 :) 이용해주셔서 감사합니다.')
+                                    })
+                                    .catch(() => {
+                                        alert('잠시 후에 다시 시도해주세요!')
+                                    })
+                            }
                         } else {
                             alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
                             this.$store.state.isLoggedIn = false
@@ -103,12 +127,12 @@ export default {
             this.message = ''
         },
         setInfo() {
-            this.phoneNumber = this.member.phoneNo
-            this.name = this.member.name
+            // this.phoneNumber = this.member.phoneNo
+            // this.name = this.member.name
         }
     },
     computed: {
-        ...mapState(['isLoggedIn'])
+        ...mapState(['isLoggedIn', 'userProfile'])
     }
 }
 </script>
