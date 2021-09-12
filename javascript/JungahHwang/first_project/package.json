@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-cookies": "^1.7.4",
+    "vue-naver-maps": "^0.14.2",
     "vue-router": "^3.2.0",
     "vue-youtube": "^1.4.0",
     "vuetify": "^2.4.0",
