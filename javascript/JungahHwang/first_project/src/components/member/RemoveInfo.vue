@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="400">
+  <v-dialog v-model="dialog" max-width="350">
     <template v-slot:activator="{ on }">
       <v-btn class="pa-6" color="secondary" v-on="on" icon>
           <v-icon>mdi-delete</v-icon>
@@ -9,6 +9,9 @@
       <v-card-title class="secondary--text font-weight-bold">
         <p>정말 탈퇴하시겠습니까?</p>
       </v-card-title>
+
+      <v-card-text></v-card-text>
+
       <v-card-actions>
         <v-btn @click="btnCancle" class="secondary--text font-weight-bold" text >
           Cancle
