@@ -29,7 +29,7 @@ public class Together {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 50000, nullable = false)
+    @Column(length = 10000, nullable = false)
     private String content;
 
     @Column

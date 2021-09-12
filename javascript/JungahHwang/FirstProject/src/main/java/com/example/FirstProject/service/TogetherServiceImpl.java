@@ -53,4 +53,11 @@ public class TogetherServiceImpl implements TogetherService {
     public void remove(Together together) throws Exception {
         repository.delete(together);
     }
+
+    @Override
+    public List<Together> userRead(String id) throws Exception {
+        List<Together> togethers = repository.userRead(id);
+
+        return togethers;
+    }
 }

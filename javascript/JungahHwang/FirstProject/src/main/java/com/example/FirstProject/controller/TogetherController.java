@@ -67,6 +67,15 @@ public class TogetherController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @GetMapping("/userRead/{id}")
+    public ResponseEntity userRead(@PathVariable("id") String id) throws Exception {
+        log.info("Together UserRead");
+
+        List<Together> togethers = service.userRead(id);
+
+        return new ResponseEntity(togethers, HttpStatus.OK);
+    }
+
 }
 
 
