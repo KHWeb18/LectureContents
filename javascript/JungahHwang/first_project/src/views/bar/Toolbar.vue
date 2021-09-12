@@ -48,7 +48,7 @@ export default {
         { name: 'Challenge', route: `/challenge` }, 
         { name: 'Recommend', route: `/recommend` }, 
         { name: 'Together', route: `/together` }, 
-        { name: 'Chatting', route: `/chatting` }, 
+        { name: 'Map', route: `/map` }, 
       ],
     }
   },
