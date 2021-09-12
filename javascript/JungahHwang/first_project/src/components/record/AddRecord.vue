@@ -7,7 +7,7 @@
     </template>
       <v-card class="primary rounded-xl">
         <v-card-title class="headline secondary--text font-weight-bold">
-          <p>{{ date }} 기록하기</p>
+          <p>{{ selectDate }} 기록하기</p>
         </v-card-title>
         <v-card-text>
           <v-textarea color="secondary" v-model="food" label="식단" outlined></v-textarea>
@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['date', 'record', 'userInfo'])
+    ...mapState(['selectDate', 'record', 'userInfo'])
   },
   methods: {
     ...mapActions(['fetchRecord']),
@@ -54,7 +54,7 @@ export default {
       const food = this.food
       const exercise = this.exercise
       const weight = this.weight
-      const date = this.date
+      const date = this.selectDate
       const id = this.userInfo.id
 
       console.log(date + '/' + id + ': ' + food + ', ' + exercise + ', ' + weight)
@@ -62,7 +62,7 @@ export default {
       axios.post('http://localhost:7777/record/add', { id, date, food, exercise, weight }).then(() => {
         alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 등록되었습니다!')
         
-        this.fetchRecord(this.date)
+        this.fetchRecord(date)
         
         this.dialog = false
        }).catch(res => {

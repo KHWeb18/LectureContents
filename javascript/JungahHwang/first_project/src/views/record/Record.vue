@@ -1,35 +1,16 @@
 <template>
   <v-card class="mt-8" color="primary">
     <v-row>
-      <v-col cols="12" md="8">
-        <v-card class="ma-3 px-3 pb-3">
-          <v-toolbar flat>
-            <!--
-            <v-btn class="mr-4 secondary--text" color="primary" @click="setToday">Today</v-btn>
-            -->
-
-            <v-btn fab text small color="secondary" @click="prev">
-              <v-icon small>mdi-chevron-left</v-icon>
-            </v-btn>
-            <v-toolbar-title v-if="$refs.calendar" class="secondary--text">
-              {{ $refs.calendar.title }}
-              </v-toolbar-title>
-            <v-btn fab text small color="secondary" @click="next">
-              <v-icon small>mdi-chevron-right</v-icon>
-            </v-btn>
-          </v-toolbar>
-        
-        <v-sheet height="350">
-          <v-calendar ref="calendar" v-model="focus" color="secondary" 
-          :type="type" :events="events" @click:date="viewDay"
-          @change="updateRange">
-          </v-calendar>
-        </v-sheet>  
+      <v-col cols="12" md="7">
+        <v-card class="ma-7 primary" flat>
+          <v-date-picker  v-model="date" :events="eventList" color="secondary"
+            event-color="#FFADAD"  @click:date="viewDay(date)"
+            width="400" elevation="3"></v-date-picker>
         </v-card>
       </v-col>
-
-      <v-col cols="12" md="4">
-        <record-form></record-form>
+     
+      <v-col cols="12" md="5">
+        <read-record></read-record>
       </v-col>
     </v-row>
     
@@ -38,57 +19,42 @@
 
 
 <script>
-import RecordForm from '@/components/record/RecordForm'
+import ReadRecord from '@/components/record/ReadRecord'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Record',
   components: {
-    RecordForm
+    ReadRecord
   },
   data: () => ({
-    focus: '',
-    type: 'month',
-    events: []
+    eventList: [],
+    date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
   }),
   computed: {
-    ...mapState([ 'date', 'records' ])
+    ...mapState([ 'selectDate', 'records', 'isLogin' ])
   },
   mounted () {
     this.fetchRecords()
-    this.fetchRecord(this.date)
-    this.$refs.calendar.checkChange()
+    this.fetchRecord(this.selectDate)
+
+    if (this.isLogin) {
+      for (let i = 0; i < this.records.length; i++) {
+        this.eventList.push(this.records[i].date)
+      }  
+    }
+    
   },
   methods: {
-    ...mapActions(['fetchRecord', 'fetchRecords']),
+    ...mapActions([ 'fetchRecord', 'fetchRecords' ]),
 
-    viewDay ({ date }) {
-      this.focus = date
+    viewDay (date) {
+      console.log(date)
       this.$store.commit('OPEN_DETAIL', date)
       this.fetchRecord(date)
     },
-    setToday () {
-      this.focus = ''
-    },
-    prev () {
-      this.$refs.calendar.prev()
-    },
-    next () {
-      this.$refs.calendar.next()
-    },
-    updateRange () {
-      const events = []
-      
-      for (let i = 0; i < this.records.length; i++) {
-        events.push({
-          name: '',
-          start: this.records[i].date,
-          end: this.records[i].date,
-          color: 'primary',
-        })
-      }
-      
-      this.events = events
+    dateFormat (date) {
+      return date.toISOString().substr(0, 10)
     }
   },
 }
