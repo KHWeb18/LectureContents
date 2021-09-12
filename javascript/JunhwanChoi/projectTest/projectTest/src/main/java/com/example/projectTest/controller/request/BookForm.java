@@ -11,14 +11,14 @@ import lombok.ToString;
 @NoArgsConstructor
 public class BookForm {
 
-    private Integer month;
-    private Integer day;
-    private Integer time;
-    private String place;
+    private String start;
+    private String time;
+    private String title;
+    private String name;
 
 
 
     public BookRequest toBookRequest() {
-        return new BookRequest(month, day, time, place);
+        return new BookRequest(start, time, title, name);
     }
 }

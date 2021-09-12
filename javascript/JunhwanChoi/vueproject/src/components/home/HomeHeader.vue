@@ -2,7 +2,7 @@
     <div id="app"> 
         <div class="wrap">
             <div class="intro_bg">
-                <img class="responsive-img" src="@/assets/mainPageImg.jpg">
+                <img class="responsive-img" src="@/assets/main.png">
             </div>
         </div> 
 
@@ -82,7 +82,7 @@
             <div class="contents2">
                 온라인 예약으로 보다 안전하고 편리하게 진료 받으세요.
             </div>
-            <router-link :to="{ name: 'BookRegisterPage' }"
+            <router-link :to="{ name: 'Calendar' }"
                     class="nav-link"
                     active-class="active">
                     <div class="more">
@@ -207,7 +207,7 @@ export default {
   position: relative;
   top:-60px;
   display: flex;
-  width:1000px;
+  width:1200px;
   background: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   margin: 0px auto;
@@ -230,20 +230,21 @@ export default {
 
 .icons{
   display: flex;
-  width:1280px;
+  width:1200px;
   height: 302px;
  
   margin:auto;
 }
 .icons > li {
   flex: 1;
-  background: white;
+  background: #dcdcdc;
   margin-top:49px;
   height:302px;
   text-align: center;
+  border-radius: 10px;
 }
 .icons > li > .icon_img{
-  margin-top:18px;
+  margin-top:40px;
 }
 
 .icons > li:not(:last-child){
@@ -255,6 +256,7 @@ export default {
   margin:auto;
   letter-spacing: -1px;
 }
+
 .more{
   width:100px;
   height: 30px;

@@ -1,60 +1,26 @@
 <template>
     <v-container>
 
-         <v-card>
-                <v-app id="inspire">
-            <div>
-            <v-sheet
-                tile
-                height="54"
-                class="d-flex"
-            >
-                <v-btn
-                icon
-                class="ma-2"
-                @click="$refs.calendar.prev()"
-                >
-                <v-icon>mdi-chevron-left</v-icon>
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn
-                icon
-                class="ma-2"
-                @click="$refs.calendar.next()"
-                >
-                <v-icon>mdi-chevron-right</v-icon>
-                </v-btn>
-            </v-sheet>
-            <v-sheet height="600">
-                <v-calendar
-                ref="calendar"
-                v-model="value"
-                :weekdays="weekday"
-                :type="type"
-                @change="getEvents"
-                ></v-calendar>
-            </v-sheet>
-            </div>
-        </v-app>
-        </v-card>
-        <hr>
-
         <form @submit.prevent="onSubmit">
             <h3>예약</h3>
-            <table>
+
+            <v-card>
+                <table>
                 <tr>
-                    <td>Month</td>
-                    <td><input type="text" v-model="month"></td>
-                </tr> <tr>
-                    <td>Day</td>
-                    <td><input type="text" v-model="day"></td>
-                </tr> <tr>
-                    <td>Time</td>
-                    <td><input type="text" v-model="time"></td>
+                    <td>예약날짜:</td>
+                    <td><input type="text" v-model="start" readonly></td>
+                </tr> 
+                <tr>
+                    <td>예약시간:</td>
+                    <td><input type="text" v-model="time" readonly></td>
                 </tr>
                 <tr>
-                    <td>place</td>
-                    <td><input type="text" v-model="place"></td>
+                    <td>예약장소</td>
+                    <td><input type="text" v-model="title" readonly></td>
+                </tr>
+                <tr>
+                    <td>예약자 이름</td>
+                    <td><input type="text" v-model="name"></td>
                 </tr>
             </table>
 
@@ -64,6 +30,8 @@
                     취소
                 </router-link>
             </div>
+            </v-card>
+            
         </form>
 
         
@@ -75,17 +43,23 @@ export default {
     name: 'BookRegisterForm',
     data () {
         return {
-            month: '',
-            day: '',
-            time: '',
-            place: '',
+            start:'',
+            time:'',
+            title:'',
+            name:'',
         }
     },
     methods: {
         onSubmit () {
-            const { month, day, time, place } = this
-            this.$emit('submit', {month, day, time, place })
+            const { start, time, title, name} = this
+            this.$emit('submit', {start, time, title, name})
         }
+    },
+     created(){
+        this.start=this.$route.query.start
+        this.title=this.$route.query.title
+        this.time=this.$route.query.time
+        console.log(this.start)
     }
 }
 </script>

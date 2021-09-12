@@ -17,13 +17,9 @@ export default {
             const { email, password } = payload
             axios.post('http://localhost:3647/jpasession/register', { email, password })
                     .then(res => {
-                        alert('등록 성공! - ' + res)
-                        /*
-                        this.$router.push({
-                            name: 'BoardReadPage',
-                            params: { boardNo: res.data.boardNo.toString() }
-                        })
-                        */
+                        alert('등록 성공! - ' + res )
+                        this.$router.push('/sessionLogin')
+
                     })
                     .catch(res => {
                         alert(res.response.data.message)

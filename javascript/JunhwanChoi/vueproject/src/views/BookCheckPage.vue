@@ -1,22 +1,21 @@
 <template>
     <div>
-       
-        <book-register-form @submit="onSubmit"/>
+        <book-check-form @submit="onSubmit"/>
     </div>
 </template>
 
 <script>
-import BookRegisterForm from '@/components/book/BookRegisterForm.vue'
+import BookCheckForm from '@/components/book/BookCheckForm.vue'
 import axios from 'axios'
 export default {
-    name: 'BookRegisterPage',
+    name: 'BookCheckPage',
     components: {
-        BookRegisterForm
+        BookCheckForm
     },
     methods: {
         onSubmit (payload) {
-            const { start, time, title, name } = payload
-            axios.post('http://localhost:3647/book/register', { start, time, title, name })
+            const { start, time, title } = payload
+            axios.post('http://localhost:3647/book/register', {  start, time, title })
                     .then(res => {
                         alert('등록 성공! - ' + res)
                        

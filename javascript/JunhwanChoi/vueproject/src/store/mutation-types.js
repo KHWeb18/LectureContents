@@ -11,3 +11,6 @@ export const FETCH_SESSION = 'FETCH_SESSION'
 export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
 export const FETCH_BOARD = 'FETCH_BOARD'
 
+export const FETCH_BOOK_LIST = 'FETCH_BOOK_LIST'
+export const FETCH_BOOK = 'FETCH_BOOK'
+

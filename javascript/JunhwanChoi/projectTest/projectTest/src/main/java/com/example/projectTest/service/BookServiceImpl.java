@@ -19,7 +19,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void register(BookForm form) throws Exception {
 
-        Book bookEntity = new Book(form.getMonth(), form.getDay(), form.getTime(),form.getPlace());
+        Book bookEntity = new Book(form.getStart(), form.getTime(), form.getTitle(), form.getName());
 
         bookRepository.save(bookEntity);
     }

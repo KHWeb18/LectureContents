@@ -49,7 +49,18 @@ import MyPage from '@/views/MyPage.vue'
 
 import Logout from '@/views/Logout.vue'
 
+import Calendar from '@/views/Calendar.vue'
+import Temp from '@/views/Temp.vue'
 
+import PlaceCheckPage from '@/views/PlaceCheckPage.vue'
+import TimeCheckPage from '@/views/TimeCheckPage.vue'
+import BookSuccessPage from '@/views/BookSuccessPage.vue'
+import BookCheckPage from '@/views/BookCheckPage.vue'
+
+
+
+
+PlaceCheckPage
 
 
 Vue.use(VueRouter)
@@ -241,8 +252,53 @@ const routes = [
       default: Logout
     }
   },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    components: {
+      default: Calendar
+    }
+  },
+  {
+    path: '/temp',
+    name: 'Temp',
+    components: {
+      default: Temp
+    }
+  },
+  {
+    path: '/placeCheck',
+    name: 'PlaceCheckPage',
+    components: {
+      default: PlaceCheckPage
+    }
+  },
+  {
+    path: '/timeCheck',
+    name: 'TimeCheckPage',
+    components: {
+      default: TimeCheckPage
+    }
+  },
+  {
+    path: '/success',
+    name: 'BookSuccessPage',
+    components: {
+      default: BookSuccessPage
+    }
+  },
+
+  {
+    path: '/bookCheck',
+    name: 'BookCheckPage',
+    components: {
+      default: BookCheckPage
+    }
+  },
   
+
   
+
 
   
 

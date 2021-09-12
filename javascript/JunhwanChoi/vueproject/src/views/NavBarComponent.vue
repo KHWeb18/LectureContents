@@ -1,6 +1,7 @@
 <template>
     <div>
-        <v-toolbar dense color="blue lighten-3">
+        {{$store.state.session}}
+        <v-toolbar dense color="blue-grey lighten-4">
                 <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
                 </v-app-bar-nav-icon>
                     <v-toolbar-title>
@@ -53,6 +54,13 @@
 </template>
 
 <script>
+
+import { mapState, mapActions } from 'vuex'
+import Vue from 'vue'
+import cookies from 'vue-cookies'
+import axios from 'axios'
+Vue.use(cookies)
+
 export default {
     data () {
         return {
@@ -102,8 +110,7 @@ export default {
                         route:'/mypage'
                     }
                 ],
-                session:[],
-
+                isLogin: false,
         }
     },
 
@@ -113,11 +120,71 @@ export default {
             this.nav_drawer = false
         }
     },
-    created(){
-        this.session= this.$store.state.session
-        
+    mounted () {
+        // this.fetchSession()
+        this.$store.state.session = this.$cookies.get("user")
+        if (this.$store.state.session != null) {
+            this.isLogin = true
+        }
     },
-    
+    computed: {
+        ...mapState(['session'])
+    },
+    methods: {
+        ...mapActions(['fetchSession']),
+        onSubmit (payload) {
+            if (this.$store.state.session == null) {
+                const { email, password } = payload
+                axios.post('http://localhost:3647/jpasession/sign-in', { email, password })
+                        .then(res => {
+                            if (res.data.hashcode != null) {
+                                alert('로그인 성공! - ' + res.data)
+                                this.isLogin = true
+                                this.$store.state.session = res.data
+                                this.$cookies.set("user", res.data, '10h')
+                                
+                            } else {
+                                alert('로그인 실패! - ' + res.data)
+                                this.isLogin = false
+                            }
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('이미 로그인 되어 있습니다 - 계정: ' + this.$store.state.session.email)
+            }
+        },
+        showSession () {
+            if (this.isLogin == true) {
+                axios.post('http://localhost:3647/jpamember/needSession')
+                        .then(res => {
+                            if (res.data == true) {
+                                alert('세션 정보 유지! - ' + res.data)
+                            } else {
+                                alert('세션 정보 유지 안되는 중! - ' + res.data)
+                            }
+                        
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('먼저 로그인부터 하세요!')
+            }
+        },
+        removeSession () {
+            axios.post('http://localhost:3647/jpamember/removeSession')
+                    .then(res => {
+                        this.isLogin = res.data
+                    })
+        },
+        logout () {
+            this.$cookies.remove("user")
+            this.isLogin = false
+            this.$store.state.session = null
+        }
+    }
     
 }
 </script>

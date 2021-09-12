@@ -18,24 +18,25 @@ public class Book {
 
     @Getter
     @Column(nullable = false)
-    private Integer month;
+    private String start;
+
 
     @Getter
     @Column(nullable = false)
-    private Integer day;
+    private String time;
 
     @Getter
     @Column(nullable = false)
-    private Integer time;
+    private String title;
 
     @Getter
     @Column(nullable = false)
-    private String place;
+    private String name;
 
-    public Book(Integer month, Integer day, Integer time, String place) {
-        this.month = month;
-        this.day = day;
+    public Book(String start, String time, String title, String name) {
+        this.start = start;
         this.time = time;
-        this.place = place;
+        this.title = title;
+        this.name = name;
     }
 }

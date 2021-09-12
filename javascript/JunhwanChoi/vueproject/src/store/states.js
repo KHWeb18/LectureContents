@@ -9,9 +9,14 @@ export default {
     covidlists:[],
 
     session: null,
-    log:0,
+    
+    sessiontest: 0,
 
     // 게시판
     boards: [],
     board: null,
+
+     // 예약
+     books: [],
+     book: null,
 }

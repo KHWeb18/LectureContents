@@ -9,15 +9,15 @@ import lombok.ToString;
 @NoArgsConstructor
 public class BookRequest {
 
-    private Integer month;
-    private Integer day;
-    private Integer time;
-    private String place;
+    private String start;
+    private String time;
+    private String title;
+    private String name;
 
-    public BookRequest(Integer month, Integer day, Integer time, String place) {
-        this.month = month;
-        this.day = day;
+    public BookRequest(String start,  String time, String title, String name) {
+        this.start = start;
         this.time = time;
-        this.place = place;
+        this.title = title;
+        this.name = name;
     }
 }

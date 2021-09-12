@@ -1,21 +1,25 @@
 
 <template>
     <div>
-        <v-dialog v-model="loginDialog"  max-width="500px">
+        <v-dialog v-model="Success"  max-width="500px">
             <v-card>
                 <v-card-title>
                     <span class="headline">
-                        Message
+                        예약 내용 확인
                     </span>
                 </v-card-title>
                 <v-card-text>
                     <v-container grid-list-md>
                         <v-layout wrap>
-                            <v-flex xs12>
-                               접속중인 계정에서 로그아웃 하려고 합니다.
+                            <br>
+                            <v-flex xs12 >
+                                <p>예약 날짜 : <input type="text" v-model="start"></p>
                             </v-flex>
                             <v-flex xs12>
-                               로그아웃 하시겠습니까?
+                                <p>예약 시간 : <input type="text" v-model="time"></p>
+                            </v-flex>
+                            <v-flex xs12>
+                                <p>예약 장소 : <input type="text" v-model="title"></p>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -24,12 +28,8 @@
                     <v-spacer></v-spacer>
                     
                     <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
-                        <v-btn @click="logout" color="blue lighten-5">로그아웃</v-btn>
-                    </router-link>
-                    <p class="trick">1</p>
-                    <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
-                            <v-btn color="blue lighten-5"> 취소</v-btn>
-                    </router-link>
+                        <v-btn @click="logout" color="blue lighten-5">확인</v-btn>
+                    </router-link>                    
                 </v-card-actions>
             </v-card>
     </v-dialog>
@@ -38,36 +38,29 @@
 
 <script>
 export default {
-    name: 'LoginPageForm',
+    
 
     data(){
       return{
             dialog: true,
-            loginDialog: true,
+            Success: true,
             
-            userInfo: {
-                email: '',
-                password: ''
-            },
-
+        
       }
     },
-    methods:{
-        logout () {
-            this.$cookies.remove("user")
-            this.isLogin = false
-            this.$store.state.session = null
-        }
-    },
+    created(){
+        this.start=this.$route.query.start
+        this.title=this.$route.query.title
+        this.time=this.$route.query.time
+        console.log(this.start)
+    }
+    
     
 }
 </script>
 
 <style>
  
-.trick{
-    color:white;
-}
 
 </style>
 

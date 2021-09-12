@@ -74,4 +74,18 @@ export default {
                     commit(FETCH_BOARD, res.data)
                 })
     },
+
+    // 예약
+    fetchBookList ({ commit }) {
+        return axios.get('http://localhost:3647/book/lists')
+                .then((res) => {
+                    commit(FETCH_BOARD_LIST, res.data)
+                })
+    },
+    fetchBook ({ commit }, bookNo) {
+        return axios.get(`http://localhost:3647/book/${bookNo}`)
+                .then((res) => {
+                    commit(FETCH_BOARD, res.data)
+                })
+    },
 }

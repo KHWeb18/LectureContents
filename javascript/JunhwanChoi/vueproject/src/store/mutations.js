@@ -15,6 +15,10 @@ import {
      // 게시판
     FETCH_BOARD_LIST,
     FETCH_BOARD,
+
+    // 게시판
+    FETCH_BOOK_LIST,
+    FETCH_BOOK,
 } from './mutation-types'
 
 export default {
@@ -45,6 +49,15 @@ export default {
     [FETCH_BOARD] (state, board) {
         state.board = board
     },
+
+    // 게시판
+    [FETCH_BOOK_LIST] (state, books) {
+        state.books = books;
+    },
+    [FETCH_BOOK] (state, book) {
+        state.book = book
+    },
+
 
 
 }

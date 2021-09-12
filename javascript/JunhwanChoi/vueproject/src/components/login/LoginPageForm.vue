@@ -54,9 +54,7 @@ export default {
     computed: {
         ...mapState(['session'])
     },
-    created(){
-        
-    },
+    
     methods: {
         ...mapActions(['fetchSession']),
         onSubmit (payload) {
@@ -69,6 +67,7 @@ export default {
                                 this.isLogin = true
                                 this.$store.state.session = res.data
                                 this.$cookies.set("user", res.data, '10h')
+                                this.$router.push('/')
                                 
                             } else {
                                 alert('로그인 실패! - ' + res.data)

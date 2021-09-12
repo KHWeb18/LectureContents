@@ -9,9 +9,7 @@
             <board-list :boards="boards"/>
             <br>
             <center>
-            <router-link :to="{ name: 'BoardRegisterPage' }">
-               <v-btn color="blue lighten-5"> 후기 작성 </v-btn> 
-            </router-link>
+               <v-btn color="blue lighten-5" @click="logincheck()"> 후기 작성 </v-btn> 
             </center>
         </v-container>
     </div>
@@ -34,7 +32,19 @@ export default {
         this.fetchBoardList()
     },
     methods: {
-        ...mapActions(['fetchBoardList'])
+        ...mapActions(['fetchBoardList']),
+
+        logincheck(){
+            if(this.$store.state.session==null){
+                alert('로그인 후 이용해 주세요.')
+                this.$router.push('sessionLogin')
+            }
+            else{
+                this.$router.push('/board/create')
+
+            }
+        }
     }
+    
 }
 </script>
