@@ -1,11 +1,10 @@
 package com.example.FirstProject.entity;
 
-import com.example.FirstProject.request.RecommendDto;
+
 import com.example.FirstProject.request.RecordDto;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
