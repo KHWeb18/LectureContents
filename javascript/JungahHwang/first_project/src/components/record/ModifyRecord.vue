@@ -1,13 +1,13 @@
 <template>
   <v-dialog v-model="dialog" hide-overlay persistent max-width="500px">
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" icon small color="secondary" class="pa-6">
+      <v-btn v-on="on" icon small color="secondary" class="pa-6" @click="readRecord">
         <v-icon>create</v-icon>
       </v-btn>
     </template>
     <v-card class="primary rounded-xl">
       <v-card-title class="headline secondary--text font-weight-bold">
-          <p>{{ date }} 기록하기</p>
+          <p>{{ selectDate }} 기록하기</p>
         </v-card-title>
         <v-card-text>
           <v-textarea color="secondary" v-model="food" label="식단" 
@@ -46,15 +46,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(['date', 'record'])
-  },
-  created () {
-    this.food = this.record.food,
-    this.exercise = this.record.exercise,
-    this.weight = this.record.weight
+    ...mapState([ 'selectDate', 'record' ])
   },
   methods: {
-    ...mapActions (['fetchRecord']),
+    ...mapActions ([ 'fetchRecord' ]),
+    
     closeForm () {
       this.dialog = false
     },
@@ -62,23 +58,25 @@ export default {
       const food = this.food
       const exercise = this.exercise
       const weight = this.weight
-      const date = this.date
+      const date = this.selectDate
 
       console.log(date + ': ' + food + ', ' + exercise + ', ' + weight)
       
       axios.patch(`http://localhost:7777/record/modify/${date}`, { food, exercise, weight }).then(() => {
         alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 수정되었습니다!')
 
-        this.fetchRecord(this.date)
+        this.fetchRecord(date)
 
         this.dialog = false
        }).catch(res => {
         alert(res.response.data.message)
       })
-      
-      
-      
     },
+    readRecord () {
+      this.food = this.record.food,
+      this.exercise = this.record.exercise,
+      this.weight = this.record.weight
+    }
   }
 }
 </script>
