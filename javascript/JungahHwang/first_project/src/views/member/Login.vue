@@ -1,6 +1,6 @@
 <template>
   <v-sheet>
-    <v-dialog v-model="dialog" persistent max-width="500px">
+    <v-dialog v-model="dialog" persistent max-width="450">
       <template v-slot:activator="{ on }">
         <v-btn v-on="on" icon class="float-right">
           <v-icon color="secondary">lock_open</v-icon>

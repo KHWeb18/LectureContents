@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="dialog" max-width="400">
+    <v-dialog v-model="dialog" max-width="350">
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on" class="float-right">
           <v-icon color="secondary">lock_outline</v-icon>
@@ -14,8 +14,7 @@
         </v-card-title>
         
         <v-card-text></v-card-text>
-        
-        <v-divider></v-divider>
+ 
         <v-card-actions>
           <v-btn @click="btnLogout" class="secondary--text font-weight-bold" text >
             Logout
