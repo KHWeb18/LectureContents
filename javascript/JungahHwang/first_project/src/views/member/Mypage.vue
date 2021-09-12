@@ -1,78 +1,30 @@
 <template>
-  <v-card class="mt-5 pa-5" color="primary">
-    <v-card v-if="!isLogin" flat class="ma-3">
-      <v-card-text >
-        <p>로그인을 해주세요.</p>
-      </v-card-text>
-    </v-card>
-    
-    <v-card v-else max-width="400">
-      <v-card-text>
-        <v-list-item-title>
-          <p>{{ userInfo.name }}님의 회원정보</p>
-        </v-list-item-title>
-        <v-divider></v-divider>
-        <v-list-item two-line>
-          <v-list-item-content>
-            <v-list-item-title>이름</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.name }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item two-line>
-          <v-list-item-content>
-            <v-list-item-title>생일</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.birth }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item two-line>
-          <v-list-item-content>
-            <v-list-item-title>이메일</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.email }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item two-line>
-          <v-list-item-content>
-            <v-list-item-title>핸드폰</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.phone }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item two-line>
-          <v-list-item-content>
-            <v-list-item-title>주소</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.address }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
+  <v-card class="primary mt-8">
+   
+    <v-row>
+      <v-col cols="12" md="6">
+        <read-info></read-info>
+      </v-col>
+      <v-col cols="12" md="6">
+        <recent-activity></recent-activity>
 
-      </v-card-text>
-      <v-card-actions>
-        <modify-info></modify-info>
-        
-        <v-spacer></v-spacer>
-        <remove-info></remove-info>
-      </v-card-actions>
-    </v-card>
+      </v-col>
+    </v-row>
+      
+    
   </v-card>
+
 </template>
 
 
 <script>
-import ModifyInfo from '@/components/member/ModifyInfo'
-import RemoveInfo from '@/components/member/RemoveInfo'
-import { mapState } from 'vuex'
+import ReadInfo from '@/components/member/ReadInfo'
+import RecentActivity from '@/components/member/RecentActivity'
 
 export default {
-  name: 'Mypage',
   components: {
-    ModifyInfo,
-    RemoveInfo
-  },
-  data () {
-    return {
-      
-    }
-  },
-  computed: {
-    ...mapState([ 'userInfo', 'isLogin' ])
+    ReadInfo,
+    RecentActivity
   }
 }
 </script>
