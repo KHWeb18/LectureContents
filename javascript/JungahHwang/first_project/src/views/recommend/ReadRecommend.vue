@@ -19,13 +19,25 @@
                 수정
               </v-list-item>
               <!-- 삭제 확인 dialog -->
-              <remove-board-dialog v-on:remove="removeRecommend"></remove-board-dialog>
+              <remove-dialog v-on:remove="removeRecommend"></remove-dialog>
             </v-list>
           </v-menu>
         </v-toolbar>
 
         <v-divider></v-divider>
-        <v-card-text>
+
+        <v-card v-if="showMap" class="mx-auto mt-2 mb-10" width="300">
+          
+          <naver-maps :height="300" :width="300" :mapOptions="mapOptions"></naver-maps>
+          <naver-marker :lat="mapOptions.lat" :lng="mapOptions.lng" @click="showPlace = true"/>
+        
+          <v-alert v-if="showPlace" dense>
+            {{ placeName }} ({{ address }})
+          </v-alert>
+                  
+        </v-card>
+
+        <v-card-text class="text-center my-10">
           <p v-html="content"></p>
         </v-card-text>
 
@@ -55,20 +67,29 @@
 
 
 <script>
-import RemoveBoardDialog from '@/components/RemoveBoardDialog'
+import RemoveDialog from '@/components/RemoveDialog'
+import ReadComment from '@/components/comment/ReadComment'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
-import ReadComment from '@/components/comment/ReadComment'
 
 export default {
   components: {
-    RemoveBoardDialog,
+    RemoveDialog,
     ReadComment
   },
   data () {
     return {
       boardNo: null,
-      id: null
+      id: null,
+      mapOptions: {
+        lat: null,
+        lng: null,
+        zoom: 17,
+      },
+      showMap: false,
+      placeName: null,
+      address: null,
+      showPlace: false
     }
   },
   created () {
@@ -78,6 +99,16 @@ export default {
   mounted() {
     this.fetchRecommend(this.boardNo)
     this.fetchComments(this.boardNo)
+  },
+  beforeUpdate () {
+    console.log('update')
+    this.mapOptions.lat = Number(this.recommend.y)
+    this.mapOptions.lng = Number(this.recommend.x)
+    this.placeName = this.recommend.placeName
+    this.address = this.recommend.address
+    if (this.recommend.y != null) {
+      this.showMap = true
+    }
   },
   computed: {
     ...mapState([ 'recommend', 'userInfo' ]),
@@ -105,7 +136,10 @@ export default {
       this.$router.push(
         { name: 'Recommend' }
       )
-    }
+    },
+    // showPlace () {
+    //   console.log(this.name + ' / ' + this.address)
+    // }
   }
 }
 </script>

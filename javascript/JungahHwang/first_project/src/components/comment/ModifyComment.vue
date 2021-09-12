@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="400">
+  <v-dialog v-model="dialog" max-width="350">
     <template v-slot:activator="{ on }">
       <v-list-item v-on="on" @click="readComment">
         수정
