@@ -53,4 +53,16 @@ public class RecommendServiceImpl implements RecommendService {
     public void remove(Recommend recommend) throws Exception {
         repository.delete(recommend);
     }
+
+    @Override
+    public List<Object[]> mapList() throws Exception {
+        return repository.mapList();
+    }
+
+    @Override
+    public List<Recommend> userRead(String id) throws Exception {
+        List<Recommend> recommends = repository.userRead(id);
+
+        return recommends;
+    }
 }

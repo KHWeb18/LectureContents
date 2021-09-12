@@ -18,6 +18,12 @@ public class RecommendDto {
     private String title;
     private String content;
     private String img;
+    private String x;
+    private String y;
+    private String placeName;
+    private String address;
+    private String phone;
+    private String url;
     private Date regDate;
     private Date updDate;
 
@@ -28,6 +34,12 @@ public class RecommendDto {
                 .title(title)
                 .content(content)
                 .img(img)
+                .x(x)
+                .y(y)
+                .placeName(placeName)
+                .address(address)
+                .phone(phone)
+                .url(url)
                 .regDate(regDate)
                 .updDate(updDate)
                 .build();

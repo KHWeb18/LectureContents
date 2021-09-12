@@ -6,10 +6,12 @@ import com.example.FirstProject.request.RecommendDto;
 import java.util.List;
 
 public interface RecommendService {
-    public Recommend register(RecommendDto recommendDto) throws Exception;
-    public List<Object[]> lists() throws Exception;
-    public List<Object[]> read(Long boardNo) throws Exception;
-    public Recommend findByBoardNo(Long boardNo) throws Exception;
-    public void modify(Recommend recommend, RecommendDto recommendDto) throws Exception;
-    public void remove(Recommend recommend) throws Exception;
+    Recommend register(RecommendDto recommendDto) throws Exception;
+    List<Object[]> lists() throws Exception;
+    List<Object[]> read(Long boardNo) throws Exception;
+    Recommend findByBoardNo(Long boardNo) throws Exception;
+    void modify(Recommend recommend, RecommendDto recommendDto) throws Exception;
+    void remove(Recommend recommend) throws Exception;
+    List<Object[]> mapList() throws Exception;
+    List<Recommend> userRead(String id) throws Exception;
 }

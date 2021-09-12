@@ -67,6 +67,22 @@ public class RecommendController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @GetMapping("/mapList")
+    public ResponseEntity<List<Object[]>> mapList() throws Exception {
+        log.info("Map List");
+
+        return new ResponseEntity<>(service.mapList(), HttpStatus.OK);
+    }
+
+    @GetMapping("/userRead/{id}")
+    public ResponseEntity userRead(@PathVariable("id") String id) throws Exception {
+        log.info("Recommend UserRead");
+
+        List<Recommend> recommends = service.userRead(id);
+
+        return new ResponseEntity(recommends, HttpStatus.OK);
+    }
+
 }
 
 
