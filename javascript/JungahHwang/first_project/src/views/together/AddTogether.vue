@@ -4,7 +4,7 @@
       <v-text-field v-model="title" class="mb-n7" color="secondary" 
         label="제목을 입력하세요." solo flat></v-text-field>
       <v-divider></v-divider>
-      <file-upload-menu></file-upload-menu>
+
       <v-textarea v-model="content" color="secondary" height="500px"
         label="내용을 입력하세요." solo flat></v-textarea>
     </v-card>
@@ -20,7 +20,7 @@
 
 
 <script>
-import FileUploadMenu from '@/components/FileUploadMenu'
+//import FileUploadMenu from '@/components/FileUploadMenu'
 import axios from 'axios'
 import { mapState } from 'vuex'
 
@@ -32,7 +32,7 @@ export default {
     }
   },
   components: {
-    FileUploadMenu
+    //FileUploadMenu
   },
   computed: {
     ...mapState([ 'userInfo' ])

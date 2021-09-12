@@ -18,13 +18,13 @@
                 수정
               </v-list-item>
               <!-- 삭제 확인 dialog -->
-              <remove-board-dialog v-on:remove="removeTogether"></remove-board-dialog>
+              <remove-dialog v-on:remove="removeTogether"></remove-dialog>
             </v-list>
           </v-menu>
         </v-toolbar>
 
         <v-divider></v-divider>
-        <v-card-text>
+        <v-card-text class="text-center my-10">
           <p v-html="content"></p>
         </v-card-text>
 
@@ -53,14 +53,14 @@
 
 
 <script>
-import RemoveBoardDialog from '@/components/RemoveBoardDialog'
+import RemoveDialog from '@/components/RemoveDialog'
+import ReadComment from '@/components/comment/ReadComment'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
-import ReadComment from '@/components/comment/ReadComment'
 
 export default {
   components: {
-    RemoveBoardDialog,
+    RemoveDialog,
     ReadComment
   },
   data () {
