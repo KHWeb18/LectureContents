@@ -26,7 +26,7 @@ export default {
   ],
   emailRules: [
     email => !!email || '이메일을 입력해주세요!',
-    email => /.+@+/.test(email) || '이메일 형식으로 입력해주세요.'
+    email => /.+@.+/.test(email) || '이메일 형식으로 입력해주세요.'
   ],
   phoneRules: [
     phone => !!phone || '전화번호를 입력해주세요!'
@@ -37,7 +37,8 @@ export default {
 
 // Calendar
   dialog: false,
-  date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+  selectDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+  records: [],
   record: [],
 
 // Recommend

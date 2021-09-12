@@ -1,10 +1,11 @@
 import {
 // Login
   USER_LOGIN,
-  USER_INFO,
+  FETCH_USER_INFO,
   FETCH_SESSION,
 // Calendar
   OPEN_DETAIL,
+  FETCH_RECORDS,
   FETCH_RECORD,
 // Recommend
   FETCH_RECOMMENDS,
@@ -24,19 +25,24 @@ export default {
     state.isLogin = isLogin
     console.log('isLogin: ' + isLogin)
   },
-  [USER_INFO] (state, userInfo) {
+  [FETCH_USER_INFO] (state, userInfo) {
     state.userInfo = userInfo
-    console.log(userInfo)
+    console.log('userInfo' + userInfo)
   },
   [FETCH_SESSION] (state, session) {
     state.session = session
   },
 
 // Calendar
-  [OPEN_DETAIL] (state, payload) {
-    state.date = payload
+  [OPEN_DETAIL] (state, date) {
+    state.selectDate = date
     
-    console.log(state.date)
+    console.log(state.selectDate)
+  },
+  [FETCH_RECORDS] (state, records) {
+    state.records = records
+
+    console.log(records)
   },
   [FETCH_RECORD] (state, record) {
     state.record = record

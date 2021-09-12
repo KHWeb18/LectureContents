@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/home/Home'
 import Test from '@/views/Test'
 import ListTest from '@/views/ListTest'
 
-import Record from '@/views/Record'
+import Record from '@/views/record/Record'
 
 import Challenge from '@/views/challenge/Challenge'
 
@@ -18,7 +18,7 @@ import AddTogether from '@/views/together/AddTogether'
 import ReadTogether from '@/views/together/ReadTogether'
 import ModifyTogether from '@/views/together/ModifyTogether'
 
-import Chatting from '@/views/Chatting'
+import Map from '@/views/map/Map'
 
 import Mypage from '@/views/member/Mypage'
 
@@ -99,9 +99,9 @@ const routes = [
     component: ModifyTogether,
   },
   {
-    path: '/chatting',
-    name: 'Chatting',
-    component: Chatting
+    path: '/map',
+    name: 'Map',
+    component: Map
   },
   {
     path: '/mypage',

@@ -1,8 +1,9 @@
 import {
 // Login
-  USER_INFO,
+  FETCH_USER_INFO,
   FETCH_SESSION,
 // Calendar
+  FETCH_RECORDS,
   FETCH_RECORD,
 // Recommend
   FETCH_RECOMMENDS,
@@ -21,10 +22,10 @@ import cookies from 'vue-cookies'
 
 export default {
 // Login
-  userInfo ({ commit }, id) {
+  fetchUserInfo ({ commit }, id) {
     return axios.get(`http://localhost:7777/member/mypage/${id}`).then(res => {
-      cookies.set('session', res.data)
-      commit(USER_INFO, cookies.get('session'))
+      cookies.set('session', res.data.id)
+      commit(FETCH_USER_INFO, res.data)
     })
   },
   fetchSession ({ commit }, session) {
@@ -32,6 +33,11 @@ export default {
   },
 
 // Calendar
+  fetchRecords ({ commit }) {
+    return axios.get('http://localhost:7777/record/list').then(res => {
+      commit(FETCH_RECORDS, res.data)
+    })
+  },
   fetchRecord ({ commit }, date) {
     return axios.get(`http://localhost:7777/record/${date}`).then(res => {
       commit(FETCH_RECORD, res.data)
@@ -49,7 +55,7 @@ export default {
         
           recommends.push(list)
       }
-
+      console.log(recommends)
       commit(FETCH_RECOMMENDS, recommends)
     })
   },
@@ -57,7 +63,8 @@ export default {
     return axios.get(`http://localhost:7777/recommend/read/${boardNo}`).then(res => {
  
       let recommend = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
-        content: res.data[0][3], regDate: res.data[0][4] }
+        content: res.data[0][3], x: res.data[0][4], y: res.data[0][5], placeName: res.data[0][6], 
+        address: res.data[0][7], regDate: res.data[0][8] }
       
       console.log(recommend)
       commit(FETCH_RECOMMEND, recommend)
