@@ -78,9 +78,6 @@ export default {
     videoList: {
       type: Array
     },
-    // videoId: {
-    //   type: String
-    // }
   },
   data () {
     return {
