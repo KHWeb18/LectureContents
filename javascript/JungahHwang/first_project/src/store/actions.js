@@ -12,8 +12,11 @@ import {
   FETCH_TOGETHERS,
   FETCH_TOGETHER,
 // Comment
-  FETCH_COMMENTS,
-  FETCH_COMMENT  
+  FETCH_RECOMMEND_COMMENTS,
+  FETCH_RECOMMEND_COMMENT,
+  FETCH_TOGETHER_COMMENTS,
+  FETCH_TOGETHER_COMMENT
+
 
 } from './mutation-types'
 
@@ -101,18 +104,32 @@ export default {
   },
 
 // Comment
-  fetchComments ({ commit }, boardNo) {
-    return axios.get(`http://localhost:7777/comment/read/${boardNo}`).then(res => {
+  fetchRecommendComments ({ commit }, boardNo) {
+    return axios.get(`http://localhost:7777/recommend/comment/read/${boardNo}`).then(res => {
       console.log('commentList: ' + res.data)
 
-      commit(FETCH_COMMENTS, res.data)
+      commit(FETCH_RECOMMEND_COMMENTS, res.data)
     })
   },
-  fetchComment ({ commit }, commentNo) {
-    return axios.get(`http://localhost:7777/comment/read/only/${commentNo}`).then(res => {
+  fetchRecommendComment ({ commit }, commentNo) {
+    return axios.get(`http://localhost:7777/recommend/comment/read/only/${commentNo}`).then(res => {
       console.log(res.data)
 
-      commit(FETCH_COMMENT, res.data)
+      commit(FETCH_RECOMMEND_COMMENT, res.data)
+    })
+  },
+  fetchTogetherComments ({ commit }, boardNo) {
+    return axios.get(`http://localhost:7777/together/comment/read/${boardNo}`).then(res => {
+      console.log('commentList: ' + res.data)
+
+      commit(FETCH_TOGETHER_COMMENTS, res.data)
+    })
+  },
+  fetchTogetherComment ({ commit }, commentNo) {
+    return axios.get(`http://localhost:7777/together/comment/read/only/${commentNo}`).then(res => {
+      console.log(res.data)
+
+      commit(FETCH_TOGETHER_COMMENT, res.data)
     })
   }
 }

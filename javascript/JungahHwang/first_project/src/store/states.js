@@ -50,6 +50,9 @@ export default {
   together: [],
 
 // Comment
-  comments: [],
-  comment: []
+  recommendComments: [],
+  recommendComment: [],
+  togetherComments: [],
+  togetherComment: []
+
 }
