@@ -15,9 +15,7 @@ import {
   FETCH_RECOMMEND_COMMENTS,
   FETCH_RECOMMEND_COMMENT,
   FETCH_TOGETHER_COMMENTS,
-  FETCH_TOGETHER_COMMENT
-
-
+  FETCH_TOGETHER_COMMENT,
 } from './mutation-types'
 
 import axios from 'axios'
@@ -66,8 +64,7 @@ export default {
     return axios.get(`http://localhost:7777/recommend/read/${boardNo}`).then(res => {
  
       let recommend = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
-        content: res.data[0][3], x: res.data[0][4], y: res.data[0][5], placeName: res.data[0][6], 
-        address: res.data[0][7], regDate: res.data[0][8] }
+        content: res.data[0][3], regDate: res.data[0][4] }
       
       console.log(recommend)
       commit(FETCH_RECOMMEND, recommend)
@@ -131,5 +128,5 @@ export default {
 
       commit(FETCH_TOGETHER_COMMENT, res.data)
     })
-  }
+  },
 }

@@ -53,6 +53,5 @@ export default {
   recommendComments: [],
   recommendComment: [],
   togetherComments: [],
-  togetherComment: []
-
+  togetherComment: [],
 }
