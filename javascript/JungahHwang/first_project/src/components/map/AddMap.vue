@@ -8,10 +8,10 @@
       <v-card>
         <v-list v-for="list in resultList" :key="list.index">
           <v-list-item-group>
-            <v-list-item tow-line @click="selectAddress(list.placeName, list.address, list.x, list.y, list.phone, list.url)">
+            <v-list-item tow-line @click="selectAddress(list.name, list.address, list.x, list.y, list.phone, list.url)">
               <v-list-item-content>
               <v-list-item-title>
-                {{list.placeName}}
+                {{list.name}}
               </v-list-item-title>
               <v-list-item-subtitle>
                 {{list.address}}
@@ -24,11 +24,11 @@
      
     </v-sheet>
     
-    <v-card v-if="placeName" class="mx-auto my-2" width="300">
+    <v-card v-if="name" class="mx-auto my-2" width="300">
           
       <naver-maps :height="300" :width="300" :mapOptions="mapOptions"></naver-maps>
       <naver-marker :lat="mapOptions.lat" :lng="mapOptions.lng"/>
-      <v-card-text>{{ placeName }}</v-card-text>
+      <v-card-text>{{ name }}</v-card-text>
               
     </v-card>
   </v-card>
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       resultList: [],
-      placeName: null,
+      name: null,
       show: false,
       search: null,
       mapOptions: {
@@ -65,7 +65,7 @@ export default {
 
         for (let i = 0; i < list.length; i++) {
           this.resultList.push(
-            { address: list[i].road_address_name, placeName: list[i].place_name, 
+            { address: list[i].road_address_name, name: list[i].place_name, 
             x: list[i].x, y: list[i].y, phone:list[i].phone, url: list[i].place_url }
           )
         }
@@ -73,13 +73,13 @@ export default {
         this.show = true
       })
     },
-    selectAddress (placeName, address, x, y, phone, url) {
+    selectAddress (name, address, x, y, phone, url) {
       console.log('x: ' + x + ' / y: ' + y)
-      this.placeName = placeName
+      this.name = name
       this.mapOptions.lat = Number(y)
       this.mapOptions.lng = Number(x)
 
-      this.$emit('selectMap', placeName, address, x, y, phone, url)
+      this.$emit('selectMap', name, address, x, y, phone, url)
 
       this.show = false
     }

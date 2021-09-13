@@ -2,7 +2,7 @@
   <v-card class="mx-auto" max-width="850" >
     <naver-maps :height="700" :width="850" :mapOptions="mapOptions"></naver-maps>
     <naver-marker v-for="list in placeList" :key="list.index" 
-      :lat="list.y" :lng="list.x" @click="showPlaceInfo(list.placeName, list.address, 
+      :lat="list.y" :lng="list.x" @click="showPlaceInfo(list.name, list.address, 
       list.phone, list.url)"/>
 
       <v-dialog v-model="dialog" max-width="350">
@@ -16,7 +16,7 @@
           <v-list-item three-line class="text-center ma-3">
             <v-list-item-content>
               <v-list-item-title>
-                {{ placeName }}
+                {{ name }}
               </v-list-item-title>
               <v-list-item-subtitle>
                 {{ address }}
@@ -54,7 +54,7 @@ export default {
         zoom: 15,
       },
       placeList: [],
-      placeName: null,
+      name: null,
       address: null,
       phone: null,
       url: null,
@@ -62,22 +62,13 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://localhost:7777/recommend/mapList').then(res => {
-      const list = res.data
-
-      for (let i = 0; i < list.length; i++) {
-        if (list[i][0] != null) {
-          this.placeList.push(
-            { x: Number(list[i][0]), y: Number(list[i][1]), placeName: list[i][2], 
-            address: list[i][3], phone: list[i][4], url: list[i][5] }
-          )
-        }
-      }
+    axios.get('http://localhost:7777/map/list').then(res => {
+      this.placeList = res.data
     })
   },
   methods: {
-    showPlaceInfo (placeName, address, phone, url) {
-      this.placeName = placeName
+    showPlaceInfo (name, address, phone, url) {
+      this.name = name
       this.address = address
       this.phone = phone
       this.url = url
@@ -85,7 +76,7 @@ export default {
       this.dialog = true
     },
     btnGo () {
-      console.log(this.url)
+      this.dialog = false
     },
     btnOk () {
       this.dialog = false

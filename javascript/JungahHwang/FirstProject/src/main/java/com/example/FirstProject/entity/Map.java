@@ -26,10 +26,10 @@ public class Map {
     private Long boardNo;
 
     @Column
-    private String x;
+    private double x;
 
     @Column
-    private String y;
+    private double y;
 
     @Column
     private String name;
@@ -47,14 +47,11 @@ public class Map {
     private Date regDate;
 
     public void updateMap(MapDto mapDto) {
-        this.mapNo = mapDto.getMapNo();
-        this.boardNo = mapDto.getBoardNo();
         this.x = mapDto.getX();
         this.y = mapDto.getY();
         this.name = mapDto.getName();
         this.address = mapDto.getAddress();
         this.phone = mapDto.getPhone();
         this.url = mapDto.getUrl();
-        this.regDate = mapDto.getRegDate();
     }
 }

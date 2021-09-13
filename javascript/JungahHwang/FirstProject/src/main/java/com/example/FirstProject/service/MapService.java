@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface MapService {
     Map add(MapDto mapDto) throws Exception;
-    Optional<Map> read(Long boardNo) throws Exception;
+    Map read(Long boardNo) throws Exception;
     List<Map> list() throws Exception;
     void modify(Map map, MapDto mapDto) throws Exception;
     void remove(Map map) throws Exception;

@@ -15,8 +15,8 @@ import java.util.Date;
 public class MapDto {
     private Long mapNo;
     private Long boardNo;
-    private String x;
-    private String y;
+    private double x;
+    private double y;
     private String name;
     private String address;
     private String phone;

@@ -21,13 +21,6 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    @Override
-//    public void signup(Member member) throws Exception {
-//        String encodedPassword = passwordEncoder.encode(member.getPw());
-//        member.setPw(encodedPassword);
-//
-//        repository.save(member);
-//    }
     @Override
     public Member signup(MemberDto memberDto) throws Exception {
         String encodedPassword = passwordEncoder.encode(memberDto.getPw());
@@ -54,23 +47,6 @@ public class MemberServiceImpl implements MemberService {
 
         return true;
     }
-
-        //        Boolean isLogin = null;
-//
-//        if (maybeMember.isPresent()){
-//            isLogin = false;
-//        } else if(!maybeMember.isPresent()) {
-//            Member loginMember = maybeMember.get();
-//            if(passwordEncoder.matches(member.getPw(), loginMember.getPw())) {
-//                isLogin = true;
-//            } else if (!passwordEncoder.matches(member.getPw(), loginMember.getPw())) {
-//                isLogin = false;
-//            }
-//        }
-//        log.info(String.valueOf(isLogin));
-//
-//        return isLogin;
-
 
     @Override
     public boolean validationId(String id) throws Exception {

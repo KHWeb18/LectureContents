@@ -27,8 +27,8 @@ public class MapServiceImpl implements MapService{
     }
 
     @Override
-    public Optional<Map> read(Long boardNo) throws Exception {
-        Optional<Map> map = repository.findByBoardNo(boardNo);
+    public Map read(Long boardNo) throws Exception {
+        Map map = repository.findByBoardNo(boardNo).orElse(null);
 
         return map;
     }
