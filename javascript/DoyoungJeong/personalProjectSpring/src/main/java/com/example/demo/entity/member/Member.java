@@ -57,6 +57,10 @@ public class Member {
     @JoinColumn(name = "member_no")
     private Set<MemberTaste> memberTasteList = new HashSet<MemberTaste>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "member_no")
+    private Set<BookedConcert> bookedConcertList = new HashSet<BookedConcert>();
+
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JoinColumn(name = "member_no")
 //    private Set<Board> boardContentList = new HashSet<Board>();
@@ -73,6 +77,9 @@ public class Member {
     public void addIdentity(MemberIdentity memberIdentity) {
         memberIdentityList.add(memberIdentity);
     }
+    //얘는 가입할 때 같이 입력하니까.. 회원 가입할 때 같이 넣어주지만 나머지는 필요 없는듯..
+    //지금 보니까 이 add는 처음에 같이 넣어주는거 아니면 필요가 없네... ㅋㅋ
+    //나중에 지우자
 
     public void addLikedConcert(LikedConcert likedConcert) {
         likedConcertList.add(likedConcert);
@@ -82,9 +89,9 @@ public class Member {
         memberTasteList.add(memberTaste);
     }
 
-//    public void addBoardContent(Board board) {
-//        boardContentList.add(board);
-//    }
+    public void addBookedConcert(BookedConcert bookedConcert) {
+        bookedConcertList.add(bookedConcert);
+    }
 
     public void clearMemberIdentityList(){
         memberIdentityList.clear();

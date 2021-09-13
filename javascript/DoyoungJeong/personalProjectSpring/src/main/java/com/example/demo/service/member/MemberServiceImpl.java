@@ -4,16 +4,10 @@ import com.example.demo.controller.concert.request.ConcertDeleteRequest;
 import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.MemberRequest;
 import com.example.demo.controller.member.response.MemberResponse;
-import com.example.demo.entity.member.LikedConcert;
-import com.example.demo.entity.member.Member;
-import com.example.demo.entity.member.MemberIdentity;
-import com.example.demo.entity.member.MemberTaste;
+import com.example.demo.entity.member.*;
 import com.example.demo.repository.concert.ConcertRepository;
 import com.example.demo.repository.board.BoardRepository;
-import com.example.demo.repository.member.LikedConcertRepository;
-import com.example.demo.repository.member.MemberIdentityRepository;
-import com.example.demo.repository.member.MemberRepository;
-import com.example.demo.repository.member.MemberTasteRepository;
+import com.example.demo.repository.member.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,6 +48,9 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private MemberTasteRepository memberTasteRepository;
 
+    @Autowired
+    private BookedConcertRepository bookedConcertRepository;
+
     @Override
     @Transactional
     public boolean register(MemberRequest memberRequest) throws Exception {
@@ -74,28 +71,32 @@ public class MemberServiceImpl implements MemberService{
             Member member = new Member(memberRequest.getId(), memberRequest.getPassword(), memberRequest.getName(),
                     location, memberRequest.getBirthDay(), memberRequest.getPhoneNo());
 
-            LikedConcert likedConcert = new LikedConcert();
-            likedConcert.setConcertNo(new Long(0));
-            likedConcert.setConcertName("default");
-            likedConcert.setConcertArtist("default");
-            likedConcert.setConcertVenue("default");
-            likedConcert.setConcertPrice("default");
-            likedConcert.setConcertDate("default");
-            likedConcert.setConcertInfo("default");
+//            LikedConcert likedConcert = new LikedConcert();
+//            likedConcert.setConcertNo(new Long(0));
+//            likedConcert.setConcertName("default");
+//            likedConcert.setConcertArtist("default");
+//            likedConcert.setConcertVenue("default");
+//            likedConcert.setConcertPrice("default");
+//            likedConcert.setConcertDate("default");
+//            likedConcert.setConcertInfo("default");
 
 //            String[] defaultOne = new String[0];
 //            String[] defaultTwo = new String[0];
-            MemberTaste memberTaste = new MemberTaste("default", "default", "default", "default");
+
+            //MemberTaste memberTaste = new MemberTaste("default", "default", "default", "default");
 
 //            Board board = new Board("default", "default"); 보드를 멤버에 엮을까 하다가 취소
 //            board.setId("default");
 //            BoardReply boardReply = new BoardReply("default", "default");
 //            board.addBoardReply(boardReply);
 
+            //BookedConcert bookedConcert = new BookedConcert(null, null, null, null); 안넣어줘도 되네???
+
             member.addIdentity(memberIdentity);
-            member.addLikedConcert(likedConcert);
-            member.addMemberTaste(memberTaste);
+            //member.addLikedConcert(likedConcert);
+            //member.addMemberTaste(memberTaste);
             //member.addBoardContent(board);
+            //member.addBookedConcert(bookedConcert);
             memberRepository.save(member);
 
             log.info("New ID has registered!");
@@ -184,7 +185,7 @@ public class MemberServiceImpl implements MemberService{
         likedConcertRepository.delete(memberNo);
 
         memberTasteRepository.delete(memberNo);
-        //boardRepository.delete(memberNo);
+        bookedConcertRepository.delete(memberNo);
         memberRepository.delete(memberNo);
     }
 
