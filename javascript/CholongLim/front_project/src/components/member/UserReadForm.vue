@@ -1,21 +1,21 @@
 <template>
-    <div class="member-box">
-        <v-container>
+    <div>
+        <v-container class="member-box">
             <v-container>
-                <div style="margin-bottom:10%;">
+                <div style="margin-bottom:3%;">
                 <v-text-field label="회원번호" :value="user.memberNo"
-                    style="margin:3% 0% 3% 0%;" disabled type="member"></v-text-field>
+                     disabled type="member"></v-text-field>
                 <v-text-field  label="가입날짜" :value="user.regDate" 
-                    style="margin:3% 0% 3% 0%;" disabled type="dates"></v-text-field>
+                    disabled type="dates"></v-text-field>
                 <v-text-field  label="회원명" :value="user.userName" 
-                     style="margin:3% 0% 3% 0%;" disabled type="userName"></v-text-field>
+                     disabled type="userName"></v-text-field>
                 <v-text-field  label="회원 아이디" :value="user.userId" 
-                     style="margin:3% 0% 3% 0%;" disabled type="userId"></v-text-field>
+                     disabled type="userId"></v-text-field>
                 <v-text-field  label="전화번호" :value="user.userPhone" 
-                     style="margin:3% 0% 3% 0%;" disabled type="phone"></v-text-field>
+                    disabled type="phone"></v-text-field>
 
              
-                <v-btn outlined class="ma-2 edit" route :to="{ name: 'UserModifyPage', params: { memberNo: user.memberNo.toString() } }">
+                <v-btn outlined class="ma-2 edit" route :to="{ name: 'UserModifyPage', params: { memberNo: user.memberNo } }">
                     수정하기</v-btn> 
 
                 </div>
@@ -38,14 +38,12 @@ export default {
     name: 'UserReadPage',
     props: {
         user: {
-            // type: Object,
             authList: Array,
             password:String,
             userId: String,
             userName: String,
             userPhone: String,
-            memberNo: String,
-            // required: true
+            memberNo: Number
         }
     } 
 }
@@ -60,13 +58,16 @@ h4 {
 }
 
 .member-box {
-    margin-top: 2%;
+    /* margin-top: 2%; */
+    width: 80%;
+    padding: 0%;
+    margin: 0 auto;
 }
 
 .edit{
     position: absolute;
-    top: 70%;
-    left: 65%;
+    top: 74%;
+    left: 70%;
     width: 5px;
     font-size: 6px;
     color: rgb(102, 101, 101);

@@ -23,24 +23,20 @@ import router from '../router'
 import cookies from 'vue-cookies'
 
 
-
-
-
 export default {
-     // 게시판
-     fetchBoardList ({ commit }) {
+    fetchBoardList ({ commit }) {
         return axios.get('http://localhost:8888/board/lists')
                 .then((res) => {
                     commit(FETCH_BOARD_LIST, res.data)
                 })
       },
-      fetchBoard ({ commit }, boardNo) {
+    fetchBoard ({ commit }, boardNo) {
         return axios.get(`http://localhost:8888/board/${boardNo}`)
                 .then((res) => {
                     commit(FETCH_BOARD, res.data)
                 })
       },
-      fetchUser ({ commit }, memberNo) {
+    fetchUser ({ commit }, memberNo) {
         return axios.get(`http://localhost:8888/jpamember/${memberNo}`)
                 .then((res) => {
                     commit(FETCH_USER, res.data)
@@ -100,10 +96,8 @@ export default {
                           cookies.set("auth",res.data.authList[0].auth, '1h')
                           this.state.session = res.data
                           commit(LOGIN_SUCCESS)
-                          // router.push({name: 'MainPage'})
-                          location.href='/cinzel'
-                          
-                  
+                          router.push({name: 'MainPage'})
+                        //   location.href='/cinzel'
                       } if(res.data == "" ) {
                           alert('아이디와 비밀번호를 확인해주세요.')
                           commit(LOGIN_ERROR)
@@ -120,11 +114,10 @@ export default {
       commit(LOGOUT)
       alert('로그아웃.')
       location.href='/cinzel'
-      // router.push('/cinzel')
-      // location.reload()
+    //   router.push({name: 'MainPage'})
+    //   location.reload()
 
   },
-    // 크롤링
   async crawlFind ({ commit }, category) {
     axios.get('http://localhost:8888/' + `${category}`)
             .then(({ data }) => {

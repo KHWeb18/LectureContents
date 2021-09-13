@@ -44,13 +44,13 @@ import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
 
 
 // room
+import SelectRoom from '@/views/category/rooms/SelectRoom.vue'
 import Room201 from '@/views/category/rooms/Room201.vue'
 import Room202 from '@/views/category/rooms/Room202.vue'
 import Room301 from '@/views/category/rooms/Room301.vue'
 import Room302 from '@/views/category/rooms/Room302.vue'
 
 // 예약하기
-import Book from '@/views/Book.vue'
 import Book2 from '@/views/Book2.vue'
 
 
@@ -204,6 +204,13 @@ const routes = [
     }
   },
   {
+    path: '/rooms',
+    name: 'SelectRoom',
+    components: {
+      default: SelectRoom
+    }
+  },
+  {
     path: '/room301',
     name: 'Room301',
     components: {
@@ -277,13 +284,6 @@ const routes = [
     },
     props: {
       default: true
-    }
-  },
-  {
-    path: '/book',
-    name: 'Book',
-    components: {
-      default: Book
     }
   },
   {

@@ -1,25 +1,26 @@
 <template>
     <div align="center" class="member-box">
-        <v-divider></v-divider>
+        
         <v-row style="margin-top:8%;">
-            <h4><b>회원명</b>  {{ users.userName }}</h4>
+            <h4><b>회원명</b>  {{ user.userName }}</h4>
         </v-row>
         <v-row>
-            <h4><b>아이디</b>  {{ users.userId }}</h4>
+            <h4><b>아이디</b>  {{ user.userId }}</h4>
         </v-row>
         <v-row>
-            <h4><b>전화번호</b>  {{ users.userPhone }}</h4>
+            <h4><b>전화번호</b>  {{ user.userPhone }}</h4>
         </v-row>   
 
         <div>
             <v-flex xs4 sm10 md12>
         <v-btn text outlined color="blue lighten-1" route :to="{name: 'UserReadPage',
-                                    params: { memberNo: users.memberNo.toString() } }">회원정보수정</v-btn>  
+                                    params: { memberNo: user.memberNo } }">회원정보수정</v-btn>  
         <v-layout class="delete">
                     <v-dialog v-model="dialog" persistent max-width="400px">
                       
                         <template v-slot:activator="{ on }">
-                            <v-btn text color="blue lighten-1" v-on="on">계정을 삭제하겠습니다</v-btn>        
+                            <v-btn plain color="blue lighten-1" v-on="on"
+                                style="margin-top:7%;">계정을 삭제하겠습니다</v-btn>        
                         </template>
                    
                         <v-card>
@@ -43,9 +44,7 @@
                     </v-dialog>
                 </v-layout>
             </v-flex>
-        </div>
-
-                    
+        </div>             
     </div>
 </template>
 
@@ -58,13 +57,13 @@ import { LOGOUT } from '@/store/mutation-types'
 export default {
     name: 'UserListForm',
     props: {
-        users: {
+        user: {
             authList: Array,
             password:String,
             userId: String,
             userName: String,
             userPhone: String,
-            memberNo: String
+            memberNo: Number
         }
     },
     data() {
@@ -77,13 +76,13 @@ export default {
             this.dialog = false
         },
         onDelete () {
-            const { memberNo } = this.users
+            const { memberNo } = this.user
             axios.delete(`http://localhost:8888/jpamember/${memberNo}`)
                 .then(() => {
                     alert('계정을 삭제했습니다.')
                     this.dialog = false
                     this.$router.push({ name: 'MainPage' })
-                    this.$store.state.users = null
+                    this.$store.state.user = null
                     cookies.remove("user")
                     this.$store.commit(LOGOUT)
                     

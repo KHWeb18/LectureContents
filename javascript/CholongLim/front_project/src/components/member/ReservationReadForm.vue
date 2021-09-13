@@ -65,7 +65,7 @@ table{
 }
 
 .book-title{
-    background-color: #15686cbd;
+    background: linear-gradient( 45deg, rgba(0, 68, 255, 0.61), rgba(143, 206, 243, 0.425) );
     color: white;
 }
 

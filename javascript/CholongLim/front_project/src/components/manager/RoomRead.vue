@@ -3,27 +3,27 @@
             <div class="room-box">
             <v-col cols="12" md="12" >
                 <v-container>
-                    <v-text-field label="예약번호" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="예약번호" required height="5vh"
                                     readonly disabled
                                 :value="room.bookNo" type="bookNo">
                     </v-text-field>
 
-                    <v-text-field label="방번호" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="방번호" required height="5vh"
                                 readonly disabled
                                 :value="room.roomId" type="roomId">
                     </v-text-field>
 
-                    <v-text-field label="가격"  required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="가격"  required height="5vh"
                                     readonly disabled
                                 :value="room.price" type="price">
                     </v-text-field>
 
-                    <v-text-field label="입금자명"  required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="입금자명"  required height="5vh"
                                     readonly disabled
                                 :value="room.bankName" type="bankName">
                     </v-text-field>
 
-                    <v-text-field label="아이디"  required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="아이디"  required height="5vh" 
                                     readonly disabled
                                 :value="room.userId" type="userId">
                     </v-text-field>
@@ -49,7 +49,7 @@ export default {
 
 .room-box {
     text-align: center;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 .register-box{

@@ -3,27 +3,27 @@
         <div class="member-box">
             <v-col cols="12" md="12" >
                 <v-container>
-                    <v-text-field label="회원번호" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="회원번호" required height="5vh" 
                                     readonly 
                                 :value="member.memberNo" type="memberNo">
                     </v-text-field>
 
-                    <v-text-field label="권한" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="권한" required height="5vh"
                                     readonly 
                                 :value="memberAuth.auth" type="auth">
                     </v-text-field>
 
-                    <v-text-field label="이름" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="이름" required height="5vh"
                                     readonly 
                                 :value="member.userName" type="userName">
                     </v-text-field>
 
-                    <!-- <v-text-field label="아이디" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="아이디" required height="5vh"
                                         readonly 
                                 :value="member.userId" type="id">
-                    </v-text-field> -->
+                    </v-text-field>
 
-                    <v-text-field label="휴대전화" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="휴대전화" required height="5vh"
                                         readonly 
                                 :value="member.userPhone" type="userPhone">
                     </v-text-field>
@@ -54,7 +54,7 @@ export default {
 
 .member-box {
     text-align: center;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 .register-box{

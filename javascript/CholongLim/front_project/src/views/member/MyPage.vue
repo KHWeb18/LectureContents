@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <div class="img-cover">
         <div class="container">   
             <div v-if="cookie == true">
@@ -28,12 +28,72 @@
         </div>  
         <div class="img-overlay"></div>
     </div>
+</template>-->
+
+<template>
+  <div class="img">
+      <menu-bar/>
+    <v-card class="card-box">
+      <v-navigation-drawer
+        permanent
+        style="float:left;"
+      >
+        <v-list>
+          <v-list-item class="px-2">
+            <v-list-item-avatar>
+              <v-icon color="pink lighten-2">favorite</v-icon>
+            </v-list-item-avatar>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-content>
+              <v-list-item-title class="text-h6">
+                {{ userId }}
+              </v-list-item-title>
+              <v-list-item-subtitle>회원님, 환영합니다.</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-list
+          nav
+          dense
+        >
+          <v-list-item route :to="{ name: 'UserList'}">
+            <v-list-item-icon>
+              <v-icon>edit</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>회원정보수정</v-list-item-title>
+          </v-list-item>
+          <v-list-item route :to="{ name: 'MyReservation'}">
+            <v-list-item-icon>
+              <v-icon>shopping_cart</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>예약내역</v-list-item-title>
+          </v-list-item>
+          <v-list-item route :to="{ name: 'Book2'}">
+            <v-list-item-icon>
+              <v-icon>card_travel</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>예약하기</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <div class="user-info">
+            How To Write Better Advertising Copy Heading
+          </div>
+    </v-card>
+  </div>
 </template>
 
 <script>
 
-
-export default {
+import MenuBar from '@/views/MenuBar.vue'
+  export default {
+  components: { MenuBar },
     name: 'MyPage',
     data() {
         return {
@@ -48,24 +108,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 
-.intro-top {
-    background: #f6f7f7;
-}
 
-
-.img-cover{
-     position: relative;
-     height: 100%;
-     width: 100%;
-     background-image: url('https://images.pexels.com/photos/287229/pexels-photo-287229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-     background-size: cover;                                                            
-     z-index:1;
-}
-
-.container {
-    position: relative;
-    text-align: center; 
-}
 
 h1 {
     font-family: "Cinzel";
@@ -89,4 +132,29 @@ h4 {
     font-family: 'Gowun Batang';
     font-size: 25px;
 }
+
+/*  */
+.user-info {
+  float: left;
+  margin: 10px 65px;
+  /* margin-left: 0px; */
+  line-height: 1.7;
+  font-weight: 600;
+}
+.card-box {
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    position: relative;
+    top:5%;
+}
+
+.img{
+    position: relative;
+    /* background-image: url('https://images.pexels.com/photos/7130477/pexels-photo-7130477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');                                                             */
+    background-image: url('https://images.pexels.com/photos/7130503/pexels-photo-7130503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); 
+    height: 100vh;
+    background-size: cover;
+  }
 </style>

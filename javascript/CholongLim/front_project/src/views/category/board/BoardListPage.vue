@@ -22,7 +22,16 @@
 
         <v-btn color="blue" outlined class="btn-locate" v-if="this.auth == '관리자'"
             route :to="'/board/create'">글쓰기</v-btn>
-        
+
+            <!-- <div>
+            <v-container style="margin-left:40%;">
+                <v-row align="center">
+                 <input type="text" style="float:left; width:15%;" v-model="searchText"/>
+                 <v-btn style="float:left; margin-left:2%" @click="search">검색</v-btn>
+                </v-row>
+            </v-container>
+        </div>
+         -->
 
 
     </div>  
@@ -31,7 +40,9 @@
 <script>
 import BoardList from '@/components/board/BoardList.vue'
 import { mapActions,mapState } from 'vuex'
-
+// import { mapState } from 'vuex'
+// import { FETCH_BOARD_LIST } from '@/store/mutation-types'
+// import axios from 'axios'
 
 export default {
     name: 'BoardListPage',
@@ -41,7 +52,7 @@ export default {
     data() {
         return {
             searchText: '',
-            auth: this.$cookies.get("auth")
+            auth: this.$cookies.get("auth"),
         }
     },
     computed: {
@@ -52,9 +63,7 @@ export default {
     },
     methods: {
         ...mapActions(['fetchBoardList']),
-        what() {
-            console.log(this.$cookies.get("auth"))
-        }
+ 
     }
 
 }

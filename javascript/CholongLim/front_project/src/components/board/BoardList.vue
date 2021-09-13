@@ -1,5 +1,6 @@
 <template>
     <div align="center" class="board-box">
+
         <table>
             <tr class="top-tr">
                 <th align="center" width="150">번호</th>

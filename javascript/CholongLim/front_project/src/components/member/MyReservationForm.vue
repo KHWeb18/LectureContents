@@ -24,7 +24,7 @@
 
             <v-flex xs8 sm12 md12>
             <v-card-actions>
-             <v-btn outlined color="blue lighten-1" style="margin-left:87%;"
+             <v-btn outlined color="blue lighten-1" style="margin-left:83%;"
              route :to="{ name: 'ReservationReadPage', params: { bookNo: book.bookNo.toString() } }">상세보기</v-btn>
             </v-card-actions>
             </v-flex>
@@ -65,7 +65,7 @@ table{
 }
 
 .book-title{
-    background-color: #15686cbd;
+   background: linear-gradient( 45deg, rgba(0, 68, 255, 0.61), rgba(143, 206, 243, 0.425) );
     color: white;
 }
 
@@ -77,4 +77,5 @@ table{
 .reserve{
     margin: 5% 0% 5% 0%;
 }
+
 </style>

@@ -1,245 +1,480 @@
 <template>
-    <div>
-        <v-flex xs12 sm12 md12>
-        <div>
-            <v-img class="about-img-top" src="https://images.pexels.com/photos/2507007/pexels-photo-2507007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-            </v-img>
+  <div class="container">
+    <v-row align="center" justify="center">
+      <div class="typing-demo">
+      Cinzel,That place is...
+      </div>
+    </v-row>
+    <div class="content">
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/450038/pexels-photo-450038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Swimming pool</h2>
+          </div>
         </div>
-        <div class="section">
-            <h5>" Once a year, go somewhere you have never been before. "</h5>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/737552/pexels-photo-737552.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>The vast ocean</h2>
+          </div>
         </div>
-        <v-container class="about-top">
-            <p>WELCOME TO CINZEL</p>
-            <h1>CINZEL ABOUT</h1>
-            <p>| 소개 |</p>
-        </v-container>
-        <v-divider></v-divider>
-
- 
-        <div class="colorbox">
-            <h1 style="font-size:15px;">Cinzel Movie Story</h1>
-            <v-row align="center" justify="center">
-            <iframe width="900" height="506" src="https://www.youtube.com/embed/mJ4PLtLIs_A" 
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-            clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </v-row>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/4566718/pexels-photo-4566718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Breakfast for you</h2>
+          </div>
         </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/680562/pexels-photo-680562.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>A nearby park</h2>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/9479416/pexels-photo-9479416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Yacht tour</h2>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/7736770/pexels-photo-7736770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Cinzel cafe</h2>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Rest area</h2>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/848573/pexels-photo-848573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940s">
+          <div class="frame">
+            <h2>Beautiful sunset</h2>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="box w-content">
+          <img src="https://images.pexels.com/photos/1454789/pexels-photo-1454789.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+          <div class="frame">
+            <h2>Campfire night</h2>
+          </div>
+      </div>
+    </div>
     
     
-        <v-container style="margin-top:5%;">
-            <p>바다와 숲이 어우러진 천혜의 휴양지 제주도 서귀포에 위치한 Cinzel은 <br>
-            고객의 편의와 프라이빗을 소중하게 여기는 펜션으로 품격있는 서비스를 만나보실 수 있습니다.<br>
-            머무시는 동안 편안한 휴식공간이 될 수 있도록 노력하는 서비스로 모시겠습니다.</p>
-        </v-container>
+   
 
-        <div>
-            <div>
-                <div style="padding-left:5%; padding-top:5%; float:left; width:50%;">
-                    <h2>Blue Ocean</h2>
-                    <p>자연과 조화된 Cinzel에서 산들바람과 바다내음을 맡으며<br>
-                        가족 연인과 즐거운 추억을 만들어보세요.</p>
-                </div>
-                <div style="float:left; width:50%;">
-                    <v-img style="overflow: visible" contain
-                            src="https://images.pexels.com/photos/843633/pexels-photo-843633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                            </v-img>
-                </div>
-            </div>
-
-            <div style="display: block;">
-                <div style="float:left; width:60%; margin-left:0%;">
-                    <v-img style="overflow: visible" contain
-                    src="https://images.pexels.com/photos/3511543/pexels-photo-3511543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                    </v-img> 
-                    </div>
-                <div style="float:left; padding:5% 0% 0% 5%; width:40%;">
-                    <h2>Beautiful <br>Nature</h2>
-                </div>
-            </div>
-            
-        </div>
-
-        
-            <!-- <div style="display: block;">
-                <div style="float:left; width:60%;">
-                    <v-img style="overflow: visible" contain
-                    src="https://images.pexels.com/photos/3417701/pexels-photo-3417701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                    </v-img> 
-                    </div>
-                <div style="float:left; padding:5% 0% 0% 5%; width:40%;">
-                    <h2>Beautiful <br>Nature</h2>
-                </div>
-            </div> -->
-        
-
-        <!-- <div class="container">
-            <div class="overlay">
-                <h2>Blue Ocean</h2>
-                <p>자연과 조화된 Cinzel에서 산들바람과 바다내음을 맡으며<br>
-                     가족 또는 연인과 즐거운 추억을 만들어보세요.</p>
-            </div>
-            <div style="width:100%;">
-                <v-img class="about-img-01" style="overflow: visible" contain
-                        src="https://images.pexels.com/photos/5231749/pexels-photo-5231749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></v-img>
-            </div>
-        </div> -->
-
-        <!-- <div class="container">
-            <div class="overlay2">
-                <h2>Beautiful <br>Nature</h2>
-            </div>
-            <div>
-                <v-img class="about-img-02" style="overflow: visible" contain
-                src="https://images.pexels.com/photos/3417701/pexels-photo-3417701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                </v-img> 
-                </div>
-        </div>
-
-        <v-container class="middle">
-            <h5>" All travel has its advantages. If the passenger visit better countries,<br>
-                he may learn to improve his own. and if fortune carries him to worse,
-                he may learn to enjoy it. "</h5>
-        </v-container> -->
-<!-- 
-        <v-col sm12>
-        <div class="container"> -->
-            <!-- <div class="overlay3">
-                <h3>CINZEL</h3>
-            </div> -->
-            <!-- <div>
-                <v-img class="about-img-03" 
-                src="https://images.unsplash.com/photo-1558006297-a916366218d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-            </v-img>
-                </div>
-        </div> -->
-        <!-- </v-col> -->
-        </v-flex>
-    </div>    
+  </div>
+</div>
 </template>
 
-<script>
-export default {
+
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap');
+.typing-demo {
+  width: 18ch;
+  animation: typing 2s steps(23), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: 'Cormorant SC';
+  font-size: 3.5em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
     
-}
-</script>
-
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
-
-
-.colorbox{
-    padding: 6% 0% 5% 0%;
-    background-color: #ececec;
-}
-.container{
-    position: relative;
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
 }
 
-.overlay{
+
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: 'DM-sans', sans-serif;
+}
+
+.header {
+  font-size: 24px;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  margin-bottom: 150px;
+  padding: 0 30px;
+}
+
+.wrapper {
+  width: 33.3%;
+  height: 100%;
+  padding: 10px;
+}
+
+.name {
+  position: relative;
+  font-size: 16px;
+  display: inline-block;
+  
+ &:after {
+    content: '';
     position: absolute;
-    z-index: 9;
-    margin-top: 9%;
-    left: -8%;
-}
+    width: calc(100% + 10px);
+    height: 1px;
+    background-color: #000;
+    bottom: -4px;
+    left: 0;
+  }
+} 
 
-.overlay2{
+.box {
+  position: relative;
+  max-height: 300px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+  0 1.4px 1.7px rgba(0, 0, 0, 0.017),
+  0 3.3px 4px rgba(0, 0, 0, 0.024),
+  0 6.3px 7.5px rgba(0, 0, 0, 0.03),
+  0 11.2px 13.4px rgba(0, 0, 0, 0.036),
+  0 20.9px 25.1px rgba(0, 0, 0, 0.043),
+  0 50px 60px rgba(0, 0, 0, 0.06);
+  
+  .hide { opacity: 0; }
+  
+  .frame {
     position: absolute;
-    z-index: 9;
-    margin-top: 1%;
-    left: 70%;
-}
-
-.overlay3{
+    border: 1px solid #fff;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  h2, p {
     position: absolute;
-    z-index: 9;
-    margin-top: 37.5%;
-    left: 5%;
+    color: #fff;
+    z-index: 2;
+    width: 100%;
+    transition: opacity 0.2s, transform 0.3s;
+  }
+  
+  h2 {
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
+  
+  p {
+    bottom: 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  &:hover {
+    transition: all .3s ease-in-out;
+  }
+  
+  &:hover:before {
+    transition: all .3s ease-in-out;
+  }
+  
+  img {
+    position:relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all .3s ease-in-out;
+    
+    &:hover {
+      transition: all .3s ease-in-out;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: rgba(0,0,0,.6);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    
+    &:hover {
+      transition: all .3s ease-in-out;
+    }
+  }
 }
 
-.test3{
-    margin-left: 50vw;
-    position: relative;
-    bottom: 25vh;
+.zoom-in{
+  h2 {
+    top: 50%;
+    transform: translatey(-50%);
+    text-align: center;
+    margin: 0;
+  }
+  
+  p {
+    text-align: center;
+    top: calc(50% + 40px);
+    transition: all .3s ease;
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  
+  &:hover {
+   img {
+    transform: scale(1.1);
+    filter: grayscale(100%);
+   } 
+    
+    p {
+      transform: scale(1);
+      transition: all .3s ease;
+      opacity: 1;
+    }
+  }
 }
 
-.middle {
-    margin-top: 45px;
-    margin-bottom: 15px;
+.w-content {
+  .frame {
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: transparent;
+  }
+  
+  h2 {
+    margin-top: 0;
+    top: 50%;
+    transform: translatey(-50%);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  p { transform: translate3d(0, -10px, 0); }
+  
+  &:hover {
+    .frame {
+      border-color: #fff;
+      transition: color .3s ease-in-out, all .3s ease-in-out;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+    }
+    
+    opacity: .8;
+  }
 }
 
-.intro-top {
+.postcard {
+  h2 {
+    top: 50%;
     text-align: left;
+    transform: translate3d(50px, 20px, 0);
+  }
+  
+  p {
+    transform: translate3d(40px, 60px, 0);
+    font-size: 24px;
+    letter-spacing: 1px; 
+  }
+  
+  &:hover {
+    h2 { transform: translate3d(20px, 20px, 0); }
+    p { opacity: 1; }
+    
+    img {
+      filter: opacity(0.7);
+      transform: translate3d(-30px, 0, 0);
+    }
+  }
 }
 
-.about-img-top {
-    max-height: 70vh;
-}
-.about-img-01 {
-    position: relative;
-    left: 20vw;
-    height: 60vh;
-
-}
-.about-img-02 {
-    position: relative;
-    right: 20vw;
-    height: 50vh;
-    margin-top: -5vh;
-}
-.about-img-03 {
-    position: relative;
-    left: 20vw;
-    height: 60vh;
-    margin-top: 5vh;
-}
-
-.section {
-    background: #dcdfdc;
-    height: 10vh;
-}
-
-p {
-    font-family: 'Nanum Myeongjo';
-    font-size: 18px;
+.blury-card {  
+  .frame {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    opacity: 0;
+    transition: all .3s ease-in-out
+  }
+  
+  h2 , p {
     text-align: center;
-    padding: 18px 0px 18px 0px;
+    top: 50%;
+    transform: translatey(-50%);
+    margin: 0;
+    z-index: 3;
+  }
+  
+  p { 
+    transform: translatey(30px);
+    letter-spacing: 3px;
+  }
+  
+  span {
+    font-size: 24px;
+  }
+  
+  &:before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #008E6B;
+    z-index: 1;
+    left: 0;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+  }
+  
+  img {  z-index: 2; }
+  
+  &:hover {
+    .frame {
+      width: calc(100% - 120px);
+      height: calc(100% - 120px);
+      opacity: 1;
+    }
+    
+    img { opacity: .7; }
+    
+    &:before {
+      opacity: 1;
+      transition: all .3s ease-in-out;
+    }
+  }
 }
 
-.about-top {
-    padding-top: 10vh;
-}
-
-h1 {
-    font-family: "Cinzel";
-    font-size: 40px;
+.vintage {
+  h2 { 
+    top: 50%;
+    transform: translate3d(0, 60px, 0);
+    text-align: center; 
+  }
+  
+  p { 
+    opacity: 0;
+    bottom: 0;
+    transform: translate3d(0, -10px, 0);
+    font-size: 14px;
+    letter-spacing: 1px;
     text-align: center;
-    margin-top: 10px;
+  }
+  
+  &:before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
+    z-index: 2;
+    bottom: -100%;
+    left: 0;
+  }
+  
+  &:hover:before {
+    bottom: 0;
+  }
+  
+  &:hover {
+    h2 {
+      bottom: 40px;
+      transform: translate3d(0, 20px, 0);
+    }
+    
+    p {
+      opacity: 1;
+      transform: translate3d(0, -30px, 0);
+    }
+  }
 }
 
-h2 {
-    font-family: 'MonteCarlo';
-    font-size: 150px;
-    color:darkgrey
+.zoom-out {
+  .frame {
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+  }
+  
+  h2 { 
+    font-size: 20px; 
+    font-weight: 300; 
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+  span { font-size: 24px; font-weight: 500; }
+  
+ p {
+    max-width: 120px;
+    text-align: right;
+    margin: 10px;
+    right: 0;
+  }
+  
+  img { transform: scale(1.1); }
+  &:hover img { 
+    transform: scale(1);
+    filter: contrast(70%);
+  }
 }
 
-h3 {
-    font-family: "Cinzel";
-    font-size: 80px;
-    margin-top: 10px;
-    color:darkgrey;
+@media screen and (max-width: 880px) {
+  .wrapper {
+    width: 50%;
+  }
 }
 
-h4 {
-    margin-top: 0px;
-    font-family: 'Nanum Myeongjo';
-    font-size: 35px;
-}
-
-h5 {
-    font-family: 'Nanum Myeongjo';
-    font-size: 20px;
-    text-align: center;
+@media screen and (max-width: 520px) {
+  .wrapper {
+    width: 100%;
+  }
 }
 </style>

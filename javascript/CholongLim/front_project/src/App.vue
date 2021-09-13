@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <menu-bar/>
+    <menu-bar v-if="($route.name !== 'MainPage') && ($route.name !== 'Home') && ($route.name !== 'test') "/>
     <v-main>
       <router-view/>
     </v-main>

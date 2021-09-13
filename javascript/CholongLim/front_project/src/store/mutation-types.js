@@ -15,7 +15,6 @@ export const FETCH_BOOK_READ = 'FETCH_BOOK_READ'
 
 // TEST
 export const ALREADYS = 'ALREADYS'
-
 // TEST
 
 export const FETCH_DATES_LIST = 'FETCH_DATES_LIST'

@@ -63,13 +63,13 @@ export default {
 <style scoped>
 
 .table-a{
-    width: 45%;
+    width: 50%;
     border: 0.5px solid #ebecec;
     float: left;
     margin-bottom: 5%;
 }
 .table-b{
-    width: 20%;
+    width: 30%;
     border: 0.5px solid #ebecec;
     float: left;
     margin-bottom: 5%;
@@ -78,18 +78,18 @@ export default {
 
 .table-row{
     margin: 0 auto;
-    position: relative;
-    left: 20%;
-    
+    margin-left: 20%;
+    position: relative;   
 }
 
 .top-tr {
-    background-color: #7d9ed283;
+    background-color: #84c0cf33;
 }
 
-.room-box {
+.member-box {
     margin-top: 2%;
     margin-bottom: 2%;
+    width: 83%;
 }
 
 th, td{
@@ -101,6 +101,5 @@ th, td{
     position: relative;
     left: 85%;
 }
-
 
 </style>

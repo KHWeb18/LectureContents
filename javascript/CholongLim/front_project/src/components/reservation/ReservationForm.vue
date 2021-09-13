@@ -209,10 +209,7 @@
     data() {
       return {
       reservationDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      // dateFormatted: vm.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
-      // menu1: false,
       dialog:false,
-      // focus: '',
       type: 'month',
       room: false,
       roomId: '',

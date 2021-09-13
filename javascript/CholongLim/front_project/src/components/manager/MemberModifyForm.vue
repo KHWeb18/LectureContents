@@ -4,7 +4,7 @@
             <v-col cols="12" md="12" >
 
                 <v-container>
-                    <v-text-field label="회원번호" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="회원번호" required height="5vh"
                                     disabled 
                                 :value="member.memberNo" type="memberNo">
                     </v-text-field>
@@ -14,21 +14,18 @@
                         </v-radio>
                     </v-radio-group>    
 
-                    <!-- <v-text-field label="권한" required height="5vh" style="margin-top:10px;" 
-                                v-model="auth" type="auth">
-                    </v-text-field> -->
 
-                    <v-text-field label="이름" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="이름" required height="5vh"
                                     disabled 
                                 :value="member.userName" type="userName">
                     </v-text-field>
 
-                    <v-text-field label="아이디" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="아이디" required height="5vh" 
                                     disabled 
                                 :value="member.userId" type="id">
                     </v-text-field>
 
-                    <v-text-field label="휴대전화" required height="5vh" style="margin-top:10px;" 
+                    <v-text-field label="휴대전화" required height="5vh"
                                     disabled 
                                 :value="member.userPhone" type="userPhone">
                     </v-text-field>
@@ -90,7 +87,7 @@ export default {
 
 .member-box {
     text-align: center;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 .register-box{
@@ -105,7 +102,6 @@ export default {
     margin: 0 auto;
     text-align: center;
     width: 50%;
-    padding: 3% 0% 5% 0%;
 }
 
 h1{

@@ -71,13 +71,13 @@ export default {
 <style scoped>
 
 .table-a{
-    width: 55%;
+    width: 70%;
     border: 0.5px solid #ebecec;
     float: left;
     margin-bottom: 5%;
 }
 .table-b{
-    width: 8%;
+    width: 15%;
     border: 0.5px solid #ebecec;
     float: left;
     margin-bottom: 5%;
@@ -87,17 +87,18 @@ export default {
 .table-row{
     margin: 0 auto;
     position: relative;
-    left: 20%;
+    left: 18%;
     
 }
 
 .top-tr {
-    background-color: #6c98a362;
+    background-color: #84c0cf33;
 }
 
 .member-box {
     margin-top: 2%;
     margin-bottom: 2%;
+    width: 83%;
 }
 
 th, td{
