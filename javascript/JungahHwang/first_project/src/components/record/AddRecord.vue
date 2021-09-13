@@ -60,7 +60,7 @@ export default {
       console.log(date + '/' + id + ': ' + food + ', ' + exercise + ', ' + weight)
       
       axios.post('http://localhost:7777/record/add', { id, date, food, exercise, weight }).then(() => {
-        alert(date + ': ' + food + ', ' + exercise + ', ' + weight + '이 등록되었습니다!')
+        alert('(' + date + ') 활동이 등록되었습니다!')
         
         this.fetchRecord(date)
         
