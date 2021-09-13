@@ -31,6 +31,9 @@ import MyRequestModifyPage from '../views/member/authArtist/MyRequestModifyPage.
 import RequestStorePage from '../views/member/authAdmin/RequestStorePage.vue'
 import RequestReadPage from '../views/member/authAdmin/RequestReadPage.vue'
 
+import BookedListPage from '../views/concert/BookedListPage.vue'
+import BookedAlterPage from '../views/concert/BookedAlterPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -198,6 +201,21 @@ const routes = [
     name: 'MyRequestModifyPage',
     components: {
       default: MyRequestModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/bookedListPage',
+    name: 'BookedListPage',
+    component: BookedListPage
+  },
+  {
+    path: '/bookedAlterPage/:bookedConcertNo',
+    name: 'BookedAlterPage',
+    components: {
+      default: BookedAlterPage
     },
     props: {
       default: true

@@ -29,5 +29,9 @@ export default {
     concertRequestList: [],
     concertRequest: null,
 
-    myRequestList: []
+    myRequestList: [],
+
+    notBookedYet: false,
+    bookedList: [],
+    bookedConcert: null
 }

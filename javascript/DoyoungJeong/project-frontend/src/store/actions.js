@@ -16,8 +16,11 @@ import {
 
     FETCH_CONCERT_REQUEST_LIST,
     FETCH_CONCERT_REQUEST,
+    FETCH_MY_REQUEST_LIST,
 
-    FETCH_MY_REQUEST_LIST
+    FETCH_BOOKED_OR_NOT,
+    FETCH_BOOKED_LIST,
+    FETCH_BOOKED_CONCERT
 
 } from './mutation-types'
 
@@ -155,6 +158,36 @@ export default {
         return axios.get(`http://localhost:8888/member/concertRegister/getMyRequestList/${ num }`)
             .then(res => {
                 commit(FETCH_MY_REQUEST_LIST, res.data)
+                //alert(JSON.stringify(res.data))
+            })
+    },
+
+    fetchBookedOrNot({ commit }, payload) {
+        //console.log("payload: " + payload)
+
+        const likedOrNotCheckNums = payload // ** 원래 변수명을 bookedOrNotCheckNums라고 해줘야하지만 스프핑을 바꿔줘야해서 그냥 likedOrNotCheckNums로 간다.
+
+        //alert(JSON.stringify({ likedOrNotCheckNums }))
+
+        return axios.post('http://localhost:8888/concert/fetchBookedOrNot', { likedOrNotCheckNums })
+            .then((res) => {
+                commit(FETCH_BOOKED_OR_NOT, res.data)
+                //console.log("This page's likedOrNot is: " + res.data)
+            })
+    },
+
+    fetchBookedList({ commit }, num) {
+        return axios.get(`http://localhost:8888/concert/fetchBookedList/${ num }`)
+            .then(res => {
+                commit(FETCH_BOOKED_LIST, res.data)
+                //alert(JSON.stringify(res.data))
+            })
+    },
+
+    fetchBookedConcert({ commit }, num) {
+        return axios.get(`http://localhost:8888/concert/fetchBookedConcert/${ num }`)
+            .then(res => {
+                commit(FETCH_BOOKED_CONCERT, res.data)
                 //alert(JSON.stringify(res.data))
             })
     }

@@ -21,10 +21,12 @@ import {
 
     FETCH_CONCERT_REQUEST_LIST,
     FETCH_CONCERT_REQUEST,
+    FETCH_MY_REQUEST_LIST,
 
-    FETCH_MY_REQUEST_LIST
+    FETCH_BOOKED_OR_NOT,
+    FETCH_BOOKED_LIST,
+    FETCH_BOOKED_CONCERT
 
-    
 } from './mutation-types'
 
 export default {
@@ -86,5 +88,17 @@ export default {
 
     [FETCH_MY_REQUEST_LIST] (state, payload) {
         state.myRequestList = payload
+    },
+
+    [FETCH_BOOKED_OR_NOT] (state, payload) {
+        state.notBookedYet = payload
+    },
+
+    [FETCH_BOOKED_LIST] (state, payload) {
+        state.bookedList = payload
+    },
+
+    [FETCH_BOOKED_CONCERT] (state, payload) {
+        state.bookedConcert = payload
     }
 }
