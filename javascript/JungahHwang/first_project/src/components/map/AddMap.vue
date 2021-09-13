@@ -1,7 +1,7 @@
 <template>
-  <v-card max-width="450" flat>
+  <v-card flat>
 
-    <v-text-field v-model="search" class="ml-3" color="secondary" label="장소 검색" 
+    <v-text-field v-model="search" class="mr-10" color="secondary" label="장소 검색" 
     @keypress.enter="searchMap" prepend-icon="mdi-magnify" ></v-text-field>
 
     <v-sheet v-if="show" id="scrolling-techniques-7" class="overflow-y-auto" max-height="350">
@@ -56,7 +56,7 @@ export default {
     searchMap () {
       const search = this.search
       axios.get(`https://dapi.kakao.com/v2/local/search/keyword.json?y=37.498721&x=127.0329693&radius=20000&query=${search}`,
-      { headers: { 'Authorization': 'KakaoAK ' + '' }}).then(res => {
+      { headers: { 'Authorization': 'KakaoAK ' + '524b22b1b2ebd6c9ebefd0053d399239' }}).then(res => {
         console.log(res.data)
 
         const list = res.data.documents
