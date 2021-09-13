@@ -1,14 +1,14 @@
 <template>
 
   <v-card class="mb-10" color="primary">
-    <add-comment :boardNo="boardNo"></add-comment>
+    <add-recommend-comment :boardNo="boardNo"></add-recommend-comment>
 
-    <v-card v-if="!comments || (Array.isArray(comments) && comments.length ===0)" 
+    <v-card v-if="!recommendComments || (Array.isArray(recommendComments) && recommendComments.length ===0)" 
       class="pa-5" color="primary" flat>
       <p class="ma-2">등록된 댓글이 없습니다.</p>
     </v-card>
 
-    <v-card v-else v-for="item in comments" :key="item.commentNo" class="mx-4" color="primary" flat>
+    <v-card v-else v-for="item in recommendComments" :key="item.commentNo" class="mx-4" color="primary" flat>
       <v-list color="primary">
         <v-list-item>
           <v-list-item-avatar>
@@ -28,7 +28,7 @@
             </template>
             <v-list>
 
-              <modify-comment :commentNo="item.commentNo" :boardNo="boardNo"></modify-comment>
+              <modify-recommend-comment :commentNo="item.commentNo" :boardNo="boardNo"></modify-recommend-comment>
 
               <v-list-item @click="removeDialog(item.commentNo)">
                 삭제
@@ -66,15 +66,15 @@
 
 
 <script>
-import AddComment from '@/components/comment/AddComment'
-import ModifyComment from '@/components/comment/ModifyComment'
+import AddRecommendComment from '@/components/comment/AddRecommendComment'
+import ModifyRecommendComment from '@/components/comment/ModifyRecommendComment'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
-    AddComment,
-    ModifyComment
+    AddRecommendComment,
+    ModifyRecommendComment
   },
   props: {
     boardNo: {
@@ -88,13 +88,13 @@ export default {
     }
   },
   computed: {
-    ...mapState([ 'comments', 'userInfo' ])
+    ...mapState([ 'recommendComments', 'userInfo' ])
   },
   mounted () {
-    this.fetchComments(this.boardNo)
+    this.fetchRecommendComments(this.boardNo)
   },
   methods: {
-    ...mapActions([ 'fetchComments', 'fetchComment' ]),
+    ...mapActions([ 'fetchRecommendComments', 'fetchRecommendComment' ]),
 
     removeDialog (commentNo) {
       this.dialog = true
@@ -104,10 +104,10 @@ export default {
       this.dialog = false
     },
     btnRemove () {
-      axios.delete(`http://localhost:7777/comment/remove/${this.commentNo}`).then(() => {
+      axios.delete(`http://localhost:7777/recommend/comment/remove/${this.commentNo}`).then(() => {
         alert('댓글이 삭제되었습니다!')
 
-        this.fetchComments(this.boardNo)
+        this.fetchRecommendComments(this.boardNo)
 
         this.dialog = false
       })

@@ -1,8 +1,8 @@
 package com.example.FirstProject.controller;
 
-import com.example.FirstProject.entity.Comment;
-import com.example.FirstProject.request.CommentDto;
-import com.example.FirstProject.service.CommentService;
+import com.example.FirstProject.entity.TogetherComment;
+import com.example.FirstProject.request.TogetherCommentDto;
+import com.example.FirstProject.service.TogetherCommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,47 +14,47 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/comment")
+@RequestMapping("/together/comment")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
-public class CommentController {
+public class TogetherCommentController {
 
     @Autowired
-    private CommentService service;
+    private TogetherCommentService service;
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody CommentDto commentDto) throws Exception {
+    public ResponseEntity add(@RequestBody TogetherCommentDto togetherCommentDto) throws Exception {
         log.info("Comment Register");
 
-        Comment comment = service.add(commentDto);
+        TogetherComment togetherComment = service.add(togetherCommentDto);
 
-        return new ResponseEntity(comment, HttpStatus.OK);
+        return new ResponseEntity(togetherComment, HttpStatus.OK);
     }
 
     @GetMapping("/read/{boardNo}")
     public ResponseEntity read(@PathVariable Long boardNo) throws Exception {
         log.info("Comment Read");
 
-        List<Comment> commentList = service.findAllComment(boardNo);
+        List<TogetherComment> togetherCommentList = service.read(boardNo);
 
-        return new ResponseEntity(commentList, HttpStatus.OK);
+        return new ResponseEntity(togetherCommentList, HttpStatus.OK);
     }
 
     @GetMapping("/read/only/{commentNo}")
     public ResponseEntity readOnly(@PathVariable Long commentNo) throws Exception {
         log.info("Comment Read Only");
 
-        Comment comment =  service.findByCommentNo(commentNo);
+        TogetherComment togetherComment =  service.readOnly(commentNo);
 
-        return new ResponseEntity(comment, HttpStatus.OK);
+        return new ResponseEntity(togetherComment, HttpStatus.OK);
     }
 
     @PatchMapping("/modify/{commentNo}")
-    public ResponseEntity<Void> modify(@PathVariable Long commentNo, @RequestBody CommentDto commentDto) throws Exception {
+    public ResponseEntity<Void> modify(@PathVariable Long commentNo, @RequestBody TogetherCommentDto togetherCommentDto) throws Exception {
         log.info("Comment Modify");
 
-        Comment comment = service.findByCommentNo(commentNo);
+        TogetherComment togetherComment = service.readOnly(commentNo);
 
-        service.modify(comment, commentDto);
+        service.modify(togetherComment, togetherCommentDto);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
@@ -63,9 +63,9 @@ public class CommentController {
     public ResponseEntity<Void> remove(@PathVariable Long commentNo) throws Exception {
         log.info("Comment Remove");
 
-        Comment comment = service.findByCommentNo(commentNo);
+        TogetherComment togetherComment = service.readOnly(commentNo);
 
-        service.remove(comment);
+        service.remove(togetherComment);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

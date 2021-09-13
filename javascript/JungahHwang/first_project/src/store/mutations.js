@@ -15,8 +15,10 @@ import {
   FETCH_TOGETHER,
 
 // Comment 
-  FETCH_COMMENTS,
-  FETCH_COMMENT
+  FETCH_RECOMMEND_COMMENTS,
+  FETCH_RECOMMEND_COMMENT,
+  FETCH_TOGETHER_COMMENTS,
+  FETCH_TOGETHER_COMMENT
 } from './mutation-types'
 
 export default {
@@ -67,10 +69,16 @@ export default {
   },
 
 // Comment
-  [FETCH_COMMENTS] (state, comments) {
-    state.comments = comments
+  [FETCH_RECOMMEND_COMMENTS] (state, comments) {
+    state.recommendComments = comments
   },
-  [FETCH_COMMENT] (state, comment) {
-    state.comment = comment
+  [FETCH_RECOMMEND_COMMENT] (state, comment) {
+    state.recommendComment = comment
+  },
+  [FETCH_TOGETHER_COMMENTS] (state, comments) {
+    state.togetherComments = comments
+  },
+  [FETCH_TOGETHER_COMMENT] (state, comment) {
+    state.togetherComment = comment
   }
 }

@@ -50,29 +50,29 @@ export default {
     }
   },
   computed: {
-    ...mapState([ 'comments', 'comment' ])
+    ...mapState([ 'recommendComments', 'recommendComment' ])
   },
   mounted () {
-    this.fetchComment(this.commentNo)
+    this.fetchRecommendComment(this.commentNo)
   },
   methods: {
-    ...mapActions([ 'fetchComment', 'fetchComments' ]),
+    ...mapActions([ 'fetchRecommendComment', 'fetchRecommendComments' ]),
     btnCancle () {
       this.dialog = false
     },
     modifyComment () {
       const content  = this.content
-      axios.patch(`http://localhost:7777/comment/modify/${this.commentNo}`, { content }).then(() => {
+      axios.patch(`http://localhost:7777/recommend/comment/modify/${this.commentNo}`, { content }).then(() => {
         alert('수정이 완료되었습니다')
 
-        this.fetchComments(this.boardNo)
+        this.fetchRecommendComments(this.boardNo)
 
         this.dialog = false
       })
     },
     readComment () {
-      this.fetchComment(this.commentNo)
-      this.content = this.comment.content
+      this.fetchRecommendComment(this.commentNo)
+      this.content = this.recommendComment.content
     }
   }
 }

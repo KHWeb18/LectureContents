@@ -1,8 +1,10 @@
 package com.example.FirstProject.entity;
 
-import com.example.FirstProject.request.CommentDto;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import com.example.FirstProject.request.RecommendCommentDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,7 +16,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+public class RecommendComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -30,16 +32,14 @@ public class Comment {
     @Column(nullable = false)
     private Long boardNo;
 
-
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd HH:mm")
     private Date regDate;
 
     @UpdateTimestamp
     private Date updDate;
 
-    public void updateContent(CommentDto commentDto) {
-        this.content = commentDto.getContent();
+    public void updateContent(RecommendCommentDto recommendCommentDto) {
+        this.content = recommendCommentDto.getContent();
     }
 
 }

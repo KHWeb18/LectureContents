@@ -34,16 +34,16 @@ export default {
     ...mapState([ 'userInfo', 'isLogin' ])
   },
   methods: {
-    ...mapActions([ 'fetchComments' ]),
+    ...mapActions([ 'fetchTogetherComments' ]),
     addComment () {
       const id = this.userInfo.id
       const content = this.content
       const boardNo = this.boardNo
 
-      axios.post('http://localhost:7777/comment/add', { id, content, boardNo }).then(() => {
+      axios.post('http://localhost:7777/together/comment/add', { id, content, boardNo }).then(() => {
         alert('댓글이 등록되었습니다!')
 
-        this.fetchComments(boardNo)
+        this.fetchTogetherComments(boardNo)
 
         this.content = null
       }).catch(res => {

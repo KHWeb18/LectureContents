@@ -1,16 +1,15 @@
 package com.example.FirstProject.request;
 
-import com.example.FirstProject.entity.Comment;
+import com.example.FirstProject.entity.TogetherComment;
 import lombok.*;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentDto {
+public class TogetherCommentDto {
     private Long commentNo;
     private String id;
     private String content;
@@ -18,8 +17,8 @@ public class CommentDto {
     private Date regDate;
     private Date updDate;
 
-    public Comment toEntity() {
-        return Comment.builder()
+    public TogetherComment toEntity() {
+        return TogetherComment.builder()
                 .commentNo(commentNo)
                 .id(id)
                 .content(content)
