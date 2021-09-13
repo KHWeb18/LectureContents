@@ -22,12 +22,12 @@ public class TogetherController {
     private TogetherService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@RequestBody TogetherDto togetherDto) throws Exception {
+    public ResponseEntity register(@RequestBody TogetherDto togetherDto) throws Exception {
         log.info("Together Register");
 
         Together together = service.register(togetherDto);
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity(together, HttpStatus.OK);
     }
 
     @GetMapping("/lists")

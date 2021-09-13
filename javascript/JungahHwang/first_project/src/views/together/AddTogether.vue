@@ -14,14 +14,12 @@
         </v-list-item>
         <v-expand-transition>
           <div v-show="show">
-            
             <v-row>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="7">
                 <together-file-upload @selectFile="selectFile"></together-file-upload>
               </v-col>
             </v-row>
-            
-        </div>
+          </div>
         </v-expand-transition>
       </v-card>
 
@@ -106,3 +104,10 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+.gray--text {
+  color:rgba(100, 100, 100, 0.815)
+}
+</style>

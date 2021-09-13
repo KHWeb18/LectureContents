@@ -18,7 +18,6 @@ public class TogetherDto {
     private String id;
     private String title;
     private String content;
-    private String img;
     private Date regDate;
     private Date updDate;
 
@@ -28,7 +27,6 @@ public class TogetherDto {
                 .id(id)
                 .title(title)
                 .content(content)
-                .img(img)
                 .regDate(regDate)
                 .updDate(updDate)
                 .build();
