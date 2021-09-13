@@ -9,22 +9,39 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/fileUpload")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class FileController {
 
-    @PostMapping("/upload")
+    @PostMapping("/recommend")
     @ResponseBody
-    public String fileUpload (@RequestParam(value = "fileList", required = false) List<MultipartFile> fileList) {
+    public String recommendFileUpload (@RequestParam(value = "fileList", required = false) List<MultipartFile> fileList,
+                              @RequestParam("boardNo") Long boardNo, @RequestParam("id") String id) {
         try {
             for (MultipartFile multipartFile : fileList) {
-                FileOutputStream writer = new FileOutputStream("./images/" + multipartFile.getOriginalFilename());
+                FileOutputStream writer = new FileOutputStream("./images/recommend/" + boardNo + "_" + id + ".jpg");
                 writer.write(multipartFile.getBytes());
                 writer.close();
             }
         } catch (Exception e) {
-            return "Upload Fail";
+            return "Recommend File Upload Fail";
         }
-        return "Upload Success";
+        return "Recommend File Upload Success";
+    }
+
+    @PostMapping("/together")
+    @ResponseBody
+    public String togetherFileUpload (@RequestParam(value = "fileList", required = false) List<MultipartFile> fileList,
+                              @RequestParam("boardNo") Long boardNo, @RequestParam("id") String id) {
+        try {
+            for (MultipartFile multipartFile : fileList) {
+                FileOutputStream writer = new FileOutputStream("./images/together/" + boardNo + "_" + id + ".jpg");
+                writer.write(multipartFile.getBytes());
+                writer.close();
+            }
+        } catch (Exception e) {
+            return "Together File Upload Fail";
+        }
+        return "Together File Upload Success";
     }
 }
