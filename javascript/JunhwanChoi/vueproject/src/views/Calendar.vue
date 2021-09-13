@@ -2,24 +2,17 @@
     <div class="fill-height">
         <v-row align="center" class="fill-height" justify="center">
             <v-col cols="12" lg="8" md="10" sm="12" xl="7">
-                <div class="mx-5">
-                    <div class="text-center text-uppercase">
-                        <h3>선별 진료 예약</h3>
-                    </div>
-                    <v-row>
-                        <v-col cols="6">
-                            <v-menu>
-                          
-                            <v-spacer/>
-                            
-                            </v-menu>
-                        </v-col>
-                    </v-row>
+                <div class="bookalign">
+                        <h4 class>선별진료 예약</h4>
+                        <h6><i><span style="color: blue;">진료할 날짜를 선택해 주세요.</span></i></h6>
+                        <hr><br>
+                    
                     <div class="text-center mb-3">
-                        <h4 class="mx-5 d-inline-block">{{start | moment('YYYY MMMM')}}</h4>
+                        <h4 class="mx-5 d-inline-block">{{start | moment('YYYY년 MM월')}}</h4>
                     </div>
                     <v-sheet height="500">
                         <v-calendar
+                                
                                 :event-color="getEventColor"
                                 :event-overlap-threshold="30"
                                 :start="start"
@@ -27,7 +20,7 @@
                                 @click:date="open"
                                 @click:event="showEvent"
                                 @click:more="moreEvent"
-                                dark
+                                primary
                                 ref="calendar"
 
                                 v-model="start"
@@ -35,9 +28,9 @@
                     </v-sheet>
                     <div class="text-right mt-3 font-weight-bold ">
                         <v-card>
-                            선택날짜: {{start}}
+                           <h5><i> 선택날짜: {{start}}</i></h5>
                         </v-card>
-
+                        <br>
                         <v-btn @click="DateCheck()" class="white--text" color="indigo"
                                large> 완료 
                         </v-btn>
@@ -117,9 +110,12 @@
     }
 </script>
 
-<style scoped>
+<style>
 
     .controls {
         position: relative;
+    }
+    .bookalign{
+       text-align: center;
     }
 </style>

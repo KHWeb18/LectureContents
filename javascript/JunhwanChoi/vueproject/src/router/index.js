@@ -60,7 +60,7 @@ import BookCheckPage from '@/views/BookCheckPage.vue'
 
 
 
-PlaceCheckPage
+
 
 
 Vue.use(VueRouter)

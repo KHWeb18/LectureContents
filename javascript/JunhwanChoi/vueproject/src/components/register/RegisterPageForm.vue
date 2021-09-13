@@ -32,7 +32,7 @@
                             <v-text-field
                             label="이름"
                             name="username"
-                            prepend-icon="mdi-account"
+                            prepend-icon="mdi-name"
                             type="text"
                             v-model="username"
                             flat solo
@@ -41,7 +41,7 @@
                             <v-text-field
                             label="생년월일"
                             name="birth"
-                            prepend-icon="mdi-account"
+                            prepend-icon="mdi-birth"
                             type="text"
                             v-model="birth"
                             flat solo

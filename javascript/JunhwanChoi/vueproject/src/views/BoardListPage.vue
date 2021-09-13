@@ -5,6 +5,8 @@
 
         <v-container>
             <h4>백신 정보</h4>
+            <h6><i><span style="color: blue;">다양한 백신 후기를 공유해 보세요.</span></i></h6>
+
             <hr><br>
             <board-list :boards="boards"/>
             <br>

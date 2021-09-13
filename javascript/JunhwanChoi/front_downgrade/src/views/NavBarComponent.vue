@@ -1,12 +1,13 @@
 <template>
     <div>
-        <v-toolbar dense dark>
+        <v-toolbar dense dark >
+           
             <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
             </v-app-bar-nav-icon>
             <v-toolbar-title>
                 <span class="font-weight-light">쵝오의 여행!</span>
             </v-toolbar-title>
-            <v-toolbar-items>
+            <v-toolbar-items >
                 <v-btn text v-for="link in links" :key="link.icon" :to="link.route">
                     {{ link.text }}
                 </v-btn>

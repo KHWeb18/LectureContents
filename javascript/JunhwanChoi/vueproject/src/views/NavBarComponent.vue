@@ -5,7 +5,7 @@
                 <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
                 </v-app-bar-nav-icon>
                     <v-toolbar-title>
-                        <span class="font-weight-light">COVID-19 PAGE </span>
+                        <span class="font-weight-light">COVID-19</span>
                     </v-toolbar-title>
                     <div class="flex-grow-1"></div>
                     <v-toolbar-items v-if="$store.state.session == null">

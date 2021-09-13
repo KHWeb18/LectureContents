@@ -1,19 +1,40 @@
 <template >
     <div>
         <v-container>
-            <v-card>
-                <v-time-picker
-        v-model="time"
-        format="ampm"
-        landscape
-        scrollable
-        ></v-time-picker>
+            <div class="bookalign">
+                <h4 class>선별진료 예약</h4>
+                <h6><i><span style="color: blue;">시간을 선택해 주세요.</span></i></h6>
+                <hr><br>
+            </div>
+        </v-container>
 
-        <v-btn @click="timeCheck()">예약완료</v-btn>
+        <v-container center>
+            <v-card xs12>
+                
+                <v-time-picker
+                format="ampm"
+                v-model="time"
+                full-width
+                scrollable
+                :minute="10"
+                ></v-time-picker>
+
+                
+                <div class="text-center mt-3 ">
+                        <v-card >
+                            <br><br>
+                           <h6> 날짜: {{start}}</h6><br>
+                           <h6> 장소: {{title}}</h6><br>
+                           <h6> 시간: {{time}}</h6><br><br>
+                            <v-btn @click="timeCheck()" color="blue lighten-3">예약완료</v-btn>
+
+                        </v-card>
+                </div>
+
+                
             </v-card>
 
-            <p><input type="text" v-model="time"></p>
-            <p><input type="text" v-model="start"></p>
+           
         </v-container>
         
     </div>
@@ -40,5 +61,7 @@ export default {
 }
 </script>
 <style >
-    
+    .testcard{
+        align-items: center;
+    }
 </style>

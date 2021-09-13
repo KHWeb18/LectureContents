@@ -3,7 +3,7 @@
         <ul class="icons">
           <li>
             <div class="tablemargin">
-                 <v-card>
+                 <v-card elevation="5">
                      <ul>
                          <li>
                             <v-simple-table>
@@ -15,11 +15,11 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                         <tr v-for="(list,idx) in lists" :key="idx" width="50px">
                                             <div v-show="(idx<5)">
                                                 <td style="color: gray" class="tdmargin">{{ list.newsNo }}</td>
-                                                <td><a @click="clickNews(list.address)">{{ list.title }}</a></td>
+                                                <td @click="clickNews(list.address)">{{ list.title }}</td>
                                             </div>
                                         </tr> 
                                     </tbody>
@@ -34,20 +34,11 @@
           </li>
 
           <li>
-            <div class="icon_img">
-              <img src="@/assets/icon-board.png" width="70px" height="70px">
+            <div class="video-container">
+                <iframe  src="https://www.youtube.com/embed/24jc8mnov9k" 
+                frameborder="2" allow="accelerometer; autoplay; encrypted-midea; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
             </div>
-            <div class="contents1_bold">백신 게시판</div>
-            <div class="contents2">
-                각종 백신 정보를 확인하고, 경험도 공유해 보세요.
-            </div>
-            <router-link :to="{ name: 'BoardListPage' }"
-                    class="nav-link"
-                    active-class="active">
-                    <div class="more">
-                        MORE
-                    </div>
-            </router-link>
           </li>
 
           
@@ -90,9 +81,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
  a{
      margin-left: 30px;
+     margin-top: 30px;
      font-size: 13px;
  }
  .intro_bg{

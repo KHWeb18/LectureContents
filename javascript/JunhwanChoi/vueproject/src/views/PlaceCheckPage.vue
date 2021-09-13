@@ -1,6 +1,14 @@
 
 <template>
     <div>
+        <v-container>
+            <div class="bookalign">
+            <h4 class>선별진료 예약</h4>
+            <h6><i><span style="color: blue;">진료할 장소를 선택해 주세요.</span></i></h6>
+            <hr><br>
+        </div>
+        </v-container>
+        
         <v-dialog v-model="PlaceCheckDialog"  max-width="500px">
                 <v-card
                     class="mx-auto"
@@ -12,9 +20,9 @@
                     >
                         <v-icon>mdi-check</v-icon>                
                         <v-toolbar-title>선별진료소 선택</v-toolbar-title>
-                
+                        
                         <v-spacer></v-spacer>
-                
+
                         <v-btn icon>
                         <v-icon>mdi-dots-vertical</v-icon>
                         </v-btn>
@@ -115,7 +123,13 @@ export default {
                 },
                 {
                     action: 'mdi-doctor',
-                    items: [{ title: 'List Item' }],
+                    items: [
+                        { title: '강릉시 보건소'},
+                        { title: '삼척시 보건소'},
+                        { title: '원주시 보건소'},
+                        { title: '속초시 보건소'},
+                        
+                    ],
                     title: '강원',
                 },
               

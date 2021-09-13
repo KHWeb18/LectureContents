@@ -34,6 +34,7 @@
                             prepend-icon="mdi-account"
                             type="text"
                             v-model="email"
+                            :rules="emailRules"
                             flat solo
                             ></v-text-field>
 
@@ -45,6 +46,7 @@
                             prepend-icon="mdi-lock"
                             type="password"
                             v-model="password"
+                            :rules="passwordRules"
                             
                             flat solo></v-text-field>
                         </v-form>
@@ -79,7 +81,18 @@ export default {
     data () {
         return {
             email: '',
-            password: ''
+            password: '',
+
+            //ruels
+            emailRules:[
+                v => !!v || '이메일을 작성해주세요.',
+                v => /.+@.+\..+/.test(v) || '이메일 형식으로 작성해주세요.',
+                v => v.search(/\s/) === -1 || '공백을 제거해주세요!'
+            ],
+            passwordRules:[
+                v => !!v || '비밀번호를 작성해주세요',
+                v => v.search(/\s/) === -1 || '공백을 제거해주세요!'
+            ],
         }
     },
     methods: {

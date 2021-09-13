@@ -16,19 +16,22 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookNo;
 
+    //날짜
     @Getter
     @Column(nullable = false)
     private String start;
 
-
+    //시간
     @Getter
     @Column(nullable = false)
     private String time;
 
+    //장소
     @Getter
     @Column(nullable = false)
     private String title;
 
+    //예약자 이름
     @Getter
     @Column(nullable = false)
     private String name;

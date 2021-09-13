@@ -18,7 +18,9 @@ export default {
             const { start, time, title, name } = payload
             axios.post('http://localhost:3647/book/register', { start, time, title, name })
                     .then(res => {
-                        alert('등록 성공! - ' + res)
+                        
+                        alert('예약 완료! - ' + res)
+                        this.$router.push({name:'Home' })    
                        
                     })
                     .catch(res => {

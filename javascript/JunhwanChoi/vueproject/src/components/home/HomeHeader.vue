@@ -238,7 +238,7 @@ export default {
 .icons > li {
   flex: 1;
   background: #dcdcdc;
-  margin-top:49px;
+  margin-top:20px;
   height:302px;
   text-align: center;
   border-radius: 10px;
