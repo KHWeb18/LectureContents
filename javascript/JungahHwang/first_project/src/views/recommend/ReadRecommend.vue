@@ -26,7 +26,15 @@
 
         <v-divider></v-divider>
 
-        <v-card v-if="showMap" class="mx-auto mt-2 mb-10" width="300">
+        <v-card class="mx-auto mt-2 mb-10" width="400" flat>
+          <v-img :src="showFile()" ></v-img>
+        </v-card>
+
+        <v-card-text class="text-center my-10">
+          <p v-html="content"></p>
+        </v-card-text>
+
+        <v-card v-if="showMap" class="mx-auto mt-2  mb-5" width="300">
           
           <naver-maps :height="300" :width="300" :mapOptions="mapOptions"></naver-maps>
           <naver-marker :lat="mapOptions.lat" :lng="mapOptions.lng" @click="showPlace = true"/>
@@ -36,10 +44,6 @@
           </v-alert>
                   
         </v-card>
-
-        <v-card-text class="text-center my-10">
-          <p v-html="content"></p>
-        </v-card-text>
 
         <v-card-text></v-card-text>
         
@@ -60,7 +64,7 @@
       </v-card-actions>
     </v-card>
     
-    <read-comment :boardNo="boardNo"></read-comment>
+    <read-recommend-comment :boardNo="boardNo"></read-recommend-comment>
   </v-sheet>
   
 </template>
@@ -68,14 +72,14 @@
 
 <script>
 import RemoveDialog from '@/components/RemoveDialog'
-import ReadComment from '@/components/comment/ReadComment'
+import ReadRecommendComment from '@/components/comment/ReadRecommendComment'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
     RemoveDialog,
-    ReadComment
+    ReadRecommendComment
   },
   data () {
     return {
@@ -98,7 +102,7 @@ export default {
   },
   mounted() {
     this.fetchRecommend(this.boardNo)
-    this.fetchComments(this.boardNo)
+    this.fetchRecommendComments(this.boardNo)
   },
   beforeUpdate () {
     console.log('update')
@@ -117,7 +121,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'fetchRecommend', 'fetchComments' ]),
+    ...mapActions([ 'fetchRecommend', 'fetchRecommendComments' ]),
     modifyRecommend () {
       this.$router.push(
         { name: 'ModifyRecommend', query: { boardNo: this.boardNo, id: this.id } }
@@ -128,8 +132,8 @@ export default {
         alert('삭제가 완료되었습니다!')
 
         this.$router.push(
-        { name: 'Recommend' }
-      )
+          { name: 'Recommend' }
+        )
       })
     },
     showRecommendList () {
@@ -137,9 +141,13 @@ export default {
         { name: 'Recommend' }
       )
     },
-    // showPlace () {
-    //   console.log(this.name + ' / ' + this.address)
-    // }
+    showFile () {
+      try {
+        return require(`../../../../FirstProject/images/recommend/${this.boardNo}_${this.id}.jpg`)
+      } catch (e) {
+        return require(`@/assets/icon/noImg.png`)
+      }
+    }
   }
 }
 </script>

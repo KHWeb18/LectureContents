@@ -1,5 +1,4 @@
 <template>
-
   <v-card class="my-5 pt-1" color="primary">
     <v-card class="ma-5">
       <v-text-field v-model="title" class="mb-n7" color="secondary"
@@ -15,14 +14,18 @@
         </v-list-item>
         <v-expand-transition>
           <div v-show="show">
-            <!--
-            <file-upload-menu @fileUpload="fileUpload"></file-upload-menu>
-            -->
-            <add-map @selectMap="selectMap"></add-map >
-          
+            
+            <v-row>
+              <v-col cols="12" md="6">
+                <recommend-file-upload @selectFile="selectFile"></recommend-file-upload>
+              </v-col>
+              <v-col cols="12" md="6">
+                <add-map @selectMap="selectMap"></add-map>
+              </v-col>
+            </v-row>
+            
           </div>
         </v-expand-transition>
-      
       </v-card>
       
       <v-textarea v-model="content" color="secondary" height="500px" 
@@ -30,19 +33,17 @@
     </v-card>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn @click="addRecommend" class="pa-6" color="secondary" icon>
+      <v-btn @click="[addRecommend(), addFile()]" class="pa-6" color="secondary" icon>
         <v-icon>done</v-icon>
       </v-btn>
     </v-card-actions>
     
   </v-card>
-    
-
 </template>
 
 
 <script>
-//import FileUploadMenu from '@/components/FileUploadMenu'
+import RecommendFileUpload from '@/components/recommend/RecommendFileUpload'
 import AddMap from '@/components/map/AddMap'
 import axios from 'axios'
 import { mapState } from 'vuex'
@@ -53,27 +54,26 @@ export default {
       show: false,
       title: null,
       content: null,
-      formData: [],
-      img:null,
+      files: null,
       x: null,
       y: null,
       placeName: null,
       address: null,
       phone: null,
-      url: null
+      url: null,
+      boardNo: null
     }
   },
   components: {
-    //FileUploadMenu,
+    RecommendFileUpload,
     AddMap,
   },
   computed: {
     ...mapState([ 'userInfo' ])
   },
   methods: {
-    fileUpload (img, formData) {
-      this.img = img,
-      this.formData = formData
+    selectFile (files) {
+      this.files = files
     },
     selectMap (name, address, x, y, phone, url) {
       console.log(name)
@@ -88,7 +88,6 @@ export default {
       const id = this.userInfo.id
       const title = this.title
       const content = this.content
-      const img = this.img
       const placeName = this.placeName
       const address = this.address
       const x = this.x
@@ -96,19 +95,29 @@ export default {
       const phone = this.phone
       const url = this.url
 
-      const formData = this.formData
+      axios.post('http://localhost:7777/recommend/register', { id, title, content, placeName, 
+      address, x, y, phone, url }).then(res => {
+        alert('등록이 완료되었습니다!' + res.data)
 
-      axios.post('http://localhost:7777/recommend/register', { id, title, content, img, placeName, 
-      address, x, y, phone, url }).then(() => {
-        alert('등록이 완료되었습니다!')
+        this.boardNo = res.data.boardNo
 
         this.$router.push(
           { name: 'Recommend' }
         )
       })
+    },
+    addFile () {
+      setTimeout(() => {
+        const formData = new FormData()
 
-      if (formData != null) {
-        axios.post('http://localhost:7777/file/upload', formData, {
+        for (let i = 0; i < this.files.length; i++) {
+          formData.append('fileList', this.files[i])
+        }
+
+        formData.append('boardNo', this.boardNo)
+        formData.append('id', this.userInfo.id)
+
+        axios.post(`http://localhost:7777/fileUpload/recommend`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -119,8 +128,7 @@ export default {
         }).catch (res => {
           this.response = res.message
         })
-      }
-      
+      }, 1000)
     }
   }
 }
