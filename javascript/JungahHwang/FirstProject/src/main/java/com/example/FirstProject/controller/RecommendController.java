@@ -22,12 +22,12 @@ public class RecommendController {
     private RecommendService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@RequestBody RecommendDto recommendDto) throws Exception {
+    public ResponseEntity register(@RequestBody RecommendDto recommendDto) throws Exception {
         log.info("Recommend Register");
 
         Recommend recommend = service.register(recommendDto);
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity(recommend, HttpStatus.OK);
     }
 
     @GetMapping("/lists")
@@ -65,13 +65,6 @@ public class RecommendController {
         service.remove(recommend);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
-    }
-
-    @GetMapping("/mapList")
-    public ResponseEntity<List<Object[]>> mapList() throws Exception {
-        log.info("Map List");
-
-        return new ResponseEntity<>(service.mapList(), HttpStatus.OK);
     }
 
     @GetMapping("/userRead/{id}")

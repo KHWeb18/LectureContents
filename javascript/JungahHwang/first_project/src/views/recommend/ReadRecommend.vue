@@ -40,7 +40,7 @@
           <naver-marker :lat="mapOptions.lat" :lng="mapOptions.lng" @click="showPlace = true"/>
         
           <v-alert v-if="showPlace" dense>
-            {{ placeName }} ({{ address }})
+            {{ name }} ({{ address }})
           </v-alert>
                   
         </v-card>
@@ -91,7 +91,7 @@ export default {
         zoom: 17,
       },
       showMap: false,
-      placeName: null,
+      name: null,
       address: null,
       showPlace: false
     }
@@ -103,16 +103,7 @@ export default {
   mounted() {
     this.fetchRecommend(this.boardNo)
     this.fetchRecommendComments(this.boardNo)
-  },
-  beforeUpdate () {
-    console.log('update')
-    this.mapOptions.lat = Number(this.recommend.y)
-    this.mapOptions.lng = Number(this.recommend.x)
-    this.placeName = this.recommend.placeName
-    this.address = this.recommend.address
-    if (this.recommend.y != null) {
-      this.showMap = true
-    }
+    this.fetchMap(this.boardNo)
   },
   computed: {
     ...mapState([ 'recommend', 'userInfo' ]),
@@ -147,6 +138,21 @@ export default {
       } catch (e) {
         return require(`@/assets/icon/noImg.png`)
       }
+    },
+    fetchMap (boardNo) {
+      axios.get(`http://localhost:7777/map/read/${boardNo}`).then(res => {
+        const map = res.data
+        console.log(map)
+
+        this.mapOptions.lat = map.y
+        this.mapOptions.lng = map.x
+        this.name = map.name
+        this.address = map.address
+
+        if (map.y != 0) {
+          this.showMap = true
+        }
+      })
     }
   }
 }

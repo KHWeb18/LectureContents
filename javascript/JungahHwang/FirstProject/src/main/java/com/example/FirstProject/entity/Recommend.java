@@ -31,27 +31,6 @@ public class Recommend {
     @Column(length = 10000, nullable = false)
     private String content;
 
-    @Column
-    private String img;
-
-    @Column
-    private String x;
-
-    @Column
-    private String y;
-
-    @Column
-    private String placeName;
-
-    @Column
-    private String address;
-
-    @Column
-    private String phone;
-
-    @Column
-    private String url;
-
     @CreationTimestamp
     private Date regDate;
 
@@ -61,13 +40,6 @@ public class Recommend {
     public void updateRecommend(RecommendDto recommendDto) {
         this.title = recommendDto.getTitle();
         this.content = recommendDto.getContent();
-        this.img = recommendDto.getImg();
-        this.x = recommendDto.getX();
-        this.y = recommendDto.getY();
-        this.placeName = recommendDto.getPlaceName();
-        this.address = recommendDto.getAddress();
-        this.phone = recommendDto.getPhone();
-        this.url = recommendDto.getUrl();
     }
 }
 

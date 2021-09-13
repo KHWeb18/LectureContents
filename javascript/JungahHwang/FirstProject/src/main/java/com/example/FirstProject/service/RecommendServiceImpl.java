@@ -55,11 +55,6 @@ public class RecommendServiceImpl implements RecommendService {
     }
 
     @Override
-    public List<Object[]> mapList() throws Exception {
-        return repository.mapList();
-    }
-
-    @Override
     public List<Recommend> userRead(String id) throws Exception {
         List<Recommend> recommends = repository.userRead(id);
 

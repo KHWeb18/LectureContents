@@ -33,7 +33,7 @@
     </v-card>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn @click="[addRecommend(), addFile()]" class="pa-6" color="secondary" icon>
+      <v-btn @click="[addRecommend(), addFile(), addMap()]" class="pa-6" color="secondary" icon>
         <v-icon>done</v-icon>
       </v-btn>
     </v-card-actions>
@@ -55,13 +55,16 @@ export default {
       title: null,
       content: null,
       files: null,
-      x: null,
-      y: null,
-      placeName: null,
-      address: null,
-      phone: null,
-      url: null,
-      boardNo: null
+      boardNo:null,
+      map: {
+        x: null,
+        y: null,
+        name: null,
+        address: null,
+        phone: null,
+        url: null,
+        boardNo: null
+      }
     }
   },
   components: {
@@ -76,34 +79,21 @@ export default {
       this.files = files
     },
     selectMap (name, address, x, y, phone, url) {
-      console.log(name)
-      this.placeName = name
-      this.address = address
-      this.x = x
-      this.y = y
-      this.phone = phone
-      this.url = url
+      this.map.name = name
+      this.map.address = address
+      this.map.x = x
+      this.map.y = y
+      this.map.phone = phone
+      this.map.url = url
     },
     addRecommend () {
       const id = this.userInfo.id
       const title = this.title
       const content = this.content
-      const placeName = this.placeName
-      const address = this.address
-      const x = this.x
-      const y = this.y
-      const phone = this.phone
-      const url = this.url
 
-      axios.post('http://localhost:7777/recommend/register', { id, title, content, placeName, 
-      address, x, y, phone, url }).then(res => {
-        alert('등록이 완료되었습니다!' + res.data)
-
+      axios.post('http://localhost:7777/recommend/register', { id, title, content }).then(res => {
         this.boardNo = res.data.boardNo
-
-        this.$router.push(
-          { name: 'Recommend' }
-        )
+        this.map.boardNo = res.data.boardNo
       })
     },
     addFile () {
@@ -121,12 +111,21 @@ export default {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then (res => {
-          this.response = res.data
+        }).then (() => {
+      
+        }).catch (() => {
+          alert('사진 업로드 실패!')
+        })
+      }, 1000)
+    },
+    addMap () {
+      setTimeout(() => {
+        axios.post('http://localhost:7777/map/add', this.map ).then(()=> {
+          alert('등록이 완료되었습니다!')
 
-          alert('사진 업로드 완료!')
-        }).catch (res => {
-          this.response = res.message
+          this.$router.push(
+            { name: 'Recommend' }
+          )
         })
       }, 1000)
     }

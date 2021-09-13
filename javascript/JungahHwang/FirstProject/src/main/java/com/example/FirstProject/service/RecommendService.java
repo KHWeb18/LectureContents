@@ -12,6 +12,5 @@ public interface RecommendService {
     Recommend findByBoardNo(Long boardNo) throws Exception;
     void modify(Recommend recommend, RecommendDto recommendDto) throws Exception;
     void remove(Recommend recommend) throws Exception;
-    List<Object[]> mapList() throws Exception;
     List<Recommend> userRead(String id) throws Exception;
 }
