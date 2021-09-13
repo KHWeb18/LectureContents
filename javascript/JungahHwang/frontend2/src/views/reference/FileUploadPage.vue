@@ -12,7 +12,7 @@
 
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 
 export default {
   name: 'FileUploadPage',
@@ -32,17 +32,19 @@ export default {
         formData.append('fileList', this.files[idx])
       }
 
+      console.log(formData)
+
       // 다중 파일 업로드 할 때는 아래 형식을 지켜주어야 함
-      axios.post('http://localhost:7777/file/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then (res => {
-        this.response = res.data
-        alert('Processing Complete!')
-      }).catch (res => {
-        this.response = res.message
-      })
+      // axios.post('http://localhost:7777/file/upload', formData, {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data'
+      //   }
+      // }).then (res => {
+      //   this.response = res.data
+      //   alert('Processing Complete!')
+      // }).catch (res => {
+      //   this.response = res.message
+      // })
     },
   }
 }
