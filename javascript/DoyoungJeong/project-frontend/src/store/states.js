@@ -28,5 +28,6 @@ export default {
 
     concertRequestList: [],
     concertRequest: null,
-    requestReply: ''
+
+    myRequestList: []
 }

@@ -41,7 +41,7 @@
                             <td>{{ item.concertVenue }}</td>
                             
                             <div style="margin-top: 5px; margin-right: 60px; text-align: right;">
-                                <v-btn style="margin-right: 40px;" class="btn-flat red-text waves-effect waves-teal" 
+                                <v-btn class="btn-flat red-text waves-effect waves-teal" 
                                 @click="goToDetailPage(item.concertNo)">바로가기</v-btn>
 
                                 <v-btn style="margin-left: 10px;" class="btn-flat red-text waves-effect waves-teal" 
@@ -72,7 +72,8 @@ export default {
                 { text: '공연 명', value: 'concertName', width: '15%'},
                 { text: '아티스트', value: 'concertArtist', width: '10%'},
                 { text: '일시', value: 'concertDate', width: '15%'},
-                { text: '장소', value: 'concertVenue', width: '25%'}
+                { text: '장소', value: 'concertVenue', width: '25%'},
+                { text: '비고', value: '', width: '25%'}
             ]
         }
     },
