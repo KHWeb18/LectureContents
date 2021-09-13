@@ -67,7 +67,7 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
         String regDate;
 
         SimpleDateFormat conDateFormat = new SimpleDateFormat("20yy년 MM월 dd일");
-        SimpleDateFormat regDateFormat = new SimpleDateFormat("yy:MM:dd - hh:mm");
+        SimpleDateFormat regDateFormat = new SimpleDateFormat("20yy-MM-dd hh:mm");
 
         for(int i=0; i< tmpConcertRequestList.size(); i++) {
 
