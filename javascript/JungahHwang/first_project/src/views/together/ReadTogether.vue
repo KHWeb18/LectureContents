@@ -24,6 +24,11 @@
         </v-toolbar>
 
         <v-divider></v-divider>
+
+        <v-card class="mx-auto mt-2 mb-10" width="400" flat>
+          <v-img :src="showFile()" ></v-img>
+        </v-card>
+
         <v-card-text class="text-center my-10">
           <p v-html="content"></p>
         </v-card-text>
@@ -47,21 +52,21 @@
       </v-card-actions>
     </v-card>
 
-    <read-comment :boardNo="boardNo"></read-comment>
+    <read-together-comment :boardNo="boardNo"></read-together-comment>
   </v-sheet>  
 </template>
 
 
 <script>
 import RemoveDialog from '@/components/RemoveDialog'
-import ReadComment from '@/components/comment/ReadComment'
+import ReadTogetherComment from '@/components/comment/ReadTogetherComment'
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
     RemoveDialog,
-    ReadComment
+    ReadTogetherComment
   },
   data () {
     return {
@@ -75,7 +80,7 @@ export default {
   },
   mounted() {
     this.fetchTogether(this.boardNo)
-    this.fetchComments(this.boardNo)
+    this.fetchTogetherComments(this.boardNo)
   },
   computed: {
     ...mapState([ 'together', 'userInfo' ]),
@@ -84,7 +89,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'fetchTogether', 'fetchComments' ]),
+    ...mapActions([ 'fetchTogether', 'fetchTogetherComments' ]),
     modifyTogether () {
       
       this.$router.push(
@@ -96,14 +101,21 @@ export default {
         alert('삭제가 완료되었습니다!')
 
         this.$router.push(
-        { name: 'Together' }
-      )
+          { name: 'Together' }
+        )
       })
     },
     showTogetherList () {
       this.$router.push(
         { name: 'Together' }
       )
+    },
+    showFile () {
+      try {
+        return require(`../../../../FirstProject/images/together/${this.boardNo}_${this.id}.jpg`)
+      } catch (e) {
+        return require(`@/assets/icon/noImg.png`)
+      }
     }
   }
 }
