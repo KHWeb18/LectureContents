@@ -15,10 +15,17 @@
             {{ item.id }}
           </v-list-item-avatar>
           
-          <v-list-item>
-            {{ item.content }}
-          </v-list-item>
-          
+          <v-tooltip left>
+            <template v-slot:activator="{on}">
+              <v-list-item v-on="on">
+                {{ item.content }}
+              </v-list-item>
+            </template>
+            <span>
+              {{new Date(item.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11)}}
+              {{new Date(item.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(12, 8)}}
+            </span>
+          </v-tooltip>
           
           <v-menu offset-y>
             <template v-slot:activator="{ on }">

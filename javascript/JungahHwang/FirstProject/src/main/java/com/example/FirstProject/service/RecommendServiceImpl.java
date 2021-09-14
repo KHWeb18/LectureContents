@@ -26,17 +26,14 @@ public class RecommendServiceImpl implements RecommendService {
     }
 
     @Override
-    public List<Object[]> lists() throws Exception {
-        return  repository.lists();
+    public List<Recommend> list() throws Exception {
+        List<Recommend> recommends = repository.findAll();
+
+        return recommends;
     }
 
     @Override
-    public List<Object[]> read(Long boardNo) throws Exception {
-        return repository.read(boardNo);
-    }
-
-    @Override
-    public Recommend findByBoardNo(Long boardNo) throws Exception {
+    public Recommend read(Long boardNo) throws Exception {
         Recommend recommend = repository.findById(boardNo).orElseThrow();
 
         return recommend;

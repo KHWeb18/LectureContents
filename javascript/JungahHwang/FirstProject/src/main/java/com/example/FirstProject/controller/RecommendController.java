@@ -31,17 +31,21 @@ public class RecommendController {
     }
 
     @GetMapping("/lists")
-    public ResponseEntity<List<Object[]>> lists() throws Exception {
+    public ResponseEntity lists() throws Exception {
         log.info("Recommend Lists");
 
-        return new ResponseEntity<>(service.lists(), HttpStatus.OK);
+        List<Recommend> recommends = service.list();
+
+        return new ResponseEntity<>(recommends, HttpStatus.OK);
     }
 
     @GetMapping("/read/{boardNo}")
-    public ResponseEntity<List<Object[]>> read(@PathVariable("boardNo") @RequestBody Long boardNo) throws Exception {
+    public ResponseEntity read(@PathVariable("boardNo") Long boardNo) throws Exception {
         log.info("Recommend Read");
 
-        return new ResponseEntity<List<Object[]>>(service.read(boardNo), HttpStatus.OK);
+        Recommend recommend = service.read(boardNo);
+
+        return new ResponseEntity(recommend, HttpStatus.OK);
     }
 
     @PatchMapping("/modify/{boardNo}")
@@ -49,7 +53,7 @@ public class RecommendController {
                                        @RequestBody RecommendDto recommendDto) throws Exception {
         log.info("Recommend Modify");
 
-        Recommend recommend = service.findByBoardNo(boardNo);
+        Recommend recommend = service.read(boardNo);
 
         service.modify(recommend, recommendDto);
 
@@ -60,7 +64,7 @@ public class RecommendController {
     public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
         log.info("Recommend Remove");
 
-        Recommend recommend = service.findByBoardNo(boardNo);
+        Recommend recommend = service.read(boardNo);
 
         service.remove(recommend);
 

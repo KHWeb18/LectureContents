@@ -30,20 +30,18 @@
           <v-img :src="showFile()" ></v-img>
         </v-card>
 
-        <v-card-text class="text-center my-10">
-          <p v-html="content"></p>
-        </v-card-text>
-
         <v-card v-if="showMap" class="mx-auto mt-2  mb-5" width="300">
-          
           <naver-maps :height="300" :width="300" :mapOptions="mapOptions"></naver-maps>
           <naver-marker :lat="mapOptions.lat" :lng="mapOptions.lng" @click="showPlace = true"/>
         
           <v-alert v-if="showPlace" dense>
             {{ name }} ({{ address }})
           </v-alert>
-                  
         </v-card>
+
+        <v-card-text class="text-center my-10">
+          <p v-html="content"></p>
+        </v-card-text>
 
         <v-card-text></v-card-text>
         
@@ -51,7 +49,8 @@
           {{ recommend.id }}
         </v-card-text>
         <v-card-text class="card-text-date caption">
-          {{ recommend.regDate }}
+          {{ new Date(recommend.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11) }}
+          {{ new Date(recommend.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(12, 8) }}
         </v-card-text>
       
       </v-card>

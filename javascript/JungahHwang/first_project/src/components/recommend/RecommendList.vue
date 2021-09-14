@@ -29,13 +29,13 @@
                   </v-toolbar>
                   <v-divider></v-divider>
                   <v-card-text>
-                    {{ item.content }}...
+                    {{ item.content.substr(0, 90) }}...
                   </v-card-text>
                   <v-card-text class="card-text-id caption">
                     {{ item.id }}
                   </v-card-text>
                   <v-card-text class="card-text-date caption">
-                    {{ item.regDate }}
+                    {{new Date(item.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11)}}
                   </v-card-text>
                 </v-card>
               </v-hover>
@@ -80,12 +80,16 @@ export default {
   },
   mounted () {
     this.fetchRecommends()
+    console.log(new Date())
   },
   computed: {
     ...mapState([ 'recommends', 'recommend' ]),
     numberOfPages () {
       return Math.ceil(this.recommends.length / this.itemsPerPage)
     },
+    // date () {
+    //   return 
+    // }
   },
   methods: {
     ...mapActions([ 'fetchRecommends', 'fetchRecommend' ]),
