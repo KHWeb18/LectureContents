@@ -15,6 +15,10 @@ public interface RequestReplyRepository extends JpaRepository<RequestReply, Long
     @Query("update RequestReply rr set rr.requestReply = :replyContent where rr.concertRequestNo = :concertRequestNo")
     void saveReply(String replyContent, Long concertRequestNo);
 
-    @Query("select rr from RequestReply rr where rr.concertRequestNo = :concertRequestNo")
-    Optional<RequestReply> findByConcertRequestNo(Long concertRequestNo);
+    @Query("select rr.requestReply from RequestReply rr where rr.concertRequestNo = :concertRequestNo")
+    String findByConcertRequestNo(Long concertRequestNo);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    void deleteByConcertRequestNo(Long concertRequestNo);
 }

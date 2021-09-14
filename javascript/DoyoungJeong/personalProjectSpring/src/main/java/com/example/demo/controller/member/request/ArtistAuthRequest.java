@@ -13,6 +13,7 @@ import java.util.Date;
 public class ArtistAuthRequest {
     
     //공연 등록 요청용 엔티티
+    private Integer concertRequestNo;
     private Integer memberNo;
     private String regName;
     private String artistName;

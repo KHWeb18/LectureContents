@@ -4,7 +4,10 @@ import com.example.demo.controller.concert.request.ConcertDeleteRequest;
 import com.example.demo.controller.concert.request.ConcertRequest;
 import com.example.demo.controller.member.request.MemberRequest;
 import com.example.demo.controller.member.response.MemberResponse;
+import com.example.demo.entity.board.Board;
 import com.example.demo.entity.member.*;
+import com.example.demo.repository.artistAuth.ConcertRequestRepository;
+import com.example.demo.repository.board.BoardReplyRepository;
 import com.example.demo.repository.concert.ConcertRepository;
 import com.example.demo.repository.board.BoardRepository;
 import com.example.demo.repository.member.*;
@@ -46,7 +49,13 @@ public class MemberServiceImpl implements MemberService{
     private BoardRepository boardRepository;
 
     @Autowired
+    private BoardReplyRepository boardReplyRepository;
+
+    @Autowired
     private MemberTasteRepository memberTasteRepository;
+
+    @Autowired
+    private ConcertRequestRepository concertRequestRepository;
 
     @Autowired
     private BookedConcertRepository bookedConcertRepository;
@@ -181,6 +190,23 @@ public class MemberServiceImpl implements MemberService{
 
             concertRepository.minusNumberOfLikes(deleteNo);
         }
+
+        Integer numOfVisitorsForDelete;
+        List<BookedConcert> bookedConcertList = bookedConcertRepository.findByMemberNo(memberNo);
+
+        for(int i=0; i<bookedConcertList.size(); i++) {
+
+            numOfVisitorsForDelete = bookedConcertList.get(i).getNumOfVisitors();
+            deleteNo = bookedConcertList.get(i).getConcertNo();
+
+            concertRepository.plusVenueCapacity(numOfVisitorsForDelete, deleteNo);
+        }
+
+        String id = memberRepository.findByMemberNo(memberNo).get().getId(); //탈퇴한 회원이 작성한 보드의 id 바꿔줌.
+        boardRepository.makeIdAsWithdrawn(id);
+        boardReplyRepository.makeIdAsWithdrawn(id);
+
+        concertRequestRepository.makeIdAsWithdrawn(memberNo); //탈퇴한 회원이 작성한 공연 요청의 id 바꿔줌.
 
         likedConcertRepository.delete(memberNo);
 

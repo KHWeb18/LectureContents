@@ -1,7 +1,6 @@
 package com.example.demo.repository.member;
 
 import com.example.demo.entity.member.BookedConcert;
-import com.example.demo.entity.member.LikedConcert;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

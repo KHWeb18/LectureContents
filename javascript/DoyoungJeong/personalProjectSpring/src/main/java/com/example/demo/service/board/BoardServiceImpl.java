@@ -28,8 +28,8 @@ public class BoardServiceImpl implements BoardService{
 
         Board board = new Board(boardRequest.getId(), boardRequest.getTitle(), boardRequest.getContent());
 
-        BoardReply boardReply = new BoardReply("default", "default");
-        board.addBoardReply(boardReply);
+//        BoardReply boardReply = new BoardReply("default", "default"); //해줄 필요 없음
+//        board.addBoardReply(boardReply);
         boardRepository.save(board);
     }
 

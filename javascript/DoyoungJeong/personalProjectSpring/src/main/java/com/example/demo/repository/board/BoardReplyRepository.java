@@ -27,4 +27,9 @@ public interface BoardReplyRepository extends JpaRepository<BoardReply, Long> {
     @Modifying(clearAutomatically = true)
     @Query("update BoardReply br set br.content = :content where br.boardReplyNo = :boardReplyNo")
     void modifyReply(String content, Long boardReplyNo);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query("update BoardReply br set br.id = '탈퇴한 회원' where br.id = :id")
+    void makeIdAsWithdrawn(String id);
 }

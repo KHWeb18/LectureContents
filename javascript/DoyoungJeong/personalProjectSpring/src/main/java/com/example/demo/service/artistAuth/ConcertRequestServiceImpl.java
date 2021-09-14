@@ -1,5 +1,6 @@
 package com.example.demo.service.artistAuth;
 
+import com.example.demo.controller.concert.response.BookedConcertResponse;
 import com.example.demo.controller.member.request.ApproveOrNotRequest;
 import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
@@ -13,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -55,9 +53,16 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
     }
 
     @Override
-    public List<ConcertRequestResponse> getConcertRequestList() {
+    public List<ConcertRequestResponse> getConcertRequestList(Integer memberNo) {
 
-        List<ConcertRequest> tmpConcertRequestList = concertRequestRepository.getList();
+        List<ConcertRequest> tmpConcertRequestList;
+
+        if(memberNo == 0) {
+            tmpConcertRequestList = concertRequestRepository.getList();
+        } else {
+            tmpConcertRequestList = concertRequestRepository.findByMemberNo(new Long(memberNo));
+        }
+
         //log.info("tmpConcertRequestList: " + tmpConcertRequestList);
 
         List<ConcertRequestResponse> concertRequestResponses = new ArrayList<>(Arrays.asList());
@@ -76,7 +81,7 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
 
             concertRequestResponse = new ConcertRequestResponse(tmpConcertRequestList.get(i).getConcertRequestNo(), tmpConcertRequestList.get(i).getRegName(),
                     tmpConcertRequestList.get(i).getArtistName(), tmpConcertRequestList.get(i).getVenueName(), tmpConcertRequestList.get(i).getConcertName(), dateOfCon,
-                    tmpConcertRequestList.get(i).getTimeOfConcert(), tmpConcertRequestList.get(i).getApprovedOrNot(), regDate);
+                    tmpConcertRequestList.get(i).getTimeOfConcert(), tmpConcertRequestList.get(i).getApprovedOrNot(), null, regDate);
             //log.info("concertRequestResponse: " + concertRequestResponse);
 
             concertRequestResponses.add(concertRequestResponse);
@@ -93,13 +98,15 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
         SimpleDateFormat conDateFormat = new SimpleDateFormat("20yy년 MM월 dd일");
         SimpleDateFormat regDateFormat = new SimpleDateFormat("20yy-MM-dd hh:mm");
 
+        String requestReply = requestReplyRepository.findByConcertRequestNo(new Long(concertRequestNo));
+
         String dateOfCon = conDateFormat.format(tmpConcertRequest.get().getDateOfConcert());
         String regDate = regDateFormat.format(tmpConcertRequest.get().getRegDate());
 
         ConcertRequestResponse concertRequestResponse = new ConcertRequestResponse(tmpConcertRequest.get().getConcertRequestNo(),
                 tmpConcertRequest.get().getRegName(), tmpConcertRequest.get().getArtistName(),
                 tmpConcertRequest.get().getVenueName(), tmpConcertRequest.get().getConcertName(), dateOfCon,
-                tmpConcertRequest.get().getTimeOfConcert(), tmpConcertRequest.get().getApprovedOrNot(), regDate);
+                tmpConcertRequest.get().getTimeOfConcert(), tmpConcertRequest.get().getApprovedOrNot(), requestReply, regDate);
 
         //log.info("concertRequestResponse: " + concertRequestResponse);
         return concertRequestResponse;
@@ -129,12 +136,33 @@ public class ConcertRequestServiceImpl implements ConcertRequestService {
         requestReplyRepository.saveReply(replyContent, concertRequestNo);
     }
 
+//    @Override
+//    public String findRequestReply(Integer concertRequestNo) {
+//
+//        Optional<RequestReply> tmpRequestReply = requestReplyRepository.findByConcertRequestNo(new Long(concertRequestNo));
+//        String requestReply = tmpRequestReply.get().getRequestReply();
+//
+//        return requestReply;
+//    }
+
     @Override
-    public String findRequestReply(Integer concertRequestNo) {
+    public void modifyConcertRequest(ArtistAuthRequest artistAuthRequest) {
 
-        Optional<RequestReply> tmpRequestReply = requestReplyRepository.findByConcertRequestNo(new Long(concertRequestNo));
-        String requestReply = tmpRequestReply.get().getRequestReply();
+        Long concertRequestNo = new Long(artistAuthRequest.getConcertRequestNo());
+        String regName = artistAuthRequest.getRegName();
+        String artistName = artistAuthRequest.getRegName();
+        String venueName = artistAuthRequest.getVenueName();
+        String concertName = artistAuthRequest.getConcertName();
+        Date dateOfConcert = artistAuthRequest.getDateOfConcert();
+        String timeOfConcert = artistAuthRequest.getTimeOfConcert() + " 부터 " + artistAuthRequest.getTimeOfEnd() + " 까지 ";
 
-        return requestReply;
+        concertRequestRepository.modifyConcertRequest(regName, artistName, venueName, concertName, dateOfConcert, timeOfConcert, concertRequestNo);
+    }
+
+    @Override
+    public void deleteConcertRequest(Integer concertRequestNo) {
+
+        requestReplyRepository.deleteByConcertRequestNo(new Long(concertRequestNo));
+        concertRequestRepository.deleteByConcertRequestNo(new Long(concertRequestNo));
     }
 }
