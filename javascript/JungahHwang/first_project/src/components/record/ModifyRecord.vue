@@ -7,7 +7,7 @@
     </template>
     <v-card class="primary rounded-xl">
       <v-card-title class="headline secondary--text font-weight-bold">
-          <p>{{ selectDate }} 기록하기</p>
+          <p>{{ selectDate }} 기록 수정하기</p>
         </v-card-title>
         <v-card-text>
           <v-textarea color="secondary" v-model="food" label="식단" 
@@ -49,7 +49,7 @@ export default {
     ...mapState([ 'selectDate', 'record' ])
   },
   methods: {
-    ...mapActions ([ 'fetchRecord' ]),
+    ...mapActions ([ 'fetchRecord', 'fetchRecords' ]),
     
     closeForm () {
       this.dialog = false
@@ -66,10 +66,10 @@ export default {
         alert('(' + date + ') 활동이 수정되었습니다!')
 
         this.fetchRecord(date)
+        this.fetchRecords()
 
         this.dialog = false
-       }).catch(res => {
-        alert(res.response.data.message)
+       }).catch(() => {
       })
     },
     readRecord () {
