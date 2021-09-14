@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @ToString
+// JPA 사용시 필수적인 Annotation이 Entity
 public class DaumNews {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
