@@ -118,6 +118,7 @@ export default {
                                     .then(() => {
                                         alert('예약 정보가 전송되었습니다 :) 이용해주셔서 감사합니다.')
 
+                                        this.$store.state.concert.venueCapacity = this.$store.state.concert.venueCapacity - numOfVisitors
                                         this.$store.state.notBookedYet = false
                                     })
                                     .catch(() => {

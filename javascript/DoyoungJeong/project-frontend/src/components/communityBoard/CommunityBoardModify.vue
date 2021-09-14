@@ -4,11 +4,11 @@
             <table style="margin-left: 300px;">
                 <tr>
                     <td class="description" style="width: 100px;">글 제목</td>
-                    <v-text-field required v-model="title" style="width: 500px;"/>
+                    <v-text-field required v-model="title" style="width: 500px;" outlined color="teal"/>
                 </tr>
                 <tr>
                     <td class="description" style="width: 100px;">본문</td>
-                    <v-textarea required v-model="content" style="width: 500px;" auto-grow></v-textarea>
+                    <v-textarea required v-model="content" style="width: 500px;" auto-grow outlined></v-textarea>
                 </tr>
             </table>
 
@@ -56,12 +56,18 @@ export default {
                             const content = this.content
                             
                             axios.put('http://localhost:8888/board/modify', { boardNo, title, content })
-                                .then(alert('수정이 완료되었습니다!'))
+                                .then(() => {
+                                    alert('수정이 완료되었습니다!')
 
-                                this.$router.push({
-                                    name: 'CommunityPage'
+                                    this.$router.push({
+                                        name: 'CommunityPage'
+                                    })
                                 })
 
+                                .catch(() => {
+                                    alert('게시글 수정 실패. 잠시 후에 다시 시도해주세요!')
+                                })
+                            
                         } else {
                             alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
                             this.$store.state.isLoggedIn = false
