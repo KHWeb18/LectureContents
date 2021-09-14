@@ -1,19 +1,23 @@
 <template>
-  <v-sheet class="home">
-    <weather></weather>
-
-    <v-row class="mt-5">
-      <v-col cols="12" md="4">
+  <v-sheet class="mt-5 mb-10">
+    <v-row>
+      <v-col cols="12" md="7">
+        <weather></weather>
+        <v-row>
+          <v-col>
+            <record-preview></record-preview>
+          </v-col>
+          <v-col>
+            <map-preview></map-preview>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="12" md="5">
         <challenge-preview></challenge-preview>
-      </v-col>
-      <v-col cols="12" md="4">
         <recommend-preview></recommend-preview>
-      </v-col>
-      <v-col cols="12" md="4">
         <together-preview></together-preview>
       </v-col>
     </v-row>
-    
   </v-sheet>
 </template>
 
@@ -23,6 +27,8 @@ import Weather from '@/components/home/Weather'
 import ChallengePreview from '@/components/home/ChallengePreview'
 import RecommendPreview from '@/components/home/RecommendPreview'
 import TogetherPreview from '@/components/home/TogetherPreview'
+import RecordPreview from '@/components/home/RecordPreview'
+import MapPreview from '@/components/home/MapPreview'
 
 export default {
   name: 'Home',
@@ -32,7 +38,8 @@ export default {
     ChallengePreview,
     RecommendPreview,
     TogetherPreview,
-
+    RecordPreview,
+    MapPreview
   },
   created () {
   },

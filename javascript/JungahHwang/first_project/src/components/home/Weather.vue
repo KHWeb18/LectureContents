@@ -1,6 +1,6 @@
 <template>
-  <v-card class="mt-5 pb-5 primary" >
-    <v-card class="pa-3 mx-auto primary" max-width="600" flat>
+  <v-card class="pb-5 primary">
+    <v-card class="pa-3 mx-auto primary" max-width="100%" flat>
       <v-slide-group show-arrows>
         <v-slide-item v-for="city in cities" :key="city.name" v-slot="{ active }">
           <v-btn class="ma-2 white gray--text" :input-value="active" active-class="secondary secondary--text"
