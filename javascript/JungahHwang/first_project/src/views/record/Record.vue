@@ -1,31 +1,38 @@
 <template>
-  <v-card class="mt-8" color="primary">
+  <v-card class="mt-8 mb-10" color="primary">
     <v-row>
-      <v-col cols="12" md="7">
-        <v-card class="ma-7 primary" flat>
+      <v-col cols="12" md="6">
+        <v-card class="ma-7 primary">
           <v-date-picker  v-model="date" :events="eventList" color="secondary"
             event-color="#FFADAD"  @click:date="viewDay(date)"
-            width="400" elevation="3"></v-date-picker>
+            width="100%"></v-date-picker>
         </v-card>
       </v-col>
      
-      <v-col cols="12" md="5">
+      <v-col cols="12" md="6">
         <read-record></read-record>
       </v-col>
     </v-row>
     
+    <v-row v-if="isLogin">
+      <v-col>
+         <change-record></change-record>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
 
 <script>
 import ReadRecord from '@/components/record/ReadRecord'
+import ChangeRecord from '@/components/record/ChangeRecord'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Record',
   components: {
-    ReadRecord
+    ReadRecord,
+    ChangeRecord,
   },
   data: () => ({
     eventList: [],
@@ -38,12 +45,16 @@ export default {
     this.fetchRecords()
     this.fetchRecord(this.selectDate)
 
+    console.log('mounted: ' + this.records)
+  },
+  beforeUpdate () {
+    console.log('update: ' + this.records)
+    
     if (this.isLogin) {
       for (let i = 0; i < this.records.length; i++) {
         this.eventList.push(this.records[i].date)
       }  
     }
-    
   },
   methods: {
     ...mapActions([ 'fetchRecord', 'fetchRecords' ]),
