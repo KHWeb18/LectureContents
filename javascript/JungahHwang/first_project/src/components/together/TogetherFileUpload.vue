@@ -2,7 +2,7 @@
   <v-card flat>
    
     <v-file-input class="mx-10" v-model="files" @change="select" label="사진 찾기"
-      color="secondary"  chips multiple ></v-file-input>
+      color="secondary" prepend-icon="insert_photo" chips multiple ></v-file-input>
 
     <v-card class="mx-10" flat>
       <v-img class="ml-10" :src="url" width="80%"/>
@@ -24,7 +24,12 @@ export default {
   methods: {
     select () {
       console.log(this.files)
-      this.url = URL.createObjectURL(this.files[0])
+
+      try {
+        this.url = URL.createObjectURL(this.files[0])
+      }catch(e) {
+        this.url = null
+      }
 
       this.$emit('selectFile', this.files)
     }
