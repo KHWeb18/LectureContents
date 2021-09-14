@@ -2,7 +2,7 @@
   <v-card class="mr-6 my-3" v-if="isLogin">
     <v-card-text>
       <v-list-item-title>
-        <p>최근 활동</p>
+        <p>최근 게시글 활동</p>
       </v-list-item-title>
       <v-divider></v-divider>
 

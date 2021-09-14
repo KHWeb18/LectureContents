@@ -2,7 +2,7 @@
   <v-card class="primary" flat>
     <v-card v-if="!isLogin" class="primary ma-3" flat>
       <v-card-text>
-        <p class="headline">로그인을 해주세요.</p>
+        <p class="title">로그인 해주세요.</p>
       </v-card-text>
     </v-card>
     
