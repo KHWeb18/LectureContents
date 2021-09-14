@@ -5,7 +5,7 @@
 
     <v-card-title class="text-center justify-center ">
       <router-link :to="{ name: 'Home' }">
-        <h1 class="font-weight-bold text-h2 secondary--text">Test</h1>
+        <h1 class="font-weight-bold text-h2 secondary--text">Health</h1>
       </router-link>
     </v-card-title>
 

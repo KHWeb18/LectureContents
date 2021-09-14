@@ -5,7 +5,7 @@
 
       <v-toolbar-title>
         <router-link :to="{ name: 'Home' }">
-          <h1 class="font-weight-bold text-h5 secondary--text">Test</h1>
+          <h1 class="font-weight-bold text-h5 secondary--text">Health</h1>
         </router-link>  
       </v-toolbar-title>
       
