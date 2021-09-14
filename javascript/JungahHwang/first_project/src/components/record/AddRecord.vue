@@ -46,7 +46,7 @@ export default {
     ...mapState(['selectDate', 'record', 'userInfo'])
   },
   methods: {
-    ...mapActions(['fetchRecord']),
+    ...mapActions(['fetchRecord', 'fetchRecords']),
     closeForm () {
       this.dialog = false
     },
@@ -63,10 +63,10 @@ export default {
         alert('(' + date + ') 활동이 등록되었습니다!')
         
         this.fetchRecord(date)
+        this.fetchRecords()
         
         this.dialog = false
-       }).catch(res => {
-        alert(res.response.data.message)
+       }).catch(() => {
       })
       
       

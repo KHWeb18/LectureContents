@@ -35,7 +35,7 @@ public class Record {
     private String exercise;
 
     @Column(length = 30, nullable = true)
-    private String weight;
+    private Long weight;
 
     @CreationTimestamp
     private Date regDate;

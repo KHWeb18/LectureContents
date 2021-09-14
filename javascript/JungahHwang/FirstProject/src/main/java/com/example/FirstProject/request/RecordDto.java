@@ -18,7 +18,7 @@ public class RecordDto {
     private String date;
     private String food;
     private String exercise;
-    private String weight;
+    private Long weight;
     private Date regDate;
     private Date updDate;
 
