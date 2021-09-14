@@ -54,7 +54,7 @@ export default {
       show: false,
       title: null,
       content: null,
-      files: null,
+      files: [],
       boardNo:null,
       map: {
         x: null,
@@ -111,10 +111,10 @@ export default {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then (() => {
-      
-        }).catch (() => {
-          alert('사진 업로드 실패!')
+        }).then (res => {
+          console.log(res.data)
+        }).catch (err => {
+          console.log(err)
         })
       }, 1000)
     },

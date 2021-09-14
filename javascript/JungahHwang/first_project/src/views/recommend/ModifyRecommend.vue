@@ -55,7 +55,7 @@ export default {
       boardNo: null,
       id: null,
       show: false,
-      files: null,
+      files: [],
       map: {
         x: null,
         y: null,
