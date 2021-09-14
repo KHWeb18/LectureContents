@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 30px; height: 1000px;" class="grey darken-3">
+    <div style="padding-top: 30px; height: 100%;" class="grey darken-3">
         <input type="text" class="detailTitle" disabled v-bind:value="concert.concertName" style="font-size: 50px; color: white;"/>    
 
         <div style="width: 25%; margin: 0px auto; padding-top: 10px;" class="circle responsive-img" v-on:mouseover="turnOffColor" v-on:mouseout="turnOnColor">
@@ -83,16 +83,45 @@
             <textarea class="infoText" style='height: 90px; color: white;' disabled v-bind:value="concert.concertInfo"/>
         </div>
           
-        <div align="center">
+        <div align="center" style="margin-bottom: 60px;">
             <!-- <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" 
             @click="onReservation" outlined>예약하기!</v-btn> -->
-            <booking-dialogue :member="member"/>
+            <booking-dialogue v-if="notBookedYet || isLoggedIn == false" :member="member" :concertNo="concertNo"/>
 
-            <v-btn v-if="notLikedYet == true || isLoggedIn == false" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
-            @click="addLiked(concert.concertNo)" color="black"><v-icon>mdi-heart</v-icon></v-btn>
+            <v-tooltip bottom v-else-if="!notBookedYet && isLoggedIn == true">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn  class="btn-flat red-text waves-effect waves-teal" style="margin-right: 30px;" @click="cancelBook" outlined color="pink" v-bind="attrs" v-on="on">
+                        <v-icon>
+                            email
+                        </v-icon>
+                    </v-btn>
+                </template>
+                <span>예약 취소</span>    
+            </v-tooltip>
 
-            <v-btn v-else-if="notLikedYet == false && isLoggedIn == true" text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
-            @click="unLiked(concert.concertNo)" color="pink"><v-icon>mdi-heart</v-icon></v-btn>
+            <v-tooltip bottom v-if="notLikedYet == true || isLoggedIn == false">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
+                    @click="addLiked(concert.concertNo)" color="black" v-bind="attrs" v-on="on">
+                        <v-icon>
+                            mdi-heart
+                        </v-icon>
+                    </v-btn>
+                </template>
+                <span>찜하기!</span>    
+            </v-tooltip>
+
+            <v-tooltip bottom v-else-if="notLikedYet == false && isLoggedIn == true">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn text="text" class="btn-flat red-text waves-effect waves-teal" style="margin-right: 10px;" outlined
+                    @click="unLiked(concert.concertNo)" color="pink" v-bind="attrs" v-on="on">
+                        <v-icon>
+                            mdi-heart
+                        </v-icon>
+                    </v-btn>
+                </template>
+                <span>찜해제</span>    
+            </v-tooltip>
 
             <!-- <p>.....{{ likedList }}</p> -->
         </div>
@@ -123,10 +152,10 @@ export default {
         }
     },
     computed: {
-        ...mapState(['concert', 'likedList', 'isLoggedIn', 'userProfile', 'notLikedYet', 'member'])
+        ...mapState(['concert', 'likedList', 'isLoggedIn', 'userProfile', 'notLikedYet', 'member', 'notBookedYet'])
     },
     methods: {
-        ...mapActions(['fetchLikedOrNot', 'fetchConcert', 'fetchMember']),
+        ...mapActions(['fetchLikedOrNot', 'fetchConcert', 'fetchMember', 'fetchBookedOrNot']),
 
         addLiked() {
             if(this.$store.state.isLoggedIn == true) {
@@ -198,6 +227,9 @@ export default {
         },
         turnOnColor() {
             this.onColor = true
+        },
+        cancelBook() {
+            alert('예약 취소는 마이페이지의 예약리스트에서 할 수 있습니다! :)')
         }
     },
     mounted() {
@@ -216,6 +248,7 @@ export default {
             //db에서 concert를 가져와 concert.concertNo를 주기 전에 이 명령이 실행되니까 그런거였음. 그래서 애초에 props로 받은 this.concertNo를 사용해주니까 잘됨
             this.fetchLikedOrNot(this.memNoAndConNoArr)
             //alert(this.memNoAndConNoArr)
+            this.fetchBookedOrNot(this.memNoAndConNoArr)
 
             this.fetchMember(this.$store.state.userProfile.memberNo)
         }

@@ -230,15 +230,16 @@ export default {
             navLinks: [
                 { text: 'Home', icon: 'home'},
                 { text: 'Profile', icon: 'person_outline'},
-                { text: 'Liked', icon: 'star'}
+                { text: 'Liked', icon: 'star'},
+                { text: 'Booked', icon: 'done'}
             ],
             navLinksForArtist: [
                 { text: 'Home', icon: 'home'},
                 { text: 'Profile', icon: 'person_outline'},
                 { text: 'Liked', icon: 'star'},
+                { text: 'Booked', icon: 'done'},
                 { text: 'Request', icon: 'email'}
             ],
-
         }
     },
     methods: {
@@ -279,6 +280,10 @@ export default {
                                 name: 'LikedListPage'
                             })
                         } else if(res.data == true && index == 3) {
+                            this.$router.push ({
+                                name: 'BookedListPage'
+                            })
+                        } else if(res.data == true && index == 4) {
                             this.$router.push ({
                                 name: 'MyRequestListPage'
                             })

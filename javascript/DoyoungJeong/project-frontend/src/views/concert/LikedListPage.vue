@@ -41,10 +41,10 @@
                             <td>{{ item.concertVenue }}</td>
                             
                             <div style="margin-top: 5px; margin-right: 60px; text-align: right;">
-                                <v-btn class="btn-flat red-text waves-effect waves-teal" 
+                                <v-btn class="btn-flat red-text waves-effect waves-teal" style="font-size: 12px;"
                                 @click="goToDetailPage(item.concertNo)">바로가기</v-btn>
 
-                                <v-btn style="margin-left: 10px;" class="btn-flat red-text waves-effect waves-teal" 
+                                <v-btn style="margin-left: 10px; font-size: 12px;" class="btn-flat red-text waves-effect waves-teal" 
                                 @click="deleteLikedConcert(item.concertNo, index)">찜해제</v-btn>
                             </div>
                         </tr>
@@ -81,7 +81,7 @@ export default {
         ...mapActions(['fetchLikedList', 'fetchConcert']),
 
         goToDetailPage(concertNo) {
-            this.fetchConcert(concertNo)
+            //this.fetchConcert(concertNo)
 
             this.$router.push({
                 name: 'ConcertDetailPage',
