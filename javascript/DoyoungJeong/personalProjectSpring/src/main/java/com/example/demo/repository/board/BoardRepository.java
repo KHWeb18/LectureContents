@@ -27,4 +27,9 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Modifying(clearAutomatically = true)
     @Query("update Board bo set bo.title = :title, bo.content = :content where bo.boardNo = :boardNo")
     void modify(String title, String content, Long boardNo);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query("update Board bo set bo.id = '탈퇴한 회원' where bo.id = :id") //탈퇴한 회원이 작성한 보드의 id 바꿔줌.
+    void makeIdAsWithdrawn(String id);
 }

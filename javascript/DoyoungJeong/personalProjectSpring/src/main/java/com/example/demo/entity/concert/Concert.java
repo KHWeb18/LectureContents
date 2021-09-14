@@ -27,6 +27,9 @@ public class Concert {
     @Column(length = 30, nullable = false)
     private String concertVenue;
 
+    @Column(length = 10, nullable = false)
+    private Integer venueCapacity;
+
     @Column(length = 25, nullable = false)
     private String concertPrice;
 

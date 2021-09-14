@@ -17,10 +17,11 @@ public class ConcertRequestResponse {
     private String dateOfConcert;
     private String timeOfConcert;
     private String approvedOrNot;
+    private String requestReply;
     private String regDate;
 
     public ConcertRequestResponse(Long concertRequestNo, String regName, String artistName, String venueName, String concertName,
-                                  String dateOfConcert, String timeOfConcert, String approvedOrNot, String regDate) {
+                                  String dateOfConcert, String timeOfConcert, String approvedOrNot, String requestReply, String regDate) {
 
         this.concertRequestNo = concertRequestNo;
         this.regName = regName;
@@ -30,6 +31,7 @@ public class ConcertRequestResponse {
         this.dateOfConcert = dateOfConcert;
         this.timeOfConcert = timeOfConcert;
         this.approvedOrNot = approvedOrNot;
+        this.requestReply = requestReply;
         this.regDate = regDate;
     }
 }

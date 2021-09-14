@@ -23,5 +23,13 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
       @Query("update Concert co set co.numberOfLikes = co.numberOfLikes - 1 where co.concertNo = :concertNo")
       void minusNumberOfLikes(Long concertNo);
 
+      @Transactional
+      @Modifying(clearAutomatically = true, flushAutomatically = true)
+      @Query("update Concert co set co.venueCapacity = co.venueCapacity - :numOfVisitors where co.concertNo = :concertNo")
+      void minusVenueCapacity(Integer numOfVisitors, Long concertNo);
 
+      @Transactional
+      @Modifying(clearAutomatically = true, flushAutomatically = true)
+      @Query("update Concert co set co.venueCapacity = co.venueCapacity + :numOfVisitors where co.concertNo = :concertNo")
+      void plusVenueCapacity(Integer numOfVisitors, Long concertNo);
 }

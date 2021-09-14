@@ -13,7 +13,7 @@ public interface ConcertRequestService {
 
     public String getUserName(Integer memberNo);
 
-    public List<ConcertRequestResponse> getConcertRequestList();
+    public List<ConcertRequestResponse> getConcertRequestList(Integer memberNo);
 
     public ConcertRequestResponse getConcertRequest(Integer concertRequestNo);
 
@@ -21,5 +21,9 @@ public interface ConcertRequestService {
 
     public void inputReply(RequestReply requestReply);
 
-    public String findRequestReply(Integer concertRequestNo);
+    //public String findRequestReply(Integer concertRequestNo);
+
+    public void modifyConcertRequest(ArtistAuthRequest artistAuthRequest);
+
+    public void deleteConcertRequest(Integer concertRequestNo);
 }

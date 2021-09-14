@@ -43,6 +43,9 @@ public class ConcertServiceImpl implements ConcertService {
     @Override
     public void makeBooking(BookedConcert bookedConcert) {
 
+        Integer numOfVisitors = bookedConcert.getNumOfVisitors();
+        concertRepository.minusVenueCapacity(numOfVisitors, new Long(bookedConcert.getConcertNo()));
+
         bookedConcertRepository.save(bookedConcert);
     }
 
@@ -101,17 +104,32 @@ public class ConcertServiceImpl implements ConcertService {
     public void alterBooking(BookedConcert bookedConcert) {
 
         //log.info("bookedConcert: " + bookedConcert);
+        Long bookedConcertNo = bookedConcert.getBookedConcertNo();
+        Optional<BookedConcert> tmpBookedConcert = bookedConcertRepository.findByBookedConcertNo(new Long(bookedConcertNo));
+
+        Integer numOfVisitorsForPlus = tmpBookedConcert.get().getNumOfVisitors();
+        Long concertNo = tmpBookedConcert.get().getConcertNo();
+        concertRepository.plusVenueCapacity(numOfVisitorsForPlus, concertNo);
 
         String name = bookedConcert.getName();
         String phoneNumber = bookedConcert.getPhoneNumber();
         Integer numOfVisitors = bookedConcert.getNumOfVisitors();
         String message = bookedConcert.getMessage();
 
+        concertRepository.minusVenueCapacity(numOfVisitors, concertNo);
+
         bookedConcertRepository.alterBooking(name, phoneNumber, numOfVisitors, message, bookedConcert.getBookedConcertNo());
     }
 
     @Override
     public void deleteBooking(Integer bookedConcertNo) {
+
+        Optional<BookedConcert> tmpBookedConcert = bookedConcertRepository.findByBookedConcertNo(new Long(bookedConcertNo));
+        Integer numOfVisitors =  tmpBookedConcert.get().getNumOfVisitors();
+        Long concertNo = tmpBookedConcert.get().getConcertNo();
+
+        concertRepository.plusVenueCapacity(numOfVisitors, concertNo);
+
         bookedConcertRepository.deleteByBookedConcertNo(new Long(bookedConcertNo));
     }
 }

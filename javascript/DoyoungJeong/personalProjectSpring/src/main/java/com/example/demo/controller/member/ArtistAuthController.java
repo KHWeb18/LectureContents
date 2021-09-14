@@ -5,6 +5,7 @@ import com.example.demo.controller.member.request.ArtistAuthRequest;
 import com.example.demo.controller.member.response.ConcertRequestResponse;
 import com.example.demo.entity.artistAuth.RequestReply;
 import com.example.demo.service.artistAuth.ConcertRequestService;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,7 @@ public class ArtistAuthController {
 
     @PostMapping("/request")
     public ResponseEntity<Void> request(@Validated @RequestBody ArtistAuthRequest artistAuthRequest) throws Exception {
-        log.info("request(): artistAuthRequest - " + artistAuthRequest);
+        //log.info("request(): artistAuthRequest - " + artistAuthRequest);
 
         concertRequestService.regRequest(artistAuthRequest);
 
@@ -67,7 +68,7 @@ public class ArtistAuthController {
 
     @GetMapping("/getName/{memberNo}")
     public ResponseEntity<String> getName(@PathVariable ("memberNo") Integer memberNo) throws Exception {
-        log.info("getName(): " + memberNo);
+        //log.info("getName(): " + memberNo);
 
         String userName = concertRequestService.getUserName(memberNo);
 
@@ -77,18 +78,27 @@ public class ArtistAuthController {
     @GetMapping("/getConcertRequestList")
     public ResponseEntity<List<ConcertRequestResponse>> getConcertRequestList() throws Exception {
 
-        List<ConcertRequestResponse> list = concertRequestService.getConcertRequestList();
+        List<ConcertRequestResponse> list = concertRequestService.getConcertRequestList(0);
 
         return new ResponseEntity<List<ConcertRequestResponse>>(list, HttpStatus.OK);
     }
 
     @GetMapping("/getConcertRequest/{concertRequestNo}")
     public ResponseEntity<ConcertRequestResponse> getConcertRequest(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
-        log.info("getConcertRequest: " + concertRequestNo);
+        //log.info("getConcertRequest(): " + concertRequestNo);
 
         ConcertRequestResponse concertRequestResponse = concertRequestService.getConcertRequest(concertRequestNo);
 
         return new ResponseEntity<ConcertRequestResponse>(concertRequestResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/getMyRequestList/{memberNo}")
+    public ResponseEntity<List<ConcertRequestResponse>> getMyRequestList(@PathVariable ("memberNo") Integer memberNo) throws Exception {
+        //log.info("getMyRequestList(): " + memberNo);
+
+        List<ConcertRequestResponse> myRequestList = concertRequestService.getConcertRequestList(memberNo);
+
+        return new ResponseEntity<List<ConcertRequestResponse>>(myRequestList, HttpStatus.OK);
     }
 
     @PostMapping("/approveOrNotRequest") //왜 PutMapping만 되는거지? Post도 된다.
@@ -102,20 +112,40 @@ public class ArtistAuthController {
     @PostMapping("/leaveReply")
     public ResponseEntity<Void> leaveReply(@Validated @RequestBody RequestReply requestReply) throws Exception {
 
-        //log.info("leaveReply: " + requestReply);
+        //log.info("leaveReply(): " + requestReply);
         concertRequestService.inputReply(requestReply);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/getRequestReply/{concertRequestNo}")
-    public ResponseEntity<String> getRequestReply(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
-        //log.info("getRequestReply: " + concertRequestNo);
+    @PostMapping("/requestModify")
+    public ResponseEntity<Void> requestModify(@Validated @RequestBody ArtistAuthRequest artistAuthRequest) throws Exception {
 
-        String requestReply = concertRequestService.findRequestReply(concertRequestNo);
+        //log.info("requestModify(): " + artistAuthRequest);
 
-        //log.info("requestReply: " + requestReply);
+        concertRequestService.modifyConcertRequest(artistAuthRequest);
 
-        return new ResponseEntity<String>(requestReply, HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+//    @GetMapping("/getRequestReply/{concertRequestNo}")
+//    public ResponseEntity<String> getRequestReply(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+//        //log.info("getRequestReply: " + concertRequestNo);
+//
+//        String requestReply = concertRequestService.findRequestReply(concertRequestNo);
+//
+//        //log.info("requestReply: " + requestReply);
+//
+//        return new ResponseEntity<String>(requestReply, HttpStatus.OK);
+//    }
+
+    @DeleteMapping("/requestDelete/{concertRequestNo}")
+    public ResponseEntity<Void> requestDelete(@PathVariable ("concertRequestNo") Integer concertRequestNo) throws Exception {
+
+        //log.info("requestDelete(): " + concertRequestNo);
+
+        concertRequestService.deleteConcertRequest(concertRequestNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
