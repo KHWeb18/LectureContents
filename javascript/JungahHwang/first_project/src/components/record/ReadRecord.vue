@@ -2,7 +2,7 @@
   <v-card class="my-7 mr-7 primary" flat>
     <v-card v-if="!isLogin" class="primary" flat>
       <v-card-text>
-        <p class="headline">로그인 해주세요.</p>
+        <p class="title">로그인 해주세요.</p>
       </v-card-text>
     </v-card>
 
@@ -17,36 +17,37 @@
         </v-card-actions>
       </v-card>  
 
-      <v-card v-else height="375">
-        <v-card-title class="headline">{{ selectDate }}</v-card-title>
+      <v-card v-else>
+        
     
         <v-card-text>
+
           <v-list>
             <v-list-item two-line>
               <v-list-item-content>
-                <v-list-item-title>식단</v-list-item-title>
-                <v-list-item-subtitle>{{ record.food }}</v-list-item-subtitle>
+                <p class="title font-weight-bold gray--text">식단</p> 
+                <p class="subtitle-1">{{record.food}}</p>
               </v-list-item-content>
             </v-list-item>
 
             <v-list-item two-line>
               <v-list-item-content>
-                <v-list-item-title>운동</v-list-item-title>
-                <v-list-item-subtitle>{{ record.exercise }}</v-list-item-subtitle>
+                <p class="title font-weight-bold gray--text">운동</p>
+                <p class="subtitle-1">{{ record.exercise }}</p>
               </v-list-item-content>
             </v-list-item>
 
             <v-list-item two-line>
               <v-list-item-content>
-                <v-list-item-title>체중</v-list-item-title>
-                <v-list-item-subtitle>{{ record.weight }}</v-list-item-subtitle>
+                <p class="title font-weight-bold gray--text">체중</p>
+                <p class="subtitle-1">{{ record.weight }}</p>
               </v-list-item-content>
             </v-list-item>
           </v-list> 
         </v-card-text>  
 
 
-        <v-card-actions class="mt-5">
+        <v-card-actions>
           <v-btn @click="deleteRecord" icon small color="secondary" class="pa-6">
             <v-icon>mdi-delete</v-icon>
           </v-btn>
@@ -80,7 +81,7 @@ export default {
     ...mapState ([ 'selectDate', 'record', 'isLogin' ]),
   },
   methods: {
-    ...mapActions([ 'fetchRecord' ]),
+    ...mapActions([ 'fetchRecord', 'fetchRecords' ]),
 
     deleteRecord () {
       const date = this.selectDate
@@ -90,11 +91,19 @@ export default {
         
         this.fetchRecord(date)
 
-      }).catch(res => {
-        alert(res.response.data.message)
+        this.fetchRecords()
+
+      }).catch(() => {
       })
     }
   }
   
 }
 </script>
+
+
+<style scoped>
+.gray--text {
+  color:rgb(100, 100, 100)
+}
+</style>
