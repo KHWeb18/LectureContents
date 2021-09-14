@@ -7,7 +7,7 @@
 
       <v-card flat>
         <v-list-item class="ml-n1">
-          <v-list-item-title class="gray--text">사진 첨부</v-list-item-title>
+          <v-list-item-title class="gray--text">사진이나 링크 첨부</v-list-item-title>
           <v-btn icon @click="show = !show">
             <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
           </v-btn>
@@ -15,8 +15,12 @@
         <v-expand-transition>
           <div v-show="show">
             <v-row>
-              <v-col cols="12" md="7">
+              <v-col cols="12" md="6">
                 <together-file-upload @selectFile="selectFile"></together-file-upload>
+              </v-col>
+               <v-col cols="12" md="6">
+                <v-text-field v-model="link" class="mr-10" color="secondary" 
+                label="링크 추가" prepend-icon="mdi-magnify"></v-text-field>
               </v-col>
             </v-row>
         </div>
@@ -46,10 +50,11 @@ export default {
     return {
       title: null,
       content: null,
+      link: null,
       boardNo: null,
       id: null,
       show: false,
-      files: null,
+      files: [],
     }
   },
   components: {
@@ -63,6 +68,7 @@ export default {
     this.id = this.$route.query.id
     this.title = this.together.title
     this.content = this.together.content
+    this.link = this.together.link
   },
   methods: {
     ...mapActions([ 'fetchTogether' ]),
@@ -72,8 +78,9 @@ export default {
     modifyTogether() {
       const title = this.title
       const content = this.content
+      const link = this.link
       
-      axios.patch(`http://localhost:7777/together/modify/${this.boardNo}`, { title, content }).then(() => {
+      axios.patch(`http://localhost:7777/together/modify/${this.boardNo}`, { title, content, link }).then(() => {
         this.fetchTogether(this.boardNo)
       })
     },
