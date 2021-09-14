@@ -26,16 +26,18 @@
                     <v-toolbar-title>
                       {{ item.title }}
                     </v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-icon v-if="item.link">insert_link</v-icon>
                   </v-toolbar>
                   <v-divider></v-divider>
                   <v-card-text>
-                    {{ item.content }}...
+                    {{ item.content.substr(0, 90) }}...
                   </v-card-text>
                   <v-card-text class="card-text-id caption">
                     {{ item.id }}
                   </v-card-text>
                   <v-card-text class="card-text-date caption">
-                    {{ item.regDate }}
+                    {{new Date(item.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11)}}
                   </v-card-text>
                 </v-card>
               </v-hover>

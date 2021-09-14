@@ -32,6 +32,9 @@ public class Together {
     @Column(length = 10000, nullable = false)
     private String content;
 
+    @Column(length = 100)
+    private String link;
+
     @CreationTimestamp
     private Date regDate;
 
@@ -41,6 +44,7 @@ public class Together {
     public void updateTogether(TogetherDto togetherDto) {
         this.title = togetherDto.getTitle();
         this.content = togetherDto.getContent();
+        this.link = togetherDto.getLink();
     }
 }
 

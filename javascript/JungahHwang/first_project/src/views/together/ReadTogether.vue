@@ -7,6 +7,11 @@
             {{ together.title }}
           </v-toolbar-title>
           <v-spacer></v-spacer>
+          
+          <v-btn v-if="together.link" icon :href="together.link" target="_blank">
+            <v-icon>insert_link</v-icon>
+          </v-btn>
+
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-if="userInfo.id == id" v-bind="attrs" v-on="on" icon>
@@ -26,7 +31,7 @@
         <v-divider></v-divider>
 
         <v-card class="mx-auto mt-2 mb-10" width="400" flat>
-          <v-img :src="showFile()" ></v-img>
+          <v-img :src="showFile()"></v-img>
         </v-card>
 
         <v-card-text class="text-center my-10">
@@ -39,7 +44,8 @@
           {{ together.id }}
         </v-card-text>
         <v-card-text class="card-text-date caption">
-          {{ together.regDate }}
+          {{ new Date(together.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11) }}
+          {{ new Date(together.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(12, 8) }}
         </v-card-text>
       
       </v-card>
@@ -116,7 +122,8 @@ export default {
       } catch (e) {
         return require(`@/assets/icon/noImg.png`)
       }
-    }
+    },
+    
   }
 }
 </script>

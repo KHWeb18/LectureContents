@@ -7,7 +7,7 @@
 
       <v-card flat>
         <v-list-item class="ml-n1">
-          <v-list-item-title class="gray--text">사진 첨부</v-list-item-title>
+          <v-list-item-title class="gray--text">사진이나 링크 첨부</v-list-item-title>
           <v-btn icon @click="show = !show">
             <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
           </v-btn>
@@ -15,8 +15,12 @@
         <v-expand-transition>
           <div v-show="show">
             <v-row>
-              <v-col cols="12" md="7">
+              <v-col cols="12" md="6">
                 <together-file-upload @selectFile="selectFile"></together-file-upload>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field v-model="link" class="mr-10" color="secondary" 
+                label="링크 추가" prepend-icon="insert_link"></v-text-field>
               </v-col>
             </v-row>
           </div>
@@ -47,8 +51,9 @@ export default {
     return {
       title: null,
       content: null,
+      link: null,
       show: false,
-      files: null,
+      files: [],
       boardNo: null
     }
   },
@@ -65,9 +70,10 @@ export default {
     addTogether () {
       const title = this.title
       const content = this.content
+      const link = this.link
       const id = this.userInfo.id
 
-      axios.post('http://localhost:7777/together/register', { title, content, id }).then(res => {
+      axios.post('http://localhost:7777/together/register', { title, content, link, id }).then(res => {
         alert('등록이 완료되었습니다!')
 
         this.boardNo = res.data.boardNo
@@ -93,11 +99,9 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then (res => {
-          this.response = res.data
-
-          alert('사진 업로드 완료!')
-        }).catch (res => {
-          this.response = res.message
+          console.log(res.data)
+        }).catch (err => {
+          console.log(err)
         })
       }, 1000)
     }

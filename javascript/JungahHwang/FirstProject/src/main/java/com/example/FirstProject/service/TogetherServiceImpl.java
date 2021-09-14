@@ -26,17 +26,14 @@ public class TogetherServiceImpl implements TogetherService {
     }
 
     @Override
-    public List<Object[]> lists() throws Exception {
-        return  repository.lists();
+    public List<Together> list() throws Exception {
+        List<Together> togethers = repository.findAll();
+
+        return  togethers;
     }
 
     @Override
-    public List<Object[]> read(Long boardNo) throws Exception {
-        return repository.read(boardNo);
-    }
-
-    @Override
-    public Together findByBoardNo(Long boardNo) throws Exception {
+    public Together read(Long boardNo) throws Exception {
         Together together = repository.findById(boardNo).orElseThrow();
 
         return together;

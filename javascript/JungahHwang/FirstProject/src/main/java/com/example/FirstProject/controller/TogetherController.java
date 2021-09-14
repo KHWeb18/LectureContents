@@ -31,17 +31,21 @@ public class TogetherController {
     }
 
     @GetMapping("/lists")
-    public ResponseEntity<List<Object[]>> lists() throws Exception {
+    public ResponseEntity lists() throws Exception {
         log.info("Together Lists");
 
-        return new ResponseEntity<>(service.lists(), HttpStatus.OK);
+        List<Together> togethers = service.list();
+
+        return new ResponseEntity(togethers, HttpStatus.OK);
     }
 
     @GetMapping("/read/{boardNo}")
-    public ResponseEntity<List<Object[]>> read(@PathVariable("boardNo") @RequestBody Long boardNo) throws Exception {
+    public ResponseEntity read(@PathVariable("boardNo") Long boardNo) throws Exception {
         log.info("Together Read");
 
-        return new ResponseEntity<List<Object[]>>(service.read(boardNo), HttpStatus.OK);
+        Together together = service.read(boardNo);
+
+        return new ResponseEntity(together, HttpStatus.OK);
     }
 
     @PatchMapping("/modify/{boardNo}")
@@ -49,7 +53,7 @@ public class TogetherController {
                                        @RequestBody TogetherDto togetherDto) throws Exception {
         log.info("Together Modify");
 
-        Together together = service.findByBoardNo(boardNo);
+        Together together = service.read(boardNo);
 
         service.modify(together, togetherDto);
 
@@ -60,7 +64,7 @@ public class TogetherController {
     public ResponseEntity<Void> remove(@PathVariable("boardNo") Long boardNo) throws Exception {
         log.info("Together Remove");
 
-        Together together = service.findByBoardNo(boardNo);
+        Together together = service.read(boardNo);
 
         service.remove(together);
 
