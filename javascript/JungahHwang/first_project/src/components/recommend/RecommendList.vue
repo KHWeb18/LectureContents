@@ -35,7 +35,7 @@
                     {{ item.id }}
                   </v-card-text>
                   <v-card-text class="card-text-date caption">
-                    {{new Date(item.regDate).toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}).toString().substr(0, 11)}}
+                    {{new Date(item.regDate).toLocaleString("ko-KR", {tmeZone: "Asia/Seoul"}).toString().substr(0, 11)}}
                   </v-card-text>
                 </v-card>
               </v-hover>

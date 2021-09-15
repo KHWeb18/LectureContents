@@ -35,7 +35,7 @@ export default {
     addr => !!addr || '주소를 입력해주세요!'
   ],
 
-// Calendar
+// Record
   dialog: false,
   selectDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
   records: [],

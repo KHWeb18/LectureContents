@@ -75,7 +75,7 @@ export default {
     }
   },
   beforeMount () {
-    //this.selectCity(this.name, this.city)
+    this.selectCity(this.name, this.city)
   },
   methods: {
     selectCity (name, city) {

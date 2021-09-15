@@ -1,8 +1,7 @@
 <template>
   <v-card flat>
-
     <v-text-field v-model="search" class="mr-10" color="secondary" label="장소 검색" 
-    @keypress.enter="searchMap" prepend-icon="mdi-magnify"></v-text-field>
+    @keypress.enter="searchMap" prepend-icon="location_on"></v-text-field>
 
     <v-sheet v-if="show" id="scrolling-techniques-7" class="overflow-y-auto" max-height="350">
       <v-card>

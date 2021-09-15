@@ -34,9 +34,7 @@
           <v-img :src="showFile()"></v-img>
         </v-card>
 
-        <v-card-text class="text-center my-10">
-          <p v-html="content"></p>
-        </v-card-text>
+        <v-card-text class="text-center my-10" v-html="content"></v-card-text>
 
         <v-card-text></v-card-text>
         

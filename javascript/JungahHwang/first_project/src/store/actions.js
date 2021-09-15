@@ -2,7 +2,7 @@ import {
 // Login
   FETCH_USER_INFO,
   FETCH_SESSION,
-// Calendar
+// Record
   FETCH_RECORDS,
   FETCH_RECORD,
 // Recommend
@@ -33,7 +33,7 @@ export default {
     commit(FETCH_SESSION, session)
   },
 
-// Calendar
+// Record
   fetchRecords ({ commit }) {
     return axios.get('http://localhost:7777/record/list').then(res => {
       commit(FETCH_RECORDS, res.data)
@@ -48,84 +48,46 @@ export default {
 // Recommend
   fetchRecommends ({ commit }) {
     return axios.get('http://localhost:7777/recommend/lists').then(res => {
-      let recommends = []
-
-      for (let i = 0; i < res.data.length; i++) {
-        let list = { boardNo: res.data[i][0], id: res.data[i][1], 
-          title: res.data[i][2], content: res.data[i][3], regDate: res.data[i][4] }
-        
-          recommends.push(list)
-      }
-      console.log(recommends)
-      commit(FETCH_RECOMMENDS, recommends)
+      commit(FETCH_RECOMMENDS, res.data)
     })
   },
   fetchRecommend ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/recommend/read/${boardNo}`).then(res => {
- 
-      let recommend = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
-        content: res.data[0][3], regDate: res.data[0][4] }
-      
-      console.log(recommend)
-      commit(FETCH_RECOMMEND, recommend)
+      commit(FETCH_RECOMMEND, res.data)
     })
   },
 
 // Together
   fetchTogethers ({ commit }) {
     return axios.get('http://localhost:7777/together/lists').then(res => {
-      console.log(res.data)
-      
-      let togethers = []
-
-      for (let i = 0; i < res.data.length; i++) {
-        let list = { boardNo: res.data[i][0], id: res.data[i][1], 
-          title: res.data[i][2], content: res.data[i][3], regDate: res.data[i][4] }
-        
-          togethers.push(list)
-      }
-
-      commit(FETCH_TOGETHERS, togethers)
-      console.log(togethers)
+      commit(FETCH_TOGETHERS, res.data)
     })
   },
   fetchTogether ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/together/read/${boardNo}`).then(res => {
       console.log(res.data)
-      let together = { boardNo: res.data[0][0], id: res.data[0][1], title: res.data[0][2], 
-        content: res.data[0][3], regDate: res.data[0][4] }
-      
-      console.log(together)
-      commit(FETCH_TOGETHER, together)
+      commit(FETCH_TOGETHER, res.data)
     })
   },
 
 // Comment
   fetchRecommendComments ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/recommend/comment/read/${boardNo}`).then(res => {
-      console.log('commentList: ' + res.data)
-
       commit(FETCH_RECOMMEND_COMMENTS, res.data)
     })
   },
   fetchRecommendComment ({ commit }, commentNo) {
     return axios.get(`http://localhost:7777/recommend/comment/read/only/${commentNo}`).then(res => {
-      console.log(res.data)
-
       commit(FETCH_RECOMMEND_COMMENT, res.data)
     })
   },
   fetchTogetherComments ({ commit }, boardNo) {
     return axios.get(`http://localhost:7777/together/comment/read/${boardNo}`).then(res => {
-      console.log('commentList: ' + res.data)
-
       commit(FETCH_TOGETHER_COMMENTS, res.data)
     })
   },
   fetchTogetherComment ({ commit }, commentNo) {
     return axios.get(`http://localhost:7777/together/comment/read/only/${commentNo}`).then(res => {
-      console.log(res.data)
-
       commit(FETCH_TOGETHER_COMMENT, res.data)
     })
   },

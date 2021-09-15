@@ -12,7 +12,6 @@
           </v-card-title>
           <v-divider></v-divider>  
 
-    
           <v-list-item three-line class="text-center ma-3">
             <v-list-item-content>
               <v-list-item-title>
@@ -25,9 +24,7 @@
                 {{ phone }}
               </v-list-item-subtitle>
             </v-list-item-content>
-            
           </v-list-item>
-          
 
           <v-card-actions>
             <v-btn @click="btnGo" class="secondary--text font-weight-bold" text

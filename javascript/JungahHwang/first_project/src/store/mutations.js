@@ -3,7 +3,7 @@ import {
   USER_LOGIN,
   FETCH_USER_INFO,
   FETCH_SESSION,
-// Calendar
+// Record
   OPEN_DETAIL,
   FETCH_RECORDS,
   FETCH_RECORD,
@@ -34,7 +34,7 @@ export default {
     state.session = session
   },
 
-// Calendar
+// Record
   [OPEN_DETAIL] (state, date) {
     state.selectDate = date
     

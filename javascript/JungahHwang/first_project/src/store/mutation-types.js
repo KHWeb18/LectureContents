@@ -3,7 +3,7 @@ export const USER_LOGIN = 'USER_LOGIN'
 export const FETCH_USER_INFO = 'FETCH_USER_INFO'
 export const FETCH_SESSION = 'FETCH_SESSION'
 
-// Calendar
+// Record
 export const OPEN_DETAIL = 'OPEN_DETAIL'
 export const FETCH_RECORDS = 'FETCH_RECORDS'
 export const FETCH_RECORD = 'FETCH_RECORD'
