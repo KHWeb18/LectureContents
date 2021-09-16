@@ -2,10 +2,10 @@
   <swiper class="swiper" :options="swiperOption">
 
     
-    <swiper-slide><a href="DetailPageBlackWidow"><img src="@/assets/img/블랙위도우.png"></a></swiper-slide>
+    <swiper-slide><a href="BlackWidow"><img src="@/assets/img/블랙위도우.png"></a></swiper-slide>
 
-    <swiper-slide><a href="#"><img src="@/assets/img/해리포터 배너.png" /></a></swiper-slide>
-    <swiper-slide><a href="#"><img src="@/assets/img/왓치맨 배너.png" /></a></swiper-slide>
+    <swiper-slide><a href="HarryPotter"><img src="@/assets/img/해리포터 배너.png" /></a></swiper-slide>
+    <swiper-slide><a href="WatchMen"><img src="@/assets/img/왓치맨 배너.png" /></a></swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
     <div class="swiper-button-prev" slot="button-prev"></div>
     <div class="swiper-button-next" slot="button-next"></div>

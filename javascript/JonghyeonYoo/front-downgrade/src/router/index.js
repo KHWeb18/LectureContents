@@ -77,6 +77,10 @@ import CalendarTestPage from '@/views/CalendarTestPage.vue';
 // JPA Test Page
 import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
 import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+
+// FileUploadPage
+import FileUploadPage from '@/views/FileUploadPage.vue'
 
 Vue.use(VueRouter)
 
@@ -353,7 +357,22 @@ const routes = [
     components: {
       default: MemberJoinColumnTestPage
     }
+  },
+  {
+    path: '/memberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+    {
+      path: '/fileupload',
+      name: 'FileUploadPage',
+      components: {
+        default: FileUploadPage
+      }
   }
+
 ]
 
 const router = new VueRouter({

@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <coverflow :coverList="coverList" :coverWidth="260" :index="2"></coverflow>
+    <coverflow :coverList="coverList" :coverWidth="600" :index="2"></coverflow>
 </div>
 </template>
 

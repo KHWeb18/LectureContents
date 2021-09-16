@@ -215,6 +215,20 @@
       >
         Member Join Column
       </router-link>
+      <router-link
+        :to="{ name: 'VuetifyMemberLoginPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        VuetifyMemberLoginPage
+      </router-link>
+            <router-link
+        :to="{ name: 'FileUploadPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        파일 업로드 Test
+      </router-link>
     </div>
   </div>
 </template>

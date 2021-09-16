@@ -6,17 +6,17 @@
         <div class="title">
           <h2 class="title-area">
             <span class="label">HBO 시리즈!</span>
-            <button class="more" onclick="location.href='#'">더보기</button>
+            
           </h2>
         </div>
 
   <swiper class="swiper" :options="swiperOption">
     
-    <swiper-slide><a href="#"><img src="@/assets/img/왕좌의게임8.jpg">
+    <swiper-slide><a href="GameOfThrones"><img src="@/assets/img/왕좌의게임8.jpg">
      <p class="name">왕좌의게임 시즌8</p></a></swiper-slide>
-    <swiper-slide><a href="#"><img src="@/assets/img/밴드오브브라더스.jpg" />
+    <swiper-slide><a href="BandOfBrothers"><img src="@/assets/img/밴드오브브라더스.jpg" />
      <p class="name">밴드 오브 브라더스</p></a></swiper-slide>
-    <swiper-slide><a href="#"><img src="@/assets/img/체르노빌.jpg" />
+    <swiper-slide><a href="Chernobyl"><img src="@/assets/img/체르노빌.jpg" />
     <p class="name">체르노빌</p></a></swiper-slide>
     <swiper-slide><a href="#"><img src="@/assets/img/종이의집4.jpg" />
     <p class="name">종이의집 시즌4</p></a></swiper-slide>

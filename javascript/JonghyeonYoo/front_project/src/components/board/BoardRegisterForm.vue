@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmit">
     <v-container>
-      <v-card elevation="10" outlined width="100%" class="mx-auto" style="margin: 150px auto 0;">
+      <v-card dark elevation="10" outlined width="100%" class="mx-auto" style="margin: 150px auto 0;">
         <v-card-title>
           <span class="mr-2">게시물 작성</span>
         </v-card-title>
@@ -15,6 +15,7 @@
             <v-row>
               <v-col>
                 <v-text-field label="Writer" dense v-model="writer" />
+             
               </v-col>
             </v-row>
             Content<br>

@@ -3,14 +3,14 @@
     <board-read v-if="board" :board="board"/>
     <p v-else style="color: white">로딩중......</p>
     
-    <div class="button">
+    <div class="button" >
   <v-btn elevation="2">
-    <router-link :to="{ name: 'BoardModifyPage', params: { boardNo }}" style="color: black;">
+    <router-link :to="{ name: 'BoardModifyPage', params: { boardNo }}"  style="color: black;">
       게시물 수정
     </router-link><br>
   </v-btn>
     <v-btn elevation="2">
-    <button @click="onDelete" style="color: black;">삭제</button>
+    <button @click="onDelete"  style="color: black;">삭제</button>
     </v-btn>
 
       <v-btn elevation="2">

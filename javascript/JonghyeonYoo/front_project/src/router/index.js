@@ -21,14 +21,27 @@ import BoardRegisterPage from '@/views/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/BoardReadPage.vue'
 import BoardModifyPage from '@/views/BoardModifyPage.vue'
 
+// 리뷰(게시판)
+import ReviewListPage from '@/views/ReviewListPage.vue'
+import ReviewRegisterPage from '@/views/ReviewRegisterPage.vue'
+import ReviewReadPage from '@/views/ReviewReadPage.vue'
+import ReviewModifyPage from '@/views/ReviewModifyPage.vue'
+
+
 import MyPage from '../views/MyPage.vue'
 
 // detailPage(상세페이지)
-import DetailPageTaxi from '@/views/DetailPage/DetailPageTaxi.vue'
+import Taxi from '@/views/DetailPage/Taxi.vue'
 import taxiForm from '@/components/detailPageForm/taxiForm.vue'
 
 import blackWidowForm from '@/components/detailPageForm/blackWidowForm.vue'
-import DetailPageBlackWidow from '@/views/DetailPage/DetailPageBlackWidow.vue'
+import BlackWidow from '@/views/DetailPage/BlackWidow.vue'
+
+import HarryPotter from '@/views/DetailPage/HarryPotter.vue'
+import WatchMen from '@/views/DetailPage/WatchMen.vue'
+import GameOfThrones from '@/views/DetailPage/GameOfThrones.vue'
+import BandOfBrothers from '@/views/DetailPage/BandOfBrothers.vue'
+import Chernobyl from '@/views/DetailPage/Chernobyl.vue'
 
 //로그인 세션 테스트
 import Login from '@/views/Login.vue'
@@ -42,6 +55,9 @@ import GoToLogin from '@/components/member/GoToLogin.vue'
 
 //좋아요 싫어요
 import like from '../views/like.vue'
+
+// footer
+import Footer from '../views/Footer.vue'
 
 Vue.use(VueRouter)
 
@@ -138,6 +154,46 @@ const routes = [
     default: true
   }
 },
+
+
+{
+  path: '/review',
+  name: 'ReviewListPage',
+  components: {
+    default: ReviewListPage
+  }
+},
+{
+  path: '/review/create',
+  name: 'ReviewRegisterPage',
+  components: {
+    default: ReviewRegisterPage
+  }
+},
+{
+  path: '/review/:reviewNo',
+  name: 'ReviewReadPage',
+  components: {
+    default: ReviewReadPage
+  },
+  props: {
+    default: true
+  }
+},
+{
+  path: '/review/:reviewNo/edit',
+  name: 'ReviewModifyPage',
+  components: {
+    default: ReviewModifyPage
+  },
+  props: {
+    // 라우팅 파라미터를 props에 자동으로 설정하게 서포트함!!
+    default: true
+  }
+},
+
+
+
 {
   path: '/mypage',
   name: 'MyPage',
@@ -145,9 +201,9 @@ const routes = [
 },
 // 상세 페이지
 {
-  path: '/detailPageTaxi',
-  name: 'DetailPageTaxi',
-  component: DetailPageTaxi
+  path: '/Taxi',
+  name: 'Taxi',
+  component: Taxi
 },
 {
   path: '/taxiForm',
@@ -162,11 +218,36 @@ const routes = [
   component: blackWidowForm
 },
 {
-  path: '/detailPageBlackWidow',
-  name: 'DetailPageBlackWidow',  
-  component: DetailPageBlackWidow,
-
+  path: '/BlackWidow',
+  name: 'BlackWidow',  
+  component: BlackWidow,
 },
+{
+  path: '/HarryPotter',
+  name: 'HarryPotter',  
+  component: HarryPotter,
+},
+{
+  path: '/WatchMen',
+  name: 'WatchMen',  
+  component: WatchMen,
+},
+{
+  path: '/GameOfThrones',
+  name: 'GameOfThrones',  
+  component: GameOfThrones,
+},
+{
+  path: '/BandOfBrothers',
+  name: 'BandOfBrothers',  
+  component: BandOfBrothers,
+},
+{
+  path: '/Chernobyl',
+  name: 'Chernobyl',  
+  component: Chernobyl,
+},
+
 // 로그인 세션 테스트
 {
   path: '/login',
@@ -192,6 +273,11 @@ const routes = [
   path: '/like',
   name: 'like',
   component: like
+},
+{
+  path: '/Footer',
+  name: 'Footer',
+  component: Footer
 },
 
 ]

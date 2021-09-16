@@ -255,81 +255,16 @@
               "
               >작품에 대한 감상을 기록해보세요.</span
             >
-            <br />
-            <v-btn
-              elevation="1"
-              style="
-                background-color: #4263eb;
-                border-radius: 6px;
-                font-size: 15px;
-              "
-            >
-              <router-link
-                :to="{ name: 'BoardRegisterPage' }"
-                class="register"
-                style="color: #fff"
-              >
-                리뷰 작성하기
-              </router-link></v-btn
-            >
           </div>
-          <br />
-
-          <v-card dark>
-            <v-card-title>
-              리뷰
-              <v-spacer></v-spacer>
-              <v-text-field
-                style="color: white"
-                v-model="search"
-                append-icon="mdi-magnify"
-                label="Search"
-                single-line
-                hide-details
-              >
-              </v-text-field>
-            </v-card-title>
-   <v-alert
-                slot="no-results"
-                :value="true"
-                color="error"
-                icon="warning"
-              >
-                "{{ search }}" 검색 결과가 없습니다.
-              </v-alert>
-            <v-data-table
-              :headers="headerTitle"
-              :items="boards"
-              :loading="loading"
-              loading-text="현재 등록된 게시물이 없습니다!"
-              :items-per-page="10"
-              :search="search"
-              @click:row="goToRead"
-              class="elevation-1"
-            >
-              <template>
-                <tr v-for="board in boards" :key="board.boardNo">
-                  <td @click="goToRead(item.boardNo)"></td>
-                  <td align="center">{{ board.boardNo }}</td>
-                  <td align="left">
-                    <router-link
-                      :to="{
-                        name: 'BoardReadPage',
-                        params: { boardNo: board.boardNo.toString() },
-                      }"
-                    >
-                      {{ board.title }}
-                    </router-link>
-                  </td>
-                  <td align="right">{{ board.writer }}</td>
-                  <td align="center">{{ board.regDate }}</td>
-                </tr>
-              </template>
-
-           
-            </v-data-table>
-          </v-card>
         </div>
+        <br />
+    <review-register-form @submit="onSubmit" />
+
+
+        <br />
+    <div id="review">  
+        <review-list :reviews="reviews"/> 
+    </div>
         <hr class="new-divider" color="#212529" style="display: block" />
       </div>
     </v-container>
@@ -338,34 +273,68 @@
 
 
 <script>
+import ReviewList from '@/components/review/ReviewList.vue'
+import { mapState, mapActions } from 'vuex'
+
+import ReviewRegisterForm from '@/components/review/ReviewRegisterForm.vue'
+import axios from "axios";
+
 export default {
+ 
+    components: {
+        ReviewList,
+ ReviewRegisterForm,
+    },
+    computed: {
+        ...mapState(['reviews'])
+    },
+    mounted () {
+        this.fetchReviewList()
+    },
   data() {
     return {
       likecnt: 0,
       dislikecnt: 0,
       search: "",
+      dialog: false,
       loading: false,
       headerTitle: [
-        { text: "번호", value: "boardNo", width: "30px" },
-        { text: "제목", value: "title", width: "200px" },
-        { text: "작성자", value: "writer", width: "100px" },
-        { text: "내용", value: "content", width: "200px" },
+        { text: "번호", value: "reviewNo", width: "30px" },
+        { text: "작성자", value: "writer", width: "80px" },
+        { text: "내용", value: "content", width: "400px" },
       ],
     };
   },
   methods: {
+      onSubmit(payload) {
+        const {content, writer} = payload
+        axios.post('http://localhost:1111/review/register', { writer, content})
+        .then(res => {
+            alert('등록 성공~!' + res)
+           console.log('게시물 번호: ', + res.data.reviewNo.toString())
+           this.$router.push({
+                name: 'ReviewListPage',
+                // params: { reviewNo: res.data.boardNo.toString()}
+            })
+           
+        })
+        .catch(res => {
+            alert(res.reponse.data.message)
+        })
+    },
+            ...mapActions(['fetchReviewList']),
+
     goToRead(item) {
-      this.$router.push(`/Board/${item.boardNo}`);
+      this.$router.push(`/Review/${item.reviewNo}`);
     },
   },
   props: {
-    boards: {
+    reviews: {
       type: Array,
     },
   },
 };
 </script>
-
 
 <style scoped>
 .review-icon {

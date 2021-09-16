@@ -24,5 +24,7 @@ export default {
     students: [],
     mean: 0,
     // 크롤링
-    lists: []
+    lists: [],
+    // 세션
+    session: []
 }

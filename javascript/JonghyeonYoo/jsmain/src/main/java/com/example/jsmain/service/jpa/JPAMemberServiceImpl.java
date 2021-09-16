@@ -5,6 +5,7 @@ import com.example.jsmain.entity.jpa.Member;
 import com.example.jsmain.entity.jpa.MemberAuth;
 import com.example.jsmain.repository.jpa.JPAMemberAuthRepository;
 import com.example.jsmain.repository.jpa.JPAMemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import java.util.Optional;
 
 // Service는 여기서 register가 여러 방식으로 동작할 수 있음을 명시한다.
 // 또한 Controller의 Autowired에 자동으로 연결되도록 서포트한다.
+
+@Slf4j
 @Service
 public class JPAMemberServiceImpl implements JPAMemberService {
 
@@ -38,17 +41,48 @@ public class JPAMemberServiceImpl implements JPAMemberService {
 
         memberRepository.save(memberEntity);
     }
-/*
+
     @Override
-    public void login(Member member) throws Exception {
-        repository.login(member);
+    public boolean login(MemberRequest memberRequest) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
+
+        if (maybeMember == null)
+        {
+            log.info("login(): 그런 사람 없다.");
+            return false;
+        }
+
+        Member loginMember = maybeMember.get();
+
+        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
+        {
+            log.info("login(): 비밀번호 잘못 입력하였습니다.");
+            return false;
+        }
+
+        return true;
     }
 
+    @Override
+    public boolean checkUserIdValidation(String userId) throws Exception {
+        Optional<Member> maybeMember = memberRepository.findByUserId(userId);
+
+        if (maybeMember == null)
+        {
+            log.info("login(): 그런 사람 없다.");
+            return false;
+        }
+
+        return true;
+    }
+
+    /*
     @Override
     public List<Member> list() throws Exception {
         return repository.list();
     }
- */
+     */
+
     @Override
     public Optional<Member> findByAuth(Long memberNo) {
         return memberRepository.findByAuth(memberNo);

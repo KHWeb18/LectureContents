@@ -2,6 +2,9 @@ import{
         // 게시판
         FETCH_BOARD_LIST,
         FETCH_BOARD,
+                // 게시판
+                FETCH_REVIEW_LIST,
+                FETCH_REVIEW,
             // 크롤링
     CRAWL_START
 } from  './mutation-types'
@@ -22,6 +25,19 @@ export default{
                     commit(FETCH_BOARD, res.data)
                 })
         },
+        //리뷰 게시판
+                fetchReviewList({ commit }) {
+                    return axios.get('http://localhost:1111/review/lists')
+                        .then((res) => {
+                            commit(FETCH_REVIEW_LIST, res.data)
+                        })
+                },
+                fetchReview({ commit }, reviewNo) {
+                    return axios.get(`http://localhost:1111/review/${reviewNo}`)
+                        .then((res) => {
+                            commit(FETCH_REVIEW, res.data)
+                        })
+                },
     // 크롤링
 
     async crawlFind ({ commit }, category) {

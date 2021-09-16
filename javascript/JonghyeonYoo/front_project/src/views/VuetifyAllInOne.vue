@@ -17,17 +17,7 @@
         -->
 
   <div>
-    <v-toolbar dense dark>
-      <v-toolbar-title>
-        <span class="font-weight-light">쵝오의 여행!</span>
-        <span>꾸르팁</span>
-      </v-toolbar-title>
-      <v-toolbar-items>
-        <v-btn text v-for="link in links" :key="link.icon" :to="link.route">
-          {{ link.text }}
-        </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+
     <v-navigation-drawer app v-model="nav_drawer" temporary>
       <v-list nav dense>
         <v-list-item-group

@@ -63,11 +63,11 @@
         membertest
       </router-link>
                         <router-link
-        :to="{ name: 'DetailPageTaxi' }"
+        :to="{ name: 'Taxi' }"
         class="nav-link"
         active-class="active"
       >
-        DetailPageTaxi
+        Taxi
       </router-link>
       <!-- 로그인 세션 테스트 -->
                               <router-link
@@ -86,11 +86,18 @@
       </router-link>
           <!-- 좋아요 싫어요 -->
             <router-link
-        :to="{ name: 'like' }"
+        :to="{ name: '' }"
         class="nav-link"
         active-class="active"
       >
         좋아요 싫어요 
+      </router-link>
+                  <router-link
+        :to="{ name: 'ReviewListPage' }"
+        class="nav-link"
+        active-class="active"
+      >
+        리뷰페이지 테스트
       </router-link>
     </div>
   </div>

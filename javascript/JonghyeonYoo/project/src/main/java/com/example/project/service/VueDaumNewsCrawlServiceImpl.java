@@ -74,7 +74,7 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
     public void daumNewsMainCrawler(String category) {
         log.info("daumNewsMainCrawler()");
 
-        document = connectUrl("https://entertain.daum.net/#mainNews_movie" + category);
+        document = connectUrl("https://entertain.daum.net/news/movie" + category);
 
         daumNewsRepository.deleteAll();
 

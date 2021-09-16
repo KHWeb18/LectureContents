@@ -16,7 +16,7 @@
   <swiper class="swiper" :options="swiperOption">
     <swiper-slide><a href="#"><img src="@/assets/img/펜트하우스.jpg">
     <p class="name">펜트하우스</p></a></swiper-slide>
-    <swiper-slide><a href="DetailPageTaxi"><img src="@/assets/img/모범택시.jpg" />
+    <swiper-slide><a href="Taxi"><img src="@/assets/img/모범택시.jpg" />
     <p class="name">모범택시</p></a></swiper-slide>
     <swiper-slide><a href="#"><img src="@/assets/img/괴물.jpg" />
     <p class="name">괴물</p></a></swiper-slide>
