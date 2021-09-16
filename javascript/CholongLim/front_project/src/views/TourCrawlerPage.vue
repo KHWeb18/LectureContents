@@ -1,95 +1,15 @@
-<!--<template>
-    <Layout>
-        <template #tour>
-            <div  class="justify-center">
-                <v-row align="center" justify="center">
-                 <v-btn @click="start('서귀포+관광')" rounded color="light-blue lighten-2" class="crawler-btn"
-                    style="padding: 0px; width: 150px; margin-left:15px;" large>#서귀포 관광지</v-btn>
-
-                    <v-btn @click="food('서귀포+맛집')" rounded color="indigo lighten-2" class="crawler-btn"
-                    style="padding: 0px; width: 150px; margin-left:15px;" large>#서귀포 맛집</v-btn>
-
-                    <v-btn @click="cafe('서귀포+카페')" rounded color="purple lighten-2" class="crawler-btn"
-                    style="padding: 0px; width: 150px; margin-left:15px;" large>#서귀포 카페</v-btn>
-                </v-row>
-            </div>
-        </template>
-        <template #content>
-             <v-simple-table class="crawler">
-                <template v-slot:default>
-                    <tbody>
-                        <tr v-for="list of lists" :key="list.title">
-                            <td style="color: gray">{{ list.tourNo }}</td>
-                            <td><a v-bind:href="list.address">{{ list.title }}</a></td>
-                            
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table> 
-
-        </template>
-
-    </Layout>
-</template>
-
-<script>
-import Layout from '@/components/layout/Layout'
-import { mapState } from 'vuex'
-export default {
-    components: {
-        Layout
-    },
-    computed: {
-        ...mapState ({
-            lists: state => state.lists
-        })
-    },
-    methods: {
-        start (category) {
-            this.$store.dispatch('crawlFind', category)
-        },
-        food (category) {
-            this.$store.dispatch('crawlFind', category)
-        },
-        cafe (category) {
-            this.$store.dispatch('crawlFind', category)
-        }
-    }
-}
-</script>
-
-<style scoped>
-
-
-.crawler-btn{
-    text-align: center;
-    margin: 0;
-    color: white;
-}
-.crawler{
-    width: 800px;
-    text-align: center;
-    position: relative;
-    left:15%;
-}
-
-.crawler-color{
-    background-color: rgb(233, 233, 233);
-}
-</style>-->
-
-
 <template>
     <Layout>
         <menu-bar/>
         <template #tour>
             <div class="btn-back">
                 <v-row align="center" justify="center">
-                    <v-btn @click="start('서귀포+관광')" class="button2 b-green rot-135">#서귀포 관광</v-btn>
-                    <v-btn @click="food('서귀포+맛집')" class="button2 b-pink rot-135">#서귀포 맛집</v-btn>
-                    <v-btn @click="cafe('서귀포+카페')" class="button2 b-red rot-135">#서귀포 카페</v-btn>
+                    <v-btn @click="start('서귀포+관광')" class="button2 b-blue rot-135">#서귀포 관광</v-btn>
+                    <v-btn @click="food('서귀포+맛집')" class="button2 b-red rot-135">#서귀포 맛집</v-btn>
+                    <v-btn @click="cafe('서귀포+카페')" class="button2 b-pink rot-135">#서귀포 카페</v-btn>
                     <v-btn @click="market('제주+동문시장')" class="button2 b-orange rot-135">#제주 동문시장</v-btn>
-                    <v-btn @click="souvenir('제주+기념품')" class="button2 b-blue rot-135">#제주 기념품</v-btn>
+                    <v-btn @click="souvenir('제주+기념품')" class="button2 b-green rot-135">#제주 기념품</v-btn>
+
                 </v-row>
             </div>
         </template>
@@ -100,15 +20,11 @@ export default {
                         <tr v-for="list of lists" :key="list.title">
                             <td style="color: gray">{{ list.tourNo }}</td>
                             <td><a v-bind:href="list.address" target="_blank">{{ list.title }}</a></td>
-                            
                         </tr>
                     </tbody>
                 </template>
-            </v-simple-table> 
-         
-            
+            </v-simple-table>  
         </template>
-
     </Layout>
 </template>
 
@@ -182,7 +98,6 @@ export default {
     background-color: rgb(233, 233, 233);
 }
 
-/* d여기서부터 */
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -203,10 +118,6 @@ footer {
 footer a, footer a:after {
   font-size: 1em !important;
 }
-/*END BODY*/
-
-/*GRADIENTS*/
-  /*GREEN*/
   .b-green, .b-green:before {
     background: rgba(73,155,234,1);
     background: -moz-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
@@ -279,36 +190,7 @@ footer a, footer a:after {
 .button:hover {
   text-shadow: 0px 0px 0px rgba(255, 255, 255, .75);
 }
-/* .button:hover:after {
-  left: 100%;
-  top: 100%;
-  bottom: 100%;
-  right: 100%;
-} */
-/* .button:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-  border-radius: 5px;
-  transition: all .5s;
-} */
-/* .button:after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  bottom: 2px;
-  right: 2px;
-  z-index: -1;
-  border-radius: 5px;
-  transition: all .5s;
-} */
+
 .button2 {
   display: inline-block;
   font-size: 1.2em;
@@ -320,8 +202,7 @@ footer a, footer a:after {
   color: #FFF;
   text-decoration: none;
 }
-/*END BASE BUTTON*/
-/*ROTATE*/
+
 .rot-360-noscoop:hover {
   filter: hue-rotate(360deg);
   transform: rotate(360deg);

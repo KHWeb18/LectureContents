@@ -4,22 +4,22 @@
             <v-col cols="12" md="12" >
 
             <v-text-field label="글번호" required height="5vh" style="margin-top:10px;" 
-                             readonly 
+                             readonly filled
                            :value="board.boardNo" type="boardNo">
             </v-text-field>
 
             <v-text-field label="제목"  required height="5vh" style="margin-top:10px;" 
-                             readonly
+                             readonly filled
                            :value="board.title" type="title">
             </v-text-field>
 
             <v-text-field label="작성자"  required height="5vh" style="margin-top:10px;" 
-                                 readonly
+                                 readonly filled
                            :value="board.writer" type="writer">
             </v-text-field>
 
             <v-textarea label="본문"  auto-grow style="margin-top:10px;" counter maxlength="500"
-                            full-width single-line outlined readonly 
+                            full-width single-line readonly filled
                        :value="board.content" type="content">
             </v-textarea>
             </v-col>

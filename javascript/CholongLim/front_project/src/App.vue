@@ -1,6 +1,9 @@
 <template>
   <v-app>
-    <menu-bar v-if="($route.name !== 'MainPage') && ($route.name !== 'Home') && ($route.name !== 'test') "/>
+    <menu-bar v-if="($route.name !== 'MainPage') && ($route.name !== 'Home') && ($route.name !== 'BookingListPage') 
+    && ($route.name !== 'BookingReadPage') && ($route.name !== 'MemberListPage')&& ($route.name !== 'MemberModifyPage') 
+    && ($route.name !== 'MemberReadPage') && ($route.name !== 'MyReservation') && ($route.name !== 'ReservationReadPage')
+    && ($route.name !== 'UserList') && ($route.name !== 'UserModifyPage')&& ($route.name !== 'UserReadPage')"/>
     <v-main>
       <router-view/>
     </v-main>
@@ -21,7 +24,7 @@ export default {
 }
 </script>
 
-<styl
+<style
     CinzelFootere>
 /*
 #app {

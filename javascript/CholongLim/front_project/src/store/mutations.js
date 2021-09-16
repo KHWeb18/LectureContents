@@ -1,7 +1,5 @@
 import {
-  // TEST
    ALREADYS,
-   //
    FETCH_BOARD_LIST,
    FETCH_BOARD,
    FETCH_AUTH_LIST,
@@ -25,11 +23,9 @@ import {
 } from './mutation-types'
 
 export default {
-  // test용
   [ALREADYS] (state, alreadyCheckIn) {
     state.alreadyCheckIn = alreadyCheckIn;
   },
-  // 게시판
   [FETCH_BOARD_LIST] (state, boards) {
     state.boards = boards;
   },
@@ -66,18 +62,15 @@ export default {
   [FETCH_USER] (state, user) {
     state.user = user
   },
-  // 로그인 실패했을때
   [LOGIN_ERROR] (state){
     state.isManagerLogin = false
     state.isManagerLoginError = true
   },
-  // 로그아웃
   [LOGOUT] (state) {
     state.isManagerLogin = false
     state.isManagerLoginError = false
     state.userInfo = null
   },
-  // 회원 관리
   [FETCH_MEMBER_LIST] (state, members) {
     state.members = members;
   },

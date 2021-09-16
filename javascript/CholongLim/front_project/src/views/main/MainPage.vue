@@ -278,7 +278,7 @@ body {
 
 .main-bar{
   position: absolute;
-  top: 1%;
+  top: 2%;
   left:1%;
 }
 
@@ -315,7 +315,7 @@ body {
 .login-locate {
     padding: 10px 0px 10px 0px;
     position: absolute;
-    top:1%;
+    top:1.5%;
 }
 
 h3 {

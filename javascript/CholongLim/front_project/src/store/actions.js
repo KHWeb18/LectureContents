@@ -114,9 +114,6 @@ export default {
       commit(LOGOUT)
       alert('로그아웃.')
       location.href='/cinzel'
-    //   router.push({name: 'MainPage'})
-    //   location.reload()
-
   },
   async crawlFind ({ commit }, category) {
     axios.get('http://localhost:8888/' + `${category}`)

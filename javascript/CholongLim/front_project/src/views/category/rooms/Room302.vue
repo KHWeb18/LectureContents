@@ -151,7 +151,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 4000
+                    delay: 3000
                 }
             },
             rooms: [
@@ -313,7 +313,6 @@ h3 {
         text-align: center;
         font-weight: bold;
         font-size: 3rem;
-        background-color:lightsteelblue;
         background-position: center;
         background-size: center;
     }

@@ -7,7 +7,6 @@ import MainPage from '@/views/main/MainPage.vue'
 
 // 로그인
 import CinzelMemberLogin from '@/views/member/CinzelMemberLogin.vue'
-import MyPage from '@/views/member/MyPage.vue'
 // 마이페이지
 import UserList from '@/views/member/UserList.vue'
 import UserReadPage from '@/views/member/UserReadPage.vue'
@@ -24,13 +23,11 @@ import BookingListPage from '@/views/manager/BookingListPage.vue'
 import BookingReadPage from '@/views/manager/BookingReadPage.vue'
 
 
-
 // 회원가입
 import CinzelMemberRegister from '@/views/member/CinzelMemberRegister.vue'
 
 //카테고리
 import About from '@/views/category/About.vue'
-import Tour from '@/views/category/Tour.vue'
 import Reservation from '@/views/category/Reservation.vue'
 
 // 크롤링
@@ -41,7 +38,6 @@ import BoardListPage from '@/views/category/board/BoardListPage.vue'
 import BoardRegisterPage from '@/views/category/board/BoardRegisterPage.vue'
 import BoardReadPage from '@/views/category/board/BoardReadPage.vue'
 import BoardModifyPage from '@/views/category/board/BoardModifyPage.vue'
-
 
 // room
 import SelectRoom from '@/views/category/rooms/SelectRoom.vue'
@@ -54,10 +50,6 @@ import Room302 from '@/views/category/rooms/Room302.vue'
 import Book2 from '@/views/Book2.vue'
 
 
-
-
-import test from '@/views/test.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -65,18 +57,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: test
-  },
-  {
-    path: '/mypage',
-    name: 'MyPage',
-    components: {
-      default: MyPage
-    }
   },
   {
     path: '/tourCrawler',
@@ -99,7 +79,6 @@ const routes = [
       default: CinzelMemberLogin
     }
   },
-  // 마이페이지
   {
     path: '/userList',
     name: 'UserList',
@@ -144,7 +123,6 @@ const routes = [
       default: true
     }
   },
-  // 관리자
   {
     path: '/memberList',
     name: 'MemberListPage',
@@ -236,13 +214,6 @@ const routes = [
     name: 'Room202',
     components: {
       default: Room202
-    }
-  },
-  {
-    path: '/tour',
-    name: 'Tour',
-    components: {
-      default: Tour
     }
   },
   {

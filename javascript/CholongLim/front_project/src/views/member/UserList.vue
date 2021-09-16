@@ -4,8 +4,7 @@
     <v-card class="card-box">
       <v-navigation-drawer
         permanent
-        style="float:left;"
-      >
+        style="float:left;">
         <v-list>
           <v-list-item class="px-2">
             <v-list-item-avatar>
@@ -25,10 +24,7 @@
 
         <v-divider></v-divider>
 
-        <v-list
-          nav
-          dense
-        >
+        <v-list nav dense>
           <v-list-item route :to="{ name: 'UserList'}">
             <v-list-item-icon>
               <v-icon>edit</v-icon>
@@ -89,7 +85,6 @@ export default {
       fetchUserList () {
       return axios.get('http://localhost:8888/jpamember/lists', { params: { userId : this.userId} })
               .then((res) => {
-                // this.$store.commit(FETCH_USER_LIST, res.data)
                 this.$store.commit(FETCH_USER, res.data)
                 this.$store.commit(FETCH_AUTH_LIST, res.data.authList[0])
               })
@@ -144,7 +139,6 @@ h4 {
 
 .img{
     position: relative;
-    /* background-image: url('https://images.pexels.com/photos/7130477/pexels-photo-7130477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');                                                             */
     background-image: url('https://images.pexels.com/photos/7130503/pexels-photo-7130503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); 
     height: 100vh;
     background-size: cover;

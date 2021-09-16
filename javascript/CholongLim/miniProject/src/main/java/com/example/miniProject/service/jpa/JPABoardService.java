@@ -14,6 +14,6 @@ public interface JPABoardService {
 
     public void remove(Long boardNo) throws Exception;
 
-    public List<Board> list(String title, String content) throws Exception;
+    public List<Board> list() throws Exception;
 
 }

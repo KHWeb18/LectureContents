@@ -35,7 +35,7 @@
             </v-col>
         </div>
         
-        <div class="btn-size">
+        <v-container class="justify center" style="padding:0%;">
             <v-col cols="12" md="12"> 
                 <v-btn type="submit" color="blue"
                 class="ma-2 white--text">
@@ -46,7 +46,7 @@
                 취소
                 </v-btn> 
             </v-col>   
-        </div>
+        </v-container>
         </form>
 </template>
 

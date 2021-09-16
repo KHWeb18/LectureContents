@@ -11,21 +11,19 @@
                      disabled type="userName"></v-text-field>
                 <v-text-field  label="회원 아이디" :value="user.userId" 
                      disabled type="userId"></v-text-field>
-                <v-text-field  label="전화번호" :value="user.userPhone" 
-                    disabled type="phone"></v-text-field>
-
-             
-                <v-btn outlined class="ma-2 edit" route :to="{ name: 'UserModifyPage', params: { memberNo: user.memberNo } }">
-                    수정하기</v-btn> 
-
+                     <div>
+                        <v-text-field  label="전화번호" :value="user.userPhone" 
+                            disabled type="phone" class="field-edit"></v-text-field>
+                            <v-btn outlined class="ma-2 edit2" route :to="{ name: 'UserModifyPage', params: { memberNo: user.memberNo } }">
+                            수정하기</v-btn>
+                     </div>
                 </div>
-
-                <div>
+                <v-container class="before">
                     <v-row class="justify-center">
                 <v-btn color="blue" outlined class="ma-2 white--text" route :to="{ name: 'UserList' }">
                     이전으로</v-btn> 
                     </v-row>
-                </div>
+                </v-container>
             </v-container>
         </v-container>
     </div>
@@ -64,13 +62,21 @@ h4 {
     margin: 0 auto;
 }
 
-.edit{
+
+.field-edit{
+    float: left;
+    width: 85%;
+}
+
+.edit2{
+    float: left;
     position: absolute;
-    top: 74%;
-    left: 70%;
-    width: 5px;
+    width: 10px;
     font-size: 6px;
     color: rgb(102, 101, 101);
-    
+}
+
+.before{
+    margin-top: 15%;
 }
 </style>

@@ -1,16 +1,14 @@
 <template>
-    <div id="board">
+    <div id="board" class="list">
         <div>
             <v-img class="about-img-top" src="https://images.pexels.com/photos/7244366/pexels-photo-7244366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
             </v-img>
         </div>
-
         
         <div class="section">
             <p class="intro-font">" We travel, some of us forever, to seek other places, other lives, other souls. "</p>
         </div>
         
-    
         <v-container class="about-top">
             <p>WELCOME TO CINZEL</p>
             <h1>CINZEL BOARD</h1>
@@ -23,26 +21,12 @@
         <v-btn color="blue" outlined class="btn-locate" v-if="this.auth == '관리자'"
             route :to="'/board/create'">글쓰기</v-btn>
 
-            <!-- <div>
-            <v-container style="margin-left:40%;">
-                <v-row align="center">
-                 <input type="text" style="float:left; width:15%;" v-model="searchText"/>
-                 <v-btn style="float:left; margin-left:2%" @click="search">검색</v-btn>
-                </v-row>
-            </v-container>
-        </div>
-         -->
-
-
     </div>  
 </template>
 
 <script>
 import BoardList from '@/components/board/BoardList.vue'
 import { mapActions,mapState } from 'vuex'
-// import { mapState } from 'vuex'
-// import { FETCH_BOARD_LIST } from '@/store/mutation-types'
-// import axios from 'axios'
 
 export default {
     name: 'BoardListPage',
@@ -51,7 +35,7 @@ export default {
     },
     data() {
         return {
-            searchText: '',
+            title: '',
             auth: this.$cookies.get("auth"),
         }
     },
@@ -63,7 +47,7 @@ export default {
     },
     methods: {
         ...mapActions(['fetchBoardList']),
- 
+
     }
 
 }
@@ -75,6 +59,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
 
+.list{
+    margin-bottom: 5%;
+}
 
 .pagination li a {
     padding: 0 15px;

@@ -1,228 +1,204 @@
 <template>
-    <div>
+  <div>
     <div class="intro-top">
       <div class="container">
-    <div>
-    <div class="intro-top">
-    <div class="container">
-    
-        <v-container class="calendar">
-            <v-row>
-              
-              
-                <v-col md="6" class="book-calendar" >
-                  <div style="margin-top:40%;">
+        <div>
+          <div class="intro-top">
+            <div class="container">
+              <v-container class="calendar">
+                  <v-row>
+                      <v-col md="6" class="book-calendar" >
+                        <div style="margin-top:40%;">
 
-                        <v-btn text @click="prev">
-                            <v-icon>mdi-chevron-left </v-icon>
-                        </v-btn>
-                        <v-btn text @click="next">
-                            <v-icon>mdi-chevron-right</v-icon>
-                        </v-btn>
-                       
-                        <!-- <h2 v-if="$refs.calendar">
-                            {{ $refs.calendar.title }}
-                        </h2> -->
-              
-        
-                    <v-sheet height="400" width="600">
-                        <v-calendar
-                            ref="calendar"
-                            v-model="reservedDate"
-                            :type="type"
-                            @click:date="view"
-                           ></v-calendar>
-                    </v-sheet>
-                      </div>
-              
-                </v-col>
-
-
-            <v-col md="6">
-              <div class="overlay1">
-    
-                <v-simple-table style="border: 2px solid #edeeee;">
-                    <h2>선택일</h2>
-                    <h3>
-                        <strong>{{ reservedDate }}</strong>
-                    </h3>
-                    <v-divider></v-divider>
-                    <div class="text-box">
-                      <h5><b>전화번호 : </b> 010-7751-8851</h5>
-                      <h5><b>결제방법 : </b> 무통장</h5>
-                      <h5><b>이용안내 : </b></h5>
-                      <h5>- 달력에서 원하시는 날짜를 선택 하시면 예약 가능한 객실정보가 보여집니다.</h5>
-                      <h5>- 예약 전 예약규정을 반드시 숙지하시고 예약을 하시기 바랍니다.</h5>
-                      <h5>- 선택란의 체크박스를 체크 후 예약하기 버튼을 누르시면 예약이 진행 됩니다.</h5>
-                      <h5>- 2박 이상의 경우 1박씩 예약하셔야 합니다.</h5>
-                      </div>
-                </v-simple-table>
-              </div>
-            </v-col>
-            </v-row>
-           
-            
-        
-   
-        </v-container>
-  
-    </div>
-    <div>
-
-
-            <p>객실선택</p>
-            <v-divider></v-divider>
-
-            <div>
-                <div>
-                    <v-col cols="12" sm="12">
-                     <table>
-                         <tr>
-                          <!-- <td v-for="alreadyRoom in checkIn" :key="alreadyRoom.roomId"> -->
-                            <td>
-                            <v-checkbox v-model="roomId" id="301" value="301"
-                            :disabled="this.roomNum.indexOf('301') != -1"></v-checkbox></td>
-                          <td><v-img width="200"
-                                src="https://images.pexels.com/photos/7533766/pexels-photo-7533766.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                                </v-img>
-                          </td>
-                          <td width="40%"><strong># Room 301</strong><br> 기준 4명/ 최대 4명<br>300,000원</td>
-                          <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
-                          <td width="15%">인원<v-select label="4인" dense disabled flat solo outlined :items="['4인']" v-model="personNum"></v-select></td>
-                          <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 300,000원 </h1></td>
-                        </tr>
-                         <tr>
-                          <td><v-checkbox value="302" v-model="roomId" :disabled="this.roomNum.indexOf('302') != -1"
-                          required id="302"></v-checkbox></td>
-                          <td><v-img width="200"
-                                src="https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                                </v-img>
-                          </td>
-                          <td width="40%"><strong># Room 302</strong><br> 기준 4명/ 최대 4명<br>300,000원</td>
-                          <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
-                          <td width="15%">인원<v-select label="4인" dense disabled flat solo outlined :items="['4인']" v-model="personNum"></v-select></td>
-                          <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 300,000원 </h1></td>
+                              <v-btn text @click="prev">
+                                  <v-icon>mdi-chevron-left </v-icon>
+                              </v-btn>
+                              <v-btn text @click="next">
+                                  <v-icon>mdi-chevron-right</v-icon>
+                              </v-btn>
                             
-                        </tr>
-                        <tr>
-                          <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('201') != -1"
-                          id="201" value="201" required></v-checkbox></td>
-                          <td><v-img width="200"
-                                src="https://images.pexels.com/photos/7546712/pexels-photo-7546712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                                </v-img>
-                          </td>
-                          <td width="40%"><strong># Room 201</strong><br> 기준 2명/ 최대 2명<br>240,000원</td>
-                          <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
-                          <td width="15%">인원<v-select label="2인" dense disabled flat solo outlined :items="['2인']" v-model="personNum"></v-select></td>
-                          <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 240,000원 </h1></td>
-                        </tr>
-                        <tr>
-                          <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('202') != -1"
-                          id="202" value="202" required></v-checkbox></td>
-                          <td><v-img width="200"
-                                src="https://images.pexels.com/photos/7546707/pexels-photo-7546707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-                                </v-img>
-                          </td>
-                          <td width="40%"><strong># Room 202</strong><br> 기준 2명/ 최대 2명<br>240,000원</td>
-                          <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
-                          <td width="15%">인원<v-select label="2인" dense disabled flat solo outlined :items="['2인']" v-model="personNum"></v-select></td>
-                          <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 240,000원 </h1></td>
-                        </tr>
-
-                      </table> 
-                            </v-col>
-                        </div>
-                    </div>
-  
-
+                              <!-- <h2 v-if="$refs.calendar">
+                                  {{ $refs.calendar.title }}
+                              </h2> -->
+                    
               
-                  <div class="justify-center">
-              
+                          <v-sheet height="400" width="600">
+                              <v-calendar
+                                  ref="calendar"
+                                  v-model="reservedDate"
+                                  :type="type"
+                                  @click:date="view"
+                                ></v-calendar>
+                          </v-sheet>
+                            </div>
+                    
+                      </v-col>
 
-<v-layout justify-center>
-        <v-dialog v-model="dialog" persistent max-width="1000px">
-        <template v-slot:activator="{ on }">
-            <v-btn color="blue" width="150px" height="50px" 
-            style="margin: 100px 0px 150px 0px;" v-on="on">예약하기</v-btn>  
-            <v-btn color="blue lighten-3" width="150px" style="margin: 100px 0px 150px 30px;"
-             height="50px" router :to="{name: 'Reservation'}">취소</v-btn>
-                 
-        </template>
-        <v-card>
-            <v-toolbar color="blue darken-3">
-                        <v-toolbar-title><h2 style="color:white;">객실예약</h2></v-toolbar-title>
-                        <v-btn text x-large color="white" class="exit"
-                         @click="onClick()">
-                               <v-icon>clear</v-icon>
-                        </v-btn>
-            </v-toolbar>
-              
-            <v-card-text>
-                <v-container grid-list-md>
-                    <v-layout wrap>
-                        <v-flex>
-                            <v-container>
-                              <table class="info-table">
-                                <tr>
-                                  <td width="10%" style="text-align: center;"><b>객실명</b></td>
-                                  <td width="50%" style="text-align: center;"><b>이용일</b></td>
-                                  <td width="40%" style="text-align: center;"><b>요금</b></td>
-                                </tr>
-                                <tr>
-                                  <td style="text-align: center;"><h5>{{ roomId }}</h5></td>
-                                  <td style="text-align: center;"><h5>{{ reservedDate }}</h5></td>
-                                  <td style="text-align: center;"><h5 v-if="this.roomId == '301'">300,000</h5>
-                                  <h5 v-if="this.roomId == '302'">300,000</h5>
-                                  <h5 v-if="this.roomId == '201'">240,000</h5>
-                                  <h5 v-if="this.roomId == '202'">240,000</h5></td>
-                                 
-                                </tr>
-                              </table>
-                            </v-container>
-                            <v-container>
-                              <v-radio-group>
-                              <v-radio color="indigo" label="무통장입금"
-                              :rules="[v => !!v || '필수']" required></v-radio>
-                              </v-radio-group>
-                              <h5>예약계좌 : <b>농협 1108-000112-0119 (예금주: 펜션)</b></h5>
-                            
-                             <v-text-field label="입금자명" 
-                                        :rules="[v => !!v || '필수정보입니다.']" type="bankName"
-                                        v-model="bankName" required flat  outlined >
-                                    
-                            </v-text-field>
-                            </v-container>
 
-                            <v-container>
-                              <v-checkbox :rules="[v => !!v || '필수']"
-                              label="이용약관 및 취소/환불규정 동의" required></v-checkbox>
-                              <h5>예약금 입금 시 <b>12시간</b> 안에 입금완료 하셔야 합니다.<br>
-                              <b>미입금 시 자동 예약취소됩니다.</b></h5>
-                            </v-container>
-                        </v-flex>
-                    </v-layout>
-                </v-container>
-            </v-card-text>
-            <v-card-actions>
-                <v-spacer></v-spacer>
-  
-                <v-btn text color="blue darken-1" @click="onSubmit()" outlined>
-                    예약하기
-                </v-btn>
-         
+                  <v-col md="6">
+                    <div class="overlay1">
           
-            </v-card-actions>
-        </v-card>
-        </v-dialog>
-    </v-layout>
-                  </div>
-               
+                      <v-simple-table style="border: 2px solid #edeeee;">
+                          <h2>선택일</h2>
+                          <h3>
+                              <strong>{{ reservedDate }}</strong>
+                          </h3>
+                          <v-divider></v-divider>
+                          <div class="text-box">
+                            <h5><b>전화번호 : </b> 010-7751-8851</h5>
+                            <h5><b>결제방법 : </b> 무통장</h5>
+                            <h5><b>이용안내 : </b></h5>
+                            <h5>- 달력에서 원하시는 날짜를 선택 하시면 예약 가능한 객실정보가 보여집니다.</h5>
+                            <h5>- 예약 전 예약규정을 반드시 숙지하시고 예약을 하시기 바랍니다.</h5>
+                            <h5>- 선택란의 체크박스를 체크 후 예약하기 버튼을 누르시면 예약이 진행 됩니다.</h5>
+                            <h5>- 2박 이상의 경우 1박씩 예약하셔야 합니다.</h5>
+                            </div>
+                      </v-simple-table>
+                    </div>
+                  </v-col>
+                  </v-row>
+                </v-container>
+              </div>
+          <div>
+            <p>객실선택</p>
+              <v-divider></v-divider>
+                <div>
+                    <div>
+                        <v-col cols="12" sm="12">
+                          <table>
+                              <tr>
+                              <!-- <td v-for="alreadyRoom in checkIn" :key="alreadyRoom.roomId"> -->
+                                <td>
+                                <v-checkbox v-model="roomId" id="301" value="301"
+                                :disabled="this.roomNum.indexOf('301') != -1"></v-checkbox></td>
+                              <td><v-img width="200"
+                                    src="https://images.pexels.com/photos/7533766/pexels-photo-7533766.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                                    </v-img>
+                              </td>
+                              <td width="40%"><strong># Room 301</strong><br> 기준 4명/ 최대 4명<br>300,000원</td>
+                              <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
+                              <td width="15%">인원<v-select label="4인" dense disabled flat solo outlined :items="['4인']" v-model="personNum"></v-select></td>
+                              <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 300,000원 </h1></td>
+                            </tr>
+                              <tr>
+                              <td><v-checkbox value="302" v-model="roomId" :disabled="this.roomNum.indexOf('302') != -1"
+                              required id="302"></v-checkbox></td>
+                              <td><v-img width="200"
+                                    src="https://images.pexels.com/photos/6782569/pexels-photo-6782569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                                    </v-img>
+                              </td>
+                              <td width="40%"><strong># Room 302</strong><br> 기준 4명/ 최대 4명<br>300,000원</td>
+                              <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
+                              <td width="15%">인원<v-select label="4인" dense disabled flat solo outlined :items="['4인']" v-model="personNum"></v-select></td>
+                              <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 300,000원 </h1></td>
+                                
+                            </tr>
+                            <tr>
+                              <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('201') != -1"
+                              id="201" value="201" required></v-checkbox></td>
+                              <td><v-img width="200"
+                                    src="https://images.pexels.com/photos/7546712/pexels-photo-7546712.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                                    </v-img>
+                              </td>
+                              <td width="40%"><strong># Room 201</strong><br> 기준 2명/ 최대 2명<br>240,000원</td>
+                              <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
+                              <td width="15%">인원<v-select label="2인" dense disabled flat solo outlined :items="['2인']" v-model="personNum"></v-select></td>
+                              <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 240,000원 </h1></td>
+                            </tr>
+                            <tr>
+                              <td><v-checkbox v-model="roomId" :disabled="this.roomNum.indexOf('202') != -1"
+                              id="202" value="202" required></v-checkbox></td>
+                              <td><v-img width="200"
+                                    src="https://images.pexels.com/photos/7546707/pexels-photo-7546707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+                                    </v-img>
+                              </td>
+                              <td width="40%"><strong># Room 202</strong><br> 기준 2명/ 최대 2명<br>240,000원</td>
+                              <td width="15%">기간<v-select :items="['1일']" v-model="period" label="1일" dense disabled flat solo outlined></v-select></td>
+                              <td width="15%">인원<v-select label="2인" dense disabled flat solo outlined :items="['2인']" v-model="personNum"></v-select></td>
+                              <td width="40%"><h6>즉시결제</h6><h1 style="color:coral;"> 240,000원 </h1></td>
+                            </tr>
 
+                          </table> 
+                                </v-col>
+                            </div>
+                        </div>
+                    <div class="justify-center">
+
+                      <v-layout justify-center>
+                        <v-dialog v-model="dialog" persistent max-width="1000px">
+                        <template v-slot:activator="{ on }">
+                            <v-btn color="blue" width="150px" height="50px" 
+                            style="margin: 100px 0px 150px 0px;" v-on="on">예약하기</v-btn>  
+                            <v-btn color="blue lighten-3" width="150px" style="margin: 100px 0px 150px 30px;"
+                            height="50px" router :to="{name: 'Reservation'}">취소</v-btn>    
+                        </template>
+                        <v-card>
+                            <v-toolbar color="blue darken-3">
+                                        <v-toolbar-title><h2 style="color:white;">객실예약</h2></v-toolbar-title>
+                                        <v-btn text x-large color="white" class="exit"
+                                        @click="onClick()">
+                                              <v-icon>clear</v-icon>
+                                        </v-btn>
+                            </v-toolbar>
+                            <v-card-text>
+                                <v-container grid-list-md>
+                                  <v-layout wrap>
+                                    <v-flex>
+                                      <v-container>
+                                        <table class="info-table">
+                                          <tr>
+                                            <td width="10%" style="text-align: center;"><b>객실명</b></td>
+                                            <td width="50%" style="text-align: center;"><b>이용일</b></td>
+                                            <td width="40%" style="text-align: center;"><b>요금</b></td>
+                                          </tr>
+                                          <tr>
+                                            <td style="text-align: center;"><h5>{{ roomId }}</h5></td>
+                                            <td style="text-align: center;"><h5>{{ reservedDate }}</h5></td>
+                                            <td style="text-align: center;"><h5 v-if="this.roomId == '301'">300,000</h5>
+                                            <h5 v-if="this.roomId == '302'">300,000</h5>
+                                            <h5 v-if="this.roomId == '201'">240,000</h5>
+                                            <h5 v-if="this.roomId == '202'">240,000</h5></td>
+                                          </tr>
+                                        </table>
+                                      </v-container>
+                                      <v-container>
+                                        <v-radio-group>
+                                        <v-radio color="indigo" label="무통장입금"
+                                        :rules="[v => !!v || '필수']" required></v-radio>
+                                        </v-radio-group>
+                                        <h5>예약계좌 : <b>농협 1108-000112-0119 (예금주: 펜션)</b></h5>
+                                      <v-text-field label="입금자명" 
+                                                  :rules="[v => !!v || '필수정보입니다.']" type="bankName"
+                                                  v-model="bankName" required flat  outlined >
+                                              
+                                      </v-text-field>
+                                      </v-container>
+
+                                      <v-container>
+                                        <v-checkbox :rules="[v => !!v || '필수']"
+                                        label="이용약관 및 취소/환불규정 동의" required></v-checkbox>
+                                        <h5>예약금 입금 시 <b>12시간</b> 안에 입금완료 하셔야 합니다.<br>
+                                        <b>미입금 시 자동 예약취소됩니다.</b></h5>
+                                      </v-container>
+                                    </v-flex>
+                                  </v-layout>
+                                </v-container>
+                            </v-card-text>
+
+                            <v-card-actions>
+                            <v-spacer></v-spacer>
+                              <v-btn text color="blue darken-1" @click="onSubmit()" outlined>
+                                  예약하기
+                              </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </v-layout>
+                  </div>
+              </div>
+          </div>
         </div>
-    </div>
-  </div>
-   
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -341,8 +317,6 @@ import axios from 'axios'
 .calendar{
     position: relative;
     bottom: 10%;
-    /* right: 35%; */
-    /* margin-top: 2%; */
     right: 60%;
     z-index: 9;
 }
@@ -354,6 +328,7 @@ import axios from 'axios'
 .container{
     position: relative;
 }
+
 
 .overlay1{
     position: relative;

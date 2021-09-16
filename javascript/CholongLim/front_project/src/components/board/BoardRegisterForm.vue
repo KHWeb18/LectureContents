@@ -30,7 +30,7 @@
             등록
             </v-btn>
             <v-btn color="blue darken-4" outlined
-            class="ma-2 white--text" route :to="'/boardList'">
+            class="ma-2 white--text" route :to="{ name: 'BoardListPage'}">
             취소
             </v-btn> 
             </v-col>   

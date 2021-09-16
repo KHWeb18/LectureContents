@@ -1,8 +1,5 @@
-// 게시판
 export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
 export const FETCH_BOARD = 'FETCH_BOARD'
-
-// 회원관리
 
 export const FETCH_MEMBER_LIST = 'FETCH_MEMBER_LIST'
 export const FETCH_MEMBER = 'FETCH_MEMBER'
@@ -13,9 +10,7 @@ export const FETCH_ROOM = 'FETCH_ROOM'
 
 export const FETCH_BOOK_READ = 'FETCH_BOOK_READ'
 
-// TEST
 export const ALREADYS = 'ALREADYS'
-// TEST
 
 export const FETCH_DATES_LIST = 'FETCH_DATES_LIST'
 export const FETCH_USER_LIST = 'FETCH_USER_LIST'
@@ -26,13 +21,9 @@ export const FETCH_BOOK_LIST = 'FETCH_BOOK_LIST'
 export const FETCH_BOOK = 'FETCH_BOOK'
 export const FETCH_RESERVE_LIST = 'FETCH_RESERVE_LIST'
 
-
-
-// 로그인
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 
-// 로그아웃
 export const LOGOUT = 'LOGOUT'
 
 export const CRAWL_START = 'CRAWL_START'

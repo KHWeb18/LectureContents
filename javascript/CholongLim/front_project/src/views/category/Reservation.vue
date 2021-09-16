@@ -18,10 +18,6 @@
         <v-container>
             
             <v-container class="btn-box">
-                <!--  v-if="isLogin === false" -->
-                <!-- <v-btn color="text-white blue lighten-2" router :to="'/login'"
-                width="200px" height="50px">예약하기</v-btn> -->
-                <!-- v-else router :to="'/book'" -->
                 <v-btn color="text-white blue lighten-2" 
                  @click="reservation()" width="200px" height="50px">
                 예약하기
@@ -112,21 +108,16 @@
     
             </div>
          </div>
-
     <v-divider></v-divider>
-
   </div>
 </template>
 
 
 <script>
-import cookies from 'vue-cookies';
-// import { mapState } from 'vuex' 
-  export default {
 
-    // computed: {
-    //     ...mapState(["isLogin"])
-    // },
+import cookies from 'vue-cookies'
+
+export default {
     data() {
         return {
             cookie: cookies.get('user'),
@@ -174,19 +165,15 @@ import cookies from 'vue-cookies';
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
-
 .container{
     position: relative;
 }
-
 .container2{
     width: 900px;
 }
-
 .back-box {
     background: #f6f7f7;
 }
-
 .info-text {
     margin: 5% 10% 5% 0%;
 }
@@ -195,64 +182,51 @@ import cookies from 'vue-cookies';
     position: relative;
     background-color: #ececec;
 }
-
 .top-tr {
     background-color: #bbdefb;
 }
-/* 기타  페이지 내부*/
+
 .btn-box{
     padding: 18px 10px 18px 10px;
     text-align: center;
 }
-
-
 .intro-top {
     text-align: left;
 }
-
 .about-img-top {
     max-height: 70vh;
 }
-
-
 .section {
     background: #dcdfdc;
     height: 10vh;
 }
-
 p {
     font-family: 'Nanum Myeongjo';
     font-size: 18px;
     text-align: center;
     padding: 18px 0px 18px 0px;
 }
-
 .about-top {
     padding-top: 10vh;
 }
-
 /* 폰트 */
-
 h1 {
     font-family: "Cinzel";
     font-size: 40px;
     text-align: center;
     margin-top: 10px;
 }
-
 h2 {
     font-family: 'MonteCarlo';
     font-size: 150px;
     color:darkgrey
 }
-
 h3 {
     font-family: "Cinzel";
     font-size: 80px;
     margin-top: 10px;
     color:darkgrey;
 }
-
 h4 {
     margin-top: 10%;
     font-family: 'Nanum Myeongjo';

@@ -2,6 +2,7 @@ package com.example.miniProject.controller.board.jpa;
 
 
 import com.example.miniProject.entity.jpa.Board;
+import com.example.miniProject.entity.jpa.Member;
 import com.example.miniProject.repository.jpa.JPABoardRepository;
 import com.example.miniProject.service.jpa.JPABoardService;
 import lombok.extern.slf4j.Slf4j;
@@ -35,13 +36,16 @@ public class JPABoardController {
     private JPABoardRepository boardRepository;
 
 
+//    @GetMapping("/lists")
+//    public ResponseEntity<List<Board>> getLists (@PageableDefault(size=2) @RequestParam(required = false,defaultValue = "")
+//                                                      String searchText, Model model) throws Exception {
+//        model.addAttribute("boards", service.list(searchText,searchText));
+//        return new ResponseEntity<>(service.list(searchText,searchText), HttpStatus.OK);
+//    }
     @GetMapping("/lists")
-    public ResponseEntity<List<Board>> getLists (@PageableDefault(size=2) @RequestParam(required = false,defaultValue = "")
-                                                      String searchText, Model model) throws Exception {
-//        Page<Board> boards = boardRepository.findAll(PageRequest.of(0,20));
-//        model.addAttribute("boards",boards);
-        model.addAttribute("boards", service.list(searchText,searchText));
-        return new ResponseEntity<>(service.list(searchText,searchText), HttpStatus.OK);
+    public ResponseEntity<List<Board>> getLists () throws Exception {
+        log.info("getLists(): " + service.list());
+        return new ResponseEntity<>(service.list(), HttpStatus.OK);
     }
 
     @PostMapping("/register")

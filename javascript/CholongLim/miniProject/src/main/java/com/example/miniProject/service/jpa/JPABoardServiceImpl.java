@@ -31,15 +31,21 @@ public class JPABoardServiceImpl implements JPABoardService {
         boardRepository.save(board);
     }
 
-    @Override
-    public List<Board> list(String title, String content) throws Exception {
-//        if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)) {
-//            return boardRepository.findAll();
-//        } else {
-            return boardRepository.findByTitleContainingOrContentContaining(title,content);
-//        }
+//    @Override
+//    public List<Board> list(String title, String content) throws Exception {
+////        if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)) {
+////            return boardRepository.findAll();
+////        } else {
+//            return boardRepository.findByTitleContainingOrContentContaining(title,content);
+////        }
+//
+////        return boardRepository.findAll();
+//    }
 
-//        return boardRepository.findAll();
+    @Override
+    public List<Board> list() throws Exception {
+        return boardRepository.findAll();
+
     }
 
     @Override

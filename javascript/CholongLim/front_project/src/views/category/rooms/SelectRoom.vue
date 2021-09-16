@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top:3%; margin-bottom:3%;">
+  <div style="margin-top:-1%; margin-bottom:0%;">
     <section class="cards-wrapper">
       <div class="card-grid-space">
         <router-link to="/room301">
@@ -100,7 +100,7 @@
   font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 20em;
+  height: 26em;
   width: 15em;
   font-size: 1.5em;
   color: rgb(255, 255, 255);
@@ -116,9 +116,6 @@
   text-decoration: none;
 }
 
-// .card:hover {
-//   transform: rotate(0);
-// }
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 .card h1 {
   margin: 0;
@@ -149,7 +146,6 @@
 }
 
 .card:hover {
-  // color: rgb(204, 192, 231);
   height: 410px;
   box-shadow: 20px 20px 40px 0px rgba(0,0,0,0.5);
 }

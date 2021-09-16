@@ -91,9 +91,9 @@
         </div>
 
         <div>
-                <v-btn x-large text class="reserve_btn" router :to="'/reservation'">
-                    <v-icon x-large>room_service</v-icon>실시간 예약하기
-                </v-btn>
+            <v-btn x-large text class="reserve_btn" router :to="'/reservation'">
+                <v-icon x-large>room_service</v-icon>실시간 예약하기
+            </v-btn>
         </div>
 
         <v-simple-table class="pay-box">
@@ -151,7 +151,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 4000
+                    delay: 3000
                 }
             },
             rooms: [
@@ -313,7 +313,6 @@ h3 {
         text-align: center;
         font-weight: bold;
         font-size: 3rem;
-        background-color:lightsteelblue;
         background-position: center;
         background-size: center;
     }

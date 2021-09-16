@@ -85,11 +85,9 @@
                     <p>
                         애완동물과 함께 입실하실 수 없습니다</p>
                     <h3>CHECK-IN 15:00   |   CHECK-OUT 11:00</h3>
-         
                 </div>
             </div>
         </div>
-
         <div>
              <v-btn x-large text class="reserve_btn" router :to="'/reservation'">
                 <v-icon x-large>room_service</v-icon>실시간 예약하기
@@ -150,7 +148,7 @@ export default {
                     prevEl: '.swiper-button-prev'
                 },
                 autoplay: {
-                    delay: 4000
+                    delay: 3000
                 }
             },
             rooms: [
@@ -313,7 +311,6 @@ h3 {
         text-align: center;
         font-weight: bold;
         font-size: 3rem;
-        background-color:lightsteelblue;
         background-position: center;
         background-size: center;
     }
