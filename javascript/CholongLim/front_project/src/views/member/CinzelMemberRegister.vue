@@ -18,6 +18,7 @@ export default {
     methods: {
         onSubmit (payload) {
             const {  userName, userId, password, passwordReInput,  userPhone, auth } = payload
+            if(password == passwordReInput) {
             axios.post('http://localhost:8888/jpamember/register', {
                          userName, userId, password, passwordReInput, userPhone, auth})
                     .then(res => {
@@ -33,6 +34,10 @@ export default {
                     .catch(res => {
                         alert(res.response.data.message)
                     })
+            } else {
+                alert('비밀번호가 일치하지 않습니다.')
+                return false
+            }
         }
         
     }
