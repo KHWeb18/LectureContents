@@ -75,8 +75,9 @@
           
         <input type="text" class="venue" disabled v-bind:value="concert.concertVenue" style="color: white;"/>
 
-        <input type="text" class="venue" disabled v-bind:value="concert.numberOfLikes + '명이 좋아요했습니다!'" style="font-size: 15px; color: white;"/>
-       
+        <input type="text" class="venue" disabled v-bind:value="concert.numberOfLikes + '명이 좋아요했습니다!' + ' 현재 남은 자리 수 ' + 
+        concert.venueCapacity" style="font-size: 15px; color: white;" />
+
         <hr style="width: 25%">
 
         <div class="container" style="width: 25%;">
@@ -208,7 +209,6 @@ export default {
 
                             this.$store.state.concert.numberOfLikes --
                             this.$store.state.notLikedYet = true
-
 
                         } else {
                             alert('세션 정보가 만료되었습니다. 다시 로그인해주세요!')
