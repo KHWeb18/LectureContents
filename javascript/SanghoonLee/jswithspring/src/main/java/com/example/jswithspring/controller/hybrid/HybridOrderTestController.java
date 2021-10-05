@@ -20,7 +20,8 @@ public class HybridOrderTestController {
         log.info("hybridOrder(): " + order);
 
         Boolean registerSuccess = service.registerOrder(order);
-        //service.notice(order);
+        String check = service.notice(order);
+        log.info("notice check: " + check);
 
         if (!registerSuccess) {
             return false;
