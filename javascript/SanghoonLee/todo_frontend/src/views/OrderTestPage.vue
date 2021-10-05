@@ -49,8 +49,9 @@ export default {
         }
     },
     methods: {
-        onSubmit (payload) {
-            const { name, cost } = payload
+        onSubmit () {
+            const { name, cost } = this
+            console.log('name: ' + name + ', cost = ' + cost)
             axios.post('http://localhost:7777/ordertest/order', { name, cost })
                     .then(() => {
                         alert('주문 성공!')
