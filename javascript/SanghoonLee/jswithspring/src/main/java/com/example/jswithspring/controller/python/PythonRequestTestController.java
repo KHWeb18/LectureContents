@@ -105,6 +105,7 @@ public class PythonRequestTestController {
         );
          */
 
+        /* 무조건 Entity 형식의 객체를 전송하도록 한다. */
         String result = restTemplate.postForObject(
                 "http://localhost:5000/spring2pythonRequestWithData",
                 product,
