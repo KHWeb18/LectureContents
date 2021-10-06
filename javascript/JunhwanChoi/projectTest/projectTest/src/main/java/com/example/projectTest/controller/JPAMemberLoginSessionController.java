@@ -2,6 +2,7 @@ package com.example.projectTest.controller;
 
 import com.example.projectTest.controller.request.SignInForm;
 import com.example.projectTest.controller.response.ResponseSession;
+import com.example.projectTest.entity.Member;
 import com.example.projectTest.service.AccountService;
 import com.example.projectTest.service.SignInService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -51,7 +51,7 @@ public class JPAMemberLoginSessionController {
     @PostMapping("register")
     public ResponseEntity<Void> getRegister(@RequestBody SignInForm form) throws Exception {
 
-        log.info("jpaRegister(): " + form.getEmail() + ", " + form.getPassword());
+        log.info("jpaRegister(): " + form.getName(), + form.getBirth(), form.getEmail() + ", " + form.getPassword());
 
         service.register(form);
 
@@ -59,4 +59,5 @@ public class JPAMemberLoginSessionController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
 }

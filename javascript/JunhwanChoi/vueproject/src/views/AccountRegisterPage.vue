@@ -14,8 +14,8 @@ export default {
     },
     methods: {
         onSubmit (payload) {
-            const { email, password } = payload
-            axios.post('http://localhost:3647/jpasession/register', { email, password })
+            const { name, birth, email, password } = payload
+            axios.post('http://localhost:3647/jpasession/register', { name, birth, email, password })
                     .then(res => {
                         alert('등록 성공! - ' + res )
                         this.$router.push('/sessionLogin')

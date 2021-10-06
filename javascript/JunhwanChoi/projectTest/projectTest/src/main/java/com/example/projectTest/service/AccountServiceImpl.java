@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
         String encodedPassword = passwordEncoder.encode(form.getPassword());
         form.setPassword(encodedPassword);
 
-        Account accountEntity = new Account(form.getEmail(), form.getPassword());
+        Account accountEntity = new Account(form.getName(), form.getBirth(), form.getEmail(), form.getPassword());
 
         accountRepository.save(accountEntity);
     }

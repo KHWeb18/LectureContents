@@ -10,5 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface JpaBookRepository extends JpaRepository<Book, Long> {
-    
+
 }
+
+

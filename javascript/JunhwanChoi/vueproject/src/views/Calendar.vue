@@ -20,7 +20,7 @@
                                 @click:date="open"
                                 @click:event="showEvent"
                                 @click:more="moreEvent"
-                                primary
+                                dark
                                 ref="calendar"
 
                                 v-model="start"

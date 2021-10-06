@@ -17,7 +17,8 @@
         <li>
           <div>
             <div class="contents1">검사 중 </div>
-            <font color="red">+</font>{{todayExamCnt - yesterdayExamCnt}}
+            <font color="red"></font>{{todayExamCnt - yesterdayExamCnt}}
+            
             <div class="result">{{todayExamString}}명</div>
             
           </div>
@@ -129,7 +130,7 @@ export default {
     }
   },
   created () {
-    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210908&endCreateDt=20210908')
+    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210914&endCreateDt=20210914')
 
       .then((response) => {
         var xml = response.data.response.body.items.item
@@ -146,7 +147,7 @@ export default {
         this.todayDeathString= this.todayDeathCnt.toLocaleString('en-US')
 
       }),
-      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210907&endCreateDt=20210907')
+      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210913&endCreateDt=20210913')
 
       .then((response) => {
         var yxml = response.data.response.body.items.item

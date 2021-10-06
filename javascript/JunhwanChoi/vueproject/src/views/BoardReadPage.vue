@@ -1,14 +1,17 @@
 <template>
-    <div align="center">
+    <div>
         <board-read v-if="board" :board="board"/>
         <p v-else>로딩중 ...... </p>
-        <router-link :to="{ name: 'BoardModifyPage', params: { boardNo } }">
+        <div align="center">
+            <!-- <router-link :to="{ name: 'BoardModifyPage', params: { boardNo } }">
             게시물 수정
-        </router-link>
-        <button @click="onDelete">삭제</button>
+        </router-link> -->
+        <!-- <button @click="onDelete">삭제</button> -->
         <router-link :to="{ name: 'BoardListPage' }">
             게시물 보기
         </router-link>
+        </div>
+        
     </div>
 </template>
 

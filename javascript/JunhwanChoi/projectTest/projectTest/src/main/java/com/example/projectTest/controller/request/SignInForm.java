@@ -11,10 +11,12 @@ import lombok.ToString;
 @NoArgsConstructor
 public class SignInForm {
 
+    private String name;
+    private Integer birth;
     private String email;
     private String password;
 
     public SignInRequest toSignInRequest() {
-        return new SignInRequest(email, password);
+        return new SignInRequest(name, birth, email, password);
     }
 }

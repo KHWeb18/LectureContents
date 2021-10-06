@@ -75,6 +75,14 @@ import SwiperTest from '@/views/SwiperTest.vue'
 
 import FileUploadPage from '@/views/FileUploadPage.vue'
 
+//python 
+
+import PythonLoginTestPage from '@/views/PythonLoginTestPage.vue'
+import KakaoLoginPage from '@/views/KakaoLoginPage.vue'
+
+import OrderTestPage from '@/views/OrderTestPage.vue'
+
+
 
 
 
@@ -355,6 +363,36 @@ const routes = [
       default: FileUploadPage
     }
   },
+  
+  //python
+
+  {
+    path: '/pyLogin',
+    name: 'PythonLoginTestPage',
+    components: {
+      default: PythonLoginTestPage
+    }
+  },
+
+  {
+    path: '/kakaoLogin',
+    name: 'KakaoLoginPage',
+    components: {
+      default: KakaoLoginPage
+    }
+  },
+  
+
+   {
+    path: '/orderTestPage',
+    name: 'OrderTestPage',
+    components: {
+      default: OrderTestPage
+    }
+  },
+  
+
+
   
 
 

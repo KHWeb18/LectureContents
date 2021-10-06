@@ -12,6 +12,7 @@
                     <span class="head">위기 경보</span>
                     <span class="state">심각</span>
                     <p class="covidtitle">코로나바이러스감염증-19</p><br>
+                    <p class="covidtitle">{{dong}}</p><br>
 
                     <v-card
                         class="mx-auto"
@@ -57,7 +58,9 @@
                             <v-col cols="12"
                             class="text-h5"
                             ><br>
-                            <span class="plusicon"> +</span>
+                            
+                            <span class="plusicon" v-if="(todayExamCnt - yesterdayExamCnt)>0"> +</span>
+                            <span class="plusicon" v-if="(todayExamCnt - yesterdayExamCnt)<0"> </span>
                             <span> {{todayExamCnt - yesterdayExamCnt}}명</span>
                             </v-col>
                         </v-row>
@@ -159,6 +162,7 @@
                         </v-card-actions>
                 </v-card>
                 </div>
+                
                 <br>
             </v-card>
         </v-container>
@@ -216,11 +220,14 @@ export default {
       //등록일자
       currentCreatDt:0,
       
+      //부동산
+      apitest:[],
+      dong:'',
     
     }
   },
   created () {
-    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210908&endCreateDt=20210908')
+    axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210914&endCreateDt=20210914')
 
       .then((response) => {
         var xml = response.data.response.body.items.item
@@ -244,7 +251,7 @@ export default {
 
 
       }),
-      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210907&endCreateDt=20210907')
+      axios.get('/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=56N1oIB7JUQYnzCMOw7aPCWtyq2oQUUJ5bzS1Dak3Y49j7n93E7PjNlaORzNdbZuCNHpZ%2B5aSgGURTgHaajwIg%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20210913&endCreateDt=20210913')
 
       .then((response) => {
         var yxml = response.data.response.body.items.item
@@ -261,7 +268,11 @@ export default {
 
       })
 
+
   },
+  
+
+  
   
   
 }

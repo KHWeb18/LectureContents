@@ -9,6 +9,9 @@ import 'material-design-icons/iconfont/material-icons.css'
 
 Vue.config.productionTip = false
 
+
+window.Kakao.init("a818e63658fc26e1a0e593ae63ea1e45")
+alert('Kakao 초기화 여부 : ' + window.Kakao.isInitialized())
 new Vue({
   router,
   store,

@@ -20,14 +20,25 @@ public class Account {
 
     @Getter
     @Column(nullable = false)
+    private String name;
+
+    @Getter
+    @Column(nullable = false)
+    private Integer birth;
+
+    @Getter
+    @Column(nullable = false)
     private String email;
 
     @Getter
     @Column(nullable = false)
     private String password;
 
-    public Account(String email, String password) {
+    public Account(String name, Integer birth, String email, String password) {
+        this.name = name;
+        this.birth = birth;
         this.email = email;
         this.password = password;
     }
 }
+

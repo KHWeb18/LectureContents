@@ -1,6 +1,6 @@
 <template>
-    <div align="center">
-        <h2>게시물 작성</h2>
+    <div >
+        
         <board-register-form @submit="onSubmit"/>
     </div>
 </template>

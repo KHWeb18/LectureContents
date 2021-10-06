@@ -58,6 +58,8 @@ import BookSuccessPage from '@/views/BookSuccessPage.vue'
 import BookCheckPage from '@/views/BookCheckPage.vue'
 
 
+import ApiTest from '@/views/ApiTest.vue'
+
 
 
 
@@ -295,6 +297,16 @@ const routes = [
       default: BookCheckPage
     }
   },
+  {
+    path: '/apiTest',
+    name: 'ApiTest',
+    components: {
+      default: ApiTest
+    }
+  },
+  
+
+  
   
 
   

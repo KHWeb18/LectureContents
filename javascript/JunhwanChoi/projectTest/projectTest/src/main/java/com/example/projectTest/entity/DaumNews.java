@@ -39,3 +39,5 @@ public class DaumNews {
         this.title = title;
     }
 }
+
+

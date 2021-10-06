@@ -10,10 +10,14 @@ import lombok.ToString;
 @NoArgsConstructor
 public class SignInRequest {
 
+    private String name;
+    private Integer birth;
     private String email;
     private String password;
 
-    public SignInRequest(String email, String password) {
+    public SignInRequest(String name, Integer birth, String email, String password) {
+        this.name = name;
+        this.birth = birth;
         this.email = email;
         this.password = password;
     }

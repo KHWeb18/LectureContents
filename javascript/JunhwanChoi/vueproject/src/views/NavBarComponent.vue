@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{$store.state.session}}
+        <!-- {{$store.state.session}} -->
         <v-toolbar dense color="blue-grey lighten-4">
                 <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
                 </v-app-bar-nav-icon>

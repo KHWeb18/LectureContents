@@ -168,6 +168,25 @@
 
 
 
+            <!-- Python Test -->
+            <router-link :to="{ name: 'PythonLoginTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Python Login Test
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'KakaoLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                KaKaoLogin
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'OrderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                OrderTestPage
+            </router-link><br><br>
+
 
 
 
