@@ -23,8 +23,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="pyList of pyLists" :key="pyList.title">
-                    <td>{{ pyList.title }}</td>
+                <tr v-for="pyList, idx of pyLists" :key="idx">
+                    <td>{{ pyList }}</td>
                 </tr>
             </tbody>
         </v-simple-table>
@@ -55,6 +55,7 @@ export default {
             axios.post('http://localhost:5000/vue2pythonCrawlRequest', { search_keyword })
                     .then(res => {
                         alert('유튜브 검색 성공! ', res)
+                        this.$store.state.pyLists = res.data
                     })
         }
     }
