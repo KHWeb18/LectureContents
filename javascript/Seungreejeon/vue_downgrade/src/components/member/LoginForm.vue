@@ -1,7 +1,7 @@
 <template>
 <v-container>
     <form @submit.prevent="onSubmit">
-        <h3>회원가입 양식</h3>
+        <h3>로그인</h3>
         <table>
             <tr>
                 <th>아이디</th>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    name: 'VuetifyMemberRegisterForm',
+    name: 'LoginForm',
     data () {
         return {
             id: '',
