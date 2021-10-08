@@ -7,6 +7,7 @@
                 </td>
             </tr>
         </table>
+        <button v-on:click="getKakaoAuth">카카오 인증</button>
         <form @submit.prevent="onSubmit">
             <h3>구매 양식</h3>
             <table>
@@ -46,6 +47,7 @@ export default {
             ],
             name: '',
             cost: 1000000000
+            // imgPath: ''
         }
     },
     methods: {
@@ -55,6 +57,13 @@ export default {
             axios.post('http://localhost:7777/ordertest/order', { name, cost })
                     .then(() => {
                         alert('주문 성공!')
+                    })
+        },
+        getKakaoAuth () {
+            axios.get('http://localhost:7777/ordertest/getKakaoAuth')
+                    .then(() => {
+                        alert('인증 진행!')
+                        // this.$router.push({ name: 'KakaoAuthPage', query: { htmlcode: res.data } })
                     })
         }
     }

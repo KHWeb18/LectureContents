@@ -25,5 +25,7 @@ export default {
     // 크롤링
     lists: [],
     // 세션
-    session: []
+    session: [],
+    // 파이썬 기반 크롤링
+    pyLists: []
 }

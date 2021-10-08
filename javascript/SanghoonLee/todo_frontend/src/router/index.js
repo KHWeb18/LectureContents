@@ -95,6 +95,11 @@ import KakaoLoginPage from '@/views/KakaoLoginPage.vue'
 // Order Test
 import OrderTestPage from '@/views/OrderTestPage.vue'
 
+import KakaoAuthPage from '@/views/KakaoAuthPage.vue'
+
+// Python Crawl Test
+import PythonCrawlTestPage from '@/views/PythonCrawlTestPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -422,6 +427,20 @@ const routes = [
     name: 'OrderTestPage',
     components: {
       default: OrderTestPage
+    }
+  },
+  {
+    path: '/kakaoAuthPage',
+    name: 'KakaoAuthPage',
+    components: {
+      default: KakaoAuthPage
+    }
+  },
+  {
+    path: '/pythonCrawlTestPage',
+    name: 'PythonCrawlTestPage',
+    components: {
+      default: PythonCrawlTestPage
     }
   }
 ]

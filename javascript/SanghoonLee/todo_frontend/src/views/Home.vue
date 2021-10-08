@@ -190,6 +190,13 @@
                     class="nav-link"
                     active-class="active">
                 Order Test
+            </router-link><br/>
+
+            <!-- Python Crawl Test -->
+            <router-link :to="{ name: 'PythonCrawlTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Python Crawl Test
             </router-link>
         </div>
     </div>

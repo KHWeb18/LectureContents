@@ -14,4 +14,13 @@ public class PythonRequestUtil {
                 String.class
         );
     }
+
+    public String getKakaoAuth() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        return restTemplate.getForObject(
+                "http://localhost:5000/getKakaoAuth",
+                String.class
+        );
+    }
 }
