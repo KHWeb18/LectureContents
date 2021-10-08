@@ -52,9 +52,9 @@ export default {
         onSubmit () {
             const { search_keyword } = this
             console.log('search_keyword: ' + search_keyword)
-            axios.post('http://localhost:5000/pythonCrawl', { search_keyword })
-                    .then(() => {
-                        alert('유튜브 검색 성공!')
+            axios.post('http://localhost:5000/vue2pythonCrawlRequest', { search_keyword })
+                    .then(res => {
+                        alert('유튜브 검색 성공! ', res)
                     })
         }
     }
