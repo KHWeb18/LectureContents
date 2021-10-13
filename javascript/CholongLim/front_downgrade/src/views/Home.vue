@@ -172,7 +172,37 @@
                     class="nav-link"
                     active-class="active">
                 파일업로드 test
+            </router-link><br/>
+
+
+
+            <!-- Python Test -->
+            <router-link :to="{ name: 'PythonLoginTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Python Login test
             </router-link>
+
+            <!-- Kakao Login Test -->
+            <router-link :to="{ name: 'KakaoLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Kakao Login 
+            </router-link><br/>
+
+            <!-- Order Test -->
+            <router-link :to="{ name: 'OrderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Order Test 
+            </router-link><br/>
+
+            <!-- Python Crawl Test -->
+            <router-link :to="{ name: 'PythonCrawlTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                PythonCrawlTestPage
+            </router-link><br/>
         </div>
     </div>
 </template>

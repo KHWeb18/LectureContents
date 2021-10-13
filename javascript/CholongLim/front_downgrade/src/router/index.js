@@ -85,6 +85,17 @@ import FileUploadPage from '@/views/FileUploadPage.vue'
 import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
 
 
+// PythonLoginTestPage
+import PythonLoginTestPage from '@/views/PythonLoginTestPage.vue'
+
+// KakaoLoginPage
+import KakaoLoginPage from '@/views/KakaoLoginPage.vue'
+// OrderTestPage
+import OrderTestPage from '@/views/OrderTestPage.vue'
+// PythonCrawlTestPage
+import PythonCrawlTestPage from '@/views/PythonCrawlTestPage.vue'
+
+
 
 // 로그인(도전)
 import Login from '@/views/Login.vue'
@@ -419,6 +430,34 @@ const routes = [
     name: 'FileUploadPage',
     components: {
       default: FileUploadPage
+    }
+  },
+  {
+    path: '/pythonTest',
+    name: 'PythonLoginTestPage',
+    components: {
+      default: PythonLoginTestPage
+    }
+  },
+  {
+    path: '/kakaoLoginTest',
+    name: 'KakaoLoginPage',
+    components: {
+      default: KakaoLoginPage
+    }
+  },
+  {
+    path: '/orderTestPage',
+    name: 'OrderTestPage',
+    components: {
+      default: OrderTestPage
+    }
+  },
+  {
+    path: '/pythonCrawlTestPage',
+    name: 'PythonCrawlTestPage',
+    components: {
+      default: PythonCrawlTestPage
     }
   }
 ]

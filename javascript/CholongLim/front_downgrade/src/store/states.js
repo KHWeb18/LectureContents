@@ -35,5 +35,7 @@ export default {
   isLogin: false,
   isLoginError: false,
   // 서버에서 보내준 유저 정보
-  userInfo: null
+  userInfo: null,
+  // 파이썬 기반 크롤링
+  pyLists: []
 }
