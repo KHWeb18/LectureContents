@@ -20,7 +20,8 @@ export default {
       renderer: null,
       camera: null,
       scene: null,
-      cube: null
+      cube: null,
+      step: 0
     }
   },
   methods: {
@@ -37,15 +38,25 @@ export default {
       // 그래픽 카드(그림 그리는 화가)를 모셔옴
       this.renderer = new THREE.WebGLRenderer()
 
-      document.getElementsByClassName("container")[0].lastElementChild.appendChild(this.renderer.domElement)
+      this.renderer.setClearColor(new THREE.Color(0xEEEEEE))
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
 
-      const geometry = new THREE.BoxGeometry(1, 1, 1)
+      const canvas = document.getElementsByClassName("container")[0].lastElementChild
+      canvas.appendChild(this.renderer.domElement)
+
+      const geometry = new THREE.BoxGeometry(3, 3, 3)
       const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 
       this.cube = new THREE.Mesh(geometry, material)
       this.scene.add(this.cube)
 
-      this.camera.position.z = 5
+      // 전진(앞) -z
+      // 위쪽 +y
+      this.camera.position.z = 50
+      this.camera.position.y = 5
+      this.camera.position.x = 5
+
+      this.cube.position.y = 5
 
       const animate = function () {}
       console.log(animate)
@@ -69,6 +80,21 @@ export default {
       //this.cube.rotation.x += 0.01
       //this.cube.rotation.y += 0.01
       //this.cube.rotation.z += 0.01
+
+      // 나선형으로 꼬면서 x축으로 날아가려면 어떻게 해야할까 ?
+      // cos(wt) = cos(2 * pi * f * t)
+      // w = 2 * pi * f
+
+      // 먼저 탄환의 궤적이 sin 웨이브를 타게 만들려면 어떻게 해야할까 ?
+      // y = sin(x), x = wt
+      // T = 1/f, f = 1, w = 2 * pi * f = 2 * pi
+      // 포트리스 구현에는 포물선 운동 <<<-- 공기저항이 들어간(미분 방정식)
+      this.step += 0.02
+      this.cube.position.x = 10 * this.step
+      this.cube.position.y = 5 + 5 * Math.sin(2 * Math.PI * this.step)
+      //console.log("y = ", this.cube.position.y)
+      //this.cube.position.x += 0.1
+      //this.cube.rotation.y += 0.1
 
       this.renderer.render(this.scene, this.camera)
     }
