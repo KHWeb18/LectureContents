@@ -30,7 +30,7 @@ import {
     // 크롤링
     CRAWL_START,
     // 세션
-    FETCH_SESSION
+    //FETCH_SESSION
 } from './mutation-types'
 
 // 여기는 동기 처리를 하기 때문에 데이터 무결성이 보장됨
@@ -128,7 +128,7 @@ export default {
     [CRAWL_START] (state, payload) {
         state.lists = payload
     },
-    [FETCH_SESSION] (state) {
-        state.session = this.$cookies.get(userSession)
-    }
+    //[FETCH_SESSION] (state) {
+    //    state.session = this.$cookies.get(userSession)
+    //}
 }

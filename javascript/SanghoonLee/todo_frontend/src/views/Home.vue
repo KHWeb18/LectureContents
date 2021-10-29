@@ -198,6 +198,13 @@
                     active-class="active">
                 Python Crawl Test
             </router-link>
+
+            <!-- WebGL Test -->
+            <router-link :to="{ name: 'WebGLTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               WebGL Test
+            </router-link>
         </div>
     </div>
 </template>

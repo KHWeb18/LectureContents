@@ -2,7 +2,11 @@
   <v-app>
     <nav-bar-component/>
     <v-main>
-      <router-view/>
+      <v-container fluid>
+        <div id="app">
+          <router-view/>
+        </div>
+      </v-container>
     </v-main>
   </v-app>
 </template>

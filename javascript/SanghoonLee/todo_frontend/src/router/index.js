@@ -100,6 +100,9 @@ import KakaoAuthPage from '@/views/KakaoAuthPage.vue'
 // Python Crawl Test
 import PythonCrawlTestPage from '@/views/PythonCrawlTestPage.vue'
 
+// WebGLTestPage
+import WebGLTestPage from '@/views/WebGLTestPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -441,6 +444,13 @@ const routes = [
     name: 'PythonCrawlTestPage',
     components: {
       default: PythonCrawlTestPage
+    }
+  },
+  {
+    path: '/WebGLTestPage',
+    name: 'WebGLTestPage',
+    components: {
+      default: WebGLTestPage
     }
   }
 ]

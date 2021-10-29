@@ -27,5 +27,7 @@ export default {
     // 세션
     session: [],
     // 파이썬 기반 크롤링
-    pyLists: []
+    pyLists: [],
+    // canvas
+    canvas_flag: false
 }
