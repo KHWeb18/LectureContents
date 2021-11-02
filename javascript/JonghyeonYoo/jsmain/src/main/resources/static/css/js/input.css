@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+
+#wrapper {
+    width:600px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    background-color: firebrick;
+    padding: 30px 40px;
+    color:floralwhite;
+    text-align: center;
+}
+
+input {
+    border: none;
+    width: 440px;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+.addBtn {
+    padding: 10px;
+    width: 50px;
+    border: none;
+    background-color: rgb(247, 243, 242);
+    box-shadow: 1px 2px 7px rgb(14, 6, 6);
+    color: #555;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    /* transition: 0.3;   포커싱에 걸리는 시간 및 변경 타이밍 */
+}
+/* 후처리 */
+form::after {
+    content: "";
+    display: table;
+    clear: both;
+}

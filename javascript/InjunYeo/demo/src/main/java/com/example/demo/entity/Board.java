@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Board {
 
-    private int boardNo;
+    private Integer boardNo;
     private String title;
     private String content;
     private String writer;

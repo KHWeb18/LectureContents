@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/js/change-color.css">
+</head>
+<body>
+    <h1 id="heading">자바스크립트가 간닷</h1>
+    <p id="text">글자를 클릭하세요</p>
+
+    <script>
+      // 얘네들은 사실상 모두 비동기 방식으로 동작함
+      var heading = document.querySelector('#heading');
+
+      // 클릭하면 <<<
+      // heading.style.color를 빨간색으로 바꿔라.
+      heading.onclick = function () {
+          heading.style.color = "red";
+      }
+    </script>
+</body>
+</html>

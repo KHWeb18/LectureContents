@@ -20,7 +20,6 @@ public class EightController {
     public String getModify (int boardNo, Model model) throws Exception {
         log.info("getModify()");
 
-        // 수정을 눌렀을때 기존 정보를 가져와야함
         model.addAttribute(service.read(boardNo));
 
         return "/board/eighth/modify";

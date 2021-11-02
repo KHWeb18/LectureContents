@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
     public void remove(Integer productNo) throws Exception {
         repository.delete(productNo);
     }
-    @Override
+     @Override
     public void modify(Product product) throws Exception {
         repository.update(product);
     }

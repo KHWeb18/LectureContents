@@ -1,0 +1,12 @@
+body {
+    /* background:url('/img/sale.png') repeat-x top left; */
+    background:url('/img/sale.png') repeat-x top;
+}
+h1 {
+    text-align: center;
+    margin-top: 400px;
+}
+p {
+    text-align: center;
+    width: 98%; margin-bottom: 10px; padding: 10px; border: 1px solid #cccccc;
+}

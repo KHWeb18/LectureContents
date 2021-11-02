@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @ToString
 public class Member {
-    private int memberNo;
+    private Integer memberNo;
     private String email;
     private String password;
     private String name;

@@ -1,0 +1,25 @@
+/* 
+enter : 들어가서 동작할 때 
+leave : 나가서 동작할 때
+v-enter: 실제 HTML 요소가 삽입되기 이전에 적용되고 한 프레임 후에 제거됨 
+.v-enter-active: enter에 대한 활성 및 종료 상태
+                 HTML 요소가 삽입되기 이전에 적용됨
+                 transition이 완료되면 제거됨
+.v-leave-active: v-leave에 대한 활성 및 종료 상태로
+                 transition이 동작하여 적용된 이후 다시 transition이 동작하면 제거됨 
+.v-leave-to: transition이 동작되고 transition이 끝나면 제거됨                 
+*/
+.v-enter-active, .v-leave-active {
+    /*켜지는것도 2초 꺼지는 것도 2초*/
+    transition: opacity 2s;    
+}
+
+/* 투명도를 2초동안 Fade In & Fade Out */
+/* 동작을하고 무언갈 추가적으로 적용할 필요가 없으니까 0 */
+.v-enter, .v-leave-to {
+    opacity: 0;
+}
+
+/* 이처럼 간단해졌는데, 그렇다면 자바스크립트를 써야하는 경우는? 
+   뷰에는 자바스크립 기능이 모두 있다.
+   작성을하다가 더욱 간편하게 작성할수있을 것이라 생각이 들 때, 뷰의 내용을 뜯어고치고 싶을 때 자바스크립트를 사용 */

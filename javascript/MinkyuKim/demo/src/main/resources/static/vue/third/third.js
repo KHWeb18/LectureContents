@@ -10,6 +10,7 @@ var app = new Vue ({
         radius: 50,
         randomNumber: 0,
         firstFormerView: false,
+        firstFormerStat: false,
         shopView: false,
         shopList: [],
         shopListValue: [],
@@ -235,6 +236,19 @@ var app = new Vue ({
         } else {
             this.firstFormerView = false
         }    
+
+        //전직 특전
+        if((!this.firstFormerStat) && (this.firstFormerView))
+        {
+            this.characterStatus.atk += 500
+            this.characterStatus.int += 50
+            this.characterStatus.dex += 1000
+            this.characterStatus.vit += 50
+            this.characterStatus.def += 50
+            this.characterStatus.men += 50
+
+            this.firstFormerStat = true
+        }
         
 
         var i

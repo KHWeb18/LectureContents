@@ -177,6 +177,7 @@ var app = new Vue ({
         selectJob () {
             switch (this.characterStatus.selectJob) {
                     case 'madWarrior' :
+                        console.log(this.characterStatus.selectJob)
                     this.characterStatus.hp += 5000
                     this.characterStatus.mp += 1000
                     this.characterStatus.defaultAtk += 5000

@@ -1,0 +1,13 @@
+.box1 {
+    width: 400px;
+    height: 100px;
+    background: #ff6a00;
+}
+.box2 {
+    width: 50%;
+    height: 100px;
+    background: #0094ff;
+}
+div {
+    margin: 10px;   /* div간 여백 */
+}

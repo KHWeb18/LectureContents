@@ -9,7 +9,7 @@
 <div align="center">
     <a href="/register">글쓰기</a>
 </div>
-<table border=""1>
+<table border="1">
   <tr>
     <th align="center" width="80">번호</th>
     <th align="center" width="320">제목</th>
@@ -27,7 +27,7 @@
         <!-- |read?boardNo=${board.boardNo}| 는 결국 아래를의미함
               read?boardNo=1, read?boardNo=3, read?boardNo=7 형태로
               게시물 번호에 해당하는 값을 셋한다고 보면됨-->
-        <td align="left"> <a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td>
+        <td align="left"> <a th:href="@{|read/${board.boardNo}|}" th:text="${board.title}"/></td>
         <td align="right" th:text="${board.writer}"></td>
         <!-- date.format()은 특정한 형식으로 날짜를 표현해줌
         아래 예는 연-월-일 시:분:초 형식임-->

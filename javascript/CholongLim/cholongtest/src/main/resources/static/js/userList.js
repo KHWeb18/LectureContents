@@ -10,7 +10,7 @@ function addList () {
     var major = document.querySelector("#major").value;
 
 
-    if (name != null && age != null && major != null) {
+    if (name != "" && age != "" && major != "") {
         var item = name + ", " + age + ", " + major;
         userList.push(item);
         document.querySelector("#name","#age","major").value = "";

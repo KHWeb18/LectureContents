@@ -10,7 +10,7 @@
 <script>
     $(document).ready(function() {
          //form id랑 같아야 한다
-        var formObj = $("#boardread");
+        var formObj = $("#boardRead");
 
         $("#btnModify").on("click", function() {
             // 아래 절차를 통해 실제 boardNo 값을 획득한다.
@@ -35,7 +35,7 @@
 <body>
 <h2>게시글 등록</h2>
 
-<form id="boardread" th:object="${board}" method="post">
+<form id="boardRead" th:object="${board}" method="post">
     <input type="hidden" name="boardNo" th:field="*{boardNo}"/>
 
     <table>

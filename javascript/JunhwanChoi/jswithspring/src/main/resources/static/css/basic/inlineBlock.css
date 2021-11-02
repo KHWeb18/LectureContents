@@ -1,0 +1,15 @@
+div {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+#inline img {
+    /* 디폴트가 display: inline */
+    /* inline은 무조건 가로로 나오는가 ?
+       꽉 차면 아래로 배치됨 */
+    margin: 5px;
+}
+#block img {
+    /* block은 무조건 세로로 나옴 */
+    display: block;
+    margin: 5px;
+}

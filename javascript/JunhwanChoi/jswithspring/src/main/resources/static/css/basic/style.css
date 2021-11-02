@@ -1,0 +1,8 @@
+h2 {
+    color: blue;
+}
+p {
+    font-size: 0.9em;       /* 글자 크기 */
+    line-height: 2.0;       /* 줄 간격 */
+    color: purple;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="5">
+    <h2>곤충 도감 목록보기</h2>
+</table>
+<table border="1">
+    <tr>
+        <th><a href="/register">도감 등록하기.</a></th>
+    </tr>
+
+
+</table>
+<table><tr><td></td></tr></table>
+<table border="1">
+    <tr>
+        <th align="center" width="80">게시글No</th>
+        <th align="center" width="120">작성자</th>
+        <th align="center" width="120">곤충이름</th>
+        <th align="center" width="80">수명</th>
+        <th align="center" width="80">서식지</th>
+        <th align="center" width="600">특징</th>
+        <th align="center" width="170">등록일자</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(stagbeetle)}">
+        <td colspan="7">
+            등록된 도감이 없습니다.
+        </td>
+    </tr>
+    <tr th:each="insectElem : ${stagbeetle}">
+        <td align="center" th:text="${insectElem.BulletinNo}"></td>
+        <td align="center" th:text="${insectElem.username}"></td>
+        <td align="center" th:href="@{|read?BulletinNo=${insectElem.BulletinNo}|}" th:text="${insectElem.insectname}"></td>
+        <td align="center" th:text="${insectElem.old}"></td>
+        <td align="center" th:text="${insectElem.habitat}"></td>
+        <td th:text="${insectElem.description}"></td>
+        <td align="center" th:text="${#dates.format(insectElem.regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+    </tr>
+</table>
+</body>
+</html>

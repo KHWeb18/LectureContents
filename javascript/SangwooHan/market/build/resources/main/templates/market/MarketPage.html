@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var formObj = $("#marketBoard");
+
+        $("#writerbtn").on("click", function() {
+        self.location = "register";
+        });
+
+        $("#seelistbtn").on("click", function() {
+        self.location = "lists";
+        });
+
+        $("#gohomepages").on("click", function() {
+        self.location = "homepage";
+        });
+
+         });
+</script>
+<body>
+<h2>안녕하세요 회원들끼리의 중고거래! 회원장터에 오신것을 환영합니다</h2>
+
+<button id="writerbtn">글쓰기</button>
+<button id="seelistbtn">목록보기</button>
+<button id="gohomepages">홈페이지</button>
+</body>
+</html>

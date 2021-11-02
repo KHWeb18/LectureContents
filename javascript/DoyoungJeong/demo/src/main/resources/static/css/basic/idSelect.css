@@ -1,0 +1,6 @@
+#container {
+    width: 600px;
+    padding: 15px;
+    border: 5px dotted gray;
+    margin: 30px;
+}

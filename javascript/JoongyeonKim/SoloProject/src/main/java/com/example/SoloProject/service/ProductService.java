@@ -5,11 +5,13 @@ import com.example.SoloProject.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    public void productregister(Product product);
+    public void register(Product product);
 
-    public List<Product> productlist() throws Exception;
+    public List<Product> lists() throws Exception;
 
-    public Product productread(Integer productNo) throws Exception;
+    public Product read(Integer productNo) throws Exception;
 
-    public void productremove(Integer productNo) throws Exception;
+    public void remove(Integer productNo) throws Exception;
+
+    public void modify(Product product) throws Exception;
 }

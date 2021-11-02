@@ -22,4 +22,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> productlist() throws Exception {
         return productrepository.productlist();
     }
+
+    @Override
+    public Product productread(Integer productNo) throws Exception {
+        return productrepository.productread(productNo);
+    }
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+
+  <style>
+      input, button { font-family: inherit; font-size: inherit; }
+  </style>
+
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var formObj = $("#member");
+
+        $("#btnSignUp").on("click", function() {
+            var passwordObj = $("#password");
+            alert("member: " + JSON.stringify(member));
+
+
+            formObj.attr("action", "signup");
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+    });
+</script>
+
+<body>
+<h2>ID 생성하기.</h2>
+
+<form id="member" th:object="${member}" method="post">
+  <table>
+    <tr>
+      <!-- <td>ID</td> -->
+      <td><input type="text" name="id" placeholder="Username" required th:field="*{id}"></td>
+    </tr>
+    <tr>
+      <!-- <td>ID</td> -->
+      <td><input type="password" id="password1" name="pw" placeholder="Password" required th:field="*{pw}"></td>
+    </tr>
+    <tr>
+      <!-- <td>암호 확인</td> -->
+      <td><input type="password" id="password2" name="pw" placeholder="Confirm Password" required th:field="*{pw}"></td>
+    </tr>
+  </table>
+</form>
+
+    <div>
+      <button type="submit" id="btnSignUp">ID 생성하기</button>
+    </div>
+
+</body>
+</html>

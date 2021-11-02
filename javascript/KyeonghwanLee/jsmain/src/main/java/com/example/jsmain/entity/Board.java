@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @ToString
 public class Board {
-    private int boardNo;
+    private Integer boardNo;
     // th:field로 맵핑됨
     private String title;
     // 수정

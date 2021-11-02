@@ -1,0 +1,52 @@
+<template>
+    <div class="todo">
+        <li>
+            <span v-if="!isEditing">
+                {{ monster.name }}
+            </span>
+            <input v-else type="text" ref="name"
+                    v-bind:value="monster.name"
+                    v-on:blur="handleBlur"
+                    v-on:keydown.enter="editTodo"/>
+            <button v-on:click="death">지우기</button>
+        </li>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'MonsterElement',
+    props: {
+        monster: {
+            type: Object
+        },
+        editingId: {
+            type: Number
+        }
+    },
+    // VDOM 변화가 없어도 계산값이 적용되도록 서포트함
+    computed: {
+        isEditing () {
+            return this.monster.id === this.editingId
+        }
+    },
+    methods: {
+        death () {
+            const id = this.monster.id
+            this.$emit('death', id)
+        },
+        editTodo (event) {
+            const id = this.monster.id
+            const name = event.target.value.trim()
+            if (name.length <= 0) {
+                return false
+            }
+            this.$emit('editTodo', name, id)
+            this.$refs.name.blur()
+        },
+        handleBlur () {
+            this.$emit('resetEditingId')
+        }
+    }
+}
+</script>

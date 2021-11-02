@@ -1,0 +1,5 @@
+#container > ul {
+    /* 부모 > 자식 조건에서만 성립함
+       자식에게만 성립하며 손자 등등은 적용이 안됨 */
+    border: 1px dotted blue;
+}

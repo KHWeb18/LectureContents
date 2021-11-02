@@ -1,0 +1,13 @@
+div {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.grad {
+
+    background: -webkit-linear-gradient(left top, pink, white);
+    background: -moz-linear-gradient(left top, pink, white);
+    background: -o-linear-gradient(left top, pink, white);
+    background: linear-gradient(left top, pink, white);
+}

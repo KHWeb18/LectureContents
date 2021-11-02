@@ -1,0 +1,17 @@
+h1 {
+    font-size: 16px;
+    font-family: "Arial Rounded MT";
+}
+.shadow {
+    color: orange;
+    background: gray;
+    text-shadow: 1px 1px;
+}
+.rb-shadow {
+    text-shadow: 5px 5px 3px #ff0000;   /* R G B */
+}
+.bwb-shadow {
+    background-color: blue;
+    color: #ffffff;
+    text-shadow: 7px -7px 5px #000000;
+}

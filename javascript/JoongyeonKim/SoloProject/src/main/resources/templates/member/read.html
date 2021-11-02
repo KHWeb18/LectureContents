@@ -10,7 +10,7 @@
 <script>
     $(document).ready(function() {
          //form id랑 같아야 한다
-        var formObj = $("#memberread");
+        var formObj = $("#read");
 
         $("#btnModify").on("click", function() {
             var memberNo = $("#memberNo");
@@ -26,7 +26,7 @@
         });
 
         $("#btnList").on("click", function() {
-            self.location = "memberIdLists";
+            self.location = "lists";
         });
     });
 </script>
@@ -34,21 +34,24 @@
 <body>
 <h2>회원 정보</h2>
 
-<form id="memberread" th:object="${member}" method="post">
+<form id="read" th:object="${member}" method="post">
     <input type="hidden" name="memberNo" th:field="*{memberNo}"/>
 
     <table>
         <tr>
             <td>이름</td>
-            <td><input type="text" name="name" th:field="*{name}"></td>
+            <td><input type="text" name="name"
+                       th:field="*{name}" readonly="readonly"></td>
         </tr>
         <tr>
             <td>아이디</td>
-            <td><input type="text" name="id" th:field="*{id}"></td>
+            <td><input type="text" name="id"
+                       th:field="*{id}" readonly="readonly"></td>
         </tr>
         <tr>
             <td>비밀번호</td>
-            <td><input type="password" id="password" name="pw" th:field="*{pw}"></td>
+            <td><input type="password" id="password" name="pw"
+                       th:field="*{pw}" readonly="readonly"></td>
         </tr>
     </table>
 </form>

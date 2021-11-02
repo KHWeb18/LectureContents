@@ -85,21 +85,21 @@ public class SixthController {
         String jsonString = "{" +
                 "\"movies\": [ "+
                 "{" +
-                            "\"title\": \"hihi\", " +
-                            "\"draft\": false, " +
-                            "\"star\": 5" +
+                "\"title\": \"hihi\", " +
+                "\"draft\": false, " +
+                "\"star\": 5" +
                 "}, " +
                 "{" +
-                            "\"title\": \"hihi\", " +
-                            "\"draft\": false, " +
-                            "\"star\": 5" +
+                "\"title\": \"hihi\", " +
+                "\"draft\": false, " +
+                "\"star\": 5" +
                 "}, " +
                 "{" +
-                            "\"title\": \"monkey magic\", " +
-                            "\"draft\": false, " +
-                            "\"star\": 4.7" +
-                        "}" +
-                     "]" +
+                "\"title\": \"monkey magic\", " +
+                "\"draft\": false, " +
+                "\"star\": 4.7" +
+                "}" +
+                "]" +
                 "}";
 
         // JSON 배열 파싱
@@ -117,7 +117,7 @@ public class SixthController {
             log.info("title: " + title+ ", draft: " + draft + ", star: " + star);
         }
 
-    return jsonString;
+        return jsonString;
     }
 
 }

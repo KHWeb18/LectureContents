@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
   <h2>게시판 목록 보기</h2>
@@ -26,14 +26,8 @@
       <td align="center" th:text="${board.boardNo}"></td>
       <!-- |read?boardNo=${board.boardNo}| 는 결국 아래를 의미함
            read?boardNo=1, read?boardNo=3, read?boardNo=7 형태로
-<<<<<<< HEAD:javascript/SanghoonLee/jswithspring/src/main/resources/templates/board/fifth/lists.html
-           게시물 번호에 해당하는 값을 셋한다고 보면됨 -->
-      <!-- <td align="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td> -->
-      <td align="left"><a th:href="@{|read/${board.boardNo}|}" th:text="${board.title}"/></td>
-=======
            게시물 번호에 해당하는 값을 셋한다고 보면됨-->
       <td align="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"></td>
->>>>>>> upstream/main:javascript/JaekwonKo/jsmain/src/main/resources/templates/board/fifth/lists.html
       <td align="right" th:text="${board.writer}"></td>
       <!-- date.format()은 특정한 형식으로 날짜를 표현해줌
            아래 예는 연-월-일 시:분:초 형식임 -->

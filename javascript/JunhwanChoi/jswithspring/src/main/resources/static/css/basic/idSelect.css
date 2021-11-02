@@ -1,0 +1,6 @@
+#container {
+    width: 600px;               /* 너비 */
+    padding: 15px;              /* 테두리와 내용 사이의 여백 */
+    border: 1px dotted gray;    /* 테두리 스타일 */
+    margin: 20px;
+}

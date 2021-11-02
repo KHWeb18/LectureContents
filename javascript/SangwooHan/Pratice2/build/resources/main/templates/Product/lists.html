@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="5">
+<h2>상품 목록보기</h2>
+</table>
+<a href="/register">상품등록하기</a>
+<table border="1">
+    <tr>
+        <th align="center" width="80">번호</th>
+        <th align="center" width="120">회원이름</th>
+        <th align="center" width="120">상품명</th>
+        <th align="center" width="120">가격</th>
+        <th align="center" width="600">상품설명</th>
+        <th align="center" width="180">등록일자</th>
+    </tr>
+    <!-- lists.isEmpty()는 Thymeleaf 전용 검사 매서드 -->
+    <tr th:if="${#lists.isEmpty(product)}">
+        <td colspan="6">
+           현재 등록된 상품이 없습니다!
+        </td>
+    </tr>
+    <tr th:each="productElem : ${product}">
+        <td align="center" th:text="${productElem.productNo}"></td>
+        <td align="left" th:text="${productElem.username}"></td>
+        <td align="left" th:href="@{|read?productNo=${productElem.productNo}|}" th:text="${productElem.name}"></td>
+        <td align="right" th:text="${productElem.price}"></td>
+        <td th:text="${productElem.description}"></td>
+        <td align="center" th:text="${#dates.format(productElem.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+    </tr>
+</table>
+</body>
+</html>

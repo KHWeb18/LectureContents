@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var formObj = $("#board");
+
+        $("#btnRegister").on("click", function() {
+            formObj.attr("action", "register");
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+            self.location = "lists";
+        });
+    });
+</script>
+
+<body>
+<h2>게시글 등록</h2>
+
+<form id="board" th:action="@{register}" th:object="${product}" method="post">
+    <table>
+        <tr>
+            <td>상품명</td>
+            <td><input type="text" name="name" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>가격</td>
+            <td><input type="number" name="price" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td>상품 설명</td>
+            <td><textarea cols="50" rows="20" name="description" th:field="*{description}"></textarea></td>
+        </tr>
+    </table>
+</form>
+
+<div>
+    <button type="submit" id="btnRegister">상품 등록</button>
+    <button type="submit" id="btnList">상품 목록 보기</button>
+</div>
+</body>
+</html>

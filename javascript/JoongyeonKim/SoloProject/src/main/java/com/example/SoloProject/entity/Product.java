@@ -10,9 +10,9 @@ import java.util.Date;
 @Setter
 @ToString
 public class Product {
-    private int productNo;
+    private Integer productNo;
     private String name;
-    private int price;
+    private Integer price;
     private String description;
     private String writer;
     private Date regDate;

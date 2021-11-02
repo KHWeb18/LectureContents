@@ -1,45 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
 </head>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        var formObj = $("#member");
-
-        $("#btnRegister").on("click", function() {
-            formObj.attr("action", "login");
-            formObj.attr("method", "post");
-            formObj.submit();
-        });
-    });
-</script>
-
 <body>
-<h2>로그인</h2>
-<form id="member" th:object="${member}" method="post">
-  <table>
-    <tr>
-      <td>이름</td>
-      <td><input type="text" name="name" th:field="*{name}"></td>
-    </tr>
-    <tr>
-      <td>아이디</td>
-      <td><input type="text" name="id" th:field="*{id}"></td>
-    </tr>
-    <tr>
-      <td>비밀번호</td>
-      <td><input type="password" id="password" name="pw" th:field="*{pw}"></td>
-    </tr>
-  </table>
-</form>
-
-<div>
-  <button type="submit" id="btnRegister">로그인</button>
+<div class="wrap">
+  <div class="login">
+    <h2>Log-in</h2>
+    <div class="login_id">
+      <h4>E-mail</h4>
+      <input type="email" name="" id="" placeholder="Email">
+    </div>
+    <div class="login_pw">
+      <h4>Password</h4>
+      <input type="password" name="" id="" placeholder="Password">
+    </div>
+    <div class="submit">
+      <input type="submit" value="submit">
+    </div>
+  </div>
 </div>
 </body>
 </html>

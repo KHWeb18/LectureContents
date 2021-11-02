@@ -12,7 +12,7 @@ import javax.xml.crypto.Data;
 @Setter
 @ToString
 public class Membership {
-    private int membershipNo;
+    private Integer membershipNo;
     private String memName;
     private String memID;
     private String memPassword;

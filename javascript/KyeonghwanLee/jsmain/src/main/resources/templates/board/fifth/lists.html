@@ -24,7 +24,8 @@
             Java로 치면 foreach와 동일한 역할을 한다고 보면 됨-->
         <tr th:each="board : ${lists}">
             <td align="center" th:text="${board.boardNo}"></td>
-            <td align="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td>
+            <!--<td align="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td>-->
+            <td align="left"><a th:href="@{|read/${board.boardNo}|}" th:text="${board.title}"/></td>
             <td align="right" th:text="${board.writer}"></td>
             <!-- dates.format()은 특정한 형식으로 날짜를 표현해줌
                 아래 예는 연-월--일 시:분:초 형식임-->

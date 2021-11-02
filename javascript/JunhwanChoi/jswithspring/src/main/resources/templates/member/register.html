@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var formObj = $("#member");
+
+        $("#btnRegister").on("click", function() {
+            var passwordObj = $("#password");
+            alert("member: " + JSON.stringify(member));
+
+            formObj.attr("action", "register");
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+    });
+</script>
+
+<body>
+    <h2>회원 가입</h2>
+
+    <form id="member" th:object="${member}" method="post">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="id" th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" id="password" name="pw" th:field="*{pw}"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div>
+        <button type="submit" id="btnRegister">회원 가입</button>
+    </div>
+</body>
+</html>

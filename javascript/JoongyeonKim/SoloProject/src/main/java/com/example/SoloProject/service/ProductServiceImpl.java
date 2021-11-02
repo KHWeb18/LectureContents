@@ -1,5 +1,6 @@
 package com.example.SoloProject.service;
 
+import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Product;
 import com.example.SoloProject.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +12,30 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductRepository productrepository;
+    private ProductRepository repository;
 
     @Override
-    public void productregister(Product product) {
-        productrepository.create(product);
+    public void register(Product product) {
+        repository.create(product);
     }
 
     @Override
-    public List<Product> productlist() throws Exception {
-        return productrepository.productlist();
+    public List<Product> lists() throws Exception {
+        return repository.lists();
     }
 
     @Override
-    public Product productread(Integer productNo) throws Exception {
-        return productrepository.productread(productNo);
+    public Product read(Integer productNo) throws Exception {
+        return repository.read(productNo);
     }
 
     @Override
-    public void productremove(Integer productNo) throws Exception {
-        productrepository.delete(productNo);
+    public void remove(Integer productNo) throws Exception {
+        repository.delete(productNo);
+    }
+
+    @Override
+    public void modify(Product product) throws Exception {
+        repository.update(product);
     }
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table border="5">
+  <h2>명령어 목록보기</h2>
+</table>
+<table border="1">
+  <tr>
+    <th><a href="/register">명렁어 등록하기.</a></th>
+  </tr>
+
+
+</table>
+<table><tr><td></td></tr></table>
+<table border="1">
+  <tr>
+    <th align="center" width="80">게시글No</th>
+    <th align="center" width="120">작성자</th>
+    <th align="center" width="300">명령어</th>
+    <th align="center" width="600">명령어의 의미</th>
+    <th align="center" width="170">등록일자</th>
+  </tr>
+  <tr th:if="${#lists.isEmpty(command)}">
+    <td colspan="7">
+      등록된 도감이 없습니다.
+    </td>
+  </tr>
+  <tr th:each="commandElem : ${command}">
+    <td align="center" th:text="${commandElem.bulletinNo}"></td>
+    <td align="center" th:text="${commandElem.username}"></td>
+    <td align="center" th:href="@{|read?bulletinNo=${commandElem.bulletinNo}|}" th:text="${commandElem.command}"></td>
+    <td th:text="${commandElem.commandmean}"></td>
+    <td align="center" th:text="${#dates.format(commandElem.regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+  </tr>
+</table>
+</body>
+</html>

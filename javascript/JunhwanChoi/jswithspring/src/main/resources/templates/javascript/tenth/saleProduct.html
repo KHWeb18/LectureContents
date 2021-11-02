@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/js/sale.css">
+</head>
+<body>
+    <div id="contents">
+        <img src="">
+        <ul>
+            <li>
+                <label for="productPrice">원가</label>
+                <input type="text" id="productPrice"> 원
+            </li>
+            <li>
+                <label for="rate">할인율</label>
+                <input type="text" id="rate"> %
+            </li>
+            <li>
+                <button onclick="showPrice()">
+                    할인율 적용 금액 출력!
+                </button>
+            </li>
+        </ul>
+        <div id="showResult"></div>
+    </div>
+    <script src="/js/price-calc.js"></script>
+</body>
+</html>

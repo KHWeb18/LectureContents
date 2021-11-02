@@ -1,0 +1,18 @@
+p {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;     /* 가운데 정렬 */
+}
+.align-justify {
+    text-align: justify;    /* 양쪽 정렬 */
+}

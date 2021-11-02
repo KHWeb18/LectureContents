@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>HTTP Method(GET, POST)</h3>
+
+<form th:action="@{/http-method/register}">
+    <input type="submit" value="register(GET)">
+</form>
+
+<form th:action="@{/http-method/register}" method="post">
+    <input type="submit" value="register(POST)">
+</form>
+
+<form th:action="@{/http-method/modify}">
+    <input type="submit" value="modify(GET)">
+</form>
+
+<form th:action="@{/http-method/modify}" method="post">
+    <input type="submit" value="modify(POST)">
+</form>
+</body>
+</html>

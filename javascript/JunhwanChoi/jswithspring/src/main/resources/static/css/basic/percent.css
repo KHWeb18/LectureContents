@@ -1,0 +1,12 @@
+body {
+    background-color: #0094ff;
+}
+div {
+    background-color: white;
+    width: 45%;
+    padding: 15px;
+    border: 1px solid black;
+}
+p {
+    line-height: 30px;
+}

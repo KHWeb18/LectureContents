@@ -115,6 +115,11 @@ var app = new Vue ({
                 '이고 가격은 : ' + JSON.parse(JSON.stringify(this.shopList[j], ['price'])).price + '원이다')
 
                 this.totalPrice +=  JSON.parse(JSON.stringify(this.shopList[j], ['price'])).price
+
+                
+            console.log('연습 중1 : ' + JSON.parse(JSON.stringify(this.shopList[j], ['price'])).price)
+            //둘 다 같은 표현이네
+            console.log('연습 중2 : ' + JSON.parse(JSON.stringify(this.shopList[j].price)))
             }
             console.log('합계금액 : ' + this.totalPrice)
 

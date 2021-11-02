@@ -191,5 +191,12 @@ public String getModify(int productNo, Model model)throws  Exception{
         return "/Manager/memberModify";
 }
 
+@GetMapping ("/noticePage")
+    public  String getNoticePage(){
+        log.info("getNoticePage");
+
+        return "/Notice/NoticeRegister";
+}
+
 
 }

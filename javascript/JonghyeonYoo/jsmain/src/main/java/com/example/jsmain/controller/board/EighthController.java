@@ -16,24 +16,24 @@ public class EighthController {
     @Autowired
     private BoardService service;
 
-@GetMapping("/modify")
+    @GetMapping("/modify")
     public String getModify (int boardNo, Model model) throws Exception{
-    log.info("getModify()");
+        log.info("getModify()");
 
-    //수정을 눌렀을때 기존 정보를 가져와야함
-    model.addAttribute(service.read(boardNo));
+        //수정을 눌렀을때 기존 정보를 가져와야함
+        model.addAttribute(service.read(boardNo));
 
-    return "/board/eighth/modify";
-}
+        return "/board/eighth/modify";
+    }
 
-@PostMapping("/modify")
+    @PostMapping("/modify")
     public String postModify (Board board, Model model) throws Exception {
-    log.info("postModify()" + board);
+        log.info("postModify()" + board);
 
-    service.modify(board);
+        service.modify(board);
 
-    model.addAttribute("msg", "수정이 성공적으로 완료되었습니다.");
+        model.addAttribute("msg", "수정이 성공적으로 완료되었습니다.");
 
-    return "/board/fourth/success";
-}
+        return "/board/fourth/success";
+    }
 }

@@ -1,0 +1,8 @@
+.v-enter-active, .v-leave-active {
+    transition: opacity 2s;
+}
+
+/* 투명도를 2초동안 Fade in & Fade Out*/
+.v-enter, .v-leave-to {
+    opacity: 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>상품 목록 보기</h2>
+<a href="/register">상품 등록하기</a>
+<table border="1">
+    <tr>
+        <th align="center" width="80">번호</th>
+        <th align="center" width="120">아이디</th>
+        <th align="center" width="120">비밀번호</th>
+        <th align="center" width="120">이름</th>
+        <th align="center" width="600">연락처</th>
+        <th align="center" width="180">이메일</th>
+        <th align="center" width="180">주소</th>
+        <th align="center" width="180">등록일자</th>
+        <th align="center" width="180">이미지</th>
+
+    </tr>
+    <tr th:if="${#lists.isEmpty(member)}">
+         <td colspan="6">
+            현재 등록된 상품이 없습니다!
+        </td>
+    </tr>
+    <tr th:each="memberElem : ${member}">
+        <td align="center" th:text="${memberElem.memberNo}"></td>
+        <td align="left"><a th:href="@{|read?memberNo=${memberElem.memberNo}|}" th:text="${memberElem.id}"/></td>
+        <td align="right" th:text="${memberElem.pw}"></td>
+        <td align="right" th:text="${memberElem.name}"></td>
+        <td align="right" th:text="${memberElem.phoneNumber}"></td>
+        <td align="right" th:text="${memberElem.email}"></td>
+        <td align="right" th:text="${memberElem.address}"></td>
+        <td align="center" th:text="${#dates.format(memberElem.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td align="center" ><a th:href="@{|memberRead?memberNo=${memberElem.memberNo}|}"><img src="asdkasdhkj" width="200px" height="200px"></a></td>
+    </tr>
+</table>
+</body>
+</html>

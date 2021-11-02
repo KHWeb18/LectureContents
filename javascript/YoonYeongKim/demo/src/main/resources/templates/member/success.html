@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>동작 성공!</h2>
+<div>
+    <!-- ${msg}를 통해 전달받은 Model의 msg 속성에 등록된 값을 활용하는 부분 -->
+    <h3 th:text="${msg}"></h3>
+    <a href="/lists">게시글 목록 보기</a>
+</div>
+</body>
+</html>

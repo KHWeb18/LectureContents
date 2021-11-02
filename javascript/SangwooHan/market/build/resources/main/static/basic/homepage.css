@@ -1,0 +1,20 @@
+body {
+ background: #123456;
+
+
+}
+h1 {
+    font-size: 32px;
+     font-family: "Arial Rounded MT"
+     letter-spacing: 4px;
+}
+.movieFeelShadow {
+    color: #000000;
+    text-shadow: 0 0 4px #cccccc, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
+    -2px -15px 11px #ff8800, 2px -19px 18px #ff2200;
+}
+.movieFeelShadow2 {
+    color: #000000;
+    text-shadow: 0 0 4px #cccccc, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
+    -2px -15px 11px #ff88ff, 2px -19px 18px #ff2200;
+}

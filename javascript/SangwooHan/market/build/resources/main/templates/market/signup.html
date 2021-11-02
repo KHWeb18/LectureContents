@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var formObj = $("#marketBoard");
+
+        $("#signupbtn").on("click", function() {
+        self.location = "signupcomplete";
+        });
+         });
+</script>
+<body>
+<h1>나그넷 회원가입.</h1>
+<table>
+    <tr>
+        <td>이름</td>
+    </tr>
+    <tr>
+        <td><textarea cols="15" rows="1"></textarea></td>
+    </tr>
+    <tr>
+        <td>아이디<td>
+    </tr>
+    <tr>
+        <td><textarea cols="15" rows="1"></textarea></td>
+    </tr>
+    <tr>
+        <td>비밀번호</td>
+    </tr>
+    <tr>
+        <td><textarea cols="15" rows="1"></textarea></td>
+
+    </tr>
+    <tr>
+        <td>주민번호앞자리</td>
+    </tr>
+    <tr>
+        <td><textarea cols="7" rows="1"></textarea></td>
+    </tr>
+</table>
+<button id="signupbtn">회원가입하기!</button>
+</body>
+</html>

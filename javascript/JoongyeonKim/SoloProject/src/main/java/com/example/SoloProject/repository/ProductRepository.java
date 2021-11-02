@@ -1,6 +1,5 @@
 package com.example.SoloProject.repository;
 
-
 import com.example.SoloProject.entity.Product;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class ProductRepository {
         jdbcTemplate.update(query, product.getName(), product.getPrice(), product.getDescription(), product.getWriter());
     }
 
-    public List<Product> productlist() throws Exception {
+    public List<Product> lists() throws Exception {
 
         List<Product> results = jdbcTemplate.query(
                 "select product_no, name, price, description, writer, reg_date from product " +
@@ -55,7 +54,7 @@ public class ProductRepository {
         return results;
     }
 
-    public Product productread (Integer productNo) throws Exception {
+    public Product read (Integer productNo) throws Exception {
         List<Product> results = jdbcTemplate.query(
                 "select product_no, name, price, description, writer, reg_date from product where product_no = ?",
                 new RowMapper<Product>() {
@@ -81,5 +80,12 @@ public class ProductRepository {
         String query = "delete from product where product_no=?";
 
         jdbcTemplate.update(query, productNo);
+    }
+
+    public void update(Product product) throws Exception{
+        String query = "update product set name = ?, price=?, description=?, writer=? where product_no=?";
+
+        jdbcTemplate.update(query, product.getName(), product.getPrice(), product.getDescription(),
+                                   product.getWriter(), product.getProductNo());
     }
 }

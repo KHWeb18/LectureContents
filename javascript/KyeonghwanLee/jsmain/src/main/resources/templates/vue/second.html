@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/vue/second.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--어떤 동작을 하겠다는 가닥을 잡아놓고-->
+    <div id="app">
+      <p>{{ message }}</p>
+      <ol>
+          <li v-for="item in list">{{ item }} </li>
+      </ol>
+        <button v-on:click="buttonClickTest">클릭해봐!</button>
+        <!--양방향 설정-->
+        <input v-model="initMsg">
+        <p>{{ initMsg }}</p>
+        <button v-on:click="show= !show">얍!</button>
+        <transition>
+            <p v-if="show">invisibility도 쉽게 제어되니 ?</p>
+        </transition>
+        <p>Hello {{ message }}</p>
+        <p>{{ message.length}}</p>
+        <p>{{ list[3]}}</p>
+        <p>{{ list[num]}}</p> \
+        <button v-on:click="increment">숫자를 카운팅 해보자!</button>
+        <p>{{count}}번 클릭했습니다.</p>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <!--v-bind:r은 단방향-->
+            <!--cx는 원의 중점 -->rud
+            <circle cx="100" cy="75" v-bind:r="radius" fill="lightblue"/>
+        </svg>
+        <!--조절 바는 input type= range로 생성한다.-->
+        <input type="range" min="0" max="100" v-model="radius"><br><br><br>
+
+        <p>{{randomNumber}}</p>
+        <button v-on:click="randomGeneration">랜덤 숫자 발생!</button>
+
+        <input v-model="monsterName">
+        <button v-on:click="addMonster">몬스터 추가하기</button>
+        <ul>
+            <!--자바 스크립트에서는 포문에서 index값을 넣어서 불러 올 수 있다.-->
+            <li v-for="(monster, index) in monsters"
+                v-bind:key="monster.id"
+                v-bind:class="{ strong: monster.hp > 300}">
+                ID.{{monster.id}}{{monster.name}} HP.{{monster.hp}}
+                <span v-if="monster.hp > 300">개쎄다</span>
+                <button v-on:click="userAttack(index)">평타</button>
+                <button v-on:click="removeMonster(index)">몬스터 삭제</button>
+            </li>
+        </ul>
+    </div>
+    <!--스크립트 활동을하라고 요청함(요렇게 해라고 오더함)-->
+    <script src="/vue/second/second.js"></script>
+</body>
+</html>

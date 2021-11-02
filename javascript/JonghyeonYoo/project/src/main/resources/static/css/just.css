@@ -1,0 +1,58 @@
+html, body{100%; background-color: #1b1b1b;}
+
+*{list-style: none;
+text-decoration: none;
+}
+
+header{text-align: center;}
+header h1 {position: absolute; left: 50px; top: 0;}
+header h1 a {width: 110px; height: 81px;color: red;}
+header .spot {position: absolute; right: 50px; top: 0;}
+header .lnb li {display: inline-block;}
+header .lnb li a{ display: block; height: 81px; padding: 0 35px; font-size: 25px; color: white;
+line-height: 55px;}
+header .spot {position: absolute; right: 50px; top: 0;}
+header .spot li {float: left;}
+header .spot li a{display: block; height: 81px; padding: 0 10px;
+line-height: 55px; color: white;}
+header .spot li:first-child:after {display: none;}
+header .spot li:last-child a{padding-right: 0;}
+
+
+
+body {
+  position: relative;
+  height: 100%;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 200px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

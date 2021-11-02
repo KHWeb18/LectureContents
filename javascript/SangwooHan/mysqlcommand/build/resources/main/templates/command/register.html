@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+       $(document).ready(function() {
+
+        var formObj = $("#commandBoard");
+
+
+        $("#btnRegister").on("click", function() {
+
+            formObj.attr("action", "register");
+
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+        self.location = "lists";
+        });
+    });
+    </script>
+</head>
+<body>
+<h2>도감등록하기</h2>
+<form id="commandBoard" th:action="@{register}" th:object="${command}" method="post">
+  <table>
+    <tr>
+      <td>작성자</td>
+      <td><input type="text" name="username" th:feild="*{username}"></td>
+    </tr>
+    <tr>
+      <td>명령어</td>
+      <td><input type="text" name="command" th:feild="*{command}"></td>
+    </tr>
+    <tr>
+      <td>명령어의 의미</td>
+      <td><textarea cols="15" rows="10"  name="commandmean" th:field="*{commandmean}"></textarea></td>
+    </tr>
+  </table>
+</form>
+<div>
+  <button type="submit" id="btnRegister">도감등록하기.</button>
+  <button type="submit" id="btnList">도감 목록보기.</button>
+</div>
+</body>
+</html>

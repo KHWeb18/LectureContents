@@ -28,6 +28,7 @@ public class FifthController {   //게시글 목록, 회원가입 상품페이�
         return "/board/fifth/lists/lists";
     }
 
+    //
     @Autowired
     private SignUpService signupservice;
 

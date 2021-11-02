@@ -1,6 +1,5 @@
 package com.example.SoloProject.service;
 
-import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Member;
 import com.example.SoloProject.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;

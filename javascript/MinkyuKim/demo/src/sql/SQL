@@ -1,0 +1,42 @@
+create table member(
+member_no int not null
+auto_increment,
+id varchar(200) not null,
+pw varchar(200) not null,
+name varchar(200) not null,
+point int(11) null,
+reg_date timestamp not null default now(),
+primary key(member_no)
+);
+
+
+1. 가입한 사용자들 목록 가져오기 list
+2. length로 for문 돌리기
+3.
+
+repository
+
+    public void idLookup(Member member) throws Exception {
+
+        List<Member> results = jdbcTemplate.query(
+                "select id from member where id = ?",
+
+                new RowMapper<Member>() {
+                    @Override
+                    public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Member member = new Member();
+
+                        member.setId(rs.getString("id"));
+
+                        return member;
+                    }
+                }, member.getId());
+
+        Member tmp = results.get(0);
+
+
+        for(i = 0; i <tmp.length; i++) {
+        sout(id)
+        }
+
+

@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.ng-font {
+    font-family: 'Roboto', '로보토'; /* 웹 폰트 지정 */
+}
+p {
+    font-size: 30px;
+}
