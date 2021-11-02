@@ -12,7 +12,22 @@ import {
   DEATH,
   // 스프링 랜덤 데이터 통신
   SUCCESS_GEN_RAND_NUM,
-  FAIL_GEN_RAND_NUM
+  FAIL_GEN_RAND_NUM,
+  // 게시판
+  FETCH_BOARD_LIST,
+  FETCH_BOARD,
+  // 상품
+  FETCH_PRODUCT_LIST,
+  FETCH_PRODUCT,
+  // 몬스터북
+  FETCH_MONSTER_LIST,
+  FETCH_MONSTER,
+  // Dungeon
+  ALLOC_RANDOM_DUNGEON,
+  // 성적 관리
+  SCORE_MANAGEMENT,
+  // 크롤링
+  CRAWL_START
 } from './mutation-types'
 
 // 여기는 동기 처리를 하기 때문에 데이터 무결성이 보장됨
@@ -73,8 +88,40 @@ export default {
   [SUCCESS_GEN_RAND_NUM] (state, payload) {
     console.log('payload = ' + payload)
     state.randomFromSpring = payload
-},
-[FAIL_GEN_RAND_NUM] () {
+  },
+  [FAIL_GEN_RAND_NUM] () {
     console.log('통신 에러!')
-}
+  },
+// 게시판
+  [FETCH_BOARD_LIST] (state, boards) {
+    state.boards = boards;
+  },
+  [FETCH_BOARD] (state, board) {
+    state.board = board
+  },
+  // 상품
+  [FETCH_PRODUCT_LIST] (state, products) {
+    state.products = products;
+  },
+  [FETCH_PRODUCT] (state, product) {
+    state.product = product
+  },
+  // 몬스터북
+  [FETCH_MONSTER_LIST] (state, monsters) {
+    state.monsters = monsters;
+  },
+  [FETCH_MONSTER] (state, monster) {
+    state.monster = monster
+  },
+  [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
+    state.dungeons = dungeons
+  },
+    // 성적 관리
+  [SCORE_MANAGEMENT] (state, students) {
+    state.students = students
+  },
+  // 크롤링
+  [CRAWL_START] (state, payload) {
+    state.lists = payload
+  }
 }

@@ -9,5 +9,20 @@ export default {
   monsterElements: [],
   nextMonsterId: 1,
   // 스프링과 랜덤 데이터 통신
-  randomFromSpring: 0
+  randomFromSpring: 0,
+  // 게시판
+  boards: [],
+  board: null,
+  // 상품
+  products: [],
+  product: null,
+  // 몬스터북
+  monsters: [],
+  monster: null,
+  // 던전
+  dungeons: [],
+  // 성적관리
+  students: [],
+  // 크롤링
+  lists: []
 }

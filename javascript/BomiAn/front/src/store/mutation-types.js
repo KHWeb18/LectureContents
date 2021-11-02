@@ -13,7 +13,21 @@ export const DEATH = 'DEATH'
 export const SUCCESS_GEN_RAND_NUM = 'SUCCESS_GEN_RAND_NUM'
 export const FAIL_GEN_RAND_NUM = 'FAIL_GEN_RAND_NUM'
 
+export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
+export const FETCH_BOARD = 'FETCH_BOARD'
 
+export const FETCH_PRODUCT_LIST = 'FETCH_PRODUCT_LIST'
+export const FETCH_PRODUCT = 'FETCH_PRODUCT'
+
+export const FETCH_MONSTER_LIST = 'FETCH_MONSTER_LIST'
+export const FETCH_MONSTER = 'FETCH_MONSTER'
+
+
+export const ALLOC_RANDOM_DUNGEON = 'ALLOC_RANDOM_DUNGEON'
+
+export const SCORE_MANAGEMENT = 'SCORE_MANAGEMENT'
+
+export const CRAWL_START = 'CRAWL_START'
 
 //actions 비동기 처리 
 //mutations 동기 처리 -> 데이터의 무결성을 보장하고자 한다면 

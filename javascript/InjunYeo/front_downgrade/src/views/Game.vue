@@ -17,12 +17,18 @@
                 Game
             </router-link>
         </div>
-        <h2>Game</h2>
-        <div id="game">   
-        </div>
+        <!--
+        <div id="register">
+        <router-link :to={"name:'GameRegister'}">
+            
+        </router-link>
+        
+        </div>-->
     </div>
-</template>
 
+</template>
+<template>
+</template>
 <script>
 
 export default {

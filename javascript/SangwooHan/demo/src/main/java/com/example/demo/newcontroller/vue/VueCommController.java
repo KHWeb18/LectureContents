@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller
-@CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 public class VueCommController {
 
     @Autowired

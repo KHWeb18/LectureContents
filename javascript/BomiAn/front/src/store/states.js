@@ -8,6 +8,25 @@ export default {
   monsterElements: [],
   nextMonsterId: 1,
 
-  randomFromSpring: 0
+  randomFromSpring: 0,
+// 게시판
+  boards: [],
+  board: null,
+
+  // 상품
+  products: [],
+  product: null,
+
+  //monster
+   monsters: [],
+   monster: null,
+
+   //dungeons
+   dungeons: [],
+
+   students: [],
+
+   //크롤링
+   lists: []
 
 }

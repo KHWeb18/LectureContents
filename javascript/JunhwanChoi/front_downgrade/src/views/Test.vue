@@ -20,6 +20,7 @@
             </global-component>
 
             <local-component v-bind:num="value"></local-component>
+            <!-- <input type="text" v-on:keyup.enter="plus"/><br> -->
             <button v-on:click="plus">클릭해봐!</button><br>
 
             <b>random: {{ this.$store.getters.randomFromSpring }}</b><br>

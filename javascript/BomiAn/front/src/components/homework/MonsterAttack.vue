@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style>
-  .clear {
+  /* .clear {
    text-decoration: line-through; 
-  }
+  } */
 </style>

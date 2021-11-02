@@ -8,5 +8,27 @@ export default {
     monsterElements: [],
     nextMonsterId: 1,
     // 스프링과 랜덤 데이터 통신
-    randomFromSpring: 0
+    randomFromSpring: 0,
+    // 게시판
+    // views/GameMemberRegisterPage.vue에서 computed
+    boards: [],
+    // views/BoardReadPage.vue에서 ?
+    board: null,
+    // 상품
+    products: [],
+    product: null,
+    // 판타지 온라인
+    monsters: [],
+    monster: null,
+    // 랜덤 던전
+    dungeons: [],
+
+    // 성적 관리
+    students: [],
+
+    // 크롤링
+    lists: []
+    
+    
+
 }

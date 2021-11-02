@@ -1,39 +1,29 @@
 <template>
     <div class="homework">
         <homework-header></homework-header>
-        <!-- v-on:firskill에서 firstskill은 이벤트 이름. 이 이벤트가 발생했을 때 동작할 것이 onFirstSkill-->
-        <!-- <homework-skill v-on:firstSkill="onFirstSkill"></homework-skill> -->
-
-        <monster-input v-on:addMonster="onAddMonster"></monster-input>
-
+        <homework-monster-input v-on:addMonster="onAddMonster"></homework-monster-input>
         <monster-hundred-input v-on:addManyMonster="onAddManyMonster"></monster-hundred-input>
-
         <!-- <homework-skill v-on:firstSkill="onFirstSkill"></homework-skill> -->
         <monster-list
                 v-on:death="onDeath">
         </monster-list>
-        <!--<p>이름: {{ monsters.name }} hp: {{ monsters.hp }}</p>-->
-        <!-- todo-input 컴포넌트가 emit(addTodo, ~~)를 하면 onAddTodo()가 동작
-        <todo-input v-on:addTodo="onAddTodo"></todo-input>-->
+        <!-- <p>이름: {{ monsters.name }} hp: {{ monsters.hp }}</p> -->
     </div>
 </template>
 
 <script>
 import HomeworkHeader from '../components/homework/HomeworkHeader.vue'
-import MonsterInput from '../components/monster/MonsterInput.vue'
+import HomeworkMonsterInput from '../components/monster/HomeworkMonsterInput.vue'
 import MonsterHundredInput from '../components/monster/MonsterHundredInput.vue'
-
 // import HomeworkSkill from '../components/homework/HomeworkSkill.vue'
 import MonsterList from '../components/monster/MonsterList.vue'
-
 import { mapActions } from 'vuex'
-
 export default {
     name: 'Homework',
     components: {
         'homework-header': HomeworkHeader,
-        'monster-input': MonsterInput,
-        'monster-hundred-input': MonsterHundredInput,        
+        'homework-monster-input': HomeworkMonsterInput,
+        'monster-hundred-input': MonsterHundredInput,
         // 'homework-skill': HomeworkSkill,
         'monster-list': MonsterList
     },
@@ -125,8 +115,10 @@ export default {
 </script>
 
 <style>
+/*
 body {
     text-align: center;
     background-color: #CEDEBD;
 }
+*/
 </style>

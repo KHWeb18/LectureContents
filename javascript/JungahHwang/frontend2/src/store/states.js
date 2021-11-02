@@ -10,7 +10,24 @@ export default {
 // Monster
   monsterElements: [],
   nextMonsterId: 1,
+  monsters: [],
+  monster: null,
+  dungeons: [],
 
 // Spring
-  randomFromSpring: 0
+  randomFromSpring: 0,
+
+// Board
+  boards: [],
+  board: null,
+
+// Product
+  products: [],
+  product: null,
+
+// Quiz
+  students: [],
+
+// Crawling
+  lists: []
 }

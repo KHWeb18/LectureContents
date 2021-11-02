@@ -11,11 +11,13 @@ import {
     DEATH,
     // 스프링 랜덤 데이터 통신
     SUCCESS_GEN_RAND_NUM,
-    FAIL_GEN_RAND_NUM
+    FAIL_GEN_RAND_NUM,
+    // 게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD
 } from './mutation-types'
 
 import axios from 'axios'
-
 // 보통 action에서 처리하는 것은 비동기 처리를 함
 export default {
     addTodo (context, payload) {
@@ -41,7 +43,6 @@ export default {
     toggleTodoStatus ({ commit }, id) {
         commit(TOGGLE_TODO_STATUS, id)
     },
-
     // 판타지 온라인
     addMonster (context, payload) {
         context.commit(ADD_MONSTER, payload)
@@ -55,7 +56,6 @@ export default {
     // Spring과 랜덤 데이터 통신
     generateRandomNumber ({ commit }) {
         console.log(commit)
-
         // axios.get: GET 요청
         // axios.post: POST 요청
         // 특정 URL로 GET 혹은 POST, 그 외의 요청을 보낼 수 있음
@@ -69,5 +69,18 @@ export default {
                 .catch((res) => {
                     commit(FAIL_GEN_RAND_NUM, res)
                 })
-    }
+    },
+    // 게시판
+    fetchBoardList ({ commit }) {
+        return axios.get('http://localhost:7777/vueboard/lists')
+                .then((res) => {
+                    commit(FETCH_BOARD_LIST, res.data)
+                })
+    },
+    fetchBoard ({ commit }, boardNo) {
+        return axios.get(`http://localhost:7777/boards/${boardNo}`)
+                .then((res) => {
+                    commit(FETCH_BOARD, res.data)
+                })
+    } 
 }

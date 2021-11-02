@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz 01</title>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+</script>
+
+<body>
+<h2>포트폴리오 문제</h2>
+
+<hr class="one">
+
+<table border=0 cellpadding=0 cellspacing=30 width=750>
+    <tr><td>
+        <fieldset style="padding:10; ">
+            <legend><font size=2><b>공지사항 작성하기</font></legend></b></font>
+            <form id="board" th:action="@{insert.no}"  method="post">
+                <table>
+                    <tr>
+                        <td font size=2><b>제목</b></td>
+                        <td><input type="text" name="title" th:field="*{title}" placeholder="제목을 입력하십시오."></td>
+                    </tr>
+                    <tr>
+                        <td font size=2><b>내용</b></td>
+                        <td><textarea cols="50" rows="20" name="content" th:field="*{content}" placeholder="내용을 입력하십시오."></textarea></td>
+                    </tr>
+                    <tr>
+                        <td font size=2><b>첨부파일</b></td>
+                        <td><button type="submit" name="uploadFile" id="btnFile">파일 선택</button></td>
+                        <td>선택된 파일 없음</td>
+                    </tr>
+                    <td>
+                        <button type="submit" style="float:none" id="btnRegister">작성하기</button>
+                    </td>
+                </table>
+            </form>
+    </td></tr></table>
+
+<hr class="one">
+
+<table width="1100" align = "left" border="1" bgcolor="fff7dc">
+    <br>
+    <tr bgcolor="ffaa66" style="color:white" align="center">
+        <th width="40">번호</th>
+        <th colspan="2" width="400">제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th width="60">조회수</th>
+    </tr>
+    <tr align="left">
+        <th align="left">9</th>
+        <th>공지사항 제목 9</th>
+        <th width="70"><button>바로가기</button></th>
+        <th>user01</th>
+        <th>2021-03-29</th>
+        <th>34</th>
+    </tr>
+    <tr align="left">
+        <th align="left">6</th>
+        <th>공지사항 제목 6</th>
+        <th width="70"><button>바로가기</button></th>
+        <th>answ445</th>
+        <th>2021-03-12</th>
+        <th>67</th>
+    </tr>
+    <tr align="left">
+        <th align="left">3</th>
+        <th>공지사항 제목 3</th>
+        <th width="70"><button>바로가기</button></th>
+        <th>testg12</th>
+        <th>2021-03-01</th>
+        <th>98</th>
+    </tr>
+    <tr align="left">
+        <th align="left">2</th>
+        <th>공지사항 제목 2</th>
+        <th width="70"><button>바로가기</button></th>
+        <th>palwe2</th>
+        <th>2021-01-02</th>
+        <th>85</th>
+    </tr>
+    <tr align="left">
+        <th align="left">1</th>
+        <th>공지사항 제목 1</th>
+        <th width="70"><button>바로가기</button></th>
+        <th>xml23</th>
+        <th>2020-12-24</th>
+        <th>124</th>
+    </tr>
+
+    <tr>
+        <th colspan="4" bgcolor="ffaa66" style="color:white">전체공지사항 갯수</th>
+        <th colspan="2" bgcolor="ffaa66" style="color:white">5개</th>
+    </tr>
+
+
+
+</table>
+
+
+
+</body>
+</html>

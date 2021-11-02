@@ -18,11 +18,6 @@ public class VueCommContorller {
     @Autowired
     private RandNumService randNumService;
 
-    // 서버의 정의는 ? 클라이언트에게 서비스제공
-    // 클라이언트는 어떤 서비스를 받는가 ? 틀라이언트(사용자)가 요청한 서비스르 받음
-    // 사용자가 요청할 URL을 맵핑함(서비스 요청)
-    // ResponseBody가 붙어 있으면 리턴하는 값을 json 형식으로 만들어줌
-
     @GetMapping("/random")
     @ResponseBody
     public ResponseEntity<RandNumMessage> getRandom() {

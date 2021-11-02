@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,10 +6,10 @@
     <title>Title</title>
 </head>
 
-<!-- 버튼 누르면 동작하는 과정을 서포트하는 라이브러리 -->
+&lt;!&ndash; 버튼 누르면 동작하는 과정을 서포트하는 라이브러리 &ndash;&gt;
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- 아래 파트는 Run-Time에 작동하므로 오류에 좀 더 민감할 필요가 있음(발견하기 쉽지 않음) -->
+&lt;!&ndash; 아래 파트는 Run-Time에 작동하므로 오류에 좀 더 민감할 필요가 있음(발견하기 쉽지 않음) &ndash;&gt;
 <script>
     // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
     $(document).ready(function() {
@@ -34,17 +35,17 @@
 <body>
     <h2>게시글 등록</h2>
 
-    <!-- Controller의 getRegister 에서 전달받은 Board 객체(현재 텅 빔)
+    &lt;!&ndash; Controller의 getRegister 에서 전달받은 Board 객체(현재 텅 빔)
          th:action에는 이동시킬 URL 주소를 작성한다.
          보통 action에는 @를 사용한다.
 
          th:object는 Board 객체(현재 텅 빔)를 전달받기 위한 목적으로 활용
-         객체를 전달 받을 경우엔 $를 사용한다. -->
+         객체를 전달 받을 경우엔 $를 사용한다. &ndash;&gt;
     <form id="board" th:action="@{register}" th:object="${board}" method="post">
         <table>
             <tr>
                 <td>제목</td>
-                <!-- th:field의 경우엔 Board 객체에 있는 title과 직접 맵핑시킴 -->
+                &lt;!&ndash; th:field의 경우엔 Board 객체에 있는 title과 직접 맵핑시킴 &ndash;&gt;
                 <td><input type="text" name="title" th:field="*{title}"></td>
             </tr>
             <tr>
@@ -53,7 +54,7 @@
             </tr>
             <tr>
                 <td>본문</td>
-                <!-- textarea는 글자를 여러개 입력할 수 있는 글 입력창이다 -->
+                &lt;!&ndash; textarea는 글자를 여러개 입력할 수 있는 글 입력창이다 &ndash;&gt;
                 <td><textarea cols="50" rows="20" name="content" th:field="*{content}"></textarea></td>
             </tr>
         </table>
@@ -64,4 +65,79 @@
         <button type="submit" id="btnList">게시글 목록 보기</button>
     </div>
 </body>
-</html>
+</html>-->
+<head>
+    <meta charset="utf-8">
+    <style>
+ * {
+     margin: 0;
+     padding: 0;
+ }
+ ul {
+     list-style-type: none;
+ }
+ h3 {
+     margin: 20px 0 0 50px;
+ }
+ #test_form {
+     width: 500px;
+     margin: 10px 0 0 50px;
+     font-family: "돋움";
+     font-size: 12px;
+     color: #444444;
+     padding-top: 5px;
+     padding-bottom: 10px;
+     border-top: solid 1px #cccccc;
+     border-bottom: solid 1px #cccccc;
+ }
+
+ .cols li {
+     display: inline-block;
+     margin-top: 5px;
+ }
+④ .cols li.col1 {
+     width: 100px;
+     text-align: right;
+ }
+⑤ .cols li.col2 {
+     width: 350px;
+ }
+⑥ .cols li.col2 input.hp {
+     width: 35px;
+ }
+⑦ #intro {
+     vertical-align: top;
+ }
+ </style>
+</head>
+<body>
+<h3>가입 양식</h3>
+<form action="insert.no" method="post">
+    <ul id="test_form">
+        <li>
+            <ul class="cols">
+                <li class="col1">제목</li>
+                <li class="col2"><input type="text" name="title" placeholder="제목을 입력하시오."></li>
+            </ul>
+        </li>
+
+        <li>
+            <ul class="cols">
+                <li class="col1" id="intro">자기소개</li>
+                <li class="col2">
+                    <textarea cols="50" rows="20" name="content" placeholder="내용을 입력하시오."></textarea></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="cols">
+                <li class="col1">첨부파일</li>
+                <li class="col2">
+                    <input type="file" name="uploadFile"></li>
+            </ul>
+        </li>
+        <li>
+            <button type="submit" id="btnSubmit">작성하기</button>
+        </li>
+    </ul>
+</form>
+</body>

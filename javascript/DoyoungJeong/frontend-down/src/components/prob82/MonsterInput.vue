@@ -20,7 +20,7 @@ export default {
                 var value = this.newMonsterElem && this.newMonsterElem.trim()
                 console.log('addMonsterElem')
 
-                this.$emit('addMonsterElem', value)
+                this.$emit('addMonster', value)
                 //emit은 자기를 둘러싼 컴포넌트에게 정보를 전달한다.
                 //emit을 감싼 컴포넌트는 todoInput이다. 그리고 todoInput컴포넌트가있는 Todo.vue에 정보가 전달된다.
                 this.clearInput()

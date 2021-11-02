@@ -13,7 +13,10 @@
                 v-on:change="toggleTodoStatus()"/>
 
             <button v-on:click="removeTodo">지우기</button>
-            <!-- ref는 어떤 용도로 사용된건가요??-->
+            <!-- ref는 어떤 용도로 사용된건가요??
+            ref자체는 content를 가르킨다.-->
+
+            <!-- checked는 변화를 감지한다. 값이 변화하면 작동한다 -->
 
             <!-- blur는 마우스 포커스를 뗐을 때 발동 -->
         </li>
@@ -60,7 +63,7 @@ export default {
                 return false
             }
             this.$emit('editTodo', content, id)
-            this.$refs.content.blur()
+            
             //위 refs blur()가 무슨뜻?
             //커서를 없앤다는 뜻
         },

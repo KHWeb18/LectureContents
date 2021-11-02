@@ -1,31 +1,31 @@
 <template>
     <div class="homework">
         <homework-header></homework-header>
-        <monster-input v-on:addMonster="onAddMonster"></monster-input>
+        <homework-monster-input v-on:addMonster="onAddMonster"></homework-monster-input>
         <monster-hundred-input v-on:addManyMonster="onAddManyMonster"></monster-hundred-input>
         <!-- <homework-skill v-on:firstSkill="onFirstSkill"></homework-skill> -->
-        <monster-list
+        <homework-monster-list
                 v-on:death="onDeath">
-        </monster-list>
+        </homework-monster-list>
         <!-- <p>이름: {{ monsters.name }} hp: {{ monsters.hp }}</p> -->
     </div>
 </template>
 
 <script>
 import HomeworkHeader from '../components/homework/HomeworkHeader.vue'
-import MonsterInput from '../components/monster/MonsterInput.vue'
+import HomeworkMonsterInput from '../components/monster/HomeworkMonsterInput.vue'
 import MonsterHundredInput from '../components/monster/MonsterHundredInput.vue'
 // import HomeworkSkill from '../components/homework/HomeworkSkill.vue'
-import MonsterList from '../components/monster/MonsterList.vue'
+import HomeworkMonsterList from '../components/monster/HomeworkMonsterList.vue'
 import { mapActions } from 'vuex'
 export default {
     name: 'Homework',
     components: {
         'homework-header': HomeworkHeader,
-        'monster-input': MonsterInput,
+        'homework-monster-input': HomeworkMonsterInput,
         'monster-hundred-input': MonsterHundredInput,
         // 'homework-skill': HomeworkSkill,
-        'monster-list': MonsterList
+        'homework-monster-list': HomeworkMonsterList
     },
     data () {
         return {

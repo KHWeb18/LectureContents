@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Member {
 
-    private int memberNo;
+    private Integer memberNo;
     private String id;
     private String password;
 

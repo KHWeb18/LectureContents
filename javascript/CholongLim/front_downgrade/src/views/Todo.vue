@@ -66,8 +66,10 @@ export default {
 </script>
 
 <style>
-body {
+
+/* body {
   text-align: center;
   background-color:cornsilk;
-}
+} */
+
 </style>

@@ -12,8 +12,27 @@ import {
   ADD_MANY_MONSTER,
   DEATH,
 
-FAIL_GEN_RAND_NUM,
- SUCCESS_GEN_RAND_NUM
+  FAIL_GEN_RAND_NUM,
+  SUCCESS_GEN_RAND_NUM,
+
+  FETCH_BOARD_LIST,
+  FETCH_BOARD,
+
+  // 상품
+  FETCH_PRODUCT_LIST,
+  FETCH_PRODUCT,
+  
+  //monster
+  FETCH_MONSTER_LIST,
+  FETCH_MONSTER,
+
+  //dungeon
+  ALLOC_RANDOM_DUNGEON,
+
+  //성적관리
+  SCORE_MANAGEMENT,
+  //크롤링
+  CRAWL_START
 
 } from './mutation-types'
 
@@ -78,5 +97,37 @@ export default {
   },
   [FAIL_GEN_RAND_NUM] () {
       console.log('통신 에러!')
-  }
+  },
+  //게시판
+  [FETCH_BOARD_LIST] (state, boards) {
+    state.boards = boards;
+  },
+  [FETCH_BOARD] (state, board) {
+    state.board = board;
+  },
+   // 상품
+   [FETCH_PRODUCT_LIST] (state, products) {
+    state.products = products;
+  },
+  [FETCH_PRODUCT] (state, product) {
+      state.product = product;
+  },
+  //monster
+  [FETCH_MONSTER_LIST] (state, monsters) {
+    state.monsters = monsters;
+  },
+  [FETCH_MONSTER] (state, monster) {
+    state.monster = monster;
+  },
+  // 랜덤 던전
+  [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
+    state.dungeons = dungeons
+  },
+  [SCORE_MANAGEMENT] (state, students) {
+    state.students = students
+  },
+  [CRAWL_START] (state, payload) {
+    state.lists = payload
+  },
+
 }

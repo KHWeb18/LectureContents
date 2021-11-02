@@ -1,7 +1,7 @@
 <template>
     <div class="homework">
         <homework-header></homework-header>
-        <monster-input v-on:addMonster="onAddMonster"></monster-input>
+        <homework-monster-input v-on:addMonster="onAddMonster"></homework-monster-input>
         <monster-hundred-input v-on:addManyMonster="onAddManyMonster"></monster-hundred-input>
         <!--<monster-attack v-on:firsSkill="onFirstSkill"></monster-attack>-->
         <monster-list
@@ -17,7 +17,7 @@
 import HomeworkHeader from '../components/homework/HomeworkHeader.vue'
 //import MonsterAttack from '../components/homework/MonsterAttack.vue'
 import MonsterList from '../components/monster/MonsterList.vue'
-import MonsterInput from '../components/monster/MonsterInput.vue'
+import HomeworkMonsterInput from '../components/monster/HomeworkMonsterInput.vue'
 import MonsterHundredInput from '../components/monster/MonsterHundredInput.vue'
 
 import {mapActions} from 'vuex'
@@ -28,7 +28,7 @@ export default {
     name: 'Homework',
     components:{
         'homework-header': HomeworkHeader,
-        'monster-input' : MonsterInput,
+        'homework-monster-input' : HomeworkMonsterInput,
         'monster-hundred-input' : MonsterHundredInput,
         //'monster-attack': MonsterAttack,
         'monster-list': MonsterList

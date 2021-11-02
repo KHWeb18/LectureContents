@@ -21,6 +21,76 @@
                     active-class="active">
                 Prob82
             </router-link>
+            <router-link :to="{ name: 'BoardListPage' }"
+                    class="nav-link"
+                    active-class="active">
+                BoardListPage
+            </router-link>
+            <router-link :to="{ name: 'MemberListPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MemberListPage
+            </router-link>
+            <router-link :to="{ name: 'Concave' }"
+                    class="nav-link"
+                    active-class="active">
+                Concave
+            </router-link>
+            <router-link :to="{ name: 'MonsterStoragePage' }"
+                    class="nav-link"
+                    active-class="active">
+                MonsterStoragePage     
+            </router-link>
+            <router-link :to="{ name: 'EventBusTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                EventBusTestPage   
+            </router-link>
+            <router-link :to="{ name: 'DungeonPage' }"
+                    class="nav-link"
+                    active-class="active">
+                DungeonPage   
+            </router-link>
+            <router-link :to="{ name: 'StudentScoresPage' }"
+                    class="nav-link"
+                    active-class="active">
+                StudentScoresPage   
+            </router-link>
+            <router-link :to="{ name: 'TriangleAreaCalc' }"
+                    class="nav-link"
+                    active-class="active">
+                TriangleAreaCalc   
+            </router-link>
+            <router-link :to="{ name: 'DaumNewsCrawlerPage' }"
+                    class="nav-link"
+                    active-class="active">
+                다음 뉴스 크롤러
+            </router-link>
+            <router-link :to="{ name: 'UnNamedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                UnNamedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'NamedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                NamedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'ScopedSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ScopedSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'RecentSlotTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                RecentSlotTestPage
+            </router-link>
+            <router-link :to="{ name: 'MaterializeTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MaterializeTestPage
+            </router-link>
         </div>
         <div>
             <!-- <button v-on:click="addManyMonster">몬스터 100마리 리젠</button>-->

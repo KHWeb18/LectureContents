@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 public class RandNumRepository {
 
     public RandNumMessage getRandom() {
+
         return new RandNumMessage();
     }
 }

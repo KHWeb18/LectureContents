@@ -24,7 +24,7 @@ public class MemberRepository {
         String query = "insert into member (user_id, user_pass, name, sex, phone_no, dateOfBirth) values " +
                 "(?, ?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(query, member.getUserId(), member.getUserPass(), member.getName(),
+        jdbcTemplate.update(query, member.getId(), member.getPw(), member.getName(),
                 member.getSex(), member.getPhoneNo(), member.getBirth());
     }
 
@@ -45,8 +45,8 @@ public class MemberRepository {
 
 
                         member.setMemberNo(rs.getInt("member_no"));
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
                         member.setSex(rs.getString("sex"));
                         member.setPhoneNo(rs.getString("phone_no"));
                         member.setName(rs.getString("name"));
@@ -80,17 +80,17 @@ public class MemberRepository {
                     public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Member member = new Member();
 
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
 
                         return member;
                     }
-                }, member.getUserId());
+                }, member.getId());
 
         Member tmp = results.get(0);
         log.info("tmp: " + tmp);
 
-        if (tmp.getUserPass().equals(member.getUserPass())) {
+        if (tmp.getPw().equals(member.getPw())) {
             log.info("Password Correct");
         } else {
             log.info("Password Incorrect");
@@ -107,8 +107,8 @@ public class MemberRepository {
                         Member member = new Member();
 
                         member.setMemberNo(rs.getInt("member_no"));
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
                         member.setSex(rs.getString("sex"));
                         member.setPhoneNo(rs.getString("phone_no"));
                         member.setName(rs.getString("name"));
@@ -131,7 +131,7 @@ public class MemberRepository {
         String query = "update member set user_id = ?, user_pass = ?, " +
                 "sex = ?, phone_no = ?, name = ?, dateOfBirth = ? where member_no = ?";
 
-        jdbcTemplate.update(query, member.getUserId(), member.getUserPass(),
+        jdbcTemplate.update(query, member.getId(), member.getPw(),
                 member.getName(),member.getBirth(), member.getPhoneNo());
     }
 }

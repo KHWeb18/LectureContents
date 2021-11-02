@@ -13,13 +13,31 @@ import {
   ADD_MONSTER,
   DEATH,
   ADD_MANY_MONSTER,
+  FETCH_MONSTER_LIST,
+  FETCH_MONSTER,
+  ALLOC_RANDOM_DUNGEON,
 
 // Spring
   SUCCESS_GEN_RAND_NUM,
-  FAIL_GEN_RAND_NUM
+  FAIL_GEN_RAND_NUM,
+
+// Board
+  FETCH_BOARD_LIST,
+  FETCH_BOARD,
+
+// Product
+  FETCH_PRODUCT_LIST,
+  FETCH_PRODUCT,
+
+// Quiz
+  FETCH_STUDENT_SCORE,
+
+// Crawling
+  CRAWL_START
 } from './mutation-types'
 
 import axios from 'axios'
+import router from '../router'
 
 export default {
 // Todo
@@ -63,6 +81,21 @@ export default {
   addManyMonster (context, payload) {
     context.commit(ADD_MANY_MONSTER, payload)
   },
+  fetchMonsterList ({ commit }) {
+    return axios.get('http://localhost:7777/vuemonster/lists').then((res) => {
+      commit(FETCH_MONSTER_LIST, res.data)
+    })
+  },
+  fetchMonster ({ commit }, monsterNo) {
+    return axios.get(`http://localhost:7777/vuemonster/${monsterNo}`).then((res) => {
+      commit(FETCH_MONSTER, res.data)
+    })
+  },
+  randomDungeonList ({ commit }) {
+    return axios.get('http://localhost:7777/vuedungeon/randomAlloc').then((res) => {
+      commit(ALLOC_RANDOM_DUNGEON, res.data)
+    })
+  },
 
 // spring과 랜덤 데이터 통신
   generateRandomNumber ({ commit }) {
@@ -77,6 +110,48 @@ export default {
       commit(SUCCESS_GEN_RAND_NUM, parseInt(res.data.randNumber))
     }).catch((res) => {
       commit(FAIL_GEN_RAND_NUM, res)
+    })
+  },
+
+// Board
+  fetchBoardList ({ commit }) {
+    return axios.get('http://localhost:7777/vueboard/lists').then((res) => {
+      commit(FETCH_BOARD_LIST, res.data)
+    })
+  },
+  fetchBoard ({ commit }, boardNo) {
+    return axios.get(`http://localhost:7777/vueboard/${boardNo}`).then((res) => {
+      commit(FETCH_BOARD, res.data)
+    })
+  },
+
+// Product
+  fetchProductList ({ commit }) {
+    return axios.get('http://localhost:7777/vueproduct/lists').then((res) => {
+      commit(FETCH_PRODUCT_LIST, res.data)
+    })
+  },
+  fetchProduct ({ commit }, productNo) {
+    return axios.get(`http://localhost:7777/vueproduct/${productNo}`).then((res) => {
+      commit(FETCH_PRODUCT, res.data)
+    })
+  },
+
+// Quiz
+  fetchStudentScore ({ commit }) {
+    return axios.get('http://localhost:7777/vuestudent/score').then(res => {
+      commit(FETCH_STUDENT_SCORE, res.data)
+    })
+  },
+
+// Crawling
+  async crawlFind ({ commit }, category) {
+    axios.get('http://localhost:7777/' + `${category}`).then(({ data }) => {
+      commit(CRAWL_START, data)
+
+      if (window.location.pathname !== '/daumNewsCrawler') {
+        router.push('/daumNewsCrawler')
+      }
     })
   }
 }

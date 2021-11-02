@@ -15,10 +15,29 @@ import {
   ADD_MONSTER,
   DEATH,
   ADD_MANY_MONSTER,
+  FETCH_MONSTER_LIST,
+  FETCH_MONSTER,
+  ALLOC_RANDOM_DUNGEON,
 
 // Spring
   SUCCESS_GEN_RAND_NUM,
-  FAIL_GEN_RAND_NUM
+  FAIL_GEN_RAND_NUM,
+
+// Board
+  FETCH_BOARD_LIST,
+  FETCH_BOARD,
+
+// Product
+  FETCH_PRODUCT_LIST,
+  FETCH_PRODUCT,
+
+// Quiz
+  FETCH_STUDENT_SCORE,
+  CALC_MEAN,
+
+// Crawling
+  CRAWL_START
+
 } from './mutation-types'
 
 export default {
@@ -78,6 +97,15 @@ export default {
       state.nextMonsterId++
     }
   },
+  [FETCH_MONSTER_LIST] (state, monsters) {
+    state.monsters = monsters
+  },
+  [FETCH_MONSTER] (state, monster) {
+    state.monster = monster
+  },
+  [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
+    state.dungeons = dungeons
+  },
 
 // Spring
   [SUCCESS_GEN_RAND_NUM] (state, payload) {
@@ -86,5 +114,42 @@ export default {
   },
   [FAIL_GEN_RAND_NUM] () {
     console.log('통신에러!')
-  }  
+  },
+  
+// Board
+  [FETCH_BOARD_LIST] (state, boards) {
+    state.boards = boards
+  },
+  [FETCH_BOARD] (state, board) {
+    state.board = board
+  },
+
+// Product
+  [FETCH_PRODUCT_LIST] (state, products) {
+    state.products = products
+  },
+  [FETCH_PRODUCT] (state, product) {
+    state.product = product
+  },
+
+// Quiz
+  [FETCH_STUDENT_SCORE] (state, students) {
+    state.students = students
+  },
+  [CALC_MEAN] (state) {
+    state.mean = 0
+    var tmp = 0
+    var len = state.students.length
+
+    for (var i = 0; i < len; i++) {
+        tmp += state.students[i].score
+    }
+
+    state.mean = tmp / len
+  },
+
+// Crawling
+  [CRAWL_START] (state, payload) {
+    state.lists = payload
+  }
 }

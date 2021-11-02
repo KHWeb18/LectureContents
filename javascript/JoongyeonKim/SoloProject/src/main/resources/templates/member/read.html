@@ -26,7 +26,7 @@
         });
 
         $("#btnList").on("click", function() {
-            self.location = "list";
+            self.location = "lists";
         });
     });
 </script>
@@ -40,17 +40,17 @@
     <table>
         <tr>
             <td>이름</td>
-            <td><input type="text" name="name" th:field="*{name}"
+            <td><input type="text" name="name"
                        th:field="*{name}" readonly="readonly"></td>
         </tr>
         <tr>
             <td>아이디</td>
-            <td><input type="text" name="id" th:field="*{id}"
+            <td><input type="text" name="id"
                        th:field="*{id}" readonly="readonly"></td>
         </tr>
         <tr>
             <td>비밀번호</td>
-            <td><input type="password" id="password" name="pw" th:field="*{pw}"
+            <td><input type="password" id="password" name="pw"
                        th:field="*{pw}" readonly="readonly"></td>
         </tr>
     </table>

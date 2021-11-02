@@ -1,6 +1,5 @@
 package com.example.SoloProject.controller;
 
-import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Member;
 import com.example.SoloProject.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/member")
-// 서로 같은 이름의 맵핑이 있을 때 오류가 나오는 것을 막기위해 하나 더 만들어 주는것이다 /member/lists
 public class MemberController {
 
     @Autowired
@@ -26,7 +24,7 @@ public class MemberController {
 
         model.addAttribute("member", memberservice.list());
 
-        return "/member/list";
+        return "/member/lists";
     }
 
     @GetMapping("/signup")
@@ -73,7 +71,7 @@ public class MemberController {
 
     @GetMapping("/read")
     public String getRead (int memberNo, Model model) throws Exception{
-        log.info("read");
+        log.info("read()");
 
         model.addAttribute(memberservice.read(memberNo));
 
@@ -97,5 +95,16 @@ public class MemberController {
         model.addAttribute("msg", "수정이 성공적으로 완료되었습니다");
 
         return  "/member/success";
+    }
+
+    @PostMapping("/remove")
+    public String remove (int memberNo, Model model) throws Exception{
+        log.info("remove");
+
+        memberservice.remove(memberNo);
+
+        model.addAttribute("msg", "삭제가 완료되었습니다");
+
+        return "/member/success";
     }
 }

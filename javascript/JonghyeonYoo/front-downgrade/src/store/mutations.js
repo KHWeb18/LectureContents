@@ -13,7 +13,23 @@ import {
     DEATH,
     // 스프링 랜덤 데이터 통신
     SUCCESS_GEN_RAND_NUM,
-    FAIL_GEN_RAND_NUM
+    FAIL_GEN_RAND_NUM,
+    // 게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
+    // 상품
+    FETCH_PRODUCT_LIST,
+    FETCH_PRODUCT,
+    // 판타지 온라인
+    FETCH_MONSTER_LIST,
+    FETCH_MONSTER,
+    // 랜덤 던전
+    ALLOC_RANDOM_DUNGEON,
+    // 성적 관리
+    SCORE_MANAGEMENT,
+    CALC_MEAN,
+    // 크롤링
+    CRAWL_START
 } from './mutation-types'
 
 // 여기는 동기 처리를 하기 때문에 데이터 무결성이 보장됨
@@ -30,8 +46,9 @@ export default {
     [EDIT_TODO] (state, payload) {
         const { id, content } = payload
         const targetIndex = state.todoItems.findIndex(v => v.id === id)
-        const targetTodoItem = state.todoItems[targetIndex]
-        state.todoItems.splice(targetIndex, 1, { ...targetTodoItem, content })
+        // const targetTodoItem = state.todoItems[targetIndex]
+        // state.todoItems.splice(targetIndex, 1, { ...targetTodoItem, content })
+        state.todoItems.splice(targetIndex, 1, { content })
     },
     [SET_EDITTING_ID] (state, id) {
         state.editingId = id
@@ -77,5 +94,51 @@ export default {
     },
     [FAIL_GEN_RAND_NUM] () {
         console.log('통신 에러!')
-    }
+    },
+    // 게시판
+    [FETCH_BOARD_LIST] (state, boards) {
+        state.boards = boards;
+    },
+    [FETCH_BOARD] (state, board) {
+        state.board = board
+    },
+    // 상품
+    [FETCH_PRODUCT_LIST] (state, products) {
+        state.products = products
+    },
+    [FETCH_PRODUCT] (state, product) {
+        state.product = product
+    },
+    // 판타지 온라인
+    [FETCH_MONSTER_LIST] (state, monsters) {
+        state.monsters = monsters
+    },
+    [FETCH_MONSTER] (state, monster) {
+        state.monster = monster
+    },
+    // 랜덤 던전
+    [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
+        state.dungeons = dungeons
+    },
+    // 성적 관리
+    [SCORE_MANAGEMENT] (state, students) {
+        state.students = students
+    },
+    [CALC_MEAN] (state) {
+        state.mean = 0
+        var tmp = 0
+        var len = state.students.length
+
+        for (var i = 0; i < len; i++) {
+            tmp += state.students[i].score
+        }
+
+        state.mean = tmp / len
+    },
+        // 크롤링
+        
+        [CRAWL_START] (state, payload) {
+            state.lists = payload
+        }
+    
 }

@@ -2,7 +2,7 @@
     <div class="todo">
         <li>
             <span v-if="!isEditing">
-                {{ monster.name }}
+                {{ monster.name }} , HP: {{ monster.hp }}
             </span>
             <input v-else type="text" ref="name"
                     v-bind:value="monster.name"

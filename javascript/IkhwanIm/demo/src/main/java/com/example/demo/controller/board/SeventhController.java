@@ -35,4 +35,6 @@ public class SeventhController {
 
         return "board/fourth/success";
     }
+
+
 }

@@ -1,50 +1,58 @@
 <template>
     <div>
-        <ul>
-            <h3>몬스터 리스트</h3>
-            <!-- todoitem in todoitems : 아 mapgetters에 있는 filteredTodoItems에 있는 걸 가져온다 
-                  최종적으론 thistodoitems로 대체된다-->
-            <monster-element v-for="monster in monsterElements"
-                    v-bind:key="monster.monsterId"
-                    v-bind:monster="monster"
-                    v-bind:editingId="editingId"
-                    v-on:death="onDeath"
-                    v-on:editTodo="onEditTodo"
-                    v-on:setEditingId="SET_EDITTING_ID"
-                    v-on:resetEditingId="RESET_EDITTING_ID"/>
-        </ul>
+        <br>
+        <h3>몬스터 목록</h3>
+        <br>
+        <table border="1">
+            <tr>
+                <th align="center" width="100">번호</th>
+                <th align="center" width="450">몬스터 이름</th>
+                <th align="center" width="450">몬스터 설명</th>
+                <th align="center" width="150">체력</th>
+                <th align="center" width="150">경험치</th>
+                <th align="center" width="150">드랍 아이템</th>
+                <th align="center" width="150">드랍 머니</th>
+                <th align="center" width="240">등록일자</th>
+            </tr>
+            <tr v-if="!monsters || (Array.isArray(monsters) && monsters.length === 0)">
+                <td colspan="7">
+                    현재 등록된 몬스터가 없습니다!
+                </td>
+            </tr>
+            <tr v-else v-for="monster in monsters" :key="monster.monsterNo">
+                <td align="center">{{ monster.monsterNo }}</td>
+                <!-- <td align="center">{{ product.producer }}</td> -->
+                <td align="center">
+                    <router-link :to="{ name: 'MonsterReadPage',
+                                    params: { monsterNo: monster.monsterNo.toString() } }">
+                        {{ monster.name }}
+                    </router-link>
+                </td>
+                <td align="center">{{ monster.description }}</td>
+                <td align="center">{{ monster.hp }}</td>
+                <td align="center">{{ monster.exp }}</td>
+                <td align="center">{{ monster.dropItem }}</td>
+                <td align="center">{{ monster.dropMoney }}</td>
+                <td align="center">{{ monster.regDate }}</td>
+            </tr>
+        </table>
     </div>
 </template>
 
+<!-- <td align="left">
+                    
+                    <router-link :to="{ name: 'ProductReadPage',
+                                    params: { boardNo: product.productNo.toString() } }">
+                        {{ product.product_name }}
+                    </router-link>
+                </td> -->
+
 <script>
-import MonsterElement from './MonsterElement.vue'
-import { mapState, mapMutations, mapGetters } from 'vuex'
-import { RESET_EDITTING_ID, SET_EDITTING_ID } from '../../store/mutation-types'
 export default {
-    components: {
-        'monster-element': MonsterElement
-    },
-    computed: {
-        ...mapGetters ([
-            'getMonsterElements'
-        ]),
-        ...mapState ([
-            'editingId'
-        ]),
-        monsterElements () {
-            return this.getMonsterElements
-        }
-    },
-    methods: {
-        ...mapMutations ([
-            SET_EDITTING_ID,
-            RESET_EDITTING_ID
-        ]),
-        onDeath (monsterId) {
-            this.$emit('death', monsterId)
-        },
-        onEditTodo (content, id) {
-            this.$emit('editTodo', content, id)
+    name: 'MonsterList',
+    props: {
+        monsters: {
+            type: Array
         }
     }
 }

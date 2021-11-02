@@ -8,12 +8,30 @@ import {
     CLEAR_ALL,
     TOGGLE_TODO_STATUS,
     // 몬스터
+    ADD_MANY_MONSTER,
     ADD_MONSTER,
     DEATH,
     // 스프링 랜덤 데이터 통신
     SUCCESS_GEN_RAND_NUM,
     FAIL_GEN_RAND_NUM,
-    ADD_MANY_MONSTER
+    // 게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
+    // 상품
+    FETCH_PRODUCT_LIST,
+    FETCH_PRODUCT,
+    // 판타지 온라인
+    FETCH_MONSTER_LIST,
+    FETCH_MONSTER,
+    // 랜덤 던전
+    ALLOC_RANDOM_DUNGEON,
+    // QUIZ89
+    GIVE_ME_AREA,
+    // 성적 관리
+    SCORE_MANAGEMENT,
+    CALC_MEAN,
+    // 크롤링
+    CRAWL_START
 
 } from './mutation-types'
 
@@ -21,9 +39,7 @@ import {
 export default {
     [ADD_TODO] (state, payload) {
         const { content } = payload
-        //state.todoitem에 저 값을 push!
         state.todoItems.push({ id: state.nextTodoId, content, done: false })
-        //state의 TodoId 값 1 증가
         state.nextTodoId++
     },
     [REMOVE_TODO] (state, id) {
@@ -33,8 +49,9 @@ export default {
     [EDIT_TODO] (state, payload) {
         const { id, content } = payload
         const targetIndex = state.todoItems.findIndex(v => v.id === id)
-        const targetTodoItem = state.todoItems[targetIndex]
-        state.todoItems.splice(targetIndex, 1, { ...targetTodoItem, content })
+        // const targetTodoItem = state.todoItems[targetIndex]
+        // state.todoItems.splice(targetIndex, 1, { ...targetTodoItem, content })
+        state.todoItems.splice(targetIndex, 1, { content })
     },
     [SET_EDITTING_ID] (state, id) {
         state.editingId = id
@@ -66,8 +83,7 @@ export default {
     },
     [ADD_MONSTER] (state, payload) {
         const { name } = payload
-        var randHp = Math.floor(Math.random() * 5000) + 1
-        state.monsterElements.push({ monsterId: state.nextMonsterId, name, hp: randHp })
+        state.monsterElements.push({ monsterId: state.nextMonsterId, name })
         state.nextMonsterId++
     },
     [DEATH] (state, monsterId) {
@@ -81,5 +97,53 @@ export default {
     },
     [FAIL_GEN_RAND_NUM] () {
         console.log('통신 에러!')
+    },
+    // 게시판
+    [FETCH_BOARD_LIST] (state, boards) {
+        state.boards = boards;
+    },
+    [FETCH_BOARD] (state, board) {
+        state.board = board
+    },
+    // 상품
+    [FETCH_PRODUCT_LIST] (state, products) {
+        state.products = products
+    },
+    [FETCH_PRODUCT] (state, product) {
+        state.product = product
+    },
+    // 판타지 온라인
+    [FETCH_MONSTER_LIST] (state, monsters) {
+        state.monsters = monsters
+    },
+    [FETCH_MONSTER] (state, monster) {
+        state.monster = monster
+    },
+    // 랜덤 던전
+    [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
+        state.dungeons = dungeons
+    },
+    // Quiz89
+    [GIVE_ME_AREA] (state, triangleArea) {
+        state.triangleArea = triangleArea
+    },
+    // 성적 관리
+    [SCORE_MANAGEMENT] (state, students) {
+        state.students = students
+    },
+    [CALC_MEAN] (state) {
+        state.mean = 0
+        var tmp = 0
+        var len = state.students.length
+
+        for (var i = 0; i < len; i++) {
+            tmp += state.students[i].score
+        }
+
+        state.mean = tmp / len
+    },
+    // 크롤링
+    [CRAWL_START] (state, payload) {
+        state.lists = payload
     }
 }

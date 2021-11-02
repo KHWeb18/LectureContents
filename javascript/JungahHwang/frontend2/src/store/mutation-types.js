@@ -13,7 +13,25 @@ export const TOGGLE_TODO_STATUS = 'TOGGLE_TODO_STATUS'
 export const ADD_MONSTER = 'ADD_MONSTER'
 export const DEATH = 'DEATH'
 export const ADD_MANY_MONSTER = 'ADD_MANY_MONSTER'
+export const FETCH_MONSTER_LIST = 'FETCH_MONSTER_LIST'
+export const FETCH_MONSTER = 'FETCH_MONSTER'
+export const ALLOC_RANDOM_DUNGEON = 'ALLOC_RANDOM_DUNGEON'
 
 // Spring
 export const SUCCESS_GEN_RAND_NUM = 'SUCCESS_GEN_RAND_NUM'
 export const FAIL_GEN_RAND_NUM = 'FAIL_GEN_RAND_NUM'
+
+// Board
+export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
+export const FETCH_BOARD = 'FETCH_BOARD'
+
+// Product
+export const FETCH_PRODUCT_LIST = 'FETCH_PRODUCT_LIST'
+export const FETCH_PRODUCT = 'FETCH_PRODUCT'
+
+// Quiz
+export const FETCH_STUDENT_SCORE = 'FETCH_STUDENT_SCORE'
+export const CALC_MEAN = 'CALC_MEAN'
+
+// Crawling
+export const CRAWL_START = 'CRAWL_START'

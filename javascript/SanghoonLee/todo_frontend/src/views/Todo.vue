@@ -68,9 +68,11 @@ export default {
 
 <style>
 
+/*
 body {
     text-align: center;
     background-color: #CEDEBD;
 }
+*/
 
 </style>

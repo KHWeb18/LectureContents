@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+
+
+<form action="insert_no" method="post">
+
+  공지사항 작성하기
+  <table>
+
+    <tr>
+      <td style="margin-left:150px">제목</td>
+      <td ><input type="text" style="width:300px;" name="title" placeholder="제목을 입력하시오." required></td>
+    </tr>
+    <tr>
+      <td>내용</td>
+      <td><textarea style="width:300px;" rows="10" name="content" placeholder="내용을 입력하시오." required></textarea></td>
+    </tr>
+  </table>
+</form>
+
+<div>
+  첨부파일
+  <button type="submit" name="uploadFile">파일 선택</button>선택된 파일 없음<br>
+
+</div>
+<div style="margin-left:150px">
+  <button type="submit" margin>작성하기</button>
+</div>
+</body>
+</html>

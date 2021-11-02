@@ -4,10 +4,11 @@
             <h4>Monster Array</h4>
             <moster-element v-for="monsterElem in monsterElements"
                 v-bind:key="monsterElem.monsterId"
-                v-bind:MonsterElem="MonsterElem"
+                v-bind:monsterElem="monsterElem"
                 v-bind:editingId="editingId"
                 v-on:killMonster="onKillMonster"
                 v-on:editName="onEditName"
+                v-on:toggleMonsterStatus="onToggleMonsterStatus"
                 v-on:setEditingId="SET_EDITTING_ID"
                 v-on:resetEditingId="RESET_EDITTING_ID"/>           
         </ul>
@@ -43,11 +44,14 @@ export default {
             SET_EDITTING_ID,
             RESET_EDITTING_ID
         ]),
-        onkillMonster(monsterId) {
+        onKillMonster(monsterId) {
             this.$emit('killMonster', monsterId)
         },
-        onEditName(name, id) {
-            this.$emit('editName', name, id)
+        onEditName(monsterId, name) {
+            this.$emit('editName', monsterId, name)
+        },
+        onToggleMonsterStatus(monsterId) {
+            this.$emit('toggleMonsterStatus', monsterId)
         }
     }
 }

@@ -1,7 +1,6 @@
 <template>
     <div class="todo">
         <todo-header></todo-header>
-        <!-- todo-input 컴포넌트가 emit(addTodo, ~~)를 하면 onAddTodo()가 동작 -->
         <todo-input v-on:addTodo="onAddTodo"></todo-input>
         <todo-list
                 v-on:removeTodo="onRemoveTodo"
@@ -28,8 +27,6 @@ export default {
         'todo-footer': TodoFooter
     },
     methods: {
-        // store에서 중앙 관리를 하고
-        // 중앙 관리에 사용하는 동작들을 action에 몰아넣음
         ...mapActions ([
             'addTodo',
             'removeTodo',
@@ -38,8 +35,6 @@ export default {
             'clearAll',
             'toggleTodoStatus'
         ]),
-        // store에 배치되어있음
-        // 중앙인 state에서 관리하기 위함
         onAddTodo (content) {
             const todoItem = { content }
             this.addTodo(todoItem)

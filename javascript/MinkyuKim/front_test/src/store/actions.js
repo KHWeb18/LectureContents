@@ -13,11 +13,35 @@ import {
 
     // 스프링 랜덤 데이터 통신
     SUCCESS_GEN_RAND_NUM,
-    FAIL_GEN_RAND_NUM
+    FAIL_GEN_RAND_NUM,
+
+    //게시판
+    FETCH_BOARD_LIST,
+    FETCH_BOARD,
+    
+    //상품
+    FETCH_PRODUCT_LIST,
+    FETCH_PRODUCT,
+
+    // 판타지 온라인
+    FETCH_MONSTER_LIST,
+    FETCH_MONSTER,
+
+    // 랜덤 던전
+    ALLOC_RANDOM_DUNGEON,
+
+    // 성적 관리
+    SCORE_MANAGEMENT,
+    CALC_MEAN,
+
+    // 크롤링
+    CRAWL_START
+
 
 } from './mutation-types'
 
 import axios from 'axios'
+import router from '../router'
 
 // 보통 action에서 처리하는 것은 비동기 처리를 함
 export default {
@@ -80,12 +104,89 @@ export default {
                     // 생성된 random 데이터는 res에 들어가게됨. randNumber는 entity의 변수인 randNumber를 의미함.
                     .then((res) => { 
                         // commit을 하면 mutation에 있는 SUCCESS_GEN_RAND_NUM으로 넘어가게됨.
-                        // parseInt도 마찬가지
+                        // parseInt 값으로
                         commit(SUCCESS_GEN_RAND_NUM, parseInt(res.data.randNumber))
                     })
                     .catch((res) => {
                         commit(FAIL_GEN_RAND_NUM, res)
                     })
         
+    },
+    // 게시판
+    // {commit} 은 뮤테이션 하는 거
+    fetchBoardList ({ commit }) {
+        return axios.get('http://localhost:7777/vueboard/lists')
+                .then((res) => {
+                    commit(FETCH_BOARD_LIST, res.data)
+                })
+    },
+    fetchBoard ({ commit }, boardNo) {
+        return axios.get(`http://localhost:7777/vueboard/${boardNo}`)
+                .then((res) => {
+                    commit(FETCH_BOARD, res.data)
+                })
+    },
+    
+    // 상품
+    fetchProductList ({ commit }) {
+        return axios.get('http://localhost:7777/vueproduct/lists')
+                .then((res) => {
+                    commit(FETCH_PRODUCT_LIST, res.data)
+                })
+    },
+    fetchProduct ({ commit }, productNo) {
+        return axios.get(`http://localhost:7777/vueproduct/${productNo}`)
+                .then((res) => {
+                    commit(FETCH_PRODUCT, res.data)
+                })
+    },
+    // 판타지 온라인
+    fetchMonsterList ({ commit }) {
+        return axios.get('http://localhost:7777/vuemonster/lists')
+                .then((res) => {
+                    commit(FETCH_MONSTER_LIST, res.data)
+                })
+    },
+    fetchMonster ({ commit }, monsterNo) {
+        return axios.get(`http://localhost:7777/vuemonster/${monsterNo}`)
+                .then((res) => {
+                    commit(FETCH_MONSTER, res.data)
+                })
+    },
+    // 랜덤 던전    
+    randomDungeonList ({ commit }) {
+        return axios.get('http://localhost:7777/vuedungeon/randomAlloc')
+                .then((res) => {
+                    commit(ALLOC_RANDOM_DUNGEON, res.data)
+                })
+    },
+    fetchStudentScoreList ({ commit }) {
+        return axios.get('http://localhost:7777/vuescore/scoreManagement')
+                .then((res) => {
+                    commit(SCORE_MANAGEMENT, res.data)
+                })
+    },
+    [CALC_MEAN] (state) {
+        state.mean = 0
+        var tmp = 0
+        var len = state.students.length
+
+        for (var i = 0; i < len; i++) {
+            tmp += state.students[i].score
+        }
+
+        state.mean = tmp / len
+    },
+    //크롤링
+    async crawlFind ({ commit }, category) {
+        axios.get('http://localhost:7777/' + `${category}` )
+                .then(({ data }) => {
+                    commit(CRAWL_START, data)
+
+                    if (window.location.pathname !== '/daumNewsCrawler') {
+                        router.push('/daumNewsCrawler')
+                    }
+                })
     }
+    
 }

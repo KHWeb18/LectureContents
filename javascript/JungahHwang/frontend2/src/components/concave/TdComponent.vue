@@ -1,0 +1,84 @@
+<template>
+  <td @click="onClickTd">{{ cellData }}</td>
+</template>
+
+
+<script>
+export default {
+  data () {
+    return {
+      game: {
+        propTurn: this.turn,
+        propWin: this.winner
+      }
+    }
+  },
+  props: {
+    cellData: String,
+    rowIndex: Number,
+    cellIndex: Number,
+    tableData: Array,
+    turn: String,
+    winner: String
+  },
+  methods: {
+    onClickTd () {
+      if (this.cellData) {
+        return
+      }
+      // 클릭했을 때 누가 찍었는지 표시
+      this.$set(this.tableData[this.rowIndex], this.cellIndex, this.turn)
+
+      let win = false
+
+      if (this.tableData[this.rowIndex][0] === this.turn &&
+          this.tableData[this.rowIndex][1] === this.turn &&
+          this.tableData[this.rowIndex][2] === this.turn) {
+        win = true
+      } else if (this.tableData[0][this.cellIndex] === this.turn &&
+                 this.tableData[1][this.cellIndex] === this.turn &&
+                 this.tableData[2][this.cellIndex] === this.turn) {
+        win = true
+      } else if (this.tableData[0][0] === this.turn &&
+                 this.tableData[1][1] === this.turn &&
+                 this.tableData[2][2] === this.turn) {
+        win = true
+      } else if (this.tableData[0][2] === this.turn &&
+                 this.tableData[1][1] === this.turn &&
+                 this.tableData[2][0] === this.turn) {
+        win = true           
+      }
+
+      if (win) {
+        this.game.propWin = this.turn
+
+        this.$emit('updateWinner', this.game.propWin)
+        this.$emit('updateTurn', 'O')
+        this.$emit('updateTableData')
+      } else {
+          let all = true
+          // 행 비교
+          this.tableData.forEach(row => {
+            // 셀 하나씩 비교하여 하나라도 비어있으면 all = false
+            row.forEach(cell => {
+              if (!cell) {
+                all = false
+              }
+            })
+          })
+
+          this.$emit('updateWinner', '')
+
+          if (all) {
+            this.propWin = ''
+            this.$emit('updateTurn', 'O')
+            this.$emit('updateTableData')
+          } else {
+            this.game.propTurn = this.turn === 'O' ? 'X' : 'O'
+            this.$emit('updateTurn', this.game.propTurn)
+          }
+      }
+    }
+  }
+}
+</script>

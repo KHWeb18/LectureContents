@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h3>몬스터 소환</h3>
-        <input type="text" v-on:press.enter="summonMonter">
-        <button v-on:click="summonManyMonster">몬스터 100마리 소환</button>
+        <button v-on:click="summonManyMonster">몬스터 10마리 소환</button>
     </div>
 </template>
 

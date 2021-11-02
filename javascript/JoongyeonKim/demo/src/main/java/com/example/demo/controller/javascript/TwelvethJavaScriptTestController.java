@@ -35,4 +35,11 @@ public class TwelvethJavaScriptTestController {
 
         return "/javascript/twelveth/domSelfTest";
     }
+
+    @GetMapping("/cssTest")
+    public String getCssTest() {
+        log.info("getCssTest()");
+
+        return "/javascript/twelveth/cssTest";
+    }
 }

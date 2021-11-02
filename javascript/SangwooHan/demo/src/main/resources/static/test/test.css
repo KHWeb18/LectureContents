@@ -1,0 +1,32 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #f5f6f7;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+#logo {
+    width: 240px;
+    height: 44px;
+    cursor: pointer;
+}
+
+#header {
+    padding-top: 62px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#wrapper {
+    position: relative;
+    height: 100%;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 460px;
+}

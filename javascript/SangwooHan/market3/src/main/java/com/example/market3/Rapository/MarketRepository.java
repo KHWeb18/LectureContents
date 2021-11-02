@@ -106,7 +106,7 @@ public class MarketRepository {
                         market.setUsername(rs.getString("username"));
                         market.setProductNo(rs.getInt("market_no"));
                         market.setName(rs.getString("name"));
-                        market.setPrice(rs.getInt("price"));
+                        market.setPrice(rs.getString("price"));
                         market.setDescription(rs.getString("description"));
                         // rs.getDate()는 DB에 있는 날자 정보를 얻어옴
 
@@ -135,7 +135,7 @@ public class MarketRepository {
                         market.setProductNo(rs.getInt("market_no"));
                         market.setUsername(rs.getString("username"));
                         market.setName(rs.getString("name"));
-                        market.setPrice(rs.getInt("price"));
+                        market.setPrice(rs.getString("price"));
                         market.setDescription(rs.getString("description"));
                         market.setRegDate(rs.getDate("reg_date"));
 

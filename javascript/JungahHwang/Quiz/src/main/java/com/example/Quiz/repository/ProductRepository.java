@@ -39,9 +39,7 @@ public class ProductRepository {
                         product.setTitle(rs.getString("title"));
                         product.setContent(rs.getString("content"));
                         product.setPrice(rs.getInt("price"));
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-                        product.setRegDate(sdf.parse(rs.getDate("reg_date") + " " + rs.getTime("reg_date")));
+                        product.setRegDate(rs.getDate("reg_date"));
 
                         return product;
                     }
@@ -49,6 +47,40 @@ public class ProductRepository {
 
         return results;
     }
+
+    public Product read(Integer productNo) throws Exception {
+        List<Product> results = jdbcTemplate.query(
+                "select product_no, title, content, price, reg_date from product where product_no = ?",
+                new RowMapper<Product>() {
+                    @Override
+                    public Product mapRow(ResultSet rs, int i) throws SQLException {
+                        Product product = new Product();
+
+                        product.setProductNo(rs.getInt("product_no"));
+                        product.setTitle(rs.getString("title"));
+                        product.setContent(rs.getString("content"));
+                        product.setPrice(rs.getInt("price"));
+                        product.setRegDate(rs.getDate("reg_date"));
+
+                        return product;
+                    }
+                }, productNo
+        );
+        return results.isEmpty() ? null: results.get(0);
+    }
+
+    public void update(Product product) throws Exception {
+        String query = "update product set title = ?, content = ?, price = ? where product_no = ?";
+
+        jdbcTemplate.update(query, product.getTitle(), product.getContent(), product.getPrice(), product.getProductNo());
+    }
+
+    public void delete(Integer productNo) throws Exception{
+        String query = "delete from product where product_no = ?";
+
+        jdbcTemplate.update(query, productNo);
+    }
+
 }
 
 

@@ -1,8 +1,8 @@
 <template>
     <div class="homework">
         <homework-header></homework-header>
-        <monster-input v-on:addMonster="onAddMonster"></monster-input>
-        <!-- <homework-skill v-on:firstSkill="onFirstSkill"></homework-skill> -->
+        <!--<monster-input v-on:addMonster="onAddMonster"></monster-input>
+         <homework-skill v-on:firstSkill="onFirstSkill"></homework-skill> -->
         <monster-hundred-input v-on:addManyMonster="onAddManyMonster"></monster-hundred-input>
         <monster-list
                 v-on:death="onDeath">
@@ -14,7 +14,7 @@
 
 <script>
 import HomeworkHeader from '../components/homework/HomeworkHeader.vue'
-import MonsterInput from '../components/monster/MonsterInput.vue'
+//import MonsterInput from '../components/monster/MonsterInput.vue'
 // import HomeworkSkill from '../components/homework/HomeworkSkill.vue'
 import MonsterList from '../components/monster/MonsterList.vue'
 import MonsterHundredInput from '../components/monster/MonsterHundredInput.vue'
@@ -25,7 +25,7 @@ export default {
     name: 'Homework',
     components: {
         'homework-header': HomeworkHeader,
-        'monster-input': MonsterInput,
+        //'monster-input': MonsterInput,
         // 'homework-skill': HomeworkSkill,
         'monster-list': MonsterList,
         'monster-hundred-input': MonsterHundredInput
@@ -117,8 +117,10 @@ export default {
 </script>
 
 <style>
+
 body {
     text-align: center;
     background-color: #CEDEBD;
 }
+
 </style>

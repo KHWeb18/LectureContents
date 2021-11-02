@@ -24,8 +24,8 @@ public class ResponseController {
         log.info("jsonMember()");
 
         Member member = new Member();
-        member.setUserId("name");
-        member.setUserPass("test");
+        member.setId("name");
+        member.setPw("test");
 
         return member;
     }
@@ -37,13 +37,13 @@ public class ResponseController {
         List<Member> list = new ArrayList<Member>();
 
         Member member1 = new Member();
-        member1.setUserId("name1");
-        member1.setUserPass("test1");
+        member1.setId("name1");
+        member1.setPw("test1");
         list.add(member1);
 
         Member member2 = new Member();
-        member1.setUserId("name2");
-        member1.setUserPass("test2");
+        member1.setId("name2");
+        member1.setPw("test2");
         list.add(member1);
 
         return list;
@@ -56,13 +56,13 @@ public class ResponseController {
         Map<String, Member> map = new HashMap<String, Member>();
 
         Member member1 = new Member();
-        member1.setUserId("name1");
-        member1.setUserPass("test1");
+        member1.setId("name1");
+        member1.setPw("test1");
         map.put("key1", member1);
 
         Member member2 = new Member();
-        member1.setUserId("name2");
-        member1.setUserPass("test2");
+        member1.setId("name2");
+        member1.setPw("test2");
         map.put("key2", member2);
 
         return map;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 // Vue와 통신을 하기 위한 컨트롤러
 @Slf4j
 @Controller
+// allowedHeaders = "*"는 어떠한 연결이든 허용한다는 의미.
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class VueCommController {
 

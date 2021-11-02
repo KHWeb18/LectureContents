@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<!-- 버튼 누르면 동작하는 과정을 서포트하는 라이브러리 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 아래 파트는 Run-Time에 작동하므로 오류에 좀 더 민감할 필요가 있음(발견하기 쉽지 않음) -->
+<script>
+    // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
+    $(document).ready(function() {
+        var formObj = $("#modify");
+
+        $("#btnModify").on("click", function() {
+            formObj.attr("action", "modify");
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+            // 마찬가지로 URL입니다.
+            self.location = "lists";
+        });
+    });
+</script>
+
+<body>
+<h2>회원 정보 수정</h2>
+
+<form id="modify" th:object="${product}" method="post">
+  <input type="hidden" name="productNo" th:field="*{productNo}"/>
+  <table>
+    <tr>
+      <td>상품명</td>
+      <td><input type="text" name="name" th:field="*{name}"></td>
+    </tr>
+    <tr>
+      <td>가격</td>
+      <td><input type="number" name="price" th:field="*{price}"></td>
+    </tr>
+    <tr>
+      <td>상품설명</td>
+      <td><input type="text" name="description" th:field="*{description}"></td>
+    </tr>
+    <tr>
+      <td>작성자</td>
+      <td><input type="text" name="writer" th:field="*{writer}" readonly="readonly"></td>
+    </tr>
+  </table>
+</form>
+
+<div>
+  <button type="submit" id="btnModify">회원 정보 수정</button>
+  <button type="submit" id="btnList">회원 목록 보기</button>
+</div>
+</body>
+</html>

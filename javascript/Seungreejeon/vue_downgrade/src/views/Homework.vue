@@ -13,7 +13,7 @@
 
 <script>
 import HomeworkHeader from '../components/homework/HomeworkHeader.vue'
-import MonsterInput from '../components/monster/MonsterInput.vue'
+import HomeWorkMonsterInput from '../components/monster/MonsterInput.vue'
 // import HomeworkSkill from '../components/homework/HomeworkSkill.vue'
 import MonsterList from '../components/monster/MonsterList.vue'
 import MonsterHundredInput from '../components/monster/MonsterHundredInput.vue'
@@ -23,7 +23,7 @@ export default {
     name: 'Homework',
     components: {
         'homework-header': HomeworkHeader,
-        'monster-input': MonsterInput,
+        'monster-input': HomeWorkMonsterInput,
         // 'homework-skill': HomeworkSkill,
         'monster-list': MonsterList,
         'monster-hundred-input': MonsterHundredInput
