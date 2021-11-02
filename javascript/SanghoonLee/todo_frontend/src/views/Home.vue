@@ -205,6 +205,13 @@
                     active-class="active">
                WebGL Test
             </router-link>
+
+            <!-- WebGL Scene -->
+            <router-link :to="{ name: 'WebGLScenePage' }"
+                    class="nav-link"
+                    active-class="active">
+               WebGL Scene
+            </router-link>
         </div>
     </div>
 </template>

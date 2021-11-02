@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <nav-bar-component/>
+    <!--
     <v-main>
       <v-container fluid>
         <div id="app">
@@ -8,6 +9,10 @@
         </div>
       </v-container>
     </v-main>
+    -->
+    <div id="app">
+      <router-view/>
+    </div>
   </v-app>
 </template>
 

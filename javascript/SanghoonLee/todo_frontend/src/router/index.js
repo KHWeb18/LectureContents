@@ -102,6 +102,7 @@ import PythonCrawlTestPage from '@/views/PythonCrawlTestPage.vue'
 
 // WebGLTestPage
 import WebGLTestPage from '@/views/WebGLTestPage.vue'
+import WebGLScenePage from '@/views/WebGLScenePage.vue'
 
 Vue.use(VueRouter)
 
@@ -451,6 +452,13 @@ const routes = [
     name: 'WebGLTestPage',
     components: {
       default: WebGLTestPage
+    }
+  },
+  {
+    path: '/WebGLScenePage',
+    name: 'WebGLScenePage',
+    components: {
+      default: WebGLScenePage
     }
   }
 ]
