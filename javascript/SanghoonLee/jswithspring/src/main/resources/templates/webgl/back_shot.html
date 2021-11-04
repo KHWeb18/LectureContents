@@ -27,6 +27,7 @@
 
         renderer.setClearColor(new THREE.Color(0xEEEEEE))
         renderer.setSize(window.innerWidth, window.innerHeight)
+        renderer.shadowMapEnabled = true
 
         var planeGeometry = new THREE.PlaneGeometry(60, 20)
         var planeMaterial = new THREE.MeshLambertMaterial({color: 0x005533})
@@ -53,6 +54,7 @@
 
         scene.add(cube)
 
+        /*
         var sphereGeometry = new THREE.SphereGeometry(4, 20, 20)
         var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff, wireframe: false})
         var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
@@ -64,6 +66,7 @@
         sphere.position.z = 2
 
         scene.add(sphere)
+        */
 
         var sphereGeometry2 = new THREE.SphereGeometry(0.4, 20, 20)
         var sphereMaterial2 = new THREE.MeshLambertMaterial({ color: 0x7647ff })
@@ -77,8 +80,20 @@
 
         scene.add(sphere2)
 
-        camera.position.x = -30
-        camera.position.y = 40
+        var cannonGeo = new THREE.SphereGeometry(1.5, 20, 20)
+        var cannonMaterial = new THREE.MeshLambertMaterial({ color: 0x7647ff })
+        var cannon = new THREE.Mesh(cannonGeo, cannonMaterial)
+
+        cannon.castShadow = true
+
+        cannon.position.x = 15
+        cannon.position.y = 4
+        cannon.position.z = -7
+
+        scene.add(cannon)
+
+        camera.position.x = 0
+        camera.position.y = 100
         camera.position.z = 30
         camera.lookAt(scene.position)
 
@@ -97,7 +112,29 @@
 
         document.getElementById("WebGL-output").appendChild(renderer.domElement)
 
+        var time = 0
         var step = 0
+        var newstep = 0
+        // 포탄의 무게 2kg
+        var mass = 2
+        // air_res, mass, vx, vy, wind, damp
+        // 구체의 공기 저항 계수
+        var air_res = 0.47
+        // 초기 속도
+        var vel = 25
+        // 강풍을 이용한 백샷을 할 것이므로 75도 고각샷으로!!!
+        var rad = Math.PI * (5.0 / 12.0)
+        // vel * cos(각도): 대포와 지면이 이루는 각도임
+        var vx = vel * Math.cos(rad)
+        // vel * sin(각도)
+        var vy = vel * Math.sin(rad)
+        // 바람 계수
+        var wind = 9
+        // 중력 가속도
+        var grav = 9.8
+        // 댐핑 계수
+        var damp = 0
+
         renderScene()
 
         function renderScene () {
@@ -110,13 +147,39 @@
             // S = Vo * t + 0.5 * a * t^2
             // V = Vo + a * t
             // 2 * a * s = V^2 - Vo^2
-            step += 0.04
+            step += 0.05
             sphere2.position.x = -25 + 10 * step
 
             // e^ix = cos x + i sin x
-            sphere.position.x = 20 + 10 * Math.cos(step)
-            sphere.position.y = 4 + 10 * Math.abs(Math.sin(step))
+            //sphere.position.x = 20 + 10 * Math.cos(step)
+            //sphere.position.y = 4 + 10 * Math.abs(Math.sin(step))
             //sphere.position.y = 4 + 10 * Math.sin(step)
+
+            // 댐핑 계수
+            // e^-(ar / m)t
+            damp = Math.pow(Math.E, -(air_res / mass) * step)
+
+            cannon.position.x = 15 + ((vx + (wind / air_res)) * (mass / air_res)) * (1 - damp) - (wind / air_res) * step
+            cannon.position.y = 4 + vy * step - 0.5 * grav * Math.pow(step, 2)
+
+            if (cannon.position.y < 1.5) {
+                scene.remove(cannon)
+                console.log(step)
+            }
+
+            if (step > 7.0)
+            {
+                step = 0
+                scene.add(cannon)
+            }
+
+            /*
+            if (step > )
+            {
+                time = 0
+                newstep = 0
+            }
+            */
 
             requestAnimationFrame(renderScene)
             renderer.render(scene, camera)

@@ -16,4 +16,11 @@ public class WebGLController {
 
         return "webgl/webgl_start";
     }
+
+    @GetMapping("/backshot")
+    public String getBackshot() {
+        log.info("getGame()");
+
+        return "webgl/back_shot";
+    }
 }
