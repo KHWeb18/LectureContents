@@ -21,8 +21,6 @@ public class SeventhController {
         return "board/seventh/read";
     }
 
-    // 글을 지워도 숫자가 올라가야만 하는 이유가 무엇인가 ?
-    // 배열 100개에서 중간의 값을 지우는 경우
     @PostMapping("/remove")
     public String remove (int boardNo, Model model) throws Exception {
         log.info("remove");

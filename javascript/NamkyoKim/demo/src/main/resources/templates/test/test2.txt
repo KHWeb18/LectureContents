@@ -1,0 +1,273 @@
+1. 입력 폼 해석
+// 아이디입력폼
+<div id="content">
+	<div>
+		<h3>
+			<label for="id">아이디</label>
+		</h3>
+		<span class="box int_id">
+			<input type="text" id="id" class="int" maxlength="20">
+			<span class="step_url">@naver.com</span>
+		</span>
+		<span class="error_next_box"></span>
+	</div>
+</div>
+
+label 태그는 "아이디"라는 글자를 클릭하면 자동으로 아이디 입력폼에 포커스가 되는 기능을 주기 위해서 사용
+입력폼은 span태그로 묶어주고, 그 안에 텍스트를 입력받을 <input type="text"> 태그와 메일주소("@naver.com")를 표시해줄 또다른 sapn태그를 넣어줬습니다. 
+입력폼 전체를 묶은 span 태그에는 box라는 class값을 설정해주고, input 태그에도 int라는 class값을 설정
+아이디, 비밀번호, 이름 등 모든 입력폼에 공통적인 스타일을 적용할 것이기 때문
+<span class="error_next_box"> 태그는 아이디값을 잘못 입력했을 때, 입력 폼 아래에 에러 메세지가 표시될 부분을 나타내기 위해 사용
+
+// 생년월일 입력폼
+
+		<!-- BIRTH -->
+        <div>
+            <h3><label for="yy">생년월일</label></h3>
+
+            <div id="bir_wrap">
+            
+                <!-- BIRTH_YY -->
+                <div id="bir_yy">
+                    <span class="box">
+                        <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                    </span>
+                </div>
+
+                <!-- BIRTH_MM -->
+                <div id="bir_mm">
+                    <span class="box">
+                        <select id="mm">
+                            <option>월</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>                                    
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </span>
+                </div>
+
+                <!-- BIRTH_DD -->
+                <div id="bir_dd">
+                    <span class="box">
+                        <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                    </span>
+                </div>
+
+            </div>
+            <span class="error_next_box"></span>    
+        </div>
+max-length 속성은 입력할 수 있는 글자수를 4자로 제한함
+ 아이디글자수 20자로 제한 그리고  생년월일에서 년생 1999 같은 4글자 제한을 줌
+ div태그 > bir_wrap > bir_yy, bir_mm, bir_dd 로 구성
+
+
+// 회원가입버튼
+<!-- JOIN BTN-->
+<div class="btn_area">
+	<button type="button">
+		<span>가입하기</span>
+	</button>
+ </div>
+
+버튼영역(btn_area) > 버튼(button) > 텍스트(span) 
+
+2. css
+
+//레이아웃틀
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #f5f6f7;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+#logo {
+    width: 240px;
+    height: 44px;
+    cursor: pointer;
+}
+
+#header {
+    padding-top: 62px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#wrapper {
+    position: relative;
+    height: 100%;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 460px;
+}
+
+1) body, wrapper의 height값을 100%로 설정해줍니다.
+height를 %값으로 주게 되면, 상위태그(부모태그)의 높이를 기준으로 높이가 설정됨.
+
+2) header에는 text-align: center; 속성을 설정해서 네이버 로고(#logo)가 수평으로 가운데 정렬되도록 함. 
+3) wrapper의 position을 relative로 설정해주고, content는 position: absolute;로 설정
+
+
+// 입력폼 css
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+1) h3은 위로 19px, 아래로 8px 마진을 줘서 자리를 잡음
+
+2) box와 int의 높이(height)는 각각 51px, 29px로 고정
+
+3) box와 int의 너비(width)는 100%로 설정
+
+4) 그리고 box에 padding 값을 줘서 int가 box로부터 위아래로 10px, 양쪽으로 14px만큼 떨어지게함.
+
+
+아이디 입력폼의 경우 다른 폼과 다르게 오른쪽에 "@naver.com"이 들어갈 공간이 필요하기 때문에
+
+.box.int_id {
+    padding-right: 110px;
+}
+
+.box.int_pass {
+    padding-right: 40px;
+}
+
+.box.int_pass_check {
+    padding-right: 40px;
+}
+
+box의 box-sizing속성은 box의 크기를 어떤 기준으로 계산할지 정하는 속성
+
+테두리를 포함해서 계산할지(border-box), 테두리를 제외하고 계산할지(content-box) 
+
+아이디 입력 폼의 "@naver.com"
+
+.step_url {
+    /*@naver.com*/
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+비밀번호 입력 폼의 자물쇠 이미지
+.pswdImg {
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+생년월일 입력 폼 css
+
+#bir_wrap {
+    display: table;
+    width: 100%;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+table 속성을 사용
+
+
+에러메시지 뜨는쪽
+
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 12px;
+    color: red;    
+    display: none;
+}
+
+#alertTxt {
+    position: absolute;
+    top: 19px;
+    right: 38px;
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+error_next_box가 "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요."와 같은 에러메세지가 출력될 부분이고,
+
+alertTxt는 비밀번호 입력폼에서 "사용불가"와 같은 경고메세지를 출력할 부분
+
+버튼스타일
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    width: 100%;
+    padding: 21px 0 17px;
+
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #08a600;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}

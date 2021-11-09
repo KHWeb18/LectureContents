@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Scene</title>
+    <script type="text/javascript" src="/jsLibs/three.js"></script>
+    <script type="text/javascript" src="/jsLibs/stats.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="Stats-output">
+</div>
+<div id="WebGL-output">
+</div>
+
+<script type="text/javascript">
+    function init() {
+        var stats = initStats()
+        var scene = new THREE.Scene()
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+        var renderer = new THREE.WebGLRenderer()
+
+        renderer.setClearColor(new THREE.Color(0xEEEEEE))
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        renderer.shadowMapEnabled = true
+
+        var planeGeometry = new THREE.PlaneGeometry(60, 20)
+        var planeMaterial = new THREE.MeshLambertMaterial({color: 0x005533})
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial)
+
+        plane.receiveShadow = true
+
+        plane.rotation.x = -0.5 * Math.PI
+        plane.position.x = 15
+        plane.position.y = 0
+        plane.position.z = 0
+
+        scene.add(plane)
+
+        var cubeGeometry = new THREE.BoxGeometry(4, 4, 4)
+        var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false})
+        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+
+        cube.castShadow = true
+
+        cube.position.x = -4
+        cube.position.y = 3
+        cube.position.z = 0
+
+        scene.add(cube)
+
+        /*
+        var sphereGeometry = new THREE.SphereGeometry(4, 20, 20)
+        var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff, wireframe: false})
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
+
+        sphere.castShadow = true
+
+        sphere.position.x = 20
+        sphere.position.y = 4
+        sphere.position.z = 2
+
+        scene.add(sphere)
+        */
+
+        var sphereGeometry2 = new THREE.SphereGeometry(0.4, 20, 20)
+        var sphereMaterial2 = new THREE.MeshLambertMaterial({ color: 0x7647ff })
+        var sphere2 = new THREE.Mesh(sphereGeometry2, sphereMaterial2)
+
+        sphere2.castShadow = true
+
+        sphere2.position.x = -25
+        sphere2.position.y = 10
+        sphere2.position.z = 0
+
+        scene.add(sphere2)
+
+        var cannonGeo = new THREE.SphereGeometry(1.5, 20, 20)
+        var cannonMaterial = new THREE.MeshLambertMaterial({ color: 0x7647ff })
+        var cannon = new THREE.Mesh(cannonGeo, cannonMaterial)
+
+        cannon.castShadow = true
+
+        cannon.position.x = 15
+        cannon.position.y = 4
+        cannon.position.z = -7
+
+        scene.add(cannon)
+
+        camera.position.x = 0
+        camera.position.y = 100
+        camera.position.z = 30
+        camera.lookAt(scene.position)
+
+        var ambientLight = new THREE.AmbientLight(0x0c0c0c)
+        scene.add(ambientLight)
+
+        var spotLight = new THREE.SpotLight(0xffffff)
+        spotLight.position.set(-30, 60, -10)
+        spotLight.castShadow = true
+        scene.add(spotLight)
+
+        var spotLight2 = new THREE.SpotLight(0xffffff)
+        spotLight2.position.set(-50, 60, -10)
+        spotLight2.castShadow = true
+        scene.add(spotLight2)
+
+        document.getElementById("WebGL-output").appendChild(renderer.domElement)
+
+        var time = 0
+        var step = 0
+        var newstep = 0
+        // 포탄의 무게 2kg
+        var mass = 2
+        // air_res, mass, vx, vy, wind, damp
+        // 구체의 공기 저항 계수
+        var air_res = 0.47
+        // 초기 속도
+        var vel = 25
+        // 강풍을 이용한 백샷을 할 것이므로 75도 고각샷으로!!!
+        var rad = Math.PI * (5.0 / 12.0)
+        // vel * cos(각도): 대포와 지면이 이루는 각도임
+        var vx = vel * Math.cos(rad)
+        // vel * sin(각도)
+        var vy = vel * Math.sin(rad)
+        // 바람 계수
+        var wind = 9
+        // 중력 가속도
+        var grav = 9.8
+        // 댐핑 계수
+        var damp = 0
+
+        renderScene()
+
+        function renderScene () {
+            stats.update()
+
+            cube.rotation.x += 0.02
+            cube.rotation.y += 0.02
+            cube.rotation.z += 0.02
+
+            // S = Vo * t + 0.5 * a * t^2
+            // V = Vo + a * t
+            // 2 * a * s = V^2 - Vo^2
+            step += 0.05
+            sphere2.position.x = -25 + 10 * step
+
+            // e^ix = cos x + i sin x
+            //sphere.position.x = 20 + 10 * Math.cos(step)
+            //sphere.position.y = 4 + 10 * Math.abs(Math.sin(step))
+            //sphere.position.y = 4 + 10 * Math.sin(step)
+
+            // 댐핑 계수
+            // e^-(ar / m)t
+            damp = Math.pow(Math.E, -(air_res / mass) * step)
+
+            cannon.position.x = 15 + ((vx + (wind / air_res)) * (mass / air_res)) * (1 - damp) - (wind / air_res) * step
+            cannon.position.y = 4 + vy * step - 0.5 * grav * Math.pow(step, 2)
+
+            if (cannon.position.y < 1.5) {
+                scene.remove(cannon)
+                console.log(step)
+            }
+
+            if (step > 7.0)
+            {
+                step = 0
+                scene.add(cannon)
+            }
+
+            /*
+            if (step > )
+            {
+                time = 0
+                newstep = 0
+            }
+            */
+
+            requestAnimationFrame(renderScene)
+            renderer.render(scene, camera)
+        }
+
+        function initStats () {
+            var stats = new Stats()
+
+            stats.setMode(0)
+
+            stats.domElement.style.position = 'absolute'
+            stats.domElement.style.left = '0px'
+            stats.domElement.style.top = '0px'
+
+            document.getElementById("Stats-output").appendChild(stats.domElement)
+
+            return stats
+        }
+    }
+    window.onload = init;
+
+</script>
+
+</body>
+</html>

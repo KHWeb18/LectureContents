@@ -200,15 +200,37 @@ var app = new Vue ({
             alert('장착되었습니다!')
         },
         jobSkill: function () {
-            for (var i = 0; i < this.myMonsters.length; i++){
-                this.myMonsters[i].hp = parseInt(this.myMonsters[i].hp - this.myStatus.atk * 4)
+            if (this.myStatus.myJob === 'Magician'){
+                for (var i = 0; i < this.myMonsters.length; i++){
+                    this.myMonsters[i].hp = parseInt(this.myMonsters[i].hp - (this.myStatus.atk * 4 + this.myStatus.intelligence * 3))
+                }
+            } else if (this.myStatus.myJob === 'Warrior'){
+                for (var i = 0; i < this.myMonsters.length; i++){
+                    this.myMonsters[i].hp = parseInt(this.myMonsters[i].hp - (this.myStatus.atk * 4 + this.myStatus.def * 3))
+                }
+            } else if (this.myStatus.myJob === 'Knight'){
+                for (var i = 0; i < this.myMonsters.length; i++){
+                    this.myMonsters[i].hp = parseInt(this.myMonsters[i].hp - (this.myStatus.atk * 4 + this.myStatus.vit * 3))
+                }
             }
         },
         userJobAttack: function (index) {
-            this.myMonsters[index].hp -= ( this.myStatus.atk * 5 +
-                                            this.myStatus.str * 6 +
-                                            this.myStatus.dex * 4 +
-                                            this.myStatus.intelligence * 2 )
+            if (this.myStatus.myJob === 'Magician'){
+                this.myMonsters[index].hp -= ( this.myStatus.atk * 5 +
+                                                this.myStatus.intelligence * 3 +
+                                                this.myStatus.vit * 3 +
+                                                this.myStatus.men * 3 )
+            } else if (this.myStatus.myJob === 'Warrior'){
+                this.myMonsters[index].hp -= ( this.myStatus.atk * 5 +
+                                                this.myStatus.str * 3 +
+                                                this.myStatus.def * 3 +
+                                                this.myStatus.vit * 3 )
+            } else if (this.myStatus.myJob === 'Knight'){
+                this.myMonsters[index].hp -= ( this.myStatus.atk * 5 +
+                                                this.myStatus.str * 3 +
+                                                this.myStatus.vit * 3 +
+                                                this.myStatus.def * 3 )
+            }                                 
         },
     },
     beforeUpdate() {
@@ -228,7 +250,6 @@ var app = new Vue ({
                 this.myStatus.hp *= 1.1
                 this.myStatus.atk *= 1.05
                 this.myStatus.defaultAtk *= 1.05
-                this.myStatus.def += 1
                 this.myStatus.str *= 1.1
                 this.myStatus.intelligence *= 1.1
                 this.myStatus.dex *= 1.1
@@ -241,23 +262,21 @@ var app = new Vue ({
                 this.myStatus.level += 1
                 this.myStatus.hp *= 1.15
                 this.myStatus.atk = this.myStatus.defaultAtk + tmpSum
-                this.myStatus.defaultAtk *= 1.1
-                this.myStatus.def += 1
+                this.myStatus.defaultAtk *= 1.2
                 this.myStatus.str *= 1.1
-                this.myStatus.intelligence *= 1.2
+                this.myStatus.intelligence *= 1.5
                 this.myStatus.dex *= 1.2
-                this.myStatus.vit *= 1.15
-                this.myStatus.def *= 1.1
-                this.myStatus.men *= 1.2
+                this.myStatus.vit *= 1.3
+                this.myStatus.def *= 1.15
+                this.myStatus.men *= 1.3
             } else if (this.myStatus.myJob === 'Warrior'){
                 var tmpSum = this.myStatus.atk - this.myStatus.defaultAtk
                 
                 this.myStatus.level += 1
                 this.myStatus.hp *= 1.3
                 this.myStatus.atk = this.myStatus.defaultAtk + tmpSum
-                this.myStatus.defaultAtk *= 1.2
-                this.myStatus.def += 1
-                this.myStatus.str *= 1.2
+                this.myStatus.defaultAtk *= 1.3
+                this.myStatus.str *= 1.3
                 this.myStatus.intelligence *= 1.15
                 this.myStatus.dex *= 1.15
                 this.myStatus.vit *= 1.2
@@ -270,11 +289,10 @@ var app = new Vue ({
                 this.myStatus.hp *= 1.2
                 this.myStatus.atk = this.myStatus.defaultAtk + tmpSum
                 this.myStatus.defaultAtk *= 1.5
-                this.myStatus.def += 1
-                this.myStatus.str *= 1.15
+                this.myStatus.str *= 1.2
                 this.myStatus.intelligence *= 1.15
                 this.myStatus.dex *= 1.1
-                this.myStatus.vit *= 1.2
+                this.myStatus.vit *= 1.4
                 this.myStatus.def *= 1.25
                 this.myStatus.men *= 1.2
             }

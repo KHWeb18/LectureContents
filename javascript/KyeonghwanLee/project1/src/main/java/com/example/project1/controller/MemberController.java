@@ -17,7 +17,7 @@ public class MemberController {
     private SignUpService service;
 
     @GetMapping("/signup")
-    public String getSignUp (Member member, Model model) {
+    public String getSignUp (Member member, Model model) throws Exception {
         log.info("getSignUp()");
 
         return "/member/signup";
@@ -60,6 +60,15 @@ public class MemberController {
 
         return "/member/success";
     }
+    @GetMapping("/memberLists")
+    public String getLists (Model model) throws Exception {
+        log.info("getLists(): " + service.memberList());
+
+        model.addAttribute("member", service.memberList());
+
+        return "/member/memberLists";
+    }
+
 }
 
 

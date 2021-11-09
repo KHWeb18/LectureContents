@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+    border: 1px solid #000000;
+    }
+    th {
+    padding: 15px;    /* 셀 테두리와 내용 사이의 간격 (패딩)*/
+    }
+    tr > td:nth-child(odd) {
+    width: 120px;    /*홀수번째 열의 너비 지정*/
+    }
+    tr > td:nth-child(even) {
+    width: 300px;    /*짝수번째 열의 너비 지정*/
+    }
+      p{
+    font-size: 32px; /* 글자크기*/
+    line-height: 25px; /* 줄 간격 */
+    }
+    </style>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var formObj = $("#marketBoard");
+
+        $("#goMarketbtn").on("click", function() {
+        self.location = "MarketPage";
+        });
+         });
+</script>
+<body>
+<h1>나그넷에 오신것을 환영합니다!</h1>
+<table>
+    <tr>
+       <th><a href="/signup">회원가입</a></th>
+        <th><a href="/register">티켓예매</a></th>
+        <th><a href="/register">회원장터</a></th>
+        <th><a href="/register">나그넷마켓</a></th>
+
+
+    </tr>
+</table>
+</body>
+</html>

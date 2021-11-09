@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
+@RequestMapping("/board")
 public class BoardCheckController {
 
     @Autowired
@@ -29,7 +31,7 @@ public class BoardCheckController {
         log.info("postRegister()");
         log.info("Board: " + board);
 
-        boardservice.boardregister(board);
+        boardservice.register(board);
 
         model.addAttribute("msg", "등록이 완료되었습니다!");
 

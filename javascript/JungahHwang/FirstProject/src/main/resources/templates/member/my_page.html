@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+     var formObj = $("#myPage");
+
+    $("#btnModify").on("click", function() {
+      self.location = "modify";
+    });
+
+    $("#btnRemove").on("click", function() {
+      self.location = "remove";
+    });
+  });
+</script>
+
+<body>
+<h2>My Page</h2>
+<form id="myPage">
+    <table>
+        <tr th:each="member : ${my_page}">
+            <td>id</td>
+            <td th:text="${member.id}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>password</td>
+            <td th:text="${member.pw}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>name</td>
+            <td th:text="${member.name}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>gender</td>
+            <td th:text="${member.gender}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>birth</td>
+            <td th:text="${member.birth}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>e-mali</td>
+            <td th:text="${member.email}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>phone</td>
+            <td th:text="${member.tel}"></td>
+        </tr>
+        <tr th:each="member : ${my_page}">
+            <td>address</td>
+            <td th:text="${member.addr}"></td>
+        </tr>
+    </table>
+</form>
+<div>
+    <button type="submit" id="btnModify">Modify</button>
+    <button type="submit" id="btnRemove">Remove</button>
+
+</div>
+</body>
+</html>

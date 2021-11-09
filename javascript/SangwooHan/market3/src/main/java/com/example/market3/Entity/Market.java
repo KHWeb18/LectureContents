@@ -13,7 +13,7 @@ public class Market {
     private String username;
     private int productNo;
     private String name;
-    private int price;
+    private String price;
     private String description;
     private Date regDate;
 

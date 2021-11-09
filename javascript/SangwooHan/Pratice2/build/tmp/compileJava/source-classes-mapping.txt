@@ -1,0 +1,13 @@
+com/example/Pratice2/Pratice2Application.java
+ com.example.Pratice2.Pratice2Application
+com/example/Pratice2/sevice/ProductService.java
+ com.example.Pratice2.sevice.ProductService
+com/example/Pratice2/repository/ProductReopsitory.java
+ com.example.Pratice2.repository.ProductReopsitory
+ com.example.Pratice2.repository.ProductReopsitory$1
+com/example/Pratice2/entity/Product.java
+ com.example.Pratice2.entity.Product
+com/example/Pratice2/sevice/ProductServiceImpl.java
+ com.example.Pratice2.sevice.ProductServiceImpl
+com/example/Pratice2/newcontroller/productcontroller.java
+ com.example.Pratice2.newcontroller.productcontroller

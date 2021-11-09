@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        var formObj = $("#marketBoard");
+
+
+        $("#btnRegister").on("click", function() {
+
+            formObj.attr("action", "register");
+
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+        self.location = "lists";
+        });
+
+        $("#btngohome").on("click", function() {
+        self.location = "homepage";
+        });
+
+
+    });
+</script>
+<body>
+<h2>게시글 등록</h2>
+<!--th:action에는 이동시킬 URL을 적는다. 보통 action에@를쓴다. -->
+<form id="marketBoard" th:action="@{register}" th:object="${market}" method="post">
+    <table>
+        <tr>
+            <td>회원이름</td>
+            <td><input type="text" name="username" th:field="*{username}"></td>
+        </tr>
+        <tr>
+            <td>상품명</td>
+            <td><input type="text" name="name" th:field="*{name}"></td>
+        </tr>
+        <td>가격</td>
+        <td><input type="number" name="price" th:field="*{price}"></td>
+        </tr>
+
+        <td>상품 설명</td>
+        <td><textarea cols="15" rows="10"  name="description" th:field="*{description}"></textarea></td>
+        </tr>
+    </table>
+</form>
+<div>
+    <button type="submit" id="btnRegister">상품등록하기!</button>
+    <button type="submit" id="btnList">상품 목록보기</button>
+    <button type="submit" id="btngohome">홈페이지</button>
+</div>
+</body>
+</html>

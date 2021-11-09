@@ -16,7 +16,7 @@ public class BoardServiceImpl implements BoardService {
     private BoardRepository repository;
 
     @Override
-    public void boardregister(Board board) throws Exception{
+    public void register(Board board) throws Exception{
         repository.create(board);
     }
 

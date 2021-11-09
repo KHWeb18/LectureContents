@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Life of Moment</title>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+        // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
+    $(document).ready(function() {
+        // form 태그에 id="board"에 해당하는 객체를 얻어옴
+        var formObj = $("#register");
+
+        // id="btnRegister"를 클릭했을때
+        $("#btnLogin").on("click", function() {
+            // URL register로 보낸다.
+            formObj.attr("action", "login");
+            // PostMapping
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+        $("#btnRegister").on("click", function() {
+            // URL register로 보낸다.
+            formObj.attr("action", "register");
+            // PostMapping
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+    });
+    </script>
+
+<body>
+<h2>회원가입</h2>
+
+<form id="register" th:action="@{register}" th:object="${register}" method="post">
+
+    아이디<br>
+    <input type="text" name="id" th:field="*{id}"> 영문 대소문자, 숫자만 사용가능! (4 ~ 12글자)<br><br>
+    비밀번호<br>
+    <input type="text" name="pw" th:field="*{pw}"> 아이디와 동일하면 안됩니다!(4 ~ 12글자)<br><br>
+    이름<br>
+    <input type="text" name="name" th:field="*{name}"> 2글자 이상 입력해주세요!<br><br>
+    주소<br>
+    <!--<input type="text" name="pw" th:field="*{pw}">
+    <input type="text" name="pw" th:field="*{pw}"> -->
+    <input class="form-control" style="width: 10%; display: inline;" placeholder="우편번호" name="addr" id="addr" type="text" readonly="readonly" />
+    <button type="button" class="btn btn-default" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>  <br>
+    <input class="form-control" style="top: 5px; width: 20%;"   placeholder="도로명 주소" name="addr2" id="addr2" type="text" readonly="readonly" /> <br>
+    <input class="form-control" placeholder="상세주소" name="addr3" id="addr3" type="text" /><br><br>
+    휴대폰번호<br>
+    <select name="pn" th:field="*{pn}">
+        <option value="010">010</option>
+        <option value="011">011</option>
+        <option value="015">015</option>
+        <option value="016">016</option>
+        <option value="017">017</option>
+        <option value="018">018</option>
+    </select>
+    - <input type="text" name="pn2" th:field="*{pn2}"> "-" 없이 숫자만 입력해주세요!^^<br><br>
+    이메일<br>
+    <input type="text" name="email" th:field="*{email}"> @ <input type="text" name="email2" th:field="*{email2}"><br><br>
+
+
+
+</form>
+
+<div>
+    <button type="submit" id="btnRegister">가입하기</button>
+</div>
+</body>
+</html>

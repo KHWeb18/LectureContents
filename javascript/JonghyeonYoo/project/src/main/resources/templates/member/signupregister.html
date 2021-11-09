@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
+
+<!-- 아래 파트는 Run-Time에 작동하므로 오류에 좀 더 민감할 필요가 있음(발견하기 쉽지 않음) -->
+
+    // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
+    $(document).ready(function() {
+        // form 태그에 id="board"에 해당하는 객체를 얻어옴
+        var formObj = $("#signup");
+
+        // id="btnRegister"를 클릭했을때
+        $("#btnRegister").on("click", function() {
+            // URL register로 보낸다.
+            formObj.attr("action", "register");
+            // PostMapping
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+    });
+</script>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
+
+</script>
+<body>
+<header>
+    <h1><a href="movietest">WARNING</a></h1>
+    <nav class="lnb">
+        <ul>
+            <li><a href="movietest">홈</a></li>
+            <li><a href="#">TV프로그램</a> </li>
+            <li><a href="#">영화</a></li>
+            <li><a href="#">뉴스</a></li>
+        </ul>
+    </nav>
+    </div>
+    <nav class="spot">
+        <ul>
+            <li><a href="login">로그인</a> </li>
+            <li><a href="signupregister">회원가입</a> </li>
+        </ul>
+    </nav>
+</header>
+
+<section class="signup-form">
+
+<h1>SIGN UP</h1>
+
+<form id="signup" th:action="@{signupregister}" th:object="${signup}" method="post">
+
+    <div class="input-area">
+        <input type="text" name="id" th:field="*{id}"id="id"autocomplete="off" required>
+        <label for="id">USER ID</label>
+    </div>
+
+    <div class="input-area">
+        <input type="password" name="password" th:field="*{password}"id="password" autocomplete="off" required>
+        <label for="password">PASSWORD</label>
+    </div>
+
+    <div class="input-area">
+        <input type="text" name="name" th:field="*{name}"id="name"autocomplete="off" required>
+        <label for="name">NAME</label>
+    </div>
+
+    <div class="input-area">
+        <input type="text" th:field="*{phone}"id="phone"autocomplete="off" required>
+        <label for="phone">PHONE NUMBER</label>
+    </div>
+
+    <div class="input-area">
+        <input type="text" th:field="*{dateofbirth}" id="dateofbirth"autocomplete="off" required>
+        <label for="dateofbirth">Date Of Birth </label>
+    </div>
+
+    <div class="input-area">
+        <input type="text" name="email" th:field="*{email}"id="email"autocomplete="off" required>
+        <label for="email">Email</label>
+    </div>
+    </div>
+
+<div class="btn-area">
+    <button type="submit" id="btnSignup">SIGN UP</button>
+    <button type="reset" id="btnReset">RESET</button>
+</div>
+</form>
+</section>
+</body>
+</html>

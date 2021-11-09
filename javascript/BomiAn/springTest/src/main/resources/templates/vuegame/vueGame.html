@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <p>캐릭터 상태 창</p>
+    <p>HP: {{ Math.floor(characterStatus.hp) }} MP: {{ characterStatus.mp }}
+        ATK: {{ Math.floor(characterStatus.atk) }} Lv: {{ characterStatus.level }}</p>
+    <p>STR: {{ Math.floor(characterStatus.str) }} INT: {{ Math.floor(characterStatus.intelligence) }}
+        DEX: {{ Math.floor(characterStatus.dex) }} VIT: {{ Math.floor(characterStatus.vit) }}
+        DEF: {{ Math.floor(characterStatus.def) }} MEN: {{ Math.floor(characterStatus.men) }}</p>
+    <p>현재 경험치 상태: {{ characterStatus.currentLevelBar }} /
+        {{ characterStatus.totalLevelBar }}</p>
+    <p>소지금: {{ characterStatus.money }}</p><br>
+    <select v-model="characterStatus.selectJob" v-if="firstFormerView">
+        <!-- 도적, 전사, 광전사, 암흑기사, 성기사, 궁수, 총사, 권사, 사제 -->
+        <option disabled="disabled">전직을 선택하세요!</option>
+        <option value="madWarrior">광전사</option>
+        <option value="warrior">전사</option>
+        <option value="magician">마법사</option>
+        <option value="thief">도적</option>
+        <option value="archer">궁수</option>
+        <option value="gunner">총사</option>
+        <option value="boxer">권사</option>
+        <option value="priest">사제</option>
+        <option value="knight">기사</option>
+        <option value="darkKnight">암흑기사</option>
+        <option value="holyKnight">성기사</option>
+    </select>
+    <p>당신이 선택한 직업은 {{ characterStatus.selectJob }} 입니다!</p><br><br>
+
+    <h3>인벤토리</h3>
+    <label>
+        <input type="checkbox" v-model="inventoryView">소지품보기
+    </label>
+    <button v-on:click="equipItem()">아이템적용!</button>
+    <table border="1" v-if="inventoryView">
+        <tr>
+            <th align="center" width="40">번호</th>
+            <th align="center" width="120">아이템명</th>
+            <th align="center" width="320">아이템 설명</th>
+            <th align="center" width="40">장착</th>
+        </tr>
+        <tr v-for="(list, idx) in myInventory"
+            v-bind:key="list.idx">
+            <th align="center" width="40">{{ idx + 1 }}</th>
+            <th align="center" width="120">{{ list.name }}</th>
+            <th align="center" width="320">{{ list.effect.desc }}</th>
+            <th align="center" width="40">
+                <label>
+                    <input type="checkbox"
+                           v-model="myInventoryValue"
+                           v-bind:value="idx">
+                </label>
+            </th>
+        </tr>
+    </table>
+    <h3>상점</h3>
+    <label>
+        <input type="checkbox" v-model="shopView" v-on:click="shuffleShopList()">판매 목록
+    </label>
+    <button v-on:click="calcBuy()">구매확정!</button>
+    <table border="1" v-if="shopView">
+        <tr>
+            <th align="center" width="40">번호</th>
+            <th align="center" width="120">아이템명</th>
+            <th align="center" width="160">가격</th>
+            <th align="center" width="320">아이템 설명</th>
+            <th align="center" width="40">구매</th>
+        </tr>
+        <tr v-for="(list, idx) in shopList"
+            v-bind:key="list.idx">
+            <th align="center" width="40">{{ idx + 1 }}</th>
+            <th align="center" width="120">{{ list.name }}</th>
+            <th align="center" width="160">{{ list.price }}</th>
+            <th align="center" width="320">{{ list.effect.desc }}</th>
+            <th align="center" width="40">
+                <label>
+                    <input type="checkbox"
+                           v-model="shopListValue"
+                           v-bind:value="idx">
+                </label>
+            </th>
+        </tr>
+    </table>
+    <br>
+
+    <button v-on:click="myDarknessDragon()">내안의흑염룡</button><br>
+    <button v-if="isTheif" v-on:click="suddenRaid()">써든레이드</button><br>
+    <!-- <button v-on:click="savageBlow()">세비지블로우</button><br> -->
+    <input v-model="monsterName">
+    <button v-on:click="addMonster">몬스터 추가하기</button><br>
+    <button v-on:click="addManyMonster">몬스터 100마리씩 리젠시키기</button><br>
+    <ul>
+        <li v-for="(monster, index) in monsters"
+            v-bind:key="monster.id"
+            v-bind:class="{ strong: monster.hp > 300 }">
+            ID.{{ monster.id }} {{ monster.name }} HP.{{ Math.floor(monster.hp) }}
+            <span v-if="monster.hp > 300">짱쎄다</span>
+            <button v-on:click="userAttack(index)">평타</button>
+            <button v-on:click="spiritChaosDevilBlade(index)">혼돈의악마영혼검</button>
+            <button v-if="isTheif" v-on:click="savageBlow(index)">세비지블로우</button>
+            <button v-on:click="removeMonster(index)">몬스터 삭제</button>
+        </li>
+    </ul>
+
+    <p>몬스터 도감이며 앞으로 계속 업데이트 될 예정입니다!</p>
+    <ul>
+        <li v-for="monsterInfo in monsterBook"
+            v-bind:key="monsterInfo.name">
+            이름: {{ monsterInfo.name }}, HP: {{ monsterInfo.hp }},
+            경험치: {{ monsterInfo.exp }}, 드랍머니: {{ monsterInfo.money }}
+        </li>
+    </ul>
+</div>
+
+<script src="/vue/vueGame.js"></script>
+</body>
+</html>

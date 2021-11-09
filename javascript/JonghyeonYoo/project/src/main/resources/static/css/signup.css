@@ -31,14 +31,14 @@ margin-top: 100px;
     text-align: center;
     margin-bottom: 60px;
 }
-.int-area{
+.input-area{
     width: 400px;
     text-align: center;
     position: relative;
     margin-top: 20px;
 }
-.int-area: first-child{margin-top: 0;}
-.int-area input{
+.input-area: first-child{margin-top: 0;}
+.input-area input{
     width: 100%;
     padding: 20px 10px 10px;
     background-color: transparent;
@@ -47,13 +47,13 @@ margin-top: 100px;
     font-size: 19px; color: #fff;
     outline: none;
 }
-.int-area label{
+.input-area label{
     position: absolute; left: 10px; top: 15px;
     font-size: 18px; color: #999;
     transition: top .5s ease;
 }
-.int-area input:focus + label,
-.int-area input:valid + label{
+.input-area input:focus + label,
+.input-area input:valid + label{
     top: 0;
     font-size: 13px; color: #166cea;
 }
@@ -67,4 +67,5 @@ margin-top: 100px;
     border: none;
     border-radius: 25px;
     margin-top: 10px;
+    cursor: pointer;
     }

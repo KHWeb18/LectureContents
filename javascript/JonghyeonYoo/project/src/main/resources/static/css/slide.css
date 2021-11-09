@@ -1,0 +1,33 @@
+
+*{margin: 0; padding: 0;}
+li{list-style: none;}
+
+ .slide_wrapper{
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    height: 500px;
+    overflow: hidden;
+}
+.slides{
+    position: absolute;
+    left: 0; top: 50px;
+    transition:left 0.5s;
+}
+.slides li:not(:last-child){
+    float: left;
+    margin-right: 30px;
+}
+.controls{
+    text-align: center;
+    margin-top: 50px;
+}
+.controls span{
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+}

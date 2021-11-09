@@ -16,4 +16,12 @@ public class PageController {
         return "/page/navigationBarTest";
     }
 
+
+    @GetMapping("/bootStrapTest")
+    public String getBootStrapTest (){
+        log.info("getBootStrapTest()");
+
+        return "/page/bootStrap";
+    }
+
 }

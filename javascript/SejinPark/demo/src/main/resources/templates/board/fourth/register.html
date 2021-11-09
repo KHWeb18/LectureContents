@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
-<!-- 버튼 누르면 동작하는 과정을 서포트하는 라이브러리 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- 아래 파트는 Run-Time에 작동하므로 오류에 좀 더 민감할 필요가 있음(발견하기 쉽지 않음) -->
 <script>
     // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
     $(document).ready(function() {
@@ -30,16 +28,11 @@
 
 <body>
 <h2>게시글 등록</h2>
-<!-- Controller의 getRegister 에서 전달받은 Board 객체(현재 텅 빔)
-     th:action에는 이동시킬 URL 주소를 작성한다.
-     보통 action에는 @를 사용한다.
-     th:object는 Board 객체(현재 텅 빔)를 전달받기 위한 목적으로 활용
-     객체를 전달 받을 경우엔 $를 사용한다. -->
+
 <form id="board" th:action="@{register}" th:object="${board}" method="post">
   <table>
     <tr>
       <td>제목</td>
-      <!-- th:field의 경우엔 Board 객체에 있는 title과 직접 맵핑시킴 -->
       <td><input type="text" name="title" th:field="*{title}"></td>
     </tr>
     <tr>
@@ -48,7 +41,6 @@
     </tr>
     <tr>
       <td>본문</td>
-      <!-- textarea는 글자를 여러개 입력할 수 있는 글 입력창이다 -->
       <td><textarea cols="50" rows="20" name="content" th:field="*{content}"></textarea></td>
     </tr>
   </table>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/vue/second.css">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 어떤 동작을 하겠다는 가다를 잡아놓고 -->
+<div id="app">
+    <p>{{ message }}</p>
+    <ol>
+        <li v-for="item in list">{{ item }}</li>
+    </ol>
+    <button v-on:click="buttonClickTest">클릭해봐!</button>
+    <input v-model="initMsg">
+    <p>{{ initMsg }}</p>
+    <button v-on:click="show = !show">얍!</button>
+    <transition>
+        <p v-if="show">invisibility도 쉽게 제어 되네 ?</p>
+    </transition>
+    <p>Hello {{ message }}</p>
+    <p>{{ message.length }}</p>
+    <p>{{ list[3] }}</p>
+    <p>{{ list[num] }}</p>
+    <button v-on:click="increment">숫자를 카운팅 해보자!</button>
+    <p>{{ count }}번 클릭했습니다.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="0" cy="75" v-bind:r="radius" fill="lightblue"/>
+    </svg>
+    <input type="range" min="0" max="100" v-model="radius"><br><br><br>
+
+    <p>{{ randomNumber }}</p>
+    <button v-on:click="randomGeneration">랜덤 숫자 발생!</button>
+
+    <input v-model="monsterName">
+    <button v-on:click="addMonster">몬스터 추가하기</button>
+    <ul>
+        <li v-for="(monster, index) in monsters"
+            v-bind:key="monster.id"
+            v-bind:class="{ strong: monster.hp > 300 }">
+            ID.{{ monster.id }} {{ monster.name }} HP.{{ monster.hp }}
+            <span v-if="monster.hp > 300">개쎄다</span>
+            <button v-on:click="userAttack(index)">평타</button>
+            <button v-on:click="removeMonster(index)">몬스터 삭제</button>
+        </li>
+    </ul>
+</div>
+<!-- 요렇게 해라고 오더함 -->
+<script src="/vue/second/second.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua');
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 450px;
+    margin: 0 auto;
+    border: 1px solid #cccccc;
+    border-radius: 2%;
+    box-shadow: 2px 2px 5px #333333;
+}
+

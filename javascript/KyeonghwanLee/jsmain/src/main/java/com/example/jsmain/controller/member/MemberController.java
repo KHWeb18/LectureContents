@@ -63,4 +63,13 @@ public class MemberController {
 
         return "/member/success";
     }
+
+    @GetMapping("/lists")
+    public String getLists (Model model) throws Exception {
+        log.info("getLists(): " + service.list());
+
+        model.addAttribute("member", service.list());
+
+        return "/member/memberIdList";
+    }
 }

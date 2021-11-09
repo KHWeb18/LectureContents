@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+     var formObj = $("#login");
+
+    $("#btnMyPage").on("click", function() {
+      self.location = "my_page";
+    });
+    $("#btnMain").on("click", function() {
+      self.location = "main";
+    });
+  });
+</script>
+
+<body>
+<form id="login" th:action="@{join}" th:object="${member}" method="post">
+  <div>
+    <h2 th:text="${msg}"></h2>
+  </div>
+  <div>
+    <button type="submit" id="btnMyPage">My page</button>
+    <button type="submit" id="btnMain">Main</button>
+  </div>
+</form>
+</body>
+</html>

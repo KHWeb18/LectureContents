@@ -16,4 +16,17 @@ public class Home {
 
         return "movietest";
     }
+
+    @GetMapping("/slide")
+    public String getSlideTest() {
+        log.info("getSlideTest()");
+
+        return "slide";
+    }
+    @GetMapping("/just")
+    public String getJust() {
+        log.info("getJust()");
+
+        return "just";
+    }
 }

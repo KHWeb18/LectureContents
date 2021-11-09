@@ -42,8 +42,7 @@ public class BoardRepository {
                         board.setTitle(rs.getString("title"));
                         board.setContent(rs.getString("content"));
                         board.setWriter(rs.getString("writer"));
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        board.setRegDate(sdf.parse(rs.getDate("reg_date") + " " + rs.getTime("reg_date")));
+                        board.setRegDate(rs.getDate("reg_date"));
 
 
                         return board;

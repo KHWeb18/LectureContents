@@ -23,6 +23,7 @@ public class SixthController {
 
     @GetMapping("/jsonKeyValueTest")
     public String getJsonKeyValueTest(){
+
         //모든 json 데이터는 아래와 같이 생겼음
         //향후 Vue에서 보내는 데이터도 전부 이 json형태로 날아옴
         //우리가 SRT API나 여러가지 Rest API라고 하는 녀석들도

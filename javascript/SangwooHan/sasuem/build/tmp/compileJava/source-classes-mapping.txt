@@ -1,0 +1,13 @@
+com/example/sasuem/SasuemApplication.java
+ com.example.sasuem.SasuemApplication
+com/example/sasuem/controller/sasuemController.java
+ com.example.sasuem.controller.sasuemController
+com/example/sasuem/service/insectdiagramservice.java
+ com.example.sasuem.service.insectdiagramservice
+com/example/sasuem/entity/Stagbeetle.java
+ com.example.sasuem.entity.Stagbeetle
+com/example/sasuem/rapository/insectRepository.java
+ com.example.sasuem.rapository.insectRepository
+ com.example.sasuem.rapository.insectRepository$1
+com/example/sasuem/service/insectdiagramserviceImps.java
+ com.example.sasuem.service.insectdiagramserviceImps

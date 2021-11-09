@@ -1,5 +1,6 @@
 package com.example.SoloProject.controller;
 
+import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Product;
 import com.example.SoloProject.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,61 +9,79 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
-    private ProductService productservice;
+    private ProductService service;
 
-    @GetMapping("/productregister")
+    @GetMapping("/register")
     public String getProduct (Product product, Model model) throws Exception {
-        log.info("getProduct(): " + productservice.productlist());
+        log.info("getProduct(): " + service.lists());
 
-        model.addAttribute("productlists", productservice.productlist());
+        model.addAttribute("lists", service.lists());
 
-        return "/product/productregister";
+        return "/product/register";
     }
 
-    @PostMapping("/productregister")
+    @PostMapping("/register")
     public String postProduct (Product product, Model model) throws Exception {
         log.info("postProduct()");
         log.info("Product: " + product);
 
-        productservice.productregister(product);
+        service.register(product);
 
         model.addAttribute("msg", "등록이 완료되었습니다!");
 
         return "/product/success";
     }
 
-    @GetMapping("/productlist")
-    public String getProductlist (Model model) throws Exception {
-        log.info("getProductlist(): " + productservice.productlist());
+    @GetMapping("/lists")
+    public String getList (Model model) throws Exception {
+        log.info("getList(): " + service.lists());
 
-        model.addAttribute("product", productservice.productlist());
+        model.addAttribute("product", service.lists());
 
-        return "/product/productlist";
+        return "/product/lists";
     }
 
-    @GetMapping("/productread")
-    public String getProductRead (int productNo, Model model) throws Exception{
-        log.info("productread(): productNo = " + productNo);
+    @GetMapping("/read")
+    public String getRead (int productNo, Model model) throws Exception{
+        log.info("read(): productNo = " + productNo);
 
-        model.addAttribute(productservice.productread(productNo));
+        model.addAttribute(service.read(productNo));
 
-        return "/product/productread";
+        return "/product/read";
     }
 
-    // 글을 지워도 숫자가 올라가야만 하는 이유가 무엇인가?
-    // 배열 100개에서 중간의 값을 지우는 경우가 있는가
-    // 애초에 중간에 지워진 값을 채우는 것 또한 큰 낭비다
-    @PostMapping("/productremove")
-    public String productremove (int productNo, Model model) throws Exception{
-        log.info("productremove()");
+    @GetMapping("/modify")
+    public String getModify(int productNo, Model model) throws Exception{
+        log.info("getmodify()");
 
-        productservice.productremove(productNo);
+        model.addAttribute(service.read(productNo));
+
+        return "/product/modify";
+    }
+
+    @PostMapping("/modify")
+    public String postModify (Product product, Model model) throws Exception{
+        log.info("postModify()");
+
+        service.modify(product);
+        model.addAttribute("msg", "수정이 성공적으로 완료되었습니다");
+
+        return  "/product/success";
+    }
+
+    @PostMapping("/remove")
+    public String remove (int productNo, Model model) throws Exception{
+        log.info("remove()");
+
+        service.remove(productNo);
 
         model.addAttribute("msg", "삭제가 완료되었습니다");
 

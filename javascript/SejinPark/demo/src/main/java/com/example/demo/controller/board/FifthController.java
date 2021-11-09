@@ -13,7 +13,6 @@ public class FifthController {
 
     @GetMapping("/lists")
     public String getLists (Model model) throws Exception {
-        //log.info("getLists()");
         log.info("getLists(): " + service.list());
 
         model.addAttribute("lists", service.list());

@@ -8,12 +8,12 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
-        <module name="demo.demo.main~1" />
+        <module name="com.example.demo.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="demo.demo.main" target="1.8" />
-      <module name="demo.demo.test" target="1.8" />
+      <module name="demo.demo.main~1" target="1.8" />
+      <module name="demo.demo.test~1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h2>게시판 목록 보기</h2>
+<!-- '글쓰기'를 클릭하면 /register 페이지로 넘어가면서 게시글 등록 가능
+     a href="/": URL요청 -->
+<a href="/register">글쓰기</a>
+<table border="1">
+  <tr>
+    <th align="center" width="100">번호</th>
+    <th align="center" width="600">제목</th>
+    <th align="center" width="150">작성자</th>
+    <th align="center" width="240">등록일자</th>
+  </tr>
+  <tr th:if="${#lists.isEmpty(lists)}">
+    <td colspan="4">
+      현재 등록된 게시물이 없습니다!
+    </td>
+  </tr>
+  <tr th:each="board : ${lists}">
+    <td align="center" th:text="${board.boardNo}"></td>
+    <!-- 가변인자 세팅: |read?boardNo=${board.boardNo}|를 |read/${board.boardNo}|로 바꿈
+         |read?boardNo=${board.boardNo}|: ?는 getMapping을 의미함, 파라미터의 boardNo를 인식 -->
+    <td align="left"> <a th:href="@{|read/${board.boardNo}|}" th:text="${board.title}"/></td>
+    <td align="right" th:text="${board.writer}"></td>
+    <td align="center" th:text="${#dates.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+  </tr>
+
+</table>
+
+</body>
+</html>

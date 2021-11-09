@@ -1,6 +1,5 @@
 package com.example.SoloProject.repository;
 
-import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Member;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -82,21 +81,9 @@ public class MemberRepository {
         }
     }
 
-    public void delete(Integer memberNo) throws Exception{
-        String query = "delete from board where member_no=?";
-
-        jdbcTemplate.update(query, memberNo);
-    }
-
-    public void update(Member member) throws Exception{
-        String query = "update board set name = ?, id=? where pw=?";
-
-        jdbcTemplate.update(query, member.getName(), member.getId(), member.getPw());
-    }
-
     public Member read (Integer memberNo) throws Exception {
         List<Member> results = jdbcTemplate.query(
-                "select member_no, name, id, pw, reg_date from board where member_no = ?",
+                "select member_no, name, id, pw, reg_date from member where member_no = ?",
                 new RowMapper<Member>() {
                     @Override
                     public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -113,5 +100,18 @@ public class MemberRepository {
                 }, memberNo);
 
         return results.isEmpty() ? null : results.get(0);
+    }
+
+
+    public void delete(Integer memberNo) throws Exception{
+        String query = "delete from member where member_no=?";
+
+        jdbcTemplate.update(query, memberNo);
+    }
+
+    public void update(Member member) throws Exception{
+        String query = "update member set name = ?, id=?, pw=? where member_no=?";
+
+        jdbcTemplate.update(query, member.getName(), member.getId(), member.getPw(), member.getMemberNo());
     }
 }

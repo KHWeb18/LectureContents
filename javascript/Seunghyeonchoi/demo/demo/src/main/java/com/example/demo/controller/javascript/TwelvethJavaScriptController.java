@@ -34,6 +34,8 @@ public class TwelvethJavaScriptController {
     public String getDomEventTest () {
         log.info("getDomEventTest()");
 
+        //temp 코밋 테스트
+
         return "/javascript/twelveth/domEventTest";
     }
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <label>
+        <input type="checkbox" v-model="val"> {{ val }}
+    </label>
+    <label>
+        <input type="checkbox" v-model="groupVal" value="A">A
+    </label>
+    <label>
+        <input type="checkbox" v-model="groupVal" value="B">B
+    </label>
+    <label>
+        <input type="checkbox" v-model="groupVal" value="C">C
+    </label>
+    <p>{{ groupVal }}</p>
+    <br>
+
+    <label><input type="radio" v-model="radioGroupVal" value="a">A</label>
+    <label><input type="radio" v-model="radioGroupVal" value="b">B</label>
+    <label><input type="radio" v-model="radioGroupVal" value="c">C</label>
+    <p>{{ radioGroupVal }}</p>
+    <br>
+
+    <select v-model="selectVal" multiple>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+    </select>
+    <p>{{ selectVal }}</p>
+    <br>
+
+    <select v-model="selectOnce">
+        <option disabled="disabled">전직을 선택하세요!</option>
+        <option value="madWarrior">광전사</option>
+        <option value="magician">마법사</option>
+        <option value="thief">도적</option>
+        <option value="archer">궁수</option>
+        <option value="gunner">총사</option>
+        <option value="knight">기사</option>
+    </select>
+    <p>{{ selectOnce }}</p>
+</div>
+
+<script src="/vue/fourth/fourth.js"></script>
+</body>
+</html>

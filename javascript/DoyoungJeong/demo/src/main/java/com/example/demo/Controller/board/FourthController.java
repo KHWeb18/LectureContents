@@ -1,8 +1,8 @@
-package com.example.demo.Controller.board;
+package com.example.demo.controller.board;
 
-import com.example.demo.Controller.service.BoardService;
 import com.example.demo.entity.Board;
-import com.example.demo.entity.SignUp;
+import com.example.demo.entity.Member;
+import com.example.demo.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,14 +38,14 @@ public class FourthController {
     }
 
     @GetMapping("/joinMembership")
-    public String getJoinMembership (SignUp signup, Model model) {
+    public String getJoinMembership (Member signup, Model model) {
         log.info("getJoinMembership()");
 
         return "/signup/joinMemberShip";
     }
 
     @PostMapping("/joinMembership")
-    public String postSignUp (SignUp signup, Model model) throws Exception{
+    public String postSignUp (Member signup, Model model) throws Exception{
         log.info("postJoinMembership()");
         log.info("Signup: " + signup);
 

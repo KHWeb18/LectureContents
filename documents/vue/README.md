@@ -83,3 +83,37 @@
 cd frontend
 npm run serve
 ```
+
+## materialize 설정
+
+```make
+npm install materialize-css@next --save-dev
+npm install material-design-icons --save-dev
+```
+
+## Vuetify
+
+```make
+npm add vuetify
+```
+
+## CoverFlow
+
+```make
+npm add vue-coverflow
+```
+
+## Vue Awesome Swiper
+
+```make
+npm install vue-awesome-swiper --save-dev
+
+// 버그나는 경우(버전을 낮춰서 활용)
+npm install swiper@5.3.7 --save-dev
+```
+
+## Vue Img LightBox
+
+```make
+npm install @morioh/v-lightbox --save-dev
+```

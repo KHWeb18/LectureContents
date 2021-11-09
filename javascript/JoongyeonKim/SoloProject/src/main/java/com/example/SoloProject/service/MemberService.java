@@ -1,6 +1,5 @@
 package com.example.SoloProject.service;
 
-import com.example.SoloProject.entity.Board;
 import com.example.SoloProject.entity.Member;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface MemberService {
 
     public Member read(Integer memberNo) throws Exception;
 
-    public void remove(Integer boardNo) throws Exception;
+    public void remove(Integer memberNo) throws Exception;
 
     public void modify(Member member) throws Exception;
 }

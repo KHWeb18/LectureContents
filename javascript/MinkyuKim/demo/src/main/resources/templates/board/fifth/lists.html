@@ -29,7 +29,10 @@
          read?boardNo=1, read?boardNo=3, read?boardNo=7 형태로
          게시물 번호에 해당하는 값을 셋한다고 보 면됨 -->
     <!-- ++ href가 잡아야한다.-->
-    <td aign="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td>
+    <!--<td aign="left"><a th:href="@{|read?boardNo=${board.boardNo}|}" th:text="${board.title}"/></td>
+         위의 것(?들어가는 것)은 겟맵핑방식으로 board/read?boardNo=9형태로 보여짐., 아래의 것은 board/read/9와같은 형태로 보여지게 하는 것-->
+    <td aign="left"><a th:href="@{|read/${board.boardNo}|}" th:text="${board.title}"/>
+
     <td align="right" th:text="${board.writer}"></td>
     <!-- dates.format()은 특정한 형식으로 날짜를 표현해줌
          아래 예는 연-월-일 시:분:초 형식임 -->

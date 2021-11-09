@@ -1,8 +1,9 @@
-function showDetail (){
-    document.querySelector('#desc').style.display = "block";
-    document.querySelector('#open').style.display = "none";
+function showDetail () {
+    document.querySelector('#desc').style.displey = "block";
+    document.querySelector('#open').style.displey = "none";
 }
-function hideDetail (){
-    document.querySelector('#desc').style.display = "none";
-    document.querySelector('#open').style.display = "block";
+
+function hideDetail () {
+    document.querySelector('#desc').style.displey = "none";
+    document.querySelector('#open').style.displey = "block";
 }

@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b064bd2b-a926-4781-b941-eb9093131f47" name="Default Changelist" comment="[황정아] (210609) 23일차 퀴즈 복습">
-      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/demo/src/main/resources/templates/Homework0611/resume.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/controller/MemberController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/repository/MemberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/service/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/service/MemberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/my_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/remove.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/success_join.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/success_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/controller/JoinController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/entity/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/entity/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/repository/JoinRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/service/JoinService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/java/com/example/FirstProject/service/JoinServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/join/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/join.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/join/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/member/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/main/resources/templates/join/success.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/sql/join.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/FirstProject/src/sql/join.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../javascript/JungahHwang/Quiz/src/main/resources/static/vue/vueGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javascript/JungahHwang/Quiz/src/main/resources/static/vue/vueGame.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

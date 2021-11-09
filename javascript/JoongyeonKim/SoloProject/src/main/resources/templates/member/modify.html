@@ -12,7 +12,7 @@
 <script>
     // document는 현재 웹 상에 떠 있는 페이지 자체를 의미한다고 보면 됨
     $(document).ready(function() {
-        var formObj = $("#member");
+        var formObj = $("#modify");
 
         $("#btnModify").on("click", function() {
             formObj.attr("action", "modify");
@@ -30,7 +30,7 @@
 <body>
 <h2>회원 정보 수정</h2>
 
-<form id="member" th:object="${member}" method="post">
+<form id="modify" th:object="${member}" method="post">
   <input type="hidden" name="memberNo" th:field="*{memberNo}"/>
   <table>
     <tr>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>공지사항 작성</title>
+</head>
+
+
+<body>
+<h2>공지사항 작성하기</h2>
+<form th:action="insert.no" method="post">
+    <table>
+        <tr>
+            <td>제목</td>
+            <td><input type="text" name="title" placeholder= "제목을 입력하세요" required></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td><textarea cols="30" rows="10" name="content" placeholder= "내용을 입력하세요" required></textarea></td>
+        </tr>
+        <tr>
+            <td>첨부파일</td>
+            <td><input type="file" name="upoloadFile"></td>
+        </tr>
+    </table>
+    <div>
+        <button type="submit" id="btnRegister" >작성하기</button>
+    </div>
+    <table border="1>
+        <tr style="background-color: #6ac9d0">
+          <th align="center" width="80">번호</th>
+          <th align="center" width="320">제목</th>
+          <th align="center" width="120">작성자</th>
+          <th align="center" width="200">작성일자</th>
+          <th align="center" width="100">조회수</th>
+        </tr>
+              <td colspan="5" style="background-color: rgb(228, 166, 51)">
+                  현재 등록된 공지사항이 없습니다!
+              </td>
+            </tr>
+      </table>
+</form>
+</body>
+</html>

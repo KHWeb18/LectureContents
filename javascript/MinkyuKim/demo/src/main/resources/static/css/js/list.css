@@ -1,0 +1,40 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    cursor: pointer;
+    /* 상대적인 위치 */
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: dodgerblue;
+    font-size: 18px;
+}
+
+/* 홀수번째 요소는 #f9f9f9색 (격자무늬) */
+ul li:nth-child(odd) {
+    background-color: #f9f9f9;;
+}
+
+ul li:hover {
+    background-color: deepskyblue;
+}
+
+.close {
+    /* 절대 위치*/
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+}
+
+/* 가져다 되면은 */
+.close:hover {
+    background-color: skyblue;
+    color: white;
+}
+

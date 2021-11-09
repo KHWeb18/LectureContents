@@ -40,17 +40,17 @@ var app = new Vue ({
         monsterName: '',
         monsters: [
             { id: 1, name: '슬라임', hp: 30 },
-            { id: 2, name: '고블린', hp: 50 },
+            { id: 2, name: '고블린', hp: 50 }, { name: '슬라임', hp: 30, exp: 1, money: 10 },
+                                                       { name: '고블린', hp: 50, exp: 2, money: 20 },
+                                                       { name: '레드 슬라임', hp: 70, exp: 4, money: 40 },
+                                                       { name: '홉 고블린', hp: 120, exp: 8, money: 80 },
+                                                       { name: '그린 슬라임', hp: 150, exp: 12, money: 160 },
+                                                       { name: '스켈레톤', hp: 200, exp: 20, money: 320 },
+                                                       { name: '고블린 마법사', hp: 250, exp: 25, money: 640 },
             { id: 3, name: '카오스 드래곤', hp: 99999999 }
         ],
         monsterBook: [
-            { name: '슬라임', hp: 30, exp: 1, money: 10 },
-            { name: '고블린', hp: 50, exp: 2, money: 20 },
-            { name: '레드 슬라임', hp: 70, exp: 4, money: 40 },
-            { name: '홉 고블린', hp: 120, exp: 8, money: 80 },
-            { name: '그린 슬라임', hp: 150, exp: 12, money: 160 },
-            { name: '스켈레톤', hp: 200, exp: 20, money: 320 },
-            { name: '고블린 마법사', hp: 250, exp: 25, money: 640 },
+
             { name: '블루 슬라임', hp: 300, exp: 35, money: 1280 },
             { name: '트롤', hp: 500, exp: 50, money: 2000 },
             { name: '원혼', hp: 700, exp: 60, money: 4000 },
