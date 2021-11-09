@@ -103,6 +103,36 @@ tsObj2.disp()
 tsObj2.allocName('private 적용')
 tsObj2.disp()
 
+abstract class AbstractObj {
+  protected name = "추상클래스"
+
+  constructor () {
+    console.log('name: ', this.name)
+  }
+  getName(): string {
+    return this.name
+  }
+  setName(name: string): void {
+    this.name = name
+  }
+}
+
+class AbstractObjImpl extends AbstractObj {
+  constructor () {
+    super()
+  }
+
+  display () {
+    console.log('추상클래스에 새로 추가한 display 매서드')
+  }
+}
+
+let aoi = new AbstractObjImpl()
+aoi.display()
+aoi.setName('자바랑 똑같음')
+console.log(aoi.getName())
+aoi.display()
+
 @Component({
   components: {
   },
