@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import TsTest from '../views/TsTest.vue'
+import TypeScriptBoardListPage from '@/views/board/TypeScriptBoardListPage.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,13 @@ const routes: Array<RouteConfig> = [
     path: '/tstest',
     name: 'TsTest',
     component: TsTest
+  },
+  {
+    path: '/board/list',
+    name: 'TypeScriptBoardListPage',
+    components: {
+      default: TypeScriptBoardListPage
+    }
   }
 ]
 
