@@ -29,6 +29,9 @@ const store: StoreOptions<BoardState> = {
   mutations: {
     [FETCH_BOARD_LIST] (state, boards: Board[]) {
       state.boards = boards
+    },
+    [FETCH_BOARD] (state, board: Board) {
+      state.board = board
     }
   },
   actions: {
@@ -36,6 +39,12 @@ const store: StoreOptions<BoardState> = {
       return AxiosService.instance.get('/board/lists')
         .then((res) => {
           commit(FETCH_BOARD_LIST, res.data)
+        })
+    },
+    fetchBoard({ commit }, boardNo: number) {
+      return AxiosService.instance.get(`/board/${boardNo}`)
+        .then((res) => {
+          commit(FETCH_BOARD, res.data)
         })
     }
   },

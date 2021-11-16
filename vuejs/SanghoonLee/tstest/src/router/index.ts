@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import TsTest from '../views/TsTest.vue'
 import TypeScriptBoardListPage from '@/views/board/TypeScriptBoardListPage.vue'
 import BoardRegisterPage from '@/views/board/BoardRegisterPage.vue'
+import BoardReadPage from '@/views/board/BoardReadPage.vue'
+import BoardModifyPage from '@/views/board/BoardModifyPage.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +40,26 @@ const routes: Array<RouteConfig> = [
     name: 'BoardRegisterPage',
     components: {
       default: BoardRegisterPage
+    }
+  },
+  {
+    path: '/board/:boardNo',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/board/:boardNo/edit',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    },
+    props: {
+      default: true
     }
   }
 ]

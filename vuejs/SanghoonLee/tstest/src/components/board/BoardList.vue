@@ -5,7 +5,7 @@
         <th align="center" width="80">No</th>
         <th align="center" width="320">제목</th>
         <th align="center" width="100">작성자</th>
-        <th align="center" width="180">등록일자</th>
+        <th align="center" width="240">등록일자</th>
       </tr>
 
       <tr v-if="!boards || (Array.isArray(boards) && boards.length === 0)">
@@ -16,9 +16,13 @@
 
       <tr v-else v-for="board in boards" :key="board.boardNo">
         <td align="center">{{ board.boardNo }}</td>
-        <td align="center">{{ board.title }}</td>
         <!-- <td align="center">{{ board.title }}</td> -->
-        <td align="center">{{ board.writer }}</td>
+        <td align="left">
+          <router-link :to="{ name: 'BoardReadPage', params: { boardNo: board.boardNo.toString() } }">
+            {{ board.title }}
+          </router-link>
+          </td>
+        <td align="right">{{ board.writer }}</td>
         <td align="center">{{ board.regDate }}</td>
       </tr>
     </table>
