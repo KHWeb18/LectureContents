@@ -1,7 +1,7 @@
 <template>
   <div align="center">
     <h2>Board(게시판) 리스팅</h2>
-    <!-- <router-link :to="{ name: BoardRegisterPage }">글쓰기</router-link> -->
+    <router-link :to="{ name: 'BoardRegisterPage' }">새로운 글쓰기</router-link>
     <board-list :boards="boards"/>
   </div>
 </template>

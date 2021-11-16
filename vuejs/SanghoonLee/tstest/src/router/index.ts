@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import TsTest from '../views/TsTest.vue'
 import TypeScriptBoardListPage from '@/views/board/TypeScriptBoardListPage.vue'
+import BoardRegisterPage from '@/views/board/BoardRegisterPage.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,13 @@ const routes: Array<RouteConfig> = [
     name: 'TypeScriptBoardListPage',
     components: {
       default: TypeScriptBoardListPage
+    }
+  },
+  {
+    path: '/board/register',
+    name: 'BoardRegisterPage',
+    components: {
+      default: BoardRegisterPage
     }
   }
 ]
