@@ -1,7 +1,7 @@
 <template>
   <div align="center">
-    <h2>게시글 리스트</h2>
-    <!-- <router-link :to="{ name: BoardRegisterPage }">글쓰기</router-link> -->
+    <h2>게시판 리스트</h2>
+    <router-link :to="{ name: 'BoardRegisterPage' }">글쓰기</router-link>
     <board-list :boards="boards"/>
   </div>
 </template>
@@ -20,8 +20,11 @@
   })
   export default class BoardListPage extends Vue {
     @State readonly boards!: Board[]
+
     @Action readonly fetchBoardList: any
+
     created () {
       this.fetchBoardList()
     }
   }
+</script>

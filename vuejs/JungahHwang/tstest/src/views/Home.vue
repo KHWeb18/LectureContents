@@ -13,8 +13,8 @@
         </router-link>
       </v-flex>
       <v-flex xs4 md3 class="red white--text">
-        <router-link :to="{ name: 'BoardList' }">
-          BoardList
+        <router-link :to="{ name: 'BoardListPage' }">
+          BoardListPage
         </router-link>
       </v-flex>
     </v-layout>
