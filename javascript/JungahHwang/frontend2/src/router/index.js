@@ -5,11 +5,20 @@ import Test from '../views/Test.vue'
 import Todo from '../views/Todo.vue'
 import Monster from '@/views/monster/Monster.vue'
 
+// Reference
+import Reference from '@/views/reference/Reference'
+import CoverFlowPage from '@/views/reference/CoverFlowPage'
+import AwesomeSwiperPage from '@/views/reference/AwesomeSwiperPage'
+import ImageGalleryPage from '@/views/reference/ImageGalleryPage'
+import CalendarPage from '@/views/reference/CalendarPage'
+import FileUploadPage from '@/views/reference/FileUploadPage'
+
 // Quiz
 import Quiz from '@/views/quiz/Quiz'
 import StudentScorePage from '@/views/quiz/StudentScorePage'
 import TriangleVuePage from '@/views/quiz/TriangleVuePage'
 import TriangleSpringPage from '@/views/quiz/TriangleSpringPage'
+import MemberJpaPage from '@/views/quiz/MemberJpaPage'
 
 // Monster
 import MonsterSignupPage from '@/views/monster/MonsterSignupPage'
@@ -38,7 +47,7 @@ import Concave from '@/views/lecture/Concave'
 import EventBusTestPage from '@/views/lecture/EventBusTestPage'
 
 // Crawling
-import DaumNewsCrawlerPage from '@/views/lecture/DaumNewsCrawlerPage'
+import DaumNewsCrawlerPage from '@/views/jpa/DaumNewsCrawlerPage'
 
 // Slot
 import Slot from '@/views/slot/Slot'
@@ -53,6 +62,11 @@ import MaterialGridPage from '@/views/materialize/MaterialGridPage'
 
 // Vuetify
 import VuetifyPage from '@/views/vuetify/VuetifyPage'
+
+// Join Column / Secuity
+import MemberJoinColumnPage from '@/views/jpa/MemberJoinColumnPage'
+import MemberLoginPage from '@/views/jpa/MemberLoginPage'
+
 
 Vue.use(VueRouter)
 
@@ -71,7 +85,39 @@ const routes = [
     component: Test
   },
 
-// Quiz
+// Reference
+  {
+    path: '/reference',
+    name: 'Reference',
+    component: Reference
+  },
+  {
+    path: '/reference/coverflow',
+    name: 'CoverFlowPage',
+    component: CoverFlowPage
+  },
+  {
+    path: '/reference/awesomeSwiper',
+    name: 'AwesomeSwiperPage',
+    component: AwesomeSwiperPage
+  },
+  {
+    path: '/reference/imageGallery',
+    name: 'ImageGalleryPage',
+    component: ImageGalleryPage
+  },
+  {
+    path: '/reference/calendar',
+    name: 'CalendarPage',
+    component: CalendarPage
+  },
+  {
+    path: '/reference/fileUpload',
+    name: 'FileUploadPage',
+    component: FileUploadPage
+  },
+
+  // Quiz 
   {
     path: '/quiz',
     name: 'Quiz',
@@ -91,6 +137,11 @@ const routes = [
     path: '/quiz/triangleSpring',
     name: 'TriangleSpringPage',
     component: TriangleSpringPage
+  },
+  {
+    path: '/quiz/member',
+    name: 'MemberJpaPage',
+    component: MemberJpaPage
   },
     
 // Todo
@@ -316,6 +367,23 @@ const routes = [
       default: VuetifyPage
     }
   },
+
+// Join Column / Security
+  {
+    path: '/joinColumn',
+    name: 'MemberJoinColumnPage',
+    components: {
+      default: MemberJoinColumnPage
+    }
+  },
+  {
+    path: '/joinColumn/login',
+    name: 'MemberLoginPage',
+    components: {
+      default: MemberLoginPage
+    }
+  },
+  
   
 ]
 

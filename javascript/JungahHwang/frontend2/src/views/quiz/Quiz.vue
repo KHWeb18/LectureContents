@@ -12,5 +12,9 @@
         class="nav-link" 
         active-class="active">TriangleSpring
     </router-link>
+    <router-link :to="{ name: 'MemberJpaPage' }" 
+        class="nav-link" 
+        active-class="active">MemberJPA
+    </router-link>
   </div>   
 </template>

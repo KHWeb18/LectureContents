@@ -1,8 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import SignUp from '@/views/member/SignUp'
-import Login from '@/views/member/Login'
+import Home from '@/views/home/Home'
+
+import Record from '@/views/record/Record'
+
+import Challenge from '@/views/challenge/Challenge'
+
+import Recommend from '@/views/recommend/Recommend'
+import AddRecommend from '@/views/recommend/AddRecommend'
+import ReadRecommend from '@/views/recommend/ReadRecommend'
+import ModifyRecommend from '@/views/recommend/ModifyRecommend'
+
+import Together from '@/views/together/Together'
+import AddTogether from '@/views/together/AddTogether'
+import ReadTogether from '@/views/together/ReadTogether'
+import ModifyTogether from '@/views/together/ModifyTogether'
+
+import Map from '@/views/map/Map'
+
+import Mypage from '@/views/member/Mypage'
 
 Vue.use(VueRouter)
 
@@ -21,15 +37,65 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/signup',
-    name: 'SignUp',
-    component: SignUp
+    path: '/record',
+    name: 'Record',
+    component: Record
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  }
+    path: '/challenge',
+    name: 'Challenge',
+    component: Challenge
+  },
+  {
+    path: '/recommend',
+    name: 'Recommend',
+    component: Recommend,
+  },
+  {
+    path: '/recommend/register',
+    name: 'AddRecommend',
+    component: AddRecommend
+  },
+  {
+    path: '/recommend/read',
+    name: 'ReadRecommend',
+    component: ReadRecommend,
+  },
+  {
+    path: '/recommend/modify',
+    name: 'ModifyRecommend',
+    component: ModifyRecommend,
+  },
+  {
+    path: '/together',
+    name: 'Together',
+    component: Together
+  },
+  {
+    path: '/together/register',
+    name: 'AddTogether',
+    component: AddTogether
+  },
+  {
+    path: '/together/read',
+    name: 'ReadTogether',
+    component: ReadTogether,
+  },
+  {
+    path: '/together/modify',
+    name: 'ModifyTogether',
+    component: ModifyTogether,
+  },
+  {
+    path: '/map',
+    name: 'Map',
+    component: Map
+  },
+  {
+    path: '/mypage',
+    name: 'Mypage',
+    component: Mypage
+  },
 ]
 
 const router = new VueRouter({

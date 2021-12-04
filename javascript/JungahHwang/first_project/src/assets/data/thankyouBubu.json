@@ -1,0 +1,1236 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "_5LYxn-etlYQBs8zIByqbCZN9hU",
+  "nextPageToken": "CCQQAA",
+  "regionCode": "KR",
+  "pageInfo": {
+    "totalResults": 200,
+    "resultsPerPage": 36
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "6g9dqkvmPRqVPvSu4iH5qWvVgUE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "iOSYLKBk894"
+      },
+      "snippet": {
+        "publishedAt": "2018-01-01T09:44:42Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "무.조.건! 뱃살 빠지는 운동 베스트5",
+        "description": "안녕하세요, Thankyou BUBU입니다! 많은 분들이 다이어트, 운동을 결심하게되는 이유중 하나는 다름아닌 '뱃살' 때문이라고도 할 수 있습니다. 이는 이제까지 저희가 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/iOSYLKBk894/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/iOSYLKBk894/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/iOSYLKBk894/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-01-01T09:44:42Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "O2y86ff47I-GbdDqTbBIjhJdnYM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VNQpP6C1fJg"
+      },
+      "snippet": {
+        "publishedAt": "2017-11-27T09:24:36Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "집에서 하는 유산소운동 다이어트 [칼소폭]",
+        "description": "안녕하세요, Thankyou BUBU 입니다! 저희가 운동을 할 때 가장 중점을 두고 생각하는 것은 바로 '시간 대비 운동효율' 입니다. 그래서 저희가 소개시켜드린 영상 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VNQpP6C1fJg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VNQpP6C1fJg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VNQpP6C1fJg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-11-27T09:24:36Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GuNMnmDvjf-et7QKdXJfUVuKYWM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Q70jQVPkMnc"
+      },
+      "snippet": {
+        "publishedAt": "2018-02-05T09:10:20Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "허벅지 안쪽살 빨리 빼는 운동 3가지",
+        "description": "많은 다이어터 분들이 다이어트시 다른 부위들에 비해 허벅지살, 하체살 빼는것이 어렵다고 느끼는 이유는 무엇일까요? 우선 하체에는 지방분해를 억제하는 '알파2 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Q70jQVPkMnc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Q70jQVPkMnc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Q70jQVPkMnc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-02-05T09:10:20Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3Ai3p2n9R_fDSZQHnEIrxSiutQ8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "UYHfk45Yi2c"
+      },
+      "snippet": {
+        "publishedAt": "2018-01-15T08:41:03Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "팔뚝 다이어트 운동 베스트4",
+        "description": "대부분의 분들이 팔뚝을 다이어트 운동, 식단조절 등으로 체지방을 빼면 자연스럽게 관리가 되는 운동이 필요없는 부위로 인식하지만, 팔뚝 운동을 따로 해주고 안 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/UYHfk45Yi2c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/UYHfk45Yi2c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/UYHfk45Yi2c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-01-15T08:41:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "bAP029a7jcAcyTEuukAP5ufhXXs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "swRNeYw1JkY"
+      },
+      "snippet": {
+        "publishedAt": "2018-04-16T09:58:36Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "하루 15분! 전신 칼로리 불태우는 다이어트 운동",
+        "description": "우리 몸을 흔히들 자동차에 비유하곤 합니다. 자동차는 출발 전 예열 과정을 거치고 주행을 다 하고난 후에는 열을 식혀주어야 합니다. 우리 몸도 이와 마찬가지로 운동 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/swRNeYw1JkY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/swRNeYw1JkY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/swRNeYw1JkY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-04-16T09:58:36Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "5A0oiPv38vt-2Zs6sqt8hGpDK-E",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "2Uv1B3kjCOI"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-19T08:56:27Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "아랫뱃살 똥배 폭파 운동",
+        "description": "뱃살때문에 상당히 고민이 많았던 1인으로서... 식단도 열심히 해보고 여러가지 복부관련 동작도 열심히 해보았지만 당시 뱃살이 조금은 빠져보여도 아랫배만은 잘 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2Uv1B3kjCOI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2Uv1B3kjCOI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2Uv1B3kjCOI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-04-19T08:56:27Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "RQR_VlM-QxyhZDB_X9pcAuQdpK8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "lKwZ2DU4P-A"
+      },
+      "snippet": {
+        "publishedAt": "2020-01-07T09:50:04Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "집에서 칼로리 불태우는 최고의 유산소운동 [칼소폭 매운맛]",
+        "description": "저희가 이번 영상을 준비할 때 목표로 한 것은 '무조건 힘들기만 한 운동'이 아니라 '기분 좋게 힘든 운동'에 초점을 두었습니다. 그 느낌이 마치 입은 얼얼하지만 먹고 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lKwZ2DU4P-A/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lKwZ2DU4P-A/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lKwZ2DU4P-A/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-01-07T09:50:04Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "IzlG1HqYR5GJ6ZxiYnm8NM_FQbY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "qaBIL8NMCMo"
+      },
+      "snippet": {
+        "publishedAt": "2018-01-23T09:56:02Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "무.조.건! 살빠지는 댄스 다이어트",
+        "description": "안녕하세요, Thankyou BUBU 입니다. 다이어트는 무조건 어렵고 고되어야만 하는걸까요? 저희도 처음에는 그렇게 생각했습니다... 먹고싶은 음식이 있더라도 참아야 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/qaBIL8NMCMo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/qaBIL8NMCMo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/qaBIL8NMCMo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-01-23T09:56:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "IBYDX_HRrNdNKeF4XAlHt6g9tCQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MWnD6DhLjyc"
+      },
+      "snippet": {
+        "publishedAt": "2019-06-23T09:42:02Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "집에서 칼로리 소모 폭탄 걷기 운동 [칼소폭3]",
+        "description": "왜 하필 홈트 인가요? 라는 질문에 문득 왜 우리가 시작하게 되었고 어떻게 여기까지 오게 되었는지를 생각해보았습니다. 사실 우리의 첫 운동은 홈트가 아니었습니다.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MWnD6DhLjyc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MWnD6DhLjyc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MWnD6DhLjyc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-06-23T09:42:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "RRJYxnro1JPF5hFGNSpjUpjcJ2g",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "9WhpAVOSyl8"
+      },
+      "snippet": {
+        "publishedAt": "2017-11-06T12:21:20Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "하루 딱6분! 다리라인 살리는 운동 [허벅지&amp;엉덩이]",
+        "description": "안녕하세요, 땅끄부부 입니다! 2016년 11월3일 블로그에 '스쿼트 런지 플랭크 30일 챌린지' 포스팅을 한 적이 있습니다. 사실 집에서 운동 루틴을 구성하여 꾸준히 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/9WhpAVOSyl8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/9WhpAVOSyl8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/9WhpAVOSyl8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-11-06T12:21:20Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "E4gZly6txqqRdZqB_hhKMRq-A2U",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "dJXZRZvqbYg"
+      },
+      "snippet": {
+        "publishedAt": "2018-03-11T09:35:22Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "예쁜 일자어깨 승모근 스트레칭 BEST3 [거북목/굽은등/라운드숄더 교정]",
+        "description": "사실 저희 땅끄부부도 하루 중 상당수의 시간을 컴퓨터와 책상앞에서 보내기 때문에 승모근과 목, 어깨주변이 피로함을 자주 느낍니다. 그리고 더 나아가 예전 심할 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/dJXZRZvqbYg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/dJXZRZvqbYg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/dJXZRZvqbYg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-03-11T09:35:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "NhpfMcZbkmoAlNpkH5dQAhIbJyE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "1uJV1ZmzeoI"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-01T09:01:01Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "하루 7분! 허리둘레 5cm 줄어드는 운동",
+        "description": "옆구리와 허리 주변 불어나는 지방덩어리는 우리 모두의 고민입니다. 조금만 관리를 소홀히해도 눈덩이처럼 불어나는 복부 피하지방들은 정말 많은 스트레스를 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/1uJV1ZmzeoI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/1uJV1ZmzeoI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/1uJV1ZmzeoI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-12-01T09:01:01Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lhkl97HXqO6UbqrKQZN_9D3sKVM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "M0qtCqwVskU"
+      },
+      "snippet": {
+        "publishedAt": "2017-12-11T10:20:38Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "다리 얇아지는 최고의 운동 BEST5 [허벅지&amp;종아리]",
+        "description": "다리 얇아지는 최고의 운동 BEST5' 운동순서❤ 1. 허벅지 바깥쪽살 [사이드 레그레이즈] 2. 허벅지 앞쪽살 [크런치 킥] 3. 허벅지 안쪽살 [이너싸이 레그리프트] 4.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/M0qtCqwVskU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/M0qtCqwVskU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/M0qtCqwVskU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-12-11T10:20:38Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3j6e37u3lN-P2OUFPhEsRiZMd68",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MMswNnLdHso"
+      },
+      "snippet": {
+        "publishedAt": "2019-01-01T11:28:11Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "단기간 살빠지는 최고의 운동 [칼소폭2]",
+        "description": "많은 분들이 '칼로리 소모 많은 운동'을 말할 때 단순히 런닝머신에서 빠른 속도로 뛰는 운동 또는 심장이 두근거려 심박수가 높아지는 운동등을 대부분 떠올리곤 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MMswNnLdHso/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MMswNnLdHso/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MMswNnLdHso/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-01-01T11:28:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZrPi21mpI5XNRqaz0yqha8jaebU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "nOGT4lXlSHw"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-08T09:41:46Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "전신/하체비만/상체비만/골반교정/승모근/종아리알 스트레칭 이거 하나로 끝!",
+        "description": "사실 저희 부부가 이번 영상을 찍기로 마음먹었을 때 목표로 했던 것은 단순하고도 명확했습니다. '매일 함께 할 수 있는 만능 스트레칭' 그리고는 루틴 구상에 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/nOGT4lXlSHw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/nOGT4lXlSHw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/nOGT4lXlSHw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-12-08T09:41:46Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "crgQ6u4CPbZoqhkkRud7__e89TE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "C3TqpGgnIoI"
+      },
+      "snippet": {
+        "publishedAt": "2017-11-13T13:58:02Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "상체 다이어트 운동 BEST [팔뚝살/겨드랑이살/가슴어깨/등살]",
+        "description": "안녕하세요, 땅끄와 오드리입니다. 오늘은 집에서도 쉽게 앉아서도 할 수 있는 맨몸 상체운동 루틴을 준비해 보았습니다. 사실 지금같은 날씨가 쌀쌀한 계절에는 많은 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/C3TqpGgnIoI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/C3TqpGgnIoI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/C3TqpGgnIoI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-11-13T13:58:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cTGY58Q9D4j9dOaVmJj_r3hCCbQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "CTojmKLkWTo"
+      },
+      "snippet": {
+        "publishedAt": "2020-06-29T09:12:31Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "전신 다이어트 최고의 운동 [칼소폭 핵매운맛]",
+        "description": "안녕하세요, Thankyou BUBU 입니다! 사실 칼소폭(칼로리 소모 폭탄 운동) 시리즈는 당시 예전 홈트 영상들에서는 거의 찾아보기 힘들었던, 한 영상만으로 단시간 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CTojmKLkWTo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CTojmKLkWTo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CTojmKLkWTo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-06-29T09:12:31Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "AZD7fO-8YbKOqIpRySC1RtDIbaY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "54tTYO-vU2E"
+      },
+      "snippet": {
+        "publishedAt": "2019-11-10T08:50:45Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "상체 다이어트 최고의 운동 BEST [팔뚝살/겨드랑이살/등살/가슴어깨라인]",
+        "description": "꼭 읽어주세요!   팔뚝살, 겨드랑이살, 등살등 상체운동은 꼭 반팔, 민소매를 입는 계절에만 하는 것이 아닙니다. '몸은 거짓말을 하지 않습니다' 눈에 보이지 않는 부위 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/54tTYO-vU2E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/54tTYO-vU2E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/54tTYO-vU2E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-11-10T08:50:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "SFP9t3cCILcrDco1HsdN5pcHD3E",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "WqS7fSi9rR4"
+      },
+      "snippet": {
+        "publishedAt": "2018-02-19T09:30:44Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "얼굴살 &amp; 얼굴붓기 빠지는 스트레칭 3가지",
+        "description": "운동을 통해 신체 각 부위 체지방을 제거하고 근육을 사용하여 라인을 탄력있게 만드는 것처럼 얼굴이라는 부위 또한 충분히 체지방 제거와 라인 다듬기가 가능합니다 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/WqS7fSi9rR4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/WqS7fSi9rR4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/WqS7fSi9rR4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-02-19T09:30:44Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "8PoFZu4BWBrL-4XRJkDtyGmwxAE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "2LyDkE7sDec"
+      },
+      "snippet": {
+        "publishedAt": "2017-12-18T08:26:48Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "초간단! 전신 스트레칭 끝판왕 BEST5",
+        "description": "안녕하세요, 땅끄와 오드리 입니다. 여전히 많은 분들이 근육을 사용하여 운동하는 '행위'자체에만 많은 신경을 씁니다만, 그 사용된 근육을 풀어주는것도 넓은 관점 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2LyDkE7sDec/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2LyDkE7sDec/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2LyDkE7sDec/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-12-18T08:26:48Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "_upcybrCtAsGWNgdOU_lJtRWnW0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "2xmNzityfKI"
+      },
+      "snippet": {
+        "publishedAt": "2018-02-12T09:15:41Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "종아리 얇아지는 최고의 스트레칭 3가지",
+        "description": "'신의 영역'이라고 불리우는 종아리살 어떻게해야 뺄 수 있을까요? 이 물음에 대한 답을 찾고자 이제까지 주변에서 내놓으라 하는 수 많은 '종아리 얇아지는 운동'들을 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2xmNzityfKI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2xmNzityfKI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2xmNzityfKI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-02-12T09:15:41Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "HdANpRoue8urLt-WAf0M1CfKBZ8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "3VouSaW_LPw"
+      },
+      "snippet": {
+        "publishedAt": "2017-10-13T04:09:22Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "전신 다이어트 유산소운동 [홈트레이닝]",
+        "description": "안녕하세요, 땅끄와 오드리 입니다! 연휴동안 쉬면서 몸에 지방이 필요이상으로 많이 붙어버린듯 합니다. 집에서도 쉽게 할 수 있는 강도높은 다이어트 운동 프로그램 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/3VouSaW_LPw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/3VouSaW_LPw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/3VouSaW_LPw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-10-13T04:09:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "-Yx81IrkyW61BlQprHj_rqnFMWE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "CkRDw4En_78"
+      },
+      "snippet": {
+        "publishedAt": "2020-09-14T10:30:35Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "단시간 전신 다이어트 최고의 운동 [칼소폭 찐 핵매운맛]",
+        "description": "이번 영상은 한마디로 정말 맵습니다☠ 기존 '칼소폭 핵매운맛'이 '와~ 맵다' 정도였다면, 이번 '칼소폭 찐 핵매운맛'은 온 몸이 얼얼하게 아리는 정도의 맵기라 할 수 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CkRDw4En_78/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CkRDw4En_78/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CkRDw4En_78/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-09-14T10:30:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "9AKUCaFspyPmhc5sHC4a5JuJMvM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "t70t-sklypk"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-29T09:13:40Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "집에서 칼로리 불태우는 걷기 유산소운동 [칼소폭 순한맛]",
+        "description": "벌써 '칼로리 소모 폭탄 [칼소폭]'이라는 이름으로 통합 전신운동 루틴을 올린지도 어느덧 2년이 지났고(시간 참 빠르네요...) 칼소폭1, 2, 3 를 지나 4까지 오게 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/t70t-sklypk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/t70t-sklypk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/t70t-sklypk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-12-29T09:13:40Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "sl2kr55qGWe90gyNjKLR1Tgqbv8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "eg_DipJ7UVk"
+      },
+      "snippet": {
+        "publishedAt": "2019-10-20T08:51:26Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "뱃살 빠지는 최고의 운동 BEST",
+        "description": "2018년 1월 1일 업로딩한 '무.조.건! 뱃살 빠지는 운동 BEST5'... 실제로 저희가 뱃살을 뺄 때 가장 많이 도움되었던 동작들을 루틴으로 엮어 소개시켜 드리자라는 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eg_DipJ7UVk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eg_DipJ7UVk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eg_DipJ7UVk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-10-20T08:51:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "bN40PxEHT3Og7_tRVfr8iQI-KLU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PjGcOP-TQPE"
+      },
+      "snippet": {
+        "publishedAt": "2020-07-19T09:04:16Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "11자복근 복부 최고의 운동 [복근 핵매운맛]",
+        "description": "이번 영상을 찍기 전 저희가 했던 생각은 단순하고도 명확했습니다. '이번에는 정말 최고의 복근&복부운동 영상을 찍어보자...' 다른 영상도 그런 식으로 만들어졌지만, ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PjGcOP-TQPE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PjGcOP-TQPE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PjGcOP-TQPE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-07-19T09:04:16Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "vHTy9VDZnWPVn90jR_25J3dqKcE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "yQyb2V7QjJ4"
+      },
+      "snippet": {
+        "publishedAt": "2018-03-19T09:48:12Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "앉아서 칼로리 태우고 뱃살까지 빼는 운동",
+        "description": "칼로리를 많이 태우는 운동? 사실 이 '칼로리'라는것은 숫자에 불과하지만 그래도 우리가 하는 이 다이어트에서 칼로리를 많이 태우는 운동과 적게 태우는 운동은 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/yQyb2V7QjJ4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/yQyb2V7QjJ4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/yQyb2V7QjJ4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-03-19T09:48:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "s5cjbgweoUgQ9G275ahk_Panah8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EDq180TqRIc"
+      },
+      "snippet": {
+        "publishedAt": "2019-10-27T09:00:59Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "허벅지 종아리 최고의 운동 BEST",
+        "description": "2017년 12월 11일 업로딩한 '다리 얇아지는 최고의 운동 BEST5' 영상... 다행히 많은 분들이 함께해주시고 좋아해주셔서 채널내 허벅지 종아리 운동영상 중에서 2 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EDq180TqRIc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EDq180TqRIc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EDq180TqRIc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-10-27T09:00:59Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "9zo6kwaWgl1d6tpuUPrZNPu7Jr8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BRO6-14-evE"
+      },
+      "snippet": {
+        "publishedAt": "2018-03-26T09:44:56Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "허벅지 바깥살 빨리 빼는 운동 3가지",
+        "description": "승마살은 골반쪽에 위치한 허벅지 바깥쪽 살을 의미하며 마치 '승마바지를 입은듯한 모양새'처럼 옆으로 툭 튀어나왔다고 하여 승마살이라고 부릅니다. 이 승마살을 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BRO6-14-evE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BRO6-14-evE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BRO6-14-evE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-03-26T09:44:56Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3pKTSfiEz_5PQIv8JanBfjK9z6Q",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "--MMq6I07b4"
+      },
+      "snippet": {
+        "publishedAt": "2019-01-20T11:27:45Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "하체 스트레칭 이거 하나로 끝! [날하스]",
+        "description": "하체 스트레칭 영상을 만들어야 겠다고 처음 생각했던 것은 몇 달 전이었습니다. 누구나가 쉽게 따라할 수 있고 다리에 파스를 붙인것처럼 시원한... '땅끄부부만의 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/--MMq6I07b4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/--MMq6I07b4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/--MMq6I07b4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-01-20T11:27:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "9z66v9KIsdMIdirAxnDMTy04gu0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "E_WBjEFXzKU"
+      },
+      "snippet": {
+        "publishedAt": "2019-04-14T09:02:53Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "걸으면서 살이 쭉쭉 빠지는 운동 [걸쭉빠]",
+        "description": "만일 단 하나의 운동만 할 수 있고 그것을 평생 해야한다면 저는 주저없이 '걷기'를 선택하겠습니다. 그만큼 걷기는 인간이 할 수 있는 동작중 가장 원초적이고 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/E_WBjEFXzKU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/E_WBjEFXzKU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/E_WBjEFXzKU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-04-14T09:02:53Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Fp2Q_eM2JICSQxvGX5lSY1WFox0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "i1GkvSjvUAM"
+      },
+      "snippet": {
+        "publishedAt": "2018-03-04T09:43:54Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "허벅지 뒤쪽살 &amp; 엉덩이살 빨리 빼는 운동 3가지",
+        "description": "안녕하세요, 땅끄부부입니다. 허벅지와 엉덩이라는 부위는 우리 신체에서 약 70%의 근육이 모두 몰려있는 만큼 기본적으로 그 면적이 다른 부위들보다도 큰 편이라고 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/i1GkvSjvUAM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/i1GkvSjvUAM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/i1GkvSjvUAM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-03-04T09:43:54Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rqCAfrMDRbSeYd9aOxYDy2CIqvc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PoYzxj8Iy5M"
+      },
+      "snippet": {
+        "publishedAt": "2019-10-13T09:01:54Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "2주만에 복근 만드는 운동 2 MIN ABS WORKOUT",
+        "description": "'복근 만드는 초간단 운동' 설명서   - 복근의 여러 부위(상복근/하복근/외복사근)를 다각도로 자극하는 루틴입니다. - 하루 2번 이상 꾸준히 해주셔야 효과가 좋습니다.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PoYzxj8Iy5M/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PoYzxj8Iy5M/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PoYzxj8Iy5M/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-10-13T09:01:54Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZwMUOgIQuNIQkk2mbLV7fzAkZKs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "fgYL38-05yg"
+      },
+      "snippet": {
+        "publishedAt": "2018-04-30T08:15:24Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "뱃살 옆구리살 운동 BEST3 [누워서 OK]",
+        "description": "어떻게 하면 뱃살, 옆구리살을 쉽고 빠르게 효과적으로 다듬을 수 있을까요? 이에 대한 해답을 찾고자 실제로 저희 땅끄부부는 복부 체지방 축적에 대한 여러가지 팩트 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/fgYL38-05yg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/fgYL38-05yg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/fgYL38-05yg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-04-30T08:15:24Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "bKMygHFAz8Jkcu6_wfdt9pILo5E",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "TRMp_IQE7vo"
+      },
+      "snippet": {
+        "publishedAt": "2019-06-16T08:51:55Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "똥배 아랫뱃살 쉽게 뺄 수 있어요",
+        "description": "제가 요즘도 계속 하고있는 가벼운 뱃살 복부운동 몇 가지를 추천해드릴게요! 저도 뱃살 때문에 고민이 많았는데, 이거 하면서 지금은 뱃살이 많이 빠졌어요(물론 과식/ ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/TRMp_IQE7vo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/TRMp_IQE7vo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/TRMp_IQE7vo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-06-16T08:51:55Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "6u6sqyqTfmT12HnsFC3teYr8p18",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "MRKgRMB5VSw"
+      },
+      "snippet": {
+        "publishedAt": "2019-05-06T08:56:25Z",
+        "channelId": "UCpg89Ys3E4BaLGgEEWVmI9g",
+        "title": "승모근 예쁜어깨 얼굴붓기 3종세트 스트레칭",
+        "description": "우리가 흔히 '승모근'이라고 말하는 부위는 근육 해부학적 용어로 등세모근(trapezius muscle)이라고 부릅니다. 사실 대부분의 사람들이 목과 어깨가 만나 이어지는 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/MRKgRMB5VSw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/MRKgRMB5VSw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/MRKgRMB5VSw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Thankyou BUBU",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-05-06T08:56:25Z"
+      }
+    }
+  ]
+}

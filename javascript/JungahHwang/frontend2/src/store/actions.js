@@ -146,7 +146,7 @@ export default {
 
 // Crawling
   async crawlFind ({ commit }, category) {
-    axios.get('http://localhost:7777/' + `${category}`).then(({ data }) => {
+    axios.get('http://localhost:7777/daumcrwal' + `${category}`).then(({ data }) => {
       commit(CRAWL_START, data)
 
       if (window.location.pathname !== '/daumNewsCrawler') {

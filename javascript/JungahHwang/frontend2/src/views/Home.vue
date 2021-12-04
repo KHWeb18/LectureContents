@@ -12,6 +12,10 @@
       class="nav-link" 
       active-class="active">Test
     </router-link>
+    <router-link :to="{ name: 'Reference' }" 
+      class="nav-link" 
+      active-class="active">Reference
+    </router-link>
     <router-link :to="{ name: 'Quiz' }" 
       class="nav-link" 
       active-class="active">Quiz
@@ -55,6 +59,10 @@
     <router-link :to="{ name: 'VuetifyPage' }" 
       class="nav-link" 
       active-class="active">Vuetify
+    </router-link>
+    <router-link :to="{ name: 'MemberJoinColumnPage' }" 
+      class="nav-link" 
+      active-class="active">MemberJoinColumn
     </router-link>
   </div>
 </template>
