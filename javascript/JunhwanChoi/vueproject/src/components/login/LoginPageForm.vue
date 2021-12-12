@@ -1,125 +1,126 @@
+
 <template>
     <div>
-        <form id="board"  class="loginForm">
-            <h2>Login</h2>
-            <div class="idForm">
-                <input type="text" class="id" placeholder="ID" name="id" >
-            </div>
-
-            <div class="passForm">
-                <input type="password" class="pw" placeholder="PW" name="password " >
-            </div>
-
-            <button type="submit" class="btn" id="btnRegister" onclick="button()">
-                LOG IN
-            </button>
-
-            <div class="bottomText">
-                Don't you have ID? <router-link :to="{ name: 'RegisterPage' }"
-                    class="nav-link"
-                    active-class="active">
-                sign up
-            </router-link>
-            </div>
-        </form>
+        <session-login-form @submit="onSubmit"/>
+        <v-spacer></v-spacer>
+        <!-- <v-btn tile color="teal" @click="showSession">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            세션 보기
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn tile color="teal" @click="removeSession">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            세션 끊기
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn tile color="teal" @click="logout" v-if="isLogin">
+            <v-icon left>
+                ads_click
+            </v-icon>
+            로그 아웃
+        </v-btn> -->
     </div>
 </template>
 
 <script>
+import SessionLoginForm from '@/components/session/SessionLoginForm.vue'
+import { mapState, mapActions } from 'vuex'
+import Vue from 'vue'
+import cookies from 'vue-cookies'
+import axios from 'axios'
+Vue.use(cookies)
 export default {
-    name: 'LoginPageForm',
+    name: 'SessionLoginPage',
+    components: {
+        SessionLoginForm
+    },
+    data () {
+        return {
+            isLogin: false,
+
+        }
+    },
+    mounted () {
+        // this.fetchSession()
+        this.$store.state.session = this.$cookies.get("user")
+        if (this.$store.state.session != null) {
+            this.isLogin = true
+        }
+    },
+    computed: {
+        ...mapState(['session'])
+    },
     
+    methods: {
+        ...mapActions(['fetchSession']),
+        onSubmit (payload) {
+            if (this.$store.state.session == null) {
+                const { email, password } = payload
+                axios.post('http://localhost:3647/jpasession/sign-in', { email, password })
+                        .then(res => {
+                            if (res.data.hashcode != null) {
+                                alert('로그인 성공! - ' + res.data)
+                                this.isLogin = true
+                                this.$store.state.session = res.data
+                                this.$cookies.set("user", res.data, '10h')
+                                this.$router.push('/')
+                                
+                            } else {
+                                alert('로그인 실패! - ' + res.data)
+                                this.isLogin = false
+                            }
+                            /*
+                            this.$router.push({
+                                name: 'BoardReadPage',
+                                params: { boardNo: res.data.boardNo.toString() }
+                            })
+                            */
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('이미 로그인 되어 있습니다 - 계정: ' + this.$store.state.session.email)
+            }
+        },
+        showSession () {
+            if (this.isLogin == true) {
+                axios.post('http://localhost:3647/jpamember/needSession')
+                        .then(res => {
+                            if (res.data == true) {
+                                alert('세션 정보 유지! - ' + res.data)
+                            } else {
+                                alert('세션 정보 유지 안되는 중! - ' + res.data)
+                            }
+                            /*
+                            this.$router.push({
+                                name: 'BoardReadPage',
+                                params: { boardNo: res.data.boardNo.toString() }
+                            })
+                            */
+                        })
+                        .catch(res => {
+                            alert(res.response.data.message)
+                        })
+            } else {
+                alert('먼저 로그인부터 하세요!')
+            }
+        },
+        removeSession () {
+            axios.post('http://localhost:3647/jpamember/removeSession')
+                    .then(res => {
+                        this.isLogin = res.data
+                    })
+        },
+        logout () {
+            this.$cookies.remove("user")
+            this.isLogin = false
+            this.$store.state.session = null
+        }
+    }
 }
 </script>
-
-<style>
-    *{
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-  font-family:sans-serif;
-
-}
-
-body {
-  background-color: #34495e;
-  width: 100%;
-  height: 100%;
-}
-
-.loginForm {
-  position:absolute;
-  width:300px;
-  height:400px;
-  padding: 30px, 20px;
-  background-color:#34495e23;
-  text-align:center;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  border-radius: 15px;
-}
-
-.loginForm h2{
-  text-align: center;
-  margin: 30px;
-}
-
-.idForm{
-  border-bottom: 2px solid #adadad;
-  margin: 30px;
-  padding: 10px 10px;
-}
-
-.passForm{
-  border-bottom: 2px solid #adadad;
-  margin: 30px;
-  padding: 10px 10px;
-}
-
-.id {
-  width: 100%;
-  border:none;
-  outline:none;
-  color: #636e72;
-  font-size:16px;
-  height:25px;
-  background: none;
-}
-
-.pw {
-  width: 100%;
-  border:none;
-  outline:none;
-  color: #636e72;
-  font-size:16px;
-  height:25px;
-  background: none;
-}
-
-.btn {
-  position:relative;
-  left:40%;
-  transform: translateX(-50%);
-  margin-bottom: 40px;
-  width:80%;
-  height:40px;
-  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-
-.btn:hover {
-  background-position: right;
-}
-
-.bottomText {
-  text-align: center;
-}
-</style>

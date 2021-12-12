@@ -3,109 +3,316 @@
         <p class="blue lighten-5 red--text">Test</p>
         <p class="blue white--text">Test</p>
         <p class="blue darken-3">Test</p>
-        <v-btn class="grey" rounded @click="roundBtnClick">Round btn</v-btn>
-        <v-btn class="indigo white--text" >basic btn</v-btn>
-        <v-btn class="teal text" >basic btn</v-btn>
-        <v-btn class="blue" dark>
+        <v-btn class="teal" rounded @click="roundBtnClick">Round 버튼</v-btn>
+        <v-btn class="indigo white--text">기본 버튼</v-btn>
+        <v-btn class="teal" text>기본 버튼</v-btn>
+        <v-btn class="teal" dark>
             <v-icon>bluetooth</v-icon>
             <span>bluetooth</span>
         </v-btn>
         <v-btn fab color="orange" dark>
             <v-icon>bluetooth</v-icon>
         </v-btn>
-        <v-btn color="blue" class="hidden-xs-only">visible -xs-only</v-btn>
-        <v-btn color="red" class="hidden-sm-only">visible -sm-only</v-btn>
-        <v-btn color="grey" class="hidden-md-only">visible -md-only</v-btn>
+        <v-btn color="red" class="hidden-xs-only">Visibility -xs-only</v-btn>
+        <v-btn color="blue" class="hidden-sm-only">Visibility -sm-only</v-btn>
+        <v-btn color="green" class="hidden-md-only">Visibility -md-only</v-btn>
 
         <!-- 앞서서 살펴봤던 container의 역할을 수행하며
-        grid 기능을 서포트 해주고, 기본적으로 페이지 중앙에 자동 배치함
-        추가적으로 너비를 자동 확장할 경우 fluid 옵션을 준다. -->
+             grid 기능을 서포트해주고 기본적으로 페이지 중앙에 자동 배치함
+             추가적으로 너비를 자동 확장할 경우 fluid 옵션을 준다. -->
         <v-container fluid>
-            <!-- grid 시스템의 한 행을 정의함 -->
+            <!-- Grid 시스템의 한 행을 정의함 -->
             <v-layout row wrap>
-                <!-- 12개의 컬럼으로 이루어져 한 행에서 제일 작은 것들이 12개가 만들어지면
-                다음으로 자동 넘김처리 -->
-                <v-flex xs12 md6 class="primary white--text">
-                    <div>{{message}}</div>
+                <!-- 12개의 컬럼으로 이뤄져 한 행에서 제일 작은것들이 12개가 만들어지면 다음으로 자동 넘김 처리 -->
+                <v-flex xs12 md6 class="primary black--text">
+                    <div>{{ message }}</div>
+                </v-flex>
+                <v-flex xs12 md6 class="primary black--text">
+                    <div>{{ message }}</div>
+                </v-flex>
+                <v-flex xs6 md3 class="primary black--text">
+                    <div><v-btn color="primary" dark v-on="on">결제</v-btn></div>
+                </v-flex>
+                <v-flex xs6 md3 class="primary black--text">
+                    <div><v-btn color="primary" dark v-on="on">결제</v-btn></div>
+                </v-flex>
+                
+                <v-flex xs4 md2 class="green white--text">
+                    <div>{{ message }}</div>
                 </v-flex>
                 <v-flex xs4 md2 class="green white--text">
-                    <div>{{message}}</div>
+                    <div>{{ message }}</div>
                 </v-flex>
                 <v-flex xs4 md2 class="green white--text">
-                    <div>{{message}}</div>
-                </v-flex>
-                <v-flex xs4 md2 class="green white--text">
-                    <div>{{message}}</div>
+                    <div>{{ message }}</div>
                 </v-flex>
             </v-layout>
             <v-layout row wrap>
                 <v-flex xs4 md3 class="teal white--text">
-                    <div>{{message}}</div>
+                    <div>{{ message }}</div>
                 </v-flex>
                 <v-flex xs4 md3 class="teal white--text">
-                    <div>{{message}}</div>
+                    <div>{{ message }}</div>
                 </v-flex>
-            </v-layout>
-
-            <v-layout row justify-center>
-                <!-- 사용자에게 알림을 제공하거나 중요 정보를 포함해 의사 결정을 하도록 유도하는데 활용 
-                대화상자가 뜨면서 결제 할 것인지 취소할 것인지 어쩔건지 등등에 활용하기 좋음-->
-                <v-dialog v-model="dialog" persistent max-width="400">
-                    <template v-slot:activator="{ on }">
-                        <v-btn color="primary" dark v-on="on">결제</v-btn>
-                    </template>
-                    <v-card>
-                        <v-card-title class="Headline">
-                            {{service.name}}
-                        </v-card-title>
-                        <v-card-text>
-                            5성급 호텔이 30% 할인! {{service.name}} 결제하시겠습니까?
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="teal darken-1" text @click.native="btn_click($event)">취소</v-btn>
-                            <v-btn color="blue darken-1" text @click.native="btn_click($event)">결제승인</v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
             </v-layout>
         </v-container>
+        
+        <v-layout row justify-center>
+            <!-- 사용자에게 알림을 제공하거나 중요 정보를 포함해 의사 결정을 하도록 유도하는데 활용
+                대화상자가 뜨면서 결제할 것인지 취소할 것인지 어쩔건지 등등에 활용하기 좋음 -->
+            <v-dialog v-model="dialog" persistent max-width="400">
+                <template v-slot:activator="{ on }">
+                    <v-btn color="primary" dark v-on="on">결제</v-btn>
+                </template>
+                <v-card>
+                    <v-card-title class="headline">
+                        {{ service.name }}
+                    </v-card-title>
+                    <v-card-text>
+                        5성급 호텔이 30% 할인! {{ service.name }} 결제하시겠습니까 ?
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="teal darken-1" text @click.native="btn_click($event)">
+                            취소
+                        </v-btn>
+                        <v-btn color="teal darken-1" text @click.native="btn_click($event)">
+                            결제승인
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+        </v-layout>
+
+        <!-- v-dialog에  <template></template>을 만들고 밑에 <v-btn></v-btn>으로 아래와같이 형식을 만들면
+        무조건 버튼클린시 <v-card></v-card>가 작동되게 만듬
+        주의할 점은 v-model에 dialog를 겹치게 만들면 안댐
+        여러 대화상자(dialog)를 사용한다면 이 부분을 여러개로 분리하거나 배열로 관리해야 한다. -->
+        <v-dialog v-model="loginDialog" persistent max-width="500px">
+            <template v-slot:activator="{ on }">
+                <v-btn color="primary" dark v-on="on">로그인</v-btn>
+            </template>
+            <v-card>
+                <v-card-title>
+                    <span class="headline">
+                        Log in
+                    </span>
+                </v-card-title>
+                <v-card-text>
+                    <v-container grid-list-md>
+                        <v-layout wrap>
+                            <v-flex xs12>
+                                <v-text-field label="Email" v-model="userInfo.email" required flat solo>
+                                </v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="Password" v-model="userInfo.password"
+                                                type="password" required flat solo>
+                                </v-text-field>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
+                        취소
+                    </v-btn>
+                    <v-btn color="teal darken-1" text @click="btnLoginClick($event)">
+                        확인
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-toolbar>
+            <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
+                <v-btn text>First Test</v-btn>
+                <v-btn text>Second Test</v-btn>
+                <v-btn text>Third Test</v-btn>
+            </v-toolbar-items>
+        </v-toolbar>
+        <br>
+
+        <v-toolbar>
+            <v-toolbar-items class="d-sm-none">
+                <v-btn text>Home</v-btn>
+                <v-btn text>집에갈래요</v-btn>
+                <v-btn text>제발용</v-btn>
+            </v-toolbar-items>
+        </v-toolbar>
+
+        <v-navigation-drawer app v-model="nav_drawer" temporary>
+            <v-list nav dense>
+                <v-list-item-group  v-model="group" active-class="deep-purple--text text--accent-4">
+                    <v-list-item v-for="link in links" :key="link.name" router :to="link.route">
+                        <v-list-item-action>
+                            <v-icon left>{{link.icon}}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title>{{link.text}}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+        
+        <br>
+        <v-toolbar dense dark> 
+            <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
+            </v-app-bar-nav-icon>
+            <v-toolbar-title>
+                <span class="font-weight-light">쵝오의 여행!</span>
+                <span> 꿀팁!</span>
+            </v-toolbar-title>
+            <v-toolbar-items>
+                <v-btn text v-for="link in links" :key="link.icon" :to="link.route">
+                    {{link.text}}
+                </v-btn>
+            </v-toolbar-items>
+        </v-toolbar>
+
+        <div>
+            <v-menu offset-y>
+                <template v-slot:activator="{ on }">
+                    <v-btn color='teal darken-1'
+                            class="white--text ma-5"
+                            v-on="on">
+                        Drop Down Test Button
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item v-for="(dropItem, index) in dropItems"
+                                :key="index"
+                                link>
+                            <v-list-item-title>{{dropItem.title}}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
+        </div>
+
+        <!-- container로 감싼거랑 안감싼거 차이 확인해보기 -->
+        <v-container>
+            <v-data-table :headers="headerTitle"
+                    :items="contents"
+                    :items-per-page="10"
+                    class="elevation-1">
+            </v-data-table>
+        </v-container>
+        
     </div>
 </template>
 
 <script>
 export default {
-    name: 'VuetifyAllInOneTestPage',
-    methods:{
-        roundBtnClick(){
-            alert('vuetify round 버튼 테스트 성공!')
-        },
-        btn_click($event){
-            if($event.target.innerHTML == '결제승인'){
-                alert('결제가 완료되었습니다.')
-                this.dialog.false
-            }
-        
-        }
-    },
-    data(){
-        return{
+    data () {
+        return {
+            headerTitle:[
+                {text: '게시물 번호',value: 'boardNo'},
+                {text: '제목',value: 'title'},
+                {text: '작성자',value: 'writer'},
+                {text: '내용',value: 'content'},
+            ],
+            contents:[
+                {boardNo: 1, title: 'title1', writer: '호날두', content:'날강두'},
+                {boardNo: 2, title: 'title2', writer: '메시', content:'축신'},
+                {boardNo: 3, title: 'title3', writer: '음바페', content:'프랑스'},
+                {boardNo: 4, title: 'title4', writer: '네이마르', content:'브라질'},
+                {boardNo: 5, title: 'title5', writer: '이승철', content:'가수'},
+                {boardNo: 6, title: 'title6', writer: '유상철', content:'축구선수'},
+                {boardNo: 7, title: 'title7', writer: '안정환', content:'축구선수'},
+                {boardNo: 8, title: 'title8', writer: '박지성', content:'축구선수'},
+                {boardNo: 9, title: 'title9', writer: '손흥민', content:'축구선수'},
+                {boardNo: 10, title: 'title10', writer: '김병지', content:'축구선수'},
+                {boardNo: 11, title: 'title11', writer: '꽁병지', content:'축구선수'},
+                {boardNo: 12, title: 'title12', writer: '어먼상', content:'축구선수'},
+                {boardNo: 13, title: 'title13', writer: '송범근', content:'축구선수'},
+                {boardNo: 14 , title: 'title14', writer: '송중근', content:'축구선수'},
+                {boardNo: 15 , title: 'title15', writer: '송중기', content:'축구선수'},
+                {boardNo: 16 , title: 'title16', writer: '박찬호', content:'축구선수'},
+            ],
+            nav_drawer: 'false',
+            group:'false',
             message: '환장',
             dialog: false,
-            service:{
-                name: '2박 3일'
-            }
+            loginDialog: false,
+            service: {
+                name: '7박 8일 여행 코스'
+            },
+            userInfo: {
+                email: '',
+                password: ''
+            },
+            links:
+                [
+                    {
+                        icon: 'home',
+                        text: 'Home',
+                        name: 'Home',
+                        route:'/'
+                    },
+                    {
+                        icon: 'credit_card',
+                        text: '법인카드',
+                        name: '긁으세요',
+                        route:'/board'
+                    },
+                    {
+                        icon: 'ev_station',
+                        text: 'EV-station',
+                        name: 'EV-station',
+                        route:'/meterializeTestPage'
+                    }
+                ],
+            dropItems:[
+                {title: 'click me'},
+                {title: 'click me'},
+                {title: 'click me'},
+            ],
+            
         }
-    }
+    },
+    methods: {
+        btn_click ($event) {
+            if ($event.target.innerHTML == " 결제승인 ") {
+                alert('결제가 완료되었습니다!')
+                this.dialog = false
+            }
+        },
+        roundBtnClick () {
+            alert('Vuetify 버튼이라고 들어봤니 ?')
+        },
+        btnLoginClick ($event) {
+            if ($event.target.innerHTML == " 확인 ") {
+                alert('로그인이 완료되었습니다!')
+
+                // 이부분에 axios를 쓰면 스프링과 연동할 수 있음
+
+                console.log("입력된 정보 - 이메일: " + this.userInfo.email + 
+                            ", 비밀번호: " + this.userInfo.password)
+                this.loginDialog = false
+            }
+            this.userInfo.email = ''
+            this.userInfo.password = ''
+        }
+    },
+    watch:{
+        group(){
+            this.nav_drawer = false
+
+        }
+    },
+        
 }
 </script>
-<style>
-    h1{
-        margin: 10px;
-    }
-    p{
-        padding:10px;
-        margin:5px 10px;
-    }
 
+<style scoped>
+h1 {
+    margin: 10px;
+}
+p {
+    padding: 10px;
+    margin: 5px 10px;
+}
 </style>

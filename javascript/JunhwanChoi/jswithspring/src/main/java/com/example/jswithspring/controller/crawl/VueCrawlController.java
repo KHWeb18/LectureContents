@@ -1,4 +1,4 @@
-package com.example.jswithspring.controller.crawl;
+/*package com.example.jswithspring.controller.crawl;
 
 import com.example.jswithspring.entity.DaumNews;
 import com.example.jswithspring.service.VueDaumNewsCrawlService;
@@ -27,4 +27,4 @@ public class VueCrawlController {
 
         return service.daumNewsFindAll();
     }
-}
+}*/

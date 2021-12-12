@@ -19,7 +19,7 @@
                     >
                     <v-card class="elevation-12">
                         <v-toolbar
-                        color="orange"
+                        color="blue darken-3"
                         dark
                         flat
                         >
@@ -32,17 +32,19 @@
                             <v-text-field
                             label="이름"
                             name="username"
-                            prepend-icon="mdi-account"
+                            prepend-icon="mdi-name"
                             type="text"
                             v-model="username"
+                            flat solo
                             ></v-text-field>
 
                             <v-text-field
                             label="생년월일"
                             name="birth"
-                            prepend-icon="mdi-account"
+                            prepend-icon="mdi-birth"
                             type="text"
                             v-model="birth"
+                            flat solo
                             ></v-text-field>
 
                             <v-text-field
@@ -51,6 +53,7 @@
                             prepend-icon="mdi-account"
                             type="text" 
                             v-model="id"
+                            flat solo
                             ></v-text-field>
         
                             <v-text-field
@@ -60,7 +63,8 @@
                             prepend-icon="mdi-lock"
                             type="password"
                             v-model="password"
-                            ></v-text-field>
+                            
+                            flat solo></v-text-field>
                         </v-form>
 
                         </v-card-text>

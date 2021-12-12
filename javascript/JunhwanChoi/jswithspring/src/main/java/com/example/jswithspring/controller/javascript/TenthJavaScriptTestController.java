@@ -24,6 +24,7 @@ public class TenthJavaScriptTestController {
 
     @GetMapping("/getDivideElementTest")
     public String getDivideElementTest () {
+
         log.info("getDivideElementTest()");
 
         return "/javascript/tenth/divideElement";

@@ -110,6 +110,84 @@
                 VuetifyAllInOneTestPage
             </router-link><br><br>
 
+            <router-link :to="{ name: 'VueJpaMemberPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VueJpaMemberPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'CoverflowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CoverflowTestPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                AwesomeSwiperTestPage
+            </router-link><br><br>
+            
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGalleryTestPage
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CalendarTestPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MemberJoinColumnTestPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'VuetifyMemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyMemberRegisterPage
+            </router-link><br><br>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyMemberLoginPage
+            </router-link><br><br>
+             <router-link :to="{ name: 'SwiperTest' }"
+                    class="nav-link"
+                    active-class="active">
+                SWiperTest
+            </router-link><br><br>
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                파일 업로드 test
+            </router-link><br><br>
+            
+
+
+
+
+
+            <!-- Python Test -->
+            <router-link :to="{ name: 'PythonLoginTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Python Login Test
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'KakaoLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                KaKaoLogin
+            </router-link><br><br>
+
+            <router-link :to="{ name: 'OrderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                OrderTestPage
+            </router-link><br><br>
+
+
 
 
 

@@ -50,7 +50,7 @@ export default {
 <style>
 table.type05 {
   border-spacing: 1px;
-  text-align: left;
+  text-align: right;
   line-height: 1.3;
   border-top: 1px solid #ccc;
   margin: 10px 300px;

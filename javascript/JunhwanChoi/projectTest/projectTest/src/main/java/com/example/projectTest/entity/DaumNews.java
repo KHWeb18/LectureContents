@@ -30,6 +30,7 @@ public class DaumNews {
     @Column(length = 2000, nullable = false)
     private String address;
 
+
     @Builder
     public DaumNews(String newsNo, String category, String title, String address) {
         this.newsNo = newsNo;
@@ -38,3 +39,5 @@ public class DaumNews {
         this.title = title;
     }
 }
+
+

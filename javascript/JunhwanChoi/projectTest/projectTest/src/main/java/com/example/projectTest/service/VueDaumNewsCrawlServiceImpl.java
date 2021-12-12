@@ -50,42 +50,20 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
         return daumNewsRepository.findAll();
     }
 
-    /*
-    @Override
-    public void daumNewsHomeCrawling() {
-        log.info("daumNewsHomeCrawling()");
-        daumNewsHomeRepository.deleteAll();
-        document = connectUrl("https://news.daum.net/");
-        Elements total = document.select("strong.tit_thumb>a.link_txt");
-        Elements image = document.select("div.item_issue>a.link_thumb>img.thumb_g");
-        DaumNewsHome dnh = null;
-        for (int i = 0; i < total.size(); i++) {
-            dnh = new DaumNewsHome();
-            dnh.setDaumNewsHomeNo(String.valueOf(i + 1));
-            dnh.setTitle(total.get(i).text());
-            dnh.setAddress(total.get(i).attr("href"));
-            dnh.setImage(image.get(i).attr("src"));
-            daumNewsHomeRepository.save(dnh);
-        }
-    }
-     */
 
     @Override
     public void daumNewsMainCrawler(String category) {
         log.info("daumNewsMainCrawler()");
 
-        document = connectUrl("https://news.daum.net/" + category);
+        document = connectUrl("https://news.daum.net/breakingnews/culture/health/" + category);
+
 
         daumNewsRepository.deleteAll();
 
         daumNewsCrawling(document.select(
-                "div.item_mainnews>div.cont_thumb>strong.tit_thumb>a"), category);
-        daumNewsCrawling(document.select(
-                "ul.list_mainnews>li>div.cont_thumb>strong.tit_thumb>a"), category);
-        daumNewsCrawling(document.select(
-                "strong.tit_mainnews>a"), category);
-        daumNewsCrawling(document.select(
-                "ul.list_ranking>li>span.cont_thumb>strong.tit_thumb>a"), category);
+                "ul.list_news2.list_allnews>li>div.cont_thumb>strong.tit_thumb>a"), category);
+
+
     }
 
     @Override
@@ -105,4 +83,6 @@ public class VueDaumNewsCrawlServiceImpl implements VueDaumNewsCrawlService {
             daumNewsRepository.save(news);
         }
     }
+
+
 }

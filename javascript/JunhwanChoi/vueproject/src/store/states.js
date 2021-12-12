@@ -4,5 +4,19 @@ export default {
     member: null,
 
     // 크롤링
-    lists: []
+    lists: [],
+
+    covidlists:[],
+
+    session: null,
+    
+    sessiontest: 0,
+
+    // 게시판
+    boards: [],
+    board: null,
+
+     // 예약
+     books: [],
+     book: null,
 }

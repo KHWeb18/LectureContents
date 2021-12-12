@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 public class Member {
 
-
     private int memberNo;
     private String username;
     private int birth;
@@ -20,10 +19,4 @@ public class Member {
     private String password;
     private Date regDate;
 
-   /* private int projectNo;
-    private String name;
-    private int price;
-    private String description;
-    private Date regDate;
-*/
 }

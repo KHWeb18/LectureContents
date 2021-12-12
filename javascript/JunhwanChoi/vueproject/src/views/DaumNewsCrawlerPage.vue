@@ -1,37 +1,29 @@
 <template>
-    <Layout>
-        <template #menubar>
-            <v-btn @click="start('society')" text color="black"
-                    style="padding: 10px; width: 90px;">사회</v-btn>
-        </template>
-        <template #content>
-            <v-simple-table>
-                <template v-slot:default>
-                    <thead>
-                        <tr>
-                            <th class="text-left">No.</th>
-                            <th class="text-left">제목</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="list of lists" :key="list.title">
-                            <td style="color: gray">{{ list.newsNo }}</td>
-                            <!-- <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td> -->
-                            <td>{{ list.title }}</td>
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table>
-        </template>
-    </Layout>
+    <div>
+        <v-simple-table>
+        <thead>
+            <tr>
+                <th class="text-left"><h5>코로나 뉴스</h5></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(list,idx) in lists" :key="idx">
+                    <td style="color: gray" width="200px" >{{ list.newsNo }}</td>
+                    <td><a @click="clickNews(list.address)">{{ list.title }}</a></td>
+            </tr>
+        </tbody>
+        </v-simple-table>
+         {{lists}}
+
+    </div>
+
 </template>
 
 <script>
-import Layout from '@/components/layout/Layout'
 import { mapState } from 'vuex'
 export default {
-    components: {
-        Layout
+    created() {
+        this.$store.dispatch('crawlFind', 'daumnews')
     },
     computed: {
         ...mapState ({
@@ -39,9 +31,9 @@ export default {
         })
     },
     methods: {
-        start (category) {
-            // action 수동 호출
-            this.$store.dispatch('crawlFind', category)
+        
+        clickNews(address){
+            window.open(address, 'newslink', 'width: 1000px, height: 800px')
         }
     }
 }

@@ -36,7 +36,7 @@
                                 prepend-icon="mdi-account"
                                 type="text"
                                 v-model="id"
-                                ></v-text-field>
+                                flat solo></v-text-field>
             
                                 <v-text-field
                                 id="password"
@@ -45,7 +45,7 @@
                                 prepend-icon="mdi-lock"
                                 type="password"
                                 v-model="pw"
-                                ></v-text-field>
+                                flat solo></v-text-field>
                             </v-form>
                             </v-card-text>
                             <v-card-actions>
