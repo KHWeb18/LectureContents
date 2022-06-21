@@ -91,6 +91,26 @@
                     active-class="active">
                 MaterializeTestPage
             </router-link>
+            <router-link :to="{ name: 'MaterializeGridTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                MaterializeGridTestPage
+            </router-link>
+            <router-link :to="{ name: 'VuetifyAllInOneTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                VuetifyAllInOneTestPage
+            </router-link>
+            <router-link :to="{ name: 'VueJpaMemberRegister' }"
+                    class="nav-link"
+                    active-class="active">
+                VueJpaMemberRegister
+            </router-link>
+            <router-link :to="{ name: 'CoverFlowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                CoverFlowTestPage
+            </router-link>
         </div>
         <div>
             <!-- <button v-on:click="addManyMonster">몬스터 100마리 리젠</button>-->

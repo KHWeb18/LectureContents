@@ -38,6 +38,15 @@ import ScopedSlotTestPage from '@/views/ScopedSlotTestPage.vue'
 import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
 
 import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
+import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
+import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
+
+import VueJpaMemberRegister from '@/views/VueJpaMemberRegister.vue'
+
+import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
+import AwesomeSwiperTest from '@/views/AwesomeSwiperTest.vue'
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
 //@는 src, ..는 상위
 
 Vue.use(VueRouter)
@@ -249,6 +258,55 @@ const routes = [
     name: 'MaterializeTestPage',
     components: {
       default: MaterializeTestPage
+    }
+  },
+  {
+    path: '/materializeGridTestPage',
+    name: 'MaterializeGridTestPage',
+    components: {
+      default: MaterializeGridTestPage
+    }
+  },
+  {
+    path: '/vuetifyAllInOneTestPage',
+    name: 'VuetifyAllInOneTestPage',
+    components: {
+      default: VuetifyAllInOneTestPage
+    }
+  },
+  {
+    path: '/vueJpaMemberRegister',
+    name: 'VueJpaMemberRegister',
+    components: {
+      default: VueJpaMemberRegister
+    }
+  },
+  {
+    path: '/coverFlowTestPage',
+    name: 'CoverFlowTestPage',
+    components: {
+      default: CoverFlowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTest',
+    name: 'AwesomeSwiperTest',
+    components: {
+      default: AwesomeSwiperTest
+    }
+  },
+  {
+    path: '/calendarTestPage',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/imageGalleryTestPage',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
     }
   }
 ]
