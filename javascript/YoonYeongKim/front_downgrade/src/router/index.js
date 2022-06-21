@@ -12,7 +12,7 @@ import BoardReadPage from '@/views/BoardReadPage.vue'
 import BoardModifyPage from '@/views/BoardModifyPage.vue'
 
 // game
-import GameMemberRegisterPage from '@/views/GameMemberRegisterPage.vue'
+//import GameMemberRegisterPage from '@/views/GameMemberRegisterPage.vue'
 
 // 삼목
 import Concave from '@/views/Concave.vue'
@@ -51,6 +51,28 @@ import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
 import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
 import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage'
+
+// JPA + Vuetify 회원가입
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage'
+
+// coverflow
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+// vue-awesome-swiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+// Image Gallery
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+
+// Calendar
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+// JPA Test Page
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage'
+
+// File Upload
+import FileUploadPage from '@/views/FileUploadPage.vue'
 
 Vue.use(VueRouter)
 
@@ -110,13 +132,13 @@ const routes = [
       default: true
     }
   },
-  {
-    path: '/member/create',
-    name: 'GameMemberRegisterPage',
-    components: {
-      default: GameMemberRegisterPage
-    }
-  },
+  // {
+  //   path: '/member/create',
+  //   name: 'GameMemberRegisterPage',
+  //   components: {
+  //     default: GameMemberRegisterPage
+  //   }
+  // },
   {
     path: '/concave',
     name: 'Concave',
@@ -248,9 +270,71 @@ const routes = [
     components: {
       default: VuetifyAllInOneTestPage
     }  
-  }           
+  },
+  {
+    path: '/VuetifyMemberRegister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }  
+  },
+  {
+    path: '/coverflowTest',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  {
+    path: '/imageGallery',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    } 
+  },
+  {
+    path: '/calendar',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/memberJoinColumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/vuetifyMemberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/vuetifyMemberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/fileUploadPage',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  }          
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
