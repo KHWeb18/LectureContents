@@ -23,6 +23,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// https://mvnrepository.com/artifact/org.springframework.session/spring-session-core
+	implementation 'org.springframework.session:spring-session-core:2.5.1'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.2'
 	implementation 'org.json:json:20190722'
     implementation 'org.testng:testng:7.1.0'
 	implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'

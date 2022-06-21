@@ -24,5 +24,18 @@ export default {
   // 성적관리
   students: [],
   // 크롤링
-  lists: []
+  lists: [],
+  session: [],
+
+  //로그인 연습
+  allUsers:[
+    {id: 1, name: 'cholong', email: 'cholong@gmail.com', password: "1111"},
+    {id: 2, name: 'rara', email: 'rara@gmail.com', password: "1111"}
+  ],
+  isLogin: false,
+  isLoginError: false,
+  // 서버에서 보내준 유저 정보
+  userInfo: null,
+  // 파이썬 기반 크롤링
+  pyLists: []
 }

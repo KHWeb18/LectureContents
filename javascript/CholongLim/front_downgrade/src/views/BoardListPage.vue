@@ -20,6 +20,7 @@ export default {
     computed: {
         ...mapState(['boards'])
     },
+    // mounted : 객체가 생성되고나서 웹이랑 붙을 때
     mounted () {
         this.fetchBoardList()
     },

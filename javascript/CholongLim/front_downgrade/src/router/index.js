@@ -58,6 +58,51 @@ import MaterializeTestPage from '@/views/MaterializeTestPage.vue'
 import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
+// Jpa
+import VuetifySignUpTestPage from '@/views/VuetifySignUpTestPage.vue'
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+
+
+//coverflow
+import CoverFlowTestPage from '@/views/CoverFlowTestPage.vue'
+
+// AwesomeSwiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+// ImageGallery
+import ImageGalleryPage from '@/views/ImageGalleryPage.vue'
+
+// Calendar
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+// JPA Test Page = memberAuth
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+
+// 파일업로드 test
+import FileUploadPage from '@/views/FileUploadPage.vue'
+
+// 로그인
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+
+
+// PythonLoginTestPage
+import PythonLoginTestPage from '@/views/PythonLoginTestPage.vue'
+
+// KakaoLoginPage
+import KakaoLoginPage from '@/views/KakaoLoginPage.vue'
+// OrderTestPage
+import OrderTestPage from '@/views/OrderTestPage.vue'
+// PythonCrawlTestPage
+import PythonCrawlTestPage from '@/views/PythonCrawlTestPage.vue'
+
+
+
+// 로그인(도전)
+import Login from '@/views/Login.vue'
+import MyPage from '@/views/MyPage.vue'
+
+import store from "../store/index";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -65,6 +110,34 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    beforeEnter: (to, from, next) => {
+      if(store.state.isLogin === true) {
+            // 이미 로그인 된 유저 = 막아야한다
+            alert('이미 로그인 하였습니다.')
+            next("/")
+          } else {
+            next()
+          }
+    },
+    component: Login
+  },
+  {
+    path: '/mypage',
+    name: 'MyPage',
+    beforeEnter: (to, from, next) => {
+      if(store.state.isLogin === false) {
+                // 아직 로그인 안된 유저 = 막아야한다
+                alert('로그인이 필요한 기능입니다')
+                next("/login")
+              } else {
+                next()
+              }
+    },
+    component: MyPage
   },
   {
     path: '/test',
@@ -294,6 +367,97 @@ const routes = [
     name: 'VuetifyAllInOneTestPage',
     components: {
       default: VuetifyAllInOneTestPage
+    }
+  },
+  {
+    path: '/vuetify/SignUp',
+    name: 'VuetifySignUpTestPage',
+    components: {
+      default: VuetifySignUpTestPage
+    }
+  },
+  {
+    path: '/vuetify/member',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }
+  },
+  {
+    path: '/coverflow',
+    name: 'CoverFlowTestPage',
+    components: {
+      default: CoverFlowTestPage
+    }
+  },
+  {
+    path: '/awesomeSwiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  {
+    path: '/imageGallery',
+    name: 'ImageGalleryPage',
+    components: {
+      default: ImageGalleryPage
+    }
+  },
+  {
+    path: '/calendar',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/memberJoinColumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/memberlogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/fileUpload',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  },
+  {
+    path: '/pythonTest',
+    name: 'PythonLoginTestPage',
+    components: {
+      default: PythonLoginTestPage
+    }
+  },
+  {
+    path: '/kakaoLoginTest',
+    name: 'KakaoLoginPage',
+    components: {
+      default: KakaoLoginPage
+    }
+  },
+  {
+    path: '/orderTestPage',
+    name: 'OrderTestPage',
+    components: {
+      default: OrderTestPage
+    }
+  },
+  {
+    path: '/pythonCrawlTestPage',
+    name: 'PythonCrawlTestPage',
+    components: {
+      default: PythonCrawlTestPage
     }
   }
 ]

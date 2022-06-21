@@ -1,6 +1,11 @@
 <template>
     <div class="home">
         <div id="header">
+            <router-link :to="{ name: 'Login' }"
+                    class="nav-link"
+                    active-class="active">
+                login
+            </router-link>
             <router-link :to="{ name: 'Home' }"
                     class="nav-link"
                     active-class="active">
@@ -123,6 +128,81 @@
                     active-class="active">
                 Vuetify 활용
             </router-link>
+            <router-link :to="{ name: 'VuetifySignUpTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Vuetify 회원가입
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                수업 회원가입
+            </router-link>
+            <router-link :to="{ name: 'CoverFlowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                coverflow
+            </router-link>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                awesomeSwiper
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGallery
+            </router-link>
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                calendar
+            </router-link>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Member Join Column
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                로그인
+            </router-link>
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                파일업로드 test
+            </router-link><br/>
+
+
+
+            <!-- Python Test -->
+            <router-link :to="{ name: 'PythonLoginTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Python Login test
+            </router-link>
+
+            <!-- Kakao Login Test -->
+            <router-link :to="{ name: 'KakaoLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Kakao Login 
+            </router-link><br/>
+
+            <!-- Order Test -->
+            <router-link :to="{ name: 'OrderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Order Test 
+            </router-link><br/>
+
+            <!-- Python Crawl Test -->
+            <router-link :to="{ name: 'PythonCrawlTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                PythonCrawlTestPage
+            </router-link><br/>
         </div>
     </div>
 </template>

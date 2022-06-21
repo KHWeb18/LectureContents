@@ -27,11 +27,35 @@ import {
   // 성적 관리
   SCORE_MANAGEMENT,
   // 크롤링
-  CRAWL_START
+  CRAWL_START,
+
+  // 로그인 연습
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  // 로그아웃
+  LOGOUT
 } from './mutation-types'
 
 // 여기는 동기 처리를 하기 때문에 데이터 무결성이 보장됨
 export default {
+  // 로그인 연습
+  // 로그인이 성공했을 때,
+  [LOGIN_SUCCESS] (state, payload) {
+    state.isLogin = true
+    state.isLoginError = false
+    state.userInfo = payload
+  },
+  // 로그인 실패했을때
+  [LOGIN_ERROR] (state){
+    state.isLogin = false
+    state.isLoginError = true
+  },
+  // 로그아웃
+  [LOGOUT] (state) {
+    state.isLogin = false
+    state.isLoginError = false
+    state.userInfo = null
+  },
   [ADD_TODO] (state, payload) {
     const { content } = payload
     state.todoItems.push({ id: state.nextTodoId, content, done: false })
