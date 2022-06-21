@@ -11,24 +11,21 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @Repository
-public class MemberRepository {
+public class VueMemberRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public void create(Member member) throws Exception {
-        String query = "insert into member (user_id, user_pass, name, sex, phone_no, dateOfBirth) values " +
-                "(?, ?, ?, ?, ?, ?)";
+        String query = "insert into vuemember (id, pw) values " +
+                "(?, ?)";
 
-        jdbcTemplate.update(query, member.getUserId(), member.getUserPass(), member.getName(),
-                member.getSex(), member.getPhoneNo(), member.getBirth());
+        jdbcTemplate.update(query, member.getId(), member.getPw());
     }
-
     public List<Member>list() throws Exception{
         // RowMapper를 통해 얻은 행을 하나씩 List에 집어넣으니
         // results엔 DB에서 얻어온 행 정보들이 들어있다.
@@ -46,8 +43,8 @@ public class MemberRepository {
 
 
                         member.setMemberNo(rs.getInt("member_no"));
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
                         member.setSex(rs.getString("sex"));
                         member.setPhoneNo(rs.getString("phone_no"));
                         member.setName(rs.getString("name"));
@@ -81,17 +78,17 @@ public class MemberRepository {
                     public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Member member = new Member();
 
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
 
                         return member;
                     }
-                }, member.getUserId());
+                }, member.getId());
 
         Member tmp = results.get(0);
         log.info("tmp: " + tmp);
 
-        if (tmp.getUserPass().equals(member.getUserPass())) {
+        if (tmp.getPw().equals(member.getPw())) {
             log.info("Password Correct");
         } else {
             log.info("Password Incorrect");
@@ -108,8 +105,8 @@ public class MemberRepository {
                         Member member = new Member();
 
                         member.setMemberNo(rs.getInt("member_no"));
-                        member.setUserId(rs.getString("user_id"));
-                        member.setUserPass(rs.getString("user_pass"));
+                        member.setId(rs.getString("user_id"));
+                        member.setPw(rs.getString("user_pass"));
                         member.setSex(rs.getString("sex"));
                         member.setPhoneNo(rs.getString("phone_no"));
                         member.setName(rs.getString("name"));
@@ -132,7 +129,7 @@ public class MemberRepository {
         String query = "update member set user_id = ?, user_pass = ?, " +
                 "sex = ?, phone_no = ?, name = ?, dateOfBirth = ? where member_no = ?";
 
-        jdbcTemplate.update(query, member.getUserId(), member.getUserPass(),
+        jdbcTemplate.update(query, member.getId(), member.getPw(),
                 member.getName(),member.getBirth(), member.getPhoneNo());
     }
 }

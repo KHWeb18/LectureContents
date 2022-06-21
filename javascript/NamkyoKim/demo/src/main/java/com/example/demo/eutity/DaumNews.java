@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+// JPA 사용시 필수적인 Annotation이 Entity
 @Entity
 @ToString
 public class DaumNews {

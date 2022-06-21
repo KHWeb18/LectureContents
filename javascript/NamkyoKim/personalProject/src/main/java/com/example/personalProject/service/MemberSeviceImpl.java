@@ -1,6 +1,6 @@
 package com.example.personalProject.service;
 import com.example.personalProject.eutity.Member;
-import com.example.personalProject.repository.MemberRepository;
+import com.example.personalProject.repository.VueMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class MemberSeviceImpl implements MemberService {
 
     @Autowired
-    private MemberRepository repository;
+    private VueMemberRepository repository;
 
     @Override
     public void join(Member member) throws Exception {
