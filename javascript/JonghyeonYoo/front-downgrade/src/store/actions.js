@@ -153,6 +153,7 @@ export default {
                         router.push('/daumNewsCrawler')
                     }
                 })
-    }
+    },
+    //JPA
 
 }

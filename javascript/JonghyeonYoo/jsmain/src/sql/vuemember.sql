@@ -6,3 +6,5 @@ create table vuemember(
     primary key(member_no)
     );
 
+
+

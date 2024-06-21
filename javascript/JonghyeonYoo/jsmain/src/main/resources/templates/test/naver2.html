@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="css/naver/naver2.css">
+</head>
+<body>
+<!-- 회원가입 -->
+<div id="content">
+  <div>
+    <h3>
+      <label for="id">아이디</label>
+      <!--label태그는 "아이디" 글자를 클릭하면 입력할수있게 하기위해 사용했습니다. -->
+    </h3>
+    <span class="id">
+			<input type="text" id="id" maxlength="15">
+      <!-- maxlength="15" 글자수를 15자로 제한하였습니다 -->
+			<span class="step_url">@naver.com</span>
+      <!--입력폼은 span태그로 묶어서, 그 안에 텍스트를 입력받을 태그와 메일주소를 표시해줄 또 다른 span태그를 넣어줬습니다. -->
+		</span>
+    <h3>
+      <label for="password">비밀번호</label>
+    </h3>
+    <span class="password">
+			<input type="password" id="password" maxlength="15">
+      <!-- input type="password"를 줘서 비밀번호 입력시 ***로 표기되게 하였습니다. -->
+		</span>
+    <h3>
+      <label for="name">이름</label>
+    </h3>
+    <span class="name">
+			<input type="text" id="name"maxlength="15">
+		</span>
+
+
+    <!-- BIRTH -->
+    <!--크게 보면 (입력폼 전체를 묶는)div태그 > bir_wrap > bir_yy, bir_mm, bir_dd 로 구성되어 있습니다.
+    bir_wrap은 bir_yy, bir_mm, bir_dd 세 요소를 감싸주는 목적으로, css로 세 요소를 배치할 때 필요하기 때문에 추가해줬습니다 -->
+    <div>
+      <h3><label for="yy">생년월일</label></h3>
+
+      <div id="bir_wrap">
+
+        <!-- BIRTH_YY -->
+        <div id="bir_yy">
+                            <span class="box">
+                                <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            </span>
+        </div>
+
+        <!-- BIRTH_MM -->
+        <div id="bir_mm">
+                            <span class="box">
+                                <select id="mm">
+                                    <option>월</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </span>
+        </div>
+
+        <!-- BIRTH_DD -->
+        <div id="bir_dd">
+                            <span class="box">
+                                <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                            </span>
+        </div>
+
+      </div>
+    </div>
+
+    <h3>
+      <label for="sex">성별</label>
+    </h3>
+    <span class="sex">
+			 <select id="sex">
+               <option>성별</option>
+                                    <option value="남자">남자</option>
+                                    <option value="여자">여자</option>
+             </select>
+		</span>
+<h3>
+    <label for="email">이메일</label>
+    </h3>
+    <span class="email">
+			<input type="text" id="email" placeholder="직접입력">
+		</span>
+
+    <h3>
+      <label for="phone">휴대전화</label>
+    </h3>
+    <span class="phone">
+			 <select id="country">
+               <option>국적</option>
+                                    <option value="kor">-대한민국 +82-</option>
+                                    <option value="--">--</option>
+             </select><br>
+      <input type="text" id="phone" placeholder="전화번호 입력">
+      <span class="phnum-btn-wrap">
+                        <button id="phnum-btn">인증번호 받기</button>
+                    </span><br>
+      <span class="signup-input-c" style="margin-top: 10px;">
+                    <input id="signup-cnum" type="text" placeholder="인증번호 입력"></input>
+                </span>
+		</span>
+    <div>
+      <!--가입하기-->
+      <div class="signup-btn-wrap">
+        <button id="signup-btn">가입하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

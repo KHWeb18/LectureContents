@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+<fieldset>
+    <legend>공지사항 작성하기</legend>
+
+    <form id="board" th:action="@{register}" th:object="${board}" method="post">
+        <table>
+            <tr>
+                <td>제목</td>
+                <td><input type="text" style="width:98%" name="title" placeholder="제목을 입력하시오." th:field="*{title}"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea cols="50" rows="20" name="content" placeholder="내용을 입력하시오" th:field="*{content}"></textarea></td>
+            </tr><br>
+            <tr>
+                <td>첨부파일</td>
+                <td><button type="submit" name="uploadFile">파일 선택</button>선택된 파일 없음</td>
+            </tr><br>
+        </table>
+    </form>
+    <div>
+        <button type="submit" id="btnRegister">작성하기</button>
+    </div>
+</fieldset>
+</body>
+</html>
+
