@@ -114,6 +114,51 @@
                     active-class="active">
                 Vuetify 활용
             </router-link>
+            <router-link :to="{ name: 'VuetifyMemberRegisterPage' }"
+                    class="nav-link"
+                    active-class="active">
+                JPA 활용 회원가입 페이지
+            </router-link>
+            <router-link :to="{ name: 'CoverFlowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                커버플로우테스트
+            </router-link>,
+            <router-link :to="{ name: 'VuetifyMemberList' }"
+                    class="nav-link"
+                    active-class="active">
+                JPA 활용 회원확인 페이지
+            </router-link>
+            <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Awesome Swiper Test
+            </router-link>
+            <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                ImageGalleryTestPage
+            </router-link>
+            <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+                Calendar Test
+            </router-link>
+            <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               Member Join Column Test
+            </router-link>
+            <router-link :to="{ name: 'VuetifyMemberLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+               Member 로그인 Page
+            </router-link>
+            <router-link :to="{ name: 'FileUploadPage' }"
+                    class="nav-link"
+                    active-class="active">
+                파일 업로드 Test
+            </router-link>
         </div>
     </div>
 </template>

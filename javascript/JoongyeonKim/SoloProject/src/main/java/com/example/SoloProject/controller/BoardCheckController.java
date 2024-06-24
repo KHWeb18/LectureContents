@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/vueboard")
 public class BoardCheckController {
 
     @Autowired

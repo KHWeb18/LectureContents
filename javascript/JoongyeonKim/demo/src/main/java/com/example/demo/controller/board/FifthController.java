@@ -4,7 +4,6 @@ import com.example.demo.entity.Member;
 import com.example.demo.entity.Product;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.ProductService;
-import com.example.demo.service.SignUpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,28 +25,6 @@ public class FifthController {   //게시글 목록, 회원가입 상품페이�
         model.addAttribute("lists", service.list());
 
         return "/board/fifth/lists/lists";
-    }
-
-    //
-    @Autowired
-    private SignUpService signupservice;
-
-    @GetMapping("/signup")
-    public String getSignUp (Member member, Model model) {
-        log.info("getSignUp()");
-
-        return "/board/fifth/member/signup";
-    }
-
-    @PostMapping("/signup")
-    public String postSignUp (Member member, Model model) {
-        log.info("postSignUp(): " + member);
-
-        signupservice.signup(member);
-
-        model.addAttribute("msg", "가입이 완료되었습니다!");
-
-        return "/board/fifth/member/success";
     }
 
     @Autowired

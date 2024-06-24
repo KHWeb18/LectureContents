@@ -5,7 +5,6 @@ import com.example.demo.entity.Member;
 import com.example.demo.entity.Product;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.ProductService;
-import com.example.demo.service.SignUpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

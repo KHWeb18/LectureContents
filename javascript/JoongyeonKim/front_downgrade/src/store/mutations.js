@@ -34,7 +34,11 @@ import {
     CALC_MEAN,
 
     //크롤링
-    CRAWL_START
+    CRAWL_START,
+
+    //JPA
+    FETCH_MEMBER_LIST,
+    FETCH_MEMBER
 
 } from './mutation-types'
 
@@ -139,4 +143,10 @@ export default {
     [CRAWL_START] (state, payload) {
         state.lists = payload
     },
+    [FETCH_MEMBER_LIST] (state, members) {
+        state.members = members;
+    },
+    [FETCH_MEMBER] (state, member) {
+        state.member = member
+    }
 }
