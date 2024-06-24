@@ -17,17 +17,17 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class VueCrawlController {
 
-    @Autowired
-    VueDaumNewsCrawlService service;
-
-    @GetMapping("{category}")
-    public List<DaumNews> getDaumNewsCategory(@PathVariable String category) {
-        log.info("crawling getDaumNewsCategory() " + category);
-
-        service.daumNewsMainCrawler(category);
-
-        return service.daumNewsFindAll();
-    }
+//    @Autowired
+//    VueDaumNewsCrawlService service;
+//
+//    @GetMapping("{category}")
+//    public List<DaumNews> getDaumNewsCategory(@PathVariable String category) {
+//        log.info("crawling getDaumNewsCategory() " + category);
+//
+//        service.daumNewsMainCrawler(category);
+//
+//        return service.daumNewsFindAll();
+//    }
 
 
 }

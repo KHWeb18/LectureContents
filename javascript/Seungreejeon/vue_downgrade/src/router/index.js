@@ -56,6 +56,27 @@ import MaterializeTestPage from '@/views/MaterializeTestPage'
 import MaterialGridTestPage from '@/views/MaterialGridTestPage'
 import vuetifyAllInoneTestPage from '@/views/vuetifyAllInoneTestPage'
 
+
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage'
+
+// coverflow
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+// AwesomeSwireper
+import AwesomeSwiper from '@/views/AwesomeSwiper'
+
+import CalendarTestPage from '@/views/CalendarTestPage'
+
+//JPA
+import MemberJoinColumTestPage from '@/views/MemberJoinColumTestPage';
+
+import LoginPage from '@/views/LoginTest';
+
+
+import FileUploadPage from '@/views/FileUploadPage';
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -64,6 +85,7 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
   {
     path: '/test',
     name: 'Test',
@@ -278,7 +300,54 @@ const routes = [
     path: '/vutify-page',
     name: 'vuetifyAllInoneTestPage',
     component: vuetifyAllInoneTestPage
-  }
+  },
+  {
+    path: '/vutify-member-register',
+    name: 'JPAmemberRegister',
+    component: VuetifyMemberRegisterPage
+  },
+  {
+    path: '/coverflowTest',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }
+  },
+  {
+    path: '/awesomSwiperTest',
+    name: 'AwesomeSwiper',
+    components: {
+      default: AwesomeSwiper
+    }
+  },
+  {
+    path: '/calendar-test-page',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  {
+    path: '/member-join-column-test-page',
+    name: 'MemberJoinColumTestPage',
+    components: {
+      default: MemberJoinColumTestPage
+    }
+  },
+  {
+    path: '/login-Page',
+    name: 'LoginPage',
+    components: {
+      default: LoginPage
+    }
+  },
+  {
+    path: '/file-upload-page',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  },
 
 ]
 
