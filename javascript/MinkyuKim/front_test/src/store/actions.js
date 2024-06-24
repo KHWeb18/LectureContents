@@ -179,7 +179,7 @@ export default {
     },
     //크롤링
     async crawlFind ({ commit }, category) {
-        axios.get('http://localhost:7777/' + `${category}` )
+        axios.get('http://localhost:7777/daumCrawler' + `${category}`)
                 .then(({ data }) => {
                     commit(CRAWL_START, data)
 
@@ -188,5 +188,4 @@ export default {
                     }
                 })
     }
-    
 }

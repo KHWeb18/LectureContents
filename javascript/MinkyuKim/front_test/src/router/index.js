@@ -56,6 +56,25 @@ import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 // Veutify
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
 
+// vue-awesome-swiper
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
+
+// coverflow
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+// facebook 과 유사한 이미지 갤러리
+import ImageGalleryTestPage from '@/views//ImageGalleryTestPage.vue'
+
+// 캘린더
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+// JPA Test Page
+import VuetifyMemberRegisterPage from '@/views/VuetifyMemberRegisterPage.vue'
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+import VuetifyMemberLoginPage from '@/views/VuetifyMemberLoginPage.vue'
+import ztest from '@/views/ztest.vue'
+import ztest2 from '@/views/ztest2.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -296,8 +315,72 @@ const routes = [
     components: {
       default: VuetifyAllInOneTestPage
     }    
+  },
+  {
+    path: '/vutifymemberregister',
+    name: 'VuetifyMemberRegisterPage',
+    components: {
+      default: VuetifyMemberRegisterPage
+    }    
+  },
+  {
+    path: '/coverflowTest',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }   
+  },
+  {
+    path: '/awesomeswiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }   
+  },
+  {
+    path: '/imageGallery',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }   
+  },
+  {
+    path: '/calendar',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }   
+  },
+  {
+    path: '/memberJoinColumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+  {
+    path: '/memberLogin',
+    name: 'VuetifyMemberLoginPage',
+    components: {
+      default: VuetifyMemberLoginPage
+    }
+  },
+  {
+    path: '/ztest',
+    name: 'ztest',
+    components: {
+      default: ztest
+    }
+  },
+  {
+    path: '/ztest2',
+    name: 'ztest2',
+    components: {
+      default: ztest2
+    }
   }
 ]
+
 
 const router = new VueRouter({
   mode: 'history',

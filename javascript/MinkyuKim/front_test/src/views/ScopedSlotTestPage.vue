@@ -15,7 +15,8 @@
                     이 데이터는 computed()에 정의된 filteredList()의 리턴값을 전달함
                     이 값은 사용자가 input에 입력하는 데이터와
                     양방향 바인딩된 inputFilter에 의해 필터링 된 값이다 -->
-                    <!-- 즉 자식의 props items를 받아옴-->
+                    <!-- 즉 자식의 props items를 받아옴
+                        items = cities-->
                 <template slot-scope="{ items }">
                 <p v-for="item in items" :key="item">
                     {{ item }}

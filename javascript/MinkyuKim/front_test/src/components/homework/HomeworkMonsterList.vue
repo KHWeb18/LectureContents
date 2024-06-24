@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MonsterElement from './MonsterElement.vue'
+import MonsterElement from '../monster/MonsterElement.vue'
 import { mapState, mapMutations, mapGetters } from 'vuex'
 import { RESET_EDITTING_ID, SET_EDITTING_ID } from '../../store/mutation-types'
 export default {
